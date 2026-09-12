@@ -1,0 +1,1 @@
+"""UPSET: UFC analytics and machine learning platform."""

@@ -37,3 +37,11 @@ out/
 
 # Logs
 *.log
+
+# Local datasets
+data/raw/*
+data/processed/*
+
+# Keep the empty data directory structure in Git
+!data/raw/.gitkeep
+!data/processed/.gitkeep
