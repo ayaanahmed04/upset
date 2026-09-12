@@ -35,26 +35,35 @@ Additional:
 
 ## Completed
 
-- Created `ayaanahmed04/upset`
-- Cloned repository to local Mac
+- Created private GitHub repository `ayaanahmed04/upset`
+- Cloned repository to `~/Projects/upset`
 - Configured GitHub CLI authentication
-- Configured Git identity
-- Installed Python 3.12
-- Created `.venv`
-- Added initial `.gitignore`
-- Verified Git/GitHub connection
+- Configured Git identity with personal email
+- Installed Python 3.12.14 with Homebrew
+- Created and verified `.venv`
+- Configured `.gitignore`
+- Created initial project structure
+- Added `ROADMAP.md`, `PROJECT_STATUS.md`, and `DECISIONS.md`
+- Created `src/upset`, `tests`, `notebooks`, and data directories
+- Added `pyproject.toml`
+- Added NumPy, pandas, scikit-learn, and matplotlib
+- Added pytest, Ruff, and JupyterLab development tooling
+- Installed UPSET as an editable Python package
+- Added first import test
+- Verified pytest passes: `1 passed`
+- Verified Ruff passes: `All checks passed`
 
 ## Current Task
 
-Create the initial repository structure and documentation.
+Day 0 foundation is complete.
 
-## Next Steps
+## Next Steps — Day 1
 
-1. Complete project scaffold
-2. Research UFC data sources
-3. Decide how raw data will be obtained and stored
-4. Configure Python project dependencies
-5. Begin first exploratory dataset work
+1. Research credible UFC data sources
+2. Compare available data fields and historical coverage
+3. Investigate usage/licensing concerns
+4. Select UPSET's initial data-source strategy
+5. Load and inspect our first UFC dataset
 
 ## Blockers
 
