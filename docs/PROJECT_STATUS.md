@@ -105,6 +105,19 @@ Additional:
 - Added normalization tests
 - Verified pytest passes: `4 passed`
 - Verified Ruff passes: `All checks passed`
+- Defined canonical provider-independent `RoundStats` dataclass
+- Updated Cito round normalization to return a typed `RoundStats` object instead of a generic dictionary
+- Added canonical `Fighter` dataclass
+- Added Cito fighter normalization
+- Added numeric normalization for optional fighter measurements
+- Confirmed current provider values such as height, weight, and reach are converted from API strings into numeric UPSET values
+- Added canonical `Event` dataclass
+- Added Cito event normalization
+- Added canonical `Fight` dataclass
+- Established the four core UPSET canonical entities: `Fighter`, `Event`, `Fight`, and `RoundStats`
+- Established that fighter identity information should remain separate from time-dependent career-statistic snapshots
+- Expanded automated normalization and canonical-model tests
+- Verified the canonical data layer with pytest and Ruff
 
 ## Current Data Findings
 
@@ -130,20 +143,24 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Build UPSET's provider-independent normalization layer and begin defining the canonical internal data model.
+Complete UPSET's initial canonical data foundation and begin connecting provider-specific records to the canonical model.
 
-The historical Kaggle dataset has been accepted for historical development and ML work. Cito has been validated as a useful experimental source for newer UFC data and round-level statistics.
+The core `Fighter`, `Event`, `Fight`, and `RoundStats` entities now exist. Cito fighter, event, and round-stat data can already be normalized into UPSET-owned representations.
 
-## Next Steps — Day 3/4+
+Cito fight normalization is the next provider-mapping task.
 
-1. Define the canonical `RoundStats` representation
-2. Expand and harden provider normalization code
-3. Begin defining canonical Fighter, Event, and Fight entities
-4. Design source-ID and provenance tracking
-5. Normalize Cito fighter and bout data into UPSET-owned representations
-6. Determine how Kaggle fight totals map into the same canonical concepts
-7. Continue evaluating UFCalendar as another possible current/update provider
-8. Begin deriving analytics features only after the normalized data foundation is stable
+## Next Steps — Day 4/5
+
+1. Inspect and document the full Cito bout schema
+2. Implement and test `normalize_cito_fight()`
+3. Connect canonical fights to canonical events and fighters using provider identifiers
+4. Design UPSET-owned internal IDs and source-ID mapping
+5. Define a time-aware fighter-stat snapshot model for historical ML features
+6. Determine how the historical Kaggle fight dataset maps into the canonical `Fight` representation
+7. Determine how Kaggle fight-level statistics map alongside Cito round-level statistics
+8. Continue evaluating UFCalendar as another current/update provider
+9. Begin building processed datasets only after canonical mappings are stable
+10. Start feature engineering after temporal integrity and source provenance are established
 
 ## Blockers
 

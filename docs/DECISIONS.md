@@ -85,3 +85,28 @@ Reason:
 Initial testing confirmed that Cito provides structured fighter, event, bout, and true round-level data. Its schema provides useful source identifiers and fills gaps that the historical Kaggle dataset cannot cover.
 
 UPSET will not couple its analytics or machine-learning layers directly to Cito. Cito data will pass through UPSET's provider-independent normalization layer, and important values will continue to be validated because structured API data can still contain inconsistencies.
+
+## 011 — Canonical Core Data Entities
+
+UPSET's provider-independent data model will be organized around four core entities:
+
+- `Fighter`
+- `Event`
+- `Fight`
+- `RoundStats`
+
+Reason:
+
+External providers use different schemas, identifiers, field names, and levels of statistical detail. UPSET-owned canonical entities provide a stable internal contract so analytics and machine-learning code do not depend directly on any one provider.
+
+Provider-specific data will be transformed through normalization functions before entering these canonical representations.
+
+## 012 — Separate Fighter Identity From Time-Varying Career Statistics
+
+The canonical `Fighter` model will primarily represent fighter identity and relatively stable profile information. Time-dependent career statistics such as wins, losses, striking rates, takedown rates, and other cumulative metrics will not be treated as permanent fighter identity fields.
+
+Reason:
+
+Career statistics change over time. Combining current career aggregates directly with historical fight records could introduce future information into historical machine-learning features.
+
+UPSET will later represent time-dependent fighter statistics using dated or pre-fight snapshots so historical models only use information that was available at the time of a fight.
