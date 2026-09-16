@@ -65,3 +65,23 @@ UPSET will not use fighter names as permanent primary keys.
 Reason:
 
 The initial UFC dataset contains multiple distinct fighters who share the same name. These fighters have different source profiles and identities. UPSET will eventually use its own internal fighter identifier and maintain source-specific identifiers for reconciliation across data providers.
+
+## 009 — Initial Historical Development Dataset
+
+The José Silva UFC historical Kaggle dataset will be used as UPSET's initial historical development dataset.
+
+Reason:
+
+The dataset provides broad UFC fight coverage, fighter profiles, outcome data, and fight-level statistics suitable for exploratory analysis, feature engineering, historical backtesting, and baseline machine-learning development.
+
+It is treated as a frozen historical snapshot rather than a live production source. Known limitations such as missing fighter attributes, structurally unavailable early control-time data, fighter-name collisions, and the absence of true round-level rows will be handled through validation and normalization rather than by modifying the raw files.
+
+## 010 — Cito as an Experimental Current and Round-Stats Provider
+
+Cito will be used during the data-foundation phase for API experimentation, current UFC data, provider-ID exploration, and round-level statistics.
+
+Reason:
+
+Initial testing confirmed that Cito provides structured fighter, event, bout, and true round-level data. Its schema provides useful source identifiers and fills gaps that the historical Kaggle dataset cannot cover.
+
+UPSET will not couple its analytics or machine-learning layers directly to Cito. Cito data will pass through UPSET's provider-independent normalization layer, and important values will continue to be validated because structured API data can still contain inconsistencies.

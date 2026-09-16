@@ -1,10 +1,10 @@
 # UPSET Project Status
 
-**Last updated:** September 13, 2026
+**Last updated:** September 16, 2026
 
 **Current phase:** Phase 1 — Data Foundation
 
-**Current development day:** Day 1/2
+**Current development day:** Day 3/4
 
 ## Project Goal
 
@@ -85,6 +85,26 @@ Additional:
 - Found strong evidence that control-time coverage begins around UFC 21 on 1999-07-16
 - Established a working assumption that pre-UFC-21 control-time zeros may represent unavailable data rather than true zero control
 - Confirmed raw source data should remain unchanged and corrections should occur during processing/normalization
+- Investigated 1,803 profile-only fighter rows representing 1,801 unique names
+- Confirmed profile-only row/name difference is caused by duplicate fighter-name identities
+- Confirmed all profile-only fighter records originate from UFCStats profiles
+- Formally accepted the Kaggle dataset as UPSET's initial historical development snapshot
+- Created and authenticated a Cito API account
+- Added `requests` and `python-dotenv` project dependencies
+- Configured local `.env` secrets handling and verified `.env` is ignored by Git
+- Successfully queried Cito from both the terminal and Python
+- Compared Islam Makhachev across Kaggle and Cito
+- Confirmed Cito provides structured fighter IDs, event IDs, and bout IDs
+- Confirmed Cito provides true fighter-by-round statistics
+- Confirmed historical round-stat access is restricted by Cito API plan
+- Successfully retrieved recent round statistics for Curtis Blaydes vs Waldo Cortes Acosta
+- Validated that head/body/leg and distance/clinch/ground round-stat breakdowns reconcile with significant-strike totals
+- Created `src/upset/data/normalization.py`
+- Added normalization helpers for landed/attempted statistics and control time
+- Added initial Cito round-stat normalization into UPSET-owned field names
+- Added normalization tests
+- Verified pytest passes: `4 passed`
+- Verified Ruff passes: `All checks passed`
 
 ## Current Data Findings
 
@@ -110,21 +130,20 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Complete source validation and formally establish UPSET's initial historical data strategy.
+Build UPSET's provider-independent normalization layer and begin defining the canonical internal data model.
 
-The Kaggle dataset currently appears suitable as a historical development and ML snapshot, but not as UPSET's permanent live production source.
+The historical Kaggle dataset has been accepted for historical development and ML work. Cito has been validated as a useful experimental source for newer UFC data and round-level statistics.
 
-## Next Steps — Day 2/3
+## Next Steps — Day 3/4+
 
-1. Finish and summarize the Kaggle dataset audit
-2. Formally decide whether to adopt the Kaggle dataset as UPSET's initial historical development dataset
-3. Investigate the scope of the 1,801 profile-only fighters
-4. Evaluate Cito's UFC API and data schema
-5. Compare overlapping fighter and fight records across sources
-6. Begin defining UPSET's canonical data model
-7. Plan fighter-ID mapping and source provenance tracking
-8. Continue evaluating UFCalendar as a future live/update data provider
-9. Determine how round-level statistics will be acquired for future metrics such as cardio and pace decay
+1. Define the canonical `RoundStats` representation
+2. Expand and harden provider normalization code
+3. Begin defining canonical Fighter, Event, and Fight entities
+4. Design source-ID and provenance tracking
+5. Normalize Cito fighter and bout data into UPSET-owned representations
+6. Determine how Kaggle fight totals map into the same canonical concepts
+7. Continue evaluating UFCalendar as another possible current/update provider
+8. Begin deriving analytics features only after the normalized data foundation is stable
 
 ## Blockers
 
