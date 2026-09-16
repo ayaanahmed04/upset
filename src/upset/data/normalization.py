@@ -108,4 +108,3 @@ def normalize_cito_round(raw_round: dict) -> RoundStats:
         ground_attempted=ground_attempted,
         source_last_synced_at=raw_round.get("lastSyncedAt"),
     )
-
