@@ -102,3 +102,6 @@ class Fight:
     result_time: str | None = None
 
     weight_class: str | None = None
+    event_date: str | None = None
+    source_url: str | None = None
+    source_winner_label: str | None = None

@@ -110,3 +110,17 @@ Reason:
 Career statistics change over time. Combining current career aggregates directly with historical fight records could introduce future information into historical machine-learning features.
 
 UPSET will later represent time-dependent fighter statistics using dated or pre-fight snapshots so historical models only use information that was available at the time of a fight.
+
+## 013 — Preserve Ambiguous Historical Outcomes
+
+The historical Kaggle snapshot uses the combined Winner label "Draw/NC"
+for 151 fights. UPSET will preserve that label in source_winner_label
+and set winner_name to None.
+
+We will not infer a specific draw or no-contest outcome from the method
+alone. These records remain in the historical dataset. Any exclusion
+from binary win/loss model training will happen explicitly later.
+
+Historical normalization also preserves Event_Date and Fight_URL.
+Unavailable fighter IDs and event IDs remain unset rather than being
+invented or assigned through ambiguous name matching.

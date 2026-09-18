@@ -125,6 +125,15 @@ Additional:
 - Verified fight normalization and event linking on the sampled Cito bout
 - Added 10 automated fight-normalization test cases; 17 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Verified sampled Cito fight connections to both fighter profiles and six round-stat records
+- Added event_date, source_url, and source_winner_label to the Fight model
+- Implemented normalize_kaggle_fight() for historical fight identity and result fields
+- Converted all 8,551 historical fight rows in notebook memory with zero rejections
+- Confirmed 8,551 unique normalized fight IDs
+- Preserved 151 combined Draw/NC labels with winner_name=None
+- Left unavailable historical fighter IDs and event IDs unset
+- Added 14 historical normalization test cases; 31 total tests passed
+- Verified Ruff and Git whitespace checks pass
 
 ## Current Data Findings
 
@@ -150,56 +159,60 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Cito fighter, event, fight, and round-stat normalization functions now exist.
+Historical fight identity and result normalization is implemented and
+validated across all 8,551 rows of the Silva Kaggle snapshot.
 
-Fight normalization and event linking have been checked using one sampled
-Cito bout. Automated tests cover field mapping, fighter ordering, missing
-values, invalid participant counts, an unmatched winner, and event matching.
+The normalized records currently exist in notebook memory; no processed
+dataset has been exported yet. Historical fighter profiles and fight-level
+statistics have not been normalized.
 
-Next, verify connections between normalized fights, fighter profiles, and
-round-stat records using provider identifiers.
+Next, document the mapping and outcome limitations, then create a
+repeatable command that reads the raw fight CSV, validates every row,
+and writes a separate processed fight dataset.
 
 ## Next Steps
 
-1. Document the verified Cito bout-field mapping and known limitations,
-   including fighter profile IDs versus participation-record IDs,
-   event slugs versus event IDs, and missing winner information.
+1. Document the verified Cito and Kaggle field mappings, identifier
+   differences, and known limitations, including the combined Draw/NC
+   label and unavailable historical fighter and event IDs.
 
-2. Verify connections between normalized fights and fighter profiles
-   using Cito fighter IDs, and connect round-stat records using bout IDs
-   and fighter slugs.
+2. Create a repeatable command to read the raw historical fight CSV,
+   normalize and validate every row, and export a separate processed
+   fight dataset with source tracking and a conversion summary.
 
-3. Define how UPSET represents scheduled, cancelled, drawn, and
-   no-contest fights so a missing winner is not treated as a complete
-   description of the outcome.
+3. Normalize the historical fighter-profile dataset. Preserve source
+   profile identifiers and keep current career statistics separate
+   from fighter identity information.
 
-4. Design UPSET-owned internal IDs and mappings to provider identifiers.
-   Resolve fighter-name collisions without assuming names are unique.
+4. Design UPSET-owned internal IDs and provider-ID mappings. Connect
+   historical fights to fighter profiles while explicitly flagging
+   ambiguous name matches instead of guessing.
 
-5. Map the historical Kaggle fight records into the canonical Fight
-   representation, documenting unavailable fields and identity-linking
-   limitations.
+5. Define and normalize historical fight-level statistics alongside
+   Cito round-level statistics. Keep their levels of detail distinct
+   and prevent double-counting.
 
-6. Define how historical fight-level statistics coexist with Cito
-   round-level statistics without double-counting the same fight.
+6. Apply and document the working rule for structurally unavailable
+   early control time in processed statistics. Preserve raw data and
+   distinguish missing values from genuine zeros.
 
-7. Build an initial processed historical dataset with source tracking
-   and data-quality checks. Preserve raw files and handle structurally
-   unavailable early control time as missing rather than genuine zero.
+7. Extend outcome handling to distinguish scheduled, cancelled, drawn,
+   and no-contest fights when the source supports that distinction.
+   Preserve ambiguity when it does not.
 
-8. Define dated or pre-fight fighter-stat snapshots. Treat current
-   career totals, division, weight, and champion status as potentially
-   time-dependent rather than historical facts.
+8. Build dated or pre-fight fighter-stat snapshots. Do not treat
+   current career totals, division, weight, or champion status as
+   historical facts.
 
-9. Build initial pre-fight features using only information available
-   before each fight, and verify that future information cannot leak
-   into those features.
+9. Create initial pre-fight features using only information available
+   before each fight, with explicit checks against future-data leakage.
 
 10. Train and evaluate a simple baseline model using chronological
-    training and evaluation splits.
+    training and evaluation splits and a documented policy for
+    ambiguous outcomes and unresolved fighter identities.
 
-11. Revisit UFCalendar as a possible current-data provider before
-    building automated updates for the public application.
+11. Revisit UFCalendar before implementing automated current-data
+    updates for the public application.
 
 ## Blockers
 

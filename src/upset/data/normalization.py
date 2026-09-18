@@ -1,3 +1,6 @@
+import re
+from datetime import date
+
 from upset.data.models import Event, Fight, Fighter, RoundStats
 
 
@@ -179,4 +182,79 @@ def normalize_cito_fight(
         ),
         result_time=raw_bout.get("resultTime"),
         weight_class=raw_bout.get("weightClass"),
+    )
+
+def normalize_kaggle_fight(raw_fight: dict) -> Fight:
+    """Convert one Silva historical fight row into UPSET's Fight model."""
+
+    # Require actual text instead of silently converting missing data
+    # into strings such as "nan" or "None".
+    text_fields = (
+        "Fight_URL",
+        "Fighter_1",
+        "Fighter_2",
+        "Winner",
+        "Weight_Class",
+        "Method",
+        "End_Time",
+        "Event_Date",
+    )
+    values = {}
+
+    for field in text_fields:
+        value = raw_fight[field]
+
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{field} must contain non-empty text.")
+
+        values[field] = value.strip()
+
+    # Extract the UFCStats fight identifier from the reference URL.
+    # This only reads the URL text; it does not visit the website.
+    url_match = re.fullmatch(
+        r"https?://(?:www\.)?ufcstats\.com/fight-details/([0-9a-f]{16})/?",
+        values["Fight_URL"],
+    )
+
+    if url_match is None:
+        raise ValueError("Unrecognized UFCStats fight URL.")
+
+    fighter_1 = values["Fighter_1"]
+    fighter_2 = values["Fighter_2"]
+    winner_label = values["Winner"]
+
+    if winner_label == "Draw/NC":
+        winner_name = None
+    elif winner_label in (fighter_1, fighter_2):
+        winner_name = winner_label
+    else:
+        raise ValueError("Winner must match a participant or be 'Draw/NC'.")
+
+    # Validate the date and store it in YYYY-MM-DD format.
+    event_date = date.fromisoformat(values["Event_Date"]).isoformat()
+
+    # Reject fractional or non-positive rounds instead of truncating them.
+    round_value = raw_fight["End_Round"]
+
+    if isinstance(round_value, bool):
+        raise TypeError("End_Round must be a positive whole number.")
+
+    round_number = float(round_value)
+
+    if not round_number.is_integer() or round_number < 1:
+        raise ValueError("End_Round must be a positive whole number.")
+
+    return Fight(
+        source="kaggle_ufc_1994_2026",
+        source_bout_id=url_match.group(1),
+        fighter_1_name=fighter_1,
+        fighter_2_name=fighter_2,
+        winner_name=winner_name,
+        result_method=values["Method"],
+        result_round=int(round_number),
+        result_time=values["End_Time"],
+        weight_class=values["Weight_Class"],
+        event_date=event_date,
+        source_url=values["Fight_URL"],
+        source_winner_label=winner_label,
     )
