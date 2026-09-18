@@ -1,4 +1,4 @@
-from upset.data.models import Event, Fighter, RoundStats
+from upset.data.models import Event, Fight, Fighter, RoundStats
 
 
 def parse_landed_attempted(value: str) -> tuple[int, int]:
@@ -107,4 +107,76 @@ def normalize_cito_round(raw_round: dict) -> RoundStats:
         ground_landed=ground_landed,
         ground_attempted=ground_attempted,
         source_last_synced_at=raw_round.get("lastSyncedAt"),
+    )
+
+def normalize_cito_fight(
+    raw_bout: dict,
+    *,
+    event: Event | None = None,
+) -> Fight:
+    """Convert one Cito bout into UPSET's Fight model."""
+
+    fighters = raw_bout["fighters"]
+
+    # Stop if the source record does not describe two participants.
+    if len(fighters) != 2:
+        raise ValueError("Expected exactly two fighters in a Cito bout.")
+
+    # Keep Cito's list order. Fighter 1 does not necessarily mean red corner.
+    fighter_1, fighter_2 = fighters
+
+    # Identify the winner by matching the slug, not by assuming list order.
+    winner_name = None
+    winner_slug = raw_bout.get("winnerFighterSlug")
+
+    if winner_slug:
+        matching_fighters = [
+            fighter
+            for fighter in fighters
+            if fighter["fighterSlug"] == winner_slug
+        ]
+
+        if len(matching_fighters) != 1:
+            raise ValueError(
+                "Winner slug must match exactly one fighter in the bout."
+            )
+
+        winner_name = matching_fighters[0]["fighterName"]
+
+    # Only attach an event when its provider and slug match this bout.
+    source_event_id = None
+
+    if event is not None:
+        if (
+            event.source != "cito"
+            or event.source_event_slug != raw_bout["eventSlug"]
+        ):
+            raise ValueError("Event does not match this Cito bout.")
+
+        source_event_id = event.source_event_id
+
+    # Missing IDs remain None; they must not become the text "None".
+    fighter_1_id = fighter_1.get("fighterId")
+    fighter_2_id = fighter_2.get("fighterId")
+    result_round = raw_bout.get("resultRound")
+
+    return Fight(
+        source="cito",
+        source_bout_id=str(raw_bout["id"]),
+        fighter_1_name=fighter_1["fighterName"],
+        fighter_2_name=fighter_2["fighterName"],
+        source_event_id=source_event_id,
+        source_fighter_1_id=(
+            str(fighter_1_id) if fighter_1_id is not None else None
+        ),
+        source_fighter_2_id=(
+            str(fighter_2_id) if fighter_2_id is not None else None
+        ),
+        winner_name=winner_name,
+        result_method=raw_bout.get("method"),
+        result_round=(
+            int(result_round) if result_round is not None else None
+        ),
+        result_time=raw_bout.get("resultTime"),
+        weight_class=raw_bout.get("weightClass"),
     )

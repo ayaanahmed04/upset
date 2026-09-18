@@ -1,6 +1,6 @@
 # UPSET Project Status
 
-**Last updated:** September 16, 2026
+**Last updated:** September 18, 2026
 
 **Current phase:** Phase 1 — Data Foundation
 
@@ -118,6 +118,13 @@ Additional:
 - Established that fighter identity information should remain separate from time-dependent career-statistic snapshots
 - Expanded automated normalization and canonical-model tests
 - Verified the canonical data layer with pytest and Ruff
+- Implemented `normalize_cito_fight()` using inspected Cito bout fields
+- Preserved fighter profile IDs using `fighterId`
+- Resolved winner names by matching `winnerFighterSlug` to a participant
+- Added optional event linking with provider and event-slug validation
+- Verified fight normalization and event linking on the sampled Cito bout
+- Added 10 automated fight-normalization test cases; 17 total tests passed
+- Verified Ruff and Git whitespace checks pass
 
 ## Current Data Findings
 
@@ -143,24 +150,56 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Complete UPSET's initial canonical data foundation and begin connecting provider-specific records to the canonical model.
+Cito fighter, event, fight, and round-stat normalization functions now exist.
 
-The core `Fighter`, `Event`, `Fight`, and `RoundStats` entities now exist. Cito fighter, event, and round-stat data can already be normalized into UPSET-owned representations.
+Fight normalization and event linking have been checked using one sampled
+Cito bout. Automated tests cover field mapping, fighter ordering, missing
+values, invalid participant counts, an unmatched winner, and event matching.
 
-Cito fight normalization is the next provider-mapping task.
+Next, verify connections between normalized fights, fighter profiles, and
+round-stat records using provider identifiers.
 
-## Next Steps — Day 4/5
+## Next Steps
 
-1. Inspect and document the full Cito bout schema
-2. Implement and test `normalize_cito_fight()`
-3. Connect canonical fights to canonical events and fighters using provider identifiers
-4. Design UPSET-owned internal IDs and source-ID mapping
-5. Define a time-aware fighter-stat snapshot model for historical ML features
-6. Determine how the historical Kaggle fight dataset maps into the canonical `Fight` representation
-7. Determine how Kaggle fight-level statistics map alongside Cito round-level statistics
-8. Continue evaluating UFCalendar as another current/update provider
-9. Begin building processed datasets only after canonical mappings are stable
-10. Start feature engineering after temporal integrity and source provenance are established
+1. Document the verified Cito bout-field mapping and known limitations,
+   including fighter profile IDs versus participation-record IDs,
+   event slugs versus event IDs, and missing winner information.
+
+2. Verify connections between normalized fights and fighter profiles
+   using Cito fighter IDs, and connect round-stat records using bout IDs
+   and fighter slugs.
+
+3. Define how UPSET represents scheduled, cancelled, drawn, and
+   no-contest fights so a missing winner is not treated as a complete
+   description of the outcome.
+
+4. Design UPSET-owned internal IDs and mappings to provider identifiers.
+   Resolve fighter-name collisions without assuming names are unique.
+
+5. Map the historical Kaggle fight records into the canonical Fight
+   representation, documenting unavailable fields and identity-linking
+   limitations.
+
+6. Define how historical fight-level statistics coexist with Cito
+   round-level statistics without double-counting the same fight.
+
+7. Build an initial processed historical dataset with source tracking
+   and data-quality checks. Preserve raw files and handle structurally
+   unavailable early control time as missing rather than genuine zero.
+
+8. Define dated or pre-fight fighter-stat snapshots. Treat current
+   career totals, division, weight, and champion status as potentially
+   time-dependent rather than historical facts.
+
+9. Build initial pre-fight features using only information available
+   before each fight, and verify that future information cannot leak
+   into those features.
+
+10. Train and evaluate a simple baseline model using chronological
+    training and evaluation splits.
+
+11. Revisit UFCalendar as a possible current-data provider before
+    building automated updates for the public application.
 
 ## Blockers
 
