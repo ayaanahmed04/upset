@@ -172,3 +172,44 @@ python -m upset.data.export_profiles
 
 Fight-to-profile linking remains a separate task. Name collisions must
 be explicitly resolved or flagged.
+
+## 016 — Evidence-Backed Historical Fighter Identity Linking
+
+Historical fight participants are linked to same-source fighter profiles using
+source-specific profile IDs. A unique name match may be linked automatically,
+but an ambiguous name requires an explicit reviewed override.
+
+Each override is keyed by source, bout ID, and fighter side. It also records
+the fighter name, event date, opponent, selected source fighter ID, evidence,
+and review date. The version-controlled mapping is stored at:
+
+data/mappings/kaggle_fighter_overrides.json
+
+The linker validates the mapping against the fight and profile records and
+fails when a participant is missing or ambiguous without an override. It also
+rejects duplicate profiles, fights, or overrides; inconsistent evidence
+fields; invalid candidate IDs; conflicting existing links; the same profile
+on both sides of a fight; and unused overrides.
+
+Reason:
+
+Names are useful matching labels but are not identities. Requiring reviewed,
+auditable exceptions for collisions makes historical linking deterministic
+and prevents silent guesses.
+
+For the accepted historical snapshot, 17,056 of 17,102 participant slots had
+one profile candidate. The remaining 46 slots, covering five collided names,
+were resolved from UFCStats profile histories by matching event date and
+opponent. All 8,551 fights now have two linked participants and zero unresolved
+slots.
+
+The resulting IDs remain provider-specific source IDs. UPSET-owned internal
+fighter IDs and cross-provider identity mappings are a separate future layer.
+
+Run the linked export from the project root:
+
+python -m upset.data.export_linked
+
+Output:
+
+data/processed/kaggle_ufc_1994_2026/fights_linked.jsonl
