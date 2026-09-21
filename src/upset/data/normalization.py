@@ -258,3 +258,122 @@ def normalize_kaggle_fight(raw_fight: dict) -> Fight:
         source_url=values["Fight_URL"],
         source_winner_label=winner_label,
     )
+
+def parse_kaggle_measurement(
+    value: str | None,
+    *,
+    field: str,
+) -> float | None:
+    """Convert a historical Height, Weight, or Reach into a number."""
+
+    # Each pattern describes the source format we accept.
+    patterns = {
+        "Height": r"""([0-9]+)'\s*([0-9]+)" """.strip(),
+        "Weight": r"([0-9]+(?:\.[0-9]+)?)\s+lbs\.",
+        "Reach": r'([0-9]+(?:\.[0-9]+)?)"',
+    }
+
+    if field not in patterns:
+        raise ValueError(f"Unsupported measurement field: {field}")
+
+    if value is None:
+        return None
+
+    if not isinstance(value, str):
+        raise TypeError(f"{field} must be text or None.")
+
+    text = value.strip()
+
+    # Missing measurements stay missing.
+    if not text:
+        return None
+
+    match = re.fullmatch(patterns[field], text)
+
+    if match is None:
+        raise ValueError(f"Unrecognized {field} format: {value!r}")
+
+    if field == "Height":
+        feet = int(match.group(1))
+        inches = int(match.group(2))
+
+        if inches >= 12:
+            raise ValueError("Height's inches component must be below 12.")
+
+        measurement = float(feet * 12 + inches)
+    else:
+        measurement = float(match.group(1))
+
+    if measurement <= 0:
+        raise ValueError(f"{field} must be greater than zero.")
+
+    return measurement
+
+def normalize_kaggle_fighter(raw_fighter: dict) -> Fighter:
+    """Convert one historical profile into UPSET's Fighter model."""
+
+    # A profile must have both a name and a source URL.
+    required_text = {}
+
+    for field in ("Fighter_Name", "Fighter_URL"):
+        value = raw_fighter[field]
+
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"{field} must contain non-empty text.")
+
+        required_text[field] = value.strip()
+
+    source_url = required_text["Fighter_URL"]
+
+    # Extract the identifier from the URL without visiting the website.
+    url_match = re.fullmatch(
+        r"https?://(?:www\.)?ufcstats\.com/fighter-details/([0-9a-f]{16})/?",
+        source_url,
+    )
+
+    if url_match is None:
+        raise ValueError("Unrecognized UFCStats fighter URL.")
+
+    # These columns must exist, but their values may be missing.
+    optional_text = {}
+
+    for field in ("Stance", "DOB"):
+        value = raw_fighter[field]
+
+        if value is None:
+            optional_text[field] = None
+        elif isinstance(value, str):
+            optional_text[field] = value.strip() or None
+        else:
+            raise TypeError(f"{field} must be text or None.")
+
+    # Require YYYY-MM-DD and validate that the date actually exists.
+    birth_date = optional_text["DOB"]
+
+    if birth_date is not None:
+        if re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", birth_date) is None:
+            raise ValueError("DOB must use YYYY-MM-DD.")
+
+        birth_date = date.fromisoformat(birth_date).isoformat()
+
+    return Fighter(
+        source="kaggle_ufc_1994_2026",
+        source_fighter_id=url_match.group(1),
+        source_fighter_slug=None,
+        name=required_text["Fighter_Name"],
+        height_inches=parse_kaggle_measurement(
+            raw_fighter["Height"],
+            field="Height",
+        ),
+        weight_lbs=parse_kaggle_measurement(
+            raw_fighter["Weight"],
+            field="Weight",
+        ),
+        reach_inches=parse_kaggle_measurement(
+            raw_fighter["Reach"],
+            field="Reach",
+        ),
+        stance=optional_text["Stance"],
+        date_of_birth=birth_date,
+        source_url=source_url,
+    )

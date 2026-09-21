@@ -54,7 +54,7 @@ class Fighter:
 
     source: str
     source_fighter_id: str
-    source_fighter_slug: str
+    source_fighter_slug: str | None
 
     name: str
 
@@ -66,6 +66,9 @@ class Fighter:
     division: str | None = None
     status: str | None = None
     champion_status: str | None = None
+
+    date_of_birth: str | None = None
+    source_url: str | None = None
 
 
 @dataclass

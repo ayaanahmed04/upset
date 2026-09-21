@@ -148,3 +148,27 @@ python -m upset.data.export_historical
 Output:
 
 data/processed/kaggle_ufc_1994_2026/fights.jsonl
+
+## 015 — Historical Fighter Profiles and Source-Reported Measurements
+
+Historical fighter profiles use the identifier extracted from Fighter_URL.
+Names are retained as labels, not unique identifiers. Profiles with matching
+names and different source IDs remain separate records.
+
+Missing measurements, stance, and birth date remain None. Unavailable
+source slugs remain None. Birth dates and source URLs are preserved.
+
+Height is converted to inches, weight to pounds, and reach to inches.
+These are source-reported profile measurements, not measurements tied to
+a particular fight. Extreme values are investigated rather than
+automatically deleted or replaced with guesses.
+
+Current career aggregates are not copied into Fighter. All 4,455 profiles
+are retained, including profiles without a matching fight in the snapshot.
+
+Profiles are exported separately as JSON Lines using:
+
+python -m upset.data.export_profiles
+
+Fight-to-profile linking remains a separate task. Name collisions must
+be explicitly resolved or flagged.

@@ -143,6 +143,20 @@ Additional:
 - Added checks for invalid records, duplicate fight IDs, and empty input
 - Write and verify a temporary file before replacing the processed export
 - Added five export test cases; 36 total tests passed
+- Added historical fighter measurement parsing for height, weight, and reach
+- Extended Fighter with optional birth date and source URL; allowed absent slugs
+- Normalized all 4,455 historical profiles with zero rejected records and
+  4,455 unique source profile IDs
+- Preserved missing values: height 318, weight 86, reach 1,940,
+  stance 849, and birth date 506
+- Kept career aggregates separate from normalized fighter profiles
+- Added the repeatable profile export command:
+  `python -m upset.data.export_profiles`
+- Exported 4,455 profiles to
+  `data/processed/kaggle_ufc_1994_2026/fighters.jsonl`
+- Verified exported profiles match the normalized records on read-back
+- Added 30 profile normalization and export test cases; 66 total tests passed
+- Verified Ruff and Git whitespace checks pass
 
 ## Current Data Findings
 
@@ -168,19 +182,28 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Historical fight identity and result export is implemented. The repeatable
-command reads the raw CSV, validates and normalizes its records, and saves
-8,551 fights as JSON Lines under data/processed/.
+Historical fight identity/results and fighter profiles now have repeatable,
+validated JSON Lines exports:
 
-The saved data was read back and matched the normalized records exactly.
-All 36 automated tests passed. Raw and processed datasets remain ignored
-by Git; the code needed to rebuild the export is version-controlled.
+- 8,551 fights in data/processed/kaggle_ufc_1994_2026/fights.jsonl
+- 4,455 profiles in data/processed/kaggle_ufc_1994_2026/fighters.jsonl
 
-Historical fighter profiles and fight-level statistics have not yet been
-normalized. Field-mapping documentation remains outstanding.
+Both exports preserve missing values and source identifiers, reject invalid
+records and duplicate IDs, and verify saved records before replacing output.
+All 66 automated tests pass; Ruff and whitespace checks are clean.
 
-Next, document the existing mappings and export workflow, then inspect
-historical fighter-profile fields before implementing their normalization.
+Historical fights have not yet been linked to profile IDs. Fighter names
+are not unique, so ambiguous matches must be flagged rather than guessed.
+
+Profile measurements are source-reported values, not verified fight-day
+measurements. The source lists Emmanuel Yarbrough at 770 lb; this value is
+preserved without asserting its accuracy for any particular fight.
+
+Historical fight statistics, early control-time corrections, and pre-fight
+features remain unimplemented. Field-mapping documentation is outstanding.
+
+Next, finish mapping/export documentation and audit fight-to-profile
+matching before assigning historical fighter links.
 
 ## Next Steps
 
@@ -191,38 +214,34 @@ historical fighter-profile fields before implementing their normalization.
 2. Document the historical export command, JSON Lines output, validation
    behavior, and requirement to run from the project root.
 
-3. Normalize the historical fighter-profile dataset. Preserve source
-   profile identifiers and keep current career statistics separate
-   from fighter identity information.
-
-4. Design UPSET-owned internal IDs and provider-ID mappings. Connect
+3. Design UPSET-owned internal IDs and provider-ID mappings. Connect
    historical fights to fighter profiles while explicitly flagging
    ambiguous name matches instead of guessing.
 
-5. Define and normalize historical fight-level statistics alongside
+4. Define and normalize historical fight-level statistics alongside
    Cito round-level statistics. Keep their levels of detail distinct
    and prevent double-counting.
 
-6. Apply and document the working rule for structurally unavailable
+5. Apply and document the working rule for structurally unavailable
    early control time in processed statistics. Preserve raw data and
    distinguish missing values from genuine zeros.
 
-7. Extend outcome handling to distinguish scheduled, cancelled, drawn,
+6. Extend outcome handling to distinguish scheduled, cancelled, drawn,
    and no-contest fights when the source supports that distinction.
    Preserve ambiguity when it does not.
 
-8. Build dated or pre-fight fighter-stat snapshots. Do not treat
+7. Build dated or pre-fight fighter-stat snapshots. Do not treat
    current career totals, division, weight, or champion status as
    historical facts.
 
-9. Create initial pre-fight features using only information available
+8. Create initial pre-fight features using only information available
    before each fight, with explicit checks against future-data leakage.
 
-10. Train and evaluate a simple baseline model using chronological
-    training and evaluation splits and a documented policy for
-    ambiguous outcomes and unresolved fighter identities.
+9. Train and evaluate a simple baseline model using chronological
+   training and evaluation splits and a documented policy for
+   ambiguous outcomes and unresolved fighter identities.
 
-11. Revisit UFCalendar before implementing automated current-data
+10. Revisit UFCalendar before implementing automated current-data
     updates for the public application.
 
 ## Blockers
