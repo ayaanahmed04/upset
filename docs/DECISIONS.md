@@ -88,12 +88,13 @@ UPSET will not couple its analytics or machine-learning layers directly to Cito.
 
 ## 011 — Canonical Core Data Entities
 
-UPSET's provider-independent data model will be organized around four core entities:
+UPSET's provider-independent data model will be organized around five core entities:
 
 - `Fighter`
 - `Event`
 - `Fight`
 - `RoundStats`
+- `FightStats`
 
 Reason:
 

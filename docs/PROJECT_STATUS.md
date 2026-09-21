@@ -115,7 +115,7 @@ Additional:
 - Added canonical `Event` dataclass
 - Added Cito event normalization
 - Added canonical `Fight` dataclass
-- Established the four core UPSET canonical entities: `Fighter`, `Event`, `Fight`, and `RoundStats`
+- Established the initial canonical entities: `Fighter`, `Event`, `Fight`, and `RoundStats`
 - Established that fighter identity information should remain separate from time-dependent career-statistic snapshots
 - Expanded automated normalization and canonical-model tests
 - Verified the canonical data layer with pytest and Ruff
