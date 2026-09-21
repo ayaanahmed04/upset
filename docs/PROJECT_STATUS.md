@@ -37,6 +37,7 @@ Additional:
 - Provider-independent internal data model planned
 - Raw source data remains immutable
 - Fighter names will not be used as permanent unique identifiers
+- Historical name collisions require evidence-backed, version-controlled overrides
 - Multiple data providers may be used for different purposes
 - Cito is a candidate for early API experimentation
 - UFCalendar is a candidate for future application/update ingestion
@@ -158,6 +159,23 @@ Additional:
 - Added 30 profile normalization and export test cases; 66 total tests passed
 - Verified Ruff and Git whitespace checks pass
 
+- Audited all 17,102 historical fight-participant slots
+- Found 17,056 slots with one same-source profile candidate, 46 with multiple candidates, and zero without a candidate
+- Identified five collided names requiring fight-level review: Bruno Silva, Michael McDonald, Jean Silva, Mike Davis, and Joey Gomez
+- Resolved all 46 ambiguous slots from UFCStats profile histories by matching event date and opponent
+- Added the version-controlled reviewed mapping:
+  `data/mappings/kaggle_fighter_overrides.json`
+- Implemented deterministic historical fight-to-profile linking
+- Added validation for missing or ambiguous participants, duplicate records and overrides, inconsistent mapping evidence, invalid candidate IDs, conflicting links, same-profile opponents, and unused overrides
+- Linked both participants in all 8,551 historical fights: 17,102 linked slots and zero unresolved slots
+- Added the repeatable linked-fight export command:
+  `python -m upset.data.export_linked`
+- Exported linked fights to
+  `data/processed/kaggle_ufc_1994_2026/fights_linked.jsonl`
+- Verified the linked export matches the in-memory records on read-back
+- Added 24 linking and linked-export test cases; 90 total tests passed
+- Verified Ruff and Git whitespace checks pass
+
 ## Current Data Findings
 
 The current historical dataset contains:
@@ -168,6 +186,8 @@ The current historical dataset contains:
 - 2,647 unique fighters appearing in the fight table
 - 1,801 fighter names present only in the profile table
 - Historical fight coverage from 1994-03-11 through 2026-03-07
+- All 17,102 fight-participant slots are linked to same-source fighter profiles
+- 46 ambiguous slots required reviewed overrides; zero slots remain unresolved
 
 Known data-quality concerns include:
 
@@ -182,67 +202,65 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Historical fight identity/results and fighter profiles now have repeatable,
-validated JSON Lines exports:
+Historical fight-to-profile linking is complete for the accepted Kaggle
+snapshot. All 8,551 fights have both participant source IDs populated:
+17,102 linked slots and zero unresolved slots.
 
-- 8,551 fights in data/processed/kaggle_ufc_1994_2026/fights.jsonl
-- 4,455 profiles in data/processed/kaggle_ufc_1994_2026/fighters.jsonl
+The 46 ambiguous slots were limited to five collided names and were resolved
+through explicit, version-controlled overrides backed by UFCStats profile
+history, event date, and opponent. Unique same-source name matches remain
+automatic; ambiguous or missing matches fail instead of being guessed.
 
-Both exports preserve missing values and source identifiers, reject invalid
-records and duplicate IDs, and verify saved records before replacing output.
-All 66 automated tests pass; Ruff and whitespace checks are clean.
+The repeatable linked export is:
 
-Historical fights have not yet been linked to profile IDs. Fighter names
-are not unique, so ambiguous matches must be flagged rather than guessed.
+`python -m upset.data.export_linked`
 
-Profile measurements are source-reported values, not verified fight-day
-measurements. The source lists Emmanuel Yarbrough at 770 lb; this value is
-preserved without asserting its accuracy for any particular fight.
+It writes:
 
-Historical fight statistics, early control-time corrections, and pre-fight
-features remain unimplemented. Field-mapping documentation is outstanding.
+`data/processed/kaggle_ufc_1994_2026/fights_linked.jsonl`
 
-Next, finish mapping/export documentation and audit fight-to-profile
-matching before assigning historical fighter links.
+The export validates all inputs, writes through a temporary file, and verifies
+the saved records before replacement. All 90 automated tests pass; Ruff and
+whitespace checks are clean.
+
+These links use provider-specific source fighter IDs. UPSET-owned internal IDs
+and cross-provider identity mappings remain future work. Historical fight
+statistics, early control-time handling, and leakage-safe pre-fight features
+also remain unimplemented.
 
 ## Next Steps
 
 1. Document the verified Cito and Kaggle field mappings, identifier
-   differences, and known limitations, including the combined Draw/NC
-   label and unavailable historical fighter and event IDs.
+   differences, export commands, and known limitations, including the combined
+   Draw/NC label and the distinction between fight-level and round-level data.
 
-2. Document the historical export command, JSON Lines output, validation
-   behavior, and requirement to run from the project root.
+2. Design UPSET-owned internal fighter IDs and provider-ID mappings. Treat the
+   newly linked Kaggle profile IDs as source identifiers, not permanent
+   cross-provider identities.
 
-3. Design UPSET-owned internal IDs and provider-ID mappings. Connect
-   historical fights to fighter profiles while explicitly flagging
-   ambiguous name matches instead of guessing.
+3. Define and normalize historical fight-level statistics alongside Cito
+   round-level statistics. Keep their levels of detail distinct and prevent
+   double-counting.
 
-4. Define and normalize historical fight-level statistics alongside
-   Cito round-level statistics. Keep their levels of detail distinct
-   and prevent double-counting.
+4. Apply and document the working rule for structurally unavailable early
+   control time in processed statistics. Preserve raw data and distinguish
+   missing values from genuine zeros.
 
-5. Apply and document the working rule for structurally unavailable
-   early control time in processed statistics. Preserve raw data and
-   distinguish missing values from genuine zeros.
+5. Extend outcome handling to distinguish scheduled, cancelled, drawn, and
+   no-contest fights when the source supports that distinction. Preserve
+   ambiguity when it does not.
 
-6. Extend outcome handling to distinguish scheduled, cancelled, drawn,
-   and no-contest fights when the source supports that distinction.
-   Preserve ambiguity when it does not.
+6. Build dated or pre-fight fighter-stat snapshots. Do not treat current career
+   totals, division, weight, or champion status as historical facts.
 
-7. Build dated or pre-fight fighter-stat snapshots. Do not treat
-   current career totals, division, weight, or champion status as
-   historical facts.
+7. Create initial pre-fight features using only information available before
+   each fight, with explicit checks against future-data leakage.
 
-8. Create initial pre-fight features using only information available
-   before each fight, with explicit checks against future-data leakage.
+8. Train and evaluate a simple baseline model using chronological training and
+   evaluation splits and a documented policy for ambiguous outcomes.
 
-9. Train and evaluate a simple baseline model using chronological
-   training and evaluation splits and a documented policy for
-   ambiguous outcomes and unresolved fighter identities.
-
-10. Revisit UFCalendar before implementing automated current-data
-    updates for the public application.
+9. Revisit UFCalendar before implementing automated current-data updates for
+   the public application.
 
 ## Blockers
 
