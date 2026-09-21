@@ -15,6 +15,7 @@ The canonical dataclasses are defined in `src/upset/data/models.py`:
 - `Event`: provider-independent UFC event information
 - `Fight`: provider-independent fight identity and result information
 - `RoundStats`: statistics for one fighter in one round
+- `FightStats`: one fighter's statistics across one complete fight
 
 "Provider-independent" means downstream UPSET code can use consistent field
 names. It does not mean the current identifiers are shared across providers.
@@ -148,32 +149,60 @@ The snapshot contains 151 such records. UPSET preserves:
 UPSET does not guess whether an individual record was a draw or no contest from
 the method text alone.
 
-### Historical fight-stat columns not currently normalized
+### Historical fight-stat mappings
 
-The following columns remain in the immutable raw CSV but are not yet part of
-the canonical `Fight` model:
+One historical fight row produces two canonical `FightStats` records: one for
+each linked fighter.
 
-| Raw columns                      | Source meaning or current status                                 |
-| -------------------------------- | ---------------------------------------------------------------- |
-| `Total_Fight_Time_Sec`           | Source-provided total fight duration in seconds; not yet mapped. |
-| `Time_Format`                    | Source-provided scheduled fight format; not yet mapped.          |
-| `F1_KD`, `F2_KD`                 | Fight-level knockdown totals; not yet mapped.                    |
-| `F1_Sig_Landed`, `F2_Sig_Landed` | Fight-level significant strikes landed; not yet mapped.          |
-| `F1_Sig_Att`, `F2_Sig_Att`       | Fight-level significant strikes attempted; not yet mapped.       |
-| `F1_TD_Landed`, `F2_TD_Landed`   | Fight-level takedowns landed; not yet mapped.                    |
-| `F1_TD_Att`, `F2_TD_Att`         | Fight-level takedowns attempted; not yet mapped.                 |
-| `F1_Sub_Att`, `F2_Sub_Att`       | Fight-level submission attempts; not yet mapped.                 |
-| `F1_Ctrl_Sec`, `F2_Ctrl_Sec`     | Fight-level control time in seconds; not yet mapped.             |
-| `F1_Head`, `F2_Head`             | Source-provided fight-level head totals; not yet mapped.         |
-| `F1_Body`, `F2_Body`             | Source-provided fight-level body totals; not yet mapped.         |
-| `F1_Leg`, `F2_Leg`               | Source-provided fight-level leg totals; not yet mapped.          |
-| `F1_Distance`, `F2_Distance`     | Source-provided fight-level distance totals; not yet mapped.     |
-| `F1_Clinch`, `F2_Clinch`         | Source-provided fight-level clinch totals; not yet mapped.       |
-| `F1_Ground`, `F2_Ground`         | Source-provided fight-level ground totals; not yet mapped.       |
+The combination of `source`, `source_bout_id`, and `source_fighter_id`
+uniquely identifies one fighter's statistical performance in one fight.
 
-These fields require a separate historical fight-stat model or transformation.
-They must not be represented as `RoundStats` because the historical source does
-not provide one row per fighter per round.
+#### Shared fight fields
+
+| Raw source             | Canonical `FightStats` field | Conversion or behavior                                                        |
+| ---------------------- | ---------------------------- | ----------------------------------------------------------------------------- |
+| —                      | `source`                     | Set to `kaggle_ufc_1994_2026`.                                                |
+| `Fight_URL`            | `source_bout_id`             | Use the validated 16-character UFCStats fight ID.                             |
+| Linked fighter profile | `source_fighter_id`          | Use the reviewed source fighter ID attached by the identity-linking pipeline. |
+| `Total_Fight_Time_Sec` | `fight_duration_seconds`     | Require a positive whole number.                                              |
+| `Time_Format`          | `source_time_format`         | Require and preserve non-empty source text.                                   |
+
+#### Participant-stat fields
+
+For each row, `F1_` columns produce the first fighter's record and `F2_`
+columns produce the second fighter's record.
+
+| Raw suffix   | Canonical `FightStats` field |
+| ------------ | ---------------------------- |
+| `KD`         | `knockdowns`                 |
+| `Sig_Landed` | `sig_strikes_landed`         |
+| `Sig_Att`    | `sig_strikes_attempted`      |
+| `TD_Landed`  | `takedowns_landed`           |
+| `TD_Att`     | `takedowns_attempted`        |
+| `Sub_Att`    | `submission_attempts`        |
+| `Ctrl_Sec`   | `control_seconds`            |
+| `Head`       | `head_landed`                |
+| `Body`       | `body_landed`                |
+| `Leg`        | `leg_landed`                 |
+| `Distance`   | `distance_landed`            |
+| `Clinch`     | `clinch_landed`              |
+| `Ground`     | `ground_landed`              |
+
+All statistic values must be non-negative whole numbers. Significant strikes
+landed cannot exceed significant strikes attempted, and takedowns landed
+cannot exceed takedowns attempted.
+
+The audit confirmed across all 17,102 fighter appearances that:
+
+- `Head + Body + Leg = Sig_Landed`
+- `Distance + Clinch + Ground = Sig_Landed`
+
+These are two breakdowns of the same landed significant strikes. They must not
+be added together.
+
+The historical source does not provide total-strike counts, reversals,
+target-specific attempts, position-specific attempts, or true round-level
+statistics. Those fields are not invented during normalization.
 
 ## Cito Fighter Mappings
 
@@ -282,6 +311,8 @@ Dataset grain means what one row represents.
 | Canonical `Fight`   | One provider-specific fight                                      |
 | Cito `RoundStats`   | One fighter's statistics in one round                            |
 
+| Canonical `FightStats` | One fighter's totals across one complete fight |
+
 The Kaggle fight totals and Cito round records must remain distinguishable.
 They cannot be combined as though they have the same level of detail.
 
@@ -312,9 +343,12 @@ They cannot be combined as though they have the same level of detail.
 - Historical control-time data appears structurally unavailable before UFC 21.
 - UFC 20 on 1999-05-07 has no control-time signal in any fight.
 - UFC 21 on 1999-07-16 is the first strong coverage boundary.
-- The working rule for future processed fight statistics is to treat
-  pre-UFC-21 control-time zeros as missing rather than confirmed zero control.
-- That rule has not yet been implemented in a historical statistics
+- Historical fight-stat normalization converts a zero control value before
+  UFC 21 on 1999-07-16 into `None`.
+- A nonzero pre-UFC-21 control value would be preserved if one were supplied.
+- On and after 1999-07-16, zero remains a recorded zero.
+- In the accepted snapshot, 360 fighter-fight control values become missing
+  and 2,667 recorded zero-control values remain zero.
   transformation.
 - The historical snapshot is frozen and is not a live current-events source.
 
@@ -356,4 +390,12 @@ Command:
 
 ```bash
 python -m upset.data.export_historical
+```
+
+### Historical fighter-fight statistics
+
+Command:
+
+```bash
+python -m upset.data.export_fight_stats
 ```

@@ -108,3 +108,40 @@ class Fight:
     event_date: str | None = None
     source_url: str | None = None
     source_winner_label: str | None = None
+
+@dataclass
+class FightStats:
+    """One fighter's statistics across one complete fight."""
+
+    # Together, these identify one fighter's performance in one source fight.
+    source: str
+    source_bout_id: str
+    source_fighter_id: str
+
+    # Shared fight context, repeated for each participant's record.
+    # Duration is source-reported; its consistency is validated separately.
+    fight_duration_seconds: int
+    source_time_format: str
+
+    knockdowns: int
+
+    sig_strikes_landed: int
+    sig_strikes_attempted: int
+
+    takedowns_landed: int
+    takedowns_attempted: int
+
+    submission_attempts: int
+
+    # None means unavailable; zero remains a distinct value.
+    control_seconds: int | None
+
+    # Significant strikes landed, grouped by target.
+    head_landed: int
+    body_landed: int
+    leg_landed: int
+
+    # The same significant strikes landed, grouped by position.
+    distance_landed: int
+    clinch_landed: int
+    ground_landed: int

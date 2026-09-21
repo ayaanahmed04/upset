@@ -175,6 +175,19 @@ Additional:
 - Verified the linked export matches the in-memory records on read-back
 - Added 24 linking and linked-export test cases; 90 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Added `docs/FIELD_MAPPINGS.md` documenting the implemented Kaggle and Cito field mappings, provider-specific identifiers, dataset grain, units, missing-value behavior, outcome handling, identity overrides, and repeatable export contracts
+- Audited historical target and position strike breakdowns across all 17,102 fighter appearances
+- Confirmed `Head + Body + Leg` and `Distance + Clinch + Ground` equal significant strikes landed in every historical fighter appearance
+- Added the canonical `FightStats` model with one record per fighter per complete fight
+- Implemented historical fighter-fight statistic normalization
+- Added validation for nonnegative whole-number counts, landed/attempted relationships, linked fight identity, and significant-strike breakdowns
+- Applied the pre-UFC-21 control-time rule in the processed statistics layer
+- Converted 360 structurally unavailable control-time values to missing while preserving 2,667 recorded zero-control values
+- Normalized all 8,551 historical fights into 17,102 unique fighter-fight statistic records with zero rejected fights
+- Added the repeatable historical fight-stat export command: `python -m upset.data.export_fight_stats`
+- Exported and verified `data/processed/kaggle_ufc_1994_2026/fight_stats.jsonl`
+- Added 23 fight-stat normalization and export tests; 113 total tests passed
+- Verified Ruff and Git whitespace checks pass
 
 ## Current Data Findings
 
@@ -202,64 +215,56 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Historical fight-to-profile linking is complete for the accepted Kaggle
-snapshot. All 8,551 fights have both participant source IDs populated:
-17,102 linked slots and zero unresolved slots.
+Historical fighter-fight statistic normalization is complete for the accepted
+Kaggle snapshot.
 
-The 46 ambiguous slots were limited to five collided names and were resolved
-through explicit, version-controlled overrides backed by UFCStats profile
-history, event date, and opponent. Unique same-source name matches remain
-automatic; ambiguous or missing matches fail instead of being guessed.
+Each of the 8,551 fights now produces two canonical `FightStats` records, one
+for each linked fighter. The processed dataset contains 17,102 unique records
+and zero rejected fights.
 
-The repeatable linked export is:
+Historical whole-fight totals remain distinct from Cito fighter-by-round
+records. Target and position breakdowns are validated against significant
+strikes landed, and missing early control-time coverage is represented as
+`None` rather than a false zero.
 
-`python -m upset.data.export_linked`
+The repeatable export is:
+
+`python -m upset.data.export_fight_stats`
 
 It writes:
 
-`data/processed/kaggle_ufc_1994_2026/fights_linked.jsonl`
+`data/processed/kaggle_ufc_1994_2026/fight_stats.jsonl`
 
-The export validates all inputs, writes through a temporary file, and verifies
-the saved records before replacement. All 90 automated tests pass; Ruff and
-whitespace checks are clean.
+The export validates the complete raw and linked datasets, refuses partial
+publication, writes through a temporary file, and verifies every saved record
+before replacement. All 113 automated tests pass; Ruff and whitespace checks
+are clean.
 
-These links use provider-specific source fighter IDs. UPSET-owned internal IDs
-and cross-provider identity mappings remain future work. Historical fight
-statistics, early control-time handling, and leakage-safe pre-fight features
-also remain unimplemented.
+The next technical milestone is to design UPSET-owned fighter identifiers and
+provider-ID mappings. Existing Kaggle/UFCStats and Cito IDs remain preserved as
+source identifiers.
 
 ## Next Steps
 
-1. Document the verified Cito and Kaggle field mappings, identifier
-   differences, export commands, and known limitations, including the combined
-   Draw/NC label and the distinction between fight-level and round-level data.
+1. Design UPSET-owned fighter IDs and a provider-ID mapping structure without
+   treating names as permanent identifiers.
 
-2. Design UPSET-owned internal fighter IDs and provider-ID mappings. Treat the
-   newly linked Kaggle profile IDs as source identifiers, not permanent
-   cross-provider identities.
+2. Reconcile initial cross-provider fighter examples between the historical
+   source and Cito while preserving both providers' original IDs.
 
-3. Define and normalize historical fight-level statistics alongside Cito
-   round-level statistics. Keep their levels of detail distinct and prevent
-   double-counting.
+3. Extend outcome handling when a source can distinguish scheduled, cancelled,
+   drawn, and no-contest fights.
 
-4. Apply and document the working rule for structurally unavailable early
-   control time in processed statistics. Preserve raw data and distinguish
-   missing values from genuine zeros.
+4. Build dated pre-fight fighter-stat snapshots using only information
+   available before each fight.
 
-5. Extend outcome handling to distinguish scheduled, cancelled, drawn, and
-   no-contest fights when the source supports that distinction. Preserve
-   ambiguity when it does not.
+5. Create leakage-safe historical features for pace, striking, grappling,
+   durability, recent form, and strength of schedule.
 
-6. Build dated or pre-fight fighter-stat snapshots. Do not treat current career
-   totals, division, weight, or champion status as historical facts.
+6. Train and evaluate a baseline model with chronological data splits and a
+   documented policy for ambiguous outcomes.
 
-7. Create initial pre-fight features using only information available before
-   each fight, with explicit checks against future-data leakage.
-
-8. Train and evaluate a simple baseline model using chronological training and
-   evaluation splits and a documented policy for ambiguous outcomes.
-
-9. Revisit UFCalendar before implementing automated current-data updates for
+7. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers

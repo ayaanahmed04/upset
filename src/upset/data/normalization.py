@@ -1,7 +1,7 @@
 import re
 from datetime import date
 
-from upset.data.models import Event, Fight, Fighter, RoundStats
+from upset.data.models import Event, Fight, Fighter, FightStats, RoundStats
 
 
 def parse_landed_attempted(value: str) -> tuple[int, int]:
@@ -377,3 +377,202 @@ def normalize_kaggle_fighter(raw_fighter: dict) -> Fighter:
         date_of_birth=birth_date,
         source_url=source_url,
     )
+_HISTORICAL_CONTROL_TIME_START = date(1999, 7, 16)
+
+
+def _parse_nonnegative_int(value: object, *, field: str) -> int:
+    """Convert a source value into a non-negative whole number."""
+
+    if isinstance(value, bool):
+        raise TypeError(f"{field} must be a non-negative whole number.")
+
+    try:
+        number = float(value)
+    except (TypeError, ValueError) as error:
+        raise TypeError(
+            f"{field} must be a non-negative whole number."
+        ) from error
+
+    if not number.is_integer() or number < 0:
+        raise ValueError(f"{field} must be a non-negative whole number.")
+
+    return int(number)
+
+
+def normalize_kaggle_fight_stats(
+    raw_fight: dict,
+    linked_fight: Fight,
+) -> tuple[FightStats, FightStats]:
+    """Convert one historical fight row into two fighter-stat records."""
+
+    # Reuse the existing fight normalizer to validate the row's identity,
+    # participant names, result, event date, and UFCStats fight URL.
+    raw_identity = normalize_kaggle_fight(raw_fight)
+
+    raw_key = (
+        raw_identity.source,
+        raw_identity.source_bout_id,
+        raw_identity.fighter_1_name,
+        raw_identity.fighter_2_name,
+        raw_identity.event_date,
+    )
+    linked_key = (
+        linked_fight.source,
+        linked_fight.source_bout_id,
+        linked_fight.fighter_1_name,
+        linked_fight.fighter_2_name,
+        linked_fight.event_date,
+    )
+
+    if linked_key != raw_key:
+        raise ValueError("Linked fight does not match the historical row.")
+
+    fighter_1_id = linked_fight.source_fighter_1_id
+    fighter_2_id = linked_fight.source_fighter_2_id
+
+    if fighter_1_id is None or fighter_2_id is None:
+        raise ValueError("Historical fight must have both fighter IDs.")
+
+    if fighter_1_id == fighter_2_id:
+        raise ValueError("Fight participants must have different fighter IDs.")
+
+    duration = _parse_nonnegative_int(
+        raw_fight["Total_Fight_Time_Sec"],
+        field="Total_Fight_Time_Sec",
+    )
+
+    if duration == 0:
+        raise ValueError("Total_Fight_Time_Sec must be greater than zero.")
+
+    time_format = raw_fight["Time_Format"]
+
+    if not isinstance(time_format, str) or not time_format.strip():
+        raise ValueError("Time_Format must contain non-empty text.")
+
+    event_date = date.fromisoformat(raw_identity.event_date)
+    records = []
+
+    for side, fighter_id in (
+        (1, fighter_1_id),
+        (2, fighter_2_id),
+    ):
+        prefix = f"F{side}_"
+
+        knockdowns = _parse_nonnegative_int(
+            raw_fight[prefix + "KD"],
+            field=prefix + "KD",
+        )
+        sig_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Sig_Landed"],
+            field=prefix + "Sig_Landed",
+        )
+        sig_attempted = _parse_nonnegative_int(
+            raw_fight[prefix + "Sig_Att"],
+            field=prefix + "Sig_Att",
+        )
+        takedowns_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "TD_Landed"],
+            field=prefix + "TD_Landed",
+        )
+        takedowns_attempted = _parse_nonnegative_int(
+            raw_fight[prefix + "TD_Att"],
+            field=prefix + "TD_Att",
+        )
+        submission_attempts = _parse_nonnegative_int(
+            raw_fight[prefix + "Sub_Att"],
+            field=prefix + "Sub_Att",
+        )
+        raw_control_seconds = _parse_nonnegative_int(
+            raw_fight[prefix + "Ctrl_Sec"],
+            field=prefix + "Ctrl_Sec",
+        )
+
+        head_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Head"],
+            field=prefix + "Head",
+        )
+        body_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Body"],
+            field=prefix + "Body",
+        )
+        leg_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Leg"],
+            field=prefix + "Leg",
+        )
+
+        distance_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Distance"],
+            field=prefix + "Distance",
+        )
+        clinch_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Clinch"],
+            field=prefix + "Clinch",
+        )
+        ground_landed = _parse_nonnegative_int(
+            raw_fight[prefix + "Ground"],
+            field=prefix + "Ground",
+        )
+
+        if sig_landed > sig_attempted:
+            raise ValueError(
+                f"{prefix}Sig_Landed cannot exceed {prefix}Sig_Att."
+            )
+
+        if takedowns_landed > takedowns_attempted:
+            raise ValueError(
+                f"{prefix}TD_Landed cannot exceed {prefix}TD_Att."
+            )
+
+        target_total = head_landed + body_landed + leg_landed
+
+        if target_total != sig_landed:
+            raise ValueError(
+                f"{prefix} target totals must equal significant strikes landed."
+            )
+
+        position_total = (
+            distance_landed
+            + clinch_landed
+            + ground_landed
+        )
+
+        if position_total != sig_landed:
+            raise ValueError(
+                f"{prefix} position totals must equal "
+                "significant strikes landed."
+            )
+
+        # Before UFC 21, a source zero means control time was unavailable.
+        # A nonzero value would remain preserved if the source ever supplied one.
+        if (
+            event_date < _HISTORICAL_CONTROL_TIME_START
+            and raw_control_seconds == 0
+        ):
+            control_seconds = None
+        else:
+            control_seconds = raw_control_seconds
+
+        records.append(
+            FightStats(
+                source=raw_identity.source,
+                source_bout_id=raw_identity.source_bout_id,
+                source_fighter_id=fighter_id,
+                fight_duration_seconds=duration,
+                source_time_format=time_format.strip(),
+                knockdowns=knockdowns,
+                sig_strikes_landed=sig_landed,
+                sig_strikes_attempted=sig_attempted,
+                takedowns_landed=takedowns_landed,
+                takedowns_attempted=takedowns_attempted,
+                submission_attempts=submission_attempts,
+                control_seconds=control_seconds,
+                head_landed=head_landed,
+                body_landed=body_landed,
+                leg_landed=leg_landed,
+                distance_landed=distance_landed,
+                clinch_landed=clinch_landed,
+                ground_landed=ground_landed,
+            )
+        )
+
+    return records[0], records[1]

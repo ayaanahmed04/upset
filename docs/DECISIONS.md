@@ -213,3 +213,38 @@ python -m upset.data.export_linked
 Output:
 
 data/processed/kaggle_ufc_1994_2026/fights_linked.jsonl
+
+## 017 — Historical Fight Statistics Use Fighter-by-Fight Grain
+
+Historical fight statistics will use one canonical `FightStats` record for one
+fighter across one complete fight.
+
+Reason:
+
+The accepted historical source stores both participants' totals in one row
+using `F1_` and `F2_` columns. Splitting that row into two records gives each
+performance a stable fighter ID and a consistent set of field names. This
+supports fighter-history analysis and later pre-fight feature construction
+without depending on participant side or fighter name.
+
+Historical `FightStats` remains distinct from Cito `RoundStats`.
+`FightStats` represents one fighter's totals across the complete fight, while
+`RoundStats` represents one fighter in one round. The two grains must not be
+combined or counted as though they represent the same records.
+
+## 018 — Pre-UFC-21 Zero Control Time Is Missing
+
+A historical zero control-time value before UFC 21 on 1999-07-16 will be
+normalized to `None`.
+
+Reason:
+
+Every audited fight before UFC 21 reports zero control for both participants,
+while all eight UFC 21 fights contain a control-time signal. This is strong
+evidence of a source-coverage boundary rather than hundreds of confirmed
+zero-control performances.
+
+A nonzero value before the boundary would still be preserved. On and after the
+boundary, zero remains zero because it can represent a real recorded result.
+The immutable raw CSV retains its original values; the missingness rule is
+applied only in normalized processed data.
