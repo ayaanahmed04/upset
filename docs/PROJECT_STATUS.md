@@ -1,6 +1,6 @@
 # UPSET Project Status
 
-**Last updated:** September 18, 2026
+**Last updated:** September 21, 2026
 
 **Current phase:** Phase 1 — Data Foundation
 
@@ -134,6 +134,15 @@ Additional:
 - Left unavailable historical fighter IDs and event IDs unset
 - Added 14 historical normalization test cases; 31 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Added a repeatable historical fight export command:
+  `python -m upset.data.export_historical`
+- Exported 8,551 normalized fights to
+  `data/processed/kaggle_ufc_1994_2026/fights.jsonl`
+- Verified the saved records exactly match the normalized records
+- Preserved missing values, string IDs, source URLs, and Draw/NC labels
+- Added checks for invalid records, duplicate fight IDs, and empty input
+- Write and verify a temporary file before replacing the processed export
+- Added five export test cases; 36 total tests passed
 
 ## Current Data Findings
 
@@ -159,16 +168,19 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Historical fight identity and result normalization is implemented and
-validated across all 8,551 rows of the Silva Kaggle snapshot.
+Historical fight identity and result export is implemented. The repeatable
+command reads the raw CSV, validates and normalizes its records, and saves
+8,551 fights as JSON Lines under data/processed/.
 
-The normalized records currently exist in notebook memory; no processed
-dataset has been exported yet. Historical fighter profiles and fight-level
-statistics have not been normalized.
+The saved data was read back and matched the normalized records exactly.
+All 36 automated tests passed. Raw and processed datasets remain ignored
+by Git; the code needed to rebuild the export is version-controlled.
 
-Next, document the mapping and outcome limitations, then create a
-repeatable command that reads the raw fight CSV, validates every row,
-and writes a separate processed fight dataset.
+Historical fighter profiles and fight-level statistics have not yet been
+normalized. Field-mapping documentation remains outstanding.
+
+Next, document the existing mappings and export workflow, then inspect
+historical fighter-profile fields before implementing their normalization.
 
 ## Next Steps
 
@@ -176,9 +188,8 @@ and writes a separate processed fight dataset.
    differences, and known limitations, including the combined Draw/NC
    label and unavailable historical fighter and event IDs.
 
-2. Create a repeatable command to read the raw historical fight CSV,
-   normalize and validate every row, and export a separate processed
-   fight dataset with source tracking and a conversion summary.
+2. Document the historical export command, JSON Lines output, validation
+   behavior, and requirement to run from the project root.
 
 3. Normalize the historical fighter-profile dataset. Preserve source
    profile identifiers and keep current career statistics separate

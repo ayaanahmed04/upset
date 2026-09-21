@@ -124,3 +124,27 @@ from binary win/loss model training will happen explicitly later.
 Historical normalization also preserves Event_Date and Fight_URL.
 Unavailable fighter IDs and event IDs remain unset rather than being
 invented or assigned through ambiguous name matching.
+
+## 014 — Repeatable Historical Fight Export Using JSON Lines
+
+Normalized historical fights are saved as JSON Lines: one fight per line.
+This format preserves explicit null values and string identifiers and
+requires no additional Python dependencies.
+
+The export reuses normalize_kaggle_fight() rather than duplicating its
+conversion rules. Invalid records, duplicate fight IDs, and empty input
+prevent export.
+
+Output is written to a temporary file and read back for comparison with
+the normalized records before replacing the final processed file.
+
+Raw source data remains unchanged. Raw and processed datasets stay
+ignored by Git; the conversion code and tests are version-controlled.
+
+Run from the project root:
+
+python -m upset.data.export_historical
+
+Output:
+
+data/processed/kaggle_ufc_1994_2026/fights.jsonl
