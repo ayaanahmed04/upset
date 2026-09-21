@@ -12,9 +12,9 @@ interpretable fight predictions.
 - [x] Install Python 3.12
 - [x] Create project virtual environment
 - [x] Configure `.gitignore`
-- [ ] Create initial project structure
-- [ ] Research and select UFC data sources
-- [ ] Establish Python dependencies and development tooling
+- [x] Create initial project structure
+- [x] Research and select UFC data sources
+- [x] Establish Python dependencies and development tooling
 
 ## Phase 1 — Data Foundation
 
