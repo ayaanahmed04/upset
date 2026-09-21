@@ -249,3 +249,44 @@ A nonzero value before the boundary would still be preserved. On and after the
 boundary, zero remains zero because it can represent a real recorded result.
 The immutable raw CSV retains its original values; the missingness rule is
 applied only in normalized processed data.
+
+## 019 — UPSET-Owned Fighter Identities Use Permanent UUID4 Values
+
+Each real-world fighter receives one permanent UPSET-owned UUID4 identifier.
+
+The identity is stored separately from provider-specific profiles:
+
+- `FighterIdentity` stores the permanent `upset_fighter_id` and current
+  `display_name`.
+- `FighterProviderLink` connects one provider profile to an UPSET identity and
+  records evidence for that connection.
+
+Display names are labels rather than identity keys. A display name may be
+intentionally replaced while the fighter keeps the same UPSET UUID. Different
+fighters may also share the same display name.
+
+Each `(provider, provider_fighter_id)` pair may link to only one UPSET identity.
+Multiple provider profiles, such as UFCStats and Cito profiles, may eventually
+link to the same identity when sufficient evidence exists.
+
+Reason:
+
+Provider identifiers belong to external systems and names are neither unique
+nor permanent. UPSET needs an identifier that survives name corrections,
+display-name changes, and the addition or replacement of data providers.
+
+The version-controlled registry is stored at:
+
+`data/mappings/fighter_registry.json`
+
+The initial registry contains 4,455 permanent UPSET identities and 4,455
+UFCStats provider links. It preserves all seven duplicate-name groups as
+separate people.
+
+The repeatable registry export is:
+
+`python -m upset.data.export_identity_registry`
+
+On later runs, existing UUIDs are preserved and UUIDs are generated only for
+previously unseen UFCStats fighter IDs. The registry is validated, written
+through a temporary file, and verified by reading it back before replacement.

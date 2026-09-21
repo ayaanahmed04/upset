@@ -313,6 +313,9 @@ Dataset grain means what one row represents.
 
 | Canonical `FightStats` | One fighter's totals across one complete fight |
 
+| `FighterIdentity` | One real-world fighter identity |
+| `FighterProviderLink` | One provider fighter profile linked to one UPSET identity |
+
 The Kaggle fight totals and Cito round records must remain distinguishable.
 They cannot be combined as though they have the same level of detail.
 
@@ -382,15 +385,69 @@ selected source fighter ID, fighter name, event date, opponent, and review
 evidence. The mapping is version-controlled because fighter names alone are
 not reliable identifiers.
 
+## UPSET Fighter Identity Registry
+
+UPSET identities are stored separately from provider-specific `Fighter`
+profiles.
+
+The historical normalized profile field `source_fighter_id` contains the
+fighter's UFCStats identifier. The identity-registry exporter creates a
+provider link with:
+
+| Registry field        | Historical source                                       |
+| --------------------- | ------------------------------------------------------- |
+| `provider`            | Constant `"ufcstats"`                                   |
+| `provider_fighter_id` | Normalized `source_fighter_id`                          |
+| `upset_fighter_id`    | Permanent UPSET-generated UUID4                         |
+| `evidence`            | Description of the normalized historical profile import |
+
+Each identity contains:
+
+| Identity field     | Meaning                               |
+| ------------------ | ------------------------------------- |
+| `upset_fighter_id` | Permanent canonical lowercase UUID4   |
+| `display_name`     | Editable human-readable fighter label |
+
+Registry rules:
+
+- Display names are not unique identifiers.
+- Two identities may share the same display name.
+- One provider profile may link to only one UPSET identity.
+- Multiple provider profiles may link to the same identity.
+- Every provider link must reference an existing identity.
+- Existing UUIDs are preserved when the registry is rebuilt.
+- New UUIDs are generated only for previously unseen provider fighter IDs.
+- Existing identities and links are retained even if a later source snapshot
+  omits a previously known profile.
+
+The registry uses schema version `1` and is stored at:
+
+`data/mappings/fighter_registry.json`
+
+The accepted historical registry contains:
+
+- 4,455 identities
+- 4,455 UFCStats provider links
+- 4,455 unique UPSET UUIDs
+- 4,455 unique provider keys
+- 4,448 unique display names
+- Seven duplicate-name groups representing distinct people
+
 ## Repeatable Exports
 
+### Fighter identity registry
+
+Command:
+
+````bash
+python -m upset.data.export_identity_registry
 ### Historical fights
 
 Command:
 
 ```bash
 python -m upset.data.export_historical
-```
+````
 
 ### Historical fighter-fight statistics
 

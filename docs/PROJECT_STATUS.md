@@ -34,7 +34,10 @@ Additional:
 - Betting-specific functionality deferred until later
 - Public web application planned
 - Historical dataset used for local data science and ML development
-- Provider-independent internal data model planned
+- Provider-independent canonical data models implemented
+- UPSET-owned fighter identities use permanent UUID4 identifiers
+- Provider fighter IDs are stored through separate evidence-backed links
+- Display names are labels and are not identity keys
 - Raw source data remains immutable
 - Fighter names will not be used as permanent unique identifiers
 - Historical name collisions require evidence-backed, version-controlled overrides
@@ -188,6 +191,22 @@ Additional:
 - Exported and verified `data/processed/kaggle_ufc_1994_2026/fight_stats.jsonl`
 - Added 23 fight-stat normalization and export tests; 113 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Added permanent UPSET-owned fighter identities using canonical UUID4 values
+- Added evidence-backed mappings from provider fighter IDs to UPSET identities
+- Added validation for malformed UUIDs, duplicate identities, conflicting
+  provider links, unknown identity references, and invalid registry structure
+- Added versioned JSON registry persistence with deterministic ordering,
+  temporary-file writing, and read-back verification
+- Added the repeatable identity-registry export command:
+  `python -m upset.data.export_identity_registry`
+- Created 4,455 permanent UPSET fighter identities from the normalized
+  historical fighter profiles
+- Created 4,455 unique UFCStats provider links
+- Preserved all seven duplicate-name groups as separate identities
+- Verified that a second export reused all 4,455 identities, created zero new
+  identities, and produced the same SHA-256 checksum
+- Added 20 identity, registry, and registry-export tests; 133 total tests passed
+- Verified Ruff and Git whitespace checks pass
 
 ## Current Data Findings
 
@@ -215,42 +234,42 @@ Known data-quality concerns include:
 
 ## Current Task
 
-Historical fighter-fight statistic normalization is complete for the accepted
-Kaggle snapshot.
+The initial UPSET-owned fighter identity registry is complete for the accepted
+historical snapshot.
 
-Each of the 8,551 fights now produces two canonical `FightStats` records, one
-for each linked fighter. The processed dataset contains 17,102 unique records
-and zero rejected fights.
+Each of the 4,455 normalized historical fighter profiles now has one permanent
+UPSET UUID and one provider link using its UFCStats fighter ID. All 4,455 UUIDs
+and all 4,455 provider keys are unique.
 
-Historical whole-fight totals remain distinct from Cito fighter-by-round
-records. Target and position breakdowns are validated against significant
-strikes landed, and missing early control-time coverage is represented as
-`None` rather than a false zero.
+The registry contains 4,448 unique display names and seven duplicate-name
+groups. Those duplicate names remain separate identities because names are
+labels rather than keys.
 
 The repeatable export is:
 
-`python -m upset.data.export_fight_stats`
+`python -m upset.data.export_identity_registry`
 
 It writes:
 
-`data/processed/kaggle_ufc_1994_2026/fight_stats.jsonl`
+`data/mappings/fighter_registry.json`
 
-The export validates the complete raw and linked datasets, refuses partial
-publication, writes through a temporary file, and verifies every saved record
-before replacement. All 113 automated tests pass; Ruff and whitespace checks
-are clean.
+When the command is rerun, existing provider links preserve their assigned
+UPSET UUIDs. New UUIDs are created only for previously unseen provider fighter
+IDs. A verified rerun reused all 4,455 identities, created zero new identities,
+and produced an identical SHA-256 checksum.
 
-The next technical milestone is to design UPSET-owned fighter identifiers and
-provider-ID mappings. Existing Kaggle/UFCStats and Cito IDs remain preserved as
-source identifiers.
+All 133 automated tests pass; Ruff and whitespace checks are clean.
+
+The next technical milestone is to attach these UPSET UUIDs to historical
+profiles, fight participants, and fighter-fight statistics.
 
 ## Next Steps
 
-1. Design UPSET-owned fighter IDs and a provider-ID mapping structure without
-   treating names as permanent identifiers.
+1. Attach UPSET fighter UUIDs to historical profiles, linked fight
+   participants, and fighter-fight statistics.
 
-2. Reconcile initial cross-provider fighter examples between the historical
-   source and Cito while preserving both providers' original IDs.
+2. Reconcile initial cross-provider fighter examples between UFCStats and Cito
+   while preserving both providers' original IDs.
 
 3. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
