@@ -241,6 +241,32 @@ Provider round records need verified historical coverage and fighter links
 before they can be joined to the historical cohort. Raw Cito profile totals
 must not be used as past-at-date prediction features.
 
+### Local round acquisition (source records only)
+
+Use a completed recent bout ID from Cito's documented recent-event and
+event-bouts endpoints. Fetch a single bout with
+`python -m upset.data.collect_cito_rounds --bout-id BOUT_ID`. The local
+`CITO_API_KEY` or `.env` is used; no key is written into the output.
+Alternatively pass `--bout-ids-file PATH` with one ID per line. After access
+and coverage are established, `--identified-fights PATH` can read IDs from
+the existing identified historical JSONL. Do not start that historical
+collection under the current key: older rounds return
+`HISTORY_WINDOW_EXCEEDED`.
+
+The command defaults to one *new* request per run (`--limit 1`) and a
+seven-second pause between new calls (`--delay 7`) to stay below Cito's
+free-plan limit of ten requests per minute. A higher-tier plan may use an
+explicit shorter delay within its documented limits. Each successfully validated
+response is saved as one JSON file in ignored `data/raw/cito_rounds/`, with
+the Cito source and requested bout ID. Cached files are read and validated
+before being skipped, so a stopped run can resume. A failed, empty, or
+unrecognized response is never cached as complete; API errors stop the run
+with status and safe error labels only. A saved provider response is not yet
+a normalized `RoundStats` record or a reviewed fighter identity link. The
+current accepted list shapes are `data` as a list or one list under
+`data.rounds`, `rows`, `items`, `results`, or `stats`; adapt this only after
+inspecting a real response. Raw data stays local and out of Git.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.

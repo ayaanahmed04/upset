@@ -462,6 +462,10 @@ The reviewed UFC 311 round request returned HTTP 403 with Cito error code
 `HISTORY_WINDOW_EXCEEDED`. The current key lacks access to that older bout's
 round rows. Build a resumable round acquisition and validation pipeline and
 test it on accessible recent bouts before purchasing historical API access.
+The collection layer will retain one original successful response per bout
+in Git-ignored local storage, validate files before resuming, and cap new
+requests by default. It will not infer canonical fighter IDs from names or
+feed current bout rounds into that bout's own pre-fight prediction.
 Preserve provider provenance and missingness. Any later durability or round
 feature for a fight must use only earlier event dates; no current-fight round
 or finish information may appear among that fight's prediction inputs.

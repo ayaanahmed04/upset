@@ -278,8 +278,17 @@ Additional:
   The Cito probe of the reviewed UFC 311 bout returned HTTP 403 with provider
   code `HISTORY_WINDOW_EXCEEDED`. This confirms the current key cannot read
   that bout's round records. No historical round coverage was established.
-  The latest Mac check passed 204 tests; Ruff found an import-order issue,
-  corrected on this branch pending recheck. No model features or scores changed.
+  The final Mac check passed 204 tests and Ruff after an import-order fix.
+  No model features or scores changed.
+- Merged the audit in PR #8 after the Mac passed 204 tests and Ruff at
+  `ec580ff`. The Cito historical-access limit is a confirmed source finding.
+- Started a separate raw Cito round collector. It accepts explicit bout IDs,
+  a local ID list, or the identified fight export, defaults to at most one
+  *new* API call per run, and saves only successful nonempty round responses
+  under ignored `data/raw/cito_rounds/`. Verified saved files are skipped on
+  subsequent runs; malformed data and API errors stop the run. The collector
+  still needs a Mac test with a currently accessible recent bout. No round
+  features or historical round coverage have been verified.
 
 ## Current Data Findings
 
@@ -323,11 +332,11 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Recheck Ruff on the Mac. The Cito error code confirms the historical
-   access window caused the 403. Design and test a resumable round-record
-   acquisition and validation pipeline using available recent bouts before
-   considering paid historical access. Keep round ingestion separate until
-   coverage and provider links are proven.
+1. Test the raw round collector with one or two accessible recent bouts and
+   inspect the actual response shape. Validate its saved files on a rerun,
+   then review fighter identity and round-to-total consistency. Historical
+   access should only be considered after this free test and provider terms
+   for retained data use are clear. No paid API work has begun.
 
 2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to
