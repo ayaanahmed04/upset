@@ -215,8 +215,17 @@ Additional:
 - Added the repeatable command `python -m upset.data.export_identified`.
 - Verified 141 tests, Ruff, and a sample mapping against the committed registry.
 - Added a pure reviewed-Cito-link operation that preserves historical UUIDs,
-  requires evidence, and rejects unknown or conflicting provider IDs. No Cito
-  links have been added to the committed fighter registry yet.
+  requires evidence, and rejects unknown or conflicting provider IDs.
+- Reviewed Islam Makhachev across live Cito profile and fight-history responses
+  and UFCStats profile and UFC 311 fight details. Both providers identify fight
+  `daef1691c7d6b1e4` against Renato Moicano on 2025-01-18 with a submission
+  in round 1 at 4:05; documented the 0.5-inch reach discrepancy.
+- Added `data/mappings/cito_fighter_reviews.json` and the repeatable command
+  `python -m upset.data.export_reviewed_cito_links`.
+- Added the first reviewed Cito provider link to the existing Islam Makhachev
+  UPSET UUID. Audited 4,455 identities unchanged, all historical links
+  unchanged, and 4,456 total provider links. Verified the repeat run is
+  byte-for-byte identical and 152 automated tests and Ruff pass.
 
 ## Current Data Findings
 
@@ -275,25 +284,27 @@ zero unresolved mappings and passed read-back verification; `wc -l` confirmed
 each output count. All 141 automated tests passed on the Mac, Ruff passed, and
 the feature branch working tree was clean.
 
+The first cross-provider fighter link is now reviewed and included in the
+registry: Cito fighter ID `2df4f188-a33e-463a-a66b-471cfa23e2a0` and
+UFCStats fighter ID `275aca31f61ba28c` both point to Islam Makhachev's
+existing UPSET UUID `557a7a38-f46d-40e9-aa6a-4e8b9c8fcc6c`. The source
+review is committed separately from the registry so the link can be rebuilt.
+
 ## Next Steps
 
-1. Verify a fresh Cito fighter profile and a corresponding UFCStats profile,
-   record the source evidence, then add the first reviewed Cito provider link
-   while preserving both original IDs and the permanent UPSET UUID.
-
-2. Extend outcome handling when a source can distinguish scheduled, cancelled,
+1. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-3. Build dated pre-fight fighter-stat snapshots using only information
+2. Build dated pre-fight fighter-stat snapshots using only information
    available before each fight.
 
-4. Create leakage-safe historical features for pace, striking, grappling,
+3. Create leakage-safe historical features for pace, striking, grappling,
    durability, recent form, and strength of schedule.
 
-5. Train and evaluate a baseline model with chronological data splits and a
+4. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
 
-6. Revisit UFCalendar before implementing automated current-data updates for
+5. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers

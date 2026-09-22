@@ -322,5 +322,16 @@ attempts to silently change the evidence for an existing link. Repeating the
 same reviewed assignment returns the existing registry. Names remain display
 labels; they are never sufficient evidence for a cross-provider match.
 
-No Cito link is added until an actual provider profile has been verified and
-the review evidence is recorded. The registry is not written by this function.
+The first reviewed mapping is Islam Makhachev. A fresh Cito profile supplied
+fighter ID `2df4f188-a33e-463a-a66b-471cfa23e2a0`. Cito's fight history
+and UFCStats both identify his January 18, 2025 UFC 311 win over Renato
+Moicano as fight `daef1691c7d6b1e4`, by submission in round 1 at 4:05.
+The 0.5-inch reach discrepancy is recorded in the evidence.
+
+The reviewed pair and its source links are committed in
+`data/mappings/cito_fighter_reviews.json`. Run
+`python -m upset.data.export_reviewed_cito_links` to apply all reviewed pairs
+to `fighter_registry.json`. The exporter reads and validates the entire review
+document before saving through the registry's verified temporary-file path.
+It preserves existing UUIDs and provider links; rerunning with the same
+reviews makes no changes.
