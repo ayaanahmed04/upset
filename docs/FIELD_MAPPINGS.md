@@ -542,10 +542,12 @@ Run `python -m upset.data.export_matchups` after the identified fights and
 pre-fight fighter feature exports. Inputs are
 `identified/fights_identified.jsonl` and
 `prefight/fighter_features.jsonl`; output is
-`prefight/matchups.jsonl`, with exactly one row per source bout. The accepted
-snapshot has 8,551 bouts, including 151 fights labeled `Draw/NC`; those are
-expected counts for the full-data run on the Mac, not yet verified for this
-export.
+`prefight/matchups.jsonl`, with exactly one row per source bout. The full-data
+export on the Mac produced 8,551 rows: 8,400 decisive binary targets and 151
+combined `Draw/NC` labels with null targets. An independent audit compared
+every row's IDs, date, nine differences, and label with its identified fight
+and both fighter features. A second export produced the same SHA-256 checksum:
+`02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`.
 
 `fighter_a_id` and `fighter_b_id` sort the permanent UUIDs, regardless of
 source side or winner. `feature_differences` contains only the nine pre-fight
