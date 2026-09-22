@@ -354,6 +354,14 @@ Observed zero control is distinct from missing control. Source-reported
 career aggregates, unknown win/draw distinctions, and per-round Cito records
 are not inputs to this initial history export.
 
+An audit of the 8,551-fight snapshot found 2,648 distinct UPSET fighter IDs
+across 2,647 distinct fight-table name labels. There are 2,699 feature rows
+with zero strictly earlier fights: 2,648 first appearances by ID plus 51
+additional same-date appearances from 38 IDs. The sampled repeat appearances
+include fighters on the March 11, 1994 UFC 2 tournament card. Some same-day
+results actually preceded later bouts, but the historical dates alone cannot
+prove their order; excluding them loses that information conservatively.
+
 The repeatable exporter validates complete fighter-to-fight-stat matches and
 publishes a verified JSONL file only after all input rows pass validation:
 

@@ -242,8 +242,9 @@ Additional:
   validation and verified atomic export. The local suite has 176 passing tests
   and Ruff is clean. The Mac exported 17,102 feature rows; a second run had an
   identical checksum. A full-data audit matched every row's keys, date, history
-  count, and seven rate calculations to its pre-fight snapshot. It found 2,699
-  rows with zero earlier fights.
+  count, and seven rate calculations to its pre-fight snapshot. A subsequent
+  identity/date audit explained the 2,699 zero-prior-fight rows: 2,648 distinct
+  UPSET fighter IDs plus 51 additional first-date appearances by 38 IDs.
 
 ## Current Data Findings
 
@@ -253,6 +254,7 @@ The current historical dataset contains:
 - 4,448 unique fighter names
 - 8,551 fight rows
 - 2,647 distinct fighter-name labels in the fight table (earlier name-based audit)
+- 2,648 distinct UPSET fighter IDs appearing in identified historical fights
 - 1,801 fighter names present only in the profile table
 - Historical fight coverage from 1994-03-11 through 2026-03-07
 - All 17,102 fight-participant slots are linked to same-source fighter profiles
