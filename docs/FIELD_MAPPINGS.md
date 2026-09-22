@@ -433,6 +433,21 @@ The accepted historical registry contains:
 - 4,448 unique display names
 - Seven duplicate-name groups representing distinct people
 
+## Reviewed Cito Provider Links
+
+The version-controlled `data/mappings/cito_fighter_reviews.json` stores each
+reviewed `(cito_fighter_id, ufcstats_fighter_id)` pair and a written evidence
+trail. The exporter `python -m upset.data.export_reviewed_cito_links` looks up
+the already-linked UFCStats ID, attaches the Cito provider ID to the same
+permanent UPSET UUID, and safely saves the registry. Names do not serve as
+join keys. Invalid or conflicting reviews abort before replacing the registry.
+
+The first mapping identifies Islam Makhachev. The Cito fighter profile and
+fight history were checked against the UFCStats fighter profile and the shared
+UFC 311 fight ID `daef1691c7d6b1e4`. The sources differ on reach by 0.5 inch;
+the review records that difference. After this mapping, the registry has 4,455
+identities and 4,456 provider links (4,455 UFCStats, one Cito).
+
 ## Historical Identity-Enriched Exports
 
 Run `python -m upset.data.export_identified` after the profile, linked-fight,
@@ -460,6 +475,14 @@ Command:
 
 ```bash
 python -m upset.data.export_identity_registry
+```
+
+### Reviewed Cito fighter links
+
+Command:
+
+```bash
+python -m upset.data.export_reviewed_cito_links
 ```
 
 ### Historical fights

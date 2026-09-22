@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "provider": "cito",
+  "reviews": [
+    {
+      "cito_fighter_id": "2df4f188-a33e-463a-a66b-471cfa23e2a0",
+      "ufcstats_fighter_id": "275aca31f61ba28c",
+      "evidence": "Reviewed 2026-09-22: Cito GET https://api.citoapi.com/api/v1/ufc/fighters/islam-makhachev returned this Cito ID and name Islam Makhachev. Cito GET https://api.citoapi.com/api/v1/ufc/fighters/islam-makhachev/fights reported a win over Renato Moicano at UFC 311 on 2025-01-18 by submission in round 1 at 4:05, bout ID daef1691c7d6b1e4. UFCStats https://ufcstats.com/fighter-details/275aca31f61ba28c and https://ufcstats.com/fight-details/daef1691c7d6b1e4 identify the same fighter and bout with matching opponent, date, outcome, round, and time. Profile reach differs by 0.5 inch (Cito 70.5, UFCStats 70)."
+    }
+  ]
+}
