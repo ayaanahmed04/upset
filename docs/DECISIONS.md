@@ -358,3 +358,23 @@ The repeatable exporter validates complete fighter-to-fight-stat matches and
 publishes a verified JSONL file only after all input rows pass validation:
 
 `python -m upset.data.export_prefight`
+
+## 023 — Pre-Fight Rates Preserve Unknown Denominators
+
+The first fighter feature layer transforms only saved pre-fight snapshot totals
+into striking and grappling rates. Fight duration is the denominator for pace;
+attempt counts are the denominator for success fractions. A zero denominator
+produces `null`, not zero. The feature row also carries prior fight count and
+total prior fight seconds so small histories remain visible.
+
+Control-time coverage is reported as the fraction of prior fights with an
+observed control value. No control-time pace is calculated: the snapshot
+stores all prior fight seconds, but not seconds limited to bouts with observed
+control. Dividing observed control by all fight time would systematically
+understate older fighters' rates where the source did not record control.
+
+These are descriptive features, not predictions or model targets. Outcomes,
+defensive performance, recent form, and matchup differences need separate
+reviewed contracts. No source's current career statistics enter this layer.
+
+Run `python -m upset.data.export_prefight_features` after the snapshot export.

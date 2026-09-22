@@ -235,6 +235,15 @@ Additional:
   from 8,551 fights, passed read-back verification, and produced the same
   SHA-256 checksum on a second run. An independent audit checked each row's
   prior fight count against strictly earlier event dates and passed.
+- Added initial descriptive pre-fight fighter metrics for striking pace and
+  accuracy, takedown pace and accuracy, knockdown and submission-attempt pace,
+  and the fraction of prior bouts with observed control time.
+- Added `python -m upset.data.export_prefight_features` with strict input
+  validation and verified atomic export. The local suite has 176 passing tests
+  and Ruff is clean. The Mac exported 17,102 feature rows; a second run had an
+  identical checksum. A full-data audit matched every row's keys, date, history
+  count, and seven rate calculations to its pre-fight snapshot. It found 2,699
+  rows with zero earlier fights.
 
 ## Current Data Findings
 
@@ -262,10 +271,10 @@ Known data-quality concerns include:
 
 ## Current Task
 
-The first dated pre-fight snapshot exporter is complete and verified on the
-8,551-fight processed snapshot on the Mac. Its 17,102 rows passed read-back,
-repeatability, and an independent full-data date audit. The raw historical
-dataset remains uncommitted to GitHub.
+The dated pre-fight snapshot and initial descriptive feature exports have both
+been verified on the full 8,551-fight history on the Mac. They produce 17,102
+fighter rows each. Both stages read only prior fight statistics. The raw
+historical dataset remains uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
 registry still contains 4,455 permanent identities; Islam Makhachev's existing
@@ -276,8 +285,9 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 1. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-2. Create leakage-safe historical features for pace, striking, grappling,
-   durability, recent form, and strength of schedule.
+2. Extend the feature set for durability, recent form, and strength of
+   schedule after reviewing which history and outcome fields reliably support
+   them. Define training targets and matchup rows without using future data.
 
 3. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
