@@ -89,6 +89,7 @@ def test_round_export_rejects_bad_bouts_without_replacing_output(change, reason)
 
 
 def test_round_export_rejects_missing_input():
-    with TemporaryDirectory() as folder:
-        with pytest.raises(ValueError, match="No cached"):
-            export_cito_rounds(Path(folder), Path(folder) / "rounds.jsonl")
+    with TemporaryDirectory() as folder, pytest.raises(
+        ValueError, match="No cached"
+    ):
+        export_cito_rounds(Path(folder), Path(folder) / "rounds.jsonl")

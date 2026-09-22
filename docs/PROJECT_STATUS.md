@@ -303,8 +303,12 @@ Additional:
   reconciliation with bout totals remain pending on the Mac.
 - Added an offline round export on the Cito acquisition branch to normalize
   cached records after checking IDs, fighter/round coverage, and strike
-  arithmetic. Its full suite and real cached bout still require a Mac run.
-  No round-derived model features or revised scores have been produced.
+  arithmetic. On the Mac at `e5b4788`, 221 tests passed and one cached
+  Pantoja–Van bout produced 10 normalized fighter-round rows with read-back
+  verification. Ruff reported one `SIM117` style issue in a new test, corrected
+  in the next branch commit. Independent bout-total reconciliation remains
+  pending. No round-derived model features or revised scores have been
+  produced.
 
 ## Current Data Findings
 
@@ -348,10 +352,8 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Run the offline round exporter on the saved recent bout and check that
-   numeric fields satisfy its validations. Compare those rounds against
-   an independently fetched Cito bout's total statistics, then review fighter
-   identity links. Historical
+1. Compare the now-normalized recent rounds against independently sourced
+   bout total statistics, then review fighter identity links. Historical
    access should only be considered after this free test and provider terms
    for retained data use are clear. No paid API work has begun.
 
