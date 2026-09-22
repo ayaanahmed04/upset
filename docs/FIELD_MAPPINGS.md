@@ -506,8 +506,15 @@ the same SHA-256 checksum:
 `bf52fd0dd78065b5cfba7fe6ec13c3f36d7d12051343fb964b79eb6b2d00d664`.
 An independent full-data audit matched all row keys, dates, history counts,
 and seven rate calculations to their input snapshots. It found 2,699 rows
-with zero earlier fights; same-day repeat appearances can each be a first
-fight under the strict earlier-date rule.
+with zero earlier fights. This counts fight-participant rows, not distinct
+fighters. An audit of the identified fight rows found 2,647 distinct name
+labels and 2,648 distinct UPSET fighter IDs. Among the latter, 38 IDs appear
+more than once on their first recorded fight date, contributing 51 additional
+zero-prior-fight rows: `2,648 + 51 = 2,699`. Sampled repeats on 1994-03-11
+include Patrick Smith and Royce Gracie on the UFC 2 tournament card. This
+same-date exclusion is conservative because these source rows have no trusted
+within-day ordering; it should not be interpreted as typical modern UFC
+scheduling.
 
 | Field | Calculation from prior totals |
 | --- | --- |
