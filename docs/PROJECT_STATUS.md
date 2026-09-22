@@ -255,6 +255,11 @@ Additional:
   date, all nine feature differences, and target against the identified fight
   and both fighter feature rows. A second export had the same SHA-256 checksum:
   `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`.
+- Added a fixed first binary prediction baseline with grouped chronological
+  splits, training-only median filling and scaling, and a training-prevalence
+  comparison. The command reports label balance, feature missingness, and
+  metrics by period. Synthetic tests cover the time boundary and target
+  isolation; full-data performance on the Mac has not yet been measured.
 
 ## Current Data Findings
 
@@ -287,7 +292,9 @@ The dated pre-fight snapshot and descriptive feature exports have both been
 verified on the full 8,551-fight history on the Mac. They produce 17,102
 fighter rows each. The matchup export has also been verified against all
 8,551 fights: 8,400 decisive labels and 151 combined `Draw/NC` labels with
-null targets. The raw historical dataset remains uncommitted to GitHub.
+null targets. The initial chronological baseline is implemented and awaiting
+its full historical run on the Mac. The raw historical dataset remains
+uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
 registry still contains 4,455 permanent identities; Islam Makhachev's existing
@@ -295,16 +302,16 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Keep combined `Draw/NC` outcomes outside binary model training; review
-   richer outcome handling if a future source distinguishes the two. Inspect
-   label balance and available history before choosing a baseline.
+1. Run and review the fixed chronological baseline on the full matchup
+   export. Inspect each period's date range, labels, missingness, and metrics
+   relative to the training-prior comparison before choosing another model.
 
 2. Extend the feature set for durability, recent form, and strength of
    schedule after reviewing which history and outcome fields reliably support
    them.
 
-3. Train and evaluate a baseline model with chronological data splits and a
-   documented policy for ambiguous outcomes.
+3. Keep combined `Draw/NC` outcomes outside binary model training; review
+   richer outcome handling if a future source distinguishes the two.
 
 4. Revisit UFCalendar before implementing automated current-data updates for
    the public application.

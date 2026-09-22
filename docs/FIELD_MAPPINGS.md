@@ -567,7 +567,33 @@ winner name must match exactly one participant before it can be mapped to an
 UPSET fighter ID. The exporter verifies two matched, distinct fighter feature
 rows per fight, matching event dates, all input rows used, a valid outcome,
 and the written JSONL before replacing an older output. Model fitting,
-imputation, class balance analysis, and chronological splits are later work.
+imputation, class balance analysis, and chronological splits are handled in
+the separate baseline command below.
+
+## First Chronological Prediction Baseline
+
+Run `python -m upset.modeling.run_baseline` after the verified matchup export.
+The default input is `prefight/matchups.jsonl`; `--input PATH` can select an
+equivalent export. The command prints a JSON report and does not save a model
+or modify the processed data. Reported metrics depend on the local historical
+data; no full-data baseline performance is claimed until the Mac run passes.
+
+The input reader requires the exact matchup schema, all nine
+`<field>_diff` keys, valid dated rows and target values, and one row per bout.
+Each event date belongs to only one of train, validation, or test. Split
+boundaries approximate 70/15/15 of *all* bout rows, including the ambiguous
+rows; each period separately reports the number of excluded `Draw/NC` rows.
+Only decisive rows contribute to model fitting and binary metrics. The model
+input is the nine pre-fight differences; source IDs, date, winner text,
+target, and exclusion reason are excluded from the input matrix.
+
+Within the model pipeline, median filling, missingness indicators, and
+standard scaling are fitted only using decisive training rows. The same
+fitted transforms and logistic regression model are applied to later periods.
+The JSON report gives per-period dates, counts, fighter A/B win balance,
+missing inputs, and four binary metrics. It also evaluates a fixed-probability
+comparison using fighter A's win rate in training. ROC AUC is `null` when a
+period contains only one class. Do not treat the test period as a tuning set.
 
 ## Repeatable Exports
 
@@ -633,4 +659,12 @@ Command:
 
 ```bash
 python -m upset.data.export_matchups
+```
+
+### First chronological baseline
+
+Command:
+
+```bash
+python -m upset.modeling.run_baseline
 ```
