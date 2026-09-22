@@ -501,7 +501,13 @@ Run `python -m upset.data.export_prefight_features` after the dated snapshot
 export. It reads `prefight/prefight_stats.jsonl` and writes
 `prefight/fighter_features.jsonl`, with one row for each fighter in each fight.
 Both files use the same source bout ID, event date, and permanent fighter ID.
-The first full-data export is pending the run on the Mac.
+The full-data export on the Mac produced 17,102 rows. A second run produced
+the same SHA-256 checksum:
+`bf52fd0dd78065b5cfba7fe6ec13c3f36d7d12051343fb964b79eb6b2d00d664`.
+An independent full-data audit matched all row keys, dates, history counts,
+and seven rate calculations to their input snapshots. It found 2,699 rows
+with zero earlier fights; same-day repeat appearances can each be a first
+fight under the strict earlier-date rule.
 
 | Field | Calculation from prior totals |
 | --- | --- |
