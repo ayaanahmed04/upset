@@ -272,6 +272,28 @@ current accepted list shapes are `data` as a list or one list under
 `data.rounds`, `rows`, `items`, `results`, or `stats`; adapt this only after
 inspecting a real response. Raw data stays local and out of Git.
 
+The live `cryptocom-ufc-331-jsonapi-13` sample returned 10 rows: Alexandre
+Pantoja and Joshua Van each have one row for rounds 1 through 5. The row field
+names match the existing Cito `RoundStats` mapping below. This checks the
+sample's shape and fighter/round coverage, not its numeric values or its
+agreement with independent fight totals.
+
+### Offline round export
+
+Run `python -m upset.data.export_cito_rounds` after saving recent round files.
+It reads cached files in `data/raw/cito_rounds/` without making API calls and
+writes `data/processed/cito/round_stats.jsonl`. Override locations with
+`--input-dir` and `--output`. Each exported row is one Cito fighter in one
+round, with Cito IDs and slugs; it does not yet contain a reviewed UPSET fighter
+ID or pre-fight snapshot. Both folders are ignored by Git.
+
+The exporter checks saved source/bout IDs, numeric values, strike breakdowns,
+two fighters per bout, unique fighter/round and provider row IDs, and matching
+consecutive round sets. It rejects all output if any cached bout fails, writes
+in stable order, and verifies a temporary file before replacing the prior
+export. These checks do not establish that the round sums match Cito's bout
+totals or the separate historical Kaggle cohort.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.

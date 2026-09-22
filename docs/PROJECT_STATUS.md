@@ -293,6 +293,18 @@ Additional:
   succeeded and identified `cryptocom-ufc-331` on 2026-09-19 as a card with
   stats. Event-bout discovery and one real round collection remain untested.
   No round features or historical round coverage have been verified.
+- The Mac then passed all 213 tests and Ruff at `d007d46`. A live event-bout
+  listing for `cryptocom-ufc-331` returned completed bouts marked with stats.
+  One free-plan collector request for `cryptocom-ufc-331-jsonapi-13` saved 10
+  round rows; Git remained clean because the raw response is ignored. A local
+  field-only audit found Alexandre Pantoja and Joshua Van each have rounds
+  1 through 5, with a matching Cito bout ID and the expected raw field names.
+  Round numbers and names are confirmed, but numeric normalization and
+  reconciliation with bout totals remain pending on the Mac.
+- Added an offline round export on the Cito acquisition branch to normalize
+  cached records after checking IDs, fighter/round coverage, and strike
+  arithmetic. Its full suite and real cached bout still require a Mac run.
+  No round-derived model features or revised scores have been produced.
 
 ## Current Data Findings
 
@@ -336,9 +348,10 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Test the raw round collector with one or two accessible recent bouts and
-   inspect the actual response shape. Validate its saved files on a rerun,
-   then review fighter identity and round-to-total consistency. Historical
+1. Run the offline round exporter on the saved recent bout and check that
+   numeric fields satisfy its validations. Compare those rounds against
+   an independently fetched Cito bout's total statistics, then review fighter
+   identity links. Historical
    access should only be considered after this free test and provider terms
    for retained data use are clear. No paid API work has begun.
 
