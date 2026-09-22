@@ -386,3 +386,32 @@ defensive performance, recent form, and matchup differences need separate
 reviewed contracts. No source's current career statistics enter this layer.
 
 Run `python -m upset.data.export_prefight_features` after the snapshot export.
+
+## 024 — One Matchup Row and a Separate Binary Target
+
+For each identified historical bout, join the two dated fighter feature rows
+by the bout ID and permanent UPSET fighter IDs. Assign fighter A to the
+lexicographically smaller UUID and fighter B to the other UUID. This fixed
+orientation does not depend on source participant order or the winner.
+
+Only differences in the nine explicitly selected pre-fight numeric fields
+enter `feature_differences`, calculated as A minus B. A missing value on either
+side makes that difference `null`. UUIDs, names, current career statistics,
+result methods, and outcomes are metadata or excluded from the input features.
+Any imputation must be fitted on training data later, after chronological
+train/test splitting.
+
+The `target_a_win` training label is `1` when fighter A won and `0` when
+fighter B won. The source winner name must uniquely match a participant; a
+fight with the same name on both sides cannot receive a binary target without
+additional identity evidence. The source label `Draw/NC` remains attached to
+the matchup, with `target_a_win: null` and exclusion reason
+`ambiguous_draw_or_no_contest`. We do not infer the outcome from the method or
+delete the fight. These prior fight statistics can still contribute to later
+fighters' history snapshots even when the result is ambiguous.
+
+Reject missing or extra fighter features, duplicate fights, mismatched event
+dates, and contradictory winners before publishing verified JSONL output.
+Run `python -m upset.data.export_matchups` after both identified fights and
+pre-fight fighter features are exported. A baseline model and chronological
+evaluation will be developed and validated separately.

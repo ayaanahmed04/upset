@@ -536,6 +536,39 @@ The exporter requires two distinct snapshots on one date for every bout,
 validates the input, and verifies a temporary JSONL file before replacing the
 final output. No current fight result enters these formulas.
 
+## Historical Matchups and Training Targets
+
+Run `python -m upset.data.export_matchups` after the identified fights and
+pre-fight fighter feature exports. Inputs are
+`identified/fights_identified.jsonl` and
+`prefight/fighter_features.jsonl`; output is
+`prefight/matchups.jsonl`, with exactly one row per source bout. The full-data
+export on the Mac produced 8,551 rows: 8,400 decisive binary targets and 151
+combined `Draw/NC` labels with null targets. An independent audit compared
+every row's IDs, date, nine differences, and label with its identified fight
+and both fighter features. A second export produced the same SHA-256 checksum:
+`02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`.
+
+`fighter_a_id` and `fighter_b_id` sort the permanent UUIDs, regardless of
+source side or winner. `feature_differences` contains only the nine pre-fight
+numeric fields from `INPUT_FIELDS` in `matchups.py`, each named
+`<field>_diff` and calculated as A minus B. If either fighter's field is
+missing, its difference is `null`. Identifiers and the fight result are kept
+outside this feature mapping.
+
+| Outcome source | `target_a_win` | `training_exclusion_reason` |
+| --- | --- | --- |
+| Fighter A wins | `1` | `null` |
+| Fighter B wins | `0` | `null` |
+| `Draw/NC` | `null` | `ambiguous_draw_or_no_contest` |
+
+The original `source_winner_label` is retained for inspection. A decisive
+winner name must match exactly one participant before it can be mapped to an
+UPSET fighter ID. The exporter verifies two matched, distinct fighter feature
+rows per fight, matching event dates, all input rows used, a valid outcome,
+and the written JSONL before replacing an older output. Model fitting,
+imputation, class balance analysis, and chronological splits are later work.
+
 ## Repeatable Exports
 
 ### Fighter identity registry
@@ -592,4 +625,12 @@ Command:
 
 ```bash
 python -m upset.data.export_prefight_features
+```
+
+### Historical matchup rows and binary targets
+
+Command:
+
+```bash
+python -m upset.data.export_matchups
 ```
