@@ -10,7 +10,7 @@ from upset.data.models import Fight, FightStats
 from upset.data.prefight import build_prefight_snapshots
 
 
-def _read_identified(
+def read_identified(
     path: Path, model: type, wrapper: type, id_fields: tuple[str, ...]
 ) -> list:
     expected = {field.name for field in fields(model)} | set(id_fields)
@@ -41,13 +41,13 @@ def export_prefight_stats(
     """Validate all input before atomically replacing one verified output file."""
     if output_path.resolve() in (fights_path.resolve(), stats_path.resolve()):
         raise ValueError("Output must not overwrite an input file.")
-    fights = _read_identified(
+    fights = read_identified(
         fights_path,
         Fight,
         IdentifiedFight,
         ("upset_fighter_1_id", "upset_fighter_2_id"),
     )
-    stats = _read_identified(
+    stats = read_identified(
         stats_path,
         FightStats,
         IdentifiedFightStats,

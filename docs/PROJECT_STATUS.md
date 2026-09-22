@@ -245,6 +245,12 @@ Additional:
   count, and seven rate calculations to its pre-fight snapshot. A subsequent
   identity/date audit explained the 2,699 zero-prior-fight rows: 2,648 distinct
   UPSET fighter IDs plus 51 additional first-date appearances by 38 IDs.
+- Added one historical matchup row per fight with nine A-minus-B pre-fight
+  numeric differences, a separate binary training target, and an explicit
+  exclusion reason for combined `Draw/NC` source labels.
+- Added the repeatable `python -m upset.data.export_matchups` command.
+  Verified 187 local tests and Ruff; the full-data export on the Mac is the
+  next validation step.
 
 ## Current Data Findings
 
@@ -275,8 +281,9 @@ Known data-quality concerns include:
 
 The dated pre-fight snapshot and initial descriptive feature exports have both
 been verified on the full 8,551-fight history on the Mac. They produce 17,102
-fighter rows each. Both stages read only prior fight statistics. The raw
-historical dataset remains uncommitted to GitHub.
+fighter rows each. A matchup export now pairs these prior features with each
+fight and labels decisive outcomes. It needs a full-data run on the Mac before
+merging. The raw historical dataset remains uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
 registry still contains 4,455 permanent identities; Islam Makhachev's existing
@@ -284,12 +291,13 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Extend outcome handling when a source can distinguish scheduled, cancelled,
-   drawn, and no-contest fights.
+1. Run and audit the matchup export on the full historical data. Keep combined
+   `Draw/NC` outcomes outside binary model training; review richer outcome
+   handling if a future source distinguishes the two.
 
 2. Extend the feature set for durability, recent form, and strength of
    schedule after reviewing which history and outcome fields reliably support
-   them. Define training targets and matchup rows without using future data.
+   them.
 
 3. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
