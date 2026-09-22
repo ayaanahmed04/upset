@@ -308,3 +308,19 @@ participants without profiles, missing or extra fighter-fight statistics, and
 fights that resolve both participants to one UPSET identity. It verifies all
 three files before replacing the output files. It only reads the registry and
 never generates or modifies permanent fighter IDs.
+
+## 021 — Cross-Provider Fighter Links Require Review
+
+A reviewed Cito fighter ID may be attached to an existing UFCStats identity
+through `add_reviewed_cito_link`. The caller supplies both provider IDs and a
+description of the evidence used to confirm they refer to the same person.
+The function resolves the UFCStats ID through the existing registry, preserves
+its UPSET UUID, and returns a new registry containing a Cito provider link.
+
+The function rejects unknown UFCStats IDs, conflicting Cito assignments, and
+attempts to silently change the evidence for an existing link. Repeating the
+same reviewed assignment returns the existing registry. Names remain display
+labels; they are never sufficient evidence for a cross-provider match.
+
+No Cito link is added until an actual provider profile has been verified and
+the review evidence is recorded. The registry is not written by this function.

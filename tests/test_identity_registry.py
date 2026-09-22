@@ -7,6 +7,7 @@ from upset.data.identity import (
     FighterIdentity,
     FighterProviderLink,
     FighterRegistry,
+    add_reviewed_cito_link,
     load_fighter_registry,
     save_fighter_registry,
 )
@@ -144,3 +145,87 @@ def test_load_rejects_unexpected_top_level_fields(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="must contain exactly"):
         load_fighter_registry(output_path)
+
+
+def _two_historical_fighters() -> FighterRegistry:
+    return FighterRegistry(
+        identities=(
+            FighterIdentity(FIGHTER_ID_1, "Same Name"),
+            FighterIdentity(FIGHTER_ID_2, "Same Name"),
+        ),
+        provider_links=(
+            FighterProviderLink("ufcstats", "profile-a", FIGHTER_ID_1, "URL a"),
+            FighterProviderLink("ufcstats", "profile-b", FIGHTER_ID_2, "URL b"),
+        ),
+    )
+
+
+def test_reviewed_cito_link_preserves_identity_and_both_provider_ids(tmp_path: Path):
+    registry = _two_historical_fighters()
+    evidence = "Reviewed Cito profile and historical bout against UFCStats."
+
+    result = add_reviewed_cito_link(
+        registry,
+        cito_fighter_id="cito-17",
+        ufcstats_fighter_id="profile-b",
+        evidence=evidence,
+    )
+
+    assert len(registry.provider_links) == 2  # Original is unchanged.
+    assert result.identities == registry.identities
+    assert result.provider_links[-1] == FighterProviderLink(
+        "cito", "cito-17", FIGHTER_ID_2, evidence
+    )
+    path = tmp_path / "registry.json"
+    save_fighter_registry(result, path)
+    assert load_fighter_registry(path).provider_links[-1].upset_fighter_id == FIGHTER_ID_2
+    assert add_reviewed_cito_link(
+        result,
+        cito_fighter_id="cito-17",
+        ufcstats_fighter_id="profile-b",
+        evidence=evidence,
+    ) is result
+
+
+def test_reviewed_cito_link_rejects_unknown_historical_id_and_conflicts():
+    registry = _two_historical_fighters()
+    with pytest.raises(ValueError, match="Unknown UFCStats fighter ID"):
+        add_reviewed_cito_link(
+            registry,
+            cito_fighter_id="cito-17",
+            ufcstats_fighter_id="missing",
+            evidence="Reviewed profiles",
+        )
+
+    linked = add_reviewed_cito_link(
+        registry,
+        cito_fighter_id="cito-17",
+        ufcstats_fighter_id="profile-a",
+        evidence="Reviewed profiles",
+    )
+    with pytest.raises(ValueError, match="different identity"):
+        add_reviewed_cito_link(
+            linked,
+            cito_fighter_id="cito-17",
+            ufcstats_fighter_id="profile-b",
+            evidence="Reviewed profiles",
+        )
+    with pytest.raises(ValueError, match="different evidence"):
+        add_reviewed_cito_link(
+            linked,
+            cito_fighter_id="cito-17",
+            ufcstats_fighter_id="profile-a",
+            evidence="Altered evidence",
+        )
+
+
+@pytest.mark.parametrize("field", ["cito_fighter_id", "ufcstats_fighter_id", "evidence"])
+def test_reviewed_cito_link_requires_nonempty_unpadded_fields(field):
+    inputs = {
+        "cito_fighter_id": "cito-17",
+        "ufcstats_fighter_id": "profile-a",
+        "evidence": "Reviewed profiles",
+    }
+    inputs[field] = " padded "
+    with pytest.raises(ValueError, match="surrounding whitespace"):
+        add_reviewed_cito_link(_two_historical_fighters(), **inputs)

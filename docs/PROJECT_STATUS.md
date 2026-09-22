@@ -214,6 +214,9 @@ Additional:
   profiles, participant identity collisions, and missing or extra statistics.
 - Added the repeatable command `python -m upset.data.export_identified`.
 - Verified 141 tests, Ruff, and a sample mapping against the committed registry.
+- Added a pure reviewed-Cito-link operation that preserves historical UUIDs,
+  requires evidence, and rejects unknown or conflicting provider IDs. No Cito
+  links have been added to the committed fighter registry yet.
 
 ## Current Data Findings
 
@@ -274,8 +277,9 @@ the feature branch working tree was clean.
 
 ## Next Steps
 
-1. Reconcile initial cross-provider fighter examples between UFCStats and Cito
-   while preserving both providers' original IDs.
+1. Verify a fresh Cito fighter profile and a corresponding UFCStats profile,
+   record the source evidence, then add the first reviewed Cito provider link
+   while preserving both original IDs and the permanent UPSET UUID.
 
 2. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.

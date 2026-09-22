@@ -119,6 +119,58 @@ class FighterRegistry:
         validate_fighter_registry(self.identities, self.provider_links)
 
 
+def add_reviewed_cito_link(
+    registry: FighterRegistry,
+    *,
+    cito_fighter_id: str,
+    ufcstats_fighter_id: str,
+    evidence: str,
+) -> FighterRegistry:
+    """Attach a reviewed Cito profile to an existing UFCStats identity.
+
+    The caller must review the two source profiles before supplying their IDs
+    and evidence. This function does not infer a match from names or create a
+    new identity. It returns a new registry; the input is never modified.
+    """
+    _require_nonempty(cito_fighter_id, "cito_fighter_id")
+    _require_nonempty(ufcstats_fighter_id, "ufcstats_fighter_id")
+    _require_nonempty(evidence, "evidence")
+
+    links = {
+        (link.provider, link.provider_fighter_id): link
+        for link in registry.provider_links
+    }
+    historical_link = links.get(("ufcstats", ufcstats_fighter_id))
+    if historical_link is None:
+        raise ValueError(
+            f"Unknown UFCStats fighter ID: {ufcstats_fighter_id}"
+        )
+
+    existing_cito_link = links.get(("cito", cito_fighter_id))
+    if existing_cito_link is not None:
+        if existing_cito_link.upset_fighter_id != historical_link.upset_fighter_id:
+            raise ValueError(
+                f"Cito fighter ID is linked to a different identity: {cito_fighter_id}"
+            )
+        if existing_cito_link.evidence != evidence:
+            raise ValueError(
+                "Cito link already exists with different evidence; review the "
+                "saved link before changing it."
+            )
+        return registry
+
+    reviewed_link = FighterProviderLink(
+        provider="cito",
+        provider_fighter_id=cito_fighter_id,
+        upset_fighter_id=historical_link.upset_fighter_id,
+        evidence=evidence,
+    )
+    return FighterRegistry(
+        identities=registry.identities,
+        provider_links=(*registry.provider_links, reviewed_link),
+    )
+
+
 def _registry_payload(registry: FighterRegistry) -> dict[str, object]:
     """Convert a registry into a consistently ordered JSON-ready dictionary."""
     identities = sorted(
