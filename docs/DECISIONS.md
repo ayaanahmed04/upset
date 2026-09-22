@@ -335,3 +335,26 @@ to `fighter_registry.json`. The exporter reads and validates the entire review
 document before saving through the registry's verified temporary-file path.
 It preserves existing UUIDs and provider links; rerunning with the same
 reviews makes no changes.
+
+## 022 — Pre-Fight Statistics Use Strictly Earlier Event Dates
+
+Historical pre-fight snapshots use the identified fight and fighter-fight
+statistics exports. Each `(source_bout_id, upset_fighter_id)` gets one record
+containing that fighter's cumulative fight counts and observed totals from
+events dated strictly before the target fight. All fights on the same calendar
+day receive snapshots before any result from that day enters the history.
+
+Reason:
+
+The historical snapshot has event dates but no trusted ordering within a day.
+Using a same-day fight's statistics could leak information from a fight that
+had not happened yet. Zero prior fights produce zero count totals; control
+time is `null` until at least one earlier fight recorded that statistic.
+Observed zero control is distinct from missing control. Source-reported
+career aggregates, unknown win/draw distinctions, and per-round Cito records
+are not inputs to this initial history export.
+
+The repeatable exporter validates complete fighter-to-fight-stat matches and
+publishes a verified JSONL file only after all input rows pass validation:
+
+`python -m upset.data.export_prefight`
