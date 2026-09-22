@@ -433,21 +433,42 @@ The accepted historical registry contains:
 - 4,448 unique display names
 - Seven duplicate-name groups representing distinct people
 
+## Historical Identity-Enriched Exports
+
+Run `python -m upset.data.export_identified` after the profile, linked-fight,
+fight-statistics, and identity-registry exports. The new files are in
+`data/processed/kaggle_ufc_1994_2026/identified/`:
+
+| Source file | Identified file | Added fields |
+| --- | --- | --- |
+| `fighters.jsonl` | `fighters_identified.jsonl` | `upset_fighter_id` |
+| `fights_linked.jsonl` | `fights_identified.jsonl` | `upset_fighter_1_id`, `upset_fighter_2_id` |
+| `fight_stats.jsonl` | `fight_stats_identified.jsonl` | `upset_fighter_id` |
+
+The identified records preserve all source fields. Each UFCStats fighter ID
+is resolved using the `(ufcstats, source_fighter_id)` registry link. All fights
+must have two distinct registered profiles and exactly two matching stat
+records. Extra registry identities are allowed because some fighters have no
+historical fight in this snapshot. The exporter validates the entire input
+set and verifies all output files before publishing the files.
+
 ## Repeatable Exports
 
 ### Fighter identity registry
 
 Command:
 
-````bash
+```bash
 python -m upset.data.export_identity_registry
+```
+
 ### Historical fights
 
 Command:
 
 ```bash
 python -m upset.data.export_historical
-````
+```
 
 ### Historical fighter-fight statistics
 
@@ -455,4 +476,12 @@ Command:
 
 ```bash
 python -m upset.data.export_fight_stats
+```
+
+### Historical records with UPSET fighter IDs
+
+Command:
+
+```bash
+python -m upset.data.export_identified
 ```

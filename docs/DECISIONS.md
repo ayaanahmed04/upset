@@ -204,8 +204,8 @@ were resolved from UFCStats profile histories by matching event date and
 opponent. All 8,551 fights now have two linked participants and zero unresolved
 slots.
 
-The resulting IDs remain provider-specific source IDs. UPSET-owned internal
-fighter IDs and cross-provider identity mappings are a separate future layer.
+The resulting IDs remain provider-specific source IDs. Permanent UPSET fighter
+identities are attached in a later export using the reviewed registry.
 
 Run the linked export from the project root:
 
@@ -290,3 +290,21 @@ The repeatable registry export is:
 On later runs, existing UUIDs are preserved and UUIDs are generated only for
 previously unseen UFCStats fighter IDs. The registry is validated, written
 through a temporary file, and verified by reading it back before replacement.
+
+## 020 — Attach Historical Identities After Source Linking
+
+Historical source exports remain the input contracts for normalization and
+source-level linking. A separate identified export reads the linked fights,
+profiles, fighter-fight statistics, and permanent fighter registry. It adds
+required UPSET UUIDs to three new JSONL files while retaining the original
+provider IDs and source fields.
+
+The historical dataset source is `kaggle_ufc_1994_2026`; its fighter IDs were
+extracted from UFCStats URLs. Registry lookups therefore use the `ufcstats`
+provider key. Fighter names and Cito IDs are never used for those lookups.
+
+The identified export rejects unresolved IDs, duplicate source records,
+participants without profiles, missing or extra fighter-fight statistics, and
+fights that resolve both participants to one UPSET identity. It verifies all
+three files before replacing the output files. It only reads the registry and
+never generates or modifies permanent fighter IDs.

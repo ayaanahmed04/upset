@@ -1,6 +1,6 @@
 # UPSET Project Status
 
-**Last updated:** September 21, 2026
+**Last updated:** September 22, 2026
 
 **Current phase:** Phase 1 — Data Foundation
 
@@ -207,6 +207,13 @@ Additional:
   identities, and produced the same SHA-256 checksum
 - Added 20 identity, registry, and registry-export tests; 133 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Added a separate historical identity-enrichment stage for profiles, linked
+  fights, and fighter-fight statistics. It preserves the existing source JSONL
+  contracts and reads permanent UUIDs from the committed registry.
+- Added cross-file checks for missing mappings, duplicate records, missing
+  profiles, participant identity collisions, and missing or extra statistics.
+- Added the repeatable command `python -m upset.data.export_identified`.
+- Verified 141 tests, Ruff, and a sample mapping against the committed registry.
 
 ## Current Data Findings
 
@@ -258,15 +265,16 @@ UPSET UUIDs. New UUIDs are created only for previously unseen provider fighter
 IDs. A verified rerun reused all 4,455 identities, created zero new identities,
 and produced an identical SHA-256 checksum.
 
-All 133 automated tests pass; Ruff and whitespace checks are clean.
-
-The next technical milestone is to attach these UPSET UUIDs to historical
-profiles, fight participants, and fighter-fight statistics.
+The identity-enrichment stage is implemented and verified on test fixtures,
+including a lookup against the committed UFCStats registry. Run it against the
+ignored full historical exports on the local Mac to verify all 4,455 profiles,
+8,551 fights, and 17,102 fighter-fight statistics. The full processed exports
+were not available for this workspace's full-snapshot audit.
 
 ## Next Steps
 
-1. Attach UPSET fighter UUIDs to historical profiles, linked fight
-   participants, and fighter-fight statistics.
+1. Run `python -m upset.data.export_identified` locally and audit all three
+   full-snapshot outputs against the permanent registry.
 
 2. Reconcile initial cross-provider fighter examples between UFCStats and Cito
    while preserving both providers' original IDs.
