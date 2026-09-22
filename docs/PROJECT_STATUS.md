@@ -1,6 +1,6 @@
 # UPSET Project Status
 
-**Last updated:** September 21, 2026
+**Last updated:** September 22, 2026
 
 **Current phase:** Phase 1 — Data Foundation
 
@@ -207,6 +207,13 @@ Additional:
   identities, and produced the same SHA-256 checksum
 - Added 20 identity, registry, and registry-export tests; 133 total tests passed
 - Verified Ruff and Git whitespace checks pass
+- Added a separate historical identity-enrichment stage for profiles, linked
+  fights, and fighter-fight statistics. It preserves the existing source JSONL
+  contracts and reads permanent UUIDs from the committed registry.
+- Added cross-file checks for missing mappings, duplicate records, missing
+  profiles, participant identity collisions, and missing or extra statistics.
+- Added the repeatable command `python -m upset.data.export_identified`.
+- Verified 141 tests, Ruff, and a sample mapping against the committed registry.
 
 ## Current Data Findings
 
@@ -258,32 +265,31 @@ UPSET UUIDs. New UUIDs are created only for previously unseen provider fighter
 IDs. A verified rerun reused all 4,455 identities, created zero new identities,
 and produced an identical SHA-256 checksum.
 
-All 133 automated tests pass; Ruff and whitespace checks are clean.
-
-The next technical milestone is to attach these UPSET UUIDs to historical
-profiles, fight participants, and fighter-fight statistics.
+The historical identity export was run against the full processed snapshot
+on the local Mac. It produced 4,455 identified profiles, 8,551 identified
+fights, and 17,102 identified fighter-fight statistics. The exporter reported
+zero unresolved mappings and passed read-back verification; `wc -l` confirmed
+each output count. All 141 automated tests passed on the Mac, Ruff passed, and
+the feature branch working tree was clean.
 
 ## Next Steps
 
-1. Attach UPSET fighter UUIDs to historical profiles, linked fight
-   participants, and fighter-fight statistics.
-
-2. Reconcile initial cross-provider fighter examples between UFCStats and Cito
+1. Reconcile initial cross-provider fighter examples between UFCStats and Cito
    while preserving both providers' original IDs.
 
-3. Extend outcome handling when a source can distinguish scheduled, cancelled,
+2. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-4. Build dated pre-fight fighter-stat snapshots using only information
+3. Build dated pre-fight fighter-stat snapshots using only information
    available before each fight.
 
-5. Create leakage-safe historical features for pace, striking, grappling,
+4. Create leakage-safe historical features for pace, striking, grappling,
    durability, recent form, and strength of schedule.
 
-6. Train and evaluate a baseline model with chronological data splits and a
+5. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
 
-7. Revisit UFCalendar before implementing automated current-data updates for
+6. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers
