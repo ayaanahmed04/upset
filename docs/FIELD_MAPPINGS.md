@@ -506,8 +506,9 @@ the same SHA-256 checksum:
 `bf52fd0dd78065b5cfba7fe6ec13c3f36d7d12051343fb964b79eb6b2d00d664`.
 An independent full-data audit matched all row keys, dates, history counts,
 and seven rate calculations to their input snapshots. It found 2,699 rows
-with zero earlier fights; same-day repeat appearances can each be a first
-fight under the strict earlier-date rule.
+with zero earlier fights. This counts fight-participant rows, not distinct
+fighters. The difference from the earlier name-based count of 2,647 requires
+an audit of distinct UPSET IDs and same-date appearances.
 
 | Field | Calculation from prior totals |
 | --- | --- |

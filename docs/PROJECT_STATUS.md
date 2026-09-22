@@ -81,7 +81,7 @@ Additional:
 - Confirmed fight-data coverage from 1994-03-11 through 2026-03-07
 - Confirmed no duplicate `Fighter_URL` records
 - Confirmed no duplicate `Fight_URL` records
-- Confirmed all 2,647 unique fighters appearing in fight rows have a matching fighter-profile name
+- Confirmed all 2,647 distinct fighter-name labels appearing in fight rows have a matching fighter-profile name
 - Identified 1,801 profile-only fighter names requiring later investigation
 - Identified seven fighter-name collisions representing distinct people
 - Established that fighter names cannot safely serve as permanent unique identifiers
@@ -252,7 +252,7 @@ The current historical dataset contains:
 - 4,455 fighter-profile rows
 - 4,448 unique fighter names
 - 8,551 fight rows
-- 2,647 unique fighters appearing in the fight table
+- 2,647 distinct fighter-name labels in the fight table (earlier name-based audit)
 - 1,801 fighter names present only in the profile table
 - Historical fight coverage from 1994-03-11 through 2026-03-07
 - All 17,102 fight-participant slots are linked to same-source fighter profiles
