@@ -204,6 +204,43 @@ The historical source does not provide total-strike counts, reversals,
 target-specific attempts, position-specific attempts, or true round-level
 statistics. Those fields are not invented during normalization.
 
+### Durability source audit
+
+Run `python -m upset.data.audit_durability_sources` after the identified
+fight and fight-stat exports. It requires exactly two identified statistics
+records for each fight and checks each source fighter ID against its UPSET
+identity. It reports all original result-method strings verbatim; this is
+needed before defining a KO/TKO or submission-loss feature. For each fighter,
+the *opponent's* recorded KD count is the fighter's recorded knockdowns
+conceded. The report counts positive opponent KD appearances and distinct
+fighter IDs with at least one recorded knockdown conceded. It does not yet
+publish pre-fight features or retrain the baseline.
+
+The full historical audit reported 8,551 fights, 17,102 fighter-fight rows,
+3,655 scored knockdowns, 3,139 fighter-fight rows with at least one opponent
+knockdown, and 1,536 distinct fighters with at least one recorded knockdown
+conceded. The greatest aggregate recorded for one fighter was 12. The source
+method distribution was: KO/TKO 2,688; Submission 1,655; Decision - Unanimous
+3,083; Decision - Split 815; Decision - Majority 98; TKO - Doctor's Stoppage
+97; Overturned 58; Could Not Continue 32; DQ 23; Other 2. There were 151
+combined Draw/NC winner labels. These method totals count all bouts and are
+not yet a validated tally of fighters who lost by a given method.
+
+The historical fight-level totals contain no real round rows. To inspect
+one known Cito bout, run `python -m upset.data.probe_cito_rounds` with the
+local Cito key in `CITO_API_KEY` or `.env`. This makes one API request and
+prints the response field names and row counts, not the key or full records.
+The reviewed UFC 311 bout returned HTTP 403 and code
+`HISTORY_WINDOW_EXCEEDED`, so no historical round-row shape was observed.
+On an error the probe prints only the HTTP
+status and provider error type/code when present; it omits the response
+message, records, and key. This specific 403 is the key's historical access
+window, rather than a rate limit (429). Access and coverage must be confirmed
+before ingestion.
+Provider round records need verified historical coverage and fighter links
+before they can be joined to the historical cohort. Raw Cito profile totals
+must not be used as past-at-date prediction features.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.

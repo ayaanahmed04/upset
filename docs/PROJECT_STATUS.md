@@ -267,6 +267,19 @@ Additional:
   loss (0.69328) and Brier score (0.25008) were slightly worse than the
   training-prevalence comparison (0.69319 and 0.25002). This is a weak
   historical baseline, not evidence of reliable live prediction.
+- Added source audits for potential durability and round-level features. The
+  historical audit pairs each bout's identified fighter-stat rows, counts
+  recorded opponent knockdowns, and reports all result-method labels without
+  guessing finish categories. On the Mac it verified 8,551 fights and 17,102
+  participant-stat rows, with 3,655 recorded knockdowns, 3,139 fighter-fight
+  appearances with an opponent-recorded knockdown, and 1,536 distinct fighters
+  with at least one. Repeated runs produced identical SHA-256
+  `d4d5adecd15c2f08aacd38a32f00fdb58eec591688495699fb30cec2aae09556`.
+  The Cito probe of the reviewed UFC 311 bout returned HTTP 403 with provider
+  code `HISTORY_WINDOW_EXCEEDED`. This confirms the current key cannot read
+  that bout's round records. No historical round coverage was established.
+  The latest Mac check passed 204 tests; Ruff found an import-order issue,
+  corrected on this branch pending recheck. No model features or scores changed.
 
 ## Current Data Findings
 
@@ -310,19 +323,25 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Inspect the available pre-fight history, missing rates, label balance, and
+1. Recheck Ruff on the Mac. The Cito error code confirms the historical
+   access window caused the 403. Design and test a resumable round-record
+   acquisition and validation pipeline using available recent bouts before
+   considering paid historical access. Keep round ingestion separate until
+   coverage and provider links are proven.
+
+2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to
    the training-prevalence comparison without tuning on the examined test set.
 
-2. Consider durability, recent form, and strength of schedule after reviewing
-   which historical fields reliably support them. Use time-based validation
-   within past data for model selection, and reserve newer unseen fights for
-   an unbiased final evaluation.
+3. Classify the observed historical result methods, then consider dated
+   knockdowns conceded, finish losses, recent form, and strength of schedule.
+   Use time-based validation within past data for model selection, and reserve
+   newer unseen fights for an unbiased final evaluation.
 
-3. Keep combined `Draw/NC` outcomes outside binary model training; review
+4. Keep combined `Draw/NC` outcomes outside binary model training; review
    richer outcome handling if a future source distinguishes the two.
 
-4. Revisit UFCalendar before implementing automated current-data updates for
+5. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers

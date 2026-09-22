@@ -441,3 +441,27 @@ and exclusion reason stay outside the model input matrix. This initial
 baseline is a measurement, not a validated live prediction system. Changes
 to features or hyperparameters after examining the test period require a
 fresh future holdout for an unbiased final estimate.
+
+## 026 — Audit Durability Sources and Round Coverage Before Feature Modeling
+
+The historical source provides each fighter's recorded knockdowns for a
+whole fight and a shared winner and method label. A fighter's opponent's
+knockdown count can become a *recorded knockdowns conceded* proxy after the
+fighter identities and both bout-stat rows are joined. It does not count all
+times a fighter was hurt, and a zero does not certify that no knockdown
+occurred outside the source's coverage. Finish losses require a reviewed
+classification of actual method labels, with draw/no-contest rows excluded
+from win/loss classifications. Method strings are audited verbatim first.
+
+The Kaggle fight totals cannot be divided into true rounds. Cito documents
+round-by-round rows and UPSET already has a round normalizer, but API shape,
+historical coverage, identity links, and access limits must be measured before
+round-derived features can enter a historical model. Probe one reviewed bout
+without exposing the API key, then decide on a coverage and acquisition plan.
+The reviewed UFC 311 round request returned HTTP 403 with Cito error code
+`HISTORY_WINDOW_EXCEEDED`. The current key lacks access to that older bout's
+round rows. Build a resumable round acquisition and validation pipeline and
+test it on accessible recent bouts before purchasing historical API access.
+Preserve provider provenance and missingness. Any later durability or round
+feature for a fight must use only earlier event dates; no current-fight round
+or finish information may appear among that fight's prediction inputs.
