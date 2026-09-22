@@ -226,6 +226,15 @@ Additional:
   UPSET UUID. Audited 4,455 identities unchanged, all historical links
   unchanged, and 4,456 total provider links. Verified the repeat run is
   byte-for-byte identical and 152 automated tests and Ruff pass.
+- Added dated pre-fight snapshots from identified fights and fighter-fight
+  statistics. Each snapshot includes only earlier event dates, with same-day
+  fights excluded from each other's prior history.
+- Added repeatable `python -m upset.data.export_prefight` with complete
+  participant-stat validation and atomic, verified JSONL publication.
+- Verified 160 automated tests and Ruff. The Mac exported 17,102 snapshots
+  from 8,551 fights, passed read-back verification, and produced the same
+  SHA-256 checksum on a second run. An independent audit checked each row's
+  prior fight count against strictly earlier event dates and passed.
 
 ## Current Data Findings
 
@@ -253,58 +262,27 @@ Known data-quality concerns include:
 
 ## Current Task
 
-The initial UPSET-owned fighter identity registry is complete for the accepted
-historical snapshot.
+The first dated pre-fight snapshot exporter is complete and verified on the
+8,551-fight processed snapshot on the Mac. Its 17,102 rows passed read-back,
+repeatability, and an independent full-data date audit. The raw historical
+dataset remains uncommitted to GitHub.
 
-Each of the 4,455 normalized historical fighter profiles now has one permanent
-UPSET UUID and one provider link using its UFCStats fighter ID. All 4,455 UUIDs
-and all 4,455 provider keys are unique.
-
-The registry contains 4,448 unique display names and seven duplicate-name
-groups. Those duplicate names remain separate identities because names are
-labels rather than keys.
-
-The repeatable export is:
-
-`python -m upset.data.export_identity_registry`
-
-It writes:
-
-`data/mappings/fighter_registry.json`
-
-When the command is rerun, existing provider links preserve their assigned
-UPSET UUIDs. New UUIDs are created only for previously unseen provider fighter
-IDs. A verified rerun reused all 4,455 identities, created zero new identities,
-and produced an identical SHA-256 checksum.
-
-The historical identity export was run against the full processed snapshot
-on the local Mac. It produced 4,455 identified profiles, 8,551 identified
-fights, and 17,102 identified fighter-fight statistics. The exporter reported
-zero unresolved mappings and passed read-back verification; `wc -l` confirmed
-each output count. All 141 automated tests passed on the Mac, Ruff passed, and
-the feature branch working tree was clean.
-
-The first cross-provider fighter link is now reviewed and included in the
-registry: Cito fighter ID `2df4f188-a33e-463a-a66b-471cfa23e2a0` and
-UFCStats fighter ID `275aca31f61ba28c` both point to Islam Makhachev's
-existing UPSET UUID `557a7a38-f46d-40e9-aa6a-4e8b9c8fcc6c`. The source
-review is committed separately from the registry so the link can be rebuilt.
+The first reviewed cross-provider fighter link is merged into `main`. The
+registry still contains 4,455 permanent identities; Islam Makhachev's existing
+UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
 1. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-2. Build dated pre-fight fighter-stat snapshots using only information
-   available before each fight.
-
-3. Create leakage-safe historical features for pace, striking, grappling,
+2. Create leakage-safe historical features for pace, striking, grappling,
    durability, recent form, and strength of schedule.
 
-4. Train and evaluate a baseline model with chronological data splits and a
+3. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
 
-5. Revisit UFCalendar before implementing automated current-data updates for
+4. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers

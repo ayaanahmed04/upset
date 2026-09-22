@@ -467,6 +467,33 @@ records. Extra registry identities are allowed because some fighters have no
 historical fight in this snapshot. The exporter validates the entire input
 set and verifies all output files before publishing the files.
 
+## Dated Pre-Fight Fighter-Stat Snapshots
+
+Run `python -m upset.data.export_prefight` after the identified export. It
+reads `fights_identified.jsonl` and `fight_stats_identified.jsonl` and writes
+`data/processed/kaggle_ufc_1994_2026/prefight/prefight_stats.jsonl`.
+There is one row per `(source_bout_id, upset_fighter_id)`. The full export on
+the Mac produced 17,102 rows from 8,551 fights. A second export produced the
+same SHA-256 checksum:
+`046b10deb6fe676097a99d499962f74dc1afb4791871fad16e6f414d5c62fc8a`.
+An independent date-order audit checked every snapshot's prior fight count
+against fights with strictly earlier dates and passed. The first event date
+was 1994-03-11.
+
+`event_date` is the target fight's date, and all `prior_*` fields summarize
+only fights on strictly earlier dates. Both fighters receive a row even when
+they have zero prior fights. Multiple fights on one date are excluded from one
+another's snapshots. Totals include prior fight seconds, significant strikes
+landed/attempted, takedowns landed/attempted, knockdowns, and submission
+attempts. `prior_control_observed_fights` counts fights that actually recorded
+control time; `prior_control_seconds` is `null` before any observed control
+value and otherwise sums only observed values, including zero.
+
+The exporter rejects missing, duplicate, or mismatched identified stats and
+invalid dates before replacing the output file. These are dated historical
+snapshots; model features such as rates and strength of schedule will be
+derived and evaluated separately. No current career aggregates enter them.
+
 ## Repeatable Exports
 
 ### Fighter identity registry
@@ -507,4 +534,12 @@ Command:
 
 ```bash
 python -m upset.data.export_identified
+```
+
+### Dated pre-fight fighter statistics
+
+Command:
+
+```bash
+python -m upset.data.export_prefight
 ```
