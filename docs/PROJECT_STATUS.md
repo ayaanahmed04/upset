@@ -267,6 +267,12 @@ Additional:
   loss (0.69328) and Brier score (0.25008) were slightly worse than the
   training-prevalence comparison (0.69319 and 0.25002). This is a weak
   historical baseline, not evidence of reliable live prediction.
+- Added source audits for potential durability and round-level features. The
+  historical audit pairs each bout's identified fighter-stat rows, counts
+  recorded opponent knockdowns, and reports all result-method labels without
+  guessing finish categories. A one-bout Cito probe reports response shape
+  without printing the API key or publishing provider data. Their full-data
+  outputs and round coverage still need to be checked on the Mac.
 
 ## Current Data Findings
 
@@ -310,19 +316,23 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Inspect the available pre-fight history, missing rates, label balance, and
+1. Run the durability source audit on the 8,551 historical fights and probe
+   one reviewed Cito bout for real round-row shape. Review method labels,
+   knockdown coverage, provider links, and API scope before adding features.
+
+2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to
    the training-prevalence comparison without tuning on the examined test set.
 
-2. Consider durability, recent form, and strength of schedule after reviewing
+3. Consider durability, recent form, and strength of schedule after reviewing
    which historical fields reliably support them. Use time-based validation
    within past data for model selection, and reserve newer unseen fights for
    an unbiased final evaluation.
 
-3. Keep combined `Draw/NC` outcomes outside binary model training; review
+4. Keep combined `Draw/NC` outcomes outside binary model training; review
    richer outcome handling if a future source distinguishes the two.
 
-4. Revisit UFCalendar before implementing automated current-data updates for
+5. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers

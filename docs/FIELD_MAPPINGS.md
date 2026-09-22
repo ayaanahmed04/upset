@@ -204,6 +204,26 @@ The historical source does not provide total-strike counts, reversals,
 target-specific attempts, position-specific attempts, or true round-level
 statistics. Those fields are not invented during normalization.
 
+### Durability source audit
+
+Run `python -m upset.data.audit_durability_sources` after the identified
+fight and fight-stat exports. It requires exactly two identified statistics
+records for each fight and checks each source fighter ID against its UPSET
+identity. It reports all original result-method strings verbatim; this is
+needed before defining a KO/TKO or submission-loss feature. For each fighter,
+the *opponent's* recorded KD count is the fighter's recorded knockdowns
+conceded. The report counts positive opponent KD appearances and distinct
+fighter IDs with at least one recorded knockdown conceded. It does not yet
+publish pre-fight features or retrain the baseline.
+
+The historical fight-level totals contain no real round rows. To inspect
+one known Cito bout, run `python -m upset.data.probe_cito_rounds` with the
+local Cito key in `CITO_API_KEY` or `.env`. This makes one API request and
+prints the response field names and row counts, not the key or full records.
+Provider round records need verified historical coverage and fighter links
+before they can be joined to the historical cohort. Raw Cito profile totals
+must not be used as past-at-date prediction features.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.
