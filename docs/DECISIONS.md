@@ -415,3 +415,29 @@ dates, and contradictory winners before publishing verified JSONL output.
 Run `python -m upset.data.export_matchups` after both identified fights and
 pre-fight fighter features are exported. A baseline model and chronological
 evaluation will be developed and validated separately.
+
+## 025 — Chronological Baseline and Training-Only Preprocessing
+
+Use the verified historical matchups as the sole input to the first binary
+prediction experiment. Validate the exact row schema, the nine whitelisted
+feature differences, unique bout IDs, fighter orientation, dates, and the
+explicit `Draw/NC` exclusion contract before fitting. Keep ambiguous rows in
+the audit counts but exclude them from both fitting and binary metrics.
+
+Sort fights by event date and group entire dates into consecutive training,
+validation, and test periods. Aim for 70%, 15%, and 15% of all bout rows;
+dates on the boundary stay together, so the actual counts may vary. The
+validation and test periods must each contain at least one decisive fight,
+and training must contain wins for both fighter orientations. Never use later
+dates to fit an earlier model.
+
+The fixed first experiment fits median imputation (with missingness
+indicators), standard scaling, and logistic regression only on decisive
+training rows. It receives only the nine prior-feature differences. Report
+label balance and missingness by period, and compare accuracy, ROC AUC when
+both classes are present, log loss, and Brier score against the constant
+training-period win rate. The source winner label, fighter IDs, event date,
+and exclusion reason stay outside the model input matrix. This initial
+baseline is a measurement, not a validated live prediction system. Changes
+to features or hyperparameters after examining the test period require a
+fresh future holdout for an unbiased final estimate.

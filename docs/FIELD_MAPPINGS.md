@@ -567,7 +567,48 @@ winner name must match exactly one participant before it can be mapped to an
 UPSET fighter ID. The exporter verifies two matched, distinct fighter feature
 rows per fight, matching event dates, all input rows used, a valid outcome,
 and the written JSONL before replacing an older output. Model fitting,
-imputation, class balance analysis, and chronological splits are later work.
+imputation, class balance analysis, and chronological splits are handled in
+the separate baseline command below.
+
+## First Chronological Prediction Baseline
+
+Run `python -m upset.modeling.run_baseline` after the verified matchup export.
+The default input is `prefight/matchups.jsonl`; `--input PATH` can select an
+equivalent export. The command prints a JSON report and does not save a model
+or modify the processed data. Reported metrics depend on the local historical
+data. The Mac full-data run passed its independent count and date audit, and
+two identical reports had SHA-256
+`a707b96f68146c3ddde4690b42810587c173c237051d4c8f74af66c40587b1df`.
+
+| Period | Event dates | Bouts | Decisive | Draw/NC | Model accuracy | Model ROC AUC |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Train | 1994-03-11 to 2021-03-06 | 5,989 | 5,881 | 108 | 0.5479 | 0.5735 |
+| Validation | 2021-03-13 to 2023-08-19 | 1,283 | 1,259 | 24 | 0.5274 | 0.5561 |
+| Test | 2023-08-26 to 2026-03-07 | 1,279 | 1,260 | 19 | 0.5198 | 0.5351 |
+
+On the test period, model log loss was 0.69328 versus 0.69319 for the
+training-prevalence comparison; model Brier score was 0.25008 versus 0.25002.
+Lower is better for both. The model's higher test accuracy (0.5198 versus
+0.4881 for the comparison) does not offset its slightly worse probability
+scores. These measurements show a weak initial historical benchmark, not
+validated performance for upcoming fights.
+
+The input reader requires the exact matchup schema, all nine
+`<field>_diff` keys, valid dated rows and target values, and one row per bout.
+Each event date belongs to only one of train, validation, or test. Split
+boundaries approximate 70/15/15 of *all* bout rows, including the ambiguous
+rows; each period separately reports the number of excluded `Draw/NC` rows.
+Only decisive rows contribute to model fitting and binary metrics. The model
+input is the nine pre-fight differences; source IDs, date, winner text,
+target, and exclusion reason are excluded from the input matrix.
+
+Within the model pipeline, median filling, missingness indicators, and
+standard scaling are fitted only using decisive training rows. The same
+fitted transforms and logistic regression model are applied to later periods.
+The JSON report gives per-period dates, counts, fighter A/B win balance,
+missing inputs, and four binary metrics. It also evaluates a fixed-probability
+comparison using fighter A's win rate in training. ROC AUC is `null` when a
+period contains only one class. Do not treat the test period as a tuning set.
 
 ## Repeatable Exports
 
@@ -633,4 +674,12 @@ Command:
 
 ```bash
 python -m upset.data.export_matchups
+```
+
+### First chronological baseline
+
+Command:
+
+```bash
+python -m upset.modeling.run_baseline
 ```
