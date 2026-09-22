@@ -244,7 +244,12 @@ must not be used as past-at-date prediction features.
 ### Local round acquisition (source records only)
 
 Use a completed recent bout ID from Cito's documented recent-event and
-event-bouts endpoints. Fetch a single bout with
+event-bouts endpoints. Run `python -m upset.data.probe_cito_recent` to list
+recent event slugs and dates, then
+`python -m upset.data.probe_cito_recent --event EVENT_SLUG` to list that
+event's bout IDs and status flags. Both commands show limited identifiers,
+not complete provider records or the API key; an unknown listing shape stops
+without guessing. Fetch a single completed bout with stats using
 `python -m upset.data.collect_cito_rounds --bout-id BOUT_ID`. The local
 `CITO_API_KEY` or `.env` is used; no key is written into the output.
 Alternatively pass `--bout-ids-file PATH` with one ID per line. After access

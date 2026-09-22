@@ -287,7 +287,8 @@ Additional:
   *new* API call per run, and saves only successful nonempty round responses
   under ignored `data/raw/cito_rounds/`. Verified saved files are skipped on
   subsequent runs; malformed data and API errors stop the run. The collector
-  still needs a Mac test with a currently accessible recent bout. No round
+  includes a small recent-event/bout ID discovery probe. Both commands still
+  need Mac tests with a currently accessible recent bout. No round
   features or historical round coverage have been verified.
 
 ## Current Data Findings

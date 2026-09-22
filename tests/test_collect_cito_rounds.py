@@ -98,7 +98,7 @@ class CollectCitoRoundsTests(unittest.TestCase):
                 ):
                     collect_one(
                         "bout-1", directory, "secret",
-                        lambda *a, **k: response(payload),
+                        lambda *a, payload=payload, **k: response(payload),
                     )
                 self.assertFalse((directory / "bout-1.json").exists())
 
