@@ -12,6 +12,8 @@ from upset.data.models import Fight, FightStats
 from upset.data.probe_cito_rounds import (
     describe_error_payload,
     describe_round_payload,
+)
+from upset.data.probe_cito_rounds import (
     main as probe_cito_rounds,
 )
 

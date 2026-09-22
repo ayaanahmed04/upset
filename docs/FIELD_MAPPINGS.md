@@ -230,11 +230,13 @@ The historical fight-level totals contain no real round rows. To inspect
 one known Cito bout, run `python -m upset.data.probe_cito_rounds` with the
 local Cito key in `CITO_API_KEY` or `.env`. This makes one API request and
 prints the response field names and row counts, not the key or full records.
-The reviewed UFC 311 bout returned HTTP 403 on the first attempt, so no
-round-row shape was observed. On an error the probe now prints only the HTTP
+The reviewed UFC 311 bout returned HTTP 403 and code
+`HISTORY_WINDOW_EXCEEDED`, so no historical round-row shape was observed.
+On an error the probe prints only the HTTP
 status and provider error type/code when present; it omits the response
-message, records, and key. Cito documents 403 as denied resource access and
-429 as rate limiting. Access and coverage must be confirmed before ingestion.
+message, records, and key. This specific 403 is the key's historical access
+window, rather than a rate limit (429). Access and coverage must be confirmed
+before ingestion.
 Provider round records need verified historical coverage and fighter links
 before they can be joined to the historical cohort. Raw Cito profile totals
 must not be used as past-at-date prediction features.

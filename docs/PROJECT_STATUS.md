@@ -275,10 +275,11 @@ Additional:
   appearances with an opponent-recorded knockdown, and 1,536 distinct fighters
   with at least one. Repeated runs produced identical SHA-256
   `d4d5adecd15c2f08aacd38a32f00fdb58eec591688495699fb30cec2aae09556`.
-  The first Cito probe of the reviewed UFC 311 historical bout returned HTTP
-  403, so no round-row schema or historical coverage was established. The Mac
-  passed 202 tests; Ruff found one exception-type issue, corrected on this
-  branch pending a new Mac verification. No model features or scores changed.
+  The Cito probe of the reviewed UFC 311 bout returned HTTP 403 with provider
+  code `HISTORY_WINDOW_EXCEEDED`. This confirms the current key cannot read
+  that bout's round records. No historical round coverage was established.
+  The latest Mac check passed 204 tests; Ruff found an import-order issue,
+  corrected on this branch pending recheck. No model features or scores changed.
 
 ## Current Data Findings
 
@@ -322,10 +323,11 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Recheck Ruff and the safe Cito error-label probe on the Mac. Cito's 403
-   documents lack of access to this resource; confirm its structured error
-   code before assuming which historical rounds or endpoints are restricted.
-   Keep round ingestion separate until coverage and provider links are proven.
+1. Recheck Ruff on the Mac. The Cito error code confirms the historical
+   access window caused the 403. Design and test a resumable round-record
+   acquisition and validation pipeline using available recent bouts before
+   considering paid historical access. Keep round ingestion separate until
+   coverage and provider links are proven.
 
 2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to

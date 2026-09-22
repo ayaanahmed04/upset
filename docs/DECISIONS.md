@@ -458,9 +458,10 @@ round-by-round rows and UPSET already has a round normalizer, but API shape,
 historical coverage, identity links, and access limits must be measured before
 round-derived features can enter a historical model. Probe one reviewed bout
 without exposing the API key, then decide on a coverage and acquisition plan.
-The first probe of the reviewed UFC 311 bout returned HTTP 403; do not infer
-historical round availability from the documentation alone. Obtain the safe
-structured error labels and check access scope before planning bulk ingestion.
+The reviewed UFC 311 round request returned HTTP 403 with Cito error code
+`HISTORY_WINDOW_EXCEEDED`. The current key lacks access to that older bout's
+round rows. Build a resumable round acquisition and validation pipeline and
+test it on accessible recent bouts before purchasing historical API access.
 Preserve provider provenance and missingness. Any later durability or round
 feature for a fight must use only earlier event dates; no current-fight round
 or finish information may appear among that fight's prediction inputs.
