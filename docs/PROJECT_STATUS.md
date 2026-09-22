@@ -231,8 +231,10 @@ Additional:
   fights excluded from each other's prior history.
 - Added repeatable `python -m upset.data.export_prefight` with complete
   participant-stat validation and atomic, verified JSONL publication.
-- Verified 160 automated tests and Ruff; full snapshot export on the Mac's
-  historical data is the next verification step.
+- Verified 160 automated tests and Ruff. The Mac exported 17,102 snapshots
+  from 8,551 fights, passed read-back verification, and produced the same
+  SHA-256 checksum on a second run. An independent audit checked each row's
+  prior fight count against strictly earlier event dates and passed.
 
 ## Current Data Findings
 
@@ -260,11 +262,10 @@ Known data-quality concerns include:
 
 ## Current Task
 
-The first dated pre-fight snapshot exporter is implemented and tested with
-small controlled histories. Run it against the 8,551-fight processed snapshot
-on the local Mac, then inspect the record count, repeatability, early-history
-rows, and same-day behavior. The raw historical dataset is intentionally not
-committed to GitHub, so this full-data run cannot be performed here.
+The first dated pre-fight snapshot exporter is complete and verified on the
+8,551-fight processed snapshot on the Mac. Its 17,102 rows passed read-back,
+repeatability, and an independent full-data date audit. The raw historical
+dataset remains uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
 registry still contains 4,455 permanent identities; Islam Makhachev's existing
@@ -272,18 +273,16 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Run and audit the pre-fight export against the full historical snapshot.
-
-2. Extend outcome handling when a source can distinguish scheduled, cancelled,
+1. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-3. Create leakage-safe historical features for pace, striking, grappling,
+2. Create leakage-safe historical features for pace, striking, grappling,
    durability, recent form, and strength of schedule.
 
-4. Train and evaluate a baseline model with chronological data splits and a
+3. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.
 
-5. Revisit UFCalendar before implementing automated current-data updates for
+4. Revisit UFCalendar before implementing automated current-data updates for
    the public application.
 
 ## Blockers
