@@ -2,11 +2,18 @@
 
 import unittest
 from dataclasses import replace
+from io import StringIO
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from upset.data.audit_durability_sources import audit_durability_sources
 from upset.data.identify_historical import IdentifiedFight, IdentifiedFightStats
 from upset.data.models import Fight, FightStats
-from upset.data.probe_cito_rounds import describe_round_payload
+from upset.data.probe_cito_rounds import (
+    describe_error_payload,
+    describe_round_payload,
+    main as probe_cito_rounds,
+)
 
 SOURCE = "kaggle_ufc_1994_2026"
 ALICE = "00000000-0000-4000-8000-000000000001"
@@ -126,6 +133,66 @@ class DurabilitySourceAuditTests(unittest.TestCase):
         )
         self.assertEqual(nested["list_fields"]["rounds"]["rows"], 1)
         self.assertEqual(nested["list_fields"]["rounds"]["first_row_keys"], ["boutId"])
+
+    def test_cito_probe_reports_error_labels_without_message_or_key(self):
+        payload = {
+            "error": {
+                "type": "authorization_error",
+                "code": "access_denied",
+                "message": "Secret API key: cito_private_example",
+            }
+        }
+        self.assertEqual(
+            describe_error_payload(payload),
+            {"error_type": "authorization_error", "error_code": "access_denied"},
+        )
+        self.assertEqual(
+            describe_error_payload("unstructured error"),
+            {"error_type": None, "error_code": None},
+        )
+        self.assertEqual(
+            describe_error_payload(
+                {
+                    "error": {
+                        "type": "authorization_error",
+                        "code": "cito_private_example",
+                    }
+                },
+                secret="cito_private_example",
+            ),
+            {"error_type": "authorization_error", "error_code": None},
+        )
+        with self.assertRaises(TypeError):
+            describe_round_payload([{"round": 1}])
+
+    def test_denied_cito_probe_does_not_print_response_message_or_key(self):
+        secret = "cito_private_example"
+        response = SimpleNamespace(
+            status_code=403,
+            ok=False,
+            json=lambda: {
+                "error": {
+                    "type": "authorization_error",
+                    "code": "access_denied",
+                    "message": f"Access denied for {secret}",
+                }
+            },
+        )
+        requests = SimpleNamespace(get=lambda *args, **kwargs: response)
+        dotenv = SimpleNamespace(load_dotenv=lambda **kwargs: None)
+        output = StringIO()
+        with (
+            patch.dict("sys.modules", {"requests": requests, "dotenv": dotenv}),
+            patch("sys.argv", ["probe_cito_rounds"]),
+            patch("upset.data.probe_cito_rounds.os.getenv", return_value=secret),
+            patch("sys.stdout", output),
+            self.assertRaises(SystemExit),
+        ):
+            probe_cito_rounds()
+        self.assertIn("HTTP status: 403", output.getvalue())
+        self.assertIn("authorization_error", output.getvalue())
+        self.assertNotIn(secret, output.getvalue())
+        self.assertNotIn("Access denied", output.getvalue())
 
 
 if __name__ == "__main__":

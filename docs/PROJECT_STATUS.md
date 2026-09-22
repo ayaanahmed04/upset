@@ -270,9 +270,15 @@ Additional:
 - Added source audits for potential durability and round-level features. The
   historical audit pairs each bout's identified fighter-stat rows, counts
   recorded opponent knockdowns, and reports all result-method labels without
-  guessing finish categories. A one-bout Cito probe reports response shape
-  without printing the API key or publishing provider data. Their full-data
-  outputs and round coverage still need to be checked on the Mac.
+  guessing finish categories. On the Mac it verified 8,551 fights and 17,102
+  participant-stat rows, with 3,655 recorded knockdowns, 3,139 fighter-fight
+  appearances with an opponent-recorded knockdown, and 1,536 distinct fighters
+  with at least one. Repeated runs produced identical SHA-256
+  `d4d5adecd15c2f08aacd38a32f00fdb58eec591688495699fb30cec2aae09556`.
+  The first Cito probe of the reviewed UFC 311 historical bout returned HTTP
+  403, so no round-row schema or historical coverage was established. The Mac
+  passed 202 tests; Ruff found one exception-type issue, corrected on this
+  branch pending a new Mac verification. No model features or scores changed.
 
 ## Current Data Findings
 
@@ -316,18 +322,19 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Run the durability source audit on the 8,551 historical fights and probe
-   one reviewed Cito bout for real round-row shape. Review method labels,
-   knockdown coverage, provider links, and API scope before adding features.
+1. Recheck Ruff and the safe Cito error-label probe on the Mac. Cito's 403
+   documents lack of access to this resource; confirm its structured error
+   code before assuming which historical rounds or endpoints are restricted.
+   Keep round ingestion separate until coverage and provider links are proven.
 
 2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to
    the training-prevalence comparison without tuning on the examined test set.
 
-3. Consider durability, recent form, and strength of schedule after reviewing
-   which historical fields reliably support them. Use time-based validation
-   within past data for model selection, and reserve newer unseen fights for
-   an unbiased final evaluation.
+3. Classify the observed historical result methods, then consider dated
+   knockdowns conceded, finish losses, recent form, and strength of schedule.
+   Use time-based validation within past data for model selection, and reserve
+   newer unseen fights for an unbiased final evaluation.
 
 4. Keep combined `Draw/NC` outcomes outside binary model training; review
    richer outcome handling if a future source distinguishes the two.
