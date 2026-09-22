@@ -46,12 +46,14 @@ class ProbeRecentTests(unittest.TestCase):
         self.assertEqual(summarize_listing(flat, kind="bout")[0]["id"], "12910")
 
     def test_unknown_listing_does_not_guess(self):
-        for payload in (
-            None,
-            {"data": {"surprise": []}},
-            {"success": False, "data": []},
+        for payload, error_type in (
+            (None, TypeError),
+            ({"data": None}, TypeError),
+            ({"data": {"surprise": []}}, ValueError),
+            ({"success": False, "data": []}, ValueError),
+            ({"data": [None]}, TypeError),
         ):
-            with self.subTest(payload=payload), self.assertRaises(ValueError):
+            with self.subTest(payload=payload), self.assertRaises(error_type):
                 summarize_listing(payload, kind="event")
 
 

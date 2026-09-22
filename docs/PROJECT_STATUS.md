@@ -287,9 +287,12 @@ Additional:
   *new* API call per run, and saves only successful nonempty round responses
   under ignored `data/raw/cito_rounds/`. Verified saved files are skipped on
   subsequent runs; malformed data and API errors stop the run. The collector
-  includes a small recent-event/bout ID discovery probe. Both commands still
-  need Mac tests with a currently accessible recent bout. No round
-  features or historical round coverage have been verified.
+  includes a small recent-event/bout ID discovery probe. The Mac passed 213
+  tests; Ruff found two exception-type issues in the discovery probe, fixed
+  on the feature branch pending recheck. The live recent-event request
+  succeeded and identified `cryptocom-ufc-331` on 2026-09-19 as a card with
+  stats. Event-bout discovery and one real round collection remain untested.
+  No round features or historical round coverage have been verified.
 
 ## Current Data Findings
 

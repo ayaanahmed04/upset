@@ -13,7 +13,9 @@ _EVENT_SLUG = re.compile(r"[A-Za-z0-9-]{1,100}\Z")
 
 def summarize_listing(payload: object, *, kind: str) -> list[dict]:
     """Expose IDs and dates only; reject unknown provider response layouts."""
-    if not isinstance(payload, dict) or payload.get("success") is False:
+    if not isinstance(payload, dict):
+        raise TypeError("Cito listing must be a JSON object.")
+    if payload.get("success") is False:
         raise ValueError("Cito listing is not a successful JSON object.")
     data = payload.get("data")
     if isinstance(data, list):
@@ -27,12 +29,12 @@ def summarize_listing(payload: object, *, kind: str) -> list[dict]:
             raise ValueError("Unknown Cito listing data shape.")
         items = candidates[0]
     else:
-        raise ValueError("Unknown Cito listing data shape.")
+        raise TypeError("Unknown Cito listing data shape.")
 
     summary = []
     for item in items[:10]:
         if not isinstance(item, dict):
-            raise ValueError("Cito listing contains a non-object item.")
+            raise TypeError("Cito listing contains a non-object item.")
         record = item.get(kind) if isinstance(item.get(kind), dict) else item
         identifier = record.get("id") or record.get(f"{kind}Id")
         entry = {
@@ -80,7 +82,7 @@ def main() -> None:
         raise SystemExit("Cito listing failed; see safe status and error labels.")
     try:
         summary = summarize_listing(payload, kind="bout" if args.event else "event")
-    except ValueError as error:
+    except (TypeError, ValueError) as error:
         raise SystemExit(str(error)) from None
     output = json.dumps(summary, indent=2)
     if api_key in output:
