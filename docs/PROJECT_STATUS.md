@@ -258,8 +258,15 @@ Additional:
 - Added a fixed first binary prediction baseline with grouped chronological
   splits, training-only median filling and scaling, and a training-prevalence
   comparison. The command reports label balance, feature missingness, and
-  metrics by period. Synthetic tests cover the time boundary and target
-  isolation; full-data performance on the Mac has not yet been measured.
+  metrics by period. The Mac passed 198 tests and Ruff and independently
+  audited all 8,551 split rows (8,400 decisive, 151 Draw/NC). Two baseline
+  reports matched SHA-256
+  `a707b96f68146c3ddde4690b42810587c173c237051d4c8f74af66c40587b1df`.
+  The held-out test period (2023-08-26 through 2026-03-07) contained 1,260
+  decisive fights. Model accuracy was 0.5198 and ROC AUC was 0.5351; its log
+  loss (0.69328) and Brier score (0.25008) were slightly worse than the
+  training-prevalence comparison (0.69319 and 0.25002). This is a weak
+  historical baseline, not evidence of reliable live prediction.
 
 ## Current Data Findings
 
@@ -292,8 +299,9 @@ The dated pre-fight snapshot and descriptive feature exports have both been
 verified on the full 8,551-fight history on the Mac. They produce 17,102
 fighter rows each. The matchup export has also been verified against all
 8,551 fights: 8,400 decisive labels and 151 combined `Draw/NC` labels with
-null targets. The initial chronological baseline is implemented and awaiting
-its full historical run on the Mac. The raw historical dataset remains
+null targets. The initial chronological baseline has now run and passed an
+independent split audit on that full history. It provides a measured starting
+point with weak held-out discrimination. The raw historical dataset remains
 uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
@@ -302,13 +310,14 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Run and review the fixed chronological baseline on the full matchup
-   export. Inspect each period's date range, labels, missingness, and metrics
-   relative to the training-prior comparison before choosing another model.
+1. Inspect the available pre-fight history, missing rates, label balance, and
+   data coverage by period. Diagnose why the fixed baseline performs close to
+   the training-prevalence comparison without tuning on the examined test set.
 
-2. Extend the feature set for durability, recent form, and strength of
-   schedule after reviewing which history and outcome fields reliably support
-   them.
+2. Consider durability, recent form, and strength of schedule after reviewing
+   which historical fields reliably support them. Use time-based validation
+   within past data for model selection, and reserve newer unseen fights for
+   an unbiased final evaluation.
 
 3. Keep combined `Draw/NC` outcomes outside binary model training; review
    richer outcome handling if a future source distinguishes the two.

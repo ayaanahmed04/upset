@@ -576,7 +576,22 @@ Run `python -m upset.modeling.run_baseline` after the verified matchup export.
 The default input is `prefight/matchups.jsonl`; `--input PATH` can select an
 equivalent export. The command prints a JSON report and does not save a model
 or modify the processed data. Reported metrics depend on the local historical
-data; no full-data baseline performance is claimed until the Mac run passes.
+data. The Mac full-data run passed its independent count and date audit, and
+two identical reports had SHA-256
+`a707b96f68146c3ddde4690b42810587c173c237051d4c8f74af66c40587b1df`.
+
+| Period | Event dates | Bouts | Decisive | Draw/NC | Model accuracy | Model ROC AUC |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Train | 1994-03-11 to 2021-03-06 | 5,989 | 5,881 | 108 | 0.5479 | 0.5735 |
+| Validation | 2021-03-13 to 2023-08-19 | 1,283 | 1,259 | 24 | 0.5274 | 0.5561 |
+| Test | 2023-08-26 to 2026-03-07 | 1,279 | 1,260 | 19 | 0.5198 | 0.5351 |
+
+On the test period, model log loss was 0.69328 versus 0.69319 for the
+training-prevalence comparison; model Brier score was 0.25008 versus 0.25002.
+Lower is better for both. The model's higher test accuracy (0.5198 versus
+0.4881 for the comparison) does not offset its slightly worse probability
+scores. These measurements show a weak initial historical benchmark, not
+validated performance for upcoming fights.
 
 The input reader requires the exact matchup schema, all nine
 `<field>_diff` keys, valid dated rows and target values, and one row per bout.
