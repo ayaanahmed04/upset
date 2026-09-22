@@ -235,6 +235,12 @@ Additional:
   from 8,551 fights, passed read-back verification, and produced the same
   SHA-256 checksum on a second run. An independent audit checked each row's
   prior fight count against strictly earlier event dates and passed.
+- Added initial descriptive pre-fight fighter metrics for striking pace and
+  accuracy, takedown pace and accuracy, knockdown and submission-attempt pace,
+  and the fraction of prior bouts with observed control time.
+- Added `python -m upset.data.export_prefight_features` with strict input
+  validation and verified atomic export. The local suite has 176 passing tests
+  and Ruff is clean; the full-data feature export on the Mac is pending.
 
 ## Current Data Findings
 
@@ -262,10 +268,11 @@ Known data-quality concerns include:
 
 ## Current Task
 
-The first dated pre-fight snapshot exporter is complete and verified on the
-8,551-fight processed snapshot on the Mac. Its 17,102 rows passed read-back,
-repeatability, and an independent full-data date audit. The raw historical
-dataset remains uncommitted to GitHub.
+The dated pre-fight snapshot exporter is verified on the full 8,551-fight
+history. The first descriptive feature exporter is implemented and tested
+with controlled histories; the full-data run on the Mac is the next check.
+Both stages read only prior fight statistics. The raw historical dataset
+remains uncommitted to GitHub.
 
 The first reviewed cross-provider fighter link is merged into `main`. The
 registry still contains 4,455 permanent identities; Islam Makhachev's existing
@@ -276,8 +283,9 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 1. Extend outcome handling when a source can distinguish scheduled, cancelled,
    drawn, and no-contest fights.
 
-2. Create leakage-safe historical features for pace, striking, grappling,
-   durability, recent form, and strength of schedule.
+2. Run and audit the initial descriptive feature export on the Mac. Extend
+   the feature set for durability, recent form, and strength of schedule after
+   reviewing which history and outcome fields reliably support them.
 
 3. Train and evaluate a baseline model with chronological data splits and a
    documented policy for ambiguous outcomes.

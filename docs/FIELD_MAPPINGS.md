@@ -491,8 +491,37 @@ value and otherwise sums only observed values, including zero.
 
 The exporter rejects missing, duplicate, or mismatched identified stats and
 invalid dates before replacing the output file. These are dated historical
-snapshots; model features such as rates and strength of schedule will be
-derived and evaluated separately. No current career aggregates enter them.
+snapshots; rates are derived in a separate feature export. Strength of
+schedule and other more complex features are future work. No current career
+aggregates enter them.
+
+## First Pre-Fight Fighter Features
+
+Run `python -m upset.data.export_prefight_features` after the dated snapshot
+export. It reads `prefight/prefight_stats.jsonl` and writes
+`prefight/fighter_features.jsonl`, with one row for each fighter in each fight.
+Both files use the same source bout ID, event date, and permanent fighter ID.
+The first full-data export is pending the run on the Mac.
+
+| Field | Calculation from prior totals |
+| --- | --- |
+| `sig_strikes_landed_per_minute` | `60 * prior_sig_strikes_landed / prior_fight_seconds` |
+| `sig_strikes_accuracy` | `prior_sig_strikes_landed / prior_sig_strikes_attempted` |
+| `takedowns_landed_per_15_minutes` | `900 * prior_takedowns_landed / prior_fight_seconds` |
+| `takedown_accuracy` | `prior_takedowns_landed / prior_takedowns_attempted` |
+| `knockdowns_per_15_minutes` | `900 * prior_knockdowns / prior_fight_seconds` |
+| `submission_attempts_per_15_minutes` | `900 * prior_submission_attempts / prior_fight_seconds` |
+| `control_observed_fraction` | `prior_control_observed_fights / prior_fights` |
+
+Every division returns `null` when its denominator is zero. For example, a
+fighter with no prior fights has `null` rates; a fighter with recorded fight
+time and zero significant-strike attempts has a zero landed-strike pace and
+`null` strike accuracy. `prior_fights` and `prior_fight_seconds` remain in the
+output to show sample size. Control coverage is not a control-time pace; fight
+time limited to bouts with observed control is unavailable in this snapshot.
+The exporter requires two distinct snapshots on one date for every bout,
+validates the input, and verifies a temporary JSONL file before replacing the
+final output. No current fight result enters these formulas.
 
 ## Repeatable Exports
 
@@ -542,4 +571,12 @@ Command:
 
 ```bash
 python -m upset.data.export_prefight
+```
+
+### Pre-fight fighter features
+
+Command:
+
+```bash
+python -m upset.data.export_prefight_features
 ```
