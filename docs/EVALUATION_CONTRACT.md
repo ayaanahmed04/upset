@@ -138,3 +138,17 @@ variants. Removing grappling leaves accuracy unchanged and slightly improves
 log loss, while removing knockdowns improves accuracy but worsens log loss.
 Because the feature groups overlap and these folds have already been examined,
 none of these ranks or the 58.00% variant is a prospective performance claim.
+
+The add-striking variant beat the original baseline's correct-bout count in
+all four folds (2019, 2021, 2022, and partial 2023). The full defensive model
+also beat the baseline in all four. Other group comparisons were less stable:
+add-finish-losses beat the baseline in two folds, and removing striking from
+the full model *improved* 2022 accuracy by 11 bouts. Removing knockdowns
+improved the pooled accuracy mostly because of 2022 (+16 correct versus full),
+while it hurt partial 2023 (-6). These observations strengthen the reason to
+avoid treating a pooled group ranking as a production feature choice.
+
+The Mac reran the experiment at code commit `228a8ba` with the previously
+accepted matchup SHA-256 `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
+and defensive history SHA-256 `fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
+Ruff and all 249 automated tests passed; the working tree was clean.

@@ -395,13 +395,16 @@ log loss (0.68159 to 0.68138). Dropping knockdowns raised accuracy to
 1,077 (58.00%) but worsened log loss to 0.68235. These are exploratory
 same-fold results and do not establish the best model for future fights.
 The Mac passed 249 tests. Ruff found one test import-order error, corrected
-on the diagnostic branch pending Mac recheck.
+on the diagnostic branch. The Mac then reran Ruff, all 249 tests, and the
+diagnostic at `228a8ba`, confirming the accepted input hashes and a clean
+working tree. Striking alone improved correct-bout counts in all four folds;
+other group effects varied by year. In 2022, removing striking from full
+defense improved accuracy by 11 bouts, illustrating correlated feature effects.
 
 ## Next Steps
 
-1. Recheck Ruff and tests on the diagnostic branch after its import-order
-   correction. Inspect fold-by-fold metrics and verify the source hashes in
-   the saved group manifest before merging the draft PR.
+1. Merge the validated defensive group diagnostics as exploratory evidence.
+   Preserve the accepted input hashes and per-bout predictions for review.
 2. Keep defense as a promising development candidate and preserve the original
    nine-feature baseline and paired predictions as fixed references.
 3. Add outcome/recency and chronological opponent-strength families as
