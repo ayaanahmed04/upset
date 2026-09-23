@@ -95,4 +95,60 @@ reference.
 `python -m upset.data.audit_prefight_defense` independently recomputes a
 deterministic sample of saved defensive totals from the identified earlier
 source bouts and checks the strictly earlier prior-fight count for every
-fighter-bout row. This full-data audit has not yet run on the Mac.
+fighter-bout row. On the Mac at `ef2e3af`, the audit matched source identities,
+dates and earlier fight counts for all 17,102 rows. It independently
+recalculated totals for 44 sampled rows from 41 fighters; all matched.
+
+## Exploratory defensive group diagnostics
+
+`python -m upset.modeling.run_defense_groups` saves ignored local outputs in
+`experiments/defense_groups_v1/`. It retains the baseline and complete
+defensive model probabilities from the prior paired comparison, then refits
+eight variants on the identical frozen folds and decisive validation bouts.
+Four variants add only one defensive group to the nine baseline features;
+four omit one group from the full 17-feature model. The groups are incoming
+strikes, takedowns, recorded knockdowns, and explicit finish losses (two
+features each). The report includes per-fold and pooled accuracy, correct
+counts, ROC AUC, log loss and Brier score, plus differences from the two fixed
+references. Prediction rows include null values for combined Draw/NC across
+all ten variants. The manifest records the input hashes, code revision,
+feature lists, excluded rows, and runtime versions.
+
+These comparisons are exploratory: the folds have already influenced feature
+selection, groups are correlated, and the results cannot identify causal
+contributions or provide an independent test. No Cito rounds enter this model.
+
+The first Mac group run on 1,857 decisive bouts (35 Draw/NC excluded) gave:
+
+| Variant | Correct | Accuracy | ROC AUC | Log loss |
+| --- | ---: | ---: | ---: | ---: |
+| Original baseline | 985 | 53.04% | 0.5548 | 0.69062 |
+| Add striking | 1,029 | 55.41% | 0.5839 | 0.68467 |
+| Add grappling | 990 | 53.31% | 0.5544 | 0.69072 |
+| Add knockdowns | 997 | 53.69% | 0.5623 | 0.68836 |
+| Add finish losses | 1,007 | 54.23% | 0.5708 | 0.68719 |
+| All defense | 1,067 | 57.46% | 0.5966 | 0.68159 |
+| All except striking | 1,041 | 56.06% | 0.5748 | 0.68637 |
+| All except grappling | 1,067 | 57.46% | 0.5999 | 0.68138 |
+| All except knockdowns | 1,077 | 58.00% | 0.5970 | 0.68235 |
+| All except finish losses | 1,044 | 56.22% | 0.5872 | 0.68307 |
+
+Striking and finish-loss histories show the clearest differences in these
+variants. Removing grappling leaves accuracy unchanged and slightly improves
+log loss, while removing knockdowns improves accuracy but worsens log loss.
+Because the feature groups overlap and these folds have already been examined,
+none of these ranks or the 58.00% variant is a prospective performance claim.
+
+The add-striking variant beat the original baseline's correct-bout count in
+all four folds (2019, 2021, 2022, and partial 2023). The full defensive model
+also beat the baseline in all four. Other group comparisons were less stable:
+add-finish-losses beat the baseline in two folds, and removing striking from
+the full model *improved* 2022 accuracy by 11 bouts. Removing knockdowns
+improved the pooled accuracy mostly because of 2022 (+16 correct versus full),
+while it hurt partial 2023 (-6). These observations strengthen the reason to
+avoid treating a pooled group ranking as a production feature choice.
+
+The Mac reran the experiment at code commit `228a8ba` with the previously
+accepted matchup SHA-256 `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
+and defensive history SHA-256 `fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
+Ruff and all 249 automated tests passed; the working tree was clean.

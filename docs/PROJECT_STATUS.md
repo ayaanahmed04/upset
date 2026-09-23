@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Reproducible development evaluation and dated defensive history
+**Current focus:** Exploratory attribution of audited defensive feature groups
 
 ## Project Goal
 
@@ -380,18 +380,33 @@ all four calendar folds. A date-cluster bootstrap for the paired accuracy
 difference gave an approximate 95% interval of +1.75 to +6.86 points.
 These are development results, not a new unbiased test or live accuracy.
 Repeated fighters, the later historical snapshot and model selection still
-limit uncertainty claims. The independent full-data source audit is pending.
+limit uncertainty claims. The Mac at `ef2e3af` passed 246 tests and Ruff;
+the independent audit matched all 17,102 defensive row identities, dates and
+strictly earlier fight counts. Its 44 independently recalculated sampled rows
+across 41 fighters all matched. PR #10 was merged into `main`.
 See `docs/EVALUATION_CONTRACT.md`.
+
+The first exploratory defensive group run kept 1,857 decisive validation
+bouts and 35 Draw/NC exclusions. Adding only striking to the nine-feature
+baseline reached 1,029 correct (55.41%); adding only finish losses reached
+1,007 (54.23%). Full defense remained 1,067 (57.46%). Dropping grappling
+from full defense left accuracy unchanged at 1,067 and slightly improved
+log loss (0.68159 to 0.68138). Dropping knockdowns raised accuracy to
+1,077 (58.00%) but worsened log loss to 0.68235. These are exploratory
+same-fold results and do not establish the best model for future fights.
+The Mac passed 249 tests. Ruff found one test import-order error, corrected
+on the diagnostic branch. The Mac then reran Ruff, all 249 tests, and the
+diagnostic at `228a8ba`, confirming the accepted input hashes and a clean
+working tree. Striking alone improved correct-bout counts in all four folds;
+other group effects varied by year. In 2022, removing striking from full
+defense improved accuracy by 11 bouts, illustrating correlated feature effects.
 
 ## Next Steps
 
-1. Run `python -m upset.data.audit_prefight_defense` on the Mac. It checks
-   every snapshot's strictly earlier fight count and recomputes sampled
-   defensive totals directly from earlier identified source fights. Investigate
-   any mismatch before promoting the candidate.
-2. Keep defense as a promising development candidate. Measure whether finish
-   loss counts, incoming rates and knockdown histories contribute separately
-   without treating the examined original test as a fresh holdout.
+1. Merge the validated defensive group diagnostics as exploratory evidence.
+   Preserve the accepted input hashes and per-bout predictions for review.
+2. Keep defense as a promising development candidate and preserve the original
+   nine-feature baseline and paired predictions as fixed references.
 3. Add outcome/recency and chronological opponent-strength families as
    separate comparisons. Keep the already examined original test as a
    reference, and save prospective forecasts before results occur.
