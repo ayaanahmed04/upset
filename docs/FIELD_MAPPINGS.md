@@ -34,8 +34,9 @@ Fields such as `source_fighter_id`, `source_event_id`, and `source_bout_id`
 remain provider-specific. For example, the fighter IDs extracted from the
 historical dataset's UFCStats URLs are not permanent UPSET-owned fighter IDs.
 
-UPSET-owned internal IDs and cross-provider identity mappings have not yet been
-designed.
+UPSET-owned permanent UUIDs and reviewed provider links are stored in
+`data/mappings/fighter_registry.json`. Historical identified exports attach
+those UUIDs while preserving each source-specific ID.
 
 Fighter names are display labels, not unique identifiers. Different fighters
 can share the same name, and a fighter's name can change or be formatted
@@ -276,8 +277,10 @@ The live `cryptocom-ufc-331-jsonapi-13` sample returned 10 rows: Alexandre
 Pantoja and Joshua Van each have one row for rounds 1 through 5. The row field
 names match the existing Cito `RoundStats` mapping below. This checks the
 sample's shape and fighter/round coverage. The Mac then normalized all ten
-records and validated the per-round strike arithmetic, but their sums still
-need to be checked against fight totals.
+records and validated the per-round strike arithmetic. A separate cached Cito
+`/stats` response matched the round records and their sums against two fight
+totals on 22 mapped numeric fields per fighter. This is internal agreement
+within Cito, not independent source verification or historical coverage.
 
 ### Offline round export
 
