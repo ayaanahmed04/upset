@@ -278,8 +278,52 @@ Additional:
   The Cito probe of the reviewed UFC 311 bout returned HTTP 403 with provider
   code `HISTORY_WINDOW_EXCEEDED`. This confirms the current key cannot read
   that bout's round records. No historical round coverage was established.
-  The latest Mac check passed 204 tests; Ruff found an import-order issue,
-  corrected on this branch pending recheck. No model features or scores changed.
+  The final Mac check passed 204 tests and Ruff after an import-order fix.
+  No model features or scores changed.
+- Merged the audit in PR #8 after the Mac passed 204 tests and Ruff at
+  `ec580ff`. The Cito historical-access limit is a confirmed source finding.
+- Started a separate raw Cito round collector. It accepts explicit bout IDs,
+  a local ID list, or the identified fight export, defaults to at most one
+  *new* API call per run, and saves only successful nonempty round responses
+  under ignored `data/raw/cito_rounds/`. Verified saved files are skipped on
+  subsequent runs; malformed data and API errors stop the run. The collector
+  includes a small recent-event/bout ID discovery probe. The Mac passed 213
+  tests; Ruff found two exception-type issues in the discovery probe, fixed
+  on the feature branch pending recheck. The live recent-event request
+  succeeded and identified `cryptocom-ufc-331` on 2026-09-19 as a card with
+  stats. Event-bout discovery and one real round collection remain untested.
+  No round features or historical round coverage have been verified.
+- The Mac then passed all 213 tests and Ruff at `d007d46`. A live event-bout
+  listing for `cryptocom-ufc-331` returned completed bouts marked with stats.
+  One free-plan collector request for `cryptocom-ufc-331-jsonapi-13` saved 10
+  round rows; Git remained clean because the raw response is ignored. A local
+  field-only audit found Alexandre Pantoja and Joshua Van each have rounds
+  1 through 5, with a matching Cito bout ID and the expected raw field names.
+  Round numbers and names are confirmed, but numeric normalization and
+  reconciliation with bout totals remain pending on the Mac.
+- Added an offline round export on the Cito acquisition branch to normalize
+  cached records after checking IDs, fighter/round coverage, and strike
+  arithmetic. On the Mac at `e5b4788`, 221 tests passed and one cached
+  Pantoja–Van bout produced 10 normalized fighter-round rows with read-back
+  verification. Ruff reported one `SIM117` style issue in a new test, corrected
+  in the next branch commit. Independent bout-total reconciliation remains
+  pending. No round-derived model features or revised scores have been
+  produced.
+- Added a one-bout totals probe on the acquisition branch. It is designed to
+  cache the separate Cito `/bouts/{id}/stats` response and print safe field
+  names for a later round-to-total audit. The Mac at `8027817` passed 227 tests
+  and Ruff. The probe saved a real Pantoja–Van totals response containing
+  `availability`, two `boutStats` rows, and ten `roundStats` rows. The raw and
+  processed data remain ignored by Git; the working tree is clean.
+- Added an offline consistency audit for one Cito bout. It compares the saved
+  `/rounds` and `/stats` per-round values, then tests every per-fighter bout
+  statistic against the sum of that fighter's rounds. Local synthetic checks
+  passed. On the Mac at `a9897b1`, all 232 tests and Ruff passed. The real
+  Pantoja–Van audit matched 10 round rows and two fighter fight-total rows
+  across 22 numeric fields per fighter; the working tree remained clean.
+  Both endpoints belong to Cito, so agreement alone cannot verify accuracy
+  against a second provider. Neither historical round coverage nor model
+  performance changed.
 
 ## Current Data Findings
 
@@ -323,11 +367,11 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Recheck Ruff on the Mac. The Cito error code confirms the historical
-   access window caused the 403. Design and test a resumable round-record
-   acquisition and validation pipeline using available recent bouts before
-   considering paid historical access. Keep round ingestion separate until
-   coverage and provider links are proven.
+1. Audit a small second recent bout (ideally one ending before the fifth
+   round) to exercise incomplete final-round coverage, then review fighter
+   identity links and round-data availability across accessible events.
+   Historical access should only be considered after provider terms for
+   retained data use are clear. No paid API work has begun.
 
 2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to

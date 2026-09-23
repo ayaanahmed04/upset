@@ -462,6 +462,28 @@ The reviewed UFC 311 round request returned HTTP 403 with Cito error code
 `HISTORY_WINDOW_EXCEEDED`. The current key lacks access to that older bout's
 round rows. Build a resumable round acquisition and validation pipeline and
 test it on accessible recent bouts before purchasing historical API access.
+The collection layer will retain one original successful response per bout
+in Git-ignored local storage, validate files before resuming, and cap new
+requests by default. It will not infer canonical fighter IDs from names or
+feed current bout rounds into that bout's own pre-fight prediction.
 Preserve provider provenance and missingness. Any later durability or round
 feature for a fight must use only earlier event dates; no current-fight round
 or finish information may appear among that fight's prediction inputs.
+
+## 027 — Reconcile Round Records Before Deriving Features
+
+The current Cito key successfully retrieved ten round rows for a September
+2026 Pantoja–Van bout. A separate Cito stats response contains two fighter
+fight-total rows and ten round rows. Compare its round rows with the cached
+round endpoint, then sum each fighter's rounds and compare all mapped numeric
+fields with that fighter's reported total. Reject missing participants, rounds,
+or disagreements and preserve raw provider responses for investigation.
+
+This is an internal check of two responses from the same provider, not
+independent confirmation of the numbers. It does not link Cito identities to
+UPSET's historical identities, grant older round access, or justify changing
+the 52% historical baseline. Any eventual durability or round-history feature
+must be computed only from fights before the one being predicted.
+The sampled five-round Pantoja–Van fight passed this comparison on the Mac:
+ten round records and two fighter fight-total rows matched across all 22
+numeric fields compared per fighter.

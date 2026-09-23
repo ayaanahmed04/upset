@@ -241,6 +241,83 @@ Provider round records need verified historical coverage and fighter links
 before they can be joined to the historical cohort. Raw Cito profile totals
 must not be used as past-at-date prediction features.
 
+### Local round acquisition (source records only)
+
+Use a completed recent bout ID from Cito's documented recent-event and
+event-bouts endpoints. Run `python -m upset.data.probe_cito_recent` to list
+recent event slugs and dates, then
+`python -m upset.data.probe_cito_recent --event EVENT_SLUG` to list that
+event's bout IDs and status flags. Both commands show limited identifiers,
+not complete provider records or the API key; an unknown listing shape stops
+without guessing. Fetch a single completed bout with stats using
+`python -m upset.data.collect_cito_rounds --bout-id BOUT_ID`. The local
+`CITO_API_KEY` or `.env` is used; no key is written into the output.
+Alternatively pass `--bout-ids-file PATH` with one ID per line. After access
+and coverage are established, `--identified-fights PATH` can read IDs from
+the existing identified historical JSONL. Do not start that historical
+collection under the current key: older rounds return
+`HISTORY_WINDOW_EXCEEDED`.
+
+The command defaults to one *new* request per run (`--limit 1`) and a
+seven-second pause between new calls (`--delay 7`) to stay below Cito's
+free-plan limit of ten requests per minute. A higher-tier plan may use an
+explicit shorter delay within its documented limits. Each successfully validated
+response is saved as one JSON file in ignored `data/raw/cito_rounds/`, with
+the Cito source and requested bout ID. Cached files are read and validated
+before being skipped, so a stopped run can resume. A failed, empty, or
+unrecognized response is never cached as complete; API errors stop the run
+with status and safe error labels only. A saved provider response is not yet
+a normalized `RoundStats` record or a reviewed fighter identity link. The
+current accepted list shapes are `data` as a list or one list under
+`data.rounds`, `rows`, `items`, `results`, or `stats`; adapt this only after
+inspecting a real response. Raw data stays local and out of Git.
+
+The live `cryptocom-ufc-331-jsonapi-13` sample returned 10 rows: Alexandre
+Pantoja and Joshua Van each have one row for rounds 1 through 5. The row field
+names match the existing Cito `RoundStats` mapping below. This checks the
+sample's shape and fighter/round coverage. The Mac then normalized all ten
+records and validated the per-round strike arithmetic, but their sums still
+need to be checked against fight totals.
+
+### Offline round export
+
+Run `python -m upset.data.export_cito_rounds` after saving recent round files.
+It reads cached files in `data/raw/cito_rounds/` without making API calls and
+writes `data/processed/cito/round_stats.jsonl`. Override locations with
+`--input-dir` and `--output`. Each exported row is one Cito fighter in one
+round, with Cito IDs and slugs; it does not yet contain a reviewed UPSET fighter
+ID or pre-fight snapshot. Both folders are ignored by Git.
+
+The exporter checks saved source/bout IDs, numeric values, strike breakdowns,
+two fighters per bout, unique fighter/round and provider row IDs, and matching
+consecutive round sets. It rejects all output if any cached bout fails, writes
+in stable order, and verifies a temporary file before replacing the prior
+export. These checks do not establish that the round sums match Cito's bout
+totals or the separate historical Kaggle cohort.
+
+To inspect Cito's separately requested fight-total response for the same bout, run
+`python -m upset.data.probe_cito_totals --bout-id BOUT_ID`. This requests the
+documented `/bouts/{id}/stats` endpoint once, preserves the response in
+ignored `data/raw/cito_totals/BOUT_ID.json`, and prints only field names and
+shape. Repeated runs validate the cached file without another request. The
+live Pantoja–Van response has `data.availability`, two `data.boutStats` rows
+(one per fighter), and ten `data.roundStats` rows (one per fighter per round).
+The bout rows have the same Cito stat field names as the rounds, except that
+they have no `round` field.
+
+With both cached inputs present, run
+`python -m upset.data.audit_cito_round_totals --bout-id BOUT_ID`. This offline
+check matches each fighter and round between the two separately saved Cito
+responses, compares all numeric round-stat fields, and sums each fighter's
+rounds to compare with that fighter's `boutStats`. It stops on missing fighters,
+rounds, or nonmatching counts, showing a short numeric mismatch summary.
+This is a **Cito internal consistency check**, not independent verification
+from a second provider. The Mac passed this audit for the sampled Pantoja–Van
+bout: 10 round rows matched two fighter fight-total rows across 22 numeric
+fields per fighter. A successful result cannot establish historical round
+coverage, licensing rights, or improved predictive performance. Fight totals
+and current-bout rounds must never be used as that bout's pre-fight features.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.
