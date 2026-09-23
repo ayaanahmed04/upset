@@ -82,6 +82,17 @@ and `manifest.json`. The manifest contains hashes, feature lists, per-fold
 metrics, pooled paired differences and a 1,000-replicate bootstrap interval
 that resamples calendar dates. The interval accounts for bouts sharing an
 event date; repeated fighters and time dependence can still affect uncertainty.
-The model comparison has synthetic tests, but has **not yet** been run against
-the Mac's complete historical data. Its results must be inspected before
-deciding whether to keep the added features.
+The Mac completed this comparison at `3af4212`: 1,857 decisive bouts across
+the four validation folds, with accuracy 53.04% for the original model and
+57.46% with defense. Log loss improved from 0.69062 to 0.68159. Each fold
+improved on both measures. The date-cluster bootstrap interval for the
+paired accuracy difference was approximately +1.75 to +6.86 percentage
+points. These are encouraging development results, not a fresh test score
+or a forecast of future accuracy. More experiments using these folds will
+increase selection pressure; preserve per-bout predictions and the original
+reference.
+
+`python -m upset.data.audit_prefight_defense` independently recomputes a
+deterministic sample of saved defensive totals from the identified earlier
+source bouts and checks the strictly earlier prior-fight count for every
+fighter-bout row. This full-data audit has not yet run on the Mac.

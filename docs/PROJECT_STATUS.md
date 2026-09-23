@@ -356,8 +356,8 @@ The accepted historical snapshot, identity linking, dated pre-fight totals,
 original matchup export and first baseline were verified on the Mac. The
 original test result remains 655 correct out of 1,260 decisive bouts
 (51.98%). Its probabilities were slightly worse than a constant
-training-prevalence comparison by log loss and Brier score. No new model
-performance gain has been measured.
+training-prevalence comparison by log loss and Brier score. The already
+examined original test period has **not** been rerun with new features.
 
 Cito collection, round normalization and one Pantoja–Van totals reconciliation
 are merged. Ten round rows and two fight-total rows agreed on 22 numeric fields
@@ -371,19 +371,27 @@ have now run against the Mac's ignored historical data. The 8,551 matchups
 produced 1,892 development validation rows (1,857 decisive, 35 combined
 `Draw/NC`), and the defensive export produced 17,102 fighter rows. The
 original nine-feature baseline's fold accuracies ranged from 51.72% to 54.12%.
-The Mac passed 240 tests and Ruff at branch commit `1f17131`. A same-bout
-defensive-feature comparison command has synthetic tests but has **not yet**
-been run against the Mac's full dataset. No predictive gain is established.
+At branch commit `3af4212`, the Mac passed 245 tests and Ruff and ran a
+same-bout defensive comparison. Both models used the same 1,857 decisive
+validation fights, with 35 combined `Draw/NC` exclusions. Accuracy improved
+from 53.04% (985 correct) to 57.46% (1,067 correct), a 4.42-point gain.
+Log loss improved from 0.69062 to 0.68159; accuracy and log loss improved in
+all four calendar folds. A date-cluster bootstrap for the paired accuracy
+difference gave an approximate 95% interval of +1.75 to +6.86 points.
+These are development results, not a new unbiased test or live accuracy.
+Repeated fighters, the later historical snapshot and model selection still
+limit uncertainty claims. The independent full-data source audit is pending.
 See `docs/EVALUATION_CONTRACT.md`.
 
 ## Next Steps
 
-1. Run the same-bout defensive-feature comparison on the Mac's ignored data.
-   Inspect the paired prediction rows, all four fold scores, source hashes,
-   missingness and uncertainty. Do not select features from synthetic scores.
-2. Independently spot-audit defensive histories against earlier paired fight
-   rows and their dates. Preserve the original baseline and record a negative
-   result if the extra features do not help.
+1. Run `python -m upset.data.audit_prefight_defense` on the Mac. It checks
+   every snapshot's strictly earlier fight count and recomputes sampled
+   defensive totals directly from earlier identified source fights. Investigate
+   any mismatch before promoting the candidate.
+2. Keep defense as a promising development candidate. Measure whether finish
+   loss counts, incoming rates and knockdown histories contribute separately
+   without treating the examined original test as a fresh holdout.
 3. Add outcome/recency and chronological opponent-strength families as
    separate comparisons. Keep the already examined original test as a
    reference, and save prospective forecasts before results occur.
