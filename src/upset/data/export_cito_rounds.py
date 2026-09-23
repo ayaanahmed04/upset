@@ -29,7 +29,7 @@ _PAIRS = (
 )
 
 
-def _validate_counts(row: RoundStats) -> None:
+def validate_cito_counts(row: RoundStats) -> None:
     for field in fields(row):
         value = getattr(row, field.name)
         if field.name in {
@@ -62,7 +62,7 @@ def _validate_counts(row: RoundStats) -> None:
                 )
 
 
-def _read_bout(path: Path) -> list[RoundStats]:
+def read_cito_round_bout(path: Path) -> list[RoundStats]:
     bout_id = validate_bout_ids([path.stem])[0]
     try:
         saved = json.loads(path.read_text(encoding="utf-8"))
@@ -103,7 +103,7 @@ def _read_bout(path: Path) -> list[RoundStats]:
                     )
                 ):
                     raise ValueError("Round identifiers or name are invalid.")
-                _validate_counts(row)
+                validate_cito_counts(row)
             except (KeyError, TypeError, ValueError) as error:
                 raise ValueError(
                     f"Invalid row {index}: {type(error).__name__}"
@@ -147,7 +147,7 @@ def export_cito_rounds(input_dir: Path, output_path: Path) -> tuple[int, int]:
     rows = []
     seen_ids = set()
     for path in paths:
-        for row in _read_bout(path):
+        for row in read_cito_round_bout(path):
             if row.source_round_stat_id in seen_ids:
                 raise ValueError("Round-stat ID reused across bouts.")
             seen_ids.add(row.source_round_stat_id)

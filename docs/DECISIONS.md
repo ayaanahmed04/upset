@@ -469,3 +469,18 @@ feed current bout rounds into that bout's own pre-fight prediction.
 Preserve provider provenance and missingness. Any later durability or round
 feature for a fight must use only earlier event dates; no current-fight round
 or finish information may appear among that fight's prediction inputs.
+
+## 027 — Reconcile Round Records Before Deriving Features
+
+The current Cito key successfully retrieved ten round rows for a September
+2026 Pantoja–Van bout. A separate Cito stats response contains two fighter
+fight-total rows and ten round rows. Compare its round rows with the cached
+round endpoint, then sum each fighter's rounds and compare all mapped numeric
+fields with that fighter's reported total. Reject missing participants, rounds,
+or disagreements and preserve raw provider responses for investigation.
+
+This is an internal check of two responses from the same provider, not
+independent confirmation of the numbers. It does not link Cito identities to
+UPSET's historical identities, grant older round access, or justify changing
+the 52% historical baseline. Any eventual durability or round-history feature
+must be computed only from fights before the one being predicted.

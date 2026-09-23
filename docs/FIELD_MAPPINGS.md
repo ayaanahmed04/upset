@@ -275,8 +275,9 @@ inspecting a real response. Raw data stays local and out of Git.
 The live `cryptocom-ufc-331-jsonapi-13` sample returned 10 rows: Alexandre
 Pantoja and Joshua Van each have one row for rounds 1 through 5. The row field
 names match the existing Cito `RoundStats` mapping below. This checks the
-sample's shape and fighter/round coverage, not its numeric values or its
-agreement with independent fight totals.
+sample's shape and fighter/round coverage. The Mac then normalized all ten
+records and validated the per-round strike arithmetic, but their sums still
+need to be checked against fight totals.
 
 ### Offline round export
 
@@ -294,13 +295,26 @@ in stable order, and verifies a temporary file before replacing the prior
 export. These checks do not establish that the round sums match Cito's bout
 totals or the separate historical Kaggle cohort.
 
-To inspect an independent Cito fight-total response for the same bout, run
+To inspect Cito's separately requested fight-total response for the same bout, run
 `python -m upset.data.probe_cito_totals --bout-id BOUT_ID`. This requests the
 documented `/bouts/{id}/stats` endpoint once, preserves the response in
 ignored `data/raw/cito_totals/BOUT_ID.json`, and prints only field names and
 shape. Repeated runs validate the cached file without another request. The
-response shape and numerical reconciliation are pending a live sample; do not
-assume its columns or treat an API total as a pre-fight feature.
+live Pantoja–Van response has `data.availability`, two `data.boutStats` rows
+(one per fighter), and ten `data.roundStats` rows (one per fighter per round).
+The bout rows have the same Cito stat field names as the rounds, except that
+they have no `round` field.
+
+With both cached inputs present, run
+`python -m upset.data.audit_cito_round_totals --bout-id BOUT_ID`. This offline
+check matches each fighter and round between the two separately saved Cito
+responses, compares all numeric round-stat fields, and sums each fighter's
+rounds to compare with that fighter's `boutStats`. It stops on missing fighters,
+rounds, or nonmatching counts, showing a short numeric mismatch summary.
+This is a **Cito internal consistency check**, not independent verification
+from a second provider. A successful result cannot establish historical round
+coverage, licensing rights, or improved predictive performance. Fight totals
+and current-bout rounds must never be used as that bout's pre-fight features.
 
 ## Cito Fighter Mappings
 

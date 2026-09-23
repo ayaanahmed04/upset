@@ -311,8 +311,16 @@ Additional:
   produced.
 - Added a one-bout totals probe on the acquisition branch. It is designed to
   cache the separate Cito `/bouts/{id}/stats` response and print safe field
-  names for a later round-to-total audit. A live totals response has not yet
-  been inspected; its numeric semantics remain unknown.
+  names for a later round-to-total audit. The Mac at `8027817` passed 227 tests
+  and Ruff. The probe saved a real Pantoja–Van totals response containing
+  `availability`, two `boutStats` rows, and ten `roundStats` rows. The raw and
+  processed data remain ignored by Git; the working tree is clean.
+- Added an offline consistency audit for one Cito bout. It compares the saved
+  `/rounds` and `/stats` per-round values, then tests every per-fighter bout
+  statistic against the sum of that fighter's rounds. Local synthetic checks
+  passed, but **the real Pantoja–Van numerical audit and new Mac tests/Ruff
+  are pending**. Both endpoints belong to Cito, so agreement alone cannot
+  verify accuracy against a second provider.
 
 ## Current Data Findings
 
@@ -356,8 +364,9 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Compare the now-normalized recent rounds against independently sourced
-   bout total statistics, then review fighter identity links. Historical
+1. Run the new offline audit on the cached Cito responses to verify whether
+   both Cito endpoints agree numerically; investigate discrepancies before
+   collecting more bouts. Then review fighter identity links. Historical
    access should only be considered after this free test and provider terms
    for retained data use are clear. No paid API work has begun.
 
