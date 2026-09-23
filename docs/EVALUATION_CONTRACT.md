@@ -95,4 +95,25 @@ reference.
 `python -m upset.data.audit_prefight_defense` independently recomputes a
 deterministic sample of saved defensive totals from the identified earlier
 source bouts and checks the strictly earlier prior-fight count for every
-fighter-bout row. This full-data audit has not yet run on the Mac.
+fighter-bout row. On the Mac at `ef2e3af`, the audit matched source identities,
+dates and earlier fight counts for all 17,102 rows. It independently
+recalculated totals for 44 sampled rows from 41 fighters; all matched.
+
+## Exploratory defensive group diagnostics
+
+`python -m upset.modeling.run_defense_groups` saves ignored local outputs in
+`experiments/defense_groups_v1/`. It retains the baseline and complete
+defensive model probabilities from the prior paired comparison, then refits
+eight variants on the identical frozen folds and decisive validation bouts.
+Four variants add only one defensive group to the nine baseline features;
+four omit one group from the full 17-feature model. The groups are incoming
+strikes, takedowns, recorded knockdowns, and explicit finish losses (two
+features each). The report includes per-fold and pooled accuracy, correct
+counts, ROC AUC, log loss and Brier score, plus differences from the two fixed
+references. Prediction rows include null values for combined Draw/NC across
+all ten variants. The manifest records the input hashes, code revision,
+feature lists, excluded rows, and runtime versions.
+
+These comparisons are exploratory: the folds have already influenced feature
+selection, groups are correlated, and the results cannot identify causal
+contributions or provide an independent test. No Cito rounds enter this model.
