@@ -312,7 +312,9 @@ responses, compares all numeric round-stat fields, and sums each fighter's
 rounds to compare with that fighter's `boutStats`. It stops on missing fighters,
 rounds, or nonmatching counts, showing a short numeric mismatch summary.
 This is a **Cito internal consistency check**, not independent verification
-from a second provider. A successful result cannot establish historical round
+from a second provider. The Mac passed this audit for the sampled Pantoja–Van
+bout: 10 round rows matched two fighter fight-total rows across 22 numeric
+fields per fighter. A successful result cannot establish historical round
 coverage, licensing rights, or improved predictive performance. Fight totals
 and current-bout rounds must never be used as that bout's pre-fight features.
 

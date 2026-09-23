@@ -318,9 +318,12 @@ Additional:
 - Added an offline consistency audit for one Cito bout. It compares the saved
   `/rounds` and `/stats` per-round values, then tests every per-fighter bout
   statistic against the sum of that fighter's rounds. Local synthetic checks
-  passed, but **the real Pantoja–Van numerical audit and new Mac tests/Ruff
-  are pending**. Both endpoints belong to Cito, so agreement alone cannot
-  verify accuracy against a second provider.
+  passed. On the Mac at `a9897b1`, all 232 tests and Ruff passed. The real
+  Pantoja–Van audit matched 10 round rows and two fighter fight-total rows
+  across 22 numeric fields per fighter; the working tree remained clean.
+  Both endpoints belong to Cito, so agreement alone cannot verify accuracy
+  against a second provider. Neither historical round coverage nor model
+  performance changed.
 
 ## Current Data Findings
 
@@ -364,11 +367,11 @@ UPSET UUID has both a UFCStats link and one reviewed Cito link.
 
 ## Next Steps
 
-1. Run the new offline audit on the cached Cito responses to verify whether
-   both Cito endpoints agree numerically; investigate discrepancies before
-   collecting more bouts. Then review fighter identity links. Historical
-   access should only be considered after this free test and provider terms
-   for retained data use are clear. No paid API work has begun.
+1. Audit a small second recent bout (ideally one ending before the fifth
+   round) to exercise incomplete final-round coverage, then review fighter
+   identity links and round-data availability across accessible events.
+   Historical access should only be considered after provider terms for
+   retained data use are clear. No paid API work has begun.
 
 2. Inspect the available pre-fight history, missing rates, label balance, and
    data coverage by period. Diagnose why the fixed baseline performs close to

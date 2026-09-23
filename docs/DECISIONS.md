@@ -484,3 +484,6 @@ independent confirmation of the numbers. It does not link Cito identities to
 UPSET's historical identities, grant older round access, or justify changing
 the 52% historical baseline. Any eventual durability or round-history feature
 must be computed only from fights before the one being predicted.
+The sampled five-round Pantoja–Van fight passed this comparison on the Mac:
+ten round records and two fighter fight-total rows matched across all 22
+numeric fields compared per fighter.
