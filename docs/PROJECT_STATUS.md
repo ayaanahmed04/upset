@@ -309,6 +309,10 @@ Additional:
   in the next branch commit. Independent bout-total reconciliation remains
   pending. No round-derived model features or revised scores have been
   produced.
+- Added a one-bout totals probe on the acquisition branch. It is designed to
+  cache the separate Cito `/bouts/{id}/stats` response and print safe field
+  names for a later round-to-total audit. A live totals response has not yet
+  been inspected; its numeric semantics remain unknown.
 
 ## Current Data Findings
 

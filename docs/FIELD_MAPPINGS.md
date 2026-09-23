@@ -294,6 +294,14 @@ in stable order, and verifies a temporary file before replacing the prior
 export. These checks do not establish that the round sums match Cito's bout
 totals or the separate historical Kaggle cohort.
 
+To inspect an independent Cito fight-total response for the same bout, run
+`python -m upset.data.probe_cito_totals --bout-id BOUT_ID`. This requests the
+documented `/bouts/{id}/stats` endpoint once, preserves the response in
+ignored `data/raw/cito_totals/BOUT_ID.json`, and prints only field names and
+shape. Repeated runs validate the cached file without another request. The
+response shape and numerical reconciliation are pending a live sample; do not
+assume its columns or treat an API total as a pre-fight feature.
+
 ## Cito Fighter Mappings
 
 One Cito fighter record maps to one canonical `Fighter`.
