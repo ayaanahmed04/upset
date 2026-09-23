@@ -142,7 +142,7 @@ def build_defensive_history(
             raise ValueError(f"Unexpected or duplicate fight: {bout_id}")
         seen.add(bout_id)
         if not isinstance(fight.event_date, str):
-            raise ValueError(f"Missing event date: {bout_id}")
+            raise TypeError(f"Missing or invalid event date type: {bout_id}")
         try:
             if date.fromisoformat(fight.event_date).isoformat() != fight.event_date:
                 raise ValueError("Noncanonical date")

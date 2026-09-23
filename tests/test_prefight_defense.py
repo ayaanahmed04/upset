@@ -1,7 +1,7 @@
 """Defensive history must use only paired, earlier fight observations."""
 
-import unittest
 import json
+import unittest
 from dataclasses import asdict, replace
 from pathlib import Path
 from tempfile import TemporaryDirectory
