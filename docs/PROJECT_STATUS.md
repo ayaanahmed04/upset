@@ -367,17 +367,23 @@ of historical acquisition and local retention. An actual paid historical
 request has not been established. Do not treat round data as model inputs yet.
 
 A separate frozen development evaluation and dated defensive-history export
-have focused synthetic tests. They have not yet been run against the Mac's
-ignored historical data. See `docs/EVALUATION_CONTRACT.md`.
+have now run against the Mac's ignored historical data. The 8,551 matchups
+produced 1,892 development validation rows (1,857 decisive, 35 combined
+`Draw/NC`), and the defensive export produced 17,102 fighter rows. The
+original nine-feature baseline's fold accuracies ranged from 51.72% to 54.12%.
+The Mac passed 240 tests and Ruff at branch commit `1f17131`. A same-bout
+defensive-feature comparison command has synthetic tests but has **not yet**
+been run against the Mac's full dataset. No predictive gain is established.
+See `docs/EVALUATION_CONTRACT.md`.
 
 ## Next Steps
 
-1. Run the original baseline and new development/defensive exports against
-   the ignored Mac data. Verify row counts, histories, date boundaries and
-   output hashes; do not infer full-data success from synthetic fixtures.
-2. Join defensive histories to the same matchup cohort and compare added
-   features to the original baseline on identical dated validation bouts.
-   Report coverage, per-bout probabilities and uncertainty before selecting.
+1. Run the same-bout defensive-feature comparison on the Mac's ignored data.
+   Inspect the paired prediction rows, all four fold scores, source hashes,
+   missingness and uncertainty. Do not select features from synthetic scores.
+2. Independently spot-audit defensive histories against earlier paired fight
+   rows and their dates. Preserve the original baseline and record a negative
+   result if the extra features do not help.
 3. Add outcome/recency and chronological opponent-strength families as
    separate comparisons. Keep the already examined original test as a
    reference, and save prospective forecasts before results occur.

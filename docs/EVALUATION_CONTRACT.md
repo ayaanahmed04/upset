@@ -68,5 +68,20 @@ Only the exact `KO/TKO` and `Submission` method labels can count as their
 respective finish losses, and only with an unambiguous named winner. Decisions,
 doctor stoppages, `Could Not Continue`, `DQ`, `Overturned`, `Other`, and
 combined `Draw/NC` receive no inferred KO or submission loss. The defensive
-export has **not yet** been added to a trained model; its coverage and impact
-must be measured against the baseline on identical validation bouts.
+export enters a separate **candidate comparison** through
+`python -m upset.modeling.run_defense_ablation`. This command refits the
+original nine-feature logistic baseline and the same logistic procedure with
+eight added defensive differences on each frozen training window. It joins
+every one of the 8,551 matchup rows to both defensive rows by bout and
+permanent fighter ID, checks the dates, and fails on missing or extra rows.
+Both models are scored on precisely the same decisive validation bouts.
+Combined Draw/NC rows appear with null probabilities.
+
+The command writes local `experiments/defense_ablation_v1/predictions.jsonl`
+and `manifest.json`. The manifest contains hashes, feature lists, per-fold
+metrics, pooled paired differences and a 1,000-replicate bootstrap interval
+that resamples calendar dates. The interval accounts for bouts sharing an
+event date; repeated fighters and time dependence can still affect uncertainty.
+The model comparison has synthetic tests, but has **not yet** been run against
+the Mac's complete historical data. Its results must be inspected before
+deciding whether to keep the added features.
