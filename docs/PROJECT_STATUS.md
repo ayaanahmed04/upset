@@ -1,10 +1,10 @@
 # UPSET Project Status
 
-**Last updated:** September 22, 2026
+**Last updated:** September 23, 2026
 
-**Current phase:** Phase 1 — Data Foundation
+**Current phase:** Historical modeling and data integration
 
-**Current development day:** Day 3/4
+**Current focus:** Reproducible development evaluation and dated defensive history
 
 ## Project Goal
 
@@ -352,41 +352,38 @@ Known data-quality concerns include:
 
 ## Current Task
 
-The dated pre-fight snapshot and descriptive feature exports have both been
-verified on the full 8,551-fight history on the Mac. They produce 17,102
-fighter rows each. The matchup export has also been verified against all
-8,551 fights: 8,400 decisive labels and 151 combined `Draw/NC` labels with
-null targets. The initial chronological baseline has now run and passed an
-independent split audit on that full history. It provides a measured starting
-point with weak held-out discrimination. The raw historical dataset remains
-uncommitted to GitHub.
+The accepted historical snapshot, identity linking, dated pre-fight totals,
+original matchup export and first baseline were verified on the Mac. The
+original test result remains 655 correct out of 1,260 decisive bouts
+(51.98%). Its probabilities were slightly worse than a constant
+training-prevalence comparison by log loss and Brier score. No new model
+performance gain has been measured.
 
-The first reviewed cross-provider fighter link is merged into `main`. The
-registry still contains 4,455 permanent identities; Islam Makhachev's existing
-UPSET UUID has both a UFCStats link and one reviewed Cito link.
+Cito collection, round normalization and one Pantoja–Van totals reconciliation
+are merged. Ten round rows and two fight-total rows agreed on 22 numeric fields
+per fighter in that sample; broader historical round access and mapping
+remain unverified. The provider's September 16 email supports one paid month
+of historical acquisition and local retention. An actual paid historical
+request has not been established. Do not treat round data as model inputs yet.
+
+A separate frozen development evaluation and dated defensive-history export
+have focused synthetic tests. They have not yet been run against the Mac's
+ignored historical data. See `docs/EVALUATION_CONTRACT.md`.
 
 ## Next Steps
 
-1. Audit a small second recent bout (ideally one ending before the fifth
-   round) to exercise incomplete final-round coverage, then review fighter
-   identity links and round-data availability across accessible events.
-   Historical access should only be considered after provider terms for
-   retained data use are clear. No paid API work has begun.
-
-2. Inspect the available pre-fight history, missing rates, label balance, and
-   data coverage by period. Diagnose why the fixed baseline performs close to
-   the training-prevalence comparison without tuning on the examined test set.
-
-3. Classify the observed historical result methods, then consider dated
-   knockdowns conceded, finish losses, recent form, and strength of schedule.
-   Use time-based validation within past data for model selection, and reserve
-   newer unseen fights for an unbiased final evaluation.
-
-4. Keep combined `Draw/NC` outcomes outside binary model training; review
-   richer outcome handling if a future source distinguishes the two.
-
-5. Revisit UFCalendar before implementing automated current-data updates for
-   the public application.
+1. Run the original baseline and new development/defensive exports against
+   the ignored Mac data. Verify row counts, histories, date boundaries and
+   output hashes; do not infer full-data success from synthetic fixtures.
+2. Join defensive histories to the same matchup cohort and compare added
+   features to the original baseline on identical dated validation bouts.
+   Report coverage, per-bout probabilities and uncertainty before selecting.
+3. Add outcome/recency and chronological opponent-strength families as
+   separate comparisons. Keep the already examined original test as a
+   reference, and save prospective forecasts before results occur.
+4. Prepare a diverse Cito coverage pilot, fighter/bout mapping, provenance
+   manifest and resumable archive collection. Confirm old-bout entitlement
+   with a real request before bulk acquisition or any purchase claim.
 
 ## Blockers
 
