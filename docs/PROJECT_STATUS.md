@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Exploratory attribution of audited defensive feature groups
+**Current focus:** Dated outcome and activity candidate on frozen development folds
 
 ## Project Goal
 
@@ -400,16 +400,30 @@ diagnostic at `228a8ba`, confirming the accepted input hashes and a clean
 working tree. Striking alone improved correct-bout counts in all four folds;
 other group effects varied by year. In 2022, removing striking from full
 defense improved accuracy by 11 bouts, illustrating correlated feature effects.
+PR #11 was merged into `main` after the Mac verification. The Mac synced
+`main` to merge commit `e8a0d08` with a clean working tree.
+
+The outcome/activity candidate is being prepared on a separate branch. It
+uses identified UFC fights to save strictly earlier win/loss and last-bout
+histories. An independent audit recomputes every row from source fights;
+the comparison retains exact nine-feature and full-defense forecasts and adds
+four dated outcome/activity differences. Local synthetic tests do not establish
+its coverage or model performance on the Mac's ignored historical files.
+See the candidate definition in `docs/EVALUATION_CONTRACT.md`.
 
 ## Next Steps
 
-1. Merge the validated defensive group diagnostics as exploratory evidence.
-   Preserve the accepted input hashes and per-bout predictions for review.
-2. Keep defense as a promising development candidate and preserve the original
-   nine-feature baseline and paired predictions as fixed references.
-3. Add outcome/recency and chronological opponent-strength families as
-   separate comparisons. Keep the already examined original test as a
-   reference, and save prospective forecasts before results occur.
+1. On the Mac, run Ruff and the full test suite, then export and independently
+   audit outcome histories. Require 17,102 fighter-bout rows with every
+   earlier source count, date and outcome matching. Stop on any mismatch.
+2. Run the outcome/activity comparison. Confirm 8,551 matchup rows, the
+   accepted matchup/defensive hashes, 1,857 decisive validation bouts and 35
+   Draw/NC exclusions, and exact baseline/full-defense reference scores.
+   Inspect per-fold accuracy, log loss and missingness; do not select a model
+   on pooled accuracy alone. Preserve the hashed per-bout predictions.
+3. Only after reviewing this source audit and comparison, study chronological
+   opponent strength as a separate family. Keep the original examined test as
+   a historical reference and save prospective forecasts before results occur.
 4. Prepare a diverse Cito coverage pilot, fighter/bout mapping, provenance
    manifest and resumable archive collection. Confirm old-bout entitlement
    with a real request before bulk acquisition or any purchase claim.

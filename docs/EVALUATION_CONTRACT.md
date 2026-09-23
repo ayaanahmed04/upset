@@ -152,3 +152,48 @@ The Mac reran the experiment at code commit `228a8ba` with the previously
 accepted matchup SHA-256 `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
 and defensive history SHA-256 `fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
 Ruff and all 249 automated tests passed; the working tree was clean.
+
+## Dated outcome and activity candidate (v1)
+
+`python -m upset.data.export_prefight_outcomes` reads identified historical
+fights and saves a separate ignored
+`prefight/outcome_history_v1.jsonl` file: one row per fighter per bout. Each
+row contains the number of earlier UFC appearances, earlier decisive bouts,
+wins, losses, and win fraction; wins and losses in the **previous 365 calendar
+days**; and days since the fighter's last observed UFC bout. The four modeled
+inputs are the A-minus-B differences in prior win fraction, recent wins,
+recent losses, and days since last bout. Counts and the fight IDs/dates remain
+in the saved file as audit evidence. No other promotion's bouts are inferred.
+
+Only event dates strictly before the target event contribute. A fight exactly
+365 days earlier is in the recent window; a fight 366 days earlier is out.
+The combined `Draw/NC` label contributes an appearance and can set last-bout
+recency, but it is never called a win or loss. Win fraction is null until a
+fighter has a decisive UFC bout. Days since last bout is null for a debut;
+recent wins/losses are zero when there were none. Same-day outcomes cannot
+enter one another's snapshots. The historical snapshot was downloaded after
+the fights, so its labels may reflect later corrections.
+
+`python -m upset.data.audit_prefight_outcomes` independently scans earlier
+identified fights for **every** saved fighter-bout row, recalculates all
+counts, rates and dates, and fails on a mismatch. The modeling command also
+runs this source audit before writing its results. It checks coverage by
+permanent fighter ID and bout ID, and the saved output reader rejects bad
+schemas, duplicate keys and internally inconsistent counts or rates.
+
+After export and audit, `python -m upset.modeling.run_outcome_recency` writes
+ignored `experiments/outcome_recency_v1/predictions.jsonl` and
+`manifest.json`. It preserves the **exact** original nine-feature baseline
+and all-defense probabilities from the paired defense comparison and fits
+two new variants: baseline plus the four outcome/activity differences, and
+all defense plus those four. Each uses the same logistic procedure and frozen
+development training dates. All variants score the identical decisive bouts,
+while Draw/NC rows retain null probabilities. The manifest records input,
+registry and identified-fight SHA-256 hashes, code revision, model features,
+per-fold and pooled metrics, source-audit result and exclusions.
+
+No score has yet been measured on the Mac for this candidate. The folds have
+already been used for several feature comparisons: any observed gain is
+exploratory, and the 2023-08-26+ examined test is not a fresh holdout.
+Possible selection bias and repeated fighters remain. The practical next
+evidence is a dated prospective prediction archive before results occur.
