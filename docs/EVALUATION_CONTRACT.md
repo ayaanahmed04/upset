@@ -117,3 +117,24 @@ feature lists, excluded rows, and runtime versions.
 These comparisons are exploratory: the folds have already influenced feature
 selection, groups are correlated, and the results cannot identify causal
 contributions or provide an independent test. No Cito rounds enter this model.
+
+The first Mac group run on 1,857 decisive bouts (35 Draw/NC excluded) gave:
+
+| Variant | Correct | Accuracy | ROC AUC | Log loss |
+| --- | ---: | ---: | ---: | ---: |
+| Original baseline | 985 | 53.04% | 0.5548 | 0.69062 |
+| Add striking | 1,029 | 55.41% | 0.5839 | 0.68467 |
+| Add grappling | 990 | 53.31% | 0.5544 | 0.69072 |
+| Add knockdowns | 997 | 53.69% | 0.5623 | 0.68836 |
+| Add finish losses | 1,007 | 54.23% | 0.5708 | 0.68719 |
+| All defense | 1,067 | 57.46% | 0.5966 | 0.68159 |
+| All except striking | 1,041 | 56.06% | 0.5748 | 0.68637 |
+| All except grappling | 1,067 | 57.46% | 0.5999 | 0.68138 |
+| All except knockdowns | 1,077 | 58.00% | 0.5970 | 0.68235 |
+| All except finish losses | 1,044 | 56.22% | 0.5872 | 0.68307 |
+
+Striking and finish-loss histories show the clearest differences in these
+variants. Removing grappling leaves accuracy unchanged and slightly improves
+log loss, while removing knockdowns improves accuracy but worsens log loss.
+Because the feature groups overlap and these folds have already been examined,
+none of these ranks or the 58.00% variant is a prospective performance claim.

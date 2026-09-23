@@ -386,12 +386,22 @@ strictly earlier fight counts. Its 44 independently recalculated sampled rows
 across 41 fighters all matched. PR #10 was merged into `main`.
 See `docs/EVALUATION_CONTRACT.md`.
 
+The first exploratory defensive group run kept 1,857 decisive validation
+bouts and 35 Draw/NC exclusions. Adding only striking to the nine-feature
+baseline reached 1,029 correct (55.41%); adding only finish losses reached
+1,007 (54.23%). Full defense remained 1,067 (57.46%). Dropping grappling
+from full defense left accuracy unchanged at 1,067 and slightly improved
+log loss (0.68159 to 0.68138). Dropping knockdowns raised accuracy to
+1,077 (58.00%) but worsened log loss to 0.68235. These are exploratory
+same-fold results and do not establish the best model for future fights.
+The Mac passed 249 tests. Ruff found one test import-order error, corrected
+on the diagnostic branch pending Mac recheck.
+
 ## Next Steps
 
-1. Run `python -m upset.modeling.run_defense_groups` on the Mac after verifying
-   Ruff and tests. Compare striking, grappling, knockdown and finish-loss
-   groups added singly and omitted singly on the same development cohort.
-   Treat all rankings as exploratory, since these folds were already used.
+1. Recheck Ruff and tests on the diagnostic branch after its import-order
+   correction. Inspect fold-by-fold metrics and verify the source hashes in
+   the saved group manifest before merging the draft PR.
 2. Keep defense as a promising development candidate and preserve the original
    nine-feature baseline and paired predictions as fixed references.
 3. Add outcome/recency and chronological opponent-strength families as

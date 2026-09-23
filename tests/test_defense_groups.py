@@ -7,6 +7,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from test_defense_ablation import _data
+
 from upset.modeling.defense_ablation import compare_defense
 from upset.modeling.defense_groups import (
     GROUPS,
