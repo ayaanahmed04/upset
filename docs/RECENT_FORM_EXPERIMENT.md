@@ -134,8 +134,8 @@ dates and population priors were strictly earlier, and read-back passed. The
 comparison kept all six original Elo-study forward/reverse probability series
 exactly. The four existing development windows contain 1,857 decisive bouts;
 35 Draw/NC bouts are excluded. These figures come from the Mac terminal run;
-the generated manifest and row-level predictions have not been supplied for
-independent inspection here.
+the generated manifest and row-level predictions were subsequently supplied
+and independently checked as described below.
 
 | Variant | Correct / 1,857 | Accuracy | Log loss | Brier |
 | --- | ---: | ---: | ---: | ---: |
@@ -175,6 +175,54 @@ fighter-swap complement error, zero conflicting winner picks and 42 exact
 procedures, but symmetry alone is not a predictive improvement. The recent
 logistic model is the strongest *development probability candidate*, while
 win-pick accuracy remains about 58%. No model is promoted.
+
+### Review of the uploaded manifest and predictions
+
+The uploaded `recent_form_v1` manifest identifies `4bc2941` and scikit-learn
+1.9.1 on the Mac. The 1,892 uploaded prediction records match its recorded
+SHA-256. Both saved Elo-study input-file hashes match the earlier uploaded
+Elo manifest and prediction file, and all six old forward/reverse values,
+identities, dates, targets and exclusions are identical for every bout.
+Independently recomputing all 12 variants' accuracy, AUC, log loss and Brier
+from the uploaded rows matched all 47 reported pooled, fold, subgroup and
+weight-class score sets. Recomputing the matched date-cluster bootstrap from
+the rows and the recorded seed reproduced its paired intervals. The saved
+source-data audit reports 17,102 matching rows and strictly earlier priors;
+the full original historical source files were not uploaded here, so that
+source replay cannot be independently rerun in this review.
+
+The recent candidate has AUC **0.628908** versus **0.605321** for symmetric
+defense + Elo. Adding recent inputs lowers log loss for matchups with both
+fighters experienced (962 bouts: 0.673780 to 0.664477), at least one under
+three earlier UFC bouts (895: 0.681213 to 0.667679), both fighters with some
+history (1,487: 0.676191 to 0.666477), and only one with history (328:
+0.680651 to 0.660476). The 42 matchups where neither fighter had history
+receive exactly 0.5 from both symmetric logistic models. At the individual
+bout level, the recent model reduces log loss on 997 bouts, increases it on
+818 and ties on 42; its pooled gain remains after descriptively removing the
+ten largest improvements. These analyses are retrospective, not independent
+tests of which subgroup to serve with which model.
+
+The fixed ten-bin expected calibration error, recomputed from the saved
+probabilities, is **0.0352** for the recent logistic model versus **0.0074**
+for symmetric defense + Elo. Its mean predicted winner confidence is 60.34%
+while 57.67% of its winner picks are correct. The recent model improves
+pooled log loss and Brier but has a worse *coarse-bin calibration diagnostic*;
+in particular, its 0.4–0.5 A-side probability bin averages 0.453 and wins
+0.506 of bouts (504 observations). The matched model's corresponding bin
+averages 0.456 and wins 0.452 (633 observations). These bins are descriptive,
+depend on bin edges, and do not license calibration on the same validation
+bouts followed by reporting the calibrated score as a new validation result.
+
+The weight-class slices are mixed: featherweight (201 bouts) and women's
+bantamweight (61 bouts) have higher recent-model log loss than their matched
+comparator, while lightweight (246) and bantamweight (204) have lower loss.
+Class-specific estimates are exploratory and too thin for selective model
+switching. The manifest counts 1,279 source bouts after the last development
+date (August 19, 2023); their outcomes have not been scored by this study.
+Freeze the model and any calibration plan before testing on a later-date
+cohort. Historical later-date testing still differs from timestamped live
+forecasts.
 
 ## Mac commands
 

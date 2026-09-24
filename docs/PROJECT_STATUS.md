@@ -494,9 +494,18 @@ holds in all four development windows. Correct picks are 1,071/1,857
 1,067 (57.46%). Paired accuracy intervals include zero. All six new variants
 have zero final fighter-swap probability error and no conflicting picks.
 These are repeatedly examined development folds; intervals are unadjusted
-for multiple comparisons. No model was promoted. The new experiment manifest
-and individual predictions remain on the Mac and have not been separately
-inspected in this review.
+for multiple comparisons. No model was promoted. The newly uploaded manifest
+and all 1,892 predictions were inspected: saved prediction/reference hashes
+and all six original probability series match, and all 47 score sets across
+12 variants plus the paired bootstrap reproduce from the rows. Recent logistic
+AUC is 0.628908 versus its comparator's 0.605321; log-loss gains hold across
+both history and both experience groups, with 42 double-debut bouts yielding
+exact 0.5 ties. The ten-bin calibration error is worse (0.0352 versus 0.0074),
+despite lower log loss and Brier. The source-replay audit is reported as passed
+in the Mac manifest; the original historical files were not uploaded for an
+independent source replay in this environment. The manifest counts 1,279
+source bouts after the August 19, 2023 development end date. Freeze any
+candidate and calibration policy before scoring later-date fights.
 
 1. Review PR #15 as a documented experiment with completed Mac checks. Its
    historical score must not be treated as a validated order-independent
