@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Exploratory attribution of audited defensive feature groups
+**Current focus:** Prospective evaluation and carefully scoped feature research
 
 ## Project Goal
 
@@ -400,16 +400,34 @@ diagnostic at `228a8ba`, confirming the accepted input hashes and a clean
 working tree. Striking alone improved correct-bout counts in all four folds;
 other group effects varied by year. In 2022, removing striking from full
 defense improved accuracy by 11 bouts, illustrating correlated feature effects.
+PR #11 was merged into `main` after the Mac verification. The Mac synced
+`main` to merge commit `e8a0d08` with a clean working tree.
+
+The outcome/activity candidate ran on the Mac at `7f4cde9`. Ruff and all 257
+tests passed; 17,102 dated history rows exported and independently matched
+earlier identified fights. The matchups and defensive source hashes matched
+the accepted exports, 1,857 decisive validation bouts and 35 Draw/NC rows
+remained, and the branch was clean. Adding four outcome/activity differences
+to the original baseline gave 1,055 correct (56.81%), versus 985 (53.04%)
+for the baseline. Adding them to full defense gave 1,053 correct (56.70%),
+versus 1,067 (57.46%) for full defense alone. The latter combination slightly
+improved log loss (0.68159 to 0.68083), but lost 20 correct bouts in partial
+2023 even as it gained eight in 2022. These are already examined development
+folds; no model has been promoted. See `docs/EVALUATION_CONTRACT.md` for the
+definition, per-fold counts and study limits.
 
 ## Next Steps
 
-1. Merge the validated defensive group diagnostics as exploratory evidence.
-   Preserve the accepted input hashes and per-bout predictions for review.
-2. Keep defense as a promising development candidate and preserve the original
-   nine-feature baseline and paired predictions as fixed references.
-3. Add outcome/recency and chronological opponent-strength families as
-   separate comparisons. Keep the already examined original test as a
-   reference, and save prospective forecasts before results occur.
+1. Merge the audited outcome/activity comparison as exploratory research,
+   preserving its per-bout probabilities and source hashes. Keep full defense
+   as a development candidate; do not select the combined variant by its
+   tiny log-loss advantage or any variant by one pooled accuracy figure.
+2. Design a prospective prediction archive: timestamp inputs and model
+   revision, save probabilities before an event, then score only once results
+   are known. An already examined historical period cannot supply a new test.
+3. If adding chronological opponent strength, predeclare its definition and
+   compare it separately while tracking the extra selection pressure from
+   repeated use of the same development folds.
 4. Prepare a diverse Cito coverage pilot, fighter/bout mapping, provenance
    manifest and resumable archive collection. Confirm old-bout entitlement
    with a real request before bulk acquisition or any purchase claim.

@@ -152,3 +152,80 @@ The Mac reran the experiment at code commit `228a8ba` with the previously
 accepted matchup SHA-256 `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
 and defensive history SHA-256 `fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
 Ruff and all 249 automated tests passed; the working tree was clean.
+
+## Dated outcome and activity candidate (v1)
+
+`python -m upset.data.export_prefight_outcomes` reads identified historical
+fights and saves a separate ignored
+`prefight/outcome_history_v1.jsonl` file: one row per fighter per bout. Each
+row contains the number of earlier UFC appearances, earlier decisive bouts,
+wins, losses, and win fraction; wins and losses in the **previous 365 calendar
+days**; and days since the fighter's last observed UFC bout. The four modeled
+inputs are the A-minus-B differences in prior win fraction, recent wins,
+recent losses, and days since last bout. Counts and the fight IDs/dates remain
+in the saved file as audit evidence. No other promotion's bouts are inferred.
+
+Only event dates strictly before the target event contribute. A fight exactly
+365 days earlier is in the recent window; a fight 366 days earlier is out.
+The combined `Draw/NC` label contributes an appearance and can set last-bout
+recency, but it is never called a win or loss. Win fraction is null until a
+fighter has a decisive UFC bout. Days since last bout is null for a debut;
+recent wins/losses are zero when there were none. Same-day outcomes cannot
+enter one another's snapshots. The historical snapshot was downloaded after
+the fights, so its labels may reflect later corrections.
+
+`python -m upset.data.audit_prefight_outcomes` independently scans earlier
+identified fights for **every** saved fighter-bout row, recalculates all
+counts, rates and dates, and fails on a mismatch. The modeling command also
+runs this source audit before writing its results. It checks coverage by
+permanent fighter ID and bout ID, and the saved output reader rejects bad
+schemas, duplicate keys and internally inconsistent counts or rates.
+
+After export and audit, `python -m upset.modeling.run_outcome_recency` writes
+ignored `experiments/outcome_recency_v1/predictions.jsonl` and
+`manifest.json`. It preserves the **exact** original nine-feature baseline
+and all-defense probabilities from the paired defense comparison and fits
+two new variants: baseline plus the four outcome/activity differences, and
+all defense plus those four. Each uses the same logistic procedure and frozen
+development training dates. All variants score the identical decisive bouts,
+while Draw/NC rows retain null probabilities. The manifest records input,
+registry and identified-fight SHA-256 hashes, code revision, model features,
+per-fold and pooled metrics, source-audit result and exclusions.
+
+The Mac ran this comparison at `7f4cde9` after Ruff and all 257 tests passed.
+The export produced 17,102 rows, and the independent audit recomputed every
+one against the identified source fights and matched. The matchup SHA-256
+remained `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
+and the defensive history SHA-256 remained
+`fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
+The branch's tracked working tree was clean. On the same 1,857 decisive
+validation bouts, with 35 combined Draw/NC rows excluded:
+
+| Variant | Correct | Accuracy | ROC AUC | Log loss |
+| --- | ---: | ---: | ---: | ---: |
+| Nine-feature baseline | 985 | 53.04% | 0.5548 | 0.69062 |
+| Full defense | 1,067 | 57.46% | 0.5966 | 0.68159 |
+| Baseline + outcomes/activity | 1,055 | 56.81% | 0.5796 | 0.68601 |
+| Full defense + outcomes/activity | 1,053 | 56.70% | 0.5977 | 0.68083 |
+
+The new family substantially improved the weak baseline, but its combination
+with full defense had 14 fewer correct bouts than full defense alone. AUC rose
+by roughly 0.0011 and log loss improved by roughly 0.00076 relative to full
+defense; these are very small development differences. The correct-bout counts
+for the four frozen folds were:
+
+| Fold | Baseline | Full defense | Baseline + outcomes | Defense + outcomes |
+| --- | ---: | ---: | ---: | ---: |
+| 2019 | 272 | 297 | 298 | 296 |
+| 2021 | 269 | 289 | 287 | 288 |
+| 2022 | 264 | 274 | 278 | 282 |
+| 2023 partial | 180 | 207 | 192 | 187 |
+
+Adding outcomes/activity to full defense helped 2022 by eight correct bouts
+but hurt partial 2023 by 20. No model has been promoted from this comparison.
+These folds have already been used for several feature decisions, so even the
+baseline-to-outcome gain is exploratory. The original 2023-08-26+ test is an
+examined historical reference, not a fresh holdout. Repeated fighters and
+possible later corrections to the downloaded history also remain limitations.
+The practical next evidence is a dated prospective prediction archive saved
+before results occur.
