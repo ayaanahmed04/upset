@@ -13,9 +13,13 @@ The original 260 tests also passed before adding the new tests. Synthetic
 fixture metrics are not UFC performance estimates.
 
 The Mac output confirms the real-data export, full rating replay and model
-comparison. A separate Mac Ruff/pytest summary and the complete manifest
-have not yet been supplied in this session. Do not describe the assistant's
-288-test result as a confirmed Mac test run.
+comparison. The uploaded manifest and predictions have since been supplied;
+the manifest's SHA-256 of the 1,892 prediction rows matches the uploaded
+`predictions.jsonl` bytes. Mac Ruff reported "All checks passed!". The pasted
+pytest log collected 288 tests and shows progress through the final test
+file, but omits the final passed/failed summary. Do not describe the
+assistant's 288-test result as a confirmed Mac test result until that final
+line is available.
 
 ## Question and fixed comparison
 
@@ -137,8 +141,13 @@ above. All 17,102 rating rows were checked, all numeric fields independently
 recomputed, and the comparison reported a match. It retained 1,857 decisive
 bouts, excluded 35 combined Draw/NC rows, and preserved the saved baseline
 and full-defense probabilities. The new manifest was saved successfully.
-Input-hash, source-label and reference-refit gates therefore completed;
-the exact new file hashes and environment values still need the manifest.
+Input-hash, source-label and reference-refit gates therefore completed.
+The manifest records Python 3.12.14, NumPy 2.5.3 and scikit-learn 1.9.1
+on the Mac. The matchup and defense hashes match the preserved reference
+inputs from the earlier experiment. The Elo-history hash is
+`8cedb4c9360260de433f63583c7955b78fa019c13b73c77fef135a0650fa3012`;
+the prediction-file hash is
+`f688fd0cec4f02e81c0591096e9d0bcb938995d5b305c114d3d6084b2044da45`.
 
 Metrics below have the precision printed by the CLI; they are not fabricated
 full-precision values. All six variants use the identical development cohort.
@@ -215,13 +224,83 @@ Interpretation:
   newly fitted competitor.
 - The result supports retaining Elo and boosting as research candidates,
   with full defense preserved as the reference. Before selecting the next
-  comparison, inspect saved symmetry, reliability, subgroup and probability
-  difference intervals. These have not been reviewed from the pasted output.
-  Do not start parameter searches or call any result a live model score.
+  comparison, account for the diagnostics below. Do not start parameter
+  searches or call any result a live model score.
 
-PR #15 remains a draft pending that evidence review and the Mac check
-summary. Recording successful research does not require a candidate to beat
-every reference, and merging an experiment would not promote a model.
+### Manifest and prediction diagnostics
+
+The two uploaded copies of the manifest are byte-identical. Its saved
+prediction-file SHA-256 matches the separately uploaded `predictions.jsonl`.
+That file contains 1,892 distinct validation bout IDs: 1,857 decisive and
+35 excluded Draw/NC, with null probabilities on excluded rows. All decisive
+probabilities are finite and between zero and one, and their fold counts
+match the manifest. These are consistency checks of the supplied artifacts,
+not independent source verification beyond the full export replay above.
+
+**Fighter-order consistency is a material limitation.** The logged symmetry
+diagnostic runs the same fitted model on A-minus-B features and the negated
+B-minus-A features. For a coherent binary matchup probability, the two
+probabilities should add to one. The following counts exclude exact 0.5
+ties and show bouts where swapping A and B actually changes the selected
+winner:
+
+| Variant | Conflicting winner picks / 1,857 | Mean `abs(pA + pB - 1)` | Maximum |
+| --- | ---: | ---: | ---: |
+| Baseline | 434 | 0.01694 | 0.03357 |
+| Full defense | 225 | 0.01705 | 0.18748 |
+| Elo alone | 0 | 0 | 0 |
+| Defense + Elo | 164 | 0.01489 | 0.21353 |
+| Boosted defense | 420 | 0.05981 | 0.36617 |
+| Boosted defense + Elo | 418 | 0.05708 | 0.35190 |
+
+Direct Elo has 49 exact 0.5 ties when the two ratings match; these are not
+conflicting winner picks. The mismatch in fitted models can arise from
+an intercept, handling of missing values and nonsymmetric fitted splits.
+The present study was defined with A as the lower permanent UUID, so its
+reported historical scores remain reproducible under that orientation.
+These procedures should not be served as order-independent matchup
+probabilities without addressing the issue. A separately versioned,
+predeclared symmetry treatment is an appropriate bounded follow-up. The
+stored reverse-order probabilities support diagnostics; a post hoc
+symmetrized score on these already examined folds would remain exploratory.
+
+The fold-pooled history slices also explain why a six-pick net gain is thin:
+
+| Prior observed UFC appearances | Bouts | Full defense correct | Defense + Elo correct |
+| --- | ---: | ---: | ---: |
+| At least one fighter has fewer than three | 895 | 501 | 516 |
+| Both fighters have at least three | 962 | 566 | 557 |
+
+These groups overlap with missingness and era, so this is descriptive,
+not evidence that Elo causes a specific benefit for newcomers. In the
+736 bouts with a missing input among the 17 reference features, defense + Elo
+lost eight correct picks versus full defense; in 1,121 complete-input bouts
+it gained fourteen. Neither pattern justifies a subgroup-only promotion.
+Weight-class labels also split title bouts into tiny categories, some with
+only six or seven decisive bouts; do not select classes from this scan.
+
+The probability-decile report is compatible with fairly good central
+reliability for defense + Elo: the 0.4–0.5 bin contains 614 bouts (mean
+forecast 0.456, observed A-win fraction 0.459), and the 0.5–0.6 bin
+contains 646 (0.543 versus 0.543). Together these central bins contain
+1,260/1,857 bouts (67.9%). The 0.9–1.0 bin has only three bouts and cannot
+support a claim about extreme-confidence calibration. Log loss also combines
+calibration and discrimination. The date-bootstrap intervals for the
+defense + Elo log-loss difference [-0.00951, +0.00166] and the boosted
+defense + Elo difference [-0.01684, +0.00158] versus full defense both
+include zero. Probability-score gains remain uncertain on these folds.
+
+Conclusion for this bounded study: keep all results and their source hashes,
+retain full defense as a reference, and do not promote a live model. Before
+advanced feature additions or a public matchup UI, consider a fixed,
+order-consistent prediction procedure and test it alongside recent
+performance features on the same declared cohort. These already examined
+folds cannot establish unbiased future performance.
+
+PR #15 remains a draft pending the missing Mac pytest completion line and
+review of the fighter-order finding. Recording successful research does not
+require a candidate to beat every reference, and merging an experiment would
+not promote a model.
 
 ## Mac reproduction commands
 
