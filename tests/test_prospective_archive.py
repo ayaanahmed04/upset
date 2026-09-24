@@ -3,7 +3,7 @@
 import hashlib
 import json
 import unittest
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -15,7 +15,7 @@ from upset.modeling.prospective_archive import (
 
 ALICE = "00000000-0000-4000-8000-000000000001"
 BOB = "00000000-0000-4000-8000-000000000002"
-NOW = datetime(2026, 9, 24, 20, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 9, 24, 20, 0, tzinfo=UTC)
 
 
 def _inputs(root: Path) -> tuple[Path, ...]:

@@ -5,7 +5,7 @@ import hashlib
 import json
 import re
 import shutil
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from math import isfinite
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -56,7 +56,7 @@ def _utc(value: str) -> datetime:
         r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", value
     ):
         raise ValueError(f"Expected UTC timestamp with second precision: {value!r}")
-    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+    return datetime.fromisoformat(value)
 
 
 def _read_jsonl(path: Path, expected: set[str]) -> list[dict]:
@@ -227,7 +227,7 @@ def record_forecast_batch(
     recorded_at: datetime | None = None,
 ) -> Path:
     """Write one complete new batch; existing bout keys cannot be repeated."""
-    moment = datetime.now(timezone.utc) if recorded_at is None else recorded_at
+    moment = datetime.now(UTC) if recorded_at is None else recorded_at
     if moment.tzinfo is None or moment.utcoffset() != timedelta(0):
         raise ValueError("Recording clock must be timezone-aware UTC.")
     moment = moment.replace(microsecond=0)
