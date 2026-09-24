@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Prospective evidence capture and live source readiness
+**Current focus:** Opponent strength and recent-performance research; prospective readiness
 
 ## Project Goal
 
@@ -417,39 +417,56 @@ folds; no model has been promoted. See `docs/EVALUATION_CONTRACT.md` for the
 definition, per-fold counts and study limits.
 
 PR #12 merged the audited outcome/activity experiment into `main` at
-`3385ebb`. A separate prospective archive prototype now records supplied
-pre-event forecasts with schedule evidence, model bytes/specification, feature
-inputs, reviewed fighter links, hashes and a local UTC timestamp. It checks
-for duplicate bouts, stale schedules and after-start writes, then copies and
-verifies complete batches under ignored processed data. Local synthetic tests
-have passed; this prototype has not recorded a real future bout or generated
-probabilities. Live fight/stat updates, reviewed new provider links, a frozen
-trained model and externally anchored pre-event timestamps remain necessary
-for trustworthy future performance claims. See
-`docs/PROSPECTIVE_EVALUATION.md`.
+`3385ebb`. PR #13 merged the prospective archive prototype at `3d2af42`
+after the Mac passed Ruff and all 260 tests on `6246578`, with a clean
+working tree. The three reported datetime style errors were corrected before
+that final check.
 
-## Next Steps
+The archive records supplied pre-event forecasts with schedule evidence,
+model bytes/specification, feature inputs, reviewed fighter links, hashes and
+a local UTC timestamp. It has not generated or archived a real prospective
+prediction. Current fight/stat coverage, reviewed provider links, a trained
+and replay-verified model, an external pre-event timestamp and later outcome
+scoring remain necessary. See `docs/PROSPECTIVE_EVALUATION.md`.
 
-1. Recheck the prospective archive prototype with Ruff and the full Mac test
-   suite. Keep it as an evidence-storage tool until complete, reviewed live
-   inputs and a frozen trained model are available.
-2. Build a limited live-source coverage pilot: verify upcoming bouts, both
-   fighter mappings, updated completed-fight statistics and scheduled starts
-   before spending on a historical archive or producing any live probability.
-3. Define a model-release procedure (fixed features, fit cutoff, serialized
-   artifact, deterministic probability replay) and a trusted external
-   timestamp for the first actual prospective batch. Score outcomes later in
-   separate files without modifying the archived predictions.
-4. If adding chronological opponent strength, predeclare its definition and
-   track the selection pressure from repeatedly using development folds.
-5. Separately plan any historical Cito round-stat acquisition. Confirm
-   old-bout entitlement with a real authorized request before bulk collection
-   or any claim that a paid archive improves predictions.
+Ayaan requested a pause after this milestone, then a full handoff and a deeper
+modeling plan. The September 24 review found that recent performance weighting,
+opponent ratings, actual control dominance, target/position style features,
+physical matchup features and boosted trees remain unimplemented. These are
+specific research opportunities; the current scores do not establish a
+performance ceiling or a path guaranteed to reach 75%. No paid Cito purchase
+or new modeling run occurred during the review.
+
+See `docs/MODELING_RESEARCH_PLAN.md` for the feature inventory, bounded
+experiment order, Cito purchase pilot and evaluation requirements. This plan
+supersedes the earlier ordering of proposed next steps; it does not change
+the preserved experiment definitions or claim any new score.
+
+## Recommended Next Steps
+
+1. Implement and independently audit chronological opponent strength. Compare
+   Elo alone and Elo-enhanced logistic models against the frozen references;
+   include one small boosted-tree comparison on identical features and bouts.
+2. Add exposure-aware recent performance from the already owned historical
+   fight totals, then available physical context and matchup interactions.
+   Measure each family rather than assuming more columns improve predictions.
+3. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
+   and the account's actual archive entitlement. The September 16 provider
+   email already supports one-month acquisition and local retention; pricing
+   and terms still disagree on the public historical window.
+4. Repair the completed-fight/stat gap after March 2026 and review provider
+   identities. Establish timestamped odds coverage for a separate market
+   benchmark and optional market-assisted candidate.
+5. Freeze a model release, verify probability replay, capture externally dated
+   prospective forecasts, then score outcomes separately. No new model was
+   promoted by the handoff review.
 
 ## Blockers
 
-The Kaggle snapshot ends in March 2026. There is no reviewed, complete live
-fighter/bout mapping or current pre-fight stat feed, and no serialized,
-replay-verified model release. These block a genuine prospective forecast.
-Known historical data-quality issues remain documented and are handled in
-normalization rather than by changing the raw source files.
+The historical snapshot ends on 2026-03-07. Complete reviewed current data,
+a serialized/replay-verified model and actual pre-event evidence are absent.
+Historical Cito round access and timestamped odds coverage have not been
+established on the user's account. These block live-performance claims;
+opponent-strength and recent-performance research can proceed with existing
+historical files.
+
