@@ -229,3 +229,7 @@ examined historical reference, not a fresh holdout. Repeated fighters and
 possible later corrections to the downloaded history also remain limitations.
 The practical next evidence is a dated prospective prediction archive saved
 before results occur.
+
+The prototype archive contract, its input gates and the remaining live-data
+requirements are documented in `docs/PROSPECTIVE_EVALUATION.md`. It has not
+produced a real pre-event prediction or a new performance estimate.
