@@ -7,7 +7,13 @@ scored 1,073/1,857 (57.78%) versus full defense's 1,067 (57.46%), with paired
 accuracy interval [-1.51, +2.15] percentage points. Boosted defense + Elo had
 the lowest pooled log loss (0.674022) but lower accuracy (57.08%) than full
 defense. These are mixed development results; no model is promoted. Full
-diagnostics and the separate Mac Ruff/pytest summary await review.
+diagnostics are reviewed and the Mac passed Ruff and all 288 tests. The
+fighter-order limitation is documented in `ELO_EXPERIMENT.md`.
+
+`RECENT_FORM_EXPERIMENT.md` defines the separate implemented symmetry/recent
+performance follow-up. It keeps this cohort, carries all six saved Elo-study
+probability series exactly, and adds six candidates. It is awaiting the Mac
+comparison; the original scores remain unchanged.
 
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.

@@ -141,7 +141,7 @@ def _matrix(rows, defense, ratings, columns) -> np.ndarray:
     return np.asarray(values, dtype=float)
 
 
-def _scores(predictions: list[dict]) -> dict:
+def _scores(predictions: list[dict], variants=VARIANTS) -> dict:
     decisive = [r for r in predictions if r["target_a_win"] is not None]
     if not decisive:
         return {
@@ -153,11 +153,11 @@ def _scores(predictions: list[dict]) -> dict:
                 "log_loss": None,
                 "brier_score": None,
             }
-            for name in VARIANTS
+            for name in variants
         }
     y = np.asarray([r["target_a_win"] for r in decisive])
     scores = {}
-    for name in VARIANTS:
+    for name in variants:
         p = np.asarray([r["probabilities_a_win"][name] for r in decisive])
         scores[name] = {
             "decisive_bouts": len(y),
@@ -167,7 +167,7 @@ def _scores(predictions: list[dict]) -> dict:
     return scores
 
 
-def _diagnostics(predictions: list[dict]) -> dict:
+def _diagnostics(predictions: list[dict], variants=VARIANTS) -> dict:
     decisive = [r for r in predictions if r["target_a_win"] is not None]
     groups = {
         "history": ("neither_has_history", "one_has_history", "both_have_history"),
@@ -181,10 +181,10 @@ def _diagnostics(predictions: list[dict]) -> dict:
             selected = [r for r in decisive if r["diagnostic_groups"][field] == label]
             slices[field][label] = {
                 "coverage": len(selected) / len(decisive),
-                "scores": _scores(selected),
+                "scores": _scores(selected, variants),
             }
     reliability, symmetry = {}, {}
-    for name in VARIANTS:
+    for name in variants:
         p = np.asarray([r["probabilities_a_win"][name] for r in decisive])
         swapped = np.asarray([r["swapped_probabilities_b_win"][name] for r in decisive])
         errors = np.abs(p + swapped - 1)

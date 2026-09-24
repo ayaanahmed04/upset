@@ -6,10 +6,17 @@ See `ELO_EXPERIMENT.md` for fixed settings, source audit, saved-reference
 checks and the first Mac results at `ddba4ab`. Defense + Elo reached 57.78%
 (six more correct than full defense); its accuracy interval includes zero.
 Boosted defense + Elo had the best pooled probability losses in that study
-but lower accuracy than full defense. No model is promoted; complete
-diagnostic review is pending. The historical review below describes the
-state before this implementation. Recent performance weighting, physical
-features and broader Cito acquisition are still proposed.
+but lower accuracy than full defense. Diagnostic review found material
+fighter-order dependence in the fitted classifiers; the full manifest and
+Mac Ruff/288-test result are confirmed. No model is promoted.
+
+`RECENT_FORM_EXPERIMENT.md` now specifies an implemented, separate follow-up:
+mirrored training and symmetric inference, 365-day weighted performance,
+earlier-population shrinkage, and actual control margin. Six fixed new
+candidates retain the original six predictions as references. The assistant
+environment passed Ruff and 313 tests plus 16 subtests; Mac results are
+pending. The historical review below describes the state before these
+implementations. Physical features and broader Cito acquisition remain proposed.
 
 ## Status and purpose
 
