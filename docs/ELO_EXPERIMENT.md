@@ -19,6 +19,11 @@ the manifest's SHA-256 of the 1,892 prediction rows matches the uploaded
 complete terminal log confirms **288 passed in 14.12s** on the Mac. The
 assistant environment separately passed 288 tests and 16 subtests.
 
+The subsequent `RECENT_FORM_EXPERIMENT.md` implements mirrored training,
+complementary inference and exposure-aware recent performance in a separate
+experiment. It preserves this study's six saved probability series exactly.
+Its actual historical results remain pending.
+
 ## Question and fixed comparison
 
 Does a dated record of opponent strength improve the existing inputs? Does

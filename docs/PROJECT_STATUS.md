@@ -465,14 +465,25 @@ exact 0.5 ties. Mac Ruff passed and the complete terminal log confirms
 288 pytest tests passed in 14.12s. The assistant environment separately
 passed 288 tests and 16 subtests. PR #15 is draft for research review.
 
+The next requested implementation is complete on `feature/symmetric-recent-form`:
+a separate, independently audited 365-day weighted-performance export, fixed
+earlier-population shrinkage, actual paired control margin, mirrored training
+with half weight per orientation, and complementary inference. Six new
+logistic/boosted candidates isolate symmetry, Elo and recent performance;
+all six old forward/reverse prediction series are preserved. The source
+statistics must also reproduce the accepted matchup/defense features. The
+assistant environment passed Ruff and 313 tests plus 16 subtests. This is
+implementation evidence; the Mac run and predictive results are still pending.
+See `docs/RECENT_FORM_EXPERIMENT.md` for the fixed design and commands.
+
 1. Review PR #15 as a documented experiment with completed Mac checks. Its
    historical score must not be treated as a validated order-independent
    matchup model.
-2. Define a small, separately versioned fighter-order symmetry experiment,
-   then add exposure-aware recent performance from the already owned
-   historical fight totals. Compare on the same declared cohort and keep
-   original probabilities and hashes. Avoid selecting variants on title-bout
-   or other thin slices of the previously examined folds.
+2. Run the implemented recent-performance export, full audit and comparison
+   on the Mac. Compare symmetry to its matching old model, Elo to symmetric
+   defense, and recent features to symmetric defense plus Elo. Keep both
+   probability losses and accuracy visible, with fold/paired uncertainty;
+   avoid selecting variants on thin slices of the previously examined folds.
 3. Continue with available physical context and matchup interactions after
    the temporal and symmetry checks; measure each family.
 4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
