@@ -224,6 +224,12 @@ Freeze the model and any calibration plan before testing on a later-date
 cohort. Historical later-date testing still differs from timestamped live
 forecasts.
 
+The fixed follow-up is now implemented on a separate branch. See
+`docs/EXAMINED_LATER_EVALUATION.md`: it forecasts and then scores the
+**previously examined** August 2023–March 2026 period. The original baseline
+already reported results there, so this is a historical stress test, not a
+fresh holdout. No new results have been run on the Mac yet.
+
 ## Mac commands
 
 After checking out this branch, activating the environment and ensuring the

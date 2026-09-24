@@ -13,10 +13,15 @@ Mac Ruff/288-test result are confirmed. No model is promoted.
 `RECENT_FORM_EXPERIMENT.md` now specifies an implemented, separate follow-up:
 mirrored training and symmetric inference, 365-day weighted performance,
 earlier-population shrinkage, and actual control margin. Six fixed new
-candidates retain the original six predictions as references. The assistant
-environment passed Ruff and 313 tests plus 16 subtests; Mac results are
-pending. The historical review below describes the state before these
-implementations. Physical features and broader Cito acquisition remain proposed.
+candidates retain the original six predictions as references. The Mac passed
+Ruff and 313 tests; 17,102 histories were independently audited. The best
+pooled candidate improved log loss to 0.666020 but made 57.67% correct picks,
+without an accuracy gain over its matching comparator. The uploaded report
+and row-level predictions matched their hashes; coarse-bin calibration is
+worse than the comparator's. `EXAMINED_LATER_EVALUATION.md` freezes the next
+comparison on the already examined later dates; it cannot be a fresh holdout.
+The historical review below describes the state before these implementations.
+Physical features and broader Cito acquisition remain proposed.
 
 ## Status and purpose
 

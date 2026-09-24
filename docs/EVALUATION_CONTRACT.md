@@ -12,8 +12,14 @@ fighter-order limitation is documented in `ELO_EXPERIMENT.md`.
 
 `RECENT_FORM_EXPERIMENT.md` defines the separate implemented symmetry/recent
 performance follow-up. It keeps this cohort, carries all six saved Elo-study
-probability series exactly, and adds six candidates. It is awaiting the Mac
-comparison; the original scores remain unchanged.
+probability series exactly, and adds six candidates. The Mac comparison passed
+Ruff and all 313 tests, independently audited 17,102 recent-performance rows,
+and saved 1,892 validation predictions. Symmetric defense + Elo + recent has
+pooled log loss 0.666020 versus its matched model's 0.677363, but win-pick
+accuracy remains 57.67% versus 57.89%. The uploaded manifest and predictions
+passed an independent read-back score and hash review. Coarse-bin calibration
+is worse for the recent candidate. No model was promoted. The subsequent
+examined-period protocol is in `EXAMINED_LATER_EVALUATION.md`.
 
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.
