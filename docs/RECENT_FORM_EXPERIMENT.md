@@ -10,12 +10,13 @@ passed** on Python 3.12.14, NumPy 2.3.5 and scikit-learn 1.8.0. Tests exercise
 known rate/shrinkage arithmetic, cold starts, missing control, current/same-day/
 future isolation, independent audit corruption, swapped feature construction,
 complementary probabilities, validation-label isolation, preserved references
-and refusal to overwrite evidence. Mac validation and actual scores are pending.
+and refusal to overwrite evidence. On the Mac at `4bc2941`, Ruff and all
+313 tests passed; the export, audit and comparison then completed.
 The first Mac run at `3cb9f18` passed Ruff, then pytest reported 308 passed,
 two failures and three setup errors. All five affected cases entered boosted
 fitting with a training feature that was entirely missing; scikit-learn 1.9.1
 failed during histogram binning. The chained export/audit/comparison commands
-did not execute. The follow-up fold-local column fix is awaiting a Mac rerun.
+did not execute. The subsequent fold-local column fix passed the Mac rerun.
 
 ## Question
 
@@ -125,6 +126,56 @@ and recent performance against symmetric defense plus Elo. Also compare each
 new candidate against saved full defense. Report mixed folds and intervals
 crossing zero. No automatic promotion or claim of a 75% result.
 
+## Historical Mac results at `4bc2941`
+
+Mac Ruff and 313 tests passed. Exported and independently audited all 17,102
+recent-performance rows: numeric fields matched direct source recomputation,
+dates and population priors were strictly earlier, and read-back passed. The
+comparison kept all six original Elo-study forward/reverse probability series
+exactly. The four existing development windows contain 1,857 decisive bouts;
+35 Draw/NC bouts are excluded. These figures come from the Mac terminal run;
+the generated manifest and row-level predictions have not been supplied for
+independent inspection here.
+
+| Variant | Correct / 1,857 | Accuracy | Log loss | Brier |
+| --- | ---: | ---: | ---: | ---: |
+| Saved full defense | 1,067 | 57.46% | 0.681592 | 0.243498 |
+| Saved defense + Elo | 1,073 | 57.78% | 0.677938 | 0.241999 |
+| Saved boosted defense + Elo | 1,060 | 57.08% | 0.674022 | 0.240889 |
+| Symmetric defense | 1,074 | 57.84% | 0.681038 | 0.243295 |
+| Symmetric defense + Elo | 1,075 | 57.89% | 0.677363 | 0.241769 |
+| Symmetric defense + Elo + recent | 1,071 | 57.67% | **0.666020** | **0.236867** |
+| Symmetric boosted defense | 1,055 | 56.81% | 0.675754 | 0.241579 |
+| Symmetric boosted defense + Elo | 1,061 | 57.14% | 0.672901 | 0.240217 |
+| Symmetric boosted defense + Elo + recent | 1,070 | 57.62% | 0.670808 | 0.239236 |
+
+The recent logistic model improves log loss over its directly matched
+symmetric defense + Elo comparator by **0.011342** (paired date-bootstrap 95%
+interval for new minus comparator: [-0.019443, -0.003091]); its accuracy
+difference is **-0.22 percentage points** [-2.28, +1.86]. Against saved full
+defense, log loss changes by -0.015572 [-0.026140, -0.004711], while accuracy
+changes by +0.22 points [-2.02, +2.39]. All intervals are exploratory and
+unadjusted for the multiple models examined and earlier looks at these folds.
+They do not establish future performance.
+
+The matched logistic log-loss comparison improves in each window:
+
+| Window | Symmetric defense + Elo | Plus recent | Correct, plus recent |
+| --- | ---: | ---: | ---: |
+| 2019 | 0.688571 | 0.671615 | 286/506 (56.52%) |
+| 2021 | 0.677836 | 0.659531 | 294/497 (59.15%) |
+| 2022 | 0.664591 | 0.661593 | 292/506 (57.71%) |
+| 2023 partial | 0.678959 | 0.673590 | 199/348 (57.18%) |
+
+Adding recent features to the symmetric boosted defense + Elo model reduces
+log loss by 0.002092, with a paired 95% interval [-0.007288, +0.003018]; the
+interval includes zero. All six new final procedures have zero maximum
+fighter-swap complement error, zero conflicting winner picks and 42 exact
+0.5 ties on the validation set. The order problem is resolved for these
+procedures, but symmetry alone is not a predictive improvement. The recent
+logistic model is the strongest *development probability candidate*, while
+win-pick accuracy remains about 58%. No model is promoted.
+
 ## Mac commands
 
 After checking out this branch, activating the environment and ensuring the
@@ -138,8 +189,8 @@ python -m upset.modeling.run_recent_form
 ```
 
 The export is `prefight/recent_history_v1.jsonl` under the existing processed
-dataset. The experiment writes a new `experiments/recent_form_v1/` directory
-and refuses to overwrite it. Export/audit commands are offline and use the
-identified statistics already on the Mac. The original Elo exports and
-experiments do not need to be rerun. Full-data scores remain pending until
-the Mac runs this study; synthetic tests establish behavior only.
+dataset. The experiment wrote `experiments/recent_form_v1/` and refuses to
+overwrite it. Export/audit commands are offline and use the identified
+statistics already on the Mac. The original Elo exports and experiments did
+not need to be rerun. Keep the saved manifest and row-level predictions for
+later diagnostics and reproducibility review.

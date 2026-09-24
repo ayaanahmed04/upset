@@ -472,23 +472,39 @@ with half weight per orientation, and complementary inference. Six new
 logistic/boosted candidates isolate symmetry, Elo and recent performance;
 all six old forward/reverse prediction series are preserved. The source
 statistics must also reproduce the accepted matchup/defense features. The
-assistant environment passed Ruff and 313 tests plus 16 subtests. This is
-implementation evidence; the Mac run and predictive results are still pending.
-See `docs/RECENT_FORM_EXPERIMENT.md` for the fixed design and commands.
+assistant environment passed Ruff and 313 tests plus 16 subtests. See
+`docs/RECENT_FORM_EXPERIMENT.md` for the fixed design, Mac results and
+interpretation.
 The first Mac run at `3cb9f18` passed Ruff but hit the same boosted-training
 error in five pytest cases (308 passed; two failed; three setup errors) with
 scikit-learn 1.9.1. It never reached the export or comparison. A follow-up
-restricts boosting to columns actually observed in the fold's training rows;
-Mac verification and historical results remain pending.
+restricts boosting to columns actually observed in the fold's training rows.
+On the Mac at `4bc2941`, Ruff and all 313 tests passed. The Mac exported and
+independently audited all 17,102 recent rows, with strictly earlier
+population priors and all numeric fields recomputed. The comparison covered
+1,857 decisive bouts plus 35 Draw/NC exclusions and exactly preserved the
+six saved reference probability series.
+
+The symmetric logistic defense + Elo + recent candidate has the lowest pooled
+log loss/Brier: **0.666020/0.236867**, versus symmetric defense + Elo's
+0.677363/0.241769. Its matched paired log-loss difference is -0.011342,
+with a date-bootstrap 95% interval [-0.019443, -0.003091]. This direction
+holds in all four development windows. Correct picks are 1,071/1,857
+(57.67%), versus the matched model's 1,075 (57.89%) and saved full defense's
+1,067 (57.46%). Paired accuracy intervals include zero. All six new variants
+have zero final fighter-swap probability error and no conflicting picks.
+These are repeatedly examined development folds; intervals are unadjusted
+for multiple comparisons. No model was promoted. The new experiment manifest
+and individual predictions remain on the Mac and have not been separately
+inspected in this review.
 
 1. Review PR #15 as a documented experiment with completed Mac checks. Its
    historical score must not be treated as a validated order-independent
    matchup model.
-2. Run the implemented recent-performance export, full audit and comparison
-   on the Mac. Compare symmetry to its matching old model, Elo to symmetric
-   defense, and recent features to symmetric defense plus Elo. Keep both
-   probability losses and accuracy visible, with fold/paired uncertainty;
-   avoid selecting variants on thin slices of the previously examined folds.
+2. Inspect the saved `recent_form_v1` manifest and row-level predictions for
+   reliability, history/missingness/division slices and hashes. Preserve the
+   exact research snapshot, then evaluate genuinely later bouts before any
+   model selection or release. Keep log loss and accuracy visible separately.
 3. Continue with available physical context and matchup interactions after
    the temporal and symmetry checks; measure each family.
 4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
