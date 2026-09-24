@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Opponent strength and recent-performance research; prospective readiness
+**Current focus:** Review the completed Elo/boosted-tree experiment and its saved diagnostics
 
 ## Project Goal
 
@@ -444,20 +444,45 @@ the preserved experiment definitions or claim any new score.
 
 ## Recommended Next Steps
 
-1. Implement and independently audit chronological opponent strength. Compare
-   Elo alone and Elo-enhanced logistic models against the frozen references;
-   include one small boosted-tree comparison on identical features and bouts.
-2. Add exposure-aware recent performance from the already owned historical
-   fight totals, then available physical context and matchup interactions.
-   Measure each family rather than assuming more columns improve predictions.
-3. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
+The Mac completed the first Elo/boosted-tree run at `ddba4ab`: 17,102 rating
+rows independently replayed and matched, 1,857 decisive development bouts,
+35 Draw/NC exclusions, and saved reference probabilities preserved. Adding
+Elo to defense achieved 1,073 correct (57.78%) versus full defense's 1,067 (57.46%).
+Its six-pick gain was uneven by fold (-12, +4, +23, -9), and the paired
+accuracy interval was [-1.51, +2.15] percentage points. Boosted defense + Elo
+had the lowest pooled log loss/Brier (0.674022/0.240889) but seven fewer
+correct picks than full defense (1,060; 57.08%). No model was promoted.
+The existing exploratory 58.00% accuracy result was not exceeded. See
+`docs/ELO_EXPERIMENT.md` for the full printed score ledger. The supplied
+manifest and predictions passed a matching SHA-256 check and cover all 1,892
+validation bouts. The symmetry diagnostic found that swapping fighter order
+changes the selected winner on 164/1,857 defense + Elo predictions and
+418/1,857 boosted defense + Elo predictions. The existing canonical
+UUID orientation makes the historical experiment reproducible, but these
+fitted models need an order-consistent procedure before use in a public
+matchup interface. Direct Elo has no conflicting picks after excluding
+exact 0.5 ties. Mac Ruff passed and the complete terminal log confirms
+288 pytest tests passed in 14.12s. The assistant environment separately
+passed 288 tests and 16 subtests. PR #15 is draft for research review.
+
+1. Review PR #15 as a documented experiment with completed Mac checks. Its
+   historical score must not be treated as a validated order-independent
+   matchup model.
+2. Define a small, separately versioned fighter-order symmetry experiment,
+   then add exposure-aware recent performance from the already owned
+   historical fight totals. Compare on the same declared cohort and keep
+   original probabilities and hashes. Avoid selecting variants on title-bout
+   or other thin slices of the previously examined folds.
+3. Continue with available physical context and matchup interactions after
+   the temporal and symmetry checks; measure each family.
+4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
    and the account's actual archive entitlement. The September 16 provider
    email already supports one-month acquisition and local retention; pricing
    and terms still disagree on the public historical window.
-4. Repair the completed-fight/stat gap after March 2026 and review provider
+5. Repair the completed-fight/stat gap after March 2026 and review provider
    identities. Establish timestamped odds coverage for a separate market
    benchmark and optional market-assisted candidate.
-5. Freeze a model release, verify probability replay, capture externally dated
+6. Freeze a model release, verify probability replay, capture externally dated
    prospective forecasts, then score outcomes separately. No new model was
    promoted by the handoff review.
 
@@ -469,4 +494,3 @@ Historical Cito round access and timestamped odds coverage have not been
 established on the user's account. These block live-performance claims;
 opponent-strength and recent-performance research can proceed with existing
 historical files.
-

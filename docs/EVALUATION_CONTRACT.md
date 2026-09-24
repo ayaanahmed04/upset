@@ -1,5 +1,14 @@
 # Frozen development evaluation (v1)
 
+The separately versioned opponent-strength/boosted-tree implementation is
+specified in `docs/ELO_EXPERIMENT.md`. It retains these folds and exact saved
+reference probabilities. The Mac run at `ddba4ab` completed: defense + Elo
+scored 1,073/1,857 (57.78%) versus full defense's 1,067 (57.46%), with paired
+accuracy interval [-1.51, +2.15] percentage points. Boosted defense + Elo had
+the lowest pooled log loss (0.674022) but lower accuracy (57.08%) than full
+defense. These are mixed development results; no model is promoted. Full
+diagnostics and the separate Mac Ruff/pytest summary await review.
+
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.
 
