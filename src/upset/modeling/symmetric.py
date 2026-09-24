@@ -1,11 +1,27 @@
 """Mirrored training and complementary matchup probabilities."""
 
+from dataclasses import dataclass
+
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
 
 from upset.modeling.elo_comparison import BOOSTED_SETTINGS, _logistic
 
 SYMMETRIC_BOOSTED_SETTINGS = {**BOOSTED_SETTINGS, "min_samples_leaf": 60}
+
+
+@dataclass(frozen=True)
+class _ObservedBoosted:
+    """Use the training fold's observed columns for every later prediction."""
+
+    estimator: HistGradientBoostingClassifier
+    observed_columns: np.ndarray
+
+    def predict_proba(self, matrix):
+        values = np.asarray(matrix, dtype=float)
+        if values.ndim != 2 or values.shape[1] != len(self.observed_columns):
+            raise ValueError("Boosted prediction columns differ from training.")
+        return self.estimator.predict_proba(values[:, self.observed_columns])
 
 
 def swap_features(matrix: np.ndarray, signs: np.ndarray) -> np.ndarray:
@@ -34,8 +50,15 @@ def fit_symmetric(matrix, targets, signs, *, boosted=False):
     labels = np.column_stack((targets, 1 - targets)).ravel()
     weights = np.full(len(labels), 0.5)
     if boosted:
-        model = HistGradientBoostingClassifier(**SYMMETRIC_BOOSTED_SETTINGS)
-        model.fit(augmented, labels, sample_weight=weights)
+        # scikit-learn 1.9.1's histogram binning fails on an all-NaN column.
+        # Fix the column selection using training data only. Partially missing
+        # columns still reach the estimator with NaNs and use native routing.
+        observed = np.isfinite(augmented).any(axis=0)
+        if not observed.any():
+            raise ValueError("Boosting needs an observed training feature.")
+        estimator = HistGradientBoostingClassifier(**SYMMETRIC_BOOSTED_SETTINGS)
+        estimator.fit(augmented[:, observed], labels, sample_weight=weights)
+        model = _ObservedBoosted(estimator, observed)
     else:
         model = _logistic()
         model.fit(augmented, labels, classifier__sample_weight=weights)

@@ -11,6 +11,11 @@ known rate/shrinkage arithmetic, cold starts, missing control, current/same-day/
 future isolation, independent audit corruption, swapped feature construction,
 complementary probabilities, validation-label isolation, preserved references
 and refusal to overwrite evidence. Mac validation and actual scores are pending.
+The first Mac run at `3cb9f18` passed Ruff, then pytest reported 308 passed,
+two failures and three setup errors. All five affected cases entered boosted
+fitting with a training feature that was entirely missing; scikit-learn 1.9.1
+failed during histogram binning. The chained export/audit/comparison commands
+did not execute. The follow-up fold-local column fix is awaiting a Mac rerun.
 
 ## Question
 
@@ -51,6 +56,12 @@ with min_samples_leaf=60 mirrored rows (previously 30 rows), 150 iterations,
 7 leaves, depth 3, learning rate 0.05, L2=5, fixed seed and no random early
 stopping. Doubling the leaf row threshold compensates for augmentation in
 aggregate; it is not a guarantee of 30 unique bouts in every leaf.
+For boosting, columns with no observed value in a training fold are removed
+from that fold's fit and its later predictions. Partly missing columns keep
+their NaNs for native missing-value routing. A future observation cannot
+bring back a column that was absent during training. This handles an
+all-missing-column binning failure observed on the Mac with scikit-learn
+1.9.1, without fitting feature availability on validation bouts.
 
 ## Recent performance
 

@@ -475,6 +475,11 @@ statistics must also reproduce the accepted matchup/defense features. The
 assistant environment passed Ruff and 313 tests plus 16 subtests. This is
 implementation evidence; the Mac run and predictive results are still pending.
 See `docs/RECENT_FORM_EXPERIMENT.md` for the fixed design and commands.
+The first Mac run at `3cb9f18` passed Ruff but hit the same boosted-training
+error in five pytest cases (308 passed; two failed; three setup errors) with
+scikit-learn 1.9.1. It never reached the export or comparison. A follow-up
+restricts boosting to columns actually observed in the fold's training rows;
+Mac verification and historical results remain pending.
 
 1. Review PR #15 as a documented experiment with completed Mac checks. Its
    historical score must not be treated as a validated order-independent

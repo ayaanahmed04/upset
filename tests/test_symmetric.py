@@ -31,6 +31,16 @@ def test_complementary_predictions_with_missingness_shared_context_and_ties(boos
         assert np.mean(p[labels == 1]) > np.mean(p[labels == 0])
         tie = np.array([[0, 0, 2, np.nan]])
         assert symmetric_probabilities(model, tie, signs)[0][0] == 0.5
+        if boosted:
+            assert model.observed_columns.tolist() == [True, True, True, False]
+            # A value that first appears in validation cannot make a column
+            # selected from the training period re-enter the fitted tree.
+            probe = np.array([[1.0, np.nan, 3.0, np.nan]])
+            with_future_value = np.array([[1.0, np.nan, 3.0, 12345.0]])
+            assert np.array_equal(
+                symmetric_probabilities(model, probe, signs)[0],
+                symmetric_probabilities(model, with_future_value, signs)[0],
+            )
     reversed_twice = swap_features(swap_features(matrix, signs), signs)
     assert np.array_equal(reversed_twice, matrix, equal_nan=True)
     assert SYMMETRIC_BOOSTED_SETTINGS["early_stopping"] is False
@@ -59,3 +69,5 @@ def test_invalid_swap_and_targets_are_rejected():
         swap_features(np.zeros((2, 2)), [1, 0])
     with pytest.raises(ValueError, match="binary"):
         fit_symmetric(np.zeros((2, 2)), [0, None], [-1, 1])
+    with pytest.raises(ValueError, match="observed training feature"):
+        fit_symmetric(np.full((2, 2), np.nan), [0, 1], [-1, 1], boosted=True)
