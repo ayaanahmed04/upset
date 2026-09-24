@@ -1,15 +1,21 @@
 # Chronological opponent-strength experiment (v1)
 
-Implementation checkpoint: September 24, 2026. The implementation and
-synthetic tests are available. **No full historical-data score has been
-produced for this experiment.** The Mac must run the commands below before
-we can assess predictive value. The preserved 57.46% full-defense result is
-still the main development reference; the 75% goal remains a research target.
+Implementation and first Mac result: September 24, 2026. Ayaan ran the full
+historical comparison at `ddba4abef112737a23967bf6adef8d6fec7cf413` and supplied
+the terminal output. Defense plus Elo reached 1,073/1,857 correct (57.78%),
+six more than full defense; the paired accuracy interval includes zero.
+Boosting plus Elo gave the lowest pooled log loss but lower accuracy than
+full defense. No model is promoted. The 75% goal remains a research target.
 
 Assistant-environment validation: 288 pytest tests and 16 subtests passed;
 Ruff clean. Python 3.12.14, NumPy 2.3.5 and scikit-learn 1.8.0 were used.
 The original 260 tests also passed before adding the new tests. Synthetic
 fixture metrics are not UFC performance estimates.
+
+The Mac output confirms the real-data export, full rating replay and model
+comparison. A separate Mac Ruff/pytest summary and the complete manifest
+have not yet been supplied in this session. Do not describe the assistant's
+288-test result as a confirmed Mac test run.
 
 ## Question and fixed comparison
 
@@ -124,7 +130,100 @@ change to predictions. Elo should complement within floating-point tolerance;
 the logistic/tree procedures need not. Exact 0.5 ties pick UUID-ordered A,
 following the preserved references.
 
-## Mac run
+## First Mac result
+
+Evidence is Ayaan's pasted terminal output from the implementation commit
+above. All 17,102 rating rows were checked, all numeric fields independently
+recomputed, and the comparison reported a match. It retained 1,857 decisive
+bouts, excluded 35 combined Draw/NC rows, and preserved the saved baseline
+and full-defense probabilities. The new manifest was saved successfully.
+Input-hash, source-label and reference-refit gates therefore completed;
+the exact new file hashes and environment values still need the manifest.
+
+Metrics below have the precision printed by the CLI; they are not fabricated
+full-precision values. All six variants use the identical development cohort.
+
+| Variant | Correct / 1,857 | Accuracy | Log loss | Brier |
+| --- | ---: | ---: | ---: | ---: |
+| Baseline | 985 | 53.04% | 0.690624 | 0.248392 |
+| Full defense | 1,067 | 57.46% | 0.681592 | 0.243498 |
+| Elo alone | 1,006 | 54.17% | 0.687688 | 0.247291 |
+| Defense + Elo | 1,073 | 57.78% | 0.677938 | 0.241999 |
+| Boosted defense | 1,049 | 56.49% | 0.675734 | 0.241560 |
+| Boosted defense + Elo | 1,060 | 57.08% | 0.674022 | 0.240889 |
+
+Correct counts by fold:
+
+| Variant | 2019 / 506 | 2021 / 497 | 2022 / 506 | 2023 partial / 348 |
+| --- | ---: | ---: | ---: | ---: |
+| Baseline | 272 | 269 | 264 | 180 |
+| Full defense | 297 | 289 | 274 | 207 |
+| Elo alone | 256 | 279 | 289 | 182 |
+| Defense + Elo | 285 | 293 | 297 | 198 |
+| Boosted defense | 283 | 293 | 283 | 190 |
+| Boosted defense + Elo | 273 | 294 | 301 | 192 |
+
+Log loss by fold:
+
+| Variant | 2019 | 2021 | 2022 | 2023 partial |
+| --- | ---: | ---: | ---: | ---: |
+| Baseline | 0.692238 | 0.693037 | 0.684863 | 0.693208 |
+| Full defense | 0.683313 | 0.688228 | 0.672234 | 0.683220 |
+| Elo alone | 0.695580 | 0.683070 | 0.682718 | 0.690035 |
+| Defense + Elo | 0.687497 | 0.678162 | 0.667581 | 0.678778 |
+| Boosted defense | 0.683091 | 0.670138 | 0.671009 | 0.679902 |
+| Boosted defense + Elo | 0.692012 | 0.669035 | 0.659787 | 0.675684 |
+
+Brier score by fold:
+
+| Variant | 2019 | 2021 | 2022 | 2023 partial |
+| --- | ---: | ---: | ---: | ---: |
+| Baseline | 0.249528 | 0.248684 | 0.245918 | 0.249920 |
+| Full defense | 0.244981 | 0.244995 | 0.239573 | 0.244911 |
+| Elo alone | 0.251219 | 0.245006 | 0.244799 | 0.248466 |
+| Defense + Elo | 0.247172 | 0.240851 | 0.237325 | 0.242914 |
+| Boosted defense | 0.245285 | 0.238349 | 0.239538 | 0.243669 |
+| Boosted defense + Elo | 0.249680 | 0.238252 | 0.234173 | 0.241638 |
+
+Paired accuracy differences, in percentage points:
+
+| Comparison | Difference | Date-bootstrap 95% interval |
+| --- | ---: | ---: |
+| Elo alone minus full defense | -3.28 | [-6.09, -0.59] |
+| Defense + Elo minus full defense | +0.32 | [-1.51, +2.15] |
+| Boosted defense minus full defense | -0.97 | [-3.19, +1.14] |
+| Boosted defense + Elo minus full defense | -0.38 | [-2.81, +2.01] |
+| Boosted defense + Elo minus boosted defense | +0.59 | [-1.25, +2.62] |
+
+Interpretation:
+
+- Defense + Elo improved pooled log loss by approximately 0.003654 and
+  accuracy by six bouts (+0.32 points). Its fold changes in correct picks
+  were -12, +4, +23 and -9. That is a small, uneven accuracy difference whose
+  interval includes both harm and improvement. It is not an established
+  future accuracy gain. Log loss improved in three folds but worsened in 2019.
+- Boosted defense + Elo had the best pooled log loss (0.674022) and Brier
+  score (0.240889) among these six variants, while getting seven fewer picks
+  right than full defense and thirteen fewer than logistic defense + Elo.
+  Lower probability losses do not by themselves establish better calibration.
+- Adding Elo to the boosted model improved pooled accuracy by eleven bouts
+  and log loss by approximately 0.001712, but the accuracy interval again
+  includes zero. Its largest benefit was in 2022; it hurt 2019.
+- The earlier exploratory defense-without-knockdowns variant remains higher
+  in observed accuracy at 1,077/1,857 (58.00%). This study does not establish
+  a new overall accuracy record, and it did not include that variant as a
+  newly fitted competitor.
+- The result supports retaining Elo and boosting as research candidates,
+  with full defense preserved as the reference. Before selecting the next
+  comparison, inspect saved symmetry, reliability, subgroup and probability
+  difference intervals. These have not been reviewed from the pasted output.
+  Do not start parameter searches or call any result a live model score.
+
+PR #15 remains a draft pending that evidence review and the Mac check
+summary. Recording successful research does not require a candidate to beat
+every reference, and merging an experiment would not promote a model.
+
+## Mac reproduction commands
 
 Suggested model for this bounded implementation/check: Sol High.
 
@@ -139,10 +238,10 @@ python -m upset.data.audit_prefight_ratings
 python -m upset.modeling.run_elo_comparison
 ```
 
-On the accepted snapshot, expect 17,102 rating rows, 1,857 decisive validation
-bouts and 35 Draw/NC exclusions. These are expected cohort counts, not results
-observed here. Baseline/full-defense probabilities must match their saved
-references (985 and 1,067 correct respectively). New accuracy is unknown.
+The first Mac run confirmed 17,102 rating rows, 1,857 decisive validation
+bouts and 35 Draw/NC exclusions. Baseline/full-defense probabilities matched
+their saved references (985 and 1,067 correct respectively). The successful
+run need not be repeated to share or inspect its saved manifest.
 
 New experiment outputs:
 

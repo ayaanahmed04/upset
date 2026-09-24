@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Validate the chronological Elo/boosted-tree experiment on the Mac
+**Current focus:** Review the completed Elo/boosted-tree experiment and its saved diagnostics
 
 ## Project Goal
 
@@ -444,11 +444,23 @@ the preserved experiment definitions or claim any new score.
 
 ## Recommended Next Steps
 
-1. Run the newly implemented Elo export, independent full replay, and six-model
-   comparison on the Mac. The code preserves saved references and includes
-   fixed boosted-tree variants. Automated synthetic checks are available;
-   full-data scores and Mac verification remain pending. See
-   `docs/ELO_EXPERIMENT.md`. Review actual performance before merging/promoting.
+The Mac completed the first Elo/boosted-tree run at `ddba4ab`: 17,102 rating
+rows independently replayed and matched, 1,857 decisive development bouts,
+35 Draw/NC exclusions, and saved reference probabilities preserved. Adding
+Elo to defense achieved 1,073 correct (57.78%) versus full defense's 1,067 (57.46%).
+Its six-pick gain was uneven by fold (-12, +4, +23, -9), and the paired
+accuracy interval was [-1.51, +2.15] percentage points. Boosted defense + Elo
+had the lowest pooled log loss/Brier (0.674022/0.240889) but seven fewer
+correct picks than full defense (1,060; 57.08%). No model was promoted.
+The existing exploratory 58.00% accuracy result was not exceeded. See
+`docs/ELO_EXPERIMENT.md` for the full printed score ledger. The full manifest
+and separate Mac Ruff/pytest summary have not yet been supplied; the earlier
+288-test/Ruff result was in the assistant environment. PR #15 is still draft.
+
+1. Review the saved Elo experiment manifest: symmetry, reliability bins,
+   history/missingness/division slices, probability-loss intervals and hashes.
+   Obtain the Mac Ruff/pytest summary, then conclude the PR review. Avoid
+   rerunning a successful experiment merely to retrieve its output.
 2. Add exposure-aware recent performance from the already owned historical
    fight totals, then available physical context and matchup interactions.
    Measure each family rather than assuming more columns improve predictions.

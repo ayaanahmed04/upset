@@ -3,10 +3,13 @@
 **Implementation follow-up:** The first chronological Elo and bounded
 boosted-tree experiment is now implemented alongside the existing models.
 See `ELO_EXPERIMENT.md` for fixed settings, source audit, saved-reference
-checks and Mac commands. Full-data evaluation is pending; the historical
-review below describes the state before this implementation. Recent
-performance weighting, physical features and broader Cito acquisition are
-still proposed.
+checks and the first Mac results at `ddba4ab`. Defense + Elo reached 57.78%
+(six more correct than full defense); its accuracy interval includes zero.
+Boosted defense + Elo had the best pooled probability losses in that study
+but lower accuracy than full defense. No model is promoted; complete
+diagnostic review is pending. The historical review below describes the
+state before this implementation. Recent performance weighting, physical
+features and broader Cito acquisition are still proposed.
 
 ## Status and purpose
 
