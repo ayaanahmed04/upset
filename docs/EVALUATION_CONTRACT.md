@@ -1,5 +1,9 @@
 # Frozen development evaluation (v1)
 
+The separately versioned opponent-strength/boosted-tree implementation is
+specified in `docs/ELO_EXPERIMENT.md`. It retains these folds and exact saved
+reference probabilities. Its full-data run and scores are still pending.
+
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.
 

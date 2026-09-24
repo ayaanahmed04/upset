@@ -1,5 +1,13 @@
 # Modeling research plan — September 24, 2026
 
+**Implementation follow-up:** The first chronological Elo and bounded
+boosted-tree experiment is now implemented alongside the existing models.
+See `ELO_EXPERIMENT.md` for fixed settings, source audit, saved-reference
+checks and Mac commands. Full-data evaluation is pending; the historical
+review below describes the state before this implementation. Recent
+performance weighting, physical features and broader Cito acquisition are
+still proposed.
+
 ## Status and purpose
 
 This plan records the modeling review requested after PR #13. It is a research
@@ -200,4 +208,3 @@ new model is approved.
 Modeling priorities, pilot sizes and parameter choices above are recommendations
 from this review. The sources describe capabilities and principles; they do
 not establish a predicted accuracy gain for UPSET.
-

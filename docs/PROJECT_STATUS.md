@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Opponent strength and recent-performance research; prospective readiness
+**Current focus:** Validate the chronological Elo/boosted-tree experiment on the Mac
 
 ## Project Goal
 
@@ -444,9 +444,11 @@ the preserved experiment definitions or claim any new score.
 
 ## Recommended Next Steps
 
-1. Implement and independently audit chronological opponent strength. Compare
-   Elo alone and Elo-enhanced logistic models against the frozen references;
-   include one small boosted-tree comparison on identical features and bouts.
+1. Run the newly implemented Elo export, independent full replay, and six-model
+   comparison on the Mac. The code preserves saved references and includes
+   fixed boosted-tree variants. Automated synthetic checks are available;
+   full-data scores and Mac verification remain pending. See
+   `docs/ELO_EXPERIMENT.md`. Review actual performance before merging/promoting.
 2. Add exposure-aware recent performance from the already owned historical
    fight totals, then available physical context and matchup interactions.
    Measure each family rather than assuming more columns improve predictions.
@@ -469,4 +471,3 @@ Historical Cito round access and timestamped odds coverage have not been
 established on the user's account. These block live-performance claims;
 opponent-strength and recent-performance research can proceed with existing
 historical files.
-
