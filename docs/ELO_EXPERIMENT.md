@@ -15,11 +15,9 @@ fixture metrics are not UFC performance estimates.
 The Mac output confirms the real-data export, full rating replay and model
 comparison. The uploaded manifest and predictions have since been supplied;
 the manifest's SHA-256 of the 1,892 prediction rows matches the uploaded
-`predictions.jsonl` bytes. Mac Ruff reported "All checks passed!". The pasted
-pytest log collected 288 tests and shows progress through the final test
-file, but omits the final passed/failed summary. Do not describe the
-assistant's 288-test result as a confirmed Mac test result until that final
-line is available.
+`predictions.jsonl` bytes. Mac Ruff reported "All checks passed!", and the
+complete terminal log confirms **288 passed in 14.12s** on the Mac. The
+assistant environment separately passed 288 tests and 16 subtests.
 
 ## Question and fixed comparison
 
@@ -297,10 +295,9 @@ order-consistent prediction procedure and test it alongside recent
 performance features on the same declared cohort. These already examined
 folds cannot establish unbiased future performance.
 
-PR #15 remains a draft pending the missing Mac pytest completion line and
-review of the fighter-order finding. Recording successful research does not
-require a candidate to beat every reference, and merging an experiment would
-not promote a model.
+PR #15 remains a draft for review of the fighter-order finding. Recording
+successful research does not require a candidate to beat every reference,
+and merging an experiment would not promote a model.
 
 ## Mac reproduction commands
 

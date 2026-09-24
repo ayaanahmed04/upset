@@ -461,13 +461,13 @@ changes the selected winner on 164/1,857 defense + Elo predictions and
 UUID orientation makes the historical experiment reproducible, but these
 fitted models need an order-consistent procedure before use in a public
 matchup interface. Direct Elo has no conflicting picks after excluding
-exact 0.5 ties. Mac Ruff passed; pytest collected 288 tests and the pasted
-log shows progress through the final file but omits its completion line.
-The earlier 288-test pass was in the assistant environment. PR #15 is draft.
+exact 0.5 ties. Mac Ruff passed and the complete terminal log confirms
+288 pytest tests passed in 14.12s. The assistant environment separately
+passed 288 tests and 16 subtests. PR #15 is draft for research review.
 
-1. Obtain the final Mac pytest completion line and finish reviewing PR #15 as
-   a documented experiment. Its historical score must not be treated as a
-   validated order-independent matchup model.
+1. Review PR #15 as a documented experiment with completed Mac checks. Its
+   historical score must not be treated as a validated order-independent
+   matchup model.
 2. Define a small, separately versioned fighter-order symmetry experiment,
    then add exposure-aware recent performance from the already owned
    historical fight totals. Compare on the same declared cohort and keep
