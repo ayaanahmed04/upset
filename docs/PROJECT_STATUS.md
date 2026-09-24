@@ -1,10 +1,10 @@
 # UPSET Project Status
 
-**Last updated:** September 23, 2026
+**Last updated:** September 24, 2026
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Prospective evaluation and carefully scoped feature research
+**Current focus:** Prospective evidence capture and live source readiness
 
 ## Project Goal
 
@@ -416,24 +416,40 @@ improved log loss (0.68159 to 0.68083), but lost 20 correct bouts in partial
 folds; no model has been promoted. See `docs/EVALUATION_CONTRACT.md` for the
 definition, per-fold counts and study limits.
 
+PR #12 merged the audited outcome/activity experiment into `main` at
+`3385ebb`. A separate prospective archive prototype now records supplied
+pre-event forecasts with schedule evidence, model bytes/specification, feature
+inputs, reviewed fighter links, hashes and a local UTC timestamp. It checks
+for duplicate bouts, stale schedules and after-start writes, then copies and
+verifies complete batches under ignored processed data. Local synthetic tests
+have passed; this prototype has not recorded a real future bout or generated
+probabilities. Live fight/stat updates, reviewed new provider links, a frozen
+trained model and externally anchored pre-event timestamps remain necessary
+for trustworthy future performance claims. See
+`docs/PROSPECTIVE_EVALUATION.md`.
+
 ## Next Steps
 
-1. Merge the audited outcome/activity comparison as exploratory research,
-   preserving its per-bout probabilities and source hashes. Keep full defense
-   as a development candidate; do not select the combined variant by its
-   tiny log-loss advantage or any variant by one pooled accuracy figure.
-2. Design a prospective prediction archive: timestamp inputs and model
-   revision, save probabilities before an event, then score only once results
-   are known. An already examined historical period cannot supply a new test.
-3. If adding chronological opponent strength, predeclare its definition and
-   compare it separately while tracking the extra selection pressure from
-   repeated use of the same development folds.
-4. Prepare a diverse Cito coverage pilot, fighter/bout mapping, provenance
-   manifest and resumable archive collection. Confirm old-bout entitlement
-   with a real request before bulk acquisition or any purchase claim.
+1. Recheck the prospective archive prototype with Ruff and the full Mac test
+   suite. Keep it as an evidence-storage tool until complete, reviewed live
+   inputs and a frozen trained model are available.
+2. Build a limited live-source coverage pilot: verify upcoming bouts, both
+   fighter mappings, updated completed-fight statistics and scheduled starts
+   before spending on a historical archive or producing any live probability.
+3. Define a model-release procedure (fixed features, fit cutoff, serialized
+   artifact, deterministic probability replay) and a trusted external
+   timestamp for the first actual prospective batch. Score outcomes later in
+   separate files without modifying the archived predictions.
+4. If adding chronological opponent strength, predeclare its definition and
+   track the selection pressure from repeatedly using development folds.
+5. Separately plan any historical Cito round-stat acquisition. Confirm
+   old-bout entitlement with a real authorized request before bulk collection
+   or any claim that a paid archive improves predictions.
 
 ## Blockers
 
-No major blockers.
-
-Known data-quality issues are being documented and will be handled through normalization and validation rather than by modifying raw source files.
+The Kaggle snapshot ends in March 2026. There is no reviewed, complete live
+fighter/bout mapping or current pre-fight stat feed, and no serialized,
+replay-verified model release. These block a genuine prospective forecast.
+Known historical data-quality issues remain documented and are handled in
+normalization rather than by changing the raw source files.
