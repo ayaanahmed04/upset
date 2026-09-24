@@ -507,13 +507,38 @@ independent source replay in this environment. The manifest counts 1,279
 source bouts after the August 19, 2023 development end date. Freeze any
 candidate and calibration policy before scoring later-date fights.
 
+The next fixed recipe is implemented on `feature/examined-later-evaluation`:
+`python -m upset.modeling.run_examined_later forecast` fits symmetric recent
+Elo and its matched symmetric defense + Elo comparator once through August 19,
+2023, and saves outcome-free probabilities for all later fights, including
+future Draw/NC results. A separate `score` action verifies the forecast hash,
+source snapshot and code commit before joining outcomes. It records paired
+loss/accuracy, reliability bins, date-bootstrap intervals, year and history
+slices; no fitted calibration. The original nine-feature baseline **already
+examined** these later dates and scored 655/1,260 decisive bouts (51.98%).
+This follow-up is an examined historical stress test, not a fresh holdout.
+See `docs/EXAMINED_LATER_EVALUATION.md`. In the assistant environment, Ruff,
+all 317 tests and 16 subtests passed. The Mac also passed Ruff and all 317
+tests, then saved 1,279 outcome-free forecasts and scored 1,260 decisive
+bouts (19 Draw/NC excluded). Recent + Elo was correct on 784/1,260 (62.22%)
+versus its matched symmetric defense + Elo comparator's 767 (60.87%); log
+loss was 0.649515 versus 0.659788. The paired log-loss difference is
+-0.010273 (date-bootstrap 95% interval [-0.018567, -0.002331]); accuracy
+improved 1.35 points but its interval [-0.95, +3.51] includes zero. The
+one-fighter-history slice and small 2026 slice favored the comparator. The
+uploaded forecast and score files passed hash, separation, row-level score
+and interval recomputation checks. This period is previously examined;
+there is no new model promotion.
+
 1. Review PR #15 as a documented experiment with completed Mac checks. Its
    historical score must not be treated as a validated order-independent
    matchup model.
-2. Inspect the saved `recent_form_v1` manifest and row-level predictions for
-   reliability, history/missingness/division slices and hashes. Preserve the
-   exact research snapshot, then evaluate genuinely later bouts before any
-   model selection or release. Keep log loss and accuracy visible separately.
+2. Preserve the completed August 2023–March 2026 examined-period score as a
+   historical stress test. Build reviewed current-data ingestion and model
+   replay, then capture externally dated forecasts before future events;
+   only those can provide fresh evidence for release. Keep log loss,
+   calibration and accuracy visible, including the observed one-history
+   weakness and small 2026 reversal.
 3. Continue with available physical context and matchup interactions after
    the temporal and symmetry checks; measure each family.
 4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
