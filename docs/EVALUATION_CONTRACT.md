@@ -19,7 +19,11 @@ pooled log loss 0.666020 versus its matched model's 0.677363, but win-pick
 accuracy remains 57.67% versus 57.89%. The uploaded manifest and predictions
 passed an independent read-back score and hash review. Coarse-bin calibration
 is worse for the recent candidate. No model was promoted. The subsequent
-examined-period protocol is in `EXAMINED_LATER_EVALUATION.md`.
+examined-period protocol and Mac result are in
+`EXAMINED_LATER_EVALUATION.md`: plus recent performance reached 784/1,260
+(62.22%) versus symmetric defense + Elo's 767/1,260 (60.87%), with lower
+log loss (0.649515 versus 0.659788). Its accuracy interval includes zero;
+the original baseline already examined these dates. No model was promoted.
 
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.

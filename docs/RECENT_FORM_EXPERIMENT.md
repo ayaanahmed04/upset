@@ -228,7 +228,10 @@ The fixed follow-up is now implemented on a separate branch. See
 `docs/EXAMINED_LATER_EVALUATION.md`: it forecasts and then scores the
 **previously examined** August 2023–March 2026 period. The original baseline
 already reported results there, so this is a historical stress test, not a
-fresh holdout. No new results have been run on the Mac yet.
+fresh holdout. The Mac completed the test: recent performance scored
+784/1,260 (62.22%) versus the matched comparator's 767 (60.87%), with lower
+log loss but an accuracy interval including zero. The small 2026 slice and
+one-fighter-history slice favor the comparator. No model was promoted.
 
 ## Mac commands
 

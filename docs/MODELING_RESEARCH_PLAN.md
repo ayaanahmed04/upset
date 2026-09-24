@@ -20,6 +20,12 @@ without an accuracy gain over its matching comparator. The uploaded report
 and row-level predictions matched their hashes; coarse-bin calibration is
 worse than the comparator's. `EXAMINED_LATER_EVALUATION.md` freezes the next
 comparison on the already examined later dates; it cannot be a fresh holdout.
+The Mac completed that comparison: on 1,260 decisive fights, recent + Elo
+scored 784 (62.22%) versus symmetric defense + Elo's 767 (60.87%), with lower
+log loss (0.649515 versus 0.659788). The paired accuracy interval includes
+zero, and the small 2026 and one-fighter-history slices favor the comparator.
+No model was promoted; fresh evidence requires externally dated pre-event
+forecasts on data newer than the historical snapshot.
 The historical review below describes the state before these implementations.
 Physical features and broader Cito acquisition remain proposed.
 

@@ -86,3 +86,60 @@ The earlier source snapshot ends in March 2026 and no live pre-event model
 artifact has been approved. This historical stress test cannot promote a
 model or establish a 75% winner-pick rate. A future performance estimate
 requires independently dated forecasts saved before real fight outcomes.
+
+## Mac results and uploaded-file review
+
+The Mac completed the protocol at code commit `534eb5e` (Python 3.12.14,
+scikit-learn 1.9.1): Ruff and all **317 tests** passed, and 1,279 forecasts
+were saved before scoring 1,260 decisive bouts and excluding 19 Draw/NC.
+Both procedures were refitted on 7,140 pre-cutoff decisive bouts. The saved
+forecast and scored-row hashes match their manifests, the scored manifest
+references the exact forecast manifest and all seven source hashes match the
+earlier `recent_form_v1` report. All 1,279 scored rows preserve the original
+forecast fields verbatim; none of the forecast rows contains a target or
+outcome-derived exclusion. Independent recomputation of the 48 saved pooled,
+annual, history/experience/missingness and weight-class score sets (two
+models each), fixed-bin calibration, symmetry and paired date-bootstrap
+intervals matched the uploaded files. This is a read-back review of accepted
+exported files, not a new replay of the Mac's unuploaded historical sources.
+
+| Procedure | Correct / 1,260 | Accuracy | Log loss | Brier | AUC | Ten-bin ECE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Symmetric defense + Elo | 767 | 60.87% | 0.659788 | 0.233848 | 0.648716 | 0.0224 |
+| Plus recent performance | **784** | **62.22%** | **0.649515** | **0.228898** | **0.668938** | 0.0249 |
+
+The paired difference, recent minus comparator, is **+1.35 accuracy points**
+(17 additional correct picks); its date-bootstrap 95% interval is
+**[-0.95, +3.51] points** and includes zero. The primary log-loss difference
+is **-0.010273** with a date-bootstrap 95% interval
+**[-0.018567, -0.002331]**. Brier falls 0.004950 and AUC increases 0.020222.
+The recent candidate's coarse ten-bin ECE is slightly higher (0.0249 versus
+0.0224); lower log loss is not proof of uniformly better calibration. The
+intervals do not adjust for earlier model selection, this period's previous
+baseline examination or repeated fighters across event dates.
+
+| Period | Decisive bouts | Defense + Elo correct | Plus recent correct | Defense + Elo log loss | Plus recent log loss |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2023 remainder | 156 | 94 | 93 | 0.67009 | 0.66102 |
+| 2024 | 513 | 310 | 324 | 0.66054 | 0.64650 |
+| 2025 | 515 | 312 | 321 | 0.66017 | 0.65064 |
+| 2026 through March 7 | 76 | 51 | 46 | 0.63099 | 0.63865 |
+
+The 2026 slice reverses direction and is small. With both fighters having
+prior UFC history (1,041 bouts), recent features lower log loss by 0.01453
+and add 30 correct picks; with only one having history (186), log loss rises
+by 0.01171 and there are 13 fewer correct picks. The 33 double-debut bouts
+have exact 0.5 ties in both procedures. The observed gain is also stronger
+when all defense inputs are present (830 bouts, log-loss change -0.01647)
+than when one is missing (430, +0.00169). These slices diagnose limitations;
+they are **not** grounds to fit or select a subgroup-specific model on the
+same examined outcomes. In the 1,260 decisive fights the recent procedure
+reduces per-bout log loss on 705, increases it on 522 and ties on 33.
+
+This comparison supports continued work on the recent feature family, but
+does not promote a live model or establish its future accuracy. To claim a
+fresh performance estimate, build the current-data and reviewed-identity
+pipeline, save predictions with an external pre-event timestamp, and score
+the resulting bouts after they finish. New feature and calibration ideas
+must use separate development data; this examined period cannot be recycled
+as their independent validation set.
