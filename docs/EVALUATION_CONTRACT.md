@@ -192,8 +192,40 @@ while Draw/NC rows retain null probabilities. The manifest records input,
 registry and identified-fight SHA-256 hashes, code revision, model features,
 per-fold and pooled metrics, source-audit result and exclusions.
 
-No score has yet been measured on the Mac for this candidate. The folds have
-already been used for several feature comparisons: any observed gain is
-exploratory, and the 2023-08-26+ examined test is not a fresh holdout.
-Possible selection bias and repeated fighters remain. The practical next
-evidence is a dated prospective prediction archive before results occur.
+The Mac ran this comparison at `7f4cde9` after Ruff and all 257 tests passed.
+The export produced 17,102 rows, and the independent audit recomputed every
+one against the identified source fights and matched. The matchup SHA-256
+remained `02daa2db24fa80e318ea007127b712e5af1dfa017cf326f7aebbf49c2470146b`
+and the defensive history SHA-256 remained
+`fcb0eee0853aafe5d9dc8f41f8d4051e53260528a0084988328907c4cf7674e8`.
+The branch's tracked working tree was clean. On the same 1,857 decisive
+validation bouts, with 35 combined Draw/NC rows excluded:
+
+| Variant | Correct | Accuracy | ROC AUC | Log loss |
+| --- | ---: | ---: | ---: | ---: |
+| Nine-feature baseline | 985 | 53.04% | 0.5548 | 0.69062 |
+| Full defense | 1,067 | 57.46% | 0.5966 | 0.68159 |
+| Baseline + outcomes/activity | 1,055 | 56.81% | 0.5796 | 0.68601 |
+| Full defense + outcomes/activity | 1,053 | 56.70% | 0.5977 | 0.68083 |
+
+The new family substantially improved the weak baseline, but its combination
+with full defense had 14 fewer correct bouts than full defense alone. AUC rose
+by roughly 0.0011 and log loss improved by roughly 0.00076 relative to full
+defense; these are very small development differences. The correct-bout counts
+for the four frozen folds were:
+
+| Fold | Baseline | Full defense | Baseline + outcomes | Defense + outcomes |
+| --- | ---: | ---: | ---: | ---: |
+| 2019 | 272 | 297 | 298 | 296 |
+| 2021 | 269 | 289 | 287 | 288 |
+| 2022 | 264 | 274 | 278 | 282 |
+| 2023 partial | 180 | 207 | 192 | 187 |
+
+Adding outcomes/activity to full defense helped 2022 by eight correct bouts
+but hurt partial 2023 by 20. No model has been promoted from this comparison.
+These folds have already been used for several feature decisions, so even the
+baseline-to-outcome gain is exploratory. The original 2023-08-26+ test is an
+examined historical reference, not a fresh holdout. Repeated fighters and
+possible later corrections to the downloaded history also remain limitations.
+The practical next evidence is a dated prospective prediction archive saved
+before results occur.
