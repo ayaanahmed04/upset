@@ -597,7 +597,13 @@ The follow-up `feature/asof-prefight-features` branch reconstructs all 36
 inputs from completed, linked fights before the requested event date,
 including staged post-March results. It cross-checks the entire original
 historical cohort against pinned saved matchup/defense/Elo/recent columns
-before generating any future row. The full 8,551-bout Mac audit is pending;
+before generating any future row. On the first Mac attempt Ruff and 354 tests
+passed, but the full audit stopped on a same-date historical fighter pair.
+Distinct bout IDs from the accepted historical provider are now retained to
+match the original builders, with their IDs disclosed for manual review; the
+full 8,551-bout Mac audit remains pending. A regression test compares the
+36 columns for same-day repeated pairs against the older builders. The audit
+still needs to run to completion;
 prospective use also requires a demonstrated complete current-data feed,
 reviewed new fighter links and independently timestamped schedule/forecasts.
 See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.

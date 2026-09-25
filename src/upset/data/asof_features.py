@@ -43,7 +43,7 @@ def _completed(fights, stats):
         by_key[key] = record
     consumed = set()
     seen = set()
-    pair_dates = set()
+    pair_dates = {}
     paired = []
     for item in fights:
         fight = item.fight
@@ -75,9 +75,12 @@ def _completed(fights, stats):
             winner = names.index(fight.winner_name)
         pair_date = (fight.event_date, *sorted((item.upset_fighter_1_id,
                                                item.upset_fighter_2_id)))
-        if pair_date in pair_dates:
-            raise ValueError(f"Cross-provider or same-date duplicate bout: {key}")
-        pair_dates.add(pair_date)
+        previous = pair_dates.get(pair_date)
+        if previous is not None and previous[0] != fight.source:
+            raise ValueError(f"Cross-provider same-date duplicate bout: {previous}, {key}")
+        # The accepted historical builders count distinct same-source IDs on
+        # the same date, while freezing both bouts at the previous day's state.
+        pair_dates.setdefault(pair_date, key)
         consumed.update(keys)
         paired.append((item, first, second, winner))
     if consumed != set(by_key) or not paired:

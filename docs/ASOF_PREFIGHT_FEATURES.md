@@ -15,8 +15,11 @@ then it updates fighters, opponent defense, Elo and recent-weighted history
 with that date's results. A bout on the target date cannot contribute to
 its own prediction, even if another bout on the card finished earlier. Each
 completed record is identified by `(provider, bout ID)`, and duplicate
-same-date fighter matchups across providers are refused. The completed
-results never appear in the exported feature file.
+same-date fighter matchups across providers are refused. Distinct bout IDs
+from the **same** historical provider on one date are retained: the accepted
+historical builders counted both and froze their shared pre-date state. The
+audit reports these same-provider pair groups with source bout IDs for manual
+review. The completed results never appear in the exported feature file.
 
 Before generating any future row, the `audit` CLI checks the pinned
 `recent_form_v1` manifest and seven source hashes, rebuilds all **8,551**
@@ -25,8 +28,14 @@ previously accepted matchup, defensive, Elo and recent histories. This
 separate replay computes rolling history directly from completed fight
 stats and shares the existing rate definitions; it does not copy the saved
 features. The original source histories already had their own independent
-audits. The Mac full-data as-of audit
-has **not yet run**; passing synthetic tests alone is insufficient.
+audits. On the first Mac attempt, Ruff and all 354 tests passed; the full-data
+audit stopped at historical bout `2750ac5854e8b28b` because the new builder
+rejected a same-provider, same-date pairing that the accepted histories already
+allow. A regression test now verifies that both distinct fights are applied
+only after that date and that the reconstructed features match the older
+builders. The full-data audit **still needs to finish** on the Mac; passing
+synthetic tests alone is insufficient. Review any pair groups in its output
+before relying on their provenance.
 
 ```bash
 cd ~/Projects/upset

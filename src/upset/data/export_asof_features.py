@@ -3,6 +3,7 @@
 import argparse
 import json
 import subprocess
+from collections import defaultdict
 from datetime import UTC, datetime
 from math import isclose, isnan
 from pathlib import Path
@@ -49,6 +50,19 @@ def _historical(inputs: dict[str, Path], reference: Path):
 def audit_asof_history(inputs: dict[str, Path], reference: Path) -> dict:
     """Match each of 36 newly reconstructed columns against old saved inputs."""
     fights, stats, rows, previous = _historical(inputs, reference)
+    same_day_pairs = defaultdict(list)
+    for identified in fights:
+        fight = identified.fight
+        pair = (fight.source, fight.event_date,
+                *sorted((identified.upset_fighter_1_id,
+                         identified.upset_fighter_2_id)))
+        same_day_pairs[pair].append(fight.source_bout_id)
+    repeated_pairs = [
+        {"source": source, "event_date": day, "fighter_ids": [a, b],
+         "source_bout_ids": sorted(bouts)}
+        for (source, day, a, b), bouts in sorted(same_day_pairs.items())
+        if len(bouts) > 1
+    ]
     requests = [ScheduledMatchup(row.source_bout_id, row.event_date,
                                  row.fighter_a_id, row.fighter_b_id) for row in rows]
     rebuilt = build_asof_features(fights, stats, requests)
@@ -78,6 +92,7 @@ def audit_asof_history(inputs: dict[str, Path], reference: Path) -> dict:
         raise ValueError("Historical source changed during as-of audit.")
     return {"bouts": len(rows), "fighter_rows": 2 * len(rows),
             "columns": len(COLUMNS), "comparison": "matched",
+            "same_provider_same_date_pair_groups": repeated_pairs,
             "maximum_absolute_error": maximum_error,
             "reference_manifest_sha256": EXPECTED_REFERENCE_SHA256}
 

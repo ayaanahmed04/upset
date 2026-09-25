@@ -65,9 +65,7 @@ def _schedule(fights):
 
 
 class AsOfFeaturesTests(unittest.TestCase):
-    def test_matches_existing_model_matrix_for_all_historical_fights(self):
-        fights, stats = _history()
-        fights, stats = fights[:3], stats[:6]
+    def _assert_historical_matrix_matches(self, fights, stats):
         ours = build_asof_features(fights, stats, _schedule(fights))
         features = build_prefight_features(build_prefight_snapshots(fights, stats))
         matchups = build_matchup_rows(fights, features)
@@ -91,6 +89,32 @@ class AsOfFeaturesTests(unittest.TestCase):
                                                rel_tol=1e-10)),
                     (matchup.source_bout_id, name, new, old),
                 )
+        return ours
+
+    def test_matches_existing_model_matrix_for_all_historical_fights(self):
+        fights, stats = _history()
+        self._assert_historical_matrix_matches(fights[:3], stats[:6])
+
+    def test_distinct_same_provider_same_day_bouts_match_historical_replay(self):
+        fights, stats = _history()
+        repeated = replace(fights[0], fight=replace(fights[0].fight,
+                                                    source_bout_id="one-again"))
+        repeated_stats = [replace(row, stats=replace(row.stats,
+                                                     source_bout_id="one-again"))
+                          for row in stats[:2]]
+        ours = self._assert_historical_matrix_matches(
+            [fights[0], repeated, *fights[1:3]],
+            [*stats[:2], *repeated_stats, *stats[2:6]],
+        )
+        original = self._assert_historical_matrix_matches(fights[:3], stats[:6])
+        self.assertEqual(ours["one"], ours["one-again"])
+        self.assertGreater(ours["two"]["elo_rating_diff"],
+                           original["two"]["elo_rating_diff"])
+        self.assertGreater(ours["two"]["recent_log_appearances_sum"],
+                           original["two"]["recent_log_appearances_sum"])
+        with self.assertRaisesRegex(ValueError, "Duplicate or invalid completed fight"):
+            build_asof_features([fights[0], fights[0]], stats[:2],
+                                _schedule(fights[:1]))
 
     def test_staged_provider_updates_later_only_and_result_isolation(self):
         fights, stats = _history()
