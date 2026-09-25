@@ -6,6 +6,15 @@
 
 **Current focus:** Freeze/replay the research reference and build reviewed current-data ingestion plus dated prospective forecasts
 
+**September 25 research follow-up:** A pinned recent-feature ablation now
+separates strikes, takedowns, knockdowns, submission attempts and control
+margin plus known-control exposure on the existing development folds. A
+three-list current-feed audit compares an independently reviewed event
+calendar, provider completed-bout inventory and immutable staged fights/stats.
+See `RECENT_GROUPS_AND_COVERAGE.md`. The Mac source files and current provider
+feed are not present in this checkout: **neither a new model score nor real
+March-to-present coverage has yet been verified.**
+
 ## Project Goal
 
 Build a professional UFC analytics and machine learning platform that serves as both a real public product and a flagship portfolio project.
@@ -633,8 +642,9 @@ See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
 
 ## Blockers
 
-The historical snapshot ends on 2026-03-07. Complete reviewed current data,
-a serialized/replay-verified model and actual pre-event evidence are absent.
+The historical snapshot ends on 2026-03-07. A replay-verified model and
+historically audited as-of inputs now exist, but complete reviewed current
+data and externally dated pre-event forecasts are absent.
 Historical Cito round access and timestamped odds coverage have not been
 established on the user's account. Fresh live-performance claims require
 pre-event forecasts and subsequent independently scored outcomes;
