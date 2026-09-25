@@ -182,7 +182,7 @@ def feature_matrix(rows, records, columns=COLUMNS):
     )
 
 
-def _references(rows, records, saved):
+def _references(rows, records, saved, *, candidate=CANDIDATE):
     expected = {
         r.source_bout_id: (r, fold)
         for fold in DEVELOPMENT_FOLDS
@@ -257,7 +257,7 @@ def _references(rows, records, saved):
             "swapped_probabilities_b_win",
             "raw_directional_probabilities",
         ):
-            copy[field][CANDIDATE] = None
+            copy[field][candidate] = None
         predictions.append(copy)
     return predictions
 

@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Record the completed paired-context result; retain recent + Elo logistic as the research reference and define the next opponent-adjusted feature study
+**Current focus:** Preserve the completed opponent-adjusted comparison and build reviewed current-data ingestion, model replay and dated prospective forecasts
 
 ## Project Goal
 
@@ -557,40 +557,56 @@ gain; no model promotion.** Keep recent + Elo logistic as the working research
 reference. Its earlier 62.22% is on a different, later cohort and is unchanged.
 See `docs/PAIRED_CONTEXT_EXPERIMENT.md` for the score ledger and evidence hashes.
 
-1. Preserve the completed paired-context study as a result with no
-   demonstrated gain. Retain the saved recent + Elo logistic reference;
-   do not search tree settings on these dates or automatically rescore the
-   candidate on the examined later period.
-2. Preserve the completed August 2023–March 2026 examined-period score as a
-   historical stress test. Build reviewed current-data ingestion and model
-   replay, then capture externally dated forecasts before future events;
-   only those can provide fresh evidence for release. Keep log loss,
-   calibration and accuracy visible, including the observed one-history
-   weakness and small 2026 reversal.
-3. Define one opponent-adjusted performance study: past output relative to
-   an expectation based on the opponent's pre-bout defense, with strictly
-   earlier fitting/history. Compare with the logistic reference. This is
-   proposed work using existing data; no gain is assumed. Audited physical
-   context remains a separate later family. Keep the research PR stack
-   reviewable before merging.
+The opponent-adjusted study is complete on `feature/opponent-adjusted-performance`.
+For each earlier fight it measures landed significant strikes and takedowns
+relative to that opponent's pre-bout conceded rate, then decays the excess
+over 365 days and shrinks sparse exposure toward zero. It adds six paired
+rate/evidence columns to the saved 36-column symmetric recent + Elo logistic
+recipe. A separate earlier-bout audit checks every new historical numeric
+field; the Mac audited 17,102 rows, matched the saved logistic refit exactly,
+and preserved all 12 older series. Ruff and 346 tests passed on the Mac.
+In the 1,857 decisive development bouts, adjusted features made 1,094
+correct picks (58.91%) versus 1,071 (57.67%), but log loss increased from
+0.666020 to 0.666722 and Brier from 0.236867 to 0.237185. The accuracy
+date-bootstrap interval is [+0.11, +2.48] percentage points, while the
+primary paired log-loss interval [-0.002571, +0.004019] includes zero.
+With just one fighter having prior history, both picks and loss worsened.
+Independent uploaded-row review matched all 611 score sets, date bootstrap,
+symmetry/calibration bins, 12 reference series and adjusted-history numeric
+arithmetic; the source-data replay is reported by the Mac, not independently
+repeated without its raw data. **No probability-quality gain established; no
+model promoted.** See `docs/OPPONENT_ADJUSTED_EXPERIMENT.md` for the score
+ledger, hashes and limitations.
+
+1. Keep the symmetric recent + Elo logistic as the working research
+   reference. Archive both paired-context and opponent-adjusted experiments
+   with their mixed/negative probability results, without automatic promotion
+   or tuning on the repeatedly examined folds.
+2. Repair the completed-fight/stat gap after March 2026, review provider
+   identities, freeze and replay a selected model artifact, and capture
+   externally dated pre-event forecasts. Score outcomes separately when
+   known; retain proper losses, calibration, accuracy and sparse-history
+   slices. Previously examined August 2023–March 2026 remains a historical
+   stress test, not fresh evidence.
+3. Keep the research PR stack reviewable before merging. Separately scope a
+   timestamped market benchmark and, only with an explicit new experiment
+   specification, consider a historically auditable physical-context family.
 4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
    and the account's actual archive entitlement. The September 16 provider
    email already supports one-month acquisition and local retention; pricing
    and terms still disagree on the public historical window.
-5. Repair the completed-fight/stat gap after March 2026 and review provider
-   identities. Establish timestamped odds coverage for a separate market
-   benchmark and optional market-assisted candidate.
-6. Freeze a model release, verify probability replay, capture externally dated
-   prospective forecasts, then score outcomes separately. No new model was
-   promoted by the handoff review.
+5. Establish timestamped odds coverage for a separate market benchmark and
+   optional market-assisted candidate; historical MMA odds may require a paid
+   plan. No new model was promoted by these exploratory experiments.
 
 ## Blockers
 
 The historical snapshot ends on 2026-03-07. Complete reviewed current data,
 a serialized/replay-verified model and actual pre-event evidence are absent.
 Historical Cito round access and timestamped odds coverage have not been
-established on the user's account. These block live-performance claims;
-opponent-adjusted performance research can use existing historical files.
+established on the user's account. Fresh live-performance claims require
+pre-event forecasts and subsequent independently scored outcomes;
+the opponent-adjusted performance study needed no paid data.
 The Odds API's historical MMA access is paid; current odds have a free tier.
 A timestamped market comparison remains separate work. Cito is not needed
-for the completed paired-context study or the proposed opponent adjustment.
+for the completed paired-context study or the adjusted-performance experiment.
