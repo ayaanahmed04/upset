@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Run the fixed paired-fighter context experiment after the completed symmetry/recent-form and examined-period studies
+**Current focus:** Record the completed paired-context result; retain recent + Elo logistic as the research reference and define the next opponent-adjusted feature study
 
 ## Project Goal
 
@@ -539,25 +539,40 @@ saved recent-form reference series are preserved; the directly matched tree
 must reproduce its saved probabilities within 1e-12. Source reconstruction,
 independent Elo/recent audits, paired-column swapping and fixed chronological
 folds protect the comparison. Ruff, 334 tests and 16 subtests pass in the
-assistant environment. **The full-data Mac run remains pending.** No score
-improvement is claimed. See `docs/PAIRED_CONTEXT_EXPERIMENT.md` for the design,
-external-review qualifications and commands.
+assistant environment. The Mac passed Ruff and all 334 tests in 37.52 seconds
+at `26334e8`, then completed the full-data run. The new tree scored
+1,062/1,857 (57.19%), versus its matched tree's 1,070 (57.62%) and the saved
+recent + Elo logistic model's 1,071 (57.67%). Log loss was 0.670842 versus 0.670808 and
+0.666020 respectively. The primary paired loss difference is +0.000034
+(date-bootstrap 95% interval [-0.002990, +0.003248]); both comparisons'
+accuracy and loss intervals include zero. Lower binned ECE does not establish
+a probability-quality improvement. The one-history slice also worsened.
 
-1. Run `python -m upset.modeling.run_paired_context` on the Mac after the
-   branch's Ruff/pytest checks. Review paired log loss against the old tree
-   and the saved logistic candidate, along with accuracy and calibration.
-   This study adds one representation; it does not tune tree settings,
-   purchase data or automatically score the already examined later period.
+The uploaded hashes and all 12 old prediction series match the prior files.
+Independent row calculations reproduced all 611 metric sets across 13
+variants, bins/ECE, symmetry and both paired intervals. The Mac reported
+17,102 audited rows and zero matched-tree refit difference in every fold;
+source files were not uploaded for a separate replay here. **No demonstrated
+gain; no model promotion.** Keep recent + Elo logistic as the working research
+reference. Its earlier 62.22% is on a different, later cohort and is unchanged.
+See `docs/PAIRED_CONTEXT_EXPERIMENT.md` for the score ledger and evidence hashes.
+
+1. Preserve the completed paired-context study as a result with no
+   demonstrated gain. Retain the saved recent + Elo logistic reference;
+   do not search tree settings on these dates or automatically rescore the
+   candidate on the examined later period.
 2. Preserve the completed August 2023–March 2026 examined-period score as a
    historical stress test. Build reviewed current-data ingestion and model
    replay, then capture externally dated forecasts before future events;
    only those can provide fresh evidence for release. Keep log loss,
    calibration and accuracy visible, including the observed one-history
    weakness and small 2026 reversal.
-3. After the paired-context result, consider opponent-adjusted rates or
-   audited physical context as separate bounded experiments. Treat Elo
-   redundancy and monotonic win-rate effects as hypotheses, not established
-   findings. Keep the research PR stack reviewable before merging.
+3. Define one opponent-adjusted performance study: past output relative to
+   an expectation based on the opponent's pre-bout defense, with strictly
+   earlier fitting/history. Compare with the logistic reference. This is
+   proposed work using existing data; no gain is assumed. Audited physical
+   context remains a separate later family. Keep the research PR stack
+   reviewable before merging.
 4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
    and the account's actual archive entitlement. The September 16 provider
    email already supports one-month acquisition and local retention; pricing
@@ -575,7 +590,7 @@ The historical snapshot ends on 2026-03-07. Complete reviewed current data,
 a serialized/replay-verified model and actual pre-event evidence are absent.
 Historical Cito round access and timestamped odds coverage have not been
 established on the user's account. These block live-performance claims;
-the paired-context experiment can proceed with existing historical files.
+opponent-adjusted performance research can use existing historical files.
 The Odds API's historical MMA access is paid; current odds have a free tier.
 A timestamped market comparison remains separate work. Cito is not needed
-for this new model experiment.
+for the completed paired-context study or the proposed opponent adjustment.

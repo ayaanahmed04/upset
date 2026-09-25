@@ -32,9 +32,17 @@ implemented comparison: one fixed symmetric tree adds each fighter's own
 pre-fight values to the existing difference/exposure inputs (102 columns
 versus 36), with unchanged settings. All 12 saved reference variants are
 preserved; the directly matched old tree must reproduce its saved outputs.
-Ruff and 334 tests plus 16 subtests pass; full-data Mac results are pending.
-Only the existing development windows are scored. No paid data or monotonic
-constraints are added. That document also qualifies the external review's
+Ruff and 334 tests plus 16 subtests pass in the assistant environment. The
+Mac passed Ruff and all 334 tests, then completed the run at `26334e8`.
+The new tree's 1,062/1,857 correct (57.19%) and log loss 0.670842 do not
+improve on the old tree's 1,070/0.670808 or logistic's 1,071/0.666020.
+The paired intervals include zero. All 611 uploaded metric sets, bins,
+symmetry and both paired intervals were reproduced from the saved rows;
+the 12 earlier reference series are unchanged. Retain recent + Elo logistic
+as the research reference and specify opponent-adjusted performance next.
+Only the existing development windows were scored; the later 62.22% result
+is a separate cohort. No model was promoted. No paid data or monotonic
+constraints were added. That document also qualifies the external review's
 public-model comparisons, claimed 75% ceiling, dependence between folds and
 historical-odds costs. A market benchmark remains important separate work.
 

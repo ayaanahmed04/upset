@@ -7,9 +7,12 @@ examined-period work. This is one exploratory experiment on the four existing
 development windows. It does not establish future performance or promote a model.
 
 **Implementation verification:** Ruff passes; **334 tests and 16 subtests
-pass** in the assistant environment. Full-data Mac results are pending. The
-historical source exports remain on the Mac; synthetic test scores are not
-UFC performance estimates.
+pass** in the assistant environment. The Mac then passed Ruff and **334 tests
+in 37.52 seconds** and completed the full-data comparison at `26334e8`.
+The uploaded report and predictions were reviewed September 25, 2026 UTC.
+**Result: no demonstrated gain from the added paired values under this fixed
+recipe.** Keep symmetric recent + Elo logistic as the working research
+reference; no model is promoted. The completed results are recorded below.
 
 ## Why this next
 
@@ -161,6 +164,90 @@ logistic research reference and test the next feature family separately.
 Opponent-adjusted performance remains a plausible later step; current-data
 ingestion and externally dated prospective evidence remain necessary either
 way. No model is automatically promoted by this runner.
+
+## Completed Mac result and independent row review
+
+The Mac run used Python 3.12.14, NumPy 2.5.3 and scikit-learn 1.9.1 at
+`26334e8bf698c01a41d10beefe0f0af5ae023395`. It reported reconstruction of
+17,102 individual pre-fight rows, successful independent Elo/recent audits,
+and zero difference when refitting the matched tree in all four folds.
+All 102 candidate columns were observed in each fold's training data.
+
+| Variant | Correct / 1,857 | Accuracy | Log loss | Brier | AUC | Ten-bin ECE |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Saved symmetric recent + Elo logistic | 1,071 | 57.67% | 0.666020 | 0.236867 | 0.628908 | 0.035222 |
+| Saved symmetric recent + Elo tree | 1,070 | 57.62% | 0.670808 | 0.239236 | 0.613712 | 0.022428 |
+| New paired-context tree | 1,062 | 57.19% | 0.670842 | 0.239206 | 0.614283 | 0.020178 |
+
+| Window | Decisive bouts | Logistic correct | Old tree correct | New tree correct | Logistic log loss | Old tree log loss | New tree log loss |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2019 | 506 | 286 | 286 | 282 | 0.671615 | 0.682603 | 0.682324 |
+| 2021 | 497 | 294 | 297 | 302 | 0.659531 | 0.661866 | 0.660786 |
+| 2022 | 506 | 292 | 293 | 284 | 0.661593 | 0.665056 | 0.664367 |
+| 2023 partial | 348 | 199 | 194 | 194 | 0.673590 | 0.674794 | 0.677924 |
+
+The primary new-minus-old-tree log-loss difference is **+0.000034**, with a
+date-bootstrap 95% interval **[-0.002990, +0.003248]**. Accuracy changes by
+**-0.43 percentage points**, interval **[-1.78, +1.02]**. The new tree changes
+156 picks: 74 previously wrong picks become correct and 82 correct picks
+become wrong, for eight fewer correct overall. The tiny Brier/AUC changes
+and lower binned ECE do not establish a useful gain in the primary measure.
+
+Against saved recent + Elo logistic, log loss changes by **+0.004822**,
+interval **[-0.001085, +0.011228]**, and accuracy by **-0.48 points**,
+interval **[-2.34, +1.42]**. The candidate has worse point estimates for log
+loss, Brier, AUC and accuracy. Both paired loss/accuracy comparisons remain
+uncertain; the evidence does not prove universal equivalence or that paired
+values can never help another recipe.
+
+The old-tree comparison is mixed across dates: small loss reductions in
+2019, 2021 and 2022 are offset by a larger partial-2023 increase. The
+one-fighter-history slice (328 bouts) also worsens: 186 correct and log loss
+0.666632, versus the old tree's 188/0.664485 and logistic's 198/0.660476.
+For both-history bouts (1,487), the new tree makes 857 correct versus the
+old tree's 863, despite a small loss reduction (0.671141 versus 0.671572).
+All 42 double-debut bouts remain exact 0.5 ties. The new candidate has zero
+final swap error and no conflicting winner picks.
+
+The uploaded files were checked directly against the earlier uploaded
+`recent_form_v1` files. SHA-256 hashes match, all seven recorded source hashes
+agree with the accepted manifest, and removing the single new candidate
+restores every earlier prediction row exactly, including identities,
+targets, groups and all old forward/reverse/raw probability values.
+There are 1,892 unique validation rows, 1,857 decisive fights, 35 Draw/NC
+exclusions and 156 decisive event dates, all within the specified windows.
+
+Independent calculations from the uploaded rows reproduced **all 611 metric
+sets (47 score groups across 13 variants)**, reliability bins/ECE, symmetry,
+raw-to-final probability arithmetic, paired deltas and both date-bootstrap
+intervals. Maximum numerical difference was below 2.23e-16. The review calculated
+scores and date-level resampling separately from UPSET's scoring helpers.
+It did **not** rerun source-feature audits or model training: the original
+fight/stat exports and fitted models were not uploaded. Those checks are
+reported by the Mac manifest and terminal output.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| Paired-context manifest | `9e2026b6fa8c2544cf0006c716c5ccca072ee4c2bb14670faf4656dc3befc2b0` |
+| Paired-context predictions | `a16b4fceb5e605ce8439ed0222b53ea62fb237aa3c7c7dcefe21c417014193ff` |
+| Accepted recent-form manifest | `9c5f6228ffb3028d010bc70a644e34be47591626443285fc50e5345107f49787` |
+| Accepted recent-form predictions | `c2ab5d5fd171697a3e802504df719878508a73cd768978576c29c739802877ee` |
+
+**Decision:** archive this completed bounded experiment and retain symmetric
+recent + Elo logistic as the research reference. Do not tune this tree until
+it happens to win these dates, or automatically rerun it on the already
+examined later period. The earlier **62.22%** remains a separate result on
+1,260 later bouts; this **57.19%** comes from 1,857 development bouts and
+cannot be read as a fall from 62.22%.
+
+The next modeling hypothesis is opponent-adjusted performance: distinguish
+a fighter's output from what was expected against that specific opponent's
+pre-bout defense. Expectations must be learned from earlier data, and a
+past bout's residual may enter only later histories. Specify one bounded
+feature family and compare with the saved logistic reference before any
+full-data run. This is proposed work, not an implemented improvement or a
+guaranteed gain. It can use existing historical data; the separate current
+ingestion and prospective-evidence work remains necessary.
 
 ## Assessment of the external review
 
