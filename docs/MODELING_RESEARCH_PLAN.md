@@ -26,6 +26,18 @@ log loss (0.649515 versus 0.659788). The paired accuracy interval includes
 zero, and the small 2026 and one-fighter-history slices favor the comparator.
 No model was promoted; fresh evidence requires externally dated pre-event
 forecasts on data newer than the historical snapshot.
+
+**September 25 follow-up:** `PAIRED_CONTEXT_EXPERIMENT.md` specifies the next
+implemented comparison: one fixed symmetric tree adds each fighter's own
+pre-fight values to the existing difference/exposure inputs (102 columns
+versus 36), with unchanged settings. All 12 saved reference variants are
+preserved; the directly matched old tree must reproduce its saved outputs.
+Ruff and 334 tests plus 16 subtests pass; full-data Mac results are pending.
+Only the existing development windows are scored. No paid data or monotonic
+constraints are added. That document also qualifies the external review's
+public-model comparisons, claimed 75% ceiling, dependence between folds and
+historical-odds costs. A market benchmark remains important separate work.
+
 The historical review below describes the state before these implementations.
 Physical features and broader Cito acquisition remain proposed.
 
