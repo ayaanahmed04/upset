@@ -14,6 +14,7 @@ from upset.data.identity import load_fighter_registry, validate_upset_fighter_id
 from upset.modeling.baseline import FEATURE_COLUMNS
 from upset.modeling.defense_ablation import DEFENSE_COLUMNS
 from upset.modeling.outcome_recency import OUTCOME_COLUMNS
+from upset.modeling.recent_form import NEW_VARIANTS
 
 SCHEDULE_FIELDS = {
     "provider", "source_bout_id", "source_fighter_a_id",
@@ -33,6 +34,7 @@ APPROVED_COLUMNS = (
     FEATURE_COLUMNS + DEFENSE_COLUMNS,
     FEATURE_COLUMNS + OUTCOME_COLUMNS,
     FEATURE_COLUMNS + DEFENSE_COLUMNS + OUTCOME_COLUMNS,
+    NEW_VARIANTS["symmetric_recent_elo"],
 )
 COPIES = {
     "schedule.jsonl": "schedule",
@@ -103,6 +105,14 @@ def _validate_model(spec_path: Path, model_path: Path) -> dict:
         raise ValueError("A nonempty model artifact is required.")
     if _sha256(model_path) != spec["model_artifact_sha256"]:
         raise ValueError("Model artifact does not match its specification.")
+    from upset.modeling.frozen_replay import MODEL_NAME, parse_artifact
+
+    if tuple(spec["feature_columns"]) == NEW_VARIANTS["symmetric_recent_elo"] and (
+        spec["model_name"] != MODEL_NAME
+    ):
+        raise ValueError("Recent + Elo forecasts require a replayable artifact.")
+    if spec["model_name"] == MODEL_NAME:
+        parse_artifact(model_path.read_bytes(), spec)
     return spec
 
 
@@ -115,6 +125,16 @@ def _validate_inputs(
     recorded_at: datetime,
 ) -> list[list[str]]:
     spec = _validate_model(spec_path, model_path)
+    from upset.modeling.frozen_replay import (
+        MODEL_NAME,
+        parse_artifact,
+    )
+    from upset.modeling.frozen_replay import (
+        probability as replay_probability,
+    )
+
+    replay = (parse_artifact(model_path.read_bytes(), spec)
+              if spec["model_name"] == MODEL_NAME else None)
     registry = load_fighter_registry(registry_path)
     known_ids = {item.upset_fighter_id for item in registry.identities}
     provider_links = {
@@ -183,6 +203,10 @@ def _validate_inputs(
             type(value) not in (int, float) or not isfinite(value)
         ) for value in values.values()):
             raise ValueError(f"Invalid forecast feature value: {key}")
+        if replay is not None and abs(replay_probability(replay, values) - probability) > (
+            1e-12
+        ):
+            raise ValueError(f"Forecast differs from frozen model replay: {key}")
     if matched != set(by_bout):
         raise ValueError("One or more scheduled bouts have no forecast.")
     return [list(key) for key in sorted(matched)]

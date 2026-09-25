@@ -4,7 +4,7 @@
 
 **Current phase:** Historical modeling and data integration
 
-**Current focus:** Preserve the completed opponent-adjusted comparison and build reviewed current-data ingestion, model replay and dated prospective forecasts
+**Current focus:** Freeze/replay the research reference and build reviewed current-data ingestion plus dated prospective forecasts
 
 ## Project Goal
 
@@ -578,12 +578,24 @@ repeated without its raw data. **No probability-quality gain established; no
 model promoted.** See `docs/OPPONENT_ADJUSTED_EXPERIMENT.md` for the score
 ledger, hashes and limitations.
 
+The `feature/frozen-prospective-replay` branch adds an inspectable numeric
+artifact for the symmetric recent + Elo research model. It pins the seven
+historical source hashes and accepted reference, fits through March 7, 2026,
+and checks every fitted training prediction against the saved parameters. The
+prospective archive replays every forecast made with this named model during
+both record and verify. No new UFC result is claimed. Current fight/stat
+intake now rejects unreviewed links, incomplete stats and dated duplicate
+matchups against the historical snapshot, saving immutable identified batches
+with hashes. Provider acquisition/normalization, complete date coverage and a
+separate strictly as-of feature audit are still needed to produce real future
+inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
+
 1. Keep the symmetric recent + Elo logistic as the working research
    reference. Archive both paired-context and opponent-adjusted experiments
    with their mixed/negative probability results, without automatic promotion
    or tuning on the repeatedly examined folds.
 2. Repair the completed-fight/stat gap after March 2026, review provider
-   identities, freeze and replay a selected model artifact, and capture
+   identities, independently audit as-of feature generation, and capture
    externally dated pre-event forecasts. Score outcomes separately when
    known; retain proper losses, calibration, accuracy and sparse-history
    slices. Previously examined August 2023–March 2026 remains a historical
