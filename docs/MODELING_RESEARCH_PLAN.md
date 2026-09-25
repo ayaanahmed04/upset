@@ -46,6 +46,16 @@ constraints were added. That document also qualifies the external review's
 public-model comparisons, claimed 75% ceiling, dependence between folds and
 historical-odds costs. A market benchmark remains important separate work.
 
+**Opponent-adjusted follow-up:** `OPPONENT_ADJUSTED_EXPERIMENT.md` fixes a
+single implemented next test. Against the preserved symmetric recent + Elo
+logistic model, it adds six features summarizing a fighter's historical
+striking and takedown output relative to each past opponent's pre-bout
+conceded rate. Dates, source hashes, the accepted prediction cohort,
+the separate direct-ledger feature audit and exact matched-reference
+refit are required. Full-data Mac results are pending; no probability
+improvement or model promotion is claimed. Ruff and all 346 tests plus 16
+subtests pass in the assistant environment.
+
 The historical review below describes the state before these implementations.
 Physical features and broader Cito acquisition remain proposed.
 
