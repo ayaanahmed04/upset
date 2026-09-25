@@ -4,12 +4,76 @@ Design fixed September 25, 2026 UTC, after independently reviewing the
 unsuccessful paired-context study and before this candidate is run on the
 full historical files. This is a single exploratory development experiment,
 implemented on `feature/opponent-adjusted-performance` and stacked on PR #18.
-The expected improvement is a hypothesis; there are no full-data results yet.
+The expected improvement was a hypothesis; the full-data Mac run is complete.
 In the assistant environment, Ruff and all **346 tests plus 16 subtests** pass.
 Tests cover known arithmetic, opponent-specific expectations, same-date
 isolation, corruption caught by an independent audit, swap symmetry,
-validation-label isolation and the full pinned-export chain. Full-data Mac
-results are pending; synthetic tests do not measure UFC accuracy.
+validation-label isolation and the full pinned-export chain. On the Mac, Ruff
+and all **346 tests** passed in 54.64 seconds at code commit
+`6a4727da97cec7af1211a1825e125dbe614a4a2a`. Synthetic tests do not
+measure UFC accuracy. The exploratory result and independent uploaded-file
+review follow below; **no model was promoted**.
+
+## Full-data result and decision (September 25)
+
+The Mac independently audited all 17,102 adjusted rows, reported an exact
+matched-logistic refit in every fold, preserved all 12 accepted probability
+series, and scored the same 1,857 decisive development bouts (35 Draw/NC
+excluded). The results for the prespecified paired comparison are:
+
+| Cohort | Reference correct | Adjusted correct | Reference log loss | Adjusted log loss |
+| --- | ---: | ---: | ---: | ---: |
+| Pooled (1,857) | 1,071 (57.67%) | 1,094 (58.91%) | 0.666020 | 0.666722 |
+| 2019 (506) | 286 | 295 | 0.671615 | 0.669887 |
+| 2021 (497) | 294 | 290 | 0.659531 | 0.663569 |
+| 2022 (506) | 292 | 303 | 0.661593 | 0.664003 |
+| 2023 partial (348) | 199 | 206 | 0.673590 | 0.670574 |
+
+Adjusted minus reference: **+23 correct, +1.24 accuracy points**, with a
+calendar-date bootstrap 95% interval [+0.11, +2.48] points. The primary
+probability comparison, log loss, is **+0.000701** (worse), interval
+[-0.002571, +0.004019]. Brier increases from 0.236867 to 0.237185
+(worse). AUC moves by only +0.000142. Ten-bin ECE decreases from 0.035222
+to 0.018755; this coarse descriptive statistic does not cancel the poorer
+proper scores. The candidate flipped 147 picks: 85 fixes and 62 regressions.
+The 2021 fold loses on both accuracy and log loss, while 2022 gains picks but
+loses on log loss.
+
+With both fighters having prior history (1,487 bouts), the candidate gains
+26 picks and its log loss improves only 0.000097. With **only one fighter
+having prior history** (328 bouts), it loses three picks and log loss rises
+from 0.660476 to 0.664885. The neither-history group (42 bouts) has exactly
+0.5 probabilities for both models. The candidate is therefore not a
+demonstrated probability improvement on the predeclared primary metric;
+retain the saved symmetric recent + Elo logistic as the **working research
+reference**, with no automatic promotion. The narrow positive accuracy
+interval is conditional on the repeatedly examined development period,
+this candidate comparison and date resampling; it is not fresh confirmation.
+The previously examined 784/1,260 (62.22%) later-period result belongs to
+a different cohort and was not rerun.
+
+The uploaded `manifest.json`, `predictions.jsonl` and
+`adjusted_history.jsonl` have SHA-256 respectively
+`5496dfddea446cd54c4a5013835433107cfcb78bebd38ec45b7fcf5edb090d23`,
+`7c14098b30f80c7c0885f3d2739477945764b29bf53a0eb8bd44f6de5ab38cc5`,
+and `8c565bec3e08417aad55f4bbcac1971b8739088065aab5b0909465a9cd8435c2`.
+Independent row calculations reproduced **611** reported metric sets across
+the 13 variants, all reported calibration bins/ECE and symmetry values, and
+the paired date-bootstrap interval. All 12 previous variants' predictions
+and all seven source hashes match the accepted saved reference. The history
+hash and 17,102 row count match; all 8,551 bouts have two distinct fighters
+on the same date. Each fighter's recorded prior count excludes all same-date
+bouts; both per-family residual rates recompute from excess and weighted
+exposure, and zero-prior rows have zero exposures and features. The uploaded
+files do not include the original source fight statistics, earlier opponent
+rates or serialized model, so the Mac's independent source replay and refit
+are reported by its manifest, not separately repeated in this review.
+
+Next prioritize reviewed current-fight ingestion, frozen model replay and
+externally dated pre-event forecasts. If another historical feature family
+is explored, specify it before fitting and continue to label these windows
+exploratory; neither this accuracy interval nor a new later-period score
+would turn already examined dates into a fresh holdout.
 
 ## Question and comparison
 

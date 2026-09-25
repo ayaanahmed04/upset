@@ -46,15 +46,18 @@ constraints were added. That document also qualifies the external review's
 public-model comparisons, claimed 75% ceiling, dependence between folds and
 historical-odds costs. A market benchmark remains important separate work.
 
-**Opponent-adjusted follow-up:** `OPPONENT_ADJUSTED_EXPERIMENT.md` fixes a
-single implemented next test. Against the preserved symmetric recent + Elo
-logistic model, it adds six features summarizing a fighter's historical
-striking and takedown output relative to each past opponent's pre-bout
-conceded rate. Dates, source hashes, the accepted prediction cohort,
-the separate direct-ledger feature audit and exact matched-reference
-refit are required. Full-data Mac results are pending; no probability
-improvement or model promotion is claimed. Ruff and all 346 tests plus 16
-subtests pass in the assistant environment.
+**Opponent-adjusted follow-up completed:** `OPPONENT_ADJUSTED_EXPERIMENT.md`
+records a single fixed comparison adding six residual/exposure features to
+the saved recent + Elo logistic model. The Mac passed Ruff and all 346 tests,
+audited 17,102 adjusted rows and matched the reference refit exactly. The
+candidate gained 23 picks (1,094 versus 1,071/1,857; date-bootstrap
+accuracy interval [+0.11, +2.48] percentage points), but pooled log loss
+rose 0.666020 to 0.666722 and Brier rose 0.236867 to 0.237185. The paired
+loss interval spans zero and the one-history slice deteriorates. Uploaded
+hashes, old prediction series, 611 metric sets, interval and adjusted-history
+arithmetic were independently checked. This is mixed exploratory evidence,
+not a demonstrated probability gain: **no promotion**. Prioritize current
+data, replay and timestamped prospective forecasts for fresh evidence.
 
 The historical review below describes the state before these implementations.
 Physical features and broader Cito acquisition remain proposed.
