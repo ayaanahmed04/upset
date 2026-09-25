@@ -24,20 +24,37 @@ class _ObservedBoosted:
         return self.estimator.predict_proba(values[:, self.observed_columns])
 
 
-def swap_features(matrix: np.ndarray, signs: np.ndarray) -> np.ndarray:
-    """Reverse signed differences while leaving shared matchup context fixed."""
+def swap_features(matrix, signs, *, swap_indices=None) -> np.ndarray:
+    """Reverse differences, retain shared context, and exchange paired values.
+
+    A permutation lets A's individual value become B's, including missingness.
+    Requiring an involution means that swapping twice restores the input.
+    Omitting it preserves the original difference-only transformation exactly.
+    """
     values = np.asarray(matrix, dtype=float)
     signs = np.asarray(signs, dtype=float)
     if values.ndim != 2 or signs.shape != (values.shape[1],):
         raise ValueError("Feature matrix and swap signs differ.")
     if not np.isin(signs, (-1, 1)).all() or np.isinf(values).any():
         raise ValueError("Invalid swap signs or infinite feature.")
-    return values * signs
+    if swap_indices is None:
+        return values * signs
+    indices = np.asarray(swap_indices)
+    expected = np.arange(values.shape[1])
+    if (
+        indices.shape != expected.shape
+        or not np.issubdtype(indices.dtype, np.integer)
+        or not np.array_equal(np.sort(indices), expected)
+        or not np.array_equal(indices[indices], expected)
+        or not np.all(signs * signs[indices] == 1)
+    ):
+        raise ValueError("Swap indices and signs must define an involution.")
+    return values[:, indices] * signs
 
 
-def fit_symmetric(matrix, targets, signs, *, boosted=False):
+def fit_symmetric(matrix, targets, signs, *, boosted=False, swap_indices=None):
     values = np.asarray(matrix, dtype=float)
-    reverse = swap_features(values, signs)
+    reverse = swap_features(values, signs, swap_indices=swap_indices)
     targets = np.asarray(targets)
     if (
         targets.shape != (len(values),)
@@ -65,13 +82,13 @@ def fit_symmetric(matrix, targets, signs, *, boosted=False):
     return model
 
 
-def symmetric_probabilities(model, matrix, signs):
+def symmetric_probabilities(model, matrix, signs, *, swap_indices=None):
     """Return coherent probabilities plus both raw directional estimates.
 
     This guarantee holds even when fitted tree splits or missing-data handling
     are not symmetric. Call this again on swapped inputs to verify the result.
     """
-    reverse = swap_features(matrix, signs)
+    reverse = swap_features(matrix, signs, swap_indices=swap_indices)
     forward = model.predict_proba(matrix)[:, 1]
     backward = model.predict_proba(reverse)[:, 1]
     probability = 0.5 + 0.5 * (forward - backward)

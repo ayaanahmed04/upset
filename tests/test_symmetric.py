@@ -71,3 +71,42 @@ def test_invalid_swap_and_targets_are_rejected():
         fit_symmetric(np.zeros((2, 2)), [0, None], [-1, 1])
     with pytest.raises(ValueError, match="observed training feature"):
         fit_symmetric(np.full((2, 2), np.nan), [0, 1], [-1, 1], boosted=True)
+
+
+def test_paired_values_swap_missingness_and_fit_only_training_observations():
+    rng = np.random.default_rng(11)
+    x = rng.normal(size=(150, 5))
+    x[:, 0] = x[:, 1] - x[:, 2]
+    x[::4, 1] = np.nan
+    x[:, 3:] = np.nan  # an entire pair is missing during training
+    signs, indices = [-1, 1, 1, 1, 1], [0, 2, 1, 4, 3]
+    with threadpool_limits(limits=1):
+        model = fit_symmetric(
+            x, (x[:, 0] > 0).astype(int), signs, boosted=True, swap_indices=indices
+        )
+        p = symmetric_probabilities(model, x, signs, swap_indices=indices)[0]
+        swapped = swap_features(x, signs, swap_indices=indices)
+        q = symmetric_probabilities(model, swapped, signs, swap_indices=indices)[0]
+        assert np.allclose(p + q, 1, rtol=0, atol=1e-12)
+        assert np.isnan(swapped[0, 2]) and not np.isnan(swapped[0, 1])
+        assert model.observed_columns.tolist() == [True, True, True, False, False]
+        later = x.copy()
+        later[:, 3:] = [99, 123]
+        assert np.array_equal(
+            p, symmetric_probabilities(model, later, signs, swap_indices=indices)[0]
+        )
+
+
+@pytest.mark.parametrize(
+    "indices,signs",
+    [
+        ([1, 2, 0], [1, 1, 1]),
+        ([0, 0, 2], [1, 1, 1]),
+        ([1, 0, 2], [-1, 1, 1]),
+        ([0, 1], [1, 1, 1]),
+        ([0.0, 1.0, 2.0], [1, 1, 1]),
+    ],
+)
+def test_non_involutive_permutations_are_rejected(indices, signs):
+    with pytest.raises(ValueError, match="involution"):
+        swap_features(np.zeros((2, 3)), signs, swap_indices=indices)
