@@ -583,12 +583,24 @@ artifact for the symmetric recent + Elo research model. It pins the seven
 historical source hashes and accepted reference, fits through March 7, 2026,
 and checks every fitted training prediction against the saved parameters. The
 prospective archive replays every forecast made with this named model during
-both record and verify. No new UFC result is claimed. Current fight/stat
+both record and verify. The Mac passed Ruff and all 351 tests, then froze
+8,400 decisive historical bouts; model SHA-256
+`55bf4a6f363c9c45bd3db008b74faab5927318b6614836e440024f52d9c8894c`.
+This is a replay milestone, not a new UFC accuracy result. Current fight/stat
 intake now rejects unreviewed links, incomplete stats and dated duplicate
 matchups against the historical snapshot, saving immutable identified batches
 with hashes. Provider acquisition/normalization, complete date coverage and a
 separate strictly as-of feature audit are still needed to produce real future
 inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
+
+The follow-up `feature/asof-prefight-features` branch reconstructs all 36
+inputs from completed, linked fights before the requested event date,
+including staged post-March results. It cross-checks the entire original
+historical cohort against pinned saved matchup/defense/Elo/recent columns
+before generating any future row. The full 8,551-bout Mac audit is pending;
+prospective use also requires a demonstrated complete current-data feed,
+reviewed new fighter links and independently timestamped schedule/forecasts.
+See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
 
 1. Keep the symmetric recent + Elo logistic as the working research
    reference. Archive both paired-context and opponent-adjusted experiments

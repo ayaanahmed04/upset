@@ -62,7 +62,10 @@ data, replay and timestamped prospective forecasts for fresh evidence.
 **Prospective foundation:** `FROZEN_PROSPECTIVE_MODEL.md` implements the
 accepted logistic recipe as a replay-verified numeric artifact and adds a
 provider-neutral completed-fight intake contract after the March snapshot.
-It does not claim a new score. To improve the model, first measure coverage
+The Mac froze 8,400 decisive fights after passing Ruff and 351 tests;
+the artifact hash and full result are documented. This does not claim a new
+score. `ASOF_PREFIGHT_FEATURES.md` adds a strictly dated 36-column builder;
+its full-data historical audit is pending. To improve the model, first measure coverage
 and reconcile the missing current fights/stats, then derive and audit strictly
 dated features. Independently specify a genuinely different available-signal
 family (for example fight-date age/reach with missingness and class context),
