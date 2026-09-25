@@ -59,6 +59,20 @@ arithmetic were independently checked. This is mixed exploratory evidence,
 not a demonstrated probability gain: **no promotion**. Prioritize current
 data, replay and timestamped prospective forecasts for fresh evidence.
 
+**Prospective foundation:** `FROZEN_PROSPECTIVE_MODEL.md` implements the
+accepted logistic recipe as a replay-verified numeric artifact and adds a
+provider-neutral completed-fight intake contract after the March snapshot.
+It does not claim a new score. To improve the model, first measure coverage
+and reconcile the missing current fights/stats, then derive and audit strictly
+dated features. Independently specify a genuinely different available-signal
+family (for example fight-date age/reach with missingness and class context),
+and compare against the saved reference on identical bouts. A timestamped
+market-only comparator would show how much signal is still missing from
+historical stats. Report both proper probability losses and accuracy on
+prospectively locked forecasts; repeated historical fold exploration cannot
+establish a 75% all-fights result. Cito purchase is a source-coverage
+decision, not a prerequisite for freezing or replaying the model.
+
 The historical review below describes the state before these implementations.
 Physical features and broader Cito acquisition remain proposed.
 
