@@ -589,8 +589,8 @@ both record and verify. The Mac passed Ruff and all 351 tests, then froze
 This is a replay milestone, not a new UFC accuracy result. Current fight/stat
 intake now rejects unreviewed links, incomplete stats and dated duplicate
 matchups against the historical snapshot, saving immutable identified batches
-with hashes. Provider acquisition/normalization, complete date coverage and a
-separate strictly as-of feature audit are still needed to produce real future
+with hashes. Provider acquisition/normalization and complete coverage of
+fights after the historical cutoff are still needed to produce real future
 inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
 
 The follow-up `feature/asof-prefight-features` branch reconstructs all 36
@@ -600,11 +600,13 @@ historical cohort against pinned saved matchup/defense/Elo/recent columns
 before generating any future row. On the first Mac attempt Ruff and 354 tests
 passed, but the full audit stopped on a same-date historical fighter pair.
 Distinct bout IDs from the accepted historical provider are now retained to
-match the original builders, with their IDs disclosed for manual review; the
-full 8,551-bout Mac audit remains pending. A regression test compares the
-36 columns for same-day repeated pairs against the older builders. The audit
-still needs to run to completion;
-prospective use also requires a demonstrated complete current-data feed,
+match the original builders. The completed Mac audit matched all 8,551 bouts,
+17,102 fighter rows and 36 columns against the accepted historical inputs,
+with maximum absolute error 0.0. The one flagged pair is Sakuraba versus
+Silveira at UFC Japan on 1997-12-21, when they fought twice (a no contest and
+a submission win, per UFC's historical account). A regression test compares
+the 36 columns for same-day repeated pairs against the older builders.
+Prospective use also requires a demonstrated complete current-data feed,
 reviewed new fighter links and independently timestamped schedule/forecasts.
 See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
 

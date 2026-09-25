@@ -28,14 +28,24 @@ previously accepted matchup, defensive, Elo and recent histories. This
 separate replay computes rolling history directly from completed fight
 stats and shares the existing rate definitions; it does not copy the saved
 features. The original source histories already had their own independent
-audits. On the first Mac attempt, Ruff and all 354 tests passed; the full-data
-audit stopped at historical bout `2750ac5854e8b28b` because the new builder
-rejected a same-provider, same-date pairing that the accepted histories already
-allow. A regression test now verifies that both distinct fights are applied
-only after that date and that the reconstructed features match the older
-builders. The full-data audit **still needs to finish** on the Mac; passing
-synthetic tests alone is insufficient. Review any pair groups in its output
-before relying on their provenance.
+audits. On Ayaan's Mac the full audit **matched all 8,551 bouts, 17,102
+fighter rows and 36 columns**, with maximum absolute error **0.0** and
+reference manifest SHA-256
+`9c5f6228ffb3028d010bc70a644e34be47591626443285fc50e5345107f49787`.
+Ruff and 355 tests (plus 16 subtests) passed locally; Ayaan's earlier Mac run
+passed Ruff and 354 tests before the additional regression test was added.
+
+The sole reported same-provider, same-date pair is
+`2750ac5854e8b28b` and `ec1bda9a4c2aab42` on 1997-12-21, between
+Kazushi Sakuraba and Marcus Silveira. The repository's reviewed registry
+links the reported fighter UUIDs to those names. [UFC's account of the event](https://www.ufc.com/news/best-nation-japan)
+records two fights between them that night: a no contest followed by a
+submission win for Sakuraba. The two distinct source bout IDs therefore
+reflect actual separate fights, rather than a repeated import of one bout.
+Both historical pre-fight snapshots use only information from dates before
+the event; results from either bout affect subsequent dates. This audit
+establishes agreement with the accepted historical inputs, **not** the
+accuracy of future UFC predictions or the completeness of post-March data.
 
 ```bash
 cd ~/Projects/upset

@@ -19,7 +19,7 @@ froze 8,400 decisive fights, and produced model SHA-256
 `55bf4a6f363c9c45bd3db008b74faab5927318b6614836e440024f52d9c8894c`.
 The full historical files and the artifact remain on that Mac; the full-data
 fit was not independently rerun in the assistant environment. See
-`ASOF_PREFIGHT_FEATURES.md` for the next full-data feature audit.
+`ASOF_PREFIGHT_FEATURES.md` for the completed full-data feature audit.
 
 `record` accepts a schedule and one matching JSONL row per bout with exactly
 `source_bout_id`, `fighter_a_id`, `fighter_b_id` and
@@ -51,10 +51,12 @@ python -m upset.modeling.run_frozen_replay record \
 
 **The `record` input is not ready yet.** The reviewed completed-fight intake
 below does not fetch provider records. An as-of-date builder now derives all
-36 features from linked fights/stats, pending its full-data audit and complete
-current-source coverage. Replay proves that *given* submitted values produce the
-submitted probability; it cannot prove the values are accurate or existed before the
-fight. Before a genuine live forecast, ingest reviewed current fights and
+36 features from linked fights/stats. Its full historical audit subsequently
+matched all 8,551 bouts and 36 columns with zero absolute error; complete
+current-source coverage remains unverified. Replay proves that *given*
+submitted values produce the submitted probability; it cannot prove the
+values are accurate or existed before the fight. Before a genuine live
+forecast, ingest reviewed current fights and
 fighter statistics, audit identity links, build features strictly from earlier
 fights and independently verify them. Then publish forecast hashes to an
 external timestamped location before the actual bout starts. Schedule
