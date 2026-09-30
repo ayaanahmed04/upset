@@ -2,7 +2,12 @@
 
 import json
 
-from upset.data.audit_cito_archive import _competition, audit_archive
+from upset.data.audit_cito_archive import (
+    PAIR_FIELDS,
+    _competition,
+    _participant,
+    audit_archive,
+)
 from upset.data.collect_cito_archive import collect_archive_cards, collect_inventory
 
 
@@ -33,6 +38,9 @@ def _archive(tmp_path, *, duplicate_total=False, missing_round=False,
                        "fighterName": "A"})
     rounds = [{"boutId": "bout-1", "fighterName": "A", "round": 1},
               {"boutId": "bout-1", "fighterName": "B", "round": 1}]
+    for row in totals + rounds:
+        row.update(dict.fromkeys(PAIR_FIELDS, "0 of 0"))
+        row.update(knockdowns=0, submissionAttempts=0, reversals=0, controlTime="0:00")
     if missing_round:
         rounds.pop()
     if differing_name:
@@ -68,6 +76,7 @@ def test_audit_checks_rounds_and_preserves_statless_events(tmp_path):
     }
     assert report["eligible_completed_stat_bearing_bouts"] == 1
     assert report["structurally_complete_bouts"] == 1
+    assert report["numerically_reconciled_bouts"] == 1
     assert report["findings"] == []
     assert report["inventory_events"][0]["title"] == "UFC Test Card"
     assert report["support_spot_checks"]["ufc-fight-night-march-14-2026"][
@@ -98,6 +107,47 @@ def test_name_difference_has_separate_finding_and_saved_evidence(tmp_path):
 def test_road_ufc_variants_are_outside_ufc_candidate_group():
     assert _competition("road-ufc-season-4-semifinals") == "other_competition"
     assert _competition("ufc-road-to-ufc-4-6") == "other_competition"
+    assert _competition("the-ultimate-fighter-28-finale") == "ufc_candidate"
+    assert _competition("ortiz-vs-shamrock-3-the-final-chapter") == "ufc_candidate"
+    assert _competition("the-ultimate-fighter-28-episode-1") == "unclassified"
+
+
+def test_matching_uses_unique_slug_profile_name_or_reviewed_provider_identity():
+    fighters = [{"fighterName": "Jose Miguel Delgado", "fighterSlug": "jose-miguel-delgado",
+                 "profile": {"name": "Jose Delgado"}},
+                {"fighterName": "Andre Fili", "fighterSlug": "andre-fili"}]
+    assert _participant({"fighterName": "Jose Delgado", "fighterSlug": None}, fighters) == 0
+    assert _participant({"fighterName": "Other Name", "fighterSlug": "andre-fili"}, fighters) == 1
+    assert _participant({"fighterName": "Andre Fili", "fighterSlug": "jose-miguel-delgado"},
+                        fighters) is None
+    assert _participant({"fighterName": "Joseph Delgado"}, fighters) is None
+    fighters[0] = {"fighterName": "Max Grishin",
+                   "fighterId": "cc11ae04-67dd-4f52-9a7c-b7f25dd6d856"}
+    assert _participant({"fighterName": "Maxim Grishin"}, fighters) == 0
+    fighters[0]["fighterId"] = "different-person"
+    assert _participant({"fighterName": "Maxim Grishin"}, fighters) is None
+
+
+def test_numerical_difference_does_not_pass_reconciliation(tmp_path):
+    _archive(tmp_path)
+    # Refresh acquisition hashes after editing the fixture, so this tests math.
+    from upset.data.collect_cito_archive import _atomic_json, _digest
+
+    card = tmp_path / "cards/ufc-fight-night-march-14-2026"
+    raw = json.loads((card / "stats.json").read_text())
+    raw["response"]["data"]["boutStats"][0]["significantStrikes"] = "1 of 2"
+    _atomic_json(card / "stats.json", raw)
+    manifest = json.loads((card / "manifest.json").read_text())
+    manifest["sha256"]["stats"] = _digest(card / "stats.json")
+    _atomic_json(card / "manifest.json", manifest)
+    progress = json.loads((tmp_path / "collection_progress.json").read_text())
+    next(r for r in progress["cards"].values() if r["status"] == "captured")[
+        "card_manifest_sha256"] = _digest(card / "manifest.json")
+    _atomic_json(tmp_path / "collection_progress.json", progress)
+    report = audit_archive(tmp_path)
+    assert report["structurally_complete_bouts"] == 1
+    assert report["numerically_reconciled_bouts"] == 0
+    assert any(r["finding"] == "round_sums_differ:bout-1" for r in report["findings"])
 
 
 def test_audit_reports_missing_round_separately(tmp_path):

@@ -91,14 +91,64 @@ heuristics based on event slugs; manually review ambiguous entries. The
 statless May 2026 `ufc-315` remains in that list. A Road to UFC event that
 failed collection is also left in the report rather than silently omitted.
 
-Passing structural checks does not verify the numerical totals, fighter
-identities, or independent UFC calendar coverage. The two spot checks compare
-bout and round-row counts only; Cito support's completeness statement is
-source testimony until the numbers and calendar are separately reconciled.
+Passing structural checks does not establish independent UFC calendar
+coverage or accuracy against another source. The audit now separately counts
+bouts whose round sums reconcile to supplied totals for all nine strike and
+takedown pairs, knockdowns, submissions, reversals and control time. Missing
+or invalid numerical fields and unequal sums remain explicit findings.
+This is internal consistency, not a comparison with official recorded stats.
 
 The report also includes the raw bout, total-stat and round-stat rows behind
 each bout finding, together with the captured card manifest hash. A name
 disagreement is reported separately from an incorrect total-row count; it
-does not establish that statistics are missing. Names are not silently
-treated as aliases. All event inventory entries and provider titles are
+does not establish that statistics are missing. Unique matching slugs,
+normalized spellings, embedded profile names and explicitly reviewed aliases
+scoped to provider fighter IDs can resolve spelling differences. Conflicting
+or ambiguous matches remain findings. Resolved differences are listed in the
+report; raw rows are never renamed. All event inventory entries and provider titles are
 included to review duplicate listings and the heuristic competition labels.
+
+## September 30 evidence review and targeted endpoint probes
+
+The saved v2 report contained 77 name disagreements and two bouts without
+supplied totals. Reviewing those 77 bouts with unique participant matching
+found complete rounds, and every supplied numerical field reconciled. In
+particular, March 14's Jose Miguel Delgado/Jose Delgado bout has both totals
+and six round rows; it is not a missing-bout example. The two September 12
+bouts (Djorden Santos/Yousri Belgaroui and Rongzhu/Rafa Garcia) have round rows
+but no supplied totals in either the event stats or embedded bout evidence.
+Keep them flagged; do not represent round-derived totals as provider totals.
+
+Nickname reviews use the captured fighter profiles and official UFC pages:
+<https://www.ufc.com/athlete/ronaldo-souza>,
+<https://www.ufc.com/athlete/alberto-pereira> and
+<https://www.ufc.com/athlete/max-grishin>. Delgado's short and full names
+appear under the same fighter ID in the captured source profiles and rows.
+TUF **Finale** cards and the named Ortiz/Shamrock finale are UFC candidates;
+this does not admit TUF exhibition episodes to the baseline.
+
+The 35 statless UFC listings in the v2 inventory are named 2024–2025 cards.
+No captured event exists within one day of those listings in that inventory.
+They cannot be dismissed as duplicate aliases. The collector skipped them
+because of provider `hasStats=false` metadata. Probe the actual stats endpoint:
+
+```bash
+python -m upset.data.audit_cito_archive \
+  --output data/processed/cito_archive_audit_v3.json
+python -m upset.data.probe_cito_statless \
+  --through-date 2026-09-28 --max-events 50
+```
+
+The probe issues one request per targeted past UFC listing, seven seconds
+apart, and prints progress immediately. It preserves successful and error
+JSON responses, observation times and hashes under ignored
+`data/raw/cito_archive/statless_probes_v1/`, with a summary `report.json`.
+It checks returned event identity before labeling stats returned. This label
+means totals and rounds are present, not that every bout is complete.
+Future cards, other competitions and already captured cards are not queried;
+inventory and collection progress are unchanged. Repeating resumes cached
+probes without refetching, including saved errors. A deliberate fresh probe
+can use a different `--output` directory. The 35-card batch is at most 35
+requests; network time varies, with about four minutes of pacing alone.
+Actual endpoint evidence will decide whether to recover cards locally or
+request missing archive data from Cito during the paid access window.
