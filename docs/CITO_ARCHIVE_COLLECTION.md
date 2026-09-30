@@ -253,3 +253,54 @@ it never guesses a winner from strike counts. It keeps provider dates visible,
 including UFC 326's possible one-day overlap, and changes no raw data, permanent
 registry links, historical exports or model recipes. Review the grouped results
 before accepting links and integrating the staged rounds into analytics.
+
+## September 30: bridge review and later result amendments
+
+The Mac's first bridge matched 8,531 of 8,551 accepted historical bouts,
+staged 41,802 fighter-round rows and proposed 2,642 unique fighter links with
+no conflicting link proposals or duplicate historical matches. All uploaded
+bridge output hashes were verified against its manifest.
+
+The 20 historical bouts without verified totals separate into:
+- Seven name differences: three Magomed Bibulatov / Bibulatov Magomed bouts,
+  and four Kai Kamaka III / Kai Kamaka bouts. The shared bout IDs, dates and
+  opponents support two provider-ID-scoped aliases. Both totals must still
+  pass the existing 24-field minimum before a proposal is verified. The
+  revised matcher has not yet been run against the full archive on the Mac.
+- Eleven bouts on September 6 and November 22, 2025, with no totals or rounds
+  in the saved card responses. These need a bounded per-bout endpoint probe;
+  a missing availability flag is not proof the endpoint has no data.
+- Two August 22, 2025 bouts: Tumendemberel–Saeteurn and Shi Ming–Bruna Brasil.
+  UFC's official Road to UFC semifinal results list both. The failed
+  `ufc-road-to-ufc-4-6` listing is relevant to the accepted historical cohort,
+  despite its non-UFC-candidate classification in the acquisition summary.
+  Its stats endpoint and the two accepted bout IDs need targeted checks.
+
+The ten historical bouts with missing Cito results have verified paired
+totals and explicit accepted historical outcomes. A separate discrepancy is
+Idiris–Osbourne, February 21, 2026, accepted bout `7ffdaa44fc8d111b`: the frozen
+snapshot records Idiris's original decision win, but the current Cito record
+is overturned with both fighters marked `no_contest`. Ayaan supplied the
+amendment and reason; UFCStats lists it as overturned, and the Texas
+commission's current event sheet records `NO DECISION` for this bout.
+
+The bridge now attaches `reviewed_current_result` with no winner and preserves
+`accepted_historical_result` separately. The revision names the Texas
+Department of Licensing and Regulation and the positive hydrochlorothiazide
+test. March 31 is the UFC sanction-announcement date; the exact commission
+amendment date is **not verified**. `revision_effective_date` stays null and
+`revision_verified_on` is September 30. Do not backdate current knowledge to
+March 31 or silently change the frozen experiments or their fitted model.
+
+Primary references:
+- https://www.tdlr.texas.gov/sports/results/2026-02-21-20260094-ufc-houston.pdf
+- https://ufcstats.com/fighter-details/30cad5a751adcb48
+- https://www.ufc.com/news/statement-alibi-idiris
+- https://www.ufc.com/news/road-to-ufc-live-results-season-4-semifinals-shi-vs-brasil-recaps-official-scorecards-interviews-shanghai
+
+The next ingestion batch should use these fixes and export the verified
+historical rounds with their permanent IDs. Remaining source gaps can be
+probed independently; they do not require downloading the 790-card archive
+again or holding every verified round in a manual-review queue. Current
+post-snapshot fighters and the two September 12 missing totals still require
+their own reconciliation before current features and prospective forecasts.

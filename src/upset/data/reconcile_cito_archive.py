@@ -38,6 +38,47 @@ COMMON_STATS = ("knockdowns", "sig_strikes_landed", "sig_strikes_attempted",
                 "head_landed", "body_landed", "leg_landed", "distance_landed",
                 "clinch_landed", "ground_landed", "control_seconds")
 
+# Reviewed from the September 30 bridge: all seven affected bouts share the
+# accepted UFCStats bout ID, date and opponent. Both totals must still match.
+# These are scoped aliases, not a rule to reorder names or remove suffixes.
+HISTORICAL_NAMES = {
+    "5ac923a0-f9b1-4611-b3dc-14fc2d230899": ("Magomed Bibulatov", "Bibulatov Magomed"),
+    "6fe35b97-d7c3-4ac7-b19a-cceaa43eeb02": ("Kai Kamaka III", "Kai Kamaka"),
+}
+
+
+def _reviewed_result(history: dict, bout: dict, candidate: dict) -> dict | None:
+    """Attach a reviewed current result separately from the frozen snapshot.
+
+    The March 31 announcement dates the sanction, not necessarily the Texas
+    result amendment. Record the date we verified the amended result and leave
+    its effective date unknown; do not backdate its availability for replay.
+    """
+    if (history["source_bout_id"] != "7ffdaa44fc8d111b"
+            or history["event_date"] != "2026-02-21"
+            or set(candidate["ufcstats_fighter_ids_in_cito_order"])
+            != {"30cad5a751adcb48", "6d68c1afe954f121"}):
+        return None
+    if (bout.get("method") != "Overturned"
+            or [f.get("outcome") for f in bout["fighters"]]
+            != ["no_contest", "no_contest"]):
+        raise ValueError("Reviewed Idiris–Osbourne revision differs from source evidence.")
+    return {
+        "outcome": "no_contest", "winner_name": None,
+        "winner_upset_fighter_id": None, "source_winner_label": "Draw/NC",
+        "result_method": "Overturned", "result_round": 3, "result_time": "5:00",
+        "reason": "Idiris tested positive for hydrochlorothiazide",
+        "authority": "Texas Department of Licensing and Regulation",
+        "sanction_announced_on": "2026-03-31",
+        "revision_effective_date": None, "revision_verified_on": "2026-09-30",
+        "replay_rule": "Do not infer the amendment's availability from the sanction date.",
+        "source_urls": [
+            "https://www.tdlr.texas.gov/sports/results/2026-02-21-20260094-ufc-houston.pdf",
+            "https://ufcstats.com/fighter-details/30cad5a751adcb48",
+            "https://www.ufc.com/news/statement-alibi-idiris",
+        ],
+    }
+
 
 def _numbers(raw: dict) -> dict:
     values = _stat_values(raw)
@@ -70,6 +111,9 @@ def _aliases(fighter: dict, person: int, fighters: list, totals: list) -> set[st
     reviewed = REVIEWED_NAMES.get(fighter.get("fighterId"))
     if reviewed and fighter.get("fighterName") == reviewed[0]:
         names.update(reviewed)
+    historical_alias = HISTORICAL_NAMES.get(fighter.get("fighterId"))
+    if historical_alias and fighter.get("fighterName") == historical_alias[0]:
+        names.update(historical_alias)
     for row in totals:
         if _participant(row, fighters) == person:
             names.update((row.get("fighterName"), row.get("fighterSlug")))
@@ -168,6 +212,9 @@ def match_bout(event_date: str, bout: dict, totals: list, by_date: dict,
             "winner_name", "source_winner_label", "result_method", "result_round", "result_time")}
         result["accepted_historical_result"]["winner_upset_fighter_id"] = (
             winner_ids[0] if len(winner_ids) == 1 else None)
+        revised = _reviewed_result(history, bout, candidate)
+        if revised is not None:
+            result["reviewed_current_result"] = revised
         result["metadata_differences"] = []
         for raw_key, accepted_key in (("method", "result_method"), ("resultRound", "result_round"),
                                       ("resultTime", "result_time")):
@@ -404,6 +451,8 @@ def reconcile_archive(root: Path, historical: Path, registry_path: Path, output:
                "historical_bouts_without_verified_totals": len(unmatched),
                "historical_bouts_with_multiple_cito_matches": len(duplicate_history),
                "review_records": len(review), "api_calls": 0,
+               "reviewed_current_result_revisions": sum(
+                   "reviewed_current_result" in row for row in bouts),
                "input_sha256": hashes, "card_manifest_sha256": card_hashes,
                "coverage_verified": False, "training_ready": False}
     for path, digest in {**source_checks, **{path: hashes[key] for key, path in paths.items()}}.items():

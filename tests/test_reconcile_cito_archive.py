@@ -118,6 +118,51 @@ def test_missing_control_stays_none_and_bad_breakdown_is_rejected():
         _numbers(raw)
 
 
+@pytest.mark.parametrize("provider_id,source_name,historical_name", [
+    ("5ac923a0-f9b1-4611-b3dc-14fc2d230899", "Magomed Bibulatov", "Bibulatov Magomed"),
+    ("6fe35b97-d7c3-4ac7-b19a-cceaa43eeb02", "Kai Kamaka III", "Kai Kamaka"),
+])
+def test_reviewed_historical_alias_needs_scoped_id_and_paired_totals(
+        provider_id, source_name, historical_name):
+    history, _stats = _history_rows()
+    history["fighter_1_name"] = historical_name
+    bout = _bout()
+    bout["fighters"][0].update(fighterId=provider_id, fighterName=source_name,
+                                fighterSlug=source_name.lower().replace(" ", "-"))
+    totals = [_raw(source_name, bout["fighters"][0]["fighterSlug"]), _raw("Sam", "sam")]
+    assert _match(bout, totals, histories=[history])["status"] == "totals_verified_proposal"
+    assert _match(bout, [], histories=[history])["status"] == "candidate_requires_review"
+    totals[0]["knockdowns"] = 1
+    assert _match(bout, totals, histories=[history])["status"] == "candidate_requires_review"
+    bout["fighters"][0]["fighterId"] = "unreviewed-profile"
+    assert _match(bout, totals, histories=[history])["status"] == "no_historical_candidate"
+
+
+def test_current_no_contest_retains_frozen_result_and_does_not_invent_amendment_date():
+    history, stats = _history_rows()
+    history.update(source_bout_id="7ffdaa44fc8d111b", event_date="2026-02-21",
+                   fighter_1_name="Alibi Idiris", fighter_2_name="Ode' Osbourne",
+                   source_fighter_1_id="30cad5a751adcb48", source_fighter_2_id="6d68c1afe954f121",
+                   winner_name="Alibi Idiris", result_round=3)
+    stats = {(history["source_bout_id"], uid): row for (_, uid), row in stats.items()}
+    bout = _bout()
+    bout.update(method="Overturned", resultRound=3)
+    for fighter, name in zip(bout["fighters"], ("Alibi Idiris", "Ode' Osbourne"), strict=True):
+        fighter.update(fighterName=name, fighterSlug=name.lower().replace(" ", "-"), outcome="no_contest")
+    totals = [_raw(f["fighterName"], f["fighterSlug"]) for f in bout["fighters"]]
+    result = match_bout("2026-02-21", bout, totals, {"2026-02-21": [history]}, stats, {})
+    assert result["accepted_historical_result"]["winner_upset_fighter_id"] == A
+    revision = result["reviewed_current_result"]
+    assert revision["winner_upset_fighter_id"] is None
+    assert revision["outcome"] == "no_contest"
+    assert revision["revision_effective_date"] is None
+    assert revision["revision_verified_on"] == "2026-09-30"
+    assert history["winner_name"] == "Alibi Idiris"
+    bout["fighters"][0]["outcome"] = "win"
+    with pytest.raises(ValueError, match="revision differs"):
+        match_bout("2026-02-21", bout, totals, {"2026-02-21": [history]}, stats, {})
+
+
 class Response:
     status_code = 200
 
