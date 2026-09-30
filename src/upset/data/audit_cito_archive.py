@@ -1,4 +1,4 @@
-"""Read-only structural audit of a locally captured Cito archive.
+"""Read-only structure and round-sum audit of a locally captured Cito archive.
 
 The report names missing or inconsistent rows; it does not certify provider
 calendar coverage or turn historical round rows into model features.
@@ -6,17 +6,77 @@ calendar coverage or turn historical round rows into model features.
 
 import argparse
 import json
+import re
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 
 from upset.data.collect_cito_archive import _digest, _event_rows
 from upset.data.export_cito_card import _read_card
 
+# Reviewed against the September 30 evidence report and UFC athlete pages.
+# Scope nickname aliases to the provider fighter ID, never a fuzzy name search.
+REVIEWED_NAMES = {
+    "5588383b-8f13-4d4d-a461-ec0310c7030a": ("Ronaldo Souza", "Jacare Souza"),
+    "ac4dbdfb-1c10-4417-8943-5587295a48b0": ("Alberto Pereira", "Alberto Uda"),
+    "cc11ae04-67dd-4f52-9a7c-b7f25dd6d856": ("Max Grishin", "Maxim Grishin"),
+    "3e5a7339-e5b5-4f85-a12b-1d978856bb1f": ("Jose Miguel Delgado", "Jose Delgado"),
+}
+PAIR_FIELDS = ("significantStrikes", "totalStrikes", "takedowns", "head",
+               "body", "leg", "distance", "clinch", "ground")
+
+
+def _name(value: object) -> str:
+    text = unicodedata.normalize("NFKD", value) if isinstance(value, str) else ""
+    return "".join(c for c in text.casefold() if c.isalnum())
+
+
+def _participant(row: dict, fighters: list[dict]) -> int | None:
+    matches = []
+    for index, fighter in enumerate(fighters):
+        profile = fighter.get("profile")
+        names = {fighter.get("fighterName"),
+                 profile.get("name") if isinstance(profile, dict) else None}
+        reviewed = REVIEWED_NAMES.get(fighter.get("fighterId"))
+        if reviewed and fighter.get("fighterName") == reviewed[0]:
+            names.update(reviewed)
+        if ((_name(row.get("fighterName")) and _name(row.get("fighterName"))
+             in {_name(n) for n in names if n})
+                or (row.get("fighterSlug") and row.get("fighterSlug")
+                    == fighter.get("fighterSlug"))):
+            matches.append(index)
+    return matches[0] if len(matches) == 1 else None
+
+
+def _stat_values(row: dict) -> dict[str, tuple[int, ...]]:
+    values = {}
+    for field in PAIR_FIELDS:
+        value = row.get(field)
+        if not isinstance(value, str) or not re.fullmatch(r"\d+ of \d+", value):
+            raise ValueError(f"invalid {field}")
+        pair = tuple(map(int, value.split(" of ")))
+        if pair[0] > pair[1]:
+            raise ValueError(f"landed exceeds attempted: {field}")
+        values[field] = pair
+    for field in ("knockdowns", "submissionAttempts", "reversals"):
+        value = row.get(field)
+        if type(value) is not int or value < 0:
+            raise ValueError(f"invalid {field}")
+        values[field] = (value,)
+    clock = row.get("controlTime")
+    if not isinstance(clock, str) or not re.fullmatch(r"\d+:[0-5]\d", clock):
+        raise ValueError("invalid controlTime")
+    minutes, seconds = map(int, clock.split(":"))
+    values["controlTime"] = (minutes * 60 + seconds,)
+    return values
+
 
 def _competition(slug: str) -> str:
     if "dwcs" in slug or "road-to-ufc" in slug or "road-ufc" in slug:
         return "other_competition"
-    if "ufc" in slug:
+    if ("ufc" in slug or (slug.startswith("the-ultimate-fighter-")
+                         and slug.endswith("-finale"))
+            or slug == "ortiz-vs-shamrock-3-the-final-chapter"):
         return "ufc_candidate"
     return "unclassified"
 
@@ -86,7 +146,9 @@ def _check_card(payloads: dict, event: dict) -> dict:
     for label, index in (("total", total_by_bout), ("round", round_by_bout)):
         for extra in sorted(set(index) - listed):
             findings.append(f"{label}_references_unlisted_bout:{extra}")
-    eligible = complete = 0
+    eligible = complete = reconciled = 0
+    aliases = []
+    numerical_differences = {}
     for bout in bouts:
         if not isinstance(bout, dict) or not isinstance(bout.get("id"), (str, int)):
             continue
@@ -110,31 +172,65 @@ def _check_card(payloads: dict, event: dict) -> dict:
         if len(observed_totals) != 2:
             findings.append(f"fighter_total_row_count_differs:{bid}")
             continue
-        if Counter(row.get("fighterName") for row in observed_totals) != Counter(names):
+        fighters = bout["fighters"]
+        total_people = [_participant(row, fighters) for row in observed_totals]
+        if Counter(total_people) != Counter((0, 1)):
             findings.append(f"fighter_names_differ:{bid}")
             continue
         if type(expected_rounds) is not int or expected_rounds < 1:
             findings.append(f"invalid_result_round:{bid}")
             continue
-        expected = Counter((name, number) for name in names
+        expected = Counter((person, number) for person in (0, 1)
                            for number in range(1, expected_rounds + 1))
-        actual = Counter((row.get("fighterName"), row.get("round"))
+        actual = Counter((_participant(row, fighters),
+                          row.get("round") if type(row.get("round")) is int else None)
                          for row in observed_rounds)
         if actual != expected:
             findings.append(f"missing_or_duplicate_round_rows:{bid}")
             continue
         complete += 1
+        changed = [{"listed_name": fighters[person]["fighterName"],
+                    "stat_name": row.get("fighterName"),
+                    "stat_slug": row.get("fighterSlug")}
+                   for row, person in zip(observed_totals, total_people, strict=True)
+                   if row.get("fighterName") != fighters[person]["fighterName"]]
+        if changed:
+            aliases.append({"bout_id": bid, "matches": changed})
+        try:
+            mismatches = []
+            for total, person in zip(observed_totals, total_people, strict=True):
+                values = _stat_values(total)
+                chunks = [_stat_values(row) for row in observed_rounds
+                          if _participant(row, fighters) == person]
+                for field, value in values.items():
+                    summed = tuple(sum(chunk[field][i] for chunk in chunks)
+                                   for i in range(len(value)))
+                    if value != summed:
+                        mismatches.append({"fighter_name": fighters[person]["fighterName"],
+                                           "field": field, "provider_total": list(value),
+                                           "round_sum": list(summed)})
+            if mismatches:
+                numerical_differences[bid] = mismatches
+                findings.append(f"round_sums_differ:{bid}")
+            else:
+                reconciled += 1
+        except ValueError as error:
+            numerical_differences[bid] = [{"error": str(error)}]
+            findings.append(f"unreadable_numerical_stats:{bid}")
     suspect_ids = sorted({finding.split(":", 1)[1] for finding in findings
                           if ":" in finding})
     by_id = {str(b["id"]): b for b in bouts
              if isinstance(b, dict) and "id" in b}
     review_bouts = [{"bout_id": bid, "bout": by_id.get(bid),
                      "fighter_totals": total_by_bout.get(bid, []),
+                     "numerical_differences": numerical_differences.get(bid, []),
                      "round_rows": round_by_bout.get(bid, [])}
                     for bid in suspect_ids]
     return {"listed_bouts": len(bouts),
             "eligible_bouts": eligible,
             "structurally_complete_bouts": complete, "findings": findings,
+            "numerically_reconciled_bouts": reconciled,
+            "resolved_name_differences": aliases,
             "review_bouts": review_bouts}
 
 
@@ -165,6 +261,8 @@ def audit_archive(root: Path) -> dict:
     failed = []
     review_bouts = []
     inventory_events = []
+    resolved_names = []
+    reconciled_bouts = 0
     total_bouts = eligible_bouts = complete_bouts = 0
     support_spot_checks = {}
     for event in events:
@@ -198,6 +296,9 @@ def audit_archive(root: Path) -> dict:
             total_bouts += result["listed_bouts"]
             eligible_bouts += result["eligible_bouts"]
             complete_bouts += result["structurally_complete_bouts"]
+            reconciled_bouts += result.get("numerically_reconciled_bouts", 0)
+            resolved_names.extend({"event": key, **row}
+                                  for row in result.get("resolved_name_differences", []))
             review_bouts.extend({"event": key,
                                  "card_manifest_sha256": progress_row[
                                      "card_manifest_sha256"], **row}
@@ -218,7 +319,7 @@ def audit_archive(root: Path) -> dict:
             findings.extend({"event": key, "finding": finding}
                             for finding in result["findings"])
     return {
-        "status": "structural audit only; UFC calendar and numerical stats unverified",
+        "status": "structure and round-sum audit; independent UFC coverage unverified",
         "inventory_sha256": _digest(inventory_path),
         "events_in_provider_inventory": len(events),
         "progress_statuses": dict(sorted(statuses.items())),
@@ -227,6 +328,8 @@ def audit_archive(root: Path) -> dict:
         "listed_bouts_in_readable_cards": total_bouts,
         "eligible_completed_stat_bearing_bouts": eligible_bouts,
         "structurally_complete_bouts": complete_bouts,
+        "numerically_reconciled_bouts": reconciled_bouts,
+        "resolved_name_differences": resolved_names,
         "support_spot_checks": support_spot_checks,
         "inventory_events": inventory_events,
         "review_bouts": review_bouts,
@@ -254,6 +357,7 @@ def main() -> None:
         "status", "events_in_provider_inventory", "progress_statuses",
         "competition_statuses", "listed_bouts_in_readable_cards",
         "eligible_completed_stat_bearing_bouts", "structurally_complete_bouts",
+        "numerically_reconciled_bouts",
         "support_spot_checks", "coverage_verified",
     )}, indent=2))
     print(f"Findings: {len(report['findings'])}; report: {args.output}")
