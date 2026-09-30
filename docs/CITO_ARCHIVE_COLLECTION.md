@@ -71,3 +71,27 @@ rounds model features, link fighter identities, overwrite the accepted Kaggle
 snapshot or establish that 1994–2026 round data is complete. Subsequent work
 must audit per-event inventory and stat availability, inspect source changes
 by era, normalize compatible records, and independently verify UFC coverage.
+
+## Read-only structural audit
+
+After collection and any targeted retries, run:
+
+```bash
+python -m upset.data.audit_cito_archive
+```
+
+The command makes no API calls and never edits raw files. It checks cached
+manifest and page hashes, compares the event detail to the inventory, and
+counts completed stat-bearing bouts with exactly two fighter totals and one
+round row per fighter per reported round. It prints aggregate statuses and
+the two provider-confirmed March 14 and June 6 spot checks. The detailed
+findings and all provider-statless event labels go to the ignored processed
+file `data/processed/cito_archive_audit_v1.json`. Competition labels are
+heuristics based on event slugs; manually review ambiguous entries. The
+statless May 2026 `ufc-315` remains in that list. A Road to UFC event that
+failed collection is also left in the report rather than silently omitted.
+
+Passing structural checks does not verify the numerical totals, fighter
+identities, or independent UFC calendar coverage. The two spot checks compare
+bout and round-row counts only; Cito support's completeness statement is
+source testimony until the numbers and calendar are separately reconciled.
