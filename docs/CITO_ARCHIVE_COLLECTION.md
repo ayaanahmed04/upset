@@ -194,3 +194,62 @@ The v4 audit may reveal cross-endpoint metadata differences; raw acquisition
 never certifies independent calendar coverage, canonical linking or training
 readiness. Historical dates and results still need comparison with the accepted
 Kaggle snapshot before joining the Cito round archive to model histories.
+
+## September 30: recovered archive and offline historical bridge
+
+Ayaan's Mac recovered all 35 cards with 70 requests and zero failures. Its
+v4 report has 790 captured UFC candidates, 8,909 listed bouts, 8,867 completed
+stat-bearing bouts, and 8,865 with complete rows and matching observed round
+sums. Of these, 8,684 also have observed control time; the other 181 preserve
+unavailable control. There are no uncaptured past UFC candidates in this
+provider inventory through the September 28 cutoff. That is inventory
+coverage, not an independent UFC-calendar completeness certificate.
+
+The remaining 12 findings are ten historical bouts with contradictory
+result/status metadata and two September 12 bouts without supplied totals.
+The report separately retains 32 completed bouts with no supplied stats.
+Future inventory entries and unavailable/failed non-UFC competitions stay
+visible; they are not silently counted as captured UFC cards.
+
+The next command performs a local comparison against the accepted 8,551-bout
+Kaggle export and its existing permanent identities:
+
+```bash
+python -m upset.data.reconcile_cito_archive
+```
+
+No key or API calls are needed. Defaults are the raw archive, the existing
+`data/processed/kaggle_ufc_1994_2026/identified/` fight and stat exports, and
+`data/mappings/fighter_registry.json`. The accepted historical fight hash is
+checked before work begins. The new immutable output folder is
+`data/processed/cito_archive_bridge_v1/`; an existing output is refused.
+
+Bout proposals use normalized source spellings, profile names, reviewed
+nickname aliases and assigned total-row names. A proposal needs both
+fighters, an event date within one day, and exact agreement with at least
+24 observed fighter-stat comparisons across the pair. Unavailable control
+is not zero or agreement evidence. An existing reviewed Cito registry link
+cannot be contradicted. Multiple equally supported historical bouts remain
+ambiguous. Extra Cito matches to one historical bout are exposed as duplicates
+and counted once for historical coverage.
+
+The folder contains:
+- `bout_matches.jsonl`: every provider bout, match evidence, date offset and
+  any accepted historical result proposed for reconciliation.
+- `bout_review.jsonl`: unmatched/ambiguous cases, conflicting totals or metadata,
+  and round rows that cannot be safely parsed.
+- `fighter_link_proposals.jsonl`: grouped provider IDs with supporting accepted
+  historical bouts, existing reviewed links and any identity conflicts.
+- `round_stats_staged.jsonl`: parsed provider rounds, original provider dates,
+  actual observation timestamps, nullable control time, source IDs and proposed
+  identities. These are staging rows, not accepted training histories.
+- `historical_without_verified_totals.jsonl`: accepted bouts lacking a fully
+  supported pair of Cito totals; this is not automatically a missing-card list.
+- `duplicate_historical_matches.jsonl` and `manifest.json`: duplicate evidence,
+  aggregate status counts, source hashes and verified output hashes.
+
+The bridge proposes result repair from the matched accepted historical record;
+it never guesses a winner from strike counts. It keeps provider dates visible,
+including UFC 326's possible one-day overlap, and changes no raw data, permanent
+registry links, historical exports or model recipes. Review the grouped results
+before accepting links and integrating the staged rounds into analytics.
