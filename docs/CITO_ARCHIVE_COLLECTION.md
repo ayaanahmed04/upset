@@ -94,8 +94,9 @@ failed collection is also left in the report rather than silently omitted.
 Passing structural checks does not establish independent UFC calendar
 coverage or accuracy against another source. The audit now separately counts
 bouts whose round sums reconcile to supplied totals for all nine strike and
-takedown pairs, knockdowns, submissions, reversals and control time. Missing
-or invalid numerical fields and unequal sums remain explicit findings.
+takedown pairs, knockdowns, submissions, reversals and control time. Invalid
+numerical fields and unequal sums remain explicit findings. The provider's
+explicit `controlTime="--"` marker stays unavailable, separate from errors.
 This is internal consistency, not a comparison with official recorded stats.
 
 The report also includes the raw bout, total-stat and round-stat rows behind
@@ -152,3 +153,44 @@ can use a different `--output` directory. The 35-card batch is at most 35
 requests; network time varies, with about four minutes of pacing alone.
 Actual endpoint evidence will decide whether to recover cards locally or
 request missing archive data from Cito during the paid access window.
+
+## Recovering the 35 cards from saved endpoint evidence
+
+All 35 probes returned totals and rounds despite the event's false availability
+flag. The responses contain 424 listed bouts, including 414 marked completed
+whose totals and rounds reconcile. Ten others have stats but are still marked
+`confirmed`; their outcomes are null, and four also lack result details. Their
+statistics are retained, but they need result/status review before model use.
+The archive audit now lists all excluded bouts and flags excluded bouts that
+nevertheless contain stats. It does not infer winners from strike counts.
+
+The v3 report's 181 unreadable numerical flags all have `controlTime="--"`
+in 1994–1999 cards. Reviewing their remaining supplied fields found exact
+round-to-total agreement. The audit now reports these as unavailable fields,
+not corrupt counts or zero control. `numerically_reconciled_bouts` requires
+every field; `observed_stats_reconciled_bouts` allows the explicitly unavailable
+control field while still checking every other supplied stat.
+
+Finish the full card cache and rerun the audit:
+
+```bash
+python -m upset.data.recover_cito_statless --max-cards 50
+python -m upset.data.audit_cito_archive \
+  --output data/processed/cito_archive_audit_v4.json
+```
+
+Recovery verifies the probe hashes and inventory identity before requesting
+anything. It rewraps the saved stats response into the existing card-cache
+format, retaining its actual `/stats` source URL and original observation
+timestamp. It fetches only the event detail and bout listing still needed:
+at most 70 requests for 35 cards, spaced seven seconds apart. No stats are
+refetched and the original 755 cards are untouched. Both the original false
+inventory flag and probe hash remain in recovery provenance. Inventory and
+probe files stay immutable; collection progress is updated per completed
+card and a local `statless_recovery_report.json` records the run. Repeat the
+recovery command to resume partial requests; captured cards are skipped.
+The complete summary should show 790 captured cards if every recovery succeeds.
+The v4 audit may reveal cross-endpoint metadata differences; raw acquisition
+never certifies independent calendar coverage, canonical linking or training
+readiness. Historical dates and results still need comparison with the accepted
+Kaggle snapshot before joining the Cito round archive to model histories.

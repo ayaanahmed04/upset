@@ -4,6 +4,7 @@ import json
 
 from upset.data.audit_cito_archive import (
     PAIR_FIELDS,
+    _check_card,
     _competition,
     _participant,
     audit_archive,
@@ -128,14 +129,13 @@ def test_matching_uses_unique_slug_profile_name_or_reviewed_provider_identity():
     assert _participant({"fighterName": "Maxim Grishin"}, fighters) is None
 
 
-def test_numerical_difference_does_not_pass_reconciliation(tmp_path):
-    _archive(tmp_path)
+def _replace_fixture_stats(tmp_path, change):
     # Refresh acquisition hashes after editing the fixture, so this tests math.
     from upset.data.collect_cito_archive import _atomic_json, _digest
 
     card = tmp_path / "cards/ufc-fight-night-march-14-2026"
     raw = json.loads((card / "stats.json").read_text())
-    raw["response"]["data"]["boutStats"][0]["significantStrikes"] = "1 of 2"
+    change(raw["response"]["data"])
     _atomic_json(card / "stats.json", raw)
     manifest = json.loads((card / "manifest.json").read_text())
     manifest["sha256"]["stats"] = _digest(card / "stats.json")
@@ -144,10 +144,52 @@ def test_numerical_difference_does_not_pass_reconciliation(tmp_path):
     next(r for r in progress["cards"].values() if r["status"] == "captured")[
         "card_manifest_sha256"] = _digest(card / "manifest.json")
     _atomic_json(tmp_path / "collection_progress.json", progress)
+
+
+def test_numerical_difference_does_not_pass_reconciliation(tmp_path):
+    _archive(tmp_path)
+    _replace_fixture_stats(tmp_path, lambda stats: stats["boutStats"][0].update(
+        significantStrikes="1 of 2"))
     report = audit_archive(tmp_path)
     assert report["structurally_complete_bouts"] == 1
     assert report["numerically_reconciled_bouts"] == 0
     assert any(r["finding"] == "round_sums_differ:bout-1" for r in report["findings"])
+
+
+def test_unavailable_control_is_preserved_and_other_stats_still_checked(tmp_path):
+    _archive(tmp_path)
+
+    def missing_control(stats):
+        for row in stats["boutStats"] + stats["roundStats"]:
+            row["controlTime"] = "--"
+
+    _replace_fixture_stats(tmp_path, missing_control)
+    report = audit_archive(tmp_path)
+    assert report["findings"] == []
+    assert report["numerically_reconciled_bouts"] == 0
+    assert report["observed_stats_reconciled_bouts"] == 1
+    assert report["bouts_with_unavailable_stat_fields"] == 1
+    assert len(report["unavailable_stat_fields"][0]["fields"]) == 2
+    _replace_fixture_stats(tmp_path, lambda stats: stats["boutStats"][0].update(
+        significantStrikes="1 of 2"))
+    report = audit_archive(tmp_path)
+    assert report["observed_stats_reconciled_bouts"] == 0
+    assert any(r["finding"] == "round_sums_differ:bout-1" for r in report["findings"])
+
+
+def test_bout_with_stats_and_unfinished_status_is_visible_for_review(tmp_path):
+    _archive(tmp_path)
+    from upset.data.export_cito_card import _read_card
+
+    payloads, _, _ = _read_card(tmp_path / "cards/ufc-fight-night-march-14-2026")
+    payloads["bouts"][0]["status"] = "confirmed"
+    result = _check_card(payloads, {"slug": "ufc-fight-night-march-14-2026",
+                                    "event_date": "2026-03-14",
+                                    "provider_event_id": "event-1"})
+    assert result["eligible_bouts"] == 0
+    assert result["findings"] == ["bout_metadata_conflicts_with_stats:bout-1"]
+    assert result["excluded_bouts"][0]["total_rows"] == 2
+    assert len(result["review_bouts"][0]["round_rows"]) == 2
 
 
 def test_audit_reports_missing_round_separately(tmp_path):
