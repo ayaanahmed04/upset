@@ -95,3 +95,10 @@ Passing structural checks does not verify the numerical totals, fighter
 identities, or independent UFC calendar coverage. The two spot checks compare
 bout and round-row counts only; Cito support's completeness statement is
 source testimony until the numbers and calendar are separately reconciled.
+
+The report also includes the raw bout, total-stat and round-stat rows behind
+each bout finding, together with the captured card manifest hash. A name
+disagreement is reported separately from an incorrect total-row count; it
+does not establish that statistics are missing. Names are not silently
+treated as aliases. All event inventory entries and provider titles are
+included to review duplicate listings and the heuristic competition labels.
