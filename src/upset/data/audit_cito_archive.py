@@ -9,12 +9,12 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from upset.data.collect_cito_archive import _digest
+from upset.data.collect_cito_archive import _digest, _event_rows
 from upset.data.export_cito_card import _read_card
 
 
 def _competition(slug: str) -> str:
-    if "dwcs" in slug or "road-to-ufc" in slug:
+    if "dwcs" in slug or "road-to-ufc" in slug or "road-ufc" in slug:
         return "other_competition"
     if "ufc" in slug:
         return "ufc_candidate"
@@ -39,7 +39,7 @@ def _check_card(payloads: dict, event: dict) -> dict:
     if not isinstance(details, dict) or not isinstance(stats, dict):
         return {"listed_bouts": 0, "eligible_bouts": 0,
                 "structurally_complete_bouts": 0,
-                "findings": ["unknown_event_or_stats_shape"]}
+                "findings": ["unknown_event_or_stats_shape"], "review_bouts": []}
     if any(details.get(k) != event[v] for k, v in (
         ("id", "provider_event_id"), ("slug", "slug"),
         ("eventDate", "event_date"),
@@ -58,7 +58,8 @@ def _check_card(payloads: dict, event: dict) -> dict:
         return {"listed_bouts": len(bouts) if bouts is not None else 0,
                 "eligible_bouts": 0,
                 "structurally_complete_bouts": 0,
-                "findings": findings + ["unknown_bout_or_stat_shape"]}
+                "findings": findings + ["unknown_bout_or_stat_shape"],
+                "review_bouts": []}
     ids = [str(b.get("id")) for b in bouts if isinstance(b, dict)]
     if len(ids) != len(bouts) or len(set(ids)) != len(ids):
         findings.append("duplicate_or_invalid_listed_bout_id")
@@ -106,10 +107,11 @@ def _check_card(payloads: dict, event: dict) -> dict:
                 or not all(isinstance(name, str) and name for name in names)):
             findings.append(f"invalid_participants:{bid}")
             continue
-        if (len(observed_totals) != 2
-                or Counter(row.get("fighterName") for row in observed_totals)
-                != Counter(names)):
-            findings.append(f"fighter_totals_not_two_distinct_participants:{bid}")
+        if len(observed_totals) != 2:
+            findings.append(f"fighter_total_row_count_differs:{bid}")
+            continue
+        if Counter(row.get("fighterName") for row in observed_totals) != Counter(names):
+            findings.append(f"fighter_names_differ:{bid}")
             continue
         if type(expected_rounds) is not int or expected_rounds < 1:
             findings.append(f"invalid_result_round:{bid}")
@@ -122,9 +124,18 @@ def _check_card(payloads: dict, event: dict) -> dict:
             findings.append(f"missing_or_duplicate_round_rows:{bid}")
             continue
         complete += 1
+    suspect_ids = sorted({finding.split(":", 1)[1] for finding in findings
+                          if ":" in finding})
+    by_id = {str(b["id"]): b for b in bouts
+             if isinstance(b, dict) and "id" in b}
+    review_bouts = [{"bout_id": bid, "bout": by_id.get(bid),
+                     "fighter_totals": total_by_bout.get(bid, []),
+                     "round_rows": round_by_bout.get(bid, [])}
+                    for bid in suspect_ids]
     return {"listed_bouts": len(bouts),
             "eligible_bouts": eligible,
-            "structurally_complete_bouts": complete, "findings": findings}
+            "structurally_complete_bouts": complete, "findings": findings,
+            "review_bouts": review_bouts}
 
 
 def audit_archive(root: Path) -> dict:
@@ -135,15 +146,25 @@ def audit_archive(root: Path) -> dict:
     if (inventory.get("status") != "provider inventory captured; UFC coverage unverified"
             or progress.get("inventory_sha256") != _digest(inventory_path)):
         raise ValueError("Archive inventory and progress do not match.")
+    labels = {}
     for filename, digest in inventory["page_sha256"].items():
-        if _digest(root / "inventory" / "pages" / filename) != digest:
+        page_path = root / "inventory" / "pages" / filename
+        if _digest(page_path) != digest:
             raise ValueError(f"Inventory page changed: {filename}")
+        raw_rows, _ = _event_rows(json.loads(page_path.read_text())["response"])
+        for item in raw_rows:
+            row = item.get("event", item)
+            labels[(str(row["id"]), row["slug"], row["eventDate"])] = {
+                "title": row.get("title"), "short_title": row.get("shortTitle"),
+            }
     events = inventory["events"]
     statuses = Counter()
     competition_statuses = defaultdict(Counter)
     findings = []
     statless = []
     failed = []
+    review_bouts = []
+    inventory_events = []
     total_bouts = eligible_bouts = complete_bouts = 0
     support_spot_checks = {}
     for event in events:
@@ -152,6 +173,9 @@ def audit_archive(root: Path) -> dict:
         progress_row = progress["cards"].get(key, {"status": "unvisited"})
         status = progress_row["status"]
         kind = _competition(slug)
+        inventory_events.append({**event, **labels.get((event["provider_event_id"],
+                                 slug, event["event_date"]), {}),
+                                 "competition": kind, "collection_status": status})
         statuses[status] += 1
         competition_statuses[kind][status] += 1
         if status == "provider_has_no_stats":
@@ -174,6 +198,10 @@ def audit_archive(root: Path) -> dict:
             total_bouts += result["listed_bouts"]
             eligible_bouts += result["eligible_bouts"]
             complete_bouts += result["structurally_complete_bouts"]
+            review_bouts.extend({"event": key,
+                                 "card_manifest_sha256": progress_row[
+                                     "card_manifest_sha256"], **row}
+                                for row in result["review_bouts"])
             if slug in ("ufc-fight-night-march-14-2026",
                         "ufc-fight-night-june-06-2026"):
                 expected = 14 if "march-14" in slug else 12
@@ -200,6 +228,8 @@ def audit_archive(root: Path) -> dict:
         "eligible_completed_stat_bearing_bouts": eligible_bouts,
         "structurally_complete_bouts": complete_bouts,
         "support_spot_checks": support_spot_checks,
+        "inventory_events": inventory_events,
+        "review_bouts": review_bouts,
         "findings": findings, "provider_statless_events": statless,
         "failed_events": failed, "coverage_verified": False,
     }

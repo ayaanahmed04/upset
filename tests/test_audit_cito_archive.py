@@ -2,7 +2,7 @@
 
 import json
 
-from upset.data.audit_cito_archive import audit_archive
+from upset.data.audit_cito_archive import _competition, audit_archive
 from upset.data.collect_cito_archive import collect_archive_cards, collect_inventory
 
 
@@ -16,9 +16,11 @@ class Response:
         return {"success": True, "data": self.data}
 
 
-def _archive(tmp_path, *, duplicate_total=False, missing_round=False):
+def _archive(tmp_path, *, duplicate_total=False, missing_round=False,
+             differing_name=False):
     slug = "ufc-fight-night-march-14-2026"
     event = {"id": "event-1", "slug": slug, "eventDate": "2026-03-14",
+             "title": "UFC Test Card",
              "status": "completed", "hasStats": True}
     bout = {"id": "bout-1", "eventSlug": slug, "status": "completed",
             "hasStats": True, "isCancelled": False, "resultRound": 1,
@@ -33,6 +35,9 @@ def _archive(tmp_path, *, duplicate_total=False, missing_round=False):
               {"boutId": "bout-1", "fighterName": "B", "round": 1}]
     if missing_round:
         rounds.pop()
+    if differing_name:
+        totals[0]["fighterName"] = "Full Name A"
+        rounds[0]["fighterName"] = "Full Name A"
     stats = {"event": dict(event), "bouts": [bout],
              "boutStats": totals, "roundStats": rounds}
     inventory_rows = [dict(event), {"id": "dwcs-1", "slug": "dwcs-10-5",
@@ -64,6 +69,7 @@ def test_audit_checks_rounds_and_preserves_statless_events(tmp_path):
     assert report["eligible_completed_stat_bearing_bouts"] == 1
     assert report["structurally_complete_bouts"] == 1
     assert report["findings"] == []
+    assert report["inventory_events"][0]["title"] == "UFC Test Card"
     assert report["support_spot_checks"]["ufc-fight-night-march-14-2026"][
         "structure_matches_support_claim"] is False  # The fixture has one bout.
     assert report["coverage_verified"] is False
@@ -73,8 +79,25 @@ def test_audit_reports_duplicate_totals_and_missing_rounds(tmp_path):
     _archive(tmp_path, duplicate_total=True, missing_round=True)
     report = audit_archive(tmp_path)
     assert report["structurally_complete_bouts"] == 0
-    assert any("fighter_totals_not_two_distinct_participants" in item["finding"]
+    assert any("fighter_total_row_count_differs" in item["finding"]
                for item in report["findings"])
+    assert len(report["review_bouts"][0]["fighter_totals"]) == 3
+
+
+def test_name_difference_has_separate_finding_and_saved_evidence(tmp_path):
+    _archive(tmp_path, differing_name=True)
+    report = audit_archive(tmp_path)
+    assert report["findings"][0]["finding"] == "fighter_names_differ:bout-1"
+    evidence = report["review_bouts"][0]
+    assert evidence["bout"]["fighters"][0]["fighterName"] == "A"
+    assert evidence["fighter_totals"][0]["fighterName"] == "Full Name A"
+    assert len(evidence["round_rows"]) == 2
+    assert evidence["card_manifest_sha256"]
+
+
+def test_road_ufc_variants_are_outside_ufc_candidate_group():
+    assert _competition("road-ufc-season-4-semifinals") == "other_competition"
+    assert _competition("ufc-road-to-ufc-4-6") == "other_competition"
 
 
 def test_audit_reports_missing_round_separately(tmp_path):
