@@ -48,7 +48,7 @@ def _participant(row: dict, fighters: list[dict]) -> int | None:
     return matches[0] if len(matches) == 1 else None
 
 
-def _stat_values(row: dict) -> dict[str, tuple[int, ...]]:
+def _stat_values(row: dict) -> dict[str, tuple[int, ...] | None]:
     values = {}
     for field in PAIR_FIELDS:
         value = row.get(field)
@@ -64,6 +64,9 @@ def _stat_values(row: dict) -> dict[str, tuple[int, ...]]:
             raise ValueError(f"invalid {field}")
         values[field] = (value,)
     clock = row.get("controlTime")
+    if clock == "--":
+        values["controlTime"] = None
+        return values
     if not isinstance(clock, str) or not re.fullmatch(r"\d+:[0-5]\d", clock):
         raise ValueError("invalid controlTime")
     minutes, seconds = map(int, clock.split(":"))
@@ -146,8 +149,10 @@ def _check_card(payloads: dict, event: dict) -> dict:
     for label, index in (("total", total_by_bout), ("round", round_by_bout)):
         for extra in sorted(set(index) - listed):
             findings.append(f"{label}_references_unlisted_bout:{extra}")
-    eligible = complete = reconciled = 0
+    eligible = complete = reconciled = observed_reconciled = 0
     aliases = []
+    unavailable_fields = []
+    excluded_bouts = []
     numerical_differences = {}
     for bout in bouts:
         if not isinstance(bout, dict) or not isinstance(bout.get("id"), (str, int)):
@@ -158,6 +163,14 @@ def _check_card(payloads: dict, event: dict) -> dict:
         # Only completed, stat-bearing bouts should have a full round history.
         if (bout.get("status") != "completed" or bout.get("isCancelled") is True
                 or bout.get("hasStats") is not True):
+            has_rows = bool(total_by_bout[bid] or round_by_bout[bid])
+            excluded_bouts.append({"bout_id": bid, "status": bout.get("status"),
+                                   "is_cancelled": bout.get("isCancelled"),
+                                   "has_stats_flag": bout.get("hasStats"),
+                                   "total_rows": len(total_by_bout[bid]),
+                                   "round_rows": len(round_by_bout[bid])})
+            if has_rows:
+                findings.append(f"bout_metadata_conflicts_with_stats:{bid}")
             continue
         eligible += 1
         expected_rounds = bout.get("resultRound")
@@ -198,11 +211,16 @@ def _check_card(payloads: dict, event: dict) -> dict:
             aliases.append({"bout_id": bid, "matches": changed})
         try:
             mismatches = []
+            unavailable = []
             for total, person in zip(observed_totals, total_people, strict=True):
                 values = _stat_values(total)
                 chunks = [_stat_values(row) for row in observed_rounds
                           if _participant(row, fighters) == person]
                 for field, value in values.items():
+                    if value is None or any(chunk[field] is None for chunk in chunks):
+                        unavailable.append({"fighter_name": fighters[person]["fighterName"],
+                                            "field": field})
+                        continue
                     summed = tuple(sum(chunk[field][i] for chunk in chunks)
                                    for i in range(len(value)))
                     if value != summed:
@@ -213,7 +231,11 @@ def _check_card(payloads: dict, event: dict) -> dict:
                 numerical_differences[bid] = mismatches
                 findings.append(f"round_sums_differ:{bid}")
             else:
-                reconciled += 1
+                observed_reconciled += 1
+                if not unavailable:
+                    reconciled += 1
+            if unavailable:
+                unavailable_fields.append({"bout_id": bid, "fields": unavailable})
         except ValueError as error:
             numerical_differences[bid] = [{"error": str(error)}]
             findings.append(f"unreadable_numerical_stats:{bid}")
@@ -230,6 +252,9 @@ def _check_card(payloads: dict, event: dict) -> dict:
             "eligible_bouts": eligible,
             "structurally_complete_bouts": complete, "findings": findings,
             "numerically_reconciled_bouts": reconciled,
+            "observed_stats_reconciled_bouts": observed_reconciled,
+            "unavailable_stat_fields": unavailable_fields,
+            "excluded_bouts": excluded_bouts,
             "resolved_name_differences": aliases,
             "review_bouts": review_bouts}
 
@@ -263,6 +288,9 @@ def audit_archive(root: Path) -> dict:
     inventory_events = []
     resolved_names = []
     reconciled_bouts = 0
+    observed_reconciled_bouts = 0
+    unavailable_stat_fields = []
+    excluded_bouts = []
     total_bouts = eligible_bouts = complete_bouts = 0
     support_spot_checks = {}
     for event in events:
@@ -297,6 +325,11 @@ def audit_archive(root: Path) -> dict:
             eligible_bouts += result["eligible_bouts"]
             complete_bouts += result["structurally_complete_bouts"]
             reconciled_bouts += result.get("numerically_reconciled_bouts", 0)
+            observed_reconciled_bouts += result.get("observed_stats_reconciled_bouts", 0)
+            unavailable_stat_fields.extend({"event": key, **row}
+                                           for row in result.get("unavailable_stat_fields", []))
+            excluded_bouts.extend({"event": key, **row}
+                                  for row in result.get("excluded_bouts", []))
             resolved_names.extend({"event": key, **row}
                                   for row in result.get("resolved_name_differences", []))
             review_bouts.extend({"event": key,
@@ -329,6 +362,10 @@ def audit_archive(root: Path) -> dict:
         "eligible_completed_stat_bearing_bouts": eligible_bouts,
         "structurally_complete_bouts": complete_bouts,
         "numerically_reconciled_bouts": reconciled_bouts,
+        "observed_stats_reconciled_bouts": observed_reconciled_bouts,
+        "bouts_with_unavailable_stat_fields": len(unavailable_stat_fields),
+        "unavailable_stat_fields": unavailable_stat_fields,
+        "excluded_bouts": excluded_bouts,
         "resolved_name_differences": resolved_names,
         "support_spot_checks": support_spot_checks,
         "inventory_events": inventory_events,
@@ -358,6 +395,7 @@ def main() -> None:
         "competition_statuses", "listed_bouts_in_readable_cards",
         "eligible_completed_stat_bearing_bouts", "structurally_complete_bouts",
         "numerically_reconciled_bouts",
+        "observed_stats_reconciled_bouts", "bouts_with_unavailable_stat_fields",
         "support_spot_checks", "coverage_verified",
     )}, indent=2))
     print(f"Findings: {len(report['findings'])}; report: {args.output}")
