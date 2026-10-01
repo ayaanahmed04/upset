@@ -50,12 +50,15 @@ Develop interpretable fighter metrics such as:
 
 ## Phase 4 — Product
 
-- Build the UPSET API
-- Build the web application
-- Add fighter profiles
-- Add matchup comparison
+- Local research API and SQLite serving layer implemented; full private run pending
+- Local web preview implemented; browser review pending
+- Fighter search and dated profiles implemented on the verified cohort
+- Descriptive two-fighter comparison implemented with shared cutoff/window
 - Add upcoming fight analysis
 - Deploy the application publicly
+
+See `docs/LOCAL_RESEARCH_APP.md`. Local previews do not complete production
+hosting, public data-use clearance or prospective prediction validation.
 
 ## Phase 5 — Expansion
 
