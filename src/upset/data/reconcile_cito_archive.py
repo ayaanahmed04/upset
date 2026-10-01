@@ -54,6 +54,47 @@ def _reviewed_result(history: dict, bout: dict, candidate: dict) -> dict | None:
     result amendment. Record the date we verified the amended result and leave
     its effective date unknown; do not backdate its availability for replay.
     """
+    classifications = {
+        "08c04f18b0f58d71": {
+            "fighter_ids": {"f14f644d41ade29f", "841695e02c99a521"},
+            "provider_method": "Decision - Majority", "provider_outcome": "draw",
+            "outcome": "draw", "result_method": "Decision - Majority",
+            "reason": "Majority draw after review of the accidental head clash and incomplete third round",
+            "authority": "Georgia Athletic and Entertainment Commission",
+            "source_urls": ["https://www.ufc.com/athlete/cody-brundage?page=1",
+                            "https://www.ufc.com/news/mansur-abdul-malik-humble-thoughtful-dangerous"],
+        },
+        "13e2ff8b3a122094": {
+            "fighter_ids": {"69898645d600abdb", "eabf206b162b3b83"},
+            "provider_method": "No Contest", "provider_outcome": "no_contest",
+            "outcome": "no_contest", "result_method": "No Contest",
+            "reason": "Illegal upkick; stoppage clock differs by one second between sources",
+            "authority": "UFC official results report",
+            "source_urls": ["https://www.ufc.com/news/prelim-results-highlights-winner-interviews-ufc-fight-night-usman-vs-buckley-ufc-tonight-atlanta"],
+        },
+    }
+    classification = classifications.get(history["source_bout_id"])
+    if classification:
+        if (history["event_date"] != "2025-06-14"
+                or set(candidate["ufcstats_fighter_ids_in_cito_order"]) != classification["fighter_ids"]
+                or bout.get("method") != classification["provider_method"]
+                or [f.get("outcome") for f in bout["fighters"]]
+                != [classification["provider_outcome"]] * 2):
+            raise ValueError("Reviewed nondecisive outcome differs from source evidence.")
+        result = {"outcome": classification["outcome"], "winner_name": None,
+                  "winner_upset_fighter_id": None, "source_winner_label": "Draw/NC",
+                  "result_method": classification["result_method"],
+                  "result_round": history["result_round"], "result_time": history["result_time"],
+                  "reason": classification["reason"], "authority": classification["authority"],
+                  "source_urls": classification["source_urls"], "revision_effective_date": None,
+                  "revision_verified_on": "2026-09-30",
+                  "replay_rule": "Review observation does not establish the result revision's effective date."}
+        if history["source_bout_id"] == "13e2ff8b3a122094":
+            result["result_time"] = None
+            result["result_time_requires_review"] = True
+            result["result_time_evidence"] = {"frozen_historical": history["result_time"],
+                                             "cito": bout.get("resultTime"), "ufc_report": "4:58"}
+        return result
     if (history["source_bout_id"] != "7ffdaa44fc8d111b"
             or history["event_date"] != "2026-02-21"
             or set(candidate["ufcstats_fighter_ids_in_cito_order"])
@@ -443,7 +484,7 @@ def reconcile_archive(root: Path, historical: Path, registry_path: Path, output:
         row["duplicate_historical_match"] = row["candidate_historical_bout_id"] in duplicate_history
     unmatched = [row for row in history if row["source_bout_id"] not in coverage]
     summary = {"status": "offline bridge staged; bout and identity proposals require review",
-               "schema_version": 1, "captured_cards_processed": parsed_cards,
+               "schema_version": 1, "matcher_revision": 2, "captured_cards_processed": parsed_cards,
                "cito_bouts": len(bouts), "staged_round_rows": len(round_rows),
                "bout_match_statuses": dict(Counter(row["status"] for row in bouts)),
                "fighter_proposal_statuses": dict(Counter(row["status"] for row in fighter_proposals)),
