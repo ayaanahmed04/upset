@@ -623,22 +623,59 @@ See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
 3. Keep the research PR stack reviewable before merging. Separately scope a
    timestamped market benchmark and, only with an explicit new experiment
    specification, consider a historically auditable physical-context family.
-4. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
-   and the account's actual archive entitlement. The September 16 provider
-   email already supports one-month acquisition and local retention; pricing
-   and terms still disagree on the public historical window.
+4. Cito Pro was purchased on September 28. The Mac now has 790 captured cards
+   and 41,802 staged round rows. See the September 30 archive status below;
+   current source gaps and identities are being reconciled during this single
+   paid period.
 5. Establish timestamped odds coverage for a separate market benchmark and
    optional market-assisted candidate; historical MMA odds may require a paid
    plan. No new model was promoted by these exploratory experiments.
 
 ## Blockers
 
-The historical snapshot ends on 2026-03-07. Complete reviewed current data,
-a serialized/replay-verified model and actual pre-event evidence are absent.
-Historical Cito round access and timestamped odds coverage have not been
-established on the user's account. Fresh live-performance claims require
+The historical snapshot ends on 2026-03-07. A serialized, replay-verified
+frozen model and a historically audited as-of feature builder are available.
+Complete reviewed current data and actual externally timestamped pre-event
+evidence remain absent. Historical Cito round access has been demonstrated;
+complete independent coverage and timestamped odds coverage remain open.
+Fresh live-performance claims require
 pre-event forecasts and subsequent independently scored outcomes;
 the opponent-adjusted performance study needed no paid data.
 The Odds API's historical MMA access is paid; current odds have a free tier.
 A timestamped market comparison remains separate work. Cito is not needed
 for the completed paired-context study or the adjusted-performance experiment.
+
+## September 30, 2026 — archive acquisition and integration
+
+Ayaan purchased Cito Pro for one paid period. The immutable provider inventory
+contains 812 entries. All 790 past UFC-candidate cards through the September
+28 cutoff were captured, including 35 cards whose false availability flags
+were disproved by the stats endpoint and recovered. This is coverage of the
+provider inventory, not independent whole-calendar certification.
+
+The Mac's v4 audit found 8,909 listed bouts, 8,865 structurally complete bouts
+whose observed stats reconcile, and 181 bouts with unavailable historical
+control time preserved as unknown. The first historical bridge matched
+8,531 of 8,551 accepted bouts, staged 41,802 round rows, and proposed 2,642
+unique Cito fighter links without conflicts or duplicate historical matches.
+
+The new offline acceptance command selects complete historical rounds,
+rechecks sums against the accepted paired totals and exports permanent IDs,
+link evidence and a separate extended registry. On the uploaded v1 bridge,
+the selection/identity checks passed for 40,232 rounds across 8,531 bouts.
+Full private-data sum checks and the seven scoped name-alias fixes must run
+on the Mac. No original snapshot, experiment or model artifact is overwritten.
+
+Current result review separately records Idiris–Osbourne as an overturned NC,
+Brundage–Abdul-Malik as a majority draw and Bellato–Craig as an NC. Bellato's
+one-second source clock disagreement remains explicit. The original result
+snapshots and unknown revision dates are retained for replay.
+
+The remaining work is bounded: probe 13 historical bouts lacking cached stats
+and two current bouts lacking totals; reconcile the 339 post-snapshot bout
+records and current fighter identities; independently audit event/bout coverage;
+then issue and externally timestamp a frozen pre-event forecast. The probe
+plan uses 30 primary calls and at most 18 conditional fallbacks on the uploaded
+evidence. Repeating it reuses cached responses. Returned source rows still
+need reconciliation. See `docs/CITO_ARCHIVE_COLLECTION.md` for the exact files,
+commands, measured counts and limitations. No model-performance gain is claimed.

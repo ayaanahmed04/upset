@@ -11,7 +11,12 @@ from upset.data.collect_cito_archive import (
     collect_inventory,
 )
 from upset.data.models import Fight, FightStats
-from upset.data.reconcile_cito_archive import _numbers, match_bout, reconcile_archive
+from upset.data.reconcile_cito_archive import (
+    _numbers,
+    _reviewed_result,
+    match_bout,
+    reconcile_archive,
+)
 
 A = "00000000-0000-4000-8000-000000000001"
 B = "00000000-0000-4000-8000-000000000002"
@@ -161,6 +166,30 @@ def test_current_no_contest_retains_frozen_result_and_does_not_invent_amendment_
     bout["fighters"][0]["outcome"] = "win"
     with pytest.raises(ValueError, match="revision differs"):
         match_bout("2026-02-21", bout, totals, {"2026-02-21": [history]}, stats, {})
+
+
+@pytest.mark.parametrize("bid,ids,method,outcome,round_number,time", [
+    ("08c04f18b0f58d71", ["f14f644d41ade29f", "841695e02c99a521"],
+     "Decision - Majority", "draw", 3, "0:36"),
+    ("13e2ff8b3a122094", ["69898645d600abdb", "eabf206b162b3b83"],
+     "No Contest", "no_contest", 1, "4:59"),
+])
+def test_reviewed_nondecisive_classifications_keep_clock_disagreement_visible(
+        bid, ids, method, outcome, round_number, time):
+    history = {"source_bout_id": bid, "event_date": "2025-06-14",
+               "result_round": round_number, "result_time": time}
+    bout = {"method": method, "resultTime": time, "fighters": [{"outcome": outcome}] * 2}
+    candidate = {"ufcstats_fighter_ids_in_cito_order": ids}
+    result = _reviewed_result(history, bout, candidate)
+    assert result["outcome"] == outcome
+    assert result["winner_upset_fighter_id"] is None
+    assert result["revision_effective_date"] is None
+    if outcome == "no_contest":
+        assert result["result_time"] is None
+        assert result["result_time_evidence"] == {"frozen_historical": "4:59", "cito": "4:59", "ufc_report": "4:58"}
+    candidate["ufcstats_fighter_ids_in_cito_order"] = ["wrong", "profiles"]
+    with pytest.raises(ValueError, match="outcome differs"):
+        _reviewed_result(history, bout, candidate)
 
 
 class Response:

@@ -304,3 +304,82 @@ probed independently; they do not require downloading the 790-card archive
 again or holding every verified round in a manual-review queue. Current
 post-snapshot fighters and the two September 12 missing totals still require
 their own reconciliation before current features and prospective forecasts.
+
+## Historical rounds accepted as a separate export
+
+`python -m upset.data.export_cito_archive_rounds` builds the revised offline
+bridge in `data/processed/cito_archive_bridge_v2` and exports a verified subset
+to `data/processed/cito_historical_rounds_v1`. Repeated CLI runs verify and
+reuse an intact existing export; changed inputs require a new output folder.
+This command makes no API calls.
+
+Acceptance requires one supported historical bout per provider bout, unique
+paired fighter IDs, registry-consistent UFCStats IDs, no conflicting fighter
+proposals, and every round from 1 through the accepted result round for both
+fighters. It independently sums the rounds back to the accepted historical
+fighter totals, requiring at least 12 observed matching fields per fighter.
+Unknown control stays null. Missing or contradictory evidence prevents the
+export from being published. Source IDs, provider dates, historical event
+dates, observation times and card hashes remain on every round row.
+
+The September 30 uploaded **v1 bridge**, before the seven alias fixes, passed
+the selection and identity checks for **40,232 rounds across 8,531 bouts** and
+**2,642 Cito fighter IDs**. The other 1,570 staged rows are retained in the
+bridge. Full round-sum rechecking against the private accepted historical
+files runs on the Mac; those historical files are unavailable in this chat.
+The revised alias counts likewise require that Mac run and are not assumed.
+
+The exporter saves:
+- `round_stats_identified.jsonl`: the complete, verified historical subset.
+- `fighter_registry.json`: a separate registry extending the original IDs
+  with evidence-backed Cito links. The tracked registry remains unchanged.
+- `fighter_link_evidence.jsonl`: all supporting bout references for each link.
+- `bout_results.jsonl`: the frozen results and reviewed current results in
+  separate fields, with unresolved classifications withheld from current labels.
+- `gap_probe_plan.json`: bounded endpoint requests for absent rows.
+- `review.json`: unresolved historical bouts, reviewed results, alias matches,
+  current bout records and current provider fighters without historical evidence.
+- `manifest.json`: input/output hashes, acceptance counts and limits.
+
+The current result review also confirms Brundage–Abdul-Malik as a majority
+draw and Bellato–Craig as a No Contest, using UFC's official records. These
+classifications are scoped to exact historical bout and fighter IDs. Bellato's
+clock is 4:59 in both cached sources and 4:58 in UFC's report: the current
+result time stays null, both reports are retained, and the outcome stays NC.
+The original frozen time remains unchanged. No result-amendment date is
+invented from the date these sources were reviewed.
+
+### Targeted remaining-gap probe
+
+```bash
+caffeinate -di python -m upset.data.probe_cito_archive_gaps --max-requests 50
+```
+
+The generated plan targets the 11 missing September/November 2025 bouts,
+the two August 22 Road to UFC bouts, the failed Road card's bout/stats
+endpoints and the two September 12 current bouts without totals. On the
+uploaded v1 evidence this is **30 primary requests**, with up to **18
+conditional fallbacks** from a numeric provider bout ID to its known accepted
+historical bout ID. Existing stat-bearing alias cases do not trigger a pull.
+Actual revised plan counts are printed on the Mac.
+
+Each request is logged, paced seven seconds after the preceding new response,
+limited to a 30-second timeout, and cached with its actual URL, UTC observation
+time and plan hash. Successful primary responses skip fallback requests.
+Errors and empty responses are retained as evidence. Access/rate-limit errors
+stop the run. Repeating the command reuses cached requests and resumes targets
+not yet visited; it does not silently retry a saved failed response. A later
+fresh provider-check snapshot needs a different `--output` path.
+
+Output is `data/raw/cito_archive/gap_probes_v1/`, including raw response
+wrappers and `report.json`. A returned row is **source evidence awaiting
+reconciliation**, not accepted coverage. The probe changes no original card,
+collection progress, historical export, tracked registry or model artifact.
+
+There are 339 post-snapshot bout records in the uploaded bridge and 102
+current provider fighter IDs without historical-bout evidence. Some may have
+profile-only counterparts in the existing registry; this is not a claim that
+102 new permanent identities are needed. Resolving current identities and
+canonical totals, checking an independent event/bout calendar, and running
+the frozen as-of forecast pipeline remain the next stage. Historical round
+availability by itself does not establish prospective accuracy.
