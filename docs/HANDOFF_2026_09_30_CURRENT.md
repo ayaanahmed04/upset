@@ -37,19 +37,24 @@ Original labels, source hashes and registry are not overwritten. Reviewed
 Idiris NC / Brundage draw / Bellato NC amendments remain separate from frozen
 results; exact amendment availability dates cannot be inferred retrospectively.
 
-## Prepared next action
+## Current export passed
 
 `export_cito_current_archive` normalizes the cached current cards offline and
 uses the existing current staging contract on the verified-identity subset.
 It does not acquire data or fit a model. Default output:
 `data/processed/cito_current_archive_v1`.
 
-The uploaded revised review has **339 completed current records**, March 14
-through September 26, with four nondecisive outcomes. It has 101 current Cito
-IDs without historical-bout evidence before the new supplemental registry
-link. Do not assume these need 101 new identities; profile-only historical
-identities may exist. The final unresolved count must come from the new Mac
-run. Names alone never assign identities.
+Mac `a8570e6` applied remote `c74e3f8331ac6ba0cb6213cf076a0c656a94be43`.
+It passed all **339 completed current records**, March 14 through September 26:
+678 fighter totals, 1,534 rounds, zero validation issues and four nondecisive
+outcomes. The identified subset has 245 bouts; 94 await identity evidence for
+101 provider IDs. There are 337 provider-total bouts and two derived-total
+bouts. The ZIP was read: all eight output hashes agree and all 8,814 canonical
+total fields independently reconcile with its round rows.
+
+There are 41 single name candidates, 59 without a name candidate and one
+duplicate-name case. Do not assume these need 101 new identities; profile-only
+historical identities may exist. Names alone never assign identities.
 
 The exporter checks all accepted/supplement/bridge hashes and relevant raw
 cards, result/participant agreement between endpoints, complete paired rounds,
@@ -63,13 +68,23 @@ Assistant normalized the actual uploaded August 29 sample: 13 bouts, 26 totals,
 50 round rows. Synthetic end-to-end tests cover names-only candidates staying
 unlinked, verified subset staging, immutable files, hash changes, output reuse,
 draw/NC consistency, full round coverage and derived-total evidence. Full Mac
-current normalization is pending until its run output is available.
+current normalization is complete; independent UFC calendar coverage and the
+remaining identity links are still pending.
 
-Inspect the new small current ZIP/summary when returned. Do not request the
-entire historical archive again. Resolve the generated identity review using
-independent evidence, independently audit the UFC calendar and move to the
-existing as-of feature and frozen prospective prediction pipeline. Continue
-current work while Cito addresses the eleven 2025 round gaps.
+The current ZIP is already available and reviewed. Do not request it or the
+entire historical archive again. `collect_cito_fighter_bundles` is the next
+bounded source capture: three documented endpoints for the 101 unresolved
+fighters, maximum 303 new requests. It saves raw responses, dates, source
+hashes and rate-limit headers; repeats reuse saved evidence. It never creates
+links or uses current career aggregates as historical features. See
+`CITO_FIGHTER_BUNDLES.md`. Review returned source fields rather than assuming
+the endpoints contain a UFCStats ID or DOB. Direct UFCStats requests from this
+environment returned a JavaScript browser-check page; no challenge bypass was
+attempted. Some primary pages remain available through search indexes.
+
+Resolve identity evidence, independently audit the UFC calendar and move to
+the existing as-of feature and frozen prospective prediction pipeline.
+Continue current work while the eleven 2025 round gaps are addressed.
 
 ## Model contract
 

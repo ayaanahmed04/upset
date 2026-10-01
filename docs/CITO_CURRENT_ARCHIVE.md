@@ -62,10 +62,17 @@ matchups. A names-only candidate does not pass that contract. `training_ready`
 and independent UFC `coverage_verified` remain false. The original research
 model, historical data and tracked registry remain unchanged.
 
-The full archive run is pending on the Mac. Assistant checks cover the actual
-August 29 sample (13 bouts, 26 totals, 50 round rows) plus synthetic full-export
-tests for immutable inputs, known/unknown identities, output reuse, source
-tampering, nondecisive outcomes and derived missingness.
+The full current export passed on the Mac at commit `a8570e6`: 339 normalized
+bouts, 678 fighter totals, 1,534 round rows, zero validation issues, 245
+identified bouts and 94 bouts awaiting evidence for 101 provider identities.
+There are 337 bouts with observed provider totals and two with derived totals.
+The uploaded output hashes were verified. Independent recalculation from all
+current rounds agrees with all 8,814 canonical total fields.
+
+The identity queue has 41 single name candidates, 59 without a name candidate
+and one duplicate-name case. These are candidates, not accepted links.
+`collect_cito_fighter_bundles` preserves the documented profile/stat/history
+responses for these identities; see `CITO_FIGHTER_BUNDLES.md`.
 
 Next: review the generated identity candidates using independent evidence,
 verify the UFC calendar, then use the existing as-of/frozen forecast pipeline.
