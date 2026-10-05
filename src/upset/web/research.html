@@ -117,8 +117,9 @@ main.loading{opacity:.45}
 .portrait.blue{box-shadow:inset 0 -6px 0 var(--blue)}
 
 /* ---------- Fighter hero ---------- */
-.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;padding:26px;background:linear-gradient(120deg,#1b1e25 0%,#14161b 55%);position:relative;overflow:hidden}
-.hero::after{content:attr(data-division);position:absolute;right:-10px;bottom:-22px;font:400 120px/1 var(--brand);text-transform:uppercase;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;padding:26px;background:linear-gradient(120deg,#1b1e25 0%,#14161b 55%);position:relative;isolation:isolate;overflow:hidden}
+.division-watermark{position:absolute;left:26px;right:26px;bottom:16px;z-index:0;font:400 clamp(28px,8vw,100px)/1.15 var(--brand);text-transform:uppercase;text-align:right;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none;user-select:none}
+.hero>:not(.division-watermark){position:relative;z-index:1}
 .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .badge{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--surface-3);color:var(--text-2)}
 .badge.active{background:rgba(42,157,111,.16);color:#7fe0b4}
@@ -307,7 +308,7 @@ footer b{color:var(--text-2)}
   .date span{display:none}
   .hero{grid-template-columns:1fr;padding:20px}
   .hero .portrait{width:110px;height:132px;font-size:46px}
-  .hero::after{font-size:90px}
+  .division-watermark{left:20px;right:20px;bottom:14px}
   .record .big{font-size:34px}
   .tape div{padding-right:14px;margin-right:14px}
   .faceoff{grid-template-columns:1fr;gap:14px;padding:20px;background:linear-gradient(180deg,rgba(230,57,70,.22),#15171c 35%,#15171c 65%,rgba(58,134,255,.22))}
@@ -532,11 +533,19 @@ function meters(r,group){
 }
 
 /* ================= fighter page ================= */
+function fitDivisionWatermark(){
+  const node=document.querySelector('.division-watermark');
+  if(!node)return;
+  node.style.removeProperty('font-size');
+  const size=parseFloat(getComputedStyle(node).fontSize),width=node.clientWidth,needed=node.scrollWidth;
+  if(width>0&&needed>width)node.style.fontSize=Math.floor(size*Math.max(0,width-2)/needed*100)/100+'px';
+}
 function tapeItem(label,value,extra){return h('div',null,h('span',{text:label}),h('b',null,value??'—',extra?h('em',{text:extra}):null));}
 function heroCard(r){
   const p=r.profile,sm=r.summary;
   const add=h('button',{class:'btn primary',onclick:()=>addToMatchup(r)},inMatchup(r.id)?'✓ In matchup':'+ Add to matchup');
   return h('section',{class:'card hero','data-division':sm.division||''},
+    sm.division?h('span',{class:'division-watermark','aria-hidden':'true',text:sm.division}):null,
     avatar(r,'portrait'),
     h('div',null,statusBadges(r),h('h1',{class:'fname distressed',text:r.name}),
       h('div',{class:'record'},
@@ -601,6 +610,7 @@ function renderFighter(r){
     any?h('div',{class:'spacer'}):null,
     any?h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Fight history'}),h('small',{text:r.history.length+' UFC fights before '+niceDate(state.before)})),hist,more):null,
     provenance([r])].filter(Boolean));
+  fitDivisionWatermark();
 }
 function provenance(reports){
   return h('details',{class:'prov'},h('summary',{text:'Data provenance'}),reports.map(r=>h('p',null,h('b',{text:r.name+': '}),'source ID '+r.profile.source_fighter_id+' · ',r.profile.source_url?h('a',{href:r.profile.source_url,target:'_blank',rel:'noopener',text:'source profile'}):'no source URL',' · measurements from profile snapshot'+(r.roster&&r.roster.as_of?' · roster as of '+r.roster.as_of:'')+(r.roster&&r.roster.image_credit?' · image: '+r.roster.image_credit:''))));
@@ -758,10 +768,11 @@ async function route(){
 }
 addEventListener('hashchange',route);
 // Refit when the viewport changes or the actual display font finishes loading.
-const nameFitObserver=new ResizeObserver(()=>requestAnimationFrame(fitMatchupNames));
-nameFitObserver.observe($('content'));
-document.fonts.ready.then(fitMatchupNames);
-document.fonts.addEventListener('loadingdone',fitMatchupNames);
+function fitResearchLabels(){fitMatchupNames();fitDivisionWatermark();}
+const labelFitObserver=new ResizeObserver(()=>requestAnimationFrame(fitResearchLabels));
+labelFitObserver.observe($('content'));
+document.fonts.ready.then(fitResearchLabels);
+document.fonts.addEventListener('loadingdone',fitResearchLabels);
 
 /* ================= search ================= */
 let timer=null,searchVersion=0,hl=-1;
