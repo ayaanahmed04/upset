@@ -28,6 +28,10 @@ It checks paired participants, provider links, source hashes, duplicate dated
 matchups, counts, durations and SQLite integrity. Repeating reuses an intact
 database; altered inputs or output fail instead of being silently refreshed.
 The viewer opens the database in read-only mode and checks its hash at startup.
+Distinct bout IDs from the same source can share a date and both participants,
+as with Silveira/Sakuraba on December 21, 1997. Both records remain in the
+viewer; repeated bout IDs, cross-provider same-date matches and invalid fighter
+identities still fail. The date cutoff excludes all bouts on the selected date.
 
 ## Available product features
 

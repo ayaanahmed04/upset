@@ -73,20 +73,27 @@ def build_database(historical, current, registry_path, accepted, output, *,
     stats = rows(history_paths["fight_stats_identified.jsonl"]) + rows(current / "identified/fight_stats_identified.jsonl")
     amendments = {r["historical_bout_id"]: r for r in rows(accepted / "bout_results.jsonl")
                   if r["resolution"] == "reviewed_amendment"}
-    bout_map, expected, occupied = {}, set(), set()
+    bout_map, expected, occupied = {}, set(), {}
     for bout in bouts:
         key = bout["source"] + ":" + bout["source_bout_id"]
         uids = bout["upset_fighter_1_id"], bout["upset_fighter_2_id"]
         pair = (bout["event_date"], *sorted(uids))
-        if key in bout_map or pair in occupied or len(set(uids)) != 2 or any(u not in names for u in uids):
-            raise ValueError("Duplicate or unknown research fight identity.")
+        if key in bout_map:
+            raise ValueError(f"Duplicate research bout ID: {key}")
+        if len(set(uids)) != 2 or any(u not in names for u in uids):
+            raise ValueError(f"Invalid or unknown research fighter identity: {key}; {uids}")
+        previous = occupied.get(pair)
+        if previous is not None and bout_map[previous]["source"] != bout["source"]:
+            raise ValueError(f"Cross-provider same-date duplicate research bout: {previous}, {key}")
+        # Distinct same-source bouts can share a date and both participants
+        # (Silveira/Sakuraba, 1997-12-21). Match the accepted replay policy.
         for i, uid in enumerate(uids, 1):
             provider = "ufcstats" if bout["event_date"] <= LAST_HISTORICAL_DATE else "cito"
             if provider_links.get((provider, bout[f"source_fighter_{i}_id"])) != uid:
-                raise ValueError("Research fight provider link differs.")
+                raise ValueError(f"Research fight provider link differs: {key}; fighter {i}")
             if uid not in fighters:
-                raise ValueError("Reviewed fighter lacks a historical profile.")
-        occupied.add(pair)
+                raise ValueError(f"Reviewed fighter lacks a historical profile: {key}; {uid}")
+        occupied.setdefault(pair, key)
         bout_map[key] = bout
         expected.update((key, uid) for uid in uids)
     stat_map = {}

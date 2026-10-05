@@ -91,6 +91,55 @@ def test_build_readonly_query_and_reuse_preserve_inputs(tmp_path):
             db.execute("DELETE FROM fighters")
 
 
+def add_same_date_historical_bout(paths, *, source="kaggle", bid="rematch", uid=A):
+    historical = paths[0]
+    fight_path = historical / "fights_identified.jsonl"
+    stats_path = historical / "fight_stats_identified.jsonl"
+    fight = json.loads(fight_path.read_text().splitlines()[0])
+    fight.update(source=source, source_bout_id=bid, upset_fighter_1_id=uid)
+    write_rows(fight_path, [json.loads(fight_path.read_text()), fight])
+    stats = [json.loads(line) for line in stats_path.read_text().splitlines()]
+    extra = [dict(s, source=source, source_bout_id=bid) for s in stats]
+    write_rows(stats_path, stats + extra)
+    history_hash, stat_hash = _digest(fight_path), _digest(stats_path)
+    current_manifest_path = paths[1] / "manifest.json"
+    current_manifest = json.loads(current_manifest_path.read_text())
+    current_manifest["identified_subset_manifest"]["input_sha256"]["historical"] = history_hash
+    current_manifest_path.write_text(json.dumps(current_manifest))
+    accepted_manifest_path = paths[3] / "manifest.json"
+    accepted_manifest = json.loads(accepted_manifest_path.read_text())
+    accepted_manifest["input_sha256"]["historical_fights"] = history_hash
+    accepted_manifest_path.write_text(json.dumps(accepted_manifest))
+    return (*paths[:4], history_hash, stat_hash)
+
+
+def test_distinct_same_source_same_date_rematches_preserve_both_bouts(tmp_path):
+    paths = add_same_date_historical_bout(fixture(tmp_path))
+    output = tmp_path / "research"
+    result = build(paths, output)
+    assert result["historical_bouts"] == 2
+    assert result["total_bouts"] == 3 and result["fighter_stat_rows"] == 6
+    with connect(output / "upset.sqlite") as db:
+        assert {r[0] for r in db.execute("SELECT id FROM fights")} == {
+            "kaggle:old", "kaggle:rematch", "cito:new"}
+        assert fighter_report(db, A, "2026-03-07", 0)["metrics"]["bouts"] == 0
+        assert fighter_report(db, A, "2026-03-08", 0)["metrics"]["bouts"] == 2
+
+
+@pytest.mark.parametrize("changes,message", [
+    ({"bid": "old"}, "Duplicate research bout ID: kaggle:old"),
+    ({"source": "cito"}, "Cross-provider same-date duplicate research bout"),
+    ({"uid": B}, "Invalid or unknown research fighter identity"),
+    ({"uid": "unknown"}, "Invalid or unknown research fighter identity"),
+])
+def test_same_date_policy_still_rejects_duplicate_ids_and_invalid_identities(tmp_path, changes, message):
+    paths = add_same_date_historical_bout(fixture(tmp_path), **changes)
+    output = tmp_path / "research"
+    with pytest.raises(ValueError, match=message):
+        build(paths, output)
+    assert not output.exists()
+
+
 def test_metrics_use_opponent_counts_weighted_duration_and_missing_control(tmp_path):
     paths = fixture(tmp_path)
     output = tmp_path / "research"
