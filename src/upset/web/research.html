@@ -41,14 +41,14 @@ button{cursor:pointer}
 
 /* ---------- Header ---------- */
 header.top{position:sticky;top:0;z-index:20;background:rgba(12,13,16,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
-.topbar{display:flex;align-items:center;gap:20px;height:68px}
+.topbar{display:flex;align-items:center;gap:20px;height:68px;z-index:2}
 .rail{position:fixed;z-index:30;left:0;top:0;bottom:0;width:var(--rail);background:#08090b;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;align-items:center;padding:18px 0}
 .rail a{display:block;line-height:0;border-radius:6px}
 .rail img{width:60px;height:auto;display:block}
 .mlogo{display:none}
 .rail a:hover img{filter:brightness(1.12)}
 .rail small{margin-top:auto;writing-mode:vertical-rl;transform:rotate(180deg);font:600 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.search-wrap{position:relative;flex:1;max-width:520px}
+.search-wrap{position:relative;z-index:2;flex:1;max-width:520px}
 .search-wrap input{width:100%;height:42px;border-radius:999px;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 42px;font-size:15px}
 .search-wrap input::placeholder{color:var(--muted)}
 .search-wrap svg{position:absolute;left:15px;top:12px;width:18px;height:18px;color:var(--muted)}
@@ -71,10 +71,10 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(12,13,16,.86);backdr
 .tray{display:none;border-top:1px solid var(--line-soft)}
 .tray.show{display:block}
 .tray .wrap{display:flex;align-items:center;gap:12px;height:52px}
-.slot{display:flex;align-items:center;gap:8px;padding:5px 6px 5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14px;max-width:260px}
+.slot{display:flex;align-items:center;gap:8px;min-height:36px;padding:5px 6px 5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14px;max-width:260px}
 .slot i{width:8px;height:8px;border-radius:50%;flex:none}
 .slot span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.slot.empty{color:var(--muted);font-weight:500;border-style:dashed}
+.slot.is-empty{color:var(--muted);font-weight:500;border-style:dashed;padding-right:12px}
 .slot button{border:0;background:var(--surface-3);width:24px;height:24px;border-radius:50%;color:var(--text-2);line-height:1}
 .vs{font:800 18px/1 var(--display);color:var(--muted)}
 .btn{white-space:nowrap;border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px}
@@ -447,12 +447,15 @@ function timeline(history){
   if(!values.length)return h('p',{class:'muted',text:'No recorded fights before this date.'});
   const vals=values.map(v=>v.sig_differential_per_minute||0);
   const niceUp=x=>{if(x<=0)return 0;const e=Math.pow(10,Math.floor(Math.log10(x))),f=x/e;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*e;};
-  const posT=niceUp(Math.max(0,...vals)),negT=niceUp(-Math.min(0,...vals));
+  let posT=niceUp(Math.max(0,...vals)),negT=niceUp(-Math.min(0,...vals));
   const W=compact?380:760,top=14,plotH=compact?120:150,left=compact?34:40,right=12,plotW=W-left-right;
-  const scale=plotH/Math.max(1,posT+negT),base=top+posT*scale,bottom=base+negT*scale+38,H=bottom+28;
+  // Keep both endpoint labels at least 20 SVG units from zero on mixed-sign charts.
+  // Padding the smaller side preserves one linear scale for every bar.
+  if(posT&&negT){const minSide=niceUp(Math.max(posT,negT)*20/(plotH-20));posT=Math.max(posT,minSide);negT=Math.max(negT,minSide);}
+  const scale=plotH/(posT+negT||1),base=top+posT*scale,bottom=base+negT*scale+38,H=bottom+28;
   const step=plotW/values.length,bw=Math.min(24,step*.62);
   const svg=s('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Significant strike differential per minute in each of the last '+values.length+' fights, oldest to newest'});
-  for(const t of [posT,0,-negT]){if(t===0&&(posT===0&&negT===0))continue;if(t!==0&&!t)continue;const y=base-t*scale;svg.append(s('line',{x1:left,x2:W-right,y1:y,y2:y,stroke:t===0?'#4a505c':'#22262e','stroke-width':1}));svg.append(s('text',{x:left-8,y:y+4,'text-anchor':'end','font-size':11,fill:'#7f8794','font-family':'Inter,system-ui'},t>0?'+'+t:t));}
+  for(const t of new Set([posT,0,-negT])){if(t===0&&(posT===0&&negT===0))continue;const y=base-t*scale;svg.append(s('line',{x1:left,x2:W-right,y1:y,y2:y,stroke:t===0?'#4a505c':'#22262e','stroke-width':1}));svg.append(s('text',{x:left-8,y:y+4,'text-anchor':'end','font-size':11,fill:'#7f8794','font-family':'Inter,system-ui'},t>0?'+'+t:t));}
   let lastYear=null,lastX=null;
   values.forEach((r,i)=>{
     const v=r.sig_differential_per_minute,cx=left+step*i+step/2,x=cx-bw/2;
@@ -703,8 +706,10 @@ function addToMatchup(r){
 }
 function renderTray(){
   const any=state.matchup.some(Boolean);$('tray').classList.toggle('show',any);
-  state.matchup.forEach((f,i)=>{const slot=$('slot'+i);slot.className='slot'+(f?'':' empty');
-    slot.replaceChildren(h('i',{style:'background:var(--'+(i?'blue':'red')+')'}),h('span',{text:f?f.name:(i?'Blue corner':'Red corner')}),f?h('button',{'aria-label':'Remove '+f.name,onclick:()=>{state.matchup[i]=null;renderTray();if(state.view==='compare')go('#/fighter/'+(state.matchup[1-i]||f).id);else route();},text:'×'}):null);});
+  state.matchup.forEach((f,i)=>{const slot=$('slot'+i);slot.className='slot'+(f?'':' is-empty');
+    const children=[h('i',{style:'background:var(--'+(i?'blue':'red')+')'}),h('span',{text:f?f.name:(i?'Blue corner':'Red corner')})];
+    if(f)children.push(h('button',{'aria-label':'Remove '+f.name,onclick:()=>{state.matchup[i]=null;renderTray();if(state.view==='compare')go('#/fighter/'+(state.matchup[1-i]||f).id);else route();},text:'×'}));
+    slot.replaceChildren(...children);});
   $('go').disabled=!(state.matchup[0]&&state.matchup[1]);
 }
 $('go').onclick=()=>go('#/compare/'+state.matchup[0].id+'/'+state.matchup[1].id);
