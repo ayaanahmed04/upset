@@ -225,14 +225,13 @@ main.loading{opacity:.45}
 .corner-info{flex:1;min-width:0}
 .corner .fname{font-size:clamp(24px,2.6vw,34px);line-height:1.1;min-height:2.2em;margin:10px 0 8px}
 .corner .fname .opp{display:block;width:100%;font:inherit;text-transform:inherit;letter-spacing:inherit;text-align:inherit}
-.corner .name-line{display:block;overflow-wrap:anywhere}
+.corner .name-line{display:block;white-space:nowrap}
 .corner .badges{flex-direction:column;align-items:flex-start;gap:6px}
 .corner.blue .badges{align-items:flex-end}
 .corner .rec{font:400 24px/1 var(--brand);color:var(--text-2)}
 .corner-label{font:700 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase}
 .corner.red .corner-label{color:#ff8a93}.corner.blue .corner-label{color:#8db8ff}
 .bigvs{font:400 56px/1 var(--brand);text-align:center;align-self:center}
-.bigvs small{display:block;font:600 11px/1.4 var(--body);letter-spacing:.12em;color:var(--muted);margin-top:8px;text-transform:uppercase}
 .tot{display:grid;gap:0}
 .tot .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(110px,180px) minmax(0,1fr);align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft)}
 .tot .row:last-child{border:0}
@@ -316,7 +315,6 @@ footer b{color:var(--text-2)}
   .corner.blue .badges{align-items:flex-start}
   .corner .portrait{width:84px;height:100px;font-size:36px}
   .bigvs{font-size:30px}
-  .bigvs small{display:none}
   .tot .row{grid-template-columns:minmax(0,1fr) 78px minmax(0,1fr)}
   .tot .l{padding-right:8px}.tot .r{padding-left:8px}
   .tot .chip{width:16px;height:16px;font-size:9px;border-radius:3px}
@@ -617,6 +615,20 @@ function matchupNameLines(name){
   for(let i=1;i<words.length;i++){const diff=Math.abs(words.slice(0,i).join(' ').length-words.slice(i).join(' ').length);if(diff<best){best=diff;split=i;}}
   return [words.slice(0,split).join(' '),words.slice(split).join(' ')];
 }
+function fitMatchupNames(){
+  const headings=[...document.querySelectorAll('.faceoff .fname')];
+  if(!headings.length)return;
+  // Measure at the CSS size, then give both fighters the same fitted size.
+  // Repeating this after a resize must also let the type grow back to normal.
+  headings.forEach(node=>node.style.removeProperty('font-size'));
+  const base=Math.min(...headings.map(node=>parseFloat(getComputedStyle(node).fontSize)));
+  const ratio=Math.min(1,...headings.map(node=>{
+    const width=node.clientWidth,needed=Math.max(...[...node.querySelectorAll('.name-line')].map(line=>line.scrollWidth));
+    return width>0&&needed>width?Math.max(0,width-2)/needed:1;
+  }));
+  const size=Math.floor(base*ratio*100)/100;
+  headings.forEach(node=>node.style.fontSize=size+'px');
+}
 function corner(r,side){
   const sm=r.summary;
   return h('div',{class:'corner '+side},avatar(r,'portrait '+side),
@@ -669,7 +681,7 @@ function renderCompare(res){
   const [A,B]=res.fighters,c=$('content');
   const scopeNote=(r)=>r.percentiles&&r.percentiles.eligible?r.percentiles.scope:'unranked';
   c.replaceChildren(...[
-    h('section',{class:'card faceoff'},corner(A,'red'),h('div',{class:'bigvs'},h('span',{class:'distressed',text:'VS'}),h('small',{text:windowLabel()})),corner(B,'blue')),
+    h('section',{class:'card faceoff'},corner(A,'red'),h('div',{class:'bigvs'},h('span',{class:'distressed',text:'VS'})),corner(B,'blue')),
     windowNoteCompare(A,B),
     h('div',{class:'grid g2'},
       h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Tale of the tape'}),h('small',{text:'Profile snapshot · age at cutoff'})),taleOfTape(A,B)),
@@ -685,6 +697,7 @@ function renderCompare(res){
     ...[A,B].map((r,i)=>h('section',{class:'card',style:'margin-bottom:18px'},h('div',{class:'section-title'},h('h3',null,h('span',{style:`display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:3px;background:var(--${i?'blue':'red'})`}),r.name+' · fight by fight'),h('small',{text:'Sig. strike differential per minute, last '+Math.min(innerWidth<700?10:20,r.history.length)})),timeline(r.history))),
     h('p',{class:'muted',style:'font-size:13px',text:'Descriptive comparison of recorded UFC fights. Numbers are not adjusted for opponent quality and do not predict a winner.'}),
     provenance([A,B])].filter(Boolean));
+  fitMatchupNames();
 }
 const fights=n=>n+(n===1?' fight':' fights');
 function windowNoteCompare(A,B){const small=[A,B].filter(r=>r.metrics.bouts<3).map(r=>r.name);return h('div',{class:'window-note'},h('span',{class:'eyebrow',text:'Measuring'}),h('span',null,h('b',{text:windowLabel()}),' before '+niceDate(state.before)+' · '+A.name+' ',h('b',{text:fights(A.metrics.bouts)}),' · '+B.name+' ',h('b',{text:fights(B.metrics.bouts)})),small.length?h('span',{class:'badge',style:'color:#f3cf7e',text:'Small sample: '+small.join(', ')}):null);}
@@ -744,6 +757,11 @@ async function route(){
   finally{if(v===version)$('main').classList.remove('loading');}
 }
 addEventListener('hashchange',route);
+// Refit when the viewport changes or the actual display font finishes loading.
+const nameFitObserver=new ResizeObserver(()=>requestAnimationFrame(fitMatchupNames));
+nameFitObserver.observe($('content'));
+document.fonts.ready.then(fitMatchupNames);
+document.fonts.addEventListener('loadingdone',fitMatchupNames);
 
 /* ================= search ================= */
 let timer=null,searchVersion=0,hl=-1;
