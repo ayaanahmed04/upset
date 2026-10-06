@@ -1,17 +1,25 @@
 # UPSET Project Status
 
-**Last updated:** October 5, 2026 America/Chicago
+**Last updated:** October 6, 2026 UTC
 
 **Current phase:** Local product refinement alongside data and model validation
 
-**Current focus:** Preserve the accepted website checkpoint and hand off completed work; resume incremental changes when Ayaan is ready
+**Current focus:** Incremental mobile search fixes on the accepted broadcast site
+
+## Mobile follow-up — October 6, 2026 UTC
+
+The phone screenshot confirms square controls are installed and same-Wi-Fi
+viewing works. Mobile search stacking, full-width layout, input focus zoom and
+keyboard-aware dropdown height have been corrected in source. The replacement
+HTML is delivered for Mac installation; final phone appearance awaits review.
+Read `MOBILE_SEARCH_2026_10_06.md` for the changes and working LAN launch command.
 
 ## Current checkpoint — October 5, 2026 (final chat handoff)
 
 Read `HANDOFF_2026_10_05_FINAL.md` before acting on older pending notes below.
 The accepted local product is the original broadcast site with Ayaan's creator
 bio and square UI controls/panels. The editorial experiment was rejected.
-Latest all-square Mac installation is delivered but not yet confirmed.
+All-square Mac installation was subsequently confirmed in the phone screenshot.
 The last visible viewer uses research_v2 (8,799 bouts); the completed refresh
 DB has 8,810 through October 3. Latest frozen replay is 160/255 decisive picks
 (62.74510%), retrospective only. Identity/independent coverage/prospective

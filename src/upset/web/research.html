@@ -52,7 +52,7 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(12,13,16,.86);backdr
 .search-wrap input{width:100%;height:42px;border-radius:0;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 42px;font-size:15px}
 .search-wrap input::placeholder{color:var(--muted)}
 .search-wrap svg{position:absolute;left:15px;top:12px;width:18px;height:18px;color:var(--muted)}
-.dropdown{position:absolute;top:50px;left:0;right:0;background:var(--surface-2);border:1px solid var(--line);border-radius:0;box-shadow:0 18px 50px rgba(0,0,0,.5);max-height:420px;overflow:auto;display:none;padding:6px}
+.dropdown{position:absolute;z-index:5;top:calc(100% + 8px);left:0;right:0;background:var(--surface-2);border:1px solid var(--line);border-radius:0;box-shadow:0 18px 50px rgba(0,0,0,.5);max-height:420px;overflow:auto;display:none;padding:6px}
 .dropdown.open{display:block}
 .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:0;padding:8px 10px}
 .opt:hover,.opt.hl{background:var(--surface-3)}
@@ -297,15 +297,24 @@ footer b{color:var(--text-2)}
   .wrap{padding:0 16px}
   :root{--rail:0px}
   .rail{display:none}
-  header.top{position:static}
-  .topbar{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"logo controls" "logo search";gap:12px 14px;align-items:center;padding-top:16px;padding-bottom:16px}
+  /* Keep the scrolling header above main content, including textured headlines. */
+  header.top{position:relative;isolation:isolate;background:var(--bg);backdrop-filter:none}
+  .topbar{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-areas:"logo controls" "search search";gap:12px 14px;align-items:center;padding-top:16px;padding-bottom:16px}
   .mlogo{display:block;grid-area:logo;line-height:0;align-self:start}
-  .mlogo img{height:112px;width:auto;display:block}
+  .mlogo img{height:80px;width:auto;max-width:100%;display:block}
   .mlogo{align-self:center}
-  .controls{grid-area:controls}
-  .search-wrap{grid-area:search}
-  .seg button{padding:6px 9px}
-  .controls{width:100%;justify-content:space-between;margin:0}
+  .controls{grid-area:controls;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;width:100%;min-width:0;margin:0}
+  .search-wrap{grid-area:search;width:100%;max-width:none;min-width:0}
+  .search-wrap input{height:46px;font-size:16px}
+  .search-wrap svg{top:14px}
+  .dropdown{max-height:min(420px,var(--search-space,55dvh));overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .opt{min-height:60px;padding:10px}
+  .opt>div:last-child{min-width:0}
+  .opt b,.opt small{overflow-wrap:anywhere}
+  .seg{width:100%;min-width:0}
+  .seg button{flex:1;min-height:36px;padding:6px 9px}
+  .date{justify-self:end;min-width:0;max-width:100%}
+  .date input{width:164px;min-width:0;max-width:100%;height:40px;font-size:16px;padding:0 10px}
   .date span{display:none}
   .hero{grid-template-columns:1fr;padding:20px}
   .hero .portrait{width:110px;height:132px;font-size:46px}
@@ -790,6 +799,20 @@ document.fonts.addEventListener('loadingdone',fitResearchLabels);
 let timer=null,searchVersion=0,hl=-1;
 const input=$('search'),dd=$('dropdown');
 function closeDD(){dd.classList.remove('open');input.parentElement.setAttribute('aria-expanded','false');hl=-1;}
+function fitSearchDropdown(){
+  if(!matchMedia('(max-width:700px)').matches){dd.style.removeProperty('--search-space');return;}
+  // The visual viewport shrinks with the phone keyboard; the layout viewport may not.
+  const viewport=window.visualViewport;
+  const bottom=(viewport?viewport.offsetTop+viewport.height:innerHeight);
+  const available=bottom-input.getBoundingClientRect().bottom-20;
+  dd.style.setProperty('--search-space',Math.max(0,Math.min(420,available))+'px');
+}
+addEventListener('resize',fitSearchDropdown);
+addEventListener('scroll',fitSearchDropdown,{passive:true});
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize',fitSearchDropdown);
+  window.visualViewport.addEventListener('scroll',fitSearchDropdown);
+}
 input.addEventListener('input',()=>{clearTimeout(timer);const sv=++searchVersion;timer=setTimeout(async()=>{
   const q=input.value.trim();if(!q){closeDD();return;}
   try{const matches=await api('/api/fighters?q='+encodeURIComponent(q));if(sv!==searchVersion)return;
@@ -797,7 +820,7 @@ input.addEventListener('input',()=>{clearTimeout(timer);const sv=++searchVersion
     if(!matches.length)dd.append(h('div',{class:'opt',style:'cursor:default'},h('small',{text:'No fighter matches “'+q+'”.'})));
     for(const r of matches){const meta=r.recorded_bouts?[r.division,r.recorded_bouts+' UFC '+(r.recorded_bouts===1?'fight':'fights'),r.last_bout?'last '+r.last_bout.slice(0,4):null].filter(Boolean).join(' · '):'Profile only · no UFC fights with stats';
       dd.append(h('button',{class:'opt'+(r.recorded_bouts?'':' dim'),role:'option',onclick:()=>{closeDD();input.value='';input.blur();go('#/fighter/'+r.id);}},h('div',{class:'avatar mono mini',text:initials(r.name)}),h('div',null,h('b',{text:r.name}),h('small',{text:meta}))));}
-    dd.classList.add('open');input.parentElement.setAttribute('aria-expanded','true');
+    dd.classList.add('open');fitSearchDropdown();input.parentElement.setAttribute('aria-expanded','true');
   }catch(e){$('error').textContent=e.message;}},160);});
 input.addEventListener('keydown',e=>{const opts=[...dd.querySelectorAll('button.opt')];if(!opts.length)return;
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();hl=(hl+(e.key==='ArrowDown'?1:-1)+opts.length)%opts.length;opts.forEach((o,i)=>o.classList.toggle('hl',i===hl));opts[hl].scrollIntoView({block:'nearest'});}
