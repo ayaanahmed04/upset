@@ -109,6 +109,29 @@ main.loading{opacity:.45}
 .section-title h3{margin:0;font:400 19px/1.15 var(--brand);text-transform:uppercase;letter-spacing:.02em}
 .section-title small{color:var(--muted);font-size:12px;text-align:right}
 .spacer{height:18px}
+.power-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.power-stat{min-width:0;border-left:2px solid var(--line);padding-left:12px}
+.power-stat .lbl{font-size:13px;color:var(--text-2)}
+.power-stat .num{font:400 34px/1.2 var(--brand);margin:8px 0}
+.power-unit{font-size:12px;color:var(--text-2);margin-bottom:6px}
+.metric-note{font-size:12px;line-height:1.6;color:var(--text-2);margin:16px 0 0}
+.comparison-name{font:400 17px/1.3 var(--brand);margin:0 0 10px;overflow-wrap:anywhere}
+.common-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(2,minmax(0,1.5fr));gap:20px;padding:18px 0;border-top:1px solid var(--line-soft)}
+.common-list{margin-top:16px}
+.common-side,.common-opponent{min-width:0;overflow-wrap:anywhere}
+.common-opponent .opp{text-align:left}
+.common-name{display:block;font-size:13px;margin-bottom:10px}
+.common-name.red{color:var(--accent-text)}
+.common-name.blue{color:var(--blue)}
+.common-meeting{display:flex;align-items:flex-start;gap:8px;font-size:13px;margin:10px 0}
+.common-meeting .chip{flex-shrink:0}
+.common-meeting .sub{display:block;color:var(--text-2);font-size:12px;line-height:1.5;margin-top:3px}
+@media(max-width:700px){
+  .power-grid{grid-template-columns:1fr;gap:16px}
+  .power-stat .num{font-size:30px;margin:4px 0}
+  .common-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .common-opponent{grid-column:1 / -1}
+}
 
 /* ---------- Home ---------- */
 .home-hero{padding:40px 0 10px}
@@ -483,7 +506,7 @@ function statusBadges(r){
   if(rosterCurrent&&r.roster.status==='active')out.push(h('span',{class:'badge active',title:'On the UFC roster per '+(r.roster.source||'roster file')+' as of '+r.roster.as_of,text:'Active'}));
   else if(rosterCurrent&&r.roster.status)out.push(h('span',{class:'badge',text:r.roster.status}));
   if(sm.last_bout)out.push(h('span',{class:'badge',text:'Last fight '+ago(sm.last_bout,ref)}));
-  if(sm.title_bouts)out.push(h('span',{class:'badge',text:sm.title_bouts+' title '+(sm.title_bouts===1?'fight':'fights')}));
+  if(sm.title_bouts)out.push(h('span',{class:'badge',title:'Known title fights from source labels and reviewed UFC evidence; incomplete labels may undercount.',text:sm.title_bouts+' title '+(sm.title_bouts===1?'fight':'fights')}));
   return h('div',{class:'badges'},out);
 }
 function recordText(c){return c.win+'–'+c.loss+(c.other?'–'+c.other:'');}
@@ -619,6 +642,40 @@ function tiles(r){
   return h('div',{class:'tiles'},T.map(([label,key,val])=>{const mm=METRICS.find(x=>x.key===key),gp=goodPct(r,mm);
     return h('div',{class:'tile'},h('div',{class:'lbl',text:label}),h('div',{class:'num',text:val}),h('div',{class:'rank'},gp==null?'No division rank in this window':[gp>=90?h('b',{text:'Top '+Math.max(1,Math.round(100-gp))+'%'}):ordinal(gp)+' percentile',' · '+r.percentiles.scope]));}));
 }
+function powerDurability(r){
+  const m=r.metrics.power_durability;
+  const section=h('section',{class:'card'},
+    h('div',{class:'section-title'},h('h3',{text:'Power & durability'}),h('small',{text:windowLabel()})));
+  if(!m){section.append(h('p',{class:'muted',text:'Restart the updated server to load these statistics.'}));return section;}
+  const measures=[
+    ['Knockdown efficiency',fmt(m.knockdowns_per_100_sig_landed),'per 100 significant strikes landed',m.knockdowns_scored+' knockdowns / '+m.sig_strikes_landed+' significant strikes'],
+    ['Knockdowns received',m.bouts?String(m.knockdowns_received):'—','recorded knockdowns',fights(m.bouts)+' in this window'],
+    ['KO/TKO losses',m.bouts?String(m.ko_tko_losses):'—','including doctor stoppages',m.ko_tko_losses+' of '+m.losses+' losses · '+fights(m.bouts)]
+  ];
+  section.append(h('div',{class:'power-grid'},measures.map(([label,value,unit,sample])=>
+    h('div',{class:'power-stat'},h('div',{class:'lbl',text:label}),h('div',{class:'num',text:value}),h('div',{class:'power-unit',text:unit}),h('div',{class:'meta-line',text:sample})))),
+    h('p',{class:'metric-note',text:'Recorded UFC fights only. Knockdown efficiency describes recorded outcomes, not measured punch force. These counts are not adjusted for opponent quality; unavailable or unlinked bouts are excluded.'}));
+  return section;
+}
+function commonOpponentSection(res){
+  const section=h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Common opponents'}),h('small',{text:windowLabel()+' · before '+niceDate(state.before)})));
+  const shared=res.common_opponents;
+  if(!shared){section.append(h('p',{class:'muted',text:'Restart the updated server to load shared opponents.'}));return section;}
+  section.append(h('p',{class:'metric-note',text:'Every recorded meeting within each fighter’s selected window. Results against a shared opponent are context, not a prediction of this matchup.'}));
+  if(!shared.length){section.append(h('p',{class:'muted',text:'No shared opponents recorded in both fighters’ selected windows. Pending identity links can leave histories incomplete.'}));return section;}
+  const list=h('div',{class:'common-list'});
+  function show(limit){
+    list.replaceChildren(...shared.slice(0,limit).map(item=>h('article',{class:'common-row'},
+      h('div',{class:'common-opponent'},h('button',{class:'opp',text:item.opponent,onclick:()=>go('#/fighter/'+item.opponent_id)})),
+      item.fighters.map((side,i)=>h('div',{class:'common-side'},h('b',{class:'common-name '+(i?'blue':'red'),text:res.fighters[i].name}),
+        side.meetings.map(f=>h('div',{class:'common-meeting'},
+          h('span',{class:'chip '+f.outcome,text:f.outcome==='win'?'W':f.outcome==='loss'?'L':'–',title:f.outcome==='other'?'Draw / no contest':f.outcome}),
+          h('div',null,h('span',{text:niceDate(f.date)}),h('span',{class:'sub',text:[f.method||'Unknown method',f.result_round?'R'+f.result_round:null,f.result_time].filter(Boolean).join(' · ')}),f.result_amended?h('span',{class:'sub',text:'Reviewed result amendment'}):null))))))));
+  }
+  show(6);section.append(list);
+  if(shared.length>6){const more=h('button',{class:'btn more',text:'Show all '+shared.length+' common opponents',onclick:()=>{show(shared.length);more.remove();}});section.append(more);}
+  return section;
+}
 function historyList(r,limit){
   const list=h('div',{class:'history'});
   list.append(h('div',{class:'hrow head'},h('span',{text:'Date'}),h('span',{text:''}),h('span',{text:'Opponent'}),h('span',{class:'meth-col',text:'Method'}),h('span',{class:'ss-col',text:'Sig. landed / absorbed'})));
@@ -652,6 +709,8 @@ function renderFighter(r){
     heroCard(r),windowNote(r),
     has?tiles(r):h('div',{class:'card empty',text:any?'No fights in this window.':'No linked UFC fights with recorded stats in this date range. Some collected bouts still await identity review.'}),
     h('div',{class:'spacer'}),
+    has?powerDurability(r):null,
+    has?h('div',{class:'spacer'}):null,
     r.metrics.bouts?h('div',{class:'grid g2'},
       h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Striking'}),h('small',{text:rankNote})),meters(r,'Striking')),
       h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Grappling'}),h('small',{text:r.metrics.control_observed_bouts+' of '+r.metrics.bouts+' fights have control time'})),meters(r,'Grappling'))):null,
@@ -667,7 +726,9 @@ function renderFighter(r){
   fitDivisionWatermark();
 }
 function provenance(reports){
-  return h('details',{class:'prov'},h('summary',{text:'Data provenance'}),reports.map(r=>h('p',null,h('b',{text:r.name+': '}),'source ID '+r.profile.source_fighter_id+' · ',r.profile.source_url?h('a',{href:r.profile.source_url,target:'_blank',rel:'noopener',text:'source profile'}):'no source URL',' · measurements from profile snapshot'+(r.roster&&r.roster.as_of?' · roster as of '+r.roster.as_of:'')+(r.roster&&r.roster.image_credit?' · image: '+r.roster.image_credit:''))));
+  return h('details',{class:'prov'},h('summary',{text:'Data provenance'}),reports.map(r=>h('div',null,
+    h('p',null,h('b',{text:r.name+': '}),'source ID '+r.profile.source_fighter_id+' · ',r.profile.source_url?h('a',{href:r.profile.source_url,target:'_blank',rel:'noopener',text:'source profile'}):'no source URL',' · measurements from profile snapshot'+(r.roster&&r.roster.as_of?' · roster as of '+r.roster.as_of:'')+(r.roster&&r.roster.image_credit?' · image: '+r.roster.image_credit:'')),
+    r.history.filter(f=>f.title_bout_evidence).map(f=>h('p',null,'Reviewed title designation: '+niceDate(f.date)+' vs '+f.opponent+' · ',h('a',{href:f.title_bout_evidence.source_url,target:'_blank',rel:'noopener',text:'official UFC evidence'}))))));
 }
 
 /* ================= compare page ================= */
@@ -753,6 +814,10 @@ function renderCompare(res){
         h('div',{class:'key'},h('span',null,h('i',{style:'background:var(--red)'}),A.name),h('span',null,B.name,h('i',{style:'background:var(--blue)'}))),
         h('p',{class:'meta-line',style:'margin:6px 0 8px',text:'Bar length = percentile within each fighter’s own division ('+scopeNote(A)+(scopeNote(A)===scopeNote(B)?'':' / '+scopeNote(B))+'); longer is better. Arrow marks the better raw number.'}),
         duel(A,B))),
+    h('div',{class:'spacer'}),
+    h('div',{class:'grid g2'},[A,B].map(r=>h('div',null,h('p',{class:'comparison-name',text:r.name}),powerDurability(r)))),
+    h('div',{class:'spacer'}),
+    commonOpponentSection(res),
     h('div',{class:'spacer'}),
     h('div',{class:'grid g2'},[A,B].map((r,i)=>h('section',{class:'card'},h('div',{class:'section-title'},h('h3',null,h('span',{style:`display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:3px;background:var(--${i?'blue':'red'})`}),r.name),h('small',{text:'Strike map'})),r.metrics.bouts?strikeMap(r.metrics):h('p',{class:'muted',text:'No fights in window.'})))),
     h('div',{class:'spacer'}),

@@ -16,6 +16,7 @@ from urllib.parse import parse_qs, urlsplit
 
 from upset.data.audit_cito_archive import _name
 from upset.data.collect_cito_archive import _digest
+from upset.data.reviewed_bout_metadata import reviewed_title_evidence
 
 
 def connect(database):
@@ -110,6 +111,7 @@ def fighter_report(db, uid, before, window):
         reviewed_outcome = ("other" if amendment["winner_name"] is None else
                             "win" if amendment["winner_name"] == fight[f"fighter_{side}_name"] else "loss") if amendment else frozen_outcome
         method = amendment["result_method"] if amendment else fight["result_method"]
+        title_evidence = reviewed_title_evidence(fight)
         history.append({"fight_id": record["id"], "date": fight["event_date"],
                         "opponent_id": opponent, "opponent": fight[f"fighter_{other}_name"],
                         "outcome": reviewed_outcome, "frozen_outcome": frozen_outcome,
@@ -117,7 +119,8 @@ def fighter_report(db, uid, before, window):
                         "result_round": amendment.get("result_round") if amendment else fight.get("result_round"),
                         "result_time": amendment.get("result_time") if amendment else fight.get("result_time"),
                         "weight_class": fight.get("weight_class"), "division": division(fight.get("weight_class")),
-                        "title_bout": "Title" in (fight.get("weight_class") or ""),
+                        "title_bout": "Title" in (fight.get("weight_class") or "") or title_evidence is not None,
+                        "title_bout_evidence": title_evidence,
                         "source": fight["source"], "source_url": fight.get("source_url"),
                         "reviewed_result": amendment, "frozen_result": {k: fight[k] for k in ("winner_name", "source_winner_label", "result_method", "result_time")},
                         "own": stat, "opponent_stats": opposing})
@@ -157,6 +160,19 @@ def fighter_report(db, uid, before, window):
     stats["sig_positions"] = {k: own(k + "_landed") for k in ("distance", "clinch", "ground")}
     stats["results_by_method"] = {outcome: {g: sum(r["outcome"] == outcome and r["method_group"] == g for r in selected)
                                             for g in ("ko", "sub", "dec", "other")} for outcome in ("win", "loss")}
+    # Count-based measures include selected bouts even when the clock is zero.
+    # Their denominator is landed significant strikes, never bout duration.
+    knockdowns = sum(r["own"]["knockdowns"] for r in selected)
+    sig_landed = sum(r["own"]["sig_strikes_landed"] for r in selected)
+    stats["power_durability"] = {
+        "bouts": len(selected),
+        "knockdowns_scored": knockdowns,
+        "sig_strikes_landed": sig_landed,
+        "knockdowns_per_100_sig_landed": ratio(100 * knockdowns, sig_landed),
+        "knockdowns_received": sum(r["opponent_stats"]["knockdowns"] for r in selected),
+        "ko_tko_losses": stats["results_by_method"]["loss"]["ko"],
+        "losses": stats["losses"],
+    }
     streak_kind, streak = (history[0]["outcome"], 0) if history else (None, 0)
     for r in history:
         if r["outcome"] != streak_kind:
@@ -176,7 +192,7 @@ def fighter_report(db, uid, before, window):
     return {"id": uid, "name": row["name"], "profile": profile, "before": before,
             "window": window, "available_bouts": len(history), "metrics": stats, "history": history,
             "summary": summary,
-            "interpretation": "Fight-date filter with currently reviewed outcomes; not a reconstruction of when each result amendment became available. Profile measurements are from the frozen profile snapshot."}
+            "interpretation": "Fight-date filter with currently reviewed outcomes and title metadata; not a reconstruction of when amendments became available. Profile measurements are from the frozen profile snapshot."}
 
 
 PERCENTILE_KEYS = ("sig_landed_per_minute", "sig_absorbed_per_minute", "sig_differential_per_minute",
@@ -277,6 +293,36 @@ def enrich(database, report):
     return report
 
 
+def common_opponents(reports):
+    """Intersect accepted opponent IDs within each report's selected window.
+
+    Keep every meeting, including rematches and reviewed draw/NC outcomes.
+    Identical display names never establish an identity match.
+    """
+    grouped = []
+    fields = ("fight_id", "date", "outcome", "method", "result_round", "result_time")
+    for report in reports:
+        history = report["history"]
+        selected = history[:report["window"]] if report["window"] else history
+        opponents = {}
+        for row in selected:
+            entry = opponents.setdefault(row["opponent_id"], {
+                "name": row["opponent"], "meetings": []})
+            entry["meetings"].append({**{key: row[key] for key in fields},
+                                      "result_amended": bool(row["reviewed_result"])})
+        grouped.append(opponents)
+    a, b = grouped
+    shared = [{"opponent_id": uid, "opponent": a[uid]["name"],
+               "fighters": [{"fighter_id": report["id"],
+                             "meetings": group[uid]["meetings"]}
+                            for report, group in zip(reports, grouped)]}
+              for uid in a.keys() & b.keys()]
+    shared.sort(key=lambda item: (
+        max(meeting["date"] for side in item["fighters"] for meeting in side["meetings"]),
+        item["opponent_id"]), reverse=True)
+    return shared
+
+
 def route(database, target):
     parts = urlsplit(target)
     params = parse_qs(parts.query)
@@ -293,7 +339,8 @@ def route(database, target):
             a, b = params.get("a", [""])[0], params.get("b", [""])[0]
             if a == b:
                 raise ValueError("Choose two different fighters.")
-            return {"fighters": [enrich(database, fighter_report(db, uid, before, window)) for uid in (a, b)]}
+            reports = [enrich(database, fighter_report(db, uid, before, window)) for uid in (a, b)]
+            return {"fighters": reports, "common_opponents": common_opponents(reports)}
     raise KeyError("Page not found.")
 
 

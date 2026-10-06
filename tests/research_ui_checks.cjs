@@ -51,6 +51,33 @@ vm.runInContext(section('const METRICS=[', '/* ================= avatar'), conte
 vm.runInContext(section('function meters(r,group)', '/* ================= fighter page'), context);
 vm.runInContext(section('function tiles(r)', 'function historyList('), context);
 vm.runInContext(section('function duel(A,B)', 'function renderCompare('), context);
+vm.runInContext(section('const fights=n=>', '/* ================= home'), context);
+vm.runInContext(`
+  {
+    state.window='0';state.before='2026-10-04';
+    const power={bouts:2,knockdowns_scored:3,sig_strikes_landed:90,
+      knockdowns_per_100_sig_landed:100*3/90,knockdowns_received:5,ko_tko_losses:1,losses:1};
+    const r={metrics:{power_durability:power}};
+    const original=JSON.stringify(power);
+    const card=powerDurability(r);
+    assert.ok(card.textContent.includes('3.33'));
+    assert.ok(card.textContent.includes('3 knockdowns / 90 significant strikes'));
+    assert.ok(card.textContent.includes('1 of 1 losses · 2 fights'));
+    assert.equal(JSON.stringify(power),original);
+    const empty=powerDurability({metrics:{power_durability:{...power,bouts:0,knockdowns_per_100_sig_landed:null}}});
+    assert.equal(empty.children[1].children.filter(n=>n.children[1].textContent==='—').length,3);
+    const meetings=[{date:'2026-01-01',outcome:'win',method:'Decision',result_round:3,result_time:'5:00'},
+      {date:'2025-01-01',outcome:'other',method:'No Contest',result_amended:true}];
+    const shared={fighters:[{name:'Fighter A'},{name:'Fighter B'}],common_opponents:[{
+      opponent_id:'opponent',opponent:'Shared opponent',fighters:[{meetings},{meetings:meetings.slice(0,1)}]}]};
+    const section=commonOpponentSection(shared);
+    assert.ok(section.textContent.includes('No Contest'));
+    assert.ok(section.textContent.includes('Reviewed result amendment'));
+    section.children[2].children[0].children[0].children[0].onclick();
+    assert.equal(destination,'#/fighter/opponent');
+    assert.ok(commonOpponentSection({...shared,common_opponents:[]}).textContent.includes('No shared opponents recorded'));
+  }
+`, context);
 
 vm.runInContext(`
   const a={id:'a',name:'Charles Oliveira'},b={id:'b',name:'Max Holloway'};

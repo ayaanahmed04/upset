@@ -6,6 +6,15 @@
 
 **Current focus:** Correct serving snapshot and review current fighter identity gaps; preserve accepted broadcast UI
 
+## First fan statistics — October 6, 2026 UTC
+
+Source now adds selected-window power/durability counts and common opponents,
+with cutoff, rematch and missing-history handling. Two confirmed UFC 328 title
+metadata overlays correct the Chimaev header from one title fight to two;
+results/stats and the SQLite stay unchanged. 27 focused Python tests and JS
+checks pass. Mac installation and visual inspection await Ayaan. See
+`FAN_STATS_2026_10_06.md`; the accepted broadcast design is preserved.
+
 ## Serving data repair — October 6, 2026 UTC
 
 Source update and Mac installer restore Harry Hardwick/Rahiki/McMillen histories,
