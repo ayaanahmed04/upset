@@ -13,7 +13,7 @@ function renderAbout() {
       h('p', {text:
         'Beyond being a fan project, UPSET is my attempt to help push MMA analytics toward the level of statistical depth and accessibility that already exists in major professional sports such as basketball, baseball, and football. MMA, more specifically UFC, has decades of fights, thousands of athletes, and an enormous amount of performance data, but much of that information is still difficult for the average fan to explore or put into context.'}),
       h('p', {text:
-        'My goal is to use my background in computer science, data analysis, and machine learning to turn that information into something useful—whether that means understanding how a fighter has evolved, comparing two athletes beyond their win-loss records, identifying trends across the sport, or eventually building models that can better understand matchup outcomes.'}),
+        'My goal is to use my background in computer science, data analysis, and machine learning to turn that information into something useful, whether that means understanding how a fighter has evolved, comparing two athletes beyond their win-loss records, identifying trends across the sport, or eventually building models that can better understand matchup outcomes.'}),
       h('p', {text:
         'UPSET started from my own curiosity as a UFC fan, but I want it to grow into a serious MMA research and analytics platform for anyone who wants to understand the sport at a deeper level.'}))
   );
