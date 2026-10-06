@@ -652,7 +652,7 @@ function renderFighter(r){
   const has=r.metrics.bouts>0,any=r.history.length>0;
   c.replaceChildren(...[
     heroCard(r),windowNote(r),
-    has?tiles(r):h('div',{class:'card empty',text:any?'No fights in this window.':'No UFC fights with recorded stats before this date. This is a profile-only entry.'}),
+    has?tiles(r):h('div',{class:'card empty',text:any?'No fights in this window.':'No linked UFC fights with recorded stats in this date range. Some collected bouts still await identity review.'}),
     h('div',{class:'spacer'}),
     r.metrics.bouts?h('div',{class:'grid g2'},
       h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Striking'}),h('small',{text:rankNote})),meters(r,'Striking')),
@@ -769,7 +769,8 @@ const fights=n=>n+(n===1?' fight':' fights');
 function windowNoteCompare(A,B){const small=[A,B].filter(r=>r.metrics.bouts<3).map(r=>r.name);return h('div',{class:'window-note'},h('span',{class:'eyebrow',text:'Measuring'}),h('span',null,h('b',{text:windowLabel()}),' before '+niceDate(state.before)+' · '+A.name+' ',h('b',{text:fights(A.metrics.bouts)}),' · '+B.name+' ',h('b',{text:fights(B.metrics.bouts)})),small.length?h('span',{class:'badge',style:'color:#f3cf7e',text:'Small sample: '+small.join(', ')}):null);}
 
 /* ================= home ================= */
-const PICKS=['Charles Oliveira','Max Holloway'];  /* featured matchup */
+// Edit these two names to change the homepage feature; use exact search names.
+const PICKS=['Brendan Allen','Christian Leroy Duncan'];  /* featured matchup */
 async function renderHome(){
   const m=state.meta,c=$('content');
   const years=m?(+m.latest_bout.slice(0,4))-(+m.earliest_bout.slice(0,4)):null;
@@ -793,7 +794,7 @@ async function renderHome(){
   placeSearch('hero');
   const found={};
   await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
-  const a=found['Charles Oliveira'],b=found['Max Holloway'],feat=$('feature');
+  const a=found[PICKS[0]],b=found[PICKS[1]],feat=$('feature');
   if(!feat||state.view!=='home')return;
   if(a&&b)feat.replaceChildren(h('div',null,h('div',{class:'eyebrow',style:'margin-bottom:10px',text:'Featured matchup'}),h('div',{class:'names'},h('span',{class:'distressed',text:a.name}),h('b',{text:'vs'}),h('span',{class:'distressed',text:b.name}))),h('button',{class:'btn primary',onclick:()=>go('#/compare/'+a.id+'/'+b.id),text:'See the tale of the tape →'}));
   else feat.remove();

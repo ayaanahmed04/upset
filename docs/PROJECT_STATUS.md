@@ -4,7 +4,15 @@
 
 **Current phase:** Local product refinement alongside data and model validation
 
-**Current focus:** Homepage hero search and requested copy/font changes on the accepted broadcast site
+**Current focus:** Correct serving snapshot and review current fighter identity gaps; preserve accepted broadcast UI
+
+## Serving data repair — October 6, 2026 UTC
+
+Source update and Mac installer restore Harry Hardwick/Rahiki/McMillen histories,
+add one reviewed Schmid identity, and use the collected October 3 card. Real
+saved-data verification yields 8,815 research bouts with 89 current bouts still
+pending identity review. Mac installation awaits confirmation. Read
+`RESEARCH_DATA_UPDATE_2026_10_06.md` for evidence, limits and future-source plan.
 
 ## Homepage search — October 6, 2026 UTC
 

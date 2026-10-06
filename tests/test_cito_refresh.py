@@ -169,3 +169,18 @@ def test_incomplete_rounds_are_quarantined_and_raw_tampering_stops_export(tmp_pa
     with pytest.raises(ValueError, match="inventory page hash differs"):
         export_refresh(current, raw, historical, tmp_path / "bad", expected_history=expected, observed_at=NOW)
     assert not (tmp_path / "bad").exists()
+
+
+def test_refresh_preserves_verified_supplementary_profiles(tmp_path, monkeypatch):
+    current, historical, expected = base(tmp_path, monkeypatch)
+    profile = current / 'fighters_identified.jsonl'
+    profile.write_text('{"source":"cito","source_fighter_id":"new-profile","name":"New fighter"}\n')
+    manifest = json.loads((current / 'manifest.json').read_text())
+    manifest['output_sha256'][profile.name] = _digest(profile)
+    (current / 'manifest.json').write_text(json.dumps(manifest))
+    raw = tmp_path / 'refresh'
+    collect(raw)
+    output = tmp_path / 'extended'
+    report = export_refresh(current, raw, historical, output, expected_history=expected, observed_at=NOW)
+    assert (output / profile.name).read_bytes() == profile.read_bytes()
+    assert report['output_sha256'][profile.name] == _digest(profile)
