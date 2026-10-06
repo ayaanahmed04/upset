@@ -5,10 +5,11 @@ screenshots and a GIF. Both parts are integrated into the current broadcast
 site, retaining the warm palette, square panels, creator biography and previous
 mobile viewport fixes.
 
-- The homepage headline ends with red `UPSET`, replacing `ONE PLACE.`.
+- The homepage headline ends with red `UPSET.`, replacing `ONE PLACE.`.
 - The subtitle is lowercase: `look up any fighter, analyze their stats, compare
   them head to head.` It uses Black Ops One, loaded with the existing Google
-  Fonts stylesheet; only that subtitle changes typeface.
+  Fonts stylesheet; only that subtitle changes typeface. Its color is the same
+  `--accent` red as UPSET.
 - The large octagon-cut search sits beside the counters on desktop and under
   the headline on tablet/phone. It moves to the centered header on other pages.
 - The existing search element is moved, not duplicated. It returns to the
@@ -40,3 +41,14 @@ change is included.
 Delivery: `upset-hero-search.html` contains About CSS/JS inline for compatibility
 with the existing Mac server. Back up and replace only
 `src/upset/web/research.html`, then reload the page. No server restart is needed.
+
+## Follow-up alignment and copy
+
+The 10:21 PM Chicago screenshot confirms the hero search, updated headline and
+Black Ops One subtitle were installed on the Mac. Ayaan then requested a period
+after UPSET, the same red for the subtitle, and a lower search field aligned with
+the counter numbers. Those refinements are delivered in
+`upset-home-aligned.html`. Desktop search aligns to the end of the hero row with
+a 28px offset accounting for its label and helper text; tablet/mobile reset the
+offset and retain the search-before-counters layout. Final alignment still needs
+his visual review after replacement.

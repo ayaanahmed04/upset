@@ -115,11 +115,12 @@ main.loading{opacity:.45}
 .home-hero h1{font:400 clamp(40px,6vw,82px)/.98 var(--brand);text-transform:uppercase;margin:14px 0 18px;letter-spacing:0}
 .home-hero h1 em{font-style:normal;color:var(--accent);-webkit-text-fill-color:var(--accent);background:none}
 .home-hero p{max-width:620px;color:var(--text-2);font-size:17px;margin:0}
-.home-hero .home-tagline{font-family:'Black Ops One',var(--body);font-weight:400;text-transform:none;line-height:1.6}
+.home-hero .home-tagline{font-family:'Black Ops One',var(--body);font-weight:400;text-transform:none;line-height:1.6;color:var(--accent)}
 .counters{display:flex;gap:44px;flex-wrap:wrap;margin:36px 0}
 .hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:48px;align-items:center}
 .hero-row .counters{margin-bottom:0}
-.hero-search{position:relative;z-index:3;min-width:0}
+/* Balance the label/helper around the field so it lines up with the counter numbers. */
+.hero-search{position:relative;z-index:3;min-width:0;align-self:end;top:28px}
 .hero-search .eyebrow{display:block;margin-bottom:12px}
 .hero-search>small{display:block;margin-top:12px;color:var(--muted);font-size:13px}
 .search-wrap.big .search-shell{--cut:18px}
@@ -310,7 +311,7 @@ footer b{color:var(--text-2)}
 }
 @media(max-width:1000px){
   .hero-row{grid-template-columns:minmax(0,1fr);gap:28px}
-  .hero-search{order:-1}
+  .hero-search{order:-1;align-self:auto;top:0}
   .topbar{grid-template-columns:minmax(0,1fr);padding-top:14px;padding-bottom:14px;gap:12px}
   .topbar:has(.search-slot:empty){grid-template-columns:minmax(0,1fr)}
   .search-slot{grid-column:1;grid-row:2;max-width:none;justify-self:stretch}
@@ -776,7 +777,7 @@ async function renderHome(){
   placeSearch('header');
   c.replaceChildren(h('section',{class:'home-hero'},
     h('div',{class:'eyebrow',text:'UFC fighter research · 1994 to today'}),
-    h('h1',null,h('span',{class:'distressed'},'Every fighter.',h('br'),'Every fight. '),h('em',{text:'UPSET'})),
+    h('h1',null,h('span',{class:'distressed'},'Every fighter.',h('br'),'Every fight. '),h('em',{text:'UPSET.'})),
     h('div',{class:'hero-row'},
       h('div',null,
         h('p',{class:'home-tagline',text:'look up any fighter, analyze their stats, compare them head to head.'}),

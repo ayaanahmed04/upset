@@ -110,7 +110,7 @@ const key = name => input.fire('keydown', {key: name, preventDefault() {}});
   const listeners = input.listeners.input.length;
   await context.route();
   assert.equal(wrap.parentElement.id, 'heroSlot'); assert.ok(wrap.classList.contains('big'));
-  assert.ok(content.textContent.includes('Every fight. UPSET'));
+  assert.ok(content.textContent.includes('Every fight. UPSET.'));
   assert.ok(content.textContent.includes('look up any fighter, analyze their stats, compare them head to head.'));
   await context.route(); // Home-to-home previously risked deleting the live input.
   assert.equal(find('search'), input); assert.equal(input.listeners.input.length, listeners);
