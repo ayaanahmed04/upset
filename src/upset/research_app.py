@@ -297,14 +297,30 @@ def route(database, target):
     raise KeyError("Page not found.")
 
 
-def handler(database):
+DESIGNS = {"broadcast": "research.html", "editorial": "research_editorial.html"}
+WEB_FILES = {
+    "research_base.css": "text/css; charset=utf-8",
+    "research_editorial.css": "text/css; charset=utf-8",
+    "research_editorial.js": "text/javascript; charset=utf-8",
+}
+
+
+def handler(database, design="broadcast"):
+    page = DESIGNS[design]
+
     class Handler(BaseHTTPRequestHandler):
         def do_GET(self):
             try:
                 path = urlsplit(self.path).path
                 if path == "/":
-                    body = files("upset").joinpath("web/research.html").read_bytes()
+                    body = files("upset").joinpath("web/" + page).read_bytes()
                     content_type = "text/html; charset=utf-8"
+                elif path.startswith("/web/"):
+                    name = path.removeprefix("/web/")
+                    if name not in WEB_FILES:
+                        raise KeyError(name)
+                    body = files("upset").joinpath("web/" + name).read_bytes()
+                    content_type = WEB_FILES[name]
                 elif path.startswith("/assets/"):
                     name = path.removeprefix("/assets/")
                     if not ASSET_NAME.match(name):
@@ -340,6 +356,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path, default=Path("data/processed/research_v1/upset.sqlite"))
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--design", choices=DESIGNS, default="broadcast",
+                        help="Choose the original broadcast site or the editorial experiment.")
     parser.add_argument("--roster", type=Path, default=None,
                         help="Optional roster JSON with contract status and image references (see web/ROSTER.md).")
     args = parser.parse_args()
@@ -348,7 +366,7 @@ def main():
         if _digest(args.database) != manifest["database_sha256"]:
             raise ValueError("Research database hash differs.")
         ROSTER.update(load_roster(args.roster))
-        server = ThreadingHTTPServer(("127.0.0.1", args.port), handler(args.database))
+        server = ThreadingHTTPServer(("127.0.0.1", args.port), handler(args.database, args.design))
     except (OSError, ValueError, KeyError, TypeError) as error:
         parser.error(str(error))
     print(f"UPSET local research: http://127.0.0.1:{args.port}", flush=True)
