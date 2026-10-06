@@ -29,25 +29,35 @@ def metadata(db):
     return {r["key"]: json.loads(r["value"]) for r in db.execute("SELECT * FROM metadata")}
 
 
-def search(db, query):
+def search(db, query, before=None):
     if len(query) > 100:
         raise ValueError("Search is limited to 100 characters.")
+    if before is not None and date.fromisoformat(before).isoformat() != before:
+        raise ValueError("Use an ISO date for the search cutoff.")
     # Normalize name tokens; all user values still use SQL parameters.
     terms = [_name(part) for part in query.split()]
     terms = [t for t in terms if t]
     if not terms:
         return []
     where = " AND ".join("search_name LIKE ?" for _ in terms)
-    matches = db.execute("SELECT id,name,profile,(SELECT COUNT(*) FROM stats WHERE fighter_id=fighters.id) AS bouts "
+    count_cutoff = " AND fights.event_date<?" if before is not None else ""
+    count_args = (before,) if before is not None else ()
+    matches = db.execute("SELECT id,name,profile,(SELECT COUNT(*) FROM stats JOIN fights ON fights.id=stats.fight_id "
+                         "WHERE stats.fighter_id=fighters.id" + count_cutoff + ") AS bouts "
                          "FROM fighters WHERE " + where + " ORDER BY bouts DESC,name,id LIMIT 25",
-                         tuple("%" + term + "%" for term in terms)).fetchall()
+                         count_args + tuple("%" + term + "%" for term in terms)).fetchall()
     results = []
     for r in matches:
-        latest = db.execute("""SELECT event_date,payload FROM fights WHERE fighter_1=? OR fighter_2=?
-                               ORDER BY event_date DESC,id DESC LIMIT 1""", (r["id"], r["id"])).fetchone()
+        cutoff_clause = " AND event_date<?" if before is not None else ""
+        dated = db.execute("SELECT event_date,payload FROM fights WHERE (fighter_1=? OR fighter_2=?)"
+                           + cutoff_clause + " ORDER BY event_date DESC,id DESC",
+                           (r["id"], r["id"]) + count_args).fetchall()
+        history = [{"date": row["event_date"], "division": division(json.loads(row["payload"])["weight_class"])}
+                   for row in dated]
+        last_division, division_date, _ = latest_classified_division(history)
         results.append({"id": r["id"], "name": r["name"], "source_fighter_id": json.loads(r["profile"])["source_fighter_id"],
-                        "recorded_bouts": r["bouts"], "last_bout": latest["event_date"] if latest else None,
-                        "division": division(json.loads(latest["payload"])["weight_class"]) if latest else None})
+                        "recorded_bouts": r["bouts"], "last_bout": dated[0]["event_date"] if dated else None,
+                        "division": last_division, "division_date": division_date})
     return results
 
 
@@ -75,6 +85,23 @@ def method_group(method):
     if "decision" in text:
         return "dec"
     return "other"
+
+
+def latest_classified_division(history):
+    """Latest classified bout in descending date order, never a majority vote.
+
+    Unknown/catchweight bouts provide no new division evidence. Contradictory
+    same-day divisions remain unresolved because intra-day order is unknown.
+    """
+    for row in history:
+        if row["division"] is None:
+            continue
+        day = row["date"]
+        divisions = {r["division"] for r in history if r["date"] == day and r["division"] is not None}
+        if len(divisions) > 1:
+            return None, day, "ambiguous_same_day_divisions"
+        return row["division"], day, "latest_classified_bout"
+    return None, None, "no_classified_bout"
 
 
 def age_on(date_of_birth, cutoff):
@@ -178,13 +205,11 @@ def fighter_report(db, uid, before, window):
         if r["outcome"] != streak_kind:
             break
         streak += 1
-    # Most common division over the last five classified bouts; ties go to the most recent.
-    divisions = [r["division"] for r in history if r["division"]][:5]
-    divisions = sorted(divisions, key=divisions.count, reverse=True)
+    last_division, division_date, division_basis = latest_classified_division(history)
     summary = {"career": {k: sum(r["outcome"] == k for r in history) for k in ("win", "loss", "other")},
                "streak": {"outcome": streak_kind, "count": streak},
                "last_bout": history[0]["date"] if history else None, "first_bout": history[-1]["date"] if history else None,
-               "division": divisions[0] if divisions else None,
+               "division": last_division, "division_date": division_date, "division_basis": division_basis,
                "title_bouts": sum(r["title_bout"] for r in history),
                "age": age_on(profile.get("date_of_birth"), cutoff)}
     for r in history:
@@ -330,7 +355,7 @@ def route(database, target):
         if parts.path == "/api/meta":
             return metadata(db)
         if parts.path == "/api/fighters":
-            return search(db, params.get("q", [""])[0])
+            return search(db, params.get("q", [""])[0], params.get("before", [None])[0])
         before = params.get("before", [datetime.now(UTC).date().isoformat()])[0]
         window = int(params.get("window", ["5"])[0])
         if parts.path == "/api/fighter":

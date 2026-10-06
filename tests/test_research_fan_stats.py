@@ -107,7 +107,7 @@ def test_reviewed_title_metadata_requires_exact_bout_date_and_pair():
                  "upset_fighter_1_id": a, "upset_fighter_2_id": b, "weight_class": entry["division"]}
         assert reviewed_title_evidence(fight)["source_url"].startswith("https://www.ufc.com/")
         assert reviewed_title_evidence({**fight, "upset_fighter_1_id": b, "upset_fighter_2_id": a})
-        for change in ({"event_date": "2026-05-10"}, {"upset_fighter_1_id": A}, {"weight_class": "Heavyweight"}):
+        for change in ({"event_date": "2026-05-10"}, {"upset_fighter_1_id": A}, {"weight_class": "Bantamweight"}):
             with pytest.raises(ValueError, match="does not match"):
                 reviewed_title_evidence({**fight, **change})
         assert reviewed_title_evidence({**fight, "source_bout_id": "unreviewed-five-round-main-event"}) is None

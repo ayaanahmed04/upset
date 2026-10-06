@@ -445,7 +445,7 @@ footer b{color:var(--text-2)}
 
 <footer><div class="wrap">
   <div><b>UPSET</b> · Fighter research, local preview. <span id="coverage">Loading archive…</span></div>
-  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are expressed per 15 minutes of actual fight time, including fights that end early; this is a standardized rate, not an average per fight; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
+  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are expressed per 15 minutes of actual fight time, including fights that end early; this is a standardized rate, not an average per fight; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. Division means the latest classified UFC bout before the cutoff. Peer pools use that assignment, while Career and last-N statistics can include fights in earlier divisions. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and profile weight come from the stored profile snapshot, not a live weigh-in or roster feed. <span id="coverage-detail"></span></div>
 <div class="creator-credit">Created by <a href="#/about">Ayaan Ahmed</a>.</div>
 </div></footer>
 
@@ -500,7 +500,7 @@ function avatar(r,cls){
 }
 function statusBadges(r){
   const out=[],sm=r.summary,ref=state.before;
-  if(sm.division)out.push(h('span',{class:'badge accent',text:sm.division}));
+  if(sm.division)out.push(h('span',{class:'badge accent',title:'Last classified UFC bout'+(sm.division_date?' on '+niceDate(sm.division_date):'')+' before the cutoff; not a live roster assignment.',text:sm.division}));
   /* Contract status is a present-day fact: only show it when the cutoff is near the roster date. */
   const rosterCurrent=r.roster&&r.roster.status_current===true;
   if(rosterCurrent&&r.roster.status==='active')out.push(h('span',{class:'badge active',title:'On the UFC roster per '+(r.roster.source||'roster file')+' as of '+r.roster.as_of,text:'Active'}));
@@ -632,7 +632,7 @@ function heroCard(r){
       h('div',{class:'tape'},
         tapeItem('Height',feet(p.height_inches),p.height_inches!=null?Math.round(p.height_inches)+' in':null),
         tapeItem('Reach',p.reach_inches!=null?Math.round(p.reach_inches)+' in':null,feet(p.reach_inches)),
-        tapeItem('Weight',p.weight_lbs!=null?Math.round(p.weight_lbs)+' lb':null,p.weight_lbs!=null?Math.round(p.weight_lbs*0.4536)+' kg':null),
+        tapeItem('Profile weight',p.weight_lbs!=null?Math.round(p.weight_lbs)+' lb':null,p.weight_lbs!=null?Math.round(p.weight_lbs*0.4536)+' kg':null),
         tapeItem('Age',sm.age),tapeItem('Stance',p.stance)),
       h('div',{class:'hero-actions'},add)));
 }
@@ -779,9 +779,9 @@ function taleOfTape(A,B){
     totRow('Age',A.summary.age,B.summary.age),
     totRow('Height',pa.height_inches,pb.height_inches,{better:higher,fmtA:feet(pa.height_inches)||'—',fmtB:feet(pb.height_inches)||'—',note:diff(pa.height_inches,pb.height_inches,'in')}),
     totRow('Reach',pa.reach_inches,pb.reach_inches,{better:higher,fmtA:pa.reach_inches!=null?Math.round(pa.reach_inches)+'″':'—',fmtB:pb.reach_inches!=null?Math.round(pb.reach_inches)+'″':'—',note:diff(pa.reach_inches,pb.reach_inches,'in')}),
-    totRow('Weight',null,null,{fmtA:pa.weight_lbs!=null?Math.round(pa.weight_lbs)+' lb':'—',fmtB:pb.weight_lbs!=null?Math.round(pb.weight_lbs)+' lb':'—'}),
+    totRow('Profile weight',null,null,{fmtA:pa.weight_lbs!=null?Math.round(pa.weight_lbs)+' lb':'—',fmtB:pb.weight_lbs!=null?Math.round(pb.weight_lbs)+' lb':'—'}),
     totRow('Stance',pa.stance,pb.stance),
-    totRow('Division',A.summary.division,B.summary.division),
+    totRow('Last division',A.summary.division,B.summary.division),
     totRow('UFC fights',A.available_bouts,B.available_bouts),
     totRow('Title fights',A.summary.title_bouts,B.summary.title_bouts),
     totRow('Last fight',null,null,{fmtA:ago(A.summary.last_bout,state.before)||'—',fmtB:ago(B.summary.last_bout,state.before)||'—'}));
@@ -856,7 +856,7 @@ async function renderHome(){
     h('section',{class:'card feature',id:'feature'}));
   placeSearch('hero');
   const found={};
-  await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
+  await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name)+'&before='+encodeURIComponent(state.before));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
   const a=found[PICKS[0]],b=found[PICKS[1]],feat=$('feature');
   if(!feat||state.view!=='home')return;
   if(a&&b)feat.replaceChildren(h('div',null,h('div',{class:'eyebrow',style:'margin-bottom:10px',text:'Featured matchup'}),h('div',{class:'names'},h('span',{class:'distressed',text:a.name}),h('b',{text:'vs'}),h('span',{class:'distressed',text:b.name}))),h('button',{class:'btn primary',onclick:()=>go('#/compare/'+a.id+'/'+b.id),text:'See the tale of the tape →'}));
@@ -948,7 +948,7 @@ input.addEventListener('input',()=>{
   const q=input.value.trim(),sv=searchVersion;if(!q)return;
   timer=setTimeout(async()=>{
     try{
-      const matches=await api('/api/fighters?q='+encodeURIComponent(q));
+      const matches=await api('/api/fighters?q='+encodeURIComponent(q)+'&before='+encodeURIComponent(state.before));
       if(sv!==searchVersion)return;
       dd.replaceChildren();hl=-1;
       if(!matches.length)dd.append(h('div',{class:'opt',style:'cursor:default'},h('small',{text:'No fighter matches “'+q+'”.'})));

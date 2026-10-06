@@ -6,6 +6,17 @@
 
 **Current focus:** Correct serving snapshot and review current fighter identity gaps; preserve accepted broadcast UI
 
+## Division/profile consistency — October 6, 2026 UTC
+
+The majority-of-last-five rule is replaced by the latest classified accepted
+bout before the cutoff, shared by profiles, search and peer pool assignments.
+Pereira now reads Heavyweight and Topuria Lightweight in saved-data checks;
+past dates preserve past assignments. Profile weight is explicitly a frozen
+snapshot. Two additional reviewed June title designations yield Pereira 9 and
+Topuria 4 recorded title bouts. 31 focused tests and JS checks pass. Mac
+installation awaits Ayaan. Read `DIVISION_UPDATES_2026_10_06.md` for scope,
+limits and the future dated profile refresh plan.
+
 ## First fan statistics — October 6, 2026 UTC
 
 Source now adds selected-window power/durability counts and common opponents,
