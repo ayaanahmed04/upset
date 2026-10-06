@@ -50,12 +50,17 @@ Develop interpretable fighter metrics such as:
 
 ## Phase 4 — Product
 
-- Build the UPSET API
-- Build the web application
-- Add fighter profiles
-- Add matchup comparison
+- Local research API and SQLite serving layer implemented; full private build completed October 5
+- Local web preview implemented; desktop search, comparison table and charts confirmed in full-data screenshots
+- Fighter search and dated profiles implemented on the verified cohort
+- Descriptive two-fighter comparison implemented with shared cutoff/window
 - Add upcoming fight analysis
+- Cached current-cohort frozen-model replay completed on the Mac; retrospective diagnostics independently checked
 - Deploy the application publicly
+
+See `docs/LOCAL_RESEARCH_APP.md`. Local previews do not complete production
+hosting, public data-use clearance or prospective prediction validation.
+See `docs/HANDOFF_2026_10_05.md` for observed build counts and remaining checks.
 
 ## Phase 5 — Expansion
 

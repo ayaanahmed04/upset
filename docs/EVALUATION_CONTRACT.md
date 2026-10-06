@@ -1,5 +1,30 @@
 # Frozen development evaluation (v1)
 
+The separately versioned opponent-strength/boosted-tree implementation is
+specified in `docs/ELO_EXPERIMENT.md`. It retains these folds and exact saved
+reference probabilities. The Mac run at `ddba4ab` completed: defense + Elo
+scored 1,073/1,857 (57.78%) versus full defense's 1,067 (57.46%), with paired
+accuracy interval [-1.51, +2.15] percentage points. Boosted defense + Elo had
+the lowest pooled log loss (0.674022) but lower accuracy (57.08%) than full
+defense. These are mixed development results; no model is promoted. Full
+diagnostics are reviewed and the Mac passed Ruff and all 288 tests. The
+fighter-order limitation is documented in `ELO_EXPERIMENT.md`.
+
+`RECENT_FORM_EXPERIMENT.md` defines the separate implemented symmetry/recent
+performance follow-up. It keeps this cohort, carries all six saved Elo-study
+probability series exactly, and adds six candidates. The Mac comparison passed
+Ruff and all 313 tests, independently audited 17,102 recent-performance rows,
+and saved 1,892 validation predictions. Symmetric defense + Elo + recent has
+pooled log loss 0.666020 versus its matched model's 0.677363, but win-pick
+accuracy remains 57.67% versus 57.89%. The uploaded manifest and predictions
+passed an independent read-back score and hash review. Coarse-bin calibration
+is worse for the recent candidate. No model was promoted. The subsequent
+examined-period protocol and Mac result are in
+`EXAMINED_LATER_EVALUATION.md`: plus recent performance reached 784/1,260
+(62.22%) versus symmetric defense + Elo's 767/1,260 (60.87%), with lower
+log loss (0.649515 versus 0.659788). Its accuracy interval includes zero;
+the original baseline already examined these dates. No model was promoted.
+
 This experiment is separate from the original nine-feature baseline report.
 The original export and `python -m upset.modeling.run_baseline` stay unchanged.
 

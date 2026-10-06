@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UPSET · Fighter research</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0c0d10;--surface:#15171c;--surface-2:#1c1f26;--surface-3:#242832;--line:#2a2e38;--line-soft:#20232b;
+  --text:#f4f5f7;--text-2:#b4bac5;--muted:#7f8794;
+  /* Brand accent: blood red. --accent for fills and large text, --accent-text for small text (meets contrast). */
+  --accent:#c1121f;--accent-track:#3a1418;--accent-text:#f0565f;--accent-ink:#ffffff;--accent-soft:rgba(193,18,31,.2);--accent-line:rgba(240,86,95,.5);
+  --red:#e63946;--blue:#3a86ff;
+  --win:#2a9d6f;--loss:#c1121f;--draw:#6b7280;
+  --ko:#d95926;--sub:#199e70;--dec:#c98500;--oth:#5b616c;
+  --pos-1:#f7b0b3;--pos-2:#e0525b;--pos-3:#a8141f;
+  --display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;
+  --brand:'Russo One','Arial Black','Segoe UI Black',system-ui,sans-serif;
+  --grunge:url('/assets/grunge.jpg');
+  --body:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --radius:0px;
+  --rail:92px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding-left:var(--rail);background:var(--bg);color:var(--text);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(1200px 500px at 15% -10%,rgba(230,57,70,.10),transparent 60%),radial-gradient(1000px 500px at 95% -15%,rgba(58,134,255,.10),transparent 60%);z-index:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 20px}
+.display{font-family:var(--display);text-transform:uppercase;letter-spacing:.01em}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.brand{font-family:var(--brand);font-weight:400;text-transform:uppercase;letter-spacing:.01em}
+.distressed{background:var(--grunge) 0 0/300px 300px,#ebe8e2;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+@media (forced-colors:active){.distressed{background:none;color:CanvasText;-webkit-text-fill-color:CanvasText}}
+
+/* ---------- Header ---------- */
+header.top{position:sticky;top:0;z-index:20;background:rgba(12,13,16,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.topbar{display:flex;align-items:center;gap:20px;height:68px;z-index:2}
+.rail{position:fixed;z-index:30;left:0;top:0;bottom:0;width:var(--rail);background:#08090b;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;align-items:center;padding:18px 0}
+.rail a{display:block;line-height:0;border-radius:0}
+.rail img{width:60px;height:auto;display:block}
+.mlogo{display:none}
+.rail a:hover img{filter:brightness(1.12)}
+.rail small{margin-top:auto;writing-mode:vertical-rl;transform:rotate(180deg);font:600 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.search-wrap{position:relative;z-index:2;flex:1;max-width:520px}
+.search-wrap input{width:100%;height:42px;border-radius:0;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 42px;font-size:15px}
+.search-wrap input::placeholder{color:var(--muted)}
+.search-wrap svg{position:absolute;left:15px;top:12px;width:18px;height:18px;color:var(--muted)}
+.dropdown{position:absolute;top:50px;left:0;right:0;background:var(--surface-2);border:1px solid var(--line);border-radius:0;box-shadow:0 18px 50px rgba(0,0,0,.5);max-height:420px;overflow:auto;display:none;padding:6px}
+.dropdown.open{display:block}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:0;padding:8px 10px}
+.opt:hover,.opt.hl{background:var(--surface-3)}
+.opt .mini{width:34px;height:34px;flex:none;font-size:14px}
+.opt b{display:block;font-weight:600}
+.opt small{color:var(--muted);font-size:12px}
+.opt.dim b{color:var(--text-2);font-weight:500}
+.controls{display:flex;align-items:center;gap:10px;margin-left:auto}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:0;padding:3px}
+.seg button{border:0;background:none;padding:6px 12px;border-radius:0;font-size:13px;font-weight:600;color:var(--text-2)}
+.seg button[aria-pressed=true]{background:var(--text);color:var(--bg)}
+.date{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.date input{background:var(--surface);border:1px solid var(--line);border-radius:0;height:36px;padding:0 12px;font-size:13px;color-scheme:dark}
+
+/* matchup tray */
+.tray{display:none;border-top:1px solid var(--line-soft)}
+.tray.show{display:block}
+.tray .wrap{display:flex;align-items:center;gap:12px;height:52px}
+.slot{display:flex;align-items:center;gap:8px;min-height:36px;padding:5px 6px 5px 12px;border-radius:0;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14px;max-width:260px}
+.slot i{width:8px;height:8px;border-radius:50%;flex:none}
+.slot span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot.is-empty{color:var(--muted);font-weight:500;border-style:dashed;padding-right:12px}
+.slot button{border:0;background:var(--surface-3);width:24px;height:24px;border-radius:0;color:var(--text-2);line-height:1}
+.vs{font:800 18px/1 var(--display);color:var(--muted)}
+.btn{white-space:nowrap;border:1px solid var(--line);background:var(--surface-2);border-radius:0;padding:9px 16px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:var(--surface-3)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+#go[hidden]{display:none}
+
+main{padding:28px 0 60px;transition:opacity .15s}
+main.loading{opacity:.45}
+#error{color:var(--accent-text);min-height:0}
+#error:not(:empty){margin:0 0 16px;padding:12px 16px;border:1px solid rgba(193,18,31,.4);border-radius:0;background:rgba(193,18,31,.08)}
+.card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:22px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 16px}
+.section-title h3{margin:0;font:400 19px/1.15 var(--brand);text-transform:uppercase;letter-spacing:.02em}
+.section-title small{color:var(--muted);font-size:12px;text-align:right}
+.spacer{height:18px}
+
+/* ---------- Home ---------- */
+.home-hero{padding:40px 0 10px}
+.home-hero h1{font:400 clamp(40px,6vw,82px)/.98 var(--brand);text-transform:uppercase;margin:14px 0 18px;letter-spacing:0}
+.home-hero h1 em{font-style:normal;color:var(--accent);-webkit-text-fill-color:var(--accent);background:none}
+.home-hero p{max-width:620px;color:var(--text-2);font-size:17px;margin:0}
+.counters{display:flex;gap:44px;flex-wrap:wrap;margin:36px 0}
+.counter strong{display:block;font:400 40px/1 var(--brand)}
+.counter span{color:var(--muted);font-size:13px}
+.feature{margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(100deg,rgba(230,57,70,.18),rgba(21,23,28,1) 40%,rgba(21,23,28,1) 60%,rgba(58,134,255,.18))}
+.feature .names{font:400 clamp(22px,3vw,34px)/1.1 var(--brand);text-transform:uppercase}
+.feature .names b{color:var(--muted);font-weight:700;margin:0 12px}
+
+/* ---------- Avatars ---------- */
+.avatar{position:relative;border-radius:0;overflow:hidden;display:grid;place-items:center;background:var(--surface-3);font:800 18px/1 var(--display);color:var(--text);letter-spacing:.04em;flex:none}
+.avatar.mono{background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 6px,transparent 6px 12px),linear-gradient(160deg,#2b303b,#171a20)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.portrait{width:200px;height:240px;border-radius:0;font-size:84px;color:rgba(255,255,255,.9)}
+.portrait.red{box-shadow:inset 0 -6px 0 var(--red)}
+.portrait.blue{box-shadow:inset 0 -6px 0 var(--blue)}
+
+/* ---------- Fighter hero ---------- */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;padding:26px;background:linear-gradient(120deg,#1b1e25 0%,#14161b 55%);position:relative;isolation:isolate;overflow:hidden}
+.division-watermark{position:absolute;left:26px;right:26px;bottom:16px;z-index:0;font:400 clamp(28px,8vw,100px)/1.15 var(--brand);text-transform:uppercase;text-align:right;color:rgba(255,255,255,.025);white-space:nowrap;pointer-events:none;user-select:none}
+.hero>:not(.division-watermark){position:relative;z-index:1}
+.badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:6px;font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:0;background:var(--surface-3);color:var(--text-2)}
+.badge.active{background:rgba(42,157,111,.16);color:#7fe0b4}
+.badge.active::before{content:"";width:7px;height:7px;border-radius:50%;background:#3ddc97;box-shadow:0 0 0 3px rgba(61,220,151,.2)}
+.badge.accent{background:var(--accent-soft);color:var(--accent-text)}
+.fname{font:400 clamp(36px,5vw,66px)/.98 var(--brand);text-transform:uppercase;margin:14px 0 16px;letter-spacing:0}
+.record{display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.record .big{font:400 46px/.95 var(--brand)}
+.record .big small{font:600 13px/1 var(--body);color:var(--muted);display:block;margin-top:8px;letter-spacing:.06em;text-transform:uppercase}
+.tape{display:flex;flex-wrap:wrap;gap:0;margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+.tape div{padding:0 22px 0 0;margin:0 22px 8px 0;border-right:1px solid var(--line)}
+.tape div:last-child{border:0}
+.tape b{display:block;font:700 22px/1.1 var(--display);letter-spacing:.02em}
+.tape span{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.tape em{font-style:normal;color:var(--text-2);font-size:13px;font-family:var(--body);font-weight:500;margin-left:4px;text-transform:none}
+.hero-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.form{display:flex;gap:4px;align-items:center}
+.chip{width:24px;height:24px;border-radius:0;display:grid;place-items:center;font:700 12px/1 var(--body);color:#fff}
+.chip.win{background:var(--win)}.chip.loss{background:var(--loss)}.chip.other{background:var(--draw)}
+.window-note{margin:22px 0 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--text-2);font-size:14px}
+.window-note b{color:var(--text)}
+
+/* ---------- Skill meters ---------- */
+.meters{display:grid;gap:14px}
+.meter{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:baseline}
+.meter .lbl{font-size:14px;color:var(--text-2)}
+.meter .val{font:700 20px/1 var(--display);text-align:right;letter-spacing:.02em}
+.meter .val small{font:600 11px/1 var(--body);color:var(--muted);margin-left:6px;letter-spacing:.04em}
+.track{grid-column:1/-1;position:relative;height:8px;border-radius:0;background:var(--accent-track)}
+.track .fill{position:absolute;left:0;top:0;bottom:0;border-radius:0;background:var(--accent)}
+.track .med{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--text-2);border-radius:0;opacity:.7}
+.track.none{background:var(--surface-3)}
+.pct{font:700 12px/1 var(--body);color:var(--text);letter-spacing:.02em}
+.pct.elite{color:var(--accent-text)}
+.meta-line{font-size:12px;color:var(--muted);margin-top:14px}
+
+/* ---------- Stat tiles ---------- */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px}
+.tile .lbl{font-size:13px;color:var(--text-2)}
+.tile .num{font:400 38px/1 var(--brand);margin:10px 0 8px}
+.tile .num small{font-size:20px;color:var(--muted);margin-left:2px}
+.tile .rank{font-size:12px;color:var(--muted)}
+.tile .rank b{color:var(--accent-text)}
+
+/* ---------- Strike map ---------- */
+.strikemap{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center}
+.strikemap svg{width:100%;height:auto}
+.targets{display:grid;gap:12px}
+.target{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:10px}
+.target .k{font:700 15px/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--text-2)}
+.target .v{font:700 24px/1 var(--display);min-width:56px;text-align:right}
+.target .bar{height:8px;border-radius:0;background:var(--surface-3);position:relative}
+.target .bar i{position:absolute;inset:0 auto 0 0;border-radius:0;background:var(--accent)}
+.target small{grid-column:2/-1;color:var(--muted);font-size:12px;margin-top:-6px}
+.stack{display:flex;height:14px;gap:2px;border-radius:0;overflow:hidden;margin:10px 0 10px}
+.stack i{display:block;height:100%;min-width:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--text-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:0;display:inline-block}
+.legend b{color:var(--text);font-weight:600}
+.method-row{display:grid;grid-template-columns:52px 1fr 40px;align-items:center;gap:12px;margin:12px 0}
+.method-row .k{font:700 15px/1 var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--text-2)}
+.method-row .n{font:700 20px/1 var(--display);text-align:right}
+.method-row .stack{margin:0;height:22px}
+.method-row .stack i{display:grid;place-items:center;font:700 12px/1 var(--body);color:#fff;overflow:visible}
+.finish{font:400 36px/1 var(--brand)}
+
+/* ---------- Timeline chart ---------- */
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .hit{fill:transparent;cursor:pointer}
+.chart .hit:hover+.mark,.chart .hit:focus+.mark{filter:brightness(1.25)}
+.tip{position:fixed;z-index:50;pointer-events:none;background:#0b0c0f;border:1px solid var(--line);border-radius:0;padding:10px 12px;font-size:12px;color:var(--text-2);box-shadow:0 12px 30px rgba(0,0,0,.5);max-width:260px;opacity:0;transition:opacity .08s}
+.tip.on{opacity:1}
+.tip strong{display:block;color:var(--text);font-size:18px;font-family:var(--display);letter-spacing:.02em}
+.tip .r{display:flex;justify-content:space-between;gap:14px}
+.tip .r b{color:var(--text);font-weight:600}
+
+/* ---------- History ---------- */
+.history{display:grid;gap:2px}
+.hrow{display:grid;grid-template-columns:96px 34px minmax(0,1.4fr) minmax(0,1.2fr) 130px;gap:14px;align-items:center;padding:12px 10px;border-radius:0}
+.hrow:nth-child(odd){background:rgba(255,255,255,.018)}
+.hrow.head{background:none;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding-top:0}
+.hrow .date{font-size:13px;color:var(--text-2);font-variant-numeric:tabular-nums}
+.opp{background:none;border:0;padding:0;text-align:left;font-weight:600;font-size:15px;color:var(--text)}
+.opp:hover{color:var(--accent-text);text-decoration:underline;text-underline-offset:3px}
+.opp:hover .distressed{opacity:.8}
+.hrow .meth{font-size:13px;color:var(--text-2)}
+.hrow .meth b{color:var(--text);font-weight:600}
+.hrow .sub{display:block;font-size:12px;color:var(--muted)}
+.title-tag{display:inline-block;font:700 10px/1 var(--body);letter-spacing:.1em;color:var(--accent-text);border:1px solid var(--accent-line);border-radius:0;padding:3px 5px;margin-left:8px;vertical-align:2px}
+.ss{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ss .sbar{display:flex;height:6px;gap:2px;margin-top:5px}
+.ss .sbar i{display:block;height:100%;border-radius:0}
+.amend{grid-column:1/-1;font-size:12px;color:var(--muted);padding:0 0 4px 144px;margin-top:-6px}
+.more{margin-top:12px}
+
+/* ---------- Compare ---------- */
+.faceoff{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:24px;align-items:start;padding:28px;background:linear-gradient(90deg,rgba(230,57,70,.22),#15171c 38%,#15171c 62%,rgba(58,134,255,.22));overflow:hidden}
+.corner{display:flex;align-items:flex-start;gap:22px;min-width:0}
+.corner.blue{flex-direction:row-reverse;text-align:right}
+.corner .portrait{width:150px;height:180px;font-size:64px;align-self:center}
+.corner-info{flex:1;min-width:0}
+.corner .fname{font-size:clamp(24px,2.6vw,34px);line-height:1.1;min-height:2.2em;margin:10px 0 8px}
+.corner .fname .opp{display:block;width:100%;font:inherit;text-transform:inherit;letter-spacing:inherit;text-align:inherit}
+.corner .name-line{display:block;white-space:nowrap}
+.corner .badges{flex-direction:column;align-items:flex-start;gap:6px}
+.corner.blue .badges{align-items:flex-end}
+.corner .rec{font:400 24px/1 var(--brand);color:var(--text-2)}
+.corner-label{font:700 12px/1 var(--body);letter-spacing:.16em;text-transform:uppercase}
+.corner.red .corner-label{color:#ff8a93}.corner.blue .corner-label{color:#8db8ff}
+.bigvs{font:400 56px/1 var(--brand);text-align:center;align-self:center}
+.tot{display:grid;gap:0}
+.tot .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(110px,180px) minmax(0,1fr);align-items:center;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.tot .row:last-child{border:0}
+.tot .l{text-align:right;padding-right:16px}
+.tot .r{text-align:left;padding-left:16px}
+.tot .c{text-align:center;font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.tot .v{font:700 22px/1 var(--display);letter-spacing:.02em;color:var(--text-2)}
+.tot .v.edge{color:var(--text)}
+.tot .v em{font:500 12px/1 var(--body);color:var(--muted);font-style:normal;margin:0 6px}
+.edge-mark{display:inline-block;width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;vertical-align:2px}
+.l .edge-mark{border-right:7px solid var(--red);margin-right:8px}
+.r .edge-mark{border-left:7px solid var(--blue);margin-left:8px}
+.duel{display:grid;gap:4px}
+.drow{display:grid;grid-template-columns:118px 1fr 118px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line-soft)}
+.drow:last-child{border:0}
+.drow .v{font:700 22px/1 var(--display);color:var(--text-2);white-space:nowrap}
+.drow .v.edge{color:var(--text)}
+.drow .vc{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.drow .vc.l{align-items:flex-end;text-align:right}
+.drow .vc small{font:500 11px/1.2 var(--body);color:var(--muted);white-space:nowrap}
+.drow .vc small.p{font-weight:700;color:var(--text-2)}
+.drow .vc small.p.elite{color:var(--text)}
+.drow .mid .name{text-align:center;font-size:13px;color:var(--text-2);margin-bottom:7px}
+.drow .bars{display:grid;grid-template-columns:1fr 1fr;gap:4px;height:10px}
+.drow .bars div{position:relative;background:var(--surface-3);border-radius:0}
+.drow .bars div i{position:absolute;top:0;bottom:0}
+.drow .bars .lb i{right:0;background:var(--red);border-radius:0}
+.drow .bars .rb i{left:0;background:var(--blue);border-radius:0}
+.group-label{font:400 13px/1 var(--brand);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:18px 0 4px}
+.group-label:first-child{margin-top:0}
+.key{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted);gap:12px;flex-wrap:wrap}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key i{width:10px;height:10px;border-radius:0}
+
+details.prov{margin-top:22px;color:var(--muted);font-size:13px}
+details.prov summary{cursor:pointer;color:var(--text-2)}
+details.prov p{margin:8px 0}
+details.prov a{color:var(--accent-text)}
+footer{position:relative;z-index:1;border-top:1px solid var(--line-soft);color:var(--muted);font-size:12px}
+footer .wrap{padding:28px 20px 50px;display:grid;grid-template-columns:1fr 1.4fr;gap:30px}
+footer b{color:var(--text-2)}
+.empty{padding:50px 20px;text-align:center;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media(max-width:1000px){
+  .topbar{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
+  .search-wrap{order:3;flex-basis:100%;max-width:none}
+  .controls{margin-left:auto}
+  .faceoff{grid-template-columns:1fr;background:linear-gradient(180deg,rgba(230,57,70,.22),#15171c 35%,#15171c 65%,rgba(58,134,255,.22))}
+  .corner.blue{flex-direction:row;text-align:left}
+  .corner.blue .badges{align-items:flex-start}
+  .corner .portrait{width:110px;height:132px;font-size:46px}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g2,.g3{grid-template-columns:minmax(0,1fr)}
+  .hrow{grid-template-columns:86px 30px minmax(0,1fr) 110px}
+  .hrow .meth-col{display:none}
+  .amend{padding-left:0}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .wrap{padding:0 16px}
+  :root{--rail:0px}
+  .rail{display:none}
+  header.top{position:static}
+  .topbar{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"logo controls" "logo search";gap:12px 14px;align-items:center;padding-top:16px;padding-bottom:16px}
+  .mlogo{display:block;grid-area:logo;line-height:0;align-self:start}
+  .mlogo img{height:112px;width:auto;display:block}
+  .mlogo{align-self:center}
+  .controls{grid-area:controls}
+  .search-wrap{grid-area:search}
+  .seg button{padding:6px 9px}
+  .controls{width:100%;justify-content:space-between;margin:0}
+  .date span{display:none}
+  .hero{grid-template-columns:1fr;padding:20px}
+  .hero .portrait{width:110px;height:132px;font-size:46px}
+  .division-watermark{left:20px;right:20px;bottom:14px}
+  .record .big{font-size:34px}
+  .tape div{padding-right:14px;margin-right:14px}
+  .faceoff{grid-template-columns:1fr;gap:14px;padding:20px;background:linear-gradient(180deg,rgba(230,57,70,.22),#15171c 35%,#15171c 65%,rgba(58,134,255,.22))}
+  .corner,.corner.blue{flex-direction:row;text-align:left}
+  .corner.blue .badges{align-items:flex-start}
+  .corner .portrait{width:84px;height:100px;font-size:36px}
+  .bigvs{font-size:30px}
+  .tot .row{grid-template-columns:minmax(0,1fr) 78px minmax(0,1fr)}
+  .tot .l{padding-right:8px}.tot .r{padding-left:8px}
+  .tot .chip{width:16px;height:16px;font-size:9px;border-radius:0}
+  .tot .form{gap:2px}
+  .card{padding:16px}
+  .tray .eyebrow{display:none}
+  #go{padding:7px 12px;font-size:13px}
+  .tot .v{font-size:16px}
+  .section-title{flex-direction:column;align-items:flex-start;gap:6px}.section-title small{text-align:left}
+  .drow{grid-template-columns:84px 1fr 84px;gap:8px}
+  .drow .vc small{font-size:10px;white-space:normal}
+  .drow .v{font-size:18px}
+  .hrow{grid-template-columns:74px 28px minmax(0,1fr)}
+  .hrow .ss-col{display:none}
+  .strikemap{grid-template-columns:90px 1fr}
+  .tray .wrap{gap:8px}
+  .slot{max-width:none;min-width:0;flex:1 1 0;font-size:13px}
+  .tray .vs{font-size:14px}
+  .tile .num{font-size:30px}
+}
+</style>
+<link rel="stylesheet" href="/web/research_about.css">
+</head>
+<body>
+<nav class="rail" aria-label="UPSET"><a href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a><small>Fighter research · since 1994</small></nav>
+<header class="top">
+  <div class="wrap topbar">
+    <a class="mlogo" href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a>
+    <div class="search-wrap" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="dropdown">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Search any UFC fighter since 1994…" autocomplete="off" aria-label="Search fighters" aria-controls="dropdown">
+      <div class="dropdown" id="dropdown" role="listbox"></div>
+    </div>
+    <div class="controls">
+      <div class="seg" id="window" role="group" aria-label="Measurement window">
+        <button data-w="3" aria-pressed="false" title="Last 3 recorded fights">L3</button>
+        <button data-w="5" aria-pressed="false" title="Last 5 recorded fights">L5</button>
+        <button data-w="10" aria-pressed="false" title="Last 10 recorded fights">L10</button>
+        <button data-w="0" aria-pressed="true" title="All recorded UFC fights">Career</button>
+      </div>
+      <label class="date" title="Only fights strictly before this date are counted"><span>Before</span><input type="date" id="before"></label>
+    </div>
+  </div>
+  <div class="tray" id="tray"><div class="wrap">
+    <span class="eyebrow">Matchup</span>
+    <div class="slot" id="slot0"></div><span class="vs">VS</span><div class="slot" id="slot1"></div>
+    <button class="btn primary" id="go" style="margin-left:auto" hidden>View matchup →</button>
+  </div></div>
+</header>
+
+<main class="wrap" id="main"><div id="error" role="alert"></div><div id="content"></div></main>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<footer><div class="wrap">
+  <div><b>UPSET</b> · Fighter research, local preview. <span id="coverage">Loading archive…</span></div>
+  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are shown per 5 minutes of actual fight time; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
+<div class="creator-credit">Created by <a href="#/about">Ayaan Ahmed</a>.</div>
+</div></footer>
+
+<script src="/web/research_about.js"></script>
+<script>
+'use strict';
+/* ================= helpers ================= */
+const $=id=>document.getElementById(id);
+const NS='http://www.w3.org/2000/svg';
+function h(tag,attrs,...kids){const n=document.createElement(tag);if(attrs)for(const[k,v]of Object.entries(attrs)){if(v==null||v===false)continue;if(k==='class')n.className=v;else if(k==='text')n.textContent=v;else if(k==='style')n.style.cssText=v;else if(k.startsWith('on'))n[k]=v;else n.setAttribute(k,v===true?'':v);}for(const c of kids.flat()){if(c==null||c===false)continue;n.append(c instanceof Node?c:document.createTextNode(String(c)));}return n;}
+function s(tag,attrs,...kids){const n=document.createElementNS(NS,tag);if(attrs)for(const[k,v]of Object.entries(attrs))if(v!=null)n.setAttribute(k,v);for(const c of kids.flat())if(c!=null)n.append(c instanceof Node?c:document.createTextNode(String(c)));return n;}
+const fmt=(x,d=2)=>x==null?'—':Number(x).toFixed(d);
+// Keep the API's per-15-minute fields stable and convert only their displayed units.
+const perFive=x=>fmt(x==null?null:x/3);
+const pct=x=>x==null?'—':(x*100).toFixed(0)+'%';
+const pct1=x=>x==null?'—':(x*100).toFixed(1)+'%';
+const signed=(x,d=2)=>x==null?'—':(x>0?'+':'')+Number(x).toFixed(d);
+const int=x=>x==null?'—':Number(x).toLocaleString();
+function feet(inches){if(inches==null)return null;const t=Math.round(inches);return Math.floor(t/12)+'′'+(t%12)+'″';}
+function ordinal(n){n=Math.round(n);const v=n%100;return n+(['th','st','nd','rd'][(v-20)%10]||['th','st','nd','rd'][v]||'th');}
+function initials(name){const p=name.replace(/[^\p{L}\s'-]/gu,'').split(/\s+/).filter(Boolean);return((p[0]||'?')[0]+(p.length>1?p[p.length-1][0]:'')).toUpperCase();}
+function niceDate(iso){if(!iso)return'—';const d=new Date(iso+'T12:00:00Z');return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});}
+function monthsBetween(a,b){const x=new Date(a+'T12:00:00Z'),y=new Date(b+'T12:00:00Z');return (y.getUTCFullYear()-x.getUTCFullYear())*12+(y.getUTCMonth()-x.getUTCMonth());}
+function ago(iso,ref){if(!iso)return null;const m=monthsBetween(iso,ref);if(m<1)return'this month';if(m<24)return m+' mo ago';return Math.floor(m/12)+' yrs ago';}
+async function api(url){const r=await fetch(url);const v=await r.json();if(!r.ok)throw new Error(v.error||'Could not load records');return v;}
+const state={window:'0',before:'',meta:null,matchup:[null,null],view:null};
+function params(){return'&before='+encodeURIComponent(state.before)+'&window='+state.window;}
+function windowLabel(){return state.window==='0'?'Career (all UFC fights)':'Last '+state.window+' fights';}
+
+/* ================= metric catalog ================= */
+const METRICS=[
+  {group:'Striking',key:'sig_landed_per_minute',unit:'strikes / min',label:'Sig. strikes landed / min',f:fmt},
+  {group:'Striking',key:'sig_absorbed_per_minute',unit:'strikes / min',label:'Sig. strikes absorbed / min',f:fmt,lower:true},
+  {group:'Striking',key:'sig_differential_per_minute',unit:'strikes / min',label:'Striking differential / min',f:x=>signed(x)},
+  {group:'Striking',key:'striking_accuracy',unit:'of attempts landed',label:'Striking accuracy',f:pct1},
+  {group:'Striking',key:'striking_defense',unit:'of strikes avoided',label:'Striking defense',f:pct1},
+  {group:'Striking',key:'knockdowns_per_15_minutes',unit:'per 5 min',label:'Knockdowns / 5 min',f:perFive},
+  {group:'Grappling',key:'takedowns_per_15_minutes',unit:'per 5 min',label:'Takedowns / 5 min',f:perFive},
+  {group:'Grappling',key:'takedown_accuracy',unit:'of attempts landed',label:'Takedown accuracy',f:pct1},
+  {group:'Grappling',key:'takedown_defense',unit:'of attempts stopped',label:'Takedown defense',f:pct1},
+  {group:'Grappling',key:'submission_attempts_per_15_minutes',unit:'per 5 min',label:'Sub attempts / 5 min',f:perFive},
+  {group:'Grappling',key:'control_margin_seconds_per_minute',unit:'sec / min',label:'Control margin, sec / min',f:x=>signed(x,1)},
+];
+/* percentile oriented so higher = better for the fighter */
+function goodPct(r,m){const p=r.percentiles&&r.percentiles.eligible&&r.percentiles.values[m.key];if(!p)return null;return m.lower?100-p.percentile:p.percentile;}
+
+/* ================= avatar & badges ================= */
+function avatar(r,cls){
+  const img=r.roster&&r.roster.image_url;
+  const n=h('div',{class:'avatar '+(img?'':'mono ')+(cls||''),'aria-hidden':'true',title:img&&r.roster.image_credit?r.roster.image_credit:null});
+  if(img){const i=h('img',{src:img,alt:'',loading:'lazy'});i.onerror=()=>{n.classList.add('mono');i.replaceWith(initials(r.name));};n.append(i);}
+  else n.append(initials(r.name));
+  return n;
+}
+function statusBadges(r){
+  const out=[],sm=r.summary,ref=state.before;
+  if(sm.division)out.push(h('span',{class:'badge accent',text:sm.division}));
+  /* Contract status is a present-day fact: only show it when the cutoff is near the roster date. */
+  const rosterCurrent=r.roster&&r.roster.status_current===true;
+  if(rosterCurrent&&r.roster.status==='active')out.push(h('span',{class:'badge active',title:'On the UFC roster per '+(r.roster.source||'roster file')+' as of '+r.roster.as_of,text:'Active'}));
+  else if(rosterCurrent&&r.roster.status)out.push(h('span',{class:'badge',text:r.roster.status}));
+  if(sm.last_bout)out.push(h('span',{class:'badge',text:'Last fight '+ago(sm.last_bout,ref)}));
+  if(sm.title_bouts)out.push(h('span',{class:'badge',text:sm.title_bouts+' title '+(sm.title_bouts===1?'fight':'fights')}));
+  return h('div',{class:'badges'},out);
+}
+function recordText(c){return c.win+'–'+c.loss+(c.other?'–'+c.other:'');}
+function streakText(st){if(!st.outcome||!st.count)return'—';return(st.outcome==='win'?'W':st.outcome==='loss'?'L':'D/NC ')+st.count;}
+function formStrip(history,n){
+  const items=history.slice(0,n).reverse();
+  return h('div',{class:'form','aria-label':'Recent results, oldest to newest'},items.map(r=>h('span',{class:'chip '+r.outcome,title:niceDate(r.date)+' · '+r.opponent+' · '+(r.method||''),text:r.outcome==='win'?'W':r.outcome==='loss'?'L':'–'})));
+}
+
+/* ================= tooltip ================= */
+const tip=$('tip');
+function showTip(e,build){tip.replaceChildren(...build());tip.classList.add('on');moveTip(e);}
+function moveTip(e){const b=e.target.getBoundingClientRect?e.target.getBoundingClientRect():null;let x=e.clientX,y=e.clientY;if(x==null&&b){x=b.left+b.width/2;y=b.top;}const w=tip.offsetWidth,hh=tip.offsetHeight;let left=x+14,top=y-hh-12;if(left+w>innerWidth-8)left=x-w-14;if(top<8)top=y+16;tip.style.left=left+'px';tip.style.top=top+'px';}
+function hideTip(){tip.classList.remove('on');}
+function bindTip(node,build){node.addEventListener('pointerenter',e=>showTip(e,build));node.addEventListener('pointermove',moveTip);node.addEventListener('pointerleave',hideTip);node.addEventListener('focus',e=>showTip(e,build));node.addEventListener('blur',hideTip);}
+
+/* ================= charts ================= */
+function timeline(history){
+  const compact=innerWidth<700,N=compact?10:20;
+  const values=history.slice(0,N).reverse();
+  if(!values.length)return h('p',{class:'muted',text:'No recorded fights before this date.'});
+  const vals=values.map(v=>v.sig_differential_per_minute||0);
+  const niceUp=x=>{if(x<=0)return 0;const e=Math.pow(10,Math.floor(Math.log10(x))),f=x/e;return (f<=1?1:f<=2?2:f<=2.5?2.5:f<=5?5:10)*e;};
+  let posT=niceUp(Math.max(0,...vals)),negT=niceUp(-Math.min(0,...vals));
+  const W=compact?380:760,top=14,plotH=compact?120:150,left=compact?34:40,right=12,plotW=W-left-right;
+  // Keep both endpoint labels at least 20 SVG units from zero on mixed-sign charts.
+  // Padding the smaller side preserves one linear scale for every bar.
+  if(posT&&negT){const minSide=niceUp(Math.max(posT,negT)*20/(plotH-20));posT=Math.max(posT,minSide);negT=Math.max(negT,minSide);}
+  const scale=plotH/(posT+negT||1),base=top+posT*scale,bottom=base+negT*scale+38,H=bottom+28;
+  const step=plotW/values.length,bw=Math.min(24,step*.62);
+  const svg=s('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Significant strike differential per minute in each of the last '+values.length+' fights, oldest to newest'});
+  for(const t of new Set([posT,0,-negT])){if(t===0&&(posT===0&&negT===0))continue;const y=base-t*scale;svg.append(s('line',{x1:left,x2:W-right,y1:y,y2:y,stroke:t===0?'#4a505c':'#22262e','stroke-width':1}));svg.append(s('text',{x:left-8,y:y+4,'text-anchor':'end','font-size':11,fill:'#7f8794','font-family':'Inter,system-ui'},t>0?'+'+t:t));}
+  let lastYear=null,lastX=null;
+  values.forEach((r,i)=>{
+    const v=r.sig_differential_per_minute,cx=left+step*i+step/2,x=cx-bw/2;
+    const g=s('g',{tabindex:0,role:'img','aria-label':`${niceDate(r.date)}, ${r.opponent}, ${r.outcome}, differential ${signed(v)} per minute`});
+    const hit=s('rect',{class:'hit',x:left+step*i,y:top-6,width:step,height:bottom-top+10});
+    g.append(hit);
+    if(v!=null){const hgt=Math.max(1.5,Math.abs(v)*scale),rad=Math.min(4,hgt);
+      const d=v>=0?`M${x},${base} V${base-hgt+rad} Q${x},${base-hgt} ${x+rad},${base-hgt} H${x+bw-rad} Q${x+bw},${base-hgt} ${x+bw},${base-hgt+rad} V${base} Z`
+                  :`M${x},${base} V${base+hgt-rad} Q${x},${base+hgt} ${x+rad},${base+hgt} H${x+bw-rad} Q${x+bw},${base+hgt} ${x+bw},${base+hgt-rad} V${base} Z`;
+      g.append(s('path',{class:'mark',d,fill:v>=0?'#2a9d6f':'#c1121f'}));}
+    const col=r.outcome==='win'?'#2a9d6f':r.outcome==='loss'?'#c1121f':'#6b7280';
+    g.append(s('rect',{x:cx-10,y:bottom-18,width:20,height:20,rx:4,fill:col}));
+    g.append(s('text',{x:cx,y:bottom-4,'text-anchor':'middle','font-size':11,'font-weight':700,fill:'#fff','font-family':'Inter,system-ui'},r.outcome==='win'?'W':r.outcome==='loss'?'L':'–'));
+    const yr=r.date.slice(0,4);
+    if(yr!==lastYear&&(lastX==null||cx-lastX>=(compact?34:40))){svg.append(s('text',{x:cx,y:bottom+22,'text-anchor':'middle','font-size':11,fill:'#7f8794','font-family':'Inter,system-ui'},yr));lastX=cx;}
+    lastYear=yr;
+    bindTip(g,()=>[h('strong',{text:signed(v)+' / min'}),h('div',{text:'vs '+r.opponent}),h('div',{class:'r'},h('span',{text:niceDate(r.date)}),h('b',{text:(r.outcome==='win'?'Win':r.outcome==='loss'?'Loss':'Draw/NC')})),h('div',{class:'r'},h('span',{text:'Method'}),h('b',{text:r.method||'—'})),h('div',{class:'r'},h('span',{text:'Sig. landed / absorbed'}),h('b',{text:r.own.sig_strikes_landed+' / '+r.opponent_stats.sig_strikes_landed}))]);
+    svg.append(g);
+  });
+  return h('div',{class:'chart'},svg);
+}
+
+function strikeMap(m){
+  const t=m.sig_targets,total=t.head+t.body+t.leg;
+  if(!total)return h('p',{class:'muted',text:'No significant strikes recorded in this window.'});
+  const share={head:t.head/total,body:t.body/total,leg:t.leg/total},mx=Math.max(share.head,share.body,share.leg);
+  const op=k=>(0.28+0.72*share[k]/mx).toFixed(2);
+  const fig=s('svg',{viewBox:'0 0 120 250','aria-hidden':'true'},
+    s('circle',{cx:60,cy:26,r:20,style:'fill:var(--accent)','fill-opacity':op('head')}),
+    s('rect',{x:53,y:46,width:14,height:10,fill:'#2a2e38'}),
+    s('rect',{x:16,y:60,width:15,height:72,rx:7,fill:'#2a2e38'}),s('rect',{x:89,y:60,width:15,height:72,rx:7,fill:'#2a2e38'}),
+    s('rect',{x:34,y:56,width:52,height:84,rx:14,style:'fill:var(--accent)','fill-opacity':op('body')}),
+    s('rect',{x:35,y:144,width:23,height:100,rx:10,style:'fill:var(--accent)','fill-opacity':op('leg')}),s('rect',{x:62,y:144,width:23,height:100,rx:10,style:'fill:var(--accent)','fill-opacity':op('leg')}));
+  const rows=['head','body','leg'].map(k=>h('div',{class:'target'},h('span',{class:'k',text:k}),h('div',{class:'bar'},h('i',{style:`width:${(share[k]*100).toFixed(1)}%`})),h('span',{class:'v',text:Math.round(share[k]*100)+'%'}),h('small',{text:int(t[k])+' landed'})));
+  const p=m.sig_positions,ptot=p.distance+p.clinch+p.ground;
+  const cols={distance:'var(--pos-1)',clinch:'var(--pos-2)',ground:'var(--pos-3)'};
+  const pos=ptot?h('div',null,h('div',{class:'eyebrow',style:'margin-top:22px',text:'Where they land'}),
+    h('div',{class:'stack'},['distance','clinch','ground'].map(k=>{const i=h('i',{style:`width:${p[k]/ptot*100}%;background:${cols[k]}`,tabindex:0});bindTip(i,()=>[h('strong',{text:Math.round(p[k]/ptot*100)+'%'}),h('div',{text:k[0].toUpperCase()+k.slice(1)+' · '+int(p[k])+' landed'})]);return i;})),
+    h('div',{class:'legend'},['distance','clinch','ground'].map(k=>h('span',null,h('i',{style:'background:'+cols[k]}),k[0].toUpperCase()+k.slice(1)+' ',h('b',{text:Math.round(p[k]/ptot*100)+'%'}))))):null;
+  return h('div',null,h('div',{class:'strikemap'},fig,h('div',{class:'targets'},rows)),pos);
+}
+
+const METHOD_KEYS=[['ko','KO/TKO','var(--ko)'],['sub','Submission','var(--sub)'],['dec','Decision','var(--dec)'],['other','Other','var(--oth)']];
+function methods(m){
+  const rb=m.results_by_method,rows=[];
+  for(const [outcome,label] of [['win','Wins'],['loss','Losses']]){
+    const c=rb[outcome],tot=METHOD_KEYS.reduce((a,[k])=>a+c[k],0);
+    const stack=h('div',{class:'stack'});
+    if(tot)for(const [k,name,col] of METHOD_KEYS){if(!c[k])continue;const share=c[k]/tot;const i=h('i',{style:`width:${share*100}%;background:${col}`,tabindex:0});if(share>=.09)i.textContent=c[k];bindTip(i,()=>[h('strong',{text:c[k]+' '+(c[k]===1?outcome:label.toLowerCase())}),h('div',{text:name+' · '+Math.round(share*100)+'%'})]);stack.append(i);}
+    else stack.append(h('i',{style:'width:100%;background:var(--surface-3)'}));
+    rows.push(h('div',{class:'method-row'},h('span',{class:'k',text:label}),stack,h('span',{class:'n',text:tot})));
+  }
+  const w=rb.win,wt=w.ko+w.sub+w.dec+w.other,fin=wt?(w.ko+w.sub)/wt:null;
+  return h('div',null,
+    h('div',{style:'display:flex;align-items:baseline;gap:10px;margin-bottom:6px'},h('span',{class:'finish',text:fin==null?'—':Math.round(fin*100)+'%'}),h('span',{class:'muted',text:'of wins by finish'})),
+    rows,h('div',{class:'legend',style:'margin-top:10px'},METHOD_KEYS.map(([k,name,col])=>h('span',null,h('i',{style:'background:'+col}),name))));
+}
+
+function meters(r,group){
+  const P=r.percentiles||{};
+  return h('div',{class:'meters'},METRICS.filter(m=>m.group===group).map(m=>{
+    const v=r.metrics[m.key],gp=goodPct(r,m),info=P.eligible&&P.values[m.key];
+    const track=h('div',{class:'track'+(gp==null?' none':'')});
+    if(gp!=null){track.append(h('div',{class:'fill',style:`width:${Math.max(1.5,gp)}%`}));track.append(h('div',{class:'med',style:'left:50%',title:'Division median'}));}
+    const node=h('div',{class:'meter',tabindex:0},h('span',{class:'lbl',text:m.label}),
+      h('span',{class:'val'},m.f(v),gp!=null?h('small',{class:'pct'+(gp>=90?' elite':''),text:ordinal(gp)+' pct'}):null),track);
+    if(info)bindTip(node,()=>[h('strong',{text:m.f(v)}),h('div',{text:m.label}),h('div',{class:'r'},h('span',{text:P.scope+' median'}),h('b',{text:m.f(info.median)})),h('div',{class:'r'},h('span',{text:'Percentile rank'}),h('b',{text:Math.round(gp)+'% · '+info.pool+' fighters'}))].concat(m.lower?[h('div',{text:'Lower is better here.'})]:[]));
+    return node;}));
+}
+
+/* ================= fighter page ================= */
+function fitDivisionWatermark(){
+  const node=document.querySelector('.division-watermark');
+  if(!node)return;
+  node.style.removeProperty('font-size');
+  const size=parseFloat(getComputedStyle(node).fontSize),width=node.clientWidth,needed=node.scrollWidth;
+  if(width>0&&needed>width)node.style.fontSize=Math.floor(size*Math.max(0,width-2)/needed*100)/100+'px';
+}
+function tapeItem(label,value,extra){return h('div',null,h('span',{text:label}),h('b',null,value??'—',extra?h('em',{text:extra}):null));}
+function heroCard(r){
+  const p=r.profile,sm=r.summary;
+  const add=h('button',{class:'btn primary',onclick:()=>addToMatchup(r)},inMatchup(r.id)?'✓ In matchup':'+ Add to matchup');
+  return h('section',{class:'card hero','data-division':sm.division||''},
+    sm.division?h('span',{class:'division-watermark','aria-hidden':'true',text:sm.division}):null,
+    avatar(r,'portrait'),
+    h('div',null,statusBadges(r),h('h1',{class:'fname distressed',text:r.name}),
+      h('div',{class:'record'},
+        h('div',{class:'big'},recordText(sm.career),h('small',{text:'UFC record'})),
+        h('div',{class:'big'},streakText(sm.streak),h('small',{text:'Streak'})),
+        r.history.length?h('div',null,h('div',{class:'eyebrow',style:'margin-bottom:8px',text:'Last '+Math.min(10,r.history.length)}),formStrip(r.history,10)):null),
+      h('div',{class:'tape'},
+        tapeItem('Height',feet(p.height_inches),p.height_inches!=null?Math.round(p.height_inches)+' in':null),
+        tapeItem('Reach',p.reach_inches!=null?Math.round(p.reach_inches)+' in':null,feet(p.reach_inches)),
+        tapeItem('Weight',p.weight_lbs!=null?Math.round(p.weight_lbs)+' lb':null,p.weight_lbs!=null?Math.round(p.weight_lbs*0.4536)+' kg':null),
+        tapeItem('Age',sm.age),tapeItem('Stance',p.stance)),
+      h('div',{class:'hero-actions'},add)));
+}
+function tiles(r){
+  const m=r.metrics;
+  const T=[['Sig. strikes landed / min','sig_landed_per_minute',fmt(m.sig_landed_per_minute)],['Striking differential / min','sig_differential_per_minute',signed(m.sig_differential_per_minute)],['Takedown defense','takedown_defense',pct(m.takedown_defense)],['Knockdowns / 5 min','knockdowns_per_15_minutes',perFive(m.knockdowns_per_15_minutes)]];
+  return h('div',{class:'tiles'},T.map(([label,key,val])=>{const mm=METRICS.find(x=>x.key===key),gp=goodPct(r,mm);
+    return h('div',{class:'tile'},h('div',{class:'lbl',text:label}),h('div',{class:'num',text:val}),h('div',{class:'rank'},gp==null?'No division rank in this window':[gp>=90?h('b',{text:'Top '+Math.max(1,Math.round(100-gp))+'%'}):ordinal(gp)+' percentile',' · '+r.percentiles.scope]));}));
+}
+function historyList(r,limit){
+  const list=h('div',{class:'history'});
+  list.append(h('div',{class:'hrow head'},h('span',{text:'Date'}),h('span',{text:''}),h('span',{text:'Opponent'}),h('span',{class:'meth-col',text:'Method'}),h('span',{class:'ss-col',text:'Sig. landed / absorbed'})));
+  const rows=limit?r.history.slice(0,limit):r.history;
+  for(const f of rows){
+    const own=f.own.sig_strikes_landed,opp=f.opponent_stats.sig_strikes_landed,tot=own+opp||1;
+    const when=[f.result_round?'R'+f.result_round:null,f.result_time].filter(Boolean).join(' · ');
+    list.append(h('div',{class:'hrow'},
+      h('span',{class:'date',text:niceDate(f.date)}),
+      h('span',{class:'chip '+f.outcome,title:f.outcome,text:f.outcome==='win'?'W':f.outcome==='loss'?'L':'–'}),
+      h('span',null,h('button',{class:'opp',onclick:()=>go('#/fighter/'+f.opponent_id),text:f.opponent}),f.title_bout?h('span',{class:'title-tag',text:'TITLE'}):null,h('span',{class:'sub',text:(f.weight_class||'').replace(/ Bout$/,'')})),
+      h('span',{class:'meth meth-col'},h('b',{text:f.method||'—'}),h('span',{class:'sub',text:when})),
+      h('span',{class:'ss ss-col'},own+' / '+opp,h('span',{class:'sbar'},h('i',{style:`width:${own/tot*100}%;background:var(--win)`}),h('i',{style:`width:${opp/tot*100}%;background:var(--surface-3)`})))));
+    if(f.reviewed_result)list.append(h('div',{class:'amend',text:'Result amended: '+(f.reviewed_result.reason||f.method)+'. Originally recorded as '+(f.frozen_result.source_winner_label||'unknown')+'; date the amendment took effect is unknown.'}));
+  }
+  return list;
+}
+function windowNote(r){
+  const m=r.metrics;
+  return h('div',{class:'window-note'},h('span',{class:'eyebrow',text:'Measuring'}),h('span',null,h('b',{text:windowLabel()}),' before '+niceDate(state.before)+' · ',h('b',{text:m.bouts+(m.bouts===1?' fight':' fights')}),', '+fmt(m.minutes,0)+' minutes · window record ',h('b',{text:m.wins+'–'+m.losses+(m.other_results?'–'+m.other_results:'')})));
+}
+function renderFighter(r){
+  const c=$('content');
+  const P=r.percentiles||{};
+  const rankNote=P.eligible?`Bar = percentile among ${P.pool_fighters} ${P.scope==='All divisions'?'fighters':P.scope.toLowerCase()+'s'} in the same window · tick = median`:(P.reason||'Not enough fights in this window for a ranking.');
+  const showAll=r.history.length<=12;
+  const hist=h('div',null,historyList(r,showAll?0:12));
+  const more=showAll?null:h('button',{class:'btn more',onclick:()=>{hist.replaceChildren(historyList(r,0));more.remove();},text:'Show all '+r.history.length+' fights'});
+  const has=r.metrics.bouts>0,any=r.history.length>0;
+  c.replaceChildren(...[
+    heroCard(r),windowNote(r),
+    has?tiles(r):h('div',{class:'card empty',text:any?'No fights in this window.':'No UFC fights with recorded stats before this date. This is a profile-only entry.'}),
+    h('div',{class:'spacer'}),
+    r.metrics.bouts?h('div',{class:'grid g2'},
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Striking'}),h('small',{text:rankNote})),meters(r,'Striking')),
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Grappling'}),h('small',{text:r.metrics.control_observed_bouts+' of '+r.metrics.bouts+' fights have control time'})),meters(r,'Grappling'))):null,
+    h('div',{class:'spacer'}),
+    r.metrics.bouts?h('div',{class:'grid g2'},
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Strike map'}),h('small',{text:'Significant strikes landed, by target'})),strikeMap(r.metrics)),
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'How fights end'}),h('small',{text:windowLabel()})),methods(r.metrics))):null,
+    h('div',{class:'spacer'}),
+    any?h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Fight-by-fight striking'}),h('small',{text:'Sig. strikes landed minus absorbed, per minute · last '+Math.min(innerWidth<700?10:20,r.history.length)+' fights · hover or tap a bar'})),timeline(r.history)):null,
+    any?h('div',{class:'spacer'}):null,
+    any?h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Fight history'}),h('small',{text:r.history.length+' UFC fights before '+niceDate(state.before)})),hist,more):null,
+    provenance([r])].filter(Boolean));
+  fitDivisionWatermark();
+}
+function provenance(reports){
+  return h('details',{class:'prov'},h('summary',{text:'Data provenance'}),reports.map(r=>h('p',null,h('b',{text:r.name+': '}),'source ID '+r.profile.source_fighter_id+' · ',r.profile.source_url?h('a',{href:r.profile.source_url,target:'_blank',rel:'noopener',text:'source profile'}):'no source URL',' · measurements from profile snapshot'+(r.roster&&r.roster.as_of?' · roster as of '+r.roster.as_of:'')+(r.roster&&r.roster.image_credit?' · image: '+r.roster.image_credit:''))));
+}
+
+/* ================= compare page ================= */
+function matchupNameLines(name){
+  const words=name.trim().split(/\s+/);
+  if(words.length<2)return words;
+  // Balance visual word groups without assuming where a surname starts.
+  let split=1,best=Infinity;
+  for(let i=1;i<words.length;i++){const diff=Math.abs(words.slice(0,i).join(' ').length-words.slice(i).join(' ').length);if(diff<best){best=diff;split=i;}}
+  return [words.slice(0,split).join(' '),words.slice(split).join(' ')];
+}
+function fitMatchupNames(){
+  const headings=[...document.querySelectorAll('.faceoff .fname')];
+  if(!headings.length)return;
+  // Measure at the CSS size, then give both fighters the same fitted size.
+  // Repeating this after a resize must also let the type grow back to normal.
+  headings.forEach(node=>node.style.removeProperty('font-size'));
+  const base=Math.min(...headings.map(node=>parseFloat(getComputedStyle(node).fontSize)));
+  const ratio=Math.min(1,...headings.map(node=>{
+    const width=node.clientWidth,needed=Math.max(...[...node.querySelectorAll('.name-line')].map(line=>line.scrollWidth));
+    return width>0&&needed>width?Math.max(0,width-2)/needed:1;
+  }));
+  const size=Math.floor(base*ratio*100)/100;
+  headings.forEach(node=>node.style.fontSize=size+'px');
+}
+function corner(r,side){
+  const sm=r.summary;
+  return h('div',{class:'corner '+side},avatar(r,'portrait '+side),
+    h('div',{class:'corner-info'},h('div',{class:'corner-label',text:side==='red'?'Red corner':'Blue corner'}),
+      h('h2',{class:'fname'},h('button',{class:'opp','aria-label':r.name,onclick:()=>go('#/fighter/'+r.id)},matchupNameLines(r.name).map((line,i)=>h('span',{class:'name-line distressed',text:(i?' ':'')+line})))),
+      h('div',{class:'rec',text:recordText(sm.career)+'  ·  '+streakText(sm.streak)}),h('div',{style:'height:10px'}),statusBadges(r)));
+}
+function totRow(label,a,b,opts={}){
+  const {better,fmtA,fmtB,note}=opts;
+  const edge=better==null?0:better(a,b);
+  const L=h('div',{class:'l'},h('span',{class:'v'+(edge>0?' edge':'')},edge>0?h('span',{class:'edge-mark'}):null,fmtA??(a??'—')));
+  const R=h('div',{class:'r'},h('span',{class:'v'+(edge<0?' edge':'')},fmtB??(b??'—'),edge<0?h('span',{class:'edge-mark'}):null));
+  return h('div',{class:'row'},L,h('div',{class:'c'},label,note?h('div',{style:'text-transform:none;letter-spacing:0;font-weight:500;margin-top:3px',text:note}):null),R);
+}
+const higher=(a,b)=>a==null||b==null||a===b?0:(a>b?1:-1);
+function taleOfTape(A,B){
+  const pa=A.profile,pb=B.profile;
+  const diff=(x,y,u)=>x!=null&&y!=null&&Math.round(x)!==Math.round(y)?(Math.abs(Math.round(x)-Math.round(y))+' '+u+' edge'):null;
+  return h('div',{class:'tot'},
+    totRow('UFC record',null,null,{fmtA:recordText(A.summary.career),fmtB:recordText(B.summary.career)}),
+    totRow('Last 5',null,null,{fmtA:h('span',{style:'display:inline-flex'},formStrip(A.history,5)),fmtB:h('span',{style:'display:inline-flex'},formStrip(B.history,5))}),
+    totRow('Streak',null,null,{fmtA:streakText(A.summary.streak),fmtB:streakText(B.summary.streak)}),
+    totRow('Age',A.summary.age,B.summary.age),
+    totRow('Height',pa.height_inches,pb.height_inches,{better:higher,fmtA:feet(pa.height_inches)||'—',fmtB:feet(pb.height_inches)||'—',note:diff(pa.height_inches,pb.height_inches,'in')}),
+    totRow('Reach',pa.reach_inches,pb.reach_inches,{better:higher,fmtA:pa.reach_inches!=null?Math.round(pa.reach_inches)+'″':'—',fmtB:pb.reach_inches!=null?Math.round(pb.reach_inches)+'″':'—',note:diff(pa.reach_inches,pb.reach_inches,'in')}),
+    totRow('Weight',null,null,{fmtA:pa.weight_lbs!=null?Math.round(pa.weight_lbs)+' lb':'—',fmtB:pb.weight_lbs!=null?Math.round(pb.weight_lbs)+' lb':'—'}),
+    totRow('Stance',pa.stance,pb.stance),
+    totRow('Division',A.summary.division,B.summary.division),
+    totRow('UFC fights',A.available_bouts,B.available_bouts),
+    totRow('Title fights',A.summary.title_bouts,B.summary.title_bouts),
+    totRow('Last fight',null,null,{fmtA:ago(A.summary.last_bout,state.before)||'—',fmtB:ago(B.summary.last_bout,state.before)||'—'}));
+}
+function duel(A,B){
+  const box=h('div',{class:'duel'});let group=null;
+  for(const m of METRICS){
+    if(m.group!==group){group=m.group;box.append(h('div',{class:'group-label',text:group}));}
+    const a=A.metrics[m.key],b=B.metrics[m.key];
+    const edge=a==null||b==null||a===b?0:((m.lower?a<b:a>b)?1:-1);
+    const ga=goodPct(A,m),gb=goodPct(B,m);
+    const row=h('div',{class:'drow',tabindex:0},
+      h('div',{class:'vc l'},h('span',{class:'v'+(edge>0?' edge':'')},edge>0?h('span',{class:'edge-mark',style:'border-right:7px solid var(--red);margin-right:6px'}):null,m.f(a)),h('small',{class:'u',text:m.unit}),ga!=null?h('small',{class:'p'+(ga>=90?' elite':''),text:ordinal(ga)+' pct'}):null),
+      h('div',{class:'mid'},h('div',{class:'name',text:m.label}),h('div',{class:'bars'},h('div',{class:'lb'},ga!=null?h('i',{style:`width:${Math.max(2,ga)}%`}):null),h('div',{class:'rb'},gb!=null?h('i',{style:`width:${Math.max(2,gb)}%`}):null))),
+      h('div',{class:'vc'},h('span',{class:'v'+(edge<0?' edge':'')},m.f(b),edge<0?h('span',{class:'edge-mark',style:'border-left:7px solid var(--blue);margin-left:6px'}):null),h('small',{class:'u',text:m.unit}),gb!=null?h('small',{class:'p'+(gb>=90?' elite':''),text:ordinal(gb)+' pct'}):null));
+    bindTip(row,()=>[h('div',{text:m.label+(m.lower?' (lower is better)':'')}),h('div',{class:'r'},h('span',{text:A.name}),h('b',{text:m.f(a)+(ga!=null?' · '+ordinal(ga)+' pct':'')})),h('div',{class:'r'},h('span',{text:B.name}),h('b',{text:m.f(b)+(gb!=null?' · '+ordinal(gb)+' pct':'')}))]);
+    box.append(row);
+  }
+  return box;
+}
+function renderCompare(res){
+  const [A,B]=res.fighters,c=$('content');
+  const scopeNote=(r)=>r.percentiles&&r.percentiles.eligible?r.percentiles.scope:'unranked';
+  c.replaceChildren(...[
+    h('section',{class:'card faceoff'},corner(A,'red'),h('div',{class:'bigvs'},h('span',{class:'distressed',text:'VS'})),corner(B,'blue')),
+    windowNoteCompare(A,B),
+    h('div',{class:'grid g2'},
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Tale of the tape'}),h('small',{text:'Profile snapshot · age at cutoff'})),taleOfTape(A,B)),
+      h('section',{class:'card'},h('div',{class:'section-title'},h('h3',{text:'Head to head'}),h('small',{text:'Same cutoff, same window'})),
+        h('div',{class:'key'},h('span',null,h('i',{style:'background:var(--red)'}),A.name),h('span',null,B.name,h('i',{style:'background:var(--blue)'}))),
+        h('p',{class:'meta-line',style:'margin:6px 0 8px',text:'Bar length = percentile within each fighter’s own division ('+scopeNote(A)+(scopeNote(A)===scopeNote(B)?'':' / '+scopeNote(B))+'); longer is better. Arrow marks the better raw number.'}),
+        duel(A,B))),
+    h('div',{class:'spacer'}),
+    h('div',{class:'grid g2'},[A,B].map((r,i)=>h('section',{class:'card'},h('div',{class:'section-title'},h('h3',null,h('span',{style:`display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:3px;background:var(--${i?'blue':'red'})`}),r.name),h('small',{text:'Strike map'})),r.metrics.bouts?strikeMap(r.metrics):h('p',{class:'muted',text:'No fights in window.'})))),
+    h('div',{class:'spacer'}),
+    h('div',{class:'grid g2'},[A,B].map((r,i)=>h('section',{class:'card'},h('div',{class:'section-title'},h('h3',null,h('span',{style:`display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:3px;background:var(--${i?'blue':'red'})`}),r.name),h('small',{text:'How fights end'})),methods(r.metrics)))),
+    h('div',{class:'spacer'}),
+    ...[A,B].map((r,i)=>h('section',{class:'card',style:'margin-bottom:18px'},h('div',{class:'section-title'},h('h3',null,h('span',{style:`display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:3px;background:var(--${i?'blue':'red'})`}),r.name+' · fight by fight'),h('small',{text:'Sig. strike differential per minute, last '+Math.min(innerWidth<700?10:20,r.history.length)})),timeline(r.history))),
+    h('p',{class:'muted',style:'font-size:13px',text:'Descriptive comparison of recorded UFC fights. Numbers are not adjusted for opponent quality and do not predict a winner.'}),
+    provenance([A,B])].filter(Boolean));
+  fitMatchupNames();
+}
+const fights=n=>n+(n===1?' fight':' fights');
+function windowNoteCompare(A,B){const small=[A,B].filter(r=>r.metrics.bouts<3).map(r=>r.name);return h('div',{class:'window-note'},h('span',{class:'eyebrow',text:'Measuring'}),h('span',null,h('b',{text:windowLabel()}),' before '+niceDate(state.before)+' · '+A.name+' ',h('b',{text:fights(A.metrics.bouts)}),' · '+B.name+' ',h('b',{text:fights(B.metrics.bouts)})),small.length?h('span',{class:'badge',style:'color:#f3cf7e',text:'Small sample: '+small.join(', ')}):null);}
+
+/* ================= home ================= */
+const PICKS=['Charles Oliveira','Max Holloway'];  /* featured matchup */
+async function renderHome(){
+  const m=state.meta,c=$('content');
+  const years=m?(+m.latest_bout.slice(0,4))-(+m.earliest_bout.slice(0,4)):null;
+  c.replaceChildren(h('section',{class:'home-hero'},h('div',null,
+    h('div',{class:'eyebrow',text:'UFC fighter research · 1994 to today'}),
+    h('h1',null,h('span',{class:'distressed'},'Every fighter.',h('br'),'Every fight. '),h('em',{text:'One place.'})),
+    h('p',{text:'Look up any fighter, analyze their stats, compare them head to head.'}),
+    h('div',{class:'counters'},
+      h('div',{class:'counter'},h('strong',{text:m?int(m.fighters):'—'}),h('span',{text:'fighter profiles'})),
+      h('div',{class:'counter'},h('strong',{text:m?int(m.total_bouts):'—'}),h('span',{text:'UFC bouts with stats'})),
+      h('div',{class:'counter'},h('strong',{text:years??'—'}),h('span',{text:'years of history'}))))),
+    h('section',{class:'card feature',id:'feature'}));
+  const found={};
+  await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
+  const a=found['Charles Oliveira'],b=found['Max Holloway'],feat=$('feature');
+  if(!feat||state.view!=='home')return;
+  if(a&&b)feat.replaceChildren(h('div',null,h('div',{class:'eyebrow',style:'margin-bottom:10px',text:'Featured matchup'}),h('div',{class:'names'},h('span',{class:'distressed',text:a.name}),h('b',{text:'vs'}),h('span',{class:'distressed',text:b.name}))),h('button',{class:'btn primary',onclick:()=>go('#/compare/'+a.id+'/'+b.id),text:'See the tale of the tape →'}));
+  else feat.remove();
+}
+
+/* ================= matchup tray ================= */
+function inMatchup(id){return state.matchup.some(x=>x&&x.id===id);}
+function addToMatchup(r){
+  if(inMatchup(r.id))return;
+  const i=state.matchup[0]?1:0;state.matchup[i]={id:r.id,name:r.name};
+  renderTray();
+  if(state.matchup[0]&&state.matchup[1])go('#/compare/'+state.matchup[0].id+'/'+state.matchup[1].id);
+  else route();
+}
+function renderTray(){
+  const any=state.matchup.some(Boolean);$('tray').classList.toggle('show',any);
+  state.matchup.forEach((f,i)=>{const slot=$('slot'+i);slot.className='slot'+(f?'':' is-empty');
+    const children=[h('i',{style:'background:var(--'+(i?'blue':'red')+')'}),h('span',{text:f?f.name:(i?'Blue corner':'Red corner')})];
+    if(f)children.push(h('button',{'aria-label':'Remove '+f.name,onclick:()=>{state.matchup[i]=null;renderTray();if(state.view==='compare')go('#/fighter/'+(state.matchup[1-i]||f).id);else route();},text:'×'}));
+    slot.replaceChildren(...children);});
+  const [a,b]=state.matchup,parts=location.hash.replace(/^#\/?/,'').split('/');
+  const complete=!!(a&&b),viewing=complete&&parts[0]==='compare'&&parts[1]===a.id&&parts[2]===b.id;
+  $('go').disabled=!complete;
+  $('go').hidden=!complete||viewing;
+}
+$('go').onclick=()=>{if(!$('go').disabled)go('#/compare/'+state.matchup[0].id+'/'+state.matchup[1].id);};
+
+/* ================= routing ================= */
+function go(hash){if(location.hash===hash)route();else location.hash=hash;}
+let version=0;
+async function route(){
+  const v=++version,parts=location.hash.replace(/^#\/?/,'').split('/');
+  renderTray();
+  $('error').textContent='';hideTip();
+  try{
+    if(parts[0]==='about'){state.view='about';renderAbout();document.title='Ayaan Ahmed · UPSET';}
+    else if(parts[0]==='fighter'&&parts[1]){state.view='fighter';$('main').classList.add('loading');const r=await api('/api/fighter?id='+encodeURIComponent(parts[1])+params());if(v!==version)return;renderFighter(r);document.title=r.name+' · UPSET';}
+    else if(parts[0]==='compare'&&parts[1]&&parts[2]){state.view='compare';$('main').classList.add('loading');const r=await api('/api/compare?a='+encodeURIComponent(parts[1])+'&b='+encodeURIComponent(parts[2])+params());if(v!==version)return;state.matchup=r.fighters.map(f=>({id:f.id,name:f.name}));renderTray();renderCompare(r);document.title=r.fighters.map(f=>f.name).join(' vs ')+' · UPSET';}
+    else{state.view='home';await renderHome();if(v!==version)return;document.title='UPSET · Fighter research';}
+    if(state.lastHash!==location.hash)scrollTo({top:0});state.lastHash=location.hash;
+  }catch(e){if(v===version)$('error').textContent=e.message;}
+  finally{if(v===version)$('main').classList.remove('loading');}
+}
+addEventListener('hashchange',route);
+// Refit when the viewport changes or the actual display font finishes loading.
+function fitResearchLabels(){fitMatchupNames();fitDivisionWatermark();}
+const labelFitObserver=new ResizeObserver(()=>requestAnimationFrame(fitResearchLabels));
+labelFitObserver.observe($('content'));
+document.fonts.ready.then(fitResearchLabels);
+document.fonts.addEventListener('loadingdone',fitResearchLabels);
+
+/* ================= search ================= */
+let timer=null,searchVersion=0,hl=-1;
+const input=$('search'),dd=$('dropdown');
+function closeDD(){dd.classList.remove('open');input.parentElement.setAttribute('aria-expanded','false');hl=-1;}
+input.addEventListener('input',()=>{clearTimeout(timer);const sv=++searchVersion;timer=setTimeout(async()=>{
+  const q=input.value.trim();if(!q){closeDD();return;}
+  try{const matches=await api('/api/fighters?q='+encodeURIComponent(q));if(sv!==searchVersion)return;
+    dd.replaceChildren();hl=-1;
+    if(!matches.length)dd.append(h('div',{class:'opt',style:'cursor:default'},h('small',{text:'No fighter matches “'+q+'”.'})));
+    for(const r of matches){const meta=r.recorded_bouts?[r.division,r.recorded_bouts+' UFC '+(r.recorded_bouts===1?'fight':'fights'),r.last_bout?'last '+r.last_bout.slice(0,4):null].filter(Boolean).join(' · '):'Profile only · no UFC fights with stats';
+      dd.append(h('button',{class:'opt'+(r.recorded_bouts?'':' dim'),role:'option',onclick:()=>{closeDD();input.value='';input.blur();go('#/fighter/'+r.id);}},h('div',{class:'avatar mono mini',text:initials(r.name)}),h('div',null,h('b',{text:r.name}),h('small',{text:meta}))));}
+    dd.classList.add('open');input.parentElement.setAttribute('aria-expanded','true');
+  }catch(e){$('error').textContent=e.message;}},160);});
+input.addEventListener('keydown',e=>{const opts=[...dd.querySelectorAll('button.opt')];if(!opts.length)return;
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();hl=(hl+(e.key==='ArrowDown'?1:-1)+opts.length)%opts.length;opts.forEach((o,i)=>o.classList.toggle('hl',i===hl));opts[hl].scrollIntoView({block:'nearest'});}
+  else if(e.key==='Enter'){(opts[hl]||opts[0]).click();}
+  else if(e.key==='Escape')closeDD();});
+document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))closeDD();});
+addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==input&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();input.focus();}});
+
+/* ================= filters ================= */
+$('window').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.window=b.dataset.w;[...$('window').children].forEach(x=>x.setAttribute('aria-pressed',x===b));if(state.view!=='home')route();});
+$('before').addEventListener('change',()=>{if(!$('before').value)return;state.before=$('before').value;if(state.view!=='home')route();});
+
+/* ================= boot ================= */
+api('/api/meta').then(m=>{
+  state.meta=m;const d=new Date(m.latest_bout+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+1);
+  state.before=d.toISOString().slice(0,10);$('before').value=state.before;$('before').max=state.before;
+  $('coverage').textContent=int(m.fighters)+' profiles · '+int(m.total_bouts)+' bouts · '+m.earliest_bout.slice(0,4)+'–'+niceDate(m.latest_bout)+'.';
+  $('coverage-detail').textContent=m.excluded_current_bouts+' recent bouts are held back until fighter identities are confirmed.';
+  renderTray();route();
+}).catch(e=>{$('error').textContent=e.message;});
+</script>
+</body></html>

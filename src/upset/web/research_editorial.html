@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UPSET · Editorial edition</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/web/research_base.css">
+<link rel="stylesheet" href="/web/research_editorial.css">
+<link rel="stylesheet" href="/web/research_about.css">
+</head>
+<body>
+<nav class="rail" aria-label="UPSET"><a href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a><a class="rail-home" href="#/" aria-label="Home">Home</a><small>Independent fighter research</small></nav>
+<header class="top">
+  <div class="wrap topbar">
+    <a class="mlogo" href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a>
+    <div class="search-wrap" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="dropdown">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search" type="search" placeholder="Search any UFC fighter since 1994…" autocomplete="off" aria-label="Search fighters" aria-controls="dropdown">
+      <div class="dropdown" id="dropdown" role="listbox"></div>
+    </div>
+    <div class="controls">
+      <div class="seg" id="window" role="group" aria-label="Measurement window">
+        <button data-w="3" aria-pressed="false" title="Last 3 recorded fights">L3</button>
+        <button data-w="5" aria-pressed="false" title="Last 5 recorded fights">L5</button>
+        <button data-w="10" aria-pressed="false" title="Last 10 recorded fights">L10</button>
+        <button data-w="0" aria-pressed="true" title="All recorded UFC fights">Career</button>
+      </div>
+      <label class="date" title="Only fights strictly before this date are counted"><span>Before</span><input type="date" id="before"></label>
+    </div>
+  </div>
+  <div class="tray" id="tray"><div class="wrap">
+    <span class="eyebrow">Matchup</span>
+    <div class="slot" id="slot0"></div><span class="vs">VS</span><div class="slot" id="slot1"></div>
+    <button class="btn primary" id="go" style="margin-left:auto" hidden>View matchup →</button>
+  </div></div>
+</header>
+
+<main class="wrap" id="main"><div id="error" role="alert"></div><div id="content"></div></main>
+<div class="tip" id="tip" role="tooltip"></div>
+
+<footer><div class="wrap">
+  <div><b>UPSET</b> · Fighter research, local preview. <span id="coverage">Loading archive…</span></div>
+  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are shown per 5 minutes of actual fight time; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
+<div class="creator-credit">Created by <a href="#/about">Ayaan Ahmed</a>.</div>
+</div></footer>
+
+<script src="/web/research_about.js" defer></script>
+<script src="/web/research_editorial.js" defer></script>
+</body></html>

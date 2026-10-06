@@ -1,5 +1,84 @@
 # Modeling research plan — September 24, 2026
 
+**Implementation follow-up:** The first chronological Elo and bounded
+boosted-tree experiment is now implemented alongside the existing models.
+See `ELO_EXPERIMENT.md` for fixed settings, source audit, saved-reference
+checks and the first Mac results at `ddba4ab`. Defense + Elo reached 57.78%
+(six more correct than full defense); its accuracy interval includes zero.
+Boosted defense + Elo had the best pooled probability losses in that study
+but lower accuracy than full defense. Diagnostic review found material
+fighter-order dependence in the fitted classifiers; the full manifest and
+Mac Ruff/288-test result are confirmed. No model is promoted.
+
+`RECENT_FORM_EXPERIMENT.md` now specifies an implemented, separate follow-up:
+mirrored training and symmetric inference, 365-day weighted performance,
+earlier-population shrinkage, and actual control margin. Six fixed new
+candidates retain the original six predictions as references. The Mac passed
+Ruff and 313 tests; 17,102 histories were independently audited. The best
+pooled candidate improved log loss to 0.666020 but made 57.67% correct picks,
+without an accuracy gain over its matching comparator. The uploaded report
+and row-level predictions matched their hashes; coarse-bin calibration is
+worse than the comparator's. `EXAMINED_LATER_EVALUATION.md` freezes the next
+comparison on the already examined later dates; it cannot be a fresh holdout.
+The Mac completed that comparison: on 1,260 decisive fights, recent + Elo
+scored 784 (62.22%) versus symmetric defense + Elo's 767 (60.87%), with lower
+log loss (0.649515 versus 0.659788). The paired accuracy interval includes
+zero, and the small 2026 and one-fighter-history slices favor the comparator.
+No model was promoted; fresh evidence requires externally dated pre-event
+forecasts on data newer than the historical snapshot.
+
+**September 25 follow-up:** `PAIRED_CONTEXT_EXPERIMENT.md` specifies the next
+implemented comparison: one fixed symmetric tree adds each fighter's own
+pre-fight values to the existing difference/exposure inputs (102 columns
+versus 36), with unchanged settings. All 12 saved reference variants are
+preserved; the directly matched old tree must reproduce its saved outputs.
+Ruff and 334 tests plus 16 subtests pass in the assistant environment. The
+Mac passed Ruff and all 334 tests, then completed the run at `26334e8`.
+The new tree's 1,062/1,857 correct (57.19%) and log loss 0.670842 do not
+improve on the old tree's 1,070/0.670808 or logistic's 1,071/0.666020.
+The paired intervals include zero. All 611 uploaded metric sets, bins,
+symmetry and both paired intervals were reproduced from the saved rows;
+the 12 earlier reference series are unchanged. Retain recent + Elo logistic
+as the research reference and specify opponent-adjusted performance next.
+Only the existing development windows were scored; the later 62.22% result
+is a separate cohort. No model was promoted. No paid data or monotonic
+constraints were added. That document also qualifies the external review's
+public-model comparisons, claimed 75% ceiling, dependence between folds and
+historical-odds costs. A market benchmark remains important separate work.
+
+**Opponent-adjusted follow-up completed:** `OPPONENT_ADJUSTED_EXPERIMENT.md`
+records a single fixed comparison adding six residual/exposure features to
+the saved recent + Elo logistic model. The Mac passed Ruff and all 346 tests,
+audited 17,102 adjusted rows and matched the reference refit exactly. The
+candidate gained 23 picks (1,094 versus 1,071/1,857; date-bootstrap
+accuracy interval [+0.11, +2.48] percentage points), but pooled log loss
+rose 0.666020 to 0.666722 and Brier rose 0.236867 to 0.237185. The paired
+loss interval spans zero and the one-history slice deteriorates. Uploaded
+hashes, old prediction series, 611 metric sets, interval and adjusted-history
+arithmetic were independently checked. This is mixed exploratory evidence,
+not a demonstrated probability gain: **no promotion**. Prioritize current
+data, replay and timestamped prospective forecasts for fresh evidence.
+
+**Prospective foundation:** `FROZEN_PROSPECTIVE_MODEL.md` implements the
+accepted logistic recipe as a replay-verified numeric artifact and adds a
+provider-neutral completed-fight intake contract after the March snapshot.
+The Mac froze 8,400 decisive fights after passing Ruff and 351 tests;
+the artifact hash and full result are documented. This does not claim a new
+score. `ASOF_PREFIGHT_FEATURES.md` adds a strictly dated 36-column builder;
+its full-data historical audit is pending. To improve the model, first measure coverage
+and reconcile the missing current fights/stats, then derive and audit strictly
+dated features. Independently specify a genuinely different available-signal
+family (for example fight-date age/reach with missingness and class context),
+and compare against the saved reference on identical bouts. A timestamped
+market-only comparator would show how much signal is still missing from
+historical stats. Report both proper probability losses and accuracy on
+prospectively locked forecasts; repeated historical fold exploration cannot
+establish a 75% all-fights result. Cito purchase is a source-coverage
+decision, not a prerequisite for freezing or replaying the model.
+
+The historical review below describes the state before these implementations.
+Physical features and broader Cito acquisition remain proposed.
+
 ## Status and purpose
 
 This plan records the modeling review requested after PR #13. It is a research
@@ -200,4 +279,3 @@ new model is approved.
 Modeling priorities, pilot sizes and parameter choices above are recommendations
 from this review. The sources describe capabilities and principles; they do
 not establish a predicted accuracy gain for UPSET.
-

@@ -1,10 +1,21 @@
 # UPSET Project Status
 
-**Last updated:** September 24, 2026
+**Last updated:** October 5, 2026 America/Chicago
 
-**Current phase:** Historical modeling and data integration
+**Current phase:** Local product refinement alongside data and model validation
 
-**Current focus:** Opponent strength and recent-performance research; prospective readiness
+**Current focus:** Preserve the accepted website checkpoint and hand off completed work; resume incremental changes when Ayaan is ready
+
+## Current checkpoint — October 5, 2026 (final chat handoff)
+
+Read `HANDOFF_2026_10_05_FINAL.md` before acting on older pending notes below.
+The accepted local product is the original broadcast site with Ayaan's creator
+bio and square UI controls/panels. The editorial experiment was rejected.
+Latest all-square Mac installation is delivered but not yet confirmed.
+The last visible viewer uses research_v2 (8,799 bouts); the completed refresh
+DB has 8,810 through October 3. Latest frozen replay is 160/255 decisive picks
+(62.74510%), retrospective only. Identity/independent coverage/prospective
+forecast work remains. No new model or public deployment is part of this pause.
 
 ## Project Goal
 
@@ -444,29 +455,238 @@ the preserved experiment definitions or claim any new score.
 
 ## Recommended Next Steps
 
-1. Implement and independently audit chronological opponent strength. Compare
-   Elo alone and Elo-enhanced logistic models against the frozen references;
-   include one small boosted-tree comparison on identical features and bouts.
-2. Add exposure-aware recent performance from the already owned historical
-   fight totals, then available physical context and matchup interactions.
-   Measure each family rather than assuming more columns improve predictions.
-3. If Ayaan buys Cito Pro, first validate a limited historical coverage pilot
-   and the account's actual archive entitlement. The September 16 provider
-   email already supports one-month acquisition and local retention; pricing
-   and terms still disagree on the public historical window.
-4. Repair the completed-fight/stat gap after March 2026 and review provider
-   identities. Establish timestamped odds coverage for a separate market
-   benchmark and optional market-assisted candidate.
-5. Freeze a model release, verify probability replay, capture externally dated
-   prospective forecasts, then score outcomes separately. No new model was
-   promoted by the handoff review.
+The Mac completed the first Elo/boosted-tree run at `ddba4ab`: 17,102 rating
+rows independently replayed and matched, 1,857 decisive development bouts,
+35 Draw/NC exclusions, and saved reference probabilities preserved. Adding
+Elo to defense achieved 1,073 correct (57.78%) versus full defense's 1,067 (57.46%).
+Its six-pick gain was uneven by fold (-12, +4, +23, -9), and the paired
+accuracy interval was [-1.51, +2.15] percentage points. Boosted defense + Elo
+had the lowest pooled log loss/Brier (0.674022/0.240889) but seven fewer
+correct picks than full defense (1,060; 57.08%). No model was promoted.
+The existing exploratory 58.00% accuracy result was not exceeded. See
+`docs/ELO_EXPERIMENT.md` for the full printed score ledger. The supplied
+manifest and predictions passed a matching SHA-256 check and cover all 1,892
+validation bouts. The symmetry diagnostic found that swapping fighter order
+changes the selected winner on 164/1,857 defense + Elo predictions and
+418/1,857 boosted defense + Elo predictions. The existing canonical
+UUID orientation makes the historical experiment reproducible, but these
+fitted models need an order-consistent procedure before use in a public
+matchup interface. Direct Elo has no conflicting picks after excluding
+exact 0.5 ties. Mac Ruff passed and the complete terminal log confirms
+288 pytest tests passed in 14.12s. The assistant environment separately
+passed 288 tests and 16 subtests. PR #15 is draft for research review.
+
+The next requested implementation is complete on `feature/symmetric-recent-form`:
+a separate, independently audited 365-day weighted-performance export, fixed
+earlier-population shrinkage, actual paired control margin, mirrored training
+with half weight per orientation, and complementary inference. Six new
+logistic/boosted candidates isolate symmetry, Elo and recent performance;
+all six old forward/reverse prediction series are preserved. The source
+statistics must also reproduce the accepted matchup/defense features. The
+assistant environment passed Ruff and 313 tests plus 16 subtests. See
+`docs/RECENT_FORM_EXPERIMENT.md` for the fixed design, Mac results and
+interpretation.
+The first Mac run at `3cb9f18` passed Ruff but hit the same boosted-training
+error in five pytest cases (308 passed; two failed; three setup errors) with
+scikit-learn 1.9.1. It never reached the export or comparison. A follow-up
+restricts boosting to columns actually observed in the fold's training rows.
+On the Mac at `4bc2941`, Ruff and all 313 tests passed. The Mac exported and
+independently audited all 17,102 recent rows, with strictly earlier
+population priors and all numeric fields recomputed. The comparison covered
+1,857 decisive bouts plus 35 Draw/NC exclusions and exactly preserved the
+six saved reference probability series.
+
+The symmetric logistic defense + Elo + recent candidate has the lowest pooled
+log loss/Brier: **0.666020/0.236867**, versus symmetric defense + Elo's
+0.677363/0.241769. Its matched paired log-loss difference is -0.011342,
+with a date-bootstrap 95% interval [-0.019443, -0.003091]. This direction
+holds in all four development windows. Correct picks are 1,071/1,857
+(57.67%), versus the matched model's 1,075 (57.89%) and saved full defense's
+1,067 (57.46%). Paired accuracy intervals include zero. All six new variants
+have zero final fighter-swap probability error and no conflicting picks.
+These are repeatedly examined development folds; intervals are unadjusted
+for multiple comparisons. No model was promoted. The newly uploaded manifest
+and all 1,892 predictions were inspected: saved prediction/reference hashes
+and all six original probability series match, and all 47 score sets across
+12 variants plus the paired bootstrap reproduce from the rows. Recent logistic
+AUC is 0.628908 versus its comparator's 0.605321; log-loss gains hold across
+both history and both experience groups, with 42 double-debut bouts yielding
+exact 0.5 ties. The ten-bin calibration error is worse (0.0352 versus 0.0074),
+despite lower log loss and Brier. The source-replay audit is reported as passed
+in the Mac manifest; the original historical files were not uploaded for an
+independent source replay in this environment. The manifest counts 1,279
+source bouts after the August 19, 2023 development end date. Freeze any
+candidate and calibration policy before scoring later-date fights.
+
+The next fixed recipe is implemented on `feature/examined-later-evaluation`:
+`python -m upset.modeling.run_examined_later forecast` fits symmetric recent
+Elo and its matched symmetric defense + Elo comparator once through August 19,
+2023, and saves outcome-free probabilities for all later fights, including
+future Draw/NC results. A separate `score` action verifies the forecast hash,
+source snapshot and code commit before joining outcomes. It records paired
+loss/accuracy, reliability bins, date-bootstrap intervals, year and history
+slices; no fitted calibration. The original nine-feature baseline **already
+examined** these later dates and scored 655/1,260 decisive bouts (51.98%).
+This follow-up is an examined historical stress test, not a fresh holdout.
+See `docs/EXAMINED_LATER_EVALUATION.md`. In the assistant environment, Ruff,
+all 317 tests and 16 subtests passed. The Mac also passed Ruff and all 317
+tests, then saved 1,279 outcome-free forecasts and scored 1,260 decisive
+bouts (19 Draw/NC excluded). Recent + Elo was correct on 784/1,260 (62.22%)
+versus its matched symmetric defense + Elo comparator's 767 (60.87%); log
+loss was 0.649515 versus 0.659788. The paired log-loss difference is
+-0.010273 (date-bootstrap 95% interval [-0.018567, -0.002331]); accuracy
+improved 1.35 points but its interval [-0.95, +3.51] includes zero. The
+one-fighter-history slice and small 2026 slice favored the comparator. The
+uploaded forecast and score files passed hash, separation, row-level score
+and interval recomputation checks. This period is previously examined;
+there is no new model promotion.
+
+The external review motivated one new fixed experiment on
+`feature/paired-fighter-context`: add both fighters' individual pre-fight
+values to the existing symmetric recent + Elo tree. Its 102 inputs retain
+the existing 36 columns and add 66 individual values, preserving absolute
+levels and one known fighter when the other has missing history. All 12
+saved recent-form reference series are preserved; the directly matched tree
+must reproduce its saved probabilities within 1e-12. Source reconstruction,
+independent Elo/recent audits, paired-column swapping and fixed chronological
+folds protect the comparison. Ruff, 334 tests and 16 subtests pass in the
+assistant environment. The Mac passed Ruff and all 334 tests in 37.52 seconds
+at `26334e8`, then completed the full-data run. The new tree scored
+1,062/1,857 (57.19%), versus its matched tree's 1,070 (57.62%) and the saved
+recent + Elo logistic model's 1,071 (57.67%). Log loss was 0.670842 versus 0.670808 and
+0.666020 respectively. The primary paired loss difference is +0.000034
+(date-bootstrap 95% interval [-0.002990, +0.003248]); both comparisons'
+accuracy and loss intervals include zero. Lower binned ECE does not establish
+a probability-quality improvement. The one-history slice also worsened.
+
+The uploaded hashes and all 12 old prediction series match the prior files.
+Independent row calculations reproduced all 611 metric sets across 13
+variants, bins/ECE, symmetry and both paired intervals. The Mac reported
+17,102 audited rows and zero matched-tree refit difference in every fold;
+source files were not uploaded for a separate replay here. **No demonstrated
+gain; no model promotion.** Keep recent + Elo logistic as the working research
+reference. Its earlier 62.22% is on a different, later cohort and is unchanged.
+See `docs/PAIRED_CONTEXT_EXPERIMENT.md` for the score ledger and evidence hashes.
+
+The opponent-adjusted study is complete on `feature/opponent-adjusted-performance`.
+For each earlier fight it measures landed significant strikes and takedowns
+relative to that opponent's pre-bout conceded rate, then decays the excess
+over 365 days and shrinks sparse exposure toward zero. It adds six paired
+rate/evidence columns to the saved 36-column symmetric recent + Elo logistic
+recipe. A separate earlier-bout audit checks every new historical numeric
+field; the Mac audited 17,102 rows, matched the saved logistic refit exactly,
+and preserved all 12 older series. Ruff and 346 tests passed on the Mac.
+In the 1,857 decisive development bouts, adjusted features made 1,094
+correct picks (58.91%) versus 1,071 (57.67%), but log loss increased from
+0.666020 to 0.666722 and Brier from 0.236867 to 0.237185. The accuracy
+date-bootstrap interval is [+0.11, +2.48] percentage points, while the
+primary paired log-loss interval [-0.002571, +0.004019] includes zero.
+With just one fighter having prior history, both picks and loss worsened.
+Independent uploaded-row review matched all 611 score sets, date bootstrap,
+symmetry/calibration bins, 12 reference series and adjusted-history numeric
+arithmetic; the source-data replay is reported by the Mac, not independently
+repeated without its raw data. **No probability-quality gain established; no
+model promoted.** See `docs/OPPONENT_ADJUSTED_EXPERIMENT.md` for the score
+ledger, hashes and limitations.
+
+The `feature/frozen-prospective-replay` branch adds an inspectable numeric
+artifact for the symmetric recent + Elo research model. It pins the seven
+historical source hashes and accepted reference, fits through March 7, 2026,
+and checks every fitted training prediction against the saved parameters. The
+prospective archive replays every forecast made with this named model during
+both record and verify. The Mac passed Ruff and all 351 tests, then froze
+8,400 decisive historical bouts; model SHA-256
+`55bf4a6f363c9c45bd3db008b74faab5927318b6614836e440024f52d9c8894c`.
+This is a replay milestone, not a new UFC accuracy result. Current fight/stat
+intake now rejects unreviewed links, incomplete stats and dated duplicate
+matchups against the historical snapshot, saving immutable identified batches
+with hashes. Provider acquisition/normalization and complete coverage of
+fights after the historical cutoff are still needed to produce real future
+inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
+
+The follow-up `feature/asof-prefight-features` branch reconstructs all 36
+inputs from completed, linked fights before the requested event date,
+including staged post-March results. It cross-checks the entire original
+historical cohort against pinned saved matchup/defense/Elo/recent columns
+before generating any future row. On the first Mac attempt Ruff and 354 tests
+passed, but the full audit stopped on a same-date historical fighter pair.
+Distinct bout IDs from the accepted historical provider are now retained to
+match the original builders. The completed Mac audit matched all 8,551 bouts,
+17,102 fighter rows and 36 columns against the accepted historical inputs,
+with maximum absolute error 0.0. The one flagged pair is Sakuraba versus
+Silveira at UFC Japan on 1997-12-21, when they fought twice (a no contest and
+a submission win, per UFC's historical account). A regression test compares
+the 36 columns for same-day repeated pairs against the older builders.
+Prospective use also requires a demonstrated complete current-data feed,
+reviewed new fighter links and independently timestamped schedule/forecasts.
+See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
+
+1. Keep the symmetric recent + Elo logistic as the working research
+   reference. Archive both paired-context and opponent-adjusted experiments
+   with their mixed/negative probability results, without automatic promotion
+   or tuning on the repeatedly examined folds.
+2. Repair the completed-fight/stat gap after March 2026, review provider
+   identities, independently audit as-of feature generation, and capture
+   externally dated pre-event forecasts. Score outcomes separately when
+   known; retain proper losses, calibration, accuracy and sparse-history
+   slices. Previously examined August 2023–March 2026 remains a historical
+   stress test, not fresh evidence.
+3. Keep the research PR stack reviewable before merging. Separately scope a
+   timestamped market benchmark and, only with an explicit new experiment
+   specification, consider a historically auditable physical-context family.
+4. Cito Pro was purchased on September 28. The Mac now has 790 captured cards
+   and 41,802 staged round rows. See the September 30 archive status below;
+   current source gaps and identities are being reconciled during this single
+   paid period.
+5. Establish timestamped odds coverage for a separate market benchmark and
+   optional market-assisted candidate; historical MMA odds may require a paid
+   plan. No new model was promoted by these exploratory experiments.
 
 ## Blockers
 
-The historical snapshot ends on 2026-03-07. Complete reviewed current data,
-a serialized/replay-verified model and actual pre-event evidence are absent.
-Historical Cito round access and timestamped odds coverage have not been
-established on the user's account. These block live-performance claims;
-opponent-strength and recent-performance research can proceed with existing
-historical files.
+The historical snapshot ends on 2026-03-07. A serialized, replay-verified
+frozen model and a historically audited as-of feature builder are available.
+Complete reviewed current data and actual externally timestamped pre-event
+evidence remain absent. Historical Cito round access has been demonstrated;
+complete independent coverage and timestamped odds coverage remain open.
+Fresh live-performance claims require
+pre-event forecasts and subsequent independently scored outcomes;
+the opponent-adjusted performance study needed no paid data.
+The Odds API's historical MMA access is paid; current odds have a free tier.
+A timestamped market comparison remains separate work. Cito is not needed
+for the completed paired-context study or the adjusted-performance experiment.
 
+## September 30, 2026 — archive acquisition and integration
+
+Ayaan purchased Cito Pro for one paid period. The immutable provider inventory
+contains 812 entries. All 790 past UFC-candidate cards through the September
+28 cutoff were captured, including 35 cards whose false availability flags
+were disproved by the stats endpoint and recovered. This is coverage of the
+provider inventory, not independent whole-calendar certification.
+
+The Mac's v4 audit found 8,909 listed bouts, 8,865 structurally complete bouts
+whose observed stats reconcile, and 181 bouts with unavailable historical
+control time preserved as unknown. The first historical bridge matched
+8,531 of 8,551 accepted bouts, staged 41,802 round rows, and proposed 2,642
+unique Cito fighter links without conflicts or duplicate historical matches.
+
+The new offline acceptance command selects complete historical rounds,
+rechecks sums against the accepted paired totals and exports permanent IDs,
+link evidence and a separate extended registry. On the uploaded v1 bridge,
+the selection/identity checks passed for 40,232 rounds across 8,531 bouts.
+Full private-data sum checks and the seven scoped name-alias fixes must run
+on the Mac. No original snapshot, experiment or model artifact is overwritten.
+
+Current result review separately records Idiris–Osbourne as an overturned NC,
+Brundage–Abdul-Malik as a majority draw and Bellato–Craig as an NC. Bellato's
+one-second source clock disagreement remains explicit. The original result
+snapshots and unknown revision dates are retained for replay.
+
+The remaining work is bounded: probe 13 historical bouts lacking cached stats
+and two current bouts lacking totals; reconcile the 339 post-snapshot bout
+records and current fighter identities; independently audit event/bout coverage;
+then issue and externally timestamp a frozen pre-event forecast. The probe
+plan uses 30 primary calls and at most 18 conditional fallbacks on the uploaded
+evidence. Repeating it reuses cached responses. Returned source rows still
+need reconciliation. See `docs/CITO_ARCHIVE_COLLECTION.md` for the exact files,
+commands, measured counts and limitations. No model-performance gain is claimed.
