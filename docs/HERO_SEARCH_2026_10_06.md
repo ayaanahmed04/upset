@@ -52,3 +52,16 @@ the counter numbers. Those refinements are delivered in
 a 28px offset accounting for its label and helper text; tablet/mobile reset the
 offset and retain the search-before-counters layout. Final alignment still needs
 his visual review after replacement.
+
+## Per-round wording
+
+Before installing the alignment refinement, Ayaan requested “per round” instead
+of “/ 5 min” and “per 5 min” for knockdowns, takedowns and submission attempts.
+All broadcast profile cards, meters, matchup rows and tooltips now use that
+wording. Values and percentile ranks are unchanged: the footer explicitly
+defines a round as a five-minute equivalent based on actual fight time, including
+early finishes. This is a label change, not averaging over recorded rounds.
+
+The combined delivery is `upset-home-round-labels.html`. It includes the pending
+UPSET period, red Black Ops One subtitle and desktop search alignment, so Ayaan
+only needs to install this one replacement file.
