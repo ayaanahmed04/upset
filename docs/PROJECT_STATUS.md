@@ -735,3 +735,15 @@ plan uses 30 primary calls and at most 18 conditional fallbacks on the uploaded
 evidence. Repeating it reuses cached responses. Returned source rows still
 need reconciliation. See `docs/CITO_ARCHIVE_COLLECTION.md` for the exact files,
 commands, measured counts and limitations. No model-performance gain is claimed.
+# October 6 UTC: research context and competitive review
+
+The broadcast viewer adds dated opponent records (mean and pooled rates with
+per-meeting evidence), knockdown absorption ratio, validated control-time shares
+and a linked methodology page. Common opponents and scored knockdown efficiency
+were already shipped. Missing/invalid control is excluded; uncredited time is
+not advertised as measured distance time. Historical cutoffs use currently
+reviewed outcomes, not reconstructed source availability. Existing metrics and
+SQLite were preserved; no model change or API request. 34 focused Python tests
+and existing/new Node UI checks pass. See RESEARCH_CONTEXT_2026_10_06.md for
+definitions, competitive corrections, installation and next work. Round viewer,
+event pages, dependable updates and prospective forecast publication remain.

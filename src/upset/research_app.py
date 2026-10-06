@@ -17,6 +17,7 @@ from urllib.parse import parse_qs, urlsplit
 from upset.data.audit_cito_archive import _name
 from upset.data.collect_cito_archive import _digest
 from upset.data.reviewed_bout_metadata import reviewed_title_evidence
+from upset.research_context import control_shares, opponent_records
 
 
 def connect(database):
@@ -191,15 +192,20 @@ def fighter_report(db, uid, before, window):
     # Their denominator is landed significant strikes, never bout duration.
     knockdowns = sum(r["own"]["knockdowns"] for r in selected)
     sig_landed = sum(r["own"]["sig_strikes_landed"] for r in selected)
+    sig_absorbed = sum(r["opponent_stats"]["sig_strikes_landed"] for r in selected)
+    knockdowns_received = sum(r["opponent_stats"]["knockdowns"] for r in selected)
     stats["power_durability"] = {
         "bouts": len(selected),
         "knockdowns_scored": knockdowns,
         "sig_strikes_landed": sig_landed,
         "knockdowns_per_100_sig_landed": ratio(100 * knockdowns, sig_landed),
-        "knockdowns_received": sum(r["opponent_stats"]["knockdowns"] for r in selected),
+        "knockdowns_received": knockdowns_received,
+        "sig_strikes_absorbed": sig_absorbed,
+        "knockdowns_received_per_100_sig_absorbed": ratio(100 * knockdowns_received, sig_absorbed),
         "ko_tko_losses": stats["results_by_method"]["loss"]["ko"],
         "losses": stats["losses"],
     }
+    stats["control_shares"] = control_shares(timed)
     streak_kind, streak = (history[0]["outcome"], 0) if history else (None, 0)
     for r in history:
         if r["outcome"] != streak_kind:
@@ -315,6 +321,9 @@ def roster_entry(report):
 def enrich(database, report):
     report["percentiles"] = percentiles(database, report)
     report["roster"] = roster_entry(report)
+    # Only calculate opponent context for requested profiles, not every percentile peer.
+    with closing(connect(database)) as db:
+        report["metrics"]["opponent_records"] = opponent_records(db, report["history"], report["window"])
     return report
 
 
@@ -371,6 +380,7 @@ def route(database, target):
 
 DESIGNS = {"broadcast": "research.html", "editorial": "research_editorial.html"}
 WEB_FILES = {
+    "research_methodology.js": "text/javascript; charset=utf-8",
     "research_about.css": "text/css; charset=utf-8",
     "research_about.js": "text/javascript; charset=utf-8",
     "research_base.css": "text/css; charset=utf-8",

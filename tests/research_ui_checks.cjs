@@ -52,11 +52,22 @@ vm.runInContext(section('function meters(r,group)', '/* ================= fighte
 vm.runInContext(section('function tiles(r)', 'function historyList('), context);
 vm.runInContext(section('function duel(A,B)', 'function renderCompare('), context);
 vm.runInContext(section('const fights=n=>', '/* ================= home'), context);
+vm.runInContext(fs.readFileSync(path.join(__dirname, '../src/upset/web/research_methodology.js'), 'utf8'), context);
+nodes.content = new Node('div');
+vm.runInContext(`
+  state.meta={latest_bout:'2026-10-03'};
+  renderMethodology();
+  assert.ok(nodes.content.textContent.includes('How the numbers work'));
+  assert.ok(nodes.content.textContent.includes('arithmetic mean'));
+  assert.ok(nodes.content.textContent.includes('not measured distance time'));
+  assert.ok(nodes.content.textContent.includes('not a public prospective forecast track record'));
+`, context);
 vm.runInContext(`
   {
     state.window='0';state.before='2026-10-04';
     const power={bouts:2,knockdowns_scored:3,sig_strikes_landed:90,
-      knockdowns_per_100_sig_landed:100*3/90,knockdowns_received:5,ko_tko_losses:1,losses:1};
+      knockdowns_per_100_sig_landed:100*3/90,knockdowns_received:5,sig_strikes_absorbed:50,
+      knockdowns_received_per_100_sig_absorbed:10,ko_tko_losses:1,losses:1};
     const r={metrics:{power_durability:power}};
     const original=JSON.stringify(power);
     const card=powerDurability(r);
@@ -64,8 +75,20 @@ vm.runInContext(`
     assert.ok(card.textContent.includes('3 knockdowns / 90 significant strikes'));
     assert.ok(card.textContent.includes('1 of 1 losses · 2 fights'));
     assert.equal(JSON.stringify(power),original);
-    const empty=powerDurability({metrics:{power_durability:{...power,bouts:0,knockdowns_per_100_sig_landed:null}}});
-    assert.equal(empty.children[1].children.filter(n=>n.children[1].textContent==='—').length,3);
+    assert.ok(card.textContent.includes('5 knockdowns / 50 significant strikes absorbed'));
+    const empty=powerDurability({metrics:{power_durability:{...power,bouts:0,knockdowns_per_100_sig_landed:null,knockdowns_received_per_100_sig_absorbed:null}}});
+    assert.equal(empty.children[1].children.filter(n=>n.children[1].textContent==='—').length,4);
+    const records={bouts:2,opponents_with_decisive_history:1,mean_opponent_win_fraction:.75,
+      pooled_wins:3,pooled_losses:1,pooled_other_results:0,pooled_opponent_win_fraction:.75,
+      meetings:[{opponent_id:'opp',opponent:'Opponent',date:'2026-01-01',wins:3,losses:1,other:0,win_fraction:.75}]};
+    const control={timed_bouts:2,observed_bouts:1,observed_seconds:300,
+      in_control_fraction:.3,controlled_fraction:.2,neither_credited_fraction:.5};
+    const context=fightContext({metrics:{opponent_records:records,control_shares:control}});
+    assert.ok(context.textContent.includes('75%'));
+    assert.ok(context.textContent.includes('1 of 2 timed fights'));
+    assert.ok(context.textContent.includes('not measured distance time'));
+    assert.ok(context.textContent.includes('3–1–0'));
+    assert.ok(fightContext({metrics:{}}).textContent.includes('Restart'));
     const meetings=[{date:'2026-01-01',outcome:'win',method:'Decision',result_round:3,result_time:'5:00'},
       {date:'2025-01-01',outcome:'other',method:'No Contest',result_amended:true}];
     const shared={fighters:[{name:'Fighter A'},{name:'Fighter B'}],common_opponents:[{

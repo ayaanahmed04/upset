@@ -243,6 +243,8 @@ def test_http_serves_packaged_viewer_and_reports_validation_errors(tmp_path):
             assert 'id="before"' in body and 'id="window"' in body
         with urlopen(base + "/api/fighters?q=Alex", timeout=5) as response:
             assert len(json.loads(response.read())) == 2
+        with urlopen(base + "/web/research_methodology.js", timeout=5) as response:
+            assert "renderMethodology" in response.read().decode()
         with pytest.raises(HTTPError) as error:
             urlopen(base + "/api/fighter?id=" + A + "&before=wrong", timeout=5)
         assert error.value.code == 400
