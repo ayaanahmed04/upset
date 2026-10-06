@@ -422,7 +422,7 @@ footer b{color:var(--text-2)}
 
 <footer><div class="wrap">
   <div><b>UPSET</b> · Fighter research, local preview. <span id="coverage">Loading archive…</span></div>
-  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. For knockdowns, takedowns and submission attempts, “per round” means a five-minute round equivalent based on actual fight time, including fights that end early; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
+  <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are expressed per 15 minutes of actual fight time, including fights that end early; this is a standardized rate, not an average per fight; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
 <div class="creator-credit">Created by <a href="#/about">Ayaan Ahmed</a>.</div>
 </div></footer>
 
@@ -435,8 +435,6 @@ const NS='http://www.w3.org/2000/svg';
 function h(tag,attrs,...kids){const n=document.createElement(tag);if(attrs)for(const[k,v]of Object.entries(attrs)){if(v==null||v===false)continue;if(k==='class')n.className=v;else if(k==='text')n.textContent=v;else if(k==='style')n.style.cssText=v;else if(k.startsWith('on'))n[k]=v;else n.setAttribute(k,v===true?'':v);}for(const c of kids.flat()){if(c==null||c===false)continue;n.append(c instanceof Node?c:document.createTextNode(String(c)));}return n;}
 function s(tag,attrs,...kids){const n=document.createElementNS(NS,tag);if(attrs)for(const[k,v]of Object.entries(attrs))if(v!=null)n.setAttribute(k,v);for(const c of kids.flat())if(c!=null)n.append(c instanceof Node?c:document.createTextNode(String(c)));return n;}
 const fmt=(x,d=2)=>x==null?'—':Number(x).toFixed(d);
-// Keep the API's per-15-minute fields stable and convert only their displayed units.
-const perFive=x=>fmt(x==null?null:x/3);
 const pct=x=>x==null?'—':(x*100).toFixed(0)+'%';
 const pct1=x=>x==null?'—':(x*100).toFixed(1)+'%';
 const signed=(x,d=2)=>x==null?'—':(x>0?'+':'')+Number(x).toFixed(d);
@@ -459,11 +457,11 @@ const METRICS=[
   {group:'Striking',key:'sig_differential_per_minute',unit:'strikes / min',label:'Striking differential / min',f:x=>signed(x)},
   {group:'Striking',key:'striking_accuracy',unit:'of attempts landed',label:'Striking accuracy',f:pct1},
   {group:'Striking',key:'striking_defense',unit:'of strikes avoided',label:'Striking defense',f:pct1},
-  {group:'Striking',key:'knockdowns_per_15_minutes',unit:'per round',label:'Knockdowns per round',f:perFive},
-  {group:'Grappling',key:'takedowns_per_15_minutes',unit:'per round',label:'Takedowns per round',f:perFive},
+  {group:'Striking',key:'knockdowns_per_15_minutes',unit:'/ 15 min',label:'Knockdowns / 15 min',f:fmt},
+  {group:'Grappling',key:'takedowns_per_15_minutes',unit:'/ 15 min',label:'Takedowns / 15 min',f:fmt},
   {group:'Grappling',key:'takedown_accuracy',unit:'of attempts landed',label:'Takedown accuracy',f:pct1},
   {group:'Grappling',key:'takedown_defense',unit:'of attempts stopped',label:'Takedown defense',f:pct1},
-  {group:'Grappling',key:'submission_attempts_per_15_minutes',unit:'per round',label:'Sub attempts per round',f:perFive},
+  {group:'Grappling',key:'submission_attempts_per_15_minutes',unit:'/ 15 min',label:'Sub attempts / 15 min',f:fmt},
   {group:'Grappling',key:'control_margin_seconds_per_minute',unit:'sec / min',label:'Control margin, sec / min',f:x=>signed(x,1)},
 ];
 /* percentile oriented so higher = better for the fighter */
@@ -617,7 +615,7 @@ function heroCard(r){
 }
 function tiles(r){
   const m=r.metrics;
-  const T=[['Sig. strikes landed / min','sig_landed_per_minute',fmt(m.sig_landed_per_minute)],['Striking differential / min','sig_differential_per_minute',signed(m.sig_differential_per_minute)],['Takedown defense','takedown_defense',pct(m.takedown_defense)],['Knockdowns per round','knockdowns_per_15_minutes',perFive(m.knockdowns_per_15_minutes)]];
+  const T=[['Sig. strikes landed / min','sig_landed_per_minute',fmt(m.sig_landed_per_minute)],['Striking differential / min','sig_differential_per_minute',signed(m.sig_differential_per_minute)],['Takedown defense','takedown_defense',pct(m.takedown_defense)],['Knockdowns / 15 min','knockdowns_per_15_minutes',fmt(m.knockdowns_per_15_minutes)]];
   return h('div',{class:'tiles'},T.map(([label,key,val])=>{const mm=METRICS.find(x=>x.key===key),gp=goodPct(r,mm);
     return h('div',{class:'tile'},h('div',{class:'lbl',text:label}),h('div',{class:'num',text:val}),h('div',{class:'rank'},gp==null?'No division rank in this window':[gp>=90?h('b',{text:'Top '+Math.max(1,Math.round(100-gp))+'%'}):ordinal(gp)+' percentile',' · '+r.percentiles.scope]));}));
 }

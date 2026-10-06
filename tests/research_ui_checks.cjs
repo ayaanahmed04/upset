@@ -106,26 +106,26 @@ vm.runInContext(`
     function descendants(node){return[node,...node.children.flatMap(descendants)];}
     for(const key of rateKeys){
       const metric=METRICS.find(m=>m.key===key);
-      assert.equal(metric.f(3),'1.00'); // 3 events / 15 minutes = 1 event / 5 minutes.
+      assert.equal(metric.f(3),'3.00'); // Display the API's per-15-minute rate directly.
       assert.equal(metric.f(0),'0.00');
       assert.equal(metric.f(null),'—');
-      assert.equal(metric.unit,'per round');
+      assert.equal(metric.unit,'/ 15 min');
       assert.equal(goodPct(report,metric),80,'display conversion must preserve percentile rank');
       const meter=meters(report,metric.group).children.find(n=>n.children[0].textContent===metric.label);
-      assert.equal(meter.children[1].children[0].textContent,'1.00');
+      assert.equal(meter.children[1].children[0].textContent,'3.00');
       const tooltip=meter.tipBuilder();
-      assert.equal(tooltip[2].children[1].textContent,'0.30','division medians use the same display units');
+      assert.equal(tooltip[2].children[1].textContent,'0.90','division medians use the same display units');
     }
-    const tile=tiles(report).children.find(n=>n.children[0].textContent==='Knockdowns per round');
-    assert.equal(tile.children[1].textContent,'1.00');
+    const tile=tiles(report).children.find(n=>n.children[0].textContent==='Knockdowns / 15 min');
+    assert.equal(tile.children[1].textContent,'3.00');
     const comparison=duel(report,other);
     for(const key of rateKeys){
       const metric=METRICS.find(m=>m.key===key);
       const row=comparison.children.find(n=>n.className==='drow'&&n.children[1].children[0].textContent===metric.label);
-      assert.equal(row.children[0].children[0].textContent,'1.00');
-      assert.equal(row.children[2].children[0].textContent,'2.00');
-      assert.ok(descendants(row).filter(n=>n.className==='u').every(n=>n.textContent==='per round'));
-      assert.equal(row.tipBuilder()[1].children[1].textContent,'1.00 · 80th pct');
+      assert.equal(row.children[0].children[0].textContent,'3.00');
+      assert.equal(row.children[2].children[0].textContent,'6.00');
+      assert.ok(descendants(row).filter(n=>n.className==='u').every(n=>n.textContent==='/ 15 min'));
+      assert.equal(row.tipBuilder()[1].children[1].textContent,'3.00 · 80th pct');
     }
     assert.equal(JSON.stringify([report,other]),snapshot,'UI rendering must not mutate source rates or ranks');
   }
@@ -143,4 +143,4 @@ function zIndex(selector) { return Number(baseRules(selector).match(/(?:^|;)z-in
 assert.ok(zIndex('.topbar') > zIndex('.wrap'), 'search must paint above the later tray wrap');
 assert.ok(zIndex('.search-wrap') > 0, 'dropdown must paint above sibling header controls');
 assert.match(baseRules('#go[hidden]'), /display:none/, 'hidden must win over the button display rule');
-console.log('UI checks passed: tray navigation, per-round cards/comparison/tooltips/medians with five-minute scaling, preserved ranks, empty corners, search stacking and chart spacing.');
+console.log('UI checks passed: tray navigation, per-15-minute cards/comparison/tooltips/medians, preserved ranks, empty corners, search stacking and chart spacing.');

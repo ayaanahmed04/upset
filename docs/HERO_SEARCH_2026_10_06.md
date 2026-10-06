@@ -65,3 +65,20 @@ early finishes. This is a label change, not averaging over recorded rounds.
 The combined delivery is `upset-home-round-labels.html`. It includes the pending
 UPSET period, red Black Ops One subtitle and desktop search alignment, so Ayaan
 only needs to install this one replacement file.
+
+## Final rate-label decision — October 6 UTC
+
+After reviewing the installed site's screenshots, Ayaan selected per 15 minutes
+for knockdowns, takedowns and submission attempts. The broadcast UI now formats
+the original API values directly, using `/ 15 min` throughout cards, meters,
+comparison rows, medians and tooltips. The five-minute division is removed.
+Missing values remain missing; percentiles and underlying rates do not change.
+The footer states that this is a rate over actual fight time, not per fight.
+This supersedes the earlier per-round wording recorded above.
+
+The October 5 22:55 Chicago screenshot shows the refreshed viewer's October 4
+cutoff and Allen/Duncan feature matchup, confirming the switch from the older
+September 27 serving cutoff. The latest per-15-minute HTML replacement awaits
+Mac installation. HTML-only changes need a hard refresh, no database rebuild
+or server restart. UI checks cover values, missingness, unchanged source/ranks,
+medians and tooltip units; hero behavior checks also pass.
