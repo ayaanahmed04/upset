@@ -4,7 +4,16 @@
 
 **Current phase:** Local product refinement alongside data and model validation
 
-**Current focus:** Incremental mobile search fixes on the accepted broadcast site
+**Current focus:** Homepage hero search and requested copy/font changes on the accepted broadcast site
+
+## Homepage search — October 6, 2026 UTC
+
+Both supplied search upgrade parts are integrated: one live input moves between
+the home hero and the header, with an octagon shell, focus glow, keyboard hint
+and idle name animation. The headline now ends in red UPSET; the lowercase
+subtitle uses Black Ops One. Warm colors, square panels, biography and mobile
+viewport fixes are retained. Source behavior checks pass; installation and
+final browser review remain with Ayaan. Read `HERO_SEARCH_2026_10_06.md`.
 
 ## Mobile follow-up — October 6, 2026 UTC
 

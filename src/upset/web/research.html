@@ -5,7 +5,7 @@
 <title>UPSET · Fighter research</title>
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Black+Ops+One&family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:dark;
@@ -41,17 +41,29 @@ button{cursor:pointer}
 
 /* ---------- Header ---------- */
 header.top{position:sticky;top:0;z-index:20;background:rgba(15,13,13,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
-.topbar{display:flex;align-items:center;gap:20px;height:68px;z-index:2}
+.topbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px) minmax(0,1fr);align-items:center;gap:20px;min-height:76px;padding-top:10px;padding-bottom:10px;z-index:2}
+.topbar:has(.search-slot:empty){grid-template-columns:minmax(0,1fr) auto}
+.topbar:has(.search-slot:empty) .controls{grid-column:2}
 .rail{position:fixed;z-index:30;left:0;top:0;bottom:0;width:var(--rail);background:#08090b;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;align-items:center;padding:18px 0}
 .rail a{display:block;line-height:0;border-radius:0}
 .rail img{width:60px;height:auto;display:block}
 .mlogo{display:none}
 .rail a:hover img{filter:brightness(1.12)}
 .rail small{margin-top:auto;writing-mode:vertical-rl;transform:rotate(180deg);font:600 10px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.search-wrap{position:relative;z-index:2;flex:1;max-width:520px}
-.search-wrap input{width:100%;height:42px;border-radius:0;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 42px;font-size:15px}
-.search-wrap input::placeholder{color:var(--muted)}
-.search-wrap svg{position:absolute;left:15px;top:12px;width:18px;height:18px;color:var(--muted)}
+.search-slot{grid-column:2;min-width:0;width:100%}
+.search-slot:empty{display:none}
+.search-wrap{position:relative;z-index:2;width:100%;min-width:0;transition:filter .2s}
+.search-shell{--cut:13px;position:relative;padding:1.5px;background:var(--line);clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut));transition:background .2s}
+.search-wrap:hover .search-shell{background:var(--muted)}
+.search-wrap input{--cut:12px;display:block;width:100%;height:48px;border-radius:0;border:0;outline:none;background:var(--surface);padding:0 56px 0 48px;font-size:15px;font-weight:500;clip-path:polygon(var(--cut) 0,calc(100% - var(--cut)) 0,100% var(--cut),100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,var(--cut) 100%,0 calc(100% - var(--cut)),0 var(--cut))}
+.search-wrap input::placeholder{color:var(--text-2);opacity:.75}
+.search-wrap input::-webkit-search-cancel-button{display:none}
+.search-wrap svg{position:absolute;z-index:1;pointer-events:none;left:18px;top:16px;width:19px;height:19px;color:var(--muted);transition:color .2s,transform .2s}
+.search-wrap .kbd{position:absolute;right:14px;top:11px;width:22px;height:22px;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);font:12px var(--body);pointer-events:none}
+.search-wrap.has-query .kbd,.search-wrap:focus-within .kbd{visibility:hidden}
+.search-wrap:focus-within{filter:drop-shadow(0 0 12px rgba(193,18,31,.35))}
+.search-wrap:focus-within .search-shell{background:var(--accent)}
+.search-wrap:focus-within svg{color:var(--accent-text);transform:scale(1.08)}
 .dropdown{position:absolute;z-index:5;top:calc(100% + 8px);left:0;right:0;background:var(--surface-2);border:1px solid var(--line);border-radius:0;box-shadow:0 18px 50px rgba(0,0,0,.5);max-height:420px;overflow:auto;display:none;padding:6px}
 .dropdown.open{display:block}
 .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:0;padding:8px 10px}
@@ -60,9 +72,9 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(15,13,13,.86);backdr
 .opt b{display:block;font-weight:600}
 .opt small{color:var(--muted);font-size:12px}
 .opt.dim b{color:var(--text-2);font-weight:500}
-.controls{display:flex;align-items:center;gap:10px;margin-left:auto}
+.controls{grid-column:3;justify-self:end;display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:10px;min-width:0}
 .seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:0;padding:3px}
-.seg button{border:0;background:none;padding:6px 12px;border-radius:0;font-size:13px;font-weight:600;color:var(--text-2)}
+.seg button{border:0;background:none;padding:6px 10px;border-radius:0;font-size:13px;font-weight:600;color:var(--text-2)}
 .seg button[aria-pressed=true]{background:var(--text);color:var(--bg)}
 .date{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
 .date input{background:var(--surface);border:1px solid var(--line);border-radius:0;height:36px;padding:0 12px;font-size:13px;color-scheme:dark}
@@ -84,6 +96,7 @@ header.top{position:sticky;top:0;z-index:20;background:rgba(15,13,13,.86);backdr
 .btn:disabled{opacity:.45;cursor:not-allowed}
 #go[hidden]{display:none}
 
+main.wrap{z-index:2}
 main{padding:28px 0 60px;transition:opacity .15s}
 main.loading{opacity:.45}
 #error{color:var(--accent-text);min-height:0}
@@ -102,7 +115,19 @@ main.loading{opacity:.45}
 .home-hero h1{font:400 clamp(40px,6vw,82px)/.98 var(--brand);text-transform:uppercase;margin:14px 0 18px;letter-spacing:0}
 .home-hero h1 em{font-style:normal;color:var(--accent);-webkit-text-fill-color:var(--accent);background:none}
 .home-hero p{max-width:620px;color:var(--text-2);font-size:17px;margin:0}
+.home-hero .home-tagline{font-family:'Black Ops One',var(--body);font-weight:400;text-transform:none;line-height:1.6}
 .counters{display:flex;gap:44px;flex-wrap:wrap;margin:36px 0}
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:48px;align-items:center}
+.hero-row .counters{margin-bottom:0}
+.hero-search{position:relative;z-index:3;min-width:0}
+.hero-search .eyebrow{display:block;margin-bottom:12px}
+.hero-search>small{display:block;margin-top:12px;color:var(--muted);font-size:13px}
+.search-wrap.big .search-shell{--cut:18px}
+.search-wrap.big input{--cut:17px;height:68px;font-size:19px;padding:0 64px 0 60px}
+.search-wrap.big svg{left:22px;top:24px;width:23px;height:23px}
+.search-wrap.big .kbd{top:24px;right:20px;font-size:13px}
+.search-wrap.big:focus-within{filter:drop-shadow(0 0 22px rgba(193,18,31,.5))}
+@media(prefers-reduced-motion:reduce){.search-wrap,.search-shell{transition:none}}
 .counter strong{display:block;font:400 40px/1 var(--brand)}
 .counter span{color:var(--muted);font-size:13px}
 .feature{margin-top:30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(100deg,rgba(230,57,70,.18),rgba(21,23,28,1) 40%,rgba(21,23,28,1) 60%,rgba(58,134,255,.18))}
@@ -278,10 +303,19 @@ footer b{color:var(--text-2)}
 .empty{padding:50px 20px;text-align:center;color:var(--muted)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+@media(max-width:1360px){
+  .topbar{grid-template-columns:minmax(0,1fr) auto}
+  .search-slot{grid-column:1;max-width:520px;justify-self:center}
+  .controls{grid-column:2}
+}
 @media(max-width:1000px){
-  .topbar{flex-wrap:wrap;height:auto;padding:12px 0;gap:12px}
-  .search-wrap{order:3;flex-basis:100%;max-width:none}
-  .controls{margin-left:auto}
+  .hero-row{grid-template-columns:minmax(0,1fr);gap:28px}
+  .hero-search{order:-1}
+  .topbar{grid-template-columns:minmax(0,1fr);padding-top:14px;padding-bottom:14px;gap:12px}
+  .topbar:has(.search-slot:empty){grid-template-columns:minmax(0,1fr)}
+  .search-slot{grid-column:1;grid-row:2;max-width:none;justify-self:stretch}
+  .controls,.topbar:has(.search-slot:empty) .controls{grid-column:1;grid-row:1}
+  .search-wrap .kbd{display:none}
   .faceoff{grid-template-columns:1fr;background:linear-gradient(180deg,rgba(230,57,70,.22),var(--surface) 35%,var(--surface) 65%,rgba(58,134,255,.22))}
   .corner.blue{flex-direction:row;text-align:left}
   .corner.blue .badges{align-items:flex-start}
@@ -300,13 +334,16 @@ footer b{color:var(--text-2)}
   /* Keep the scrolling header above main content, including textured headlines. */
   header.top{position:relative;isolation:isolate;background:var(--bg);backdrop-filter:none}
   .topbar{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-areas:"logo controls" "search search";gap:12px 14px;align-items:center;padding-top:16px;padding-bottom:16px}
+  .topbar:has(.search-slot:empty){grid-template-columns:32px minmax(0,1fr);grid-template-areas:"logo controls"}
   .mlogo{display:block;grid-area:logo;line-height:0;align-self:start}
   .mlogo img{height:80px;width:auto;max-width:100%;display:block}
   .mlogo{align-self:center}
-  .controls{grid-area:controls;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;width:100%;min-width:0;margin:0}
-  .search-wrap{grid-area:search;width:100%;max-width:none;min-width:0}
+  .controls,.topbar:has(.search-slot:empty) .controls{grid-area:controls;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;width:100%;min-width:0;margin:0}
+  .search-slot{grid-area:search;grid-column:1/-1;width:100%;max-width:none;min-width:0}
   .search-wrap input{height:46px;font-size:16px}
-  .search-wrap svg{top:14px}
+  .search-wrap svg{top:15px}
+  .search-wrap .kbd{display:none}
+  .search-wrap.big input{font-size:18px;padding-left:54px;padding-right:24px}
   .dropdown{max-height:min(420px,var(--search-space,55dvh));overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
   .opt{min-height:60px;padding:10px}
   .opt>div:last-child{min-width:0}
@@ -354,11 +391,14 @@ footer b{color:var(--text-2)}
 <header class="top">
   <div class="wrap topbar">
     <a class="mlogo" href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a>
-    <div class="search-wrap" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="dropdown">
+    <div class="search-slot" id="headerSlot"><div class="search-wrap" id="searchWrap" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="dropdown">
+      <div class="search-shell">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="search" type="search" placeholder="Search any UFC fighter since 1994…" autocomplete="off" aria-label="Search fighters" aria-controls="dropdown">
+      <input id="search" type="search" placeholder="Search Max Holloway" autocomplete="off" aria-label="Search fighters" aria-controls="dropdown" aria-autocomplete="list">
+      <kbd class="kbd" aria-hidden="true">/</kbd>
+      </div>
       <div class="dropdown" id="dropdown" role="listbox"></div>
-    </div>
+    </div></div>
     <div class="controls">
       <div class="seg" id="window" role="group" aria-label="Measurement window">
         <button data-w="3" aria-pressed="false" title="Last 3 recorded fights">L3</button>
@@ -732,15 +772,24 @@ const PICKS=['Charles Oliveira','Max Holloway'];  /* featured matchup */
 async function renderHome(){
   const m=state.meta,c=$('content');
   const years=m?(+m.latest_bout.slice(0,4))-(+m.earliest_bout.slice(0,4)):null;
-  c.replaceChildren(h('section',{class:'home-hero'},h('div',null,
+  // Return the live search before replacing an earlier home view.
+  placeSearch('header');
+  c.replaceChildren(h('section',{class:'home-hero'},
     h('div',{class:'eyebrow',text:'UFC fighter research · 1994 to today'}),
-    h('h1',null,h('span',{class:'distressed'},'Every fighter.',h('br'),'Every fight. '),h('em',{text:'One place.'})),
-    h('p',{text:'Look up any fighter, analyze their stats, compare them head to head.'}),
-    h('div',{class:'counters'},
-      h('div',{class:'counter'},h('strong',{text:m?int(m.fighters):'—'}),h('span',{text:'fighter profiles'})),
-      h('div',{class:'counter'},h('strong',{text:m?int(m.total_bouts):'—'}),h('span',{text:'UFC bouts with stats'})),
-      h('div',{class:'counter'},h('strong',{text:years??'—'}),h('span',{text:'years of history'}))))),
+    h('h1',null,h('span',{class:'distressed'},'Every fighter.',h('br'),'Every fight. '),h('em',{text:'UPSET'})),
+    h('div',{class:'hero-row'},
+      h('div',null,
+        h('p',{class:'home-tagline',text:'look up any fighter, analyze their stats, compare them head to head.'}),
+        h('div',{class:'counters'},
+          h('div',{class:'counter'},h('strong',{text:m?int(m.fighters):'—'}),h('span',{text:'fighter profiles'})),
+          h('div',{class:'counter'},h('strong',{text:m?int(m.total_bouts):'—'}),h('span',{text:'UFC bouts with stats'})),
+          h('div',{class:'counter'},h('strong',{text:years??'—'}),h('span',{text:'years of history'})))),
+      h('div',{class:'hero-search'},
+        h('span',{class:'eyebrow',text:'Find a fighter'}),
+        h('div',{id:'heroSlot'}),
+        h('small',{text:'Every UFC fighter since 1994. Press / to jump here.'})))),
     h('section',{class:'card feature',id:'feature'}));
+  placeSearch('hero');
   const found={};
   await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
   const a=found['Charles Oliveira'],b=found['Max Holloway'],feat=$('feature');
@@ -771,6 +820,16 @@ function renderTray(){
 }
 $('go').onclick=()=>{if(!$('go').disabled)go('#/compare/'+state.matchup[0].id+'/'+state.matchup[1].id);};
 
+/* ================= search placement ================= */
+// Move one live element; copying it would lose listeners and create duplicate IDs.
+function placeSearch(where){
+  const wrap=$('searchWrap'),target=$(where==='hero'?'heroSlot':'headerSlot');
+  if(!wrap||!target)return;
+  if(wrap.parentElement!==target){closeDD();target.append(wrap);}
+  wrap.classList.toggle('big',where==='hero');
+  fitSearchDropdown();
+}
+
 /* ================= routing ================= */
 function go(hash){if(location.hash===hash)route();else location.hash=hash;}
 let version=0;
@@ -778,6 +837,8 @@ async function route(){
   const v=++version,parts=location.hash.replace(/^#\/?/,'').split('/');
   renderTray();
   $('error').textContent='';hideTip();
+  // Rescue search before any route (including a home refresh) deletes its slot.
+  placeSearch('header');
   try{
     if(parts[0]==='about'){state.view='about';renderAbout();document.title='Ayaan Ahmed · UPSET';}
     else if(parts[0]==='fighter'&&parts[1]){state.view='fighter';$('main').classList.add('loading');const r=await api('/api/fighter?id='+encodeURIComponent(parts[1])+params());if(v!==version)return;renderFighter(r);document.title=r.name+' · UPSET';}
@@ -797,8 +858,12 @@ document.fonts.addEventListener('loadingdone',fitResearchLabels);
 
 /* ================= search ================= */
 let timer=null,searchVersion=0,hl=-1;
-const input=$('search'),dd=$('dropdown');
-function closeDD(){dd.classList.remove('open');input.parentElement.setAttribute('aria-expanded','false');hl=-1;}
+const input=$('search'),dd=$('dropdown'),searchWrap=$('searchWrap');
+function closeDD(){
+  clearTimeout(timer);searchVersion++;
+  dd.classList.remove('open');searchWrap.setAttribute('aria-expanded','false');
+  input.removeAttribute('aria-activedescendant');hl=-1;
+}
 function fitSearchDropdown(){
   if(!matchMedia('(max-width:700px)').matches){dd.style.removeProperty('--search-space');return;}
   // The visual viewport shrinks with the phone keyboard; the layout viewport may not.
@@ -813,21 +878,72 @@ if(window.visualViewport){
   window.visualViewport.addEventListener('resize',fitSearchDropdown);
   window.visualViewport.addEventListener('scroll',fitSearchDropdown);
 }
-input.addEventListener('input',()=>{clearTimeout(timer);const sv=++searchVersion;timer=setTimeout(async()=>{
-  const q=input.value.trim();if(!q){closeDD();return;}
-  try{const matches=await api('/api/fighters?q='+encodeURIComponent(q));if(sv!==searchVersion)return;
-    dd.replaceChildren();hl=-1;
-    if(!matches.length)dd.append(h('div',{class:'opt',style:'cursor:default'},h('small',{text:'No fighter matches “'+q+'”.'})));
-    for(const r of matches){const meta=r.recorded_bouts?[r.division,r.recorded_bouts+' UFC '+(r.recorded_bouts===1?'fight':'fights'),r.last_bout?'last '+r.last_bout.slice(0,4):null].filter(Boolean).join(' · '):'Profile only · no UFC fights with stats';
-      dd.append(h('button',{class:'opt'+(r.recorded_bouts?'':' dim'),role:'option',onclick:()=>{closeDD();input.value='';input.blur();go('#/fighter/'+r.id);}},h('div',{class:'avatar mono mini',text:initials(r.name)}),h('div',null,h('b',{text:r.name}),h('small',{text:meta}))));}
-    dd.classList.add('open');fitSearchDropdown();input.parentElement.setAttribute('aria-expanded','true');
-  }catch(e){$('error').textContent=e.message;}},160);});
-input.addEventListener('keydown',e=>{const opts=[...dd.querySelectorAll('button.opt')];if(!opts.length)return;
-  if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();hl=(hl+(e.key==='ArrowDown'?1:-1)+opts.length)%opts.length;opts.forEach((o,i)=>o.classList.toggle('hl',i===hl));opts[hl].scrollIntoView({block:'nearest'});}
-  else if(e.key==='Enter'){(opts[hl]||opts[0]).click();}
-  else if(e.key==='Escape')closeDD();});
+input.addEventListener('input',()=>{
+  closeDD();searchWrap.classList.toggle('has-query',!!input.value);
+  const q=input.value.trim(),sv=searchVersion;if(!q)return;
+  timer=setTimeout(async()=>{
+    try{
+      const matches=await api('/api/fighters?q='+encodeURIComponent(q));
+      if(sv!==searchVersion)return;
+      dd.replaceChildren();hl=-1;
+      if(!matches.length)dd.append(h('div',{class:'opt',style:'cursor:default'},h('small',{text:'No fighter matches “'+q+'”.'})));
+      matches.forEach((r,i)=>{
+        const meta=r.recorded_bouts?[r.division,r.recorded_bouts+' UFC '+(r.recorded_bouts===1?'fight':'fights'),r.last_bout?'last '+r.last_bout.slice(0,4):null].filter(Boolean).join(' · '):'Profile only · no UFC fights with stats';
+        dd.append(h('button',{
+          id:'fighter-option-'+i,class:'opt'+(r.recorded_bouts?'':' dim'),role:'option','aria-selected':'false',
+          onclick:()=>{closeDD();input.value='';searchWrap.classList.remove('has-query');input.blur();go('#/fighter/'+r.id);}
+        },h('div',{class:'avatar mono mini',text:initials(r.name)}),h('div',null,h('b',{text:r.name}),h('small',{text:meta}))));
+      });
+      dd.classList.add('open');fitSearchDropdown();searchWrap.setAttribute('aria-expanded','true');
+    }catch(e){if(sv===searchVersion)$('error').textContent=e.message;}
+  },160);
+});
+input.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeDD();return;}
+  if(!dd.classList.contains('open'))return;
+  const opts=[...dd.querySelectorAll('button.opt')];if(!opts.length)return;
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    hl=hl<0?(e.key==='ArrowDown'?0:opts.length-1):(hl+(e.key==='ArrowDown'?1:-1)+opts.length)%opts.length;
+    opts.forEach((o,i)=>{o.classList.toggle('hl',i===hl);o.setAttribute('aria-selected',String(i===hl));});
+    input.setAttribute('aria-activedescendant',opts[hl].id);opts[hl].scrollIntoView({block:'nearest'});
+  }else if(e.key==='Enter'){e.preventDefault();(opts[hl]||opts[0]).click();}
+});
 document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap'))closeDD();});
-addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==input&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();input.focus();}});
+addEventListener('keydown',e=>{
+  if(e.key==='/'&&document.activeElement!==input&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)&&!document.activeElement.isContentEditable){
+    e.preventDefault();input.scrollIntoView({block:'center'});input.focus();fitSearchDropdown();
+  }
+});
+
+// Only animate the placeholder. Never change the user's query or run sample searches.
+const searchExamples=['Max Holloway','Zhang Weili','Alex Pereira','Islam Makhachev','Valentina Shevchenko','Charles Oliveira','Ilia Topuria','Jon Jones'].map(name=>'Search '+name);
+const searchMotion=matchMedia('(prefers-reduced-motion:reduce)');
+let exampleTimer=null,exampleIndex=0,exampleLength=searchExamples[0].length,exampleDeleting=true;
+function pauseSearchExamples(){clearTimeout(exampleTimer);exampleTimer=null;}
+function animateSearchExample(){
+  pauseSearchExamples();
+  if(searchMotion.matches||document.hidden||document.activeElement===input||input.value)return;
+  const phrase=searchExamples[exampleIndex];
+  exampleLength+=exampleDeleting?-1:1;
+  input.placeholder=phrase.slice(0,exampleLength)+(exampleLength<phrase.length||exampleDeleting?'▌':'');
+  let delay=exampleDeleting?35:75;
+  if(exampleLength<=7){exampleIndex=(exampleIndex+1)%searchExamples.length;exampleDeleting=false;delay=250;}
+  else if(exampleLength>=phrase.length){exampleDeleting=true;delay=1700;}
+  exampleTimer=setTimeout(animateSearchExample,delay);
+}
+function resumeSearchExamples(){
+  pauseSearchExamples();
+  if(searchMotion.matches){input.placeholder='Search any UFC fighter';return;}
+  if(document.hidden||document.activeElement===input||input.value)return;
+  exampleIndex=0;exampleLength=searchExamples[0].length;exampleDeleting=true;
+  input.placeholder=searchExamples[0];exampleTimer=setTimeout(animateSearchExample,2400);
+}
+input.addEventListener('focus',()=>{pauseSearchExamples();input.placeholder='Type a fighter’s name…';});
+input.addEventListener('blur',resumeSearchExamples);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseSearchExamples();else resumeSearchExamples();});
+searchMotion.addEventListener('change',resumeSearchExamples);
+resumeSearchExamples();
 
 /* ================= filters ================= */
 $('window').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;state.window=b.dataset.w;[...$('window').children].forEach(x=>x.setAttribute('aria-pressed',x===b));if(state.view!=='home')route();});
