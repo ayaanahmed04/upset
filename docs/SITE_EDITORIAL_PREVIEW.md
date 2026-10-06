@@ -1,7 +1,8 @@
 # Editorial design experiment — October 5, 2026
 
 This is a separate, opt-in design. The broadcast site remains the default and
-`src/upset/web/research.html` is unchanged.
+the broadcast layout is preserved. Both editions now include the requested
+creator credit and a shared About page at `#/about`.
 
 ## Try it alongside the broadcast site
 
@@ -22,6 +23,8 @@ There is no database migration, network ingestion, or model change.
 - `src/upset/web/research_base.css`: formatted research components and controls.
 - `src/upset/web/research_editorial.css`: the new visual direction and responsive rules.
 - `src/upset/web/research_editorial.js`: formatted rendering and interaction code.
+- `src/upset/web/research_about.js`: Ayaan’s bio, shared between both editions.
+- `src/upset/web/research_about.css`: creator-page and footer-credit styles.
 
 The experiment uses warm paper against dark ink, open ruled sections, an
 asymmetric home page and a diagonal red/blue matchup graphic. Initials portraits
@@ -64,7 +67,7 @@ fitting. Python lint, JavaScript syntax and patch whitespace checks pass.
 
 The standalone `upset-editorial-preview.html` embeds actual Oliveira/Holloway
 reports from the September 26 database snapshot for all four windows. Home,
-fighter and matchup sample pages work without the local server. Other fighters
+fighter, matchup and creator sample pages work without the local server. Other fighters
 and dates require the installed app; the preview labels that limitation.
 
 The cloud browser rejects local-app and data-URL previews, so rendered desktop

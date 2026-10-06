@@ -1,0 +1,41 @@
+/* A quiet, readable creator page shared by both visual editions. */
+.creator-credit {
+  grid-column: 1 / -1;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+}
+.creator-credit a, .about-back {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.creator-credit a:hover, .about-back:hover { color: var(--accent-text); }
+.about-page {
+  max-width: 780px;
+  margin: 28px auto 50px;
+}
+.about-back { font-size: 14px; }
+.about-heading {
+  margin: 34px 0 28px;
+  padding-top: 24px;
+  border-top: 4px solid var(--accent);
+}
+.about-label { margin: 0 0 12px; font-size: 14px; color: var(--muted); }
+.about-page h1 {
+  margin: 0;
+  font: 400 clamp(32px, 5vw, 54px) / 1.15 var(--brand);
+}
+.about-page > p {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 0 0 24px;
+  overflow-wrap: break-word;
+}
+.about-page > .about-intro { color: var(--text); font-size: 19px; line-height: 1.65; }
+.about-page strong { color: var(--text); }
+@media (max-width: 700px) {
+  .about-page { margin-top: 20px; }
+  .about-page > p { font-size: 15px; }
+  .about-page > .about-intro { font-size: 17px; }
+}

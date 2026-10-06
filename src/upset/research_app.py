@@ -299,6 +299,8 @@ def route(database, target):
 
 DESIGNS = {"broadcast": "research.html", "editorial": "research_editorial.html"}
 WEB_FILES = {
+    "research_about.css": "text/css; charset=utf-8",
+    "research_about.js": "text/javascript; charset=utf-8",
     "research_base.css": "text/css; charset=utf-8",
     "research_editorial.css": "text/css; charset=utf-8",
     "research_editorial.js": "text/javascript; charset=utf-8",

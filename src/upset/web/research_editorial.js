@@ -1580,7 +1580,11 @@ async function route() {
   $('error').textContent = '';
   hideTip();
   try {
-    if (parts[0] === 'fighter' && parts[1]) {
+    if (parts[0] === 'about') {
+      state.view = 'about';
+      renderAbout();
+      document.title = 'Ayaan Ahmed · UPSET';
+    } else if (parts[0] === 'fighter' && parts[1]) {
       state.view = 'fighter';
       $('main').classList.add('loading');
       const r = await api('/api/fighter?id=' + encodeURIComponent(parts[1]) + params());
@@ -1603,6 +1607,7 @@ async function route() {
     } else {
       state.view = 'home';
       await renderHome();
+      if (v !== version) return;
       document.title = 'UPSET · Fighter research';
     }
     if (state.lastHash !== location.hash) scrollTo({

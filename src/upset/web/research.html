@@ -338,6 +338,7 @@ footer b{color:var(--text-2)}
   .tile .num{font-size:30px}
 }
 </style>
+<link rel="stylesheet" href="/web/research_about.css">
 </head>
 <body>
 <nav class="rail" aria-label="UPSET"><a href="#/" aria-label="UPSET home"><img src="/assets/upset-vertical.png" alt="UPSET" width="181" height="760"></a><small>Fighter research · since 1994</small></nav>
@@ -372,8 +373,10 @@ footer b{color:var(--text-2)}
 <footer><div class="wrap">
   <div><b>UPSET</b> · Fighter research, local preview. <span id="coverage">Loading archive…</span></div>
   <div><b>How to read this.</b> Every number counts only UFC fights strictly before the chosen date, within the chosen window. Rates use summed counts over summed fight time. Knockdowns, takedowns and submission attempts are shown per 5 minutes of actual fight time; control figures use bouts where both fighters' control time was recorded. Percentiles compare fighters with at least 3 timed fights and 15 minutes in the same window and cutoff. The pool uses the same division when at least 25 fighters qualify, otherwise all divisions; its scope is shown beside the ranking. They are descriptive, not adjusted for opponent quality, and not predictions. Date filters use currently reviewed results and do not reconstruct when an amendment became known. Height, reach and weight come from the profile snapshot. <span id="coverage-detail"></span></div>
+<div class="creator-credit">Created by <a href="#/about">Ayaan Ahmed</a>.</div>
 </div></footer>
 
+<script src="/web/research_about.js"></script>
 <script>
 'use strict';
 /* ================= helpers ================= */
@@ -732,6 +735,7 @@ async function renderHome(){
   const found={};
   await Promise.all(PICKS.map(async name=>{try{const r=await api('/api/fighters?q='+encodeURIComponent(name));const hit=r.find(x=>x.name===name&&x.recorded_bouts);if(hit)found[name]=hit;}catch{}}));
   const a=found['Charles Oliveira'],b=found['Max Holloway'],feat=$('feature');
+  if(!feat||state.view!=='home')return;
   if(a&&b)feat.replaceChildren(h('div',null,h('div',{class:'eyebrow',style:'margin-bottom:10px',text:'Featured matchup'}),h('div',{class:'names'},h('span',{class:'distressed',text:a.name}),h('b',{text:'vs'}),h('span',{class:'distressed',text:b.name}))),h('button',{class:'btn primary',onclick:()=>go('#/compare/'+a.id+'/'+b.id),text:'See the tale of the tape →'}));
   else feat.remove();
 }
@@ -766,9 +770,10 @@ async function route(){
   renderTray();
   $('error').textContent='';hideTip();
   try{
-    if(parts[0]==='fighter'&&parts[1]){state.view='fighter';$('main').classList.add('loading');const r=await api('/api/fighter?id='+encodeURIComponent(parts[1])+params());if(v!==version)return;renderFighter(r);document.title=r.name+' · UPSET';}
+    if(parts[0]==='about'){state.view='about';renderAbout();document.title='Ayaan Ahmed · UPSET';}
+    else if(parts[0]==='fighter'&&parts[1]){state.view='fighter';$('main').classList.add('loading');const r=await api('/api/fighter?id='+encodeURIComponent(parts[1])+params());if(v!==version)return;renderFighter(r);document.title=r.name+' · UPSET';}
     else if(parts[0]==='compare'&&parts[1]&&parts[2]){state.view='compare';$('main').classList.add('loading');const r=await api('/api/compare?a='+encodeURIComponent(parts[1])+'&b='+encodeURIComponent(parts[2])+params());if(v!==version)return;state.matchup=r.fighters.map(f=>({id:f.id,name:f.name}));renderTray();renderCompare(r);document.title=r.fighters.map(f=>f.name).join(' vs ')+' · UPSET';}
-    else{state.view='home';await renderHome();document.title='UPSET · Fighter research';}
+    else{state.view='home';await renderHome();if(v!==version)return;document.title='UPSET · Fighter research';}
     if(state.lastHash!==location.hash)scrollTo({top:0});state.lastHash=location.hash;
   }catch(e){if(v===version)$('error').textContent=e.message;}
   finally{if(v===version)$('main').classList.remove('loading');}
