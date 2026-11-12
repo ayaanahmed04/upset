@@ -19,11 +19,22 @@ SKILLS = [("offense", "str", "Striking volume", "Strikes landed at range, adjust
           ("offense", "ctrl", "Control", "Time spent in control on the ground or against the fence"),
           ("offense", "sub", "Submission threat", "Submission attempts, adjusted for opponents")]
 MIN_FIGHTS = 3
+SIMILAR_MIN_FIGHTS = 5      # only suggest fighters whose own profile is well measured
+DIVISIONS = ["strawweight", "flyweight", "bantamweight", "featherweight", "lightweight", "welterweight",
+             "middleweight", "light heavyweight", "heavyweight"]
+
+
+def division_index(label):
+    text = (label or "").lower()
+    if "light heavyweight" in text:
+        return DIVISIONS.index("light heavyweight")
+    return next((i for i, name in enumerate(DIVISIONS) if name in text), None)
 
 
 class SkillProfiles:
-    def __init__(self, path, women=frozenset()):
+    def __init__(self, path, women=frozenset(), divisions=None):
         self.women = women
+        self.divisions = divisions or {}
         data = json.loads(Path(path).read_text())
         self.fighters = {uid: f for uid, f in data.items() if f["fights"] >= MIN_FIGHTS}
         self.sorted = {(side, key): sorted(f[side][key][0] for f in self.fighters.values()) for side, key, _, _ in SKILLS}
@@ -34,7 +45,23 @@ class SkillProfiles:
         return round(100 * bisect_left(values, value) / len(values))
 
     def _vector(self, f):
-        return [f[side][key][0] / self.spread[(side, key)] for side, key, _, _ in SKILLS]
+        """Percentile on each skill, so no single noisy skill dominates the comparison."""
+        return [self._pct(side, key, f[side][key][0]) for side, key, _, _ in SKILLS]
+
+    def _similar(self, uid, f):
+        mine, mine_div = self._vector(f), division_index(self.divisions.get(uid))
+        scored = []
+        for other, g in self.fighters.items():
+            if other == uid or g["fights"] < SIMILAR_MIN_FIGHTS or (other in self.women) != (uid in self.women):
+                continue
+            their_div = division_index(self.divisions.get(other))
+            apart = abs(mine_div - their_div) if mine_div is not None and their_div is not None else 9
+            scored.append((apart > 1, math.dist(mine, self._vector(g)), other))
+        scored.sort()
+        return [{"id": other, "name": self.fighters[other]["name"],
+                 "division": (self.divisions.get(other) or "").replace("Women's ", "") or None,
+                 "match": max(0, round(100 - distance / 2.83))}       # 100 = identical shape, 0 = opposite corners
+                for _, distance, other in scored[:3]]
 
     def profile(self, uid):
         f = self.fighters.get(uid)
@@ -46,10 +73,7 @@ class SkillProfiles:
             mean, sd = f[side][key]
             skills.append({"label": label, "about": about, "percentile": self._pct(side, key, mean),
                            "low": self._pct(side, key, mean - sd), "high": self._pct(side, key, mean + sd)})
-        mine = self._vector(f)
-        nearest = sorted(((math.dist(mine, self._vector(g)), other) for other, g in self.fighters.items()
-                          if other != uid and (other in self.women) == (uid in self.women)))[:3]
         return {"status": "available", "fights": f["fights"], "compared_with": len(self.fighters), "skills": skills,
-                "similar": [{"id": other, "name": self.fighters[other]["name"]} for _, other in nearest],
+                "similar": self._similar(uid, f),
                 "label": "Opponent-adjusted skills from recorded UFC fights, ranked among active fighters. "
                          "The band shows how sure the estimate is. A description, not a prediction."}

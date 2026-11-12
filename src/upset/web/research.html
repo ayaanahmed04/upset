@@ -3789,8 +3789,12 @@ async function renderCorrections(){
 .sk-chip b{font:400 20px/1 var(--brand)}
 .sk-chip span{font:600 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
 .sk-chip.best b{color:#e7c955}.sk-chip.worst b{color:#65a6ef}
-.sk-like{margin:0;font-size:13px;color:var(--text-2)}
-.sk-like a{color:var(--text);text-underline-offset:3px}
+.sk-like{margin:2px 0 0}
+.sk-sim{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sk-sim a{display:grid;gap:3px;padding:8px 12px;border:1px solid var(--line);color:var(--text);text-decoration:none;background:rgba(0,0,0,.25)}
+.sk-sim a:hover{border-color:var(--accent)}
+.sk-sim b{font:700 14px/1.1 var(--display);text-transform:uppercase;letter-spacing:.03em}
+.sk-sim small{font-size:11px;color:var(--muted)}
 .sk-fine{margin:10px 0 0;color:var(--muted);font-size:11.5px}
 .sk-legend{display:flex;gap:18px;margin:10px 0;font:700 14px/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
 .sk-legend i{display:inline-block;width:12px;height:12px;margin-right:7px;background:var(--red)}
@@ -3822,12 +3826,14 @@ async function renderCorrections(){
       const [lx,ly]=at(i,R+20),right=lx>CX+5,anchor=Math.abs(lx-CX)<6?'middle':right?'start':'end',up=ly<CY;
       const label=s('text',{class:'lab',x:lx,y:ly+(up?-12:2),'text-anchor':anchor});label.textContent=SHORT[i];
       const va=score(k.percentile);
-      const value=s('text',{class:'val '+(pb?'a':tier(va)),x:lx,y:ly+(up?8:22),'text-anchor':anchor});
+      const vbText=pb?String(score(pb[i].percentile)):'';
+      // Two fighters: red number first, blue second, on every corner.
+      const value=s('text',{class:'val '+(pb?'a':tier(va)),x:lx-(pb&&anchor==='end'?vbText.length*10+8:0),y:ly+(up?8:22),'text-anchor':anchor});
       value.textContent=va;
       const title=s('title',{});title.textContent=k.label+': '+va+' out of 99. Better than '+k.percentile+'% of active UFC fighters. '+k.about+'.';
       value.append(title);kids.push(label,value);
       if(pb){const vb=score(pb[i].percentile),w=String(va).length*10+8;
-        const second=s('text',{class:'val b',x:lx+(anchor==='end'?-w:anchor==='start'?w:0),y:ly+(up?8:22)+(anchor==='middle'?17:0),'text-anchor':anchor});
+        const second=s('text',{class:'val b',x:lx+(anchor==='start'?w:0),y:ly+(up?8:22)+(anchor==='middle'?17:0),'text-anchor':anchor});
         second.textContent=vb;kids.push(second);}
     });
     return s('svg',{class:'sk-oct',viewBox:'0 0 380 340',role:'img','aria-label':'Skill octagon'},...kids);
@@ -3835,9 +3841,10 @@ async function renderCorrections(){
   function archetype(d){
     const p=d.skills.map(k=>k.percentile),[vol,sdef,kd,dur,td,tdd,ctrl,sub]=p;
     const strike=(vol+sdef+kd)/3,grap=(td+ctrl+sub)/3;
-    let name=td>=75&&ctrl>=75?'Control wrestler':sub>=88&&grap>=55?'Submission hunter':kd>=88&&vol<65?'Power puncher':vol>=80&&kd>=75?'Pressure striker':
-      vol>=80?'Volume striker':sdef>=85&&strike>=60?'Counter striker':Math.min(strike,grap)>=62?'All-rounder':strike-grap>=18?'Striker':grap-strike>=18?'Grappler':'Balanced fighter';
-    if(tdd>=85&&strike>grap&&!/wrestler|Grappler|hunter/.test(name))name='Sprawl-and-brawl '+name.toLowerCase().replace('balanced fighter','striker');
+    let name=Math.min(strike,grap)>=72?'Complete fighter':sub>=90&&sub>=td?'Submission hunter':td>=75&&ctrl>=75&&grap>=strike?'Control wrestler':
+      kd>=88&&kd>=vol?'Knockout artist':vol>=80&&kd>=75?'Pressure striker':vol>=80?'Volume striker':sdef>=85&&strike>=60?'Counter striker':
+      Math.min(strike,grap)>=62?'All-rounder':strike-grap>=18?'Striker':grap-strike>=18?'Grappler':'Balanced fighter';
+    if(tdd>=85&&strike>grap&&/striker|artist/i.test(name)&&name!=='Counter striker')name='Sprawl-and-brawl '+name.toLowerCase();
     return name;
   }
   function profileCard(d){
@@ -3852,7 +3859,9 @@ async function renderCorrections(){
         h('p',{class:'sk-line'},'Best work comes from ',h('b',{text:best[0].label.toLowerCase()}),' and ',h('b',{text:best[1].label.toLowerCase()}),
           '. The gap in the game is ',h('b',{text:worst.label.toLowerCase()}),'.'),
         h('div',{class:'sk-chips'},chip(best[0],'best','Best'),chip(best[1],'best','Next'),chip(worst,'worst','Weakest')),
-        d.similar.length?h('p',{class:'sk-like'},'Fights most like: ',...d.similar.flatMap((f,i)=>[i?', ':'',h('a',{href:viewerUrl('/fighter/'+encodeURIComponent(f.id)),text:f.name})])):null,
+        d.similar.length?h('div',{class:'sk-like'},h('span',{class:'sk-eyebrow',text:'Fights most like'}),
+          h('div',{class:'sk-sim'},d.similar.map(f=>h('a',{href:viewerUrl('/fighter/'+encodeURIComponent(f.id)),title:'How closely the two skill shapes match'},
+            h('b',{text:f.name}),h('small',{text:[f.division,f.match!=null?f.match+'% match':null].filter(Boolean).join(' · ')}))))):null,
         h('p',{class:'sk-fine',text:'Each skill is scored 60–99 like the UPSET rating and adjusted for the quality of opponents. A description, not a prediction.'})));
   }
   function clashCard(A,B,a,b){

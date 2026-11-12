@@ -985,7 +985,14 @@ def main():
                 women = frozenset(uid for row in db.execute("SELECT payload FROM fights") for uid in (
                     json.loads(row["payload"]).get("upset_fighter_1_id"), json.loads(row["payload"]).get("upset_fighter_2_id"))
                     if "women" in (json.loads(row["payload"]).get("weight_class") or "").lower())
-            SKILL_PROFILES = SkillProfiles(args.skill_profiles, women)
+                last_division = {}
+                for row in db.execute("SELECT payload FROM fights ORDER BY event_date"):
+                    bout = json.loads(row["payload"])
+                    label = " ".join(w for w in (bout.get("weight_class") or "").replace("UFC", "").split()
+                                     if w.lower() not in ("bout", "title", "interim"))
+                    if label and "catch" not in label.lower() and "open" not in label.lower():
+                        last_division[bout.get("upset_fighter_1_id")] = last_division[bout.get("upset_fighter_2_id")] = label
+            SKILL_PROFILES = SkillProfiles(args.skill_profiles, women, last_division)
         if args.market_odds is not None:
             MARKET_ODDS = load_verified_json(args.market_odds, "odds.json", manifest["database_sha256"], "market_odds_v1")[0]
         if args.event_names is not None:
