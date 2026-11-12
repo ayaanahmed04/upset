@@ -160,7 +160,7 @@ def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=
     if event.get("starts_at") and parse_time(event["starts_at"]) <= now:
         raise SystemExit("This card has already started; picks must be frozen before the first fight.")
 
-    picks, skipped, label, record = [], [], None, None
+    picks, skipped, label, record, forecast_revision = [], [], None, None, None
     for order, bout in enumerate(event["bouts"]):
         fighters = [{"id": fighter.get("id"), "name": fighter["name"]} for fighter in bout["fighters"]]
         forecast = bout.get("forecast") or {}
@@ -169,6 +169,7 @@ def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=
                             "reason": "Not enough UFC fights to forecast" if forecast else "No forecast"})
             continue
         label, record = forecast.get("label", label), forecast.get("record", record)
+        forecast_revision = forecast.get("revision") or forecast_revision
         p = [round(float(x), 4) for x in forecast["probabilities"]]
         favorite = 0 if p[0] >= p[1] else 1
         picks.append({"order": order, "group": bout.get("group"), "division": bout.get("division"),
@@ -187,7 +188,7 @@ def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=
             picks[i]["market"] = quote_
 
     model = {"name": "UPSET forecast", "label": label, "record_before_publishing": record,
-             "data_through": meta.get("latest_bout")}
+             "data_through": meta.get("latest_bout"), "forecast_revision": forecast_revision}
     if rating_snapshot:
         manifest_path = Path(rating_snapshot) / "manifest.json"
         snapshot_manifest = json.loads(manifest_path.read_text())

@@ -27,6 +27,7 @@ from upset.data.viewer_upsets_market import add_market_upsets
 from upset.data.upcoming_market import attach, disagreement_record, scheduled_market
 from upset.predictions.published_picks import load_record, picks_file
 from upset.ratings.forecast_adjust import ForecastAdjustment
+from upset.data.skills_view import SkillProfiles
 
 
 def connect(database):
@@ -330,6 +331,8 @@ EVENT_NAMES = {}
 FIGHTER_ALIASES = {}
 PROVIDER_AUDIT = None
 MARKET_ODDS = None
+SKILL_PROFILES = None
+FIGHTERS_WITH_FIGHTS = None
 UPCOMING_MARKET = {}
 DISAGREEMENT = {}
 PUBLISHED_PICKS = Path("data/published/picks")
@@ -656,6 +659,10 @@ def route(database, target):
         if parts.path == "/api/meta":
             meta = metadata(db)
             meta["share_routes"] = True
+            global FIGHTERS_WITH_FIGHTS
+            if FIGHTERS_WITH_FIGHTS is None:
+                FIGHTERS_WITH_FIGHTS = db.execute("SELECT COUNT(DISTINCT fighter_id) FROM stats").fetchone()[0]
+            meta["fighters_with_fights"] = FIGHTERS_WITH_FIGHTS
             meta["upset_tracker"] = UPSET_INDEX is not None
             if PROFESSIONAL_RECORDS:
                 meta["professional_records"] = len(PROFESSIONAL_RECORDS)
@@ -665,6 +672,10 @@ def route(database, target):
             return meta
         if parts.path == "/api/corrections":
             return corrections(db)
+        if parts.path == "/api/skills":
+            if SKILL_PROFILES is None:
+                raise KeyError("Skill profiles are not loaded.")
+            return SKILL_PROFILES.profile(params.get("id", [""])[0])
         if parts.path == "/api/record":
             return load_record(PUBLISHED_PICKS)
         if parts.path == "/api/time-machine":
@@ -917,7 +928,7 @@ def handler(database, design="broadcast"):
 
 
 def main():
-    global COVERAGE, EVENTS, FIGHT_ROUNDS, HISTORICAL_RESULTS, MARKET_ODDS, PROVIDER_AUDIT, PUBLISHED_PICKS, RATING_SNAPSHOT, STRIKING_PREVIEW, UPSET_INDEX
+    global COVERAGE, EVENTS, FIGHT_ROUNDS, HISTORICAL_RESULTS, SKILL_PROFILES, MARKET_ODDS, PROVIDER_AUDIT, PUBLISHED_PICKS, RATING_SNAPSHOT, STRIKING_PREVIEW, UPSET_INDEX
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path, default=Path("data/processed/research_v1/upset.sqlite"))
     parser.add_argument("--port", type=int, default=8765)
@@ -939,6 +950,7 @@ def main():
     parser.add_argument("--provider-audit", type=Path, help="Cross-provider result audit for this database.")
     parser.add_argument("--forecast-adjustment", type=Path,
                         help="Forecast revision 5.2 (age and debut-odds starting point) built for this snapshot.")
+    parser.add_argument("--skill-profiles", type=Path, help="Multi-skill model output (skills JSON) for fighter skill profiles.")
     parser.add_argument("--market-archive", type=Path,
                         help="Daily odds archive (zip): flags big UPSET-vs-market disagreements on the next card.")
     parser.add_argument("--market-odds", type=Path,
@@ -968,6 +980,12 @@ def main():
         if args.provider_audit is not None:
             PROVIDER_AUDIT = load_verified_json(args.provider_audit, "audit.json",
                                                 manifest["database_sha256"], "provider_agreement_v1")[0]
+        if args.skill_profiles is not None:
+            with closing(connect(args.database)) as db:
+                women = frozenset(uid for row in db.execute("SELECT payload FROM fights") for uid in (
+                    json.loads(row["payload"]).get("upset_fighter_1_id"), json.loads(row["payload"]).get("upset_fighter_2_id"))
+                    if "women" in (json.loads(row["payload"]).get("weight_class") or "").lower())
+            SKILL_PROFILES = SkillProfiles(args.skill_profiles, women)
         if args.market_odds is not None:
             MARKET_ODDS = load_verified_json(args.market_odds, "odds.json", manifest["database_sha256"], "market_odds_v1")[0]
         if args.event_names is not None:
