@@ -3763,63 +3763,111 @@ async function renderCorrections(){
 })();
 </script>
 <!-- UPSET REFRESH END: compare-record -->
-<!-- UPSET REFRESH START: skill-profile (Skill profile on fighter pages and a skill clash on matchup pages, from the multi-skill model). Delete through the matching END line to remove them. -->
+<!-- UPSET REFRESH START: skill-profile (Skill octagon on fighter pages and a two-fighter overlay on matchup pages, from the multi-skill model). Delete through the matching END line to remove them. -->
 <style id="refresh-skill-profile">
-.sk-card{margin:18px 0;padding:18px 20px;background:var(--surface);border:1px solid var(--line-soft)}
-.sk-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px;margin-bottom:14px}
-.sk-head h2{margin:0;font:400 20px/1.1 var(--brand);text-transform:uppercase}
-.sk-head small{color:var(--muted);font-size:12px}
-.sk-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 44px}
-.sk-group{font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-.sk-row{display:grid;grid-template-columns:128px minmax(0,1fr);gap:12px;align-items:center;padding:6px 0}
-.sk-row>span{font-size:13px;color:var(--text-2)}
-.sk-track{position:relative;height:8px;background:#221d1f}
-.sk-fill{position:absolute;inset:0 auto 0 0;background:#8b8588}
-.sk-fill.hi{background:#e7c955}.sk-fill.lo{background:#5d5759}
-.sk-tag{position:absolute;right:0;top:-17px;font:700 9.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#e7c955}
-.sk-tag.lo{color:var(--muted)}
-.sk-like{margin:14px 0 0;font-size:13px;color:var(--text-2)}
+.sk-card{margin:18px 0;padding:20px 22px;background:radial-gradient(90% 120% at 22% 50%,rgba(193,18,31,.10),transparent 60%),var(--surface);border:1px solid var(--line-soft);
+  display:grid;grid-template-columns:minmax(300px,430px) minmax(0,1fr);gap:10px 34px;align-items:center}
+.sk-oct{width:100%;height:auto;display:block;overflow:visible}
+.sk-oct .ring{fill:none;stroke:var(--line-soft);stroke-width:1}
+.sk-oct .ring.outer{stroke:var(--line);stroke-width:1.5}
+.sk-oct .spoke{stroke:var(--line-soft);stroke-width:1}
+.sk-oct .shape{fill:rgba(230,57,70,.30);stroke:var(--red);stroke-width:2.5;stroke-linejoin:round;transform-origin:190px 170px;animation:sk-grow .6s cubic-bezier(.2,.8,.2,1)}
+.sk-oct .shape.b{fill:rgba(58,134,255,.26);stroke:var(--blue)}
+.sk-oct .pt{fill:var(--text)}
+.sk-oct .lab{font:600 10.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;fill:var(--text-2)}
+.sk-oct .val{font:400 19px/1 var(--brand);fill:var(--text)}
+.sk-oct .val.t90{fill:#ef4b56}.sk-oct .val.t80{fill:#f39947}.sk-oct .val.t70{fill:#e7c955}.sk-oct .val.t60{fill:#65a6ef}
+.sk-oct .val.b{fill:#8db8ff;font-size:15px}.sk-oct .val.a{fill:#ff8a93;font-size:15px}
+@keyframes sk-grow{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.sk-oct .shape{animation:none}}
+.sk-eyebrow{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.sk-type{margin:8px 0 6px;font:400 clamp(26px,3.2vw,40px)/1 var(--brand);text-transform:uppercase}
+.sk-line{margin:0 0 14px;color:var(--text-2);font-size:14.5px;line-height:1.5;max-width:520px}
+.sk-line b{color:var(--text)}
+.sk-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.sk-chip{display:flex;align-items:baseline;gap:8px;padding:8px 12px;border:1px solid var(--line);background:rgba(0,0,0,.25)}
+.sk-chip b{font:400 20px/1 var(--brand)}
+.sk-chip span{font:600 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.sk-chip.best b{color:#e7c955}.sk-chip.worst b{color:#65a6ef}
+.sk-like{margin:0;font-size:13px;color:var(--text-2)}
 .sk-like a{color:var(--text);text-underline-offset:3px}
-.sk-fine{margin:8px 0 0;color:var(--muted);font-size:11.5px}
-.sk-clash .sk-row{grid-template-columns:minmax(0,1fr) 128px minmax(0,1fr)}
-.sk-clash .sk-row>span{text-align:center}
-.sk-clash .mirror .sk-fill{inset:0 0 0 auto}
-.sk-clash .mirror .sk-tag{right:auto;left:0}
-.sk-clash .a .sk-fill{background:#a8474e}.sk-clash .b .sk-fill{background:#4a78c9}
-.sk-clash .a .sk-fill.edge{background:var(--red)}.sk-clash .b .sk-fill.edge{background:var(--blue)}
-.sk-names{display:flex;justify-content:space-between;font:700 14px/1 var(--display);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
-@media(max-width:760px){.sk-cols{grid-template-columns:1fr;gap:14px}.sk-row{grid-template-columns:112px minmax(0,1fr)}
-  .sk-clash .sk-row{grid-template-columns:minmax(0,1fr) 96px minmax(0,1fr);gap:8px}.sk-row>span{font-size:12px}}
+.sk-fine{margin:10px 0 0;color:var(--muted);font-size:11.5px}
+.sk-legend{display:flex;gap:18px;margin:10px 0;font:700 14px/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.sk-legend i{display:inline-block;width:12px;height:12px;margin-right:7px;background:var(--red)}
+.sk-legend span+span i{background:var(--blue)}
+.sk-edges{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px;color:var(--text-2)}
+.sk-edges b{color:var(--text)}
+@media(max-width:860px){.sk-card{grid-template-columns:1fr;padding:16px}}
 </style>
 <script id="refresh-skill-profile-js">
 (()=>{
   const cache=new Map();
   const load=id=>{if(!cache.has(id))cache.set(id,fetch('/api/skills?id='+encodeURIComponent(id)).then(r=>r.ok?r.json():null).catch(()=>null));return cache.get(id);};
-  // Only the standout numbers get a label.
-  const tag=p=>p>=95?['Top '+Math.max(1,100-p)+'%','hi']:p<=5?['Bottom '+Math.max(1,p)+'%','lo']:null;
-  function bar(s,cls,edge){
-    const t=tag(s.percentile);
-    return h('div',{class:'sk-track '+(cls||''),title:s.label+': better than '+s.percentile+'% of active UFC fighters. '+s.about+'.'},
-      h('i',{class:'sk-fill'+(t?' '+t[1]:'')+(edge?' edge':''),style:'width:'+Math.max(2,s.percentile)+'%'}),
-      t?h('em',{class:'sk-tag '+t[1],text:t[0]}):null);
+  // Clockwise from the top: striking on the right side, grappling on the left.
+  const ORDER=[0,2,3,1,5,6,7,4],SHORT=['Volume','Power','Durability','Strike defense','Takedown defense','Control','Submissions','Takedowns'];
+  const CX=190,CY=170,R=104;
+  const score=p=>Math.round(60+.39*p);                       // same 60-99 scale as the UPSET rating
+  const tier=v=>v>=90?'t90':v>=80?'t80':v>=70?'t70':'t60';
+  const at=(i,r)=>{const a=(-67.5+45*i)*Math.PI/180;return [CX+r*Math.cos(a),CY+r*Math.sin(a)];};
+  const poly=rs=>rs.map((r,i)=>at(i,r).map(v=>v.toFixed(1)).join(',')).join(' ');
+  const radius=p=>R*(.16+.84*p/100);
+  function octagon(a,b){
+    const pa=ORDER.map(i=>a.skills[i]),pb=b?ORDER.map(i=>b.skills[i]):null;
+    const kids=[.25,.5,.75,1].map(f=>s('polygon',{class:'ring'+(f===1?' outer':''),points:poly(Array(8).fill(R*f))}));
+    for(let i=0;i<8;i++){const [x,y]=at(i,R);kids.push(s('line',{class:'spoke',x1:CX,y1:CY,x2:x,y2:y}));}
+    if(pb)kids.push(s('polygon',{class:'shape b',points:poly(pb.map(k=>radius(k.percentile)))}));
+    kids.push(s('polygon',{class:'shape',points:poly(pa.map(k=>radius(k.percentile)))}));
+    pa.forEach((k,i)=>{
+      if(!pb){const [x,y]=at(i,radius(k.percentile));kids.push(s('circle',{class:'pt',cx:x,cy:y,r:3}));}
+      const [lx,ly]=at(i,R+20),right=lx>CX+5,anchor=Math.abs(lx-CX)<6?'middle':right?'start':'end',up=ly<CY;
+      const label=s('text',{class:'lab',x:lx,y:ly+(up?-12:2),'text-anchor':anchor});label.textContent=SHORT[i];
+      const va=score(k.percentile);
+      const value=s('text',{class:'val '+(pb?'a':tier(va)),x:lx,y:ly+(up?8:22),'text-anchor':anchor});
+      value.textContent=va;
+      const title=s('title',{});title.textContent=k.label+': '+va+' out of 99. Better than '+k.percentile+'% of active UFC fighters. '+k.about+'.';
+      value.append(title);kids.push(label,value);
+      if(pb){const vb=score(pb[i].percentile),w=String(va).length*10+8;
+        const second=s('text',{class:'val b',x:lx+(anchor==='end'?-w:anchor==='start'?w:0),y:ly+(up?8:22)+(anchor==='middle'?17:0),'text-anchor':anchor});
+        second.textContent=vb;kids.push(second);}
+    });
+    return s('svg',{class:'sk-oct',viewBox:'0 0 380 340',role:'img','aria-label':'Skill octagon'},...kids);
   }
-  const GROUPS=[['Striking',[0,1,2,3]],['Grappling',[4,5,6,7]]];
+  function archetype(d){
+    const p=d.skills.map(k=>k.percentile),[vol,sdef,kd,dur,td,tdd,ctrl,sub]=p;
+    const strike=(vol+sdef+kd)/3,grap=(td+ctrl+sub)/3;
+    let name=td>=75&&ctrl>=75?'Control wrestler':sub>=88&&grap>=55?'Submission hunter':kd>=88&&vol<65?'Power puncher':vol>=80&&kd>=75?'Pressure striker':
+      vol>=80?'Volume striker':sdef>=85&&strike>=60?'Counter striker':Math.min(strike,grap)>=62?'All-rounder':strike-grap>=18?'Striker':grap-strike>=18?'Grappler':'Balanced fighter';
+    if(tdd>=85&&strike>grap&&!/wrestler|Grappler|hunter/.test(name))name='Sprawl-and-brawl '+name.toLowerCase().replace('balanced fighter','striker');
+    return name;
+  }
   function profileCard(d){
+    const ranked=d.skills.map((k,i)=>({...k,v:score(k.percentile)})).sort((x,y)=>y.percentile-x.percentile);
+    const best=ranked.slice(0,2),worst=ranked[ranked.length-1];
+    const chip=(k,cls,tag)=>h('div',{class:'sk-chip '+cls,title:k.about},h('b',{text:k.v}),h('span',{text:tag+' · '+k.label}));
     return h('section',{class:'sk-card','aria-label':'Skill profile'},
-      h('div',{class:'sk-head'},h('h2',{text:'Skill profile'}),h('small',{text:'Compared with '+d.compared_with+' active UFC fighters'})),
-      h('div',{class:'sk-cols'},GROUPS.map(([name,idx])=>h('div',null,h('p',{class:'sk-group',text:name}),
-        ...idx.map(i=>h('div',{class:'sk-row'},h('span',{text:d.skills[i].label}),bar(d.skills[i])))))),
-      d.similar.length?h('p',{class:'sk-like'},'Fights most like: ',...d.similar.flatMap((f,i)=>[i?', ':'',h('a',{href:viewerUrl('/fighter/'+encodeURIComponent(f.id)),text:f.name})])):null,
-      h('p',{class:'sk-fine',text:'Longer bar = better. Adjusted for the quality of opponents. A description, not a prediction.'}));
+      octagon(d),
+      h('div',null,
+        h('div',{class:'sk-eyebrow',text:'Fighting style · vs '+d.compared_with+' active UFC fighters'}),
+        h('h2',{class:'sk-type distressed',text:archetype(d)}),
+        h('p',{class:'sk-line'},'Best work comes from ',h('b',{text:best[0].label.toLowerCase()}),' and ',h('b',{text:best[1].label.toLowerCase()}),
+          '. The gap in the game is ',h('b',{text:worst.label.toLowerCase()}),'.'),
+        h('div',{class:'sk-chips'},chip(best[0],'best','Best'),chip(best[1],'best','Next'),chip(worst,'worst','Weakest')),
+        d.similar.length?h('p',{class:'sk-like'},'Fights most like: ',...d.similar.flatMap((f,i)=>[i?', ':'',h('a',{href:viewerUrl('/fighter/'+encodeURIComponent(f.id)),text:f.name})])):null,
+        h('p',{class:'sk-fine',text:'Each skill is scored 60–99 like the UPSET rating and adjusted for the quality of opponents. A description, not a prediction.'})));
   }
   function clashCard(A,B,a,b){
     const last=n=>n.split(' ').slice(-1)[0];
+    const gaps=a.skills.map((k,i)=>({label:k.label,d:score(k.percentile)-score(b.skills[i].percentile),va:score(k.percentile),vb:score(b.skills[i].percentile)}))
+      .sort((x,y)=>Math.abs(y.d)-Math.abs(x.d)).slice(0,3).filter(g=>Math.abs(g.d)>=4);
     return h('section',{class:'sk-card sk-clash','aria-label':'Skill clash'},
-      h('div',{class:'sk-head'},h('h2',{text:'Skill clash'}),h('small',{text:'Longer bar = better · bright bars mark a clear edge'})),
-      h('div',{class:'sk-names'},h('span',{text:last(A.name)}),h('span',{text:last(B.name)})),
-      ...a.skills.map((s,i)=>{const t=b.skills[i];
-        return h('div',{class:'sk-row'},bar(s,'mirror a',s.low>t.high),h('span',{text:s.label}),bar(t,'b',t.low>s.high));}),
-      h('p',{class:'sk-fine',text:'Shows how the fight may look, not who wins.'}));
+      octagon(a,b),
+      h('div',null,
+        h('div',{class:'sk-eyebrow',text:'Skill clash'}),
+        h('h2',{class:'sk-type distressed',text:archetype(a)+' vs '+archetype(b)}),
+        h('div',{class:'sk-legend'},h('span',null,h('i'),last(A.name)),h('span',null,h('i'),last(B.name))),
+        gaps.length?h('ul',{class:'sk-edges'},gaps.map(g=>h('li',null,h('b',{text:last((g.d>0?A:B).name)}),' has the edge in '+g.label.toLowerCase()+' ('+Math.max(g.va,g.vb)+' to '+Math.min(g.va,g.vb)+')'))):
+          h('p',{class:'sk-line',text:'No big gaps: these two are closely matched across the board.'}),
+        h('p',{class:'sk-fine',text:'Shows how the fight may look, not who wins. Skills are scored 60–99 and adjusted for opponents.'})));
   }
   const place=node=>{const c=$('content'),old=c.querySelector('.sk-card');if(old)old.remove();
     const anchor=c.querySelector('.v5-forecast')||c.firstElementChild;anchor?anchor.after(node):c.append(node);};
