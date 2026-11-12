@@ -5,7 +5,9 @@ function renderAbout() {
       h('a', {class: 'about-back', href: '#/', text: '← Back to UPSET'}),
       h('header', {class: 'about-heading'},
         h('p', {class: 'about-label', text: 'The person behind UPSET'}),
-        h('h1', {id: 'about-name', text: 'Ayaan Ahmed'})),
+        h('h1', {id: 'about-name'},
+          h('a', {class: 'about-name-link', href: 'https://www.linkedin.com/in/ayaanahmed04/', target: '_blank', rel: 'noopener',
+            title: 'Ayaan Ahmed on LinkedIn', 'aria-label': 'Ayaan Ahmed on LinkedIn (opens in a new tab)'}, 'Ayaan Ahmed'))),
       h('p', {class: 'about-intro', text:
         'I’m a recent Computer Science graduate with a strong interest in data, software development, and the sport of mixed martial arts.'}),
       h('p', null, 'I created ', h('strong', {text: 'UPSET'}),

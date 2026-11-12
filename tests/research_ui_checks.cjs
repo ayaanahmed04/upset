@@ -31,9 +31,9 @@ class Node {
   setAttribute(key, value) { this.attributes[key] = String(value); }
   addEventListener() {}
 }
-const nodes = Object.fromEntries(['tray', 'slot0', 'slot1', 'go'].map(id => [id, new Node('div')]));
+const nodes = Object.fromEntries(['tray', 'slot0', 'slot1', 'go', 'choose-opponent'].map(id => [id, new Node('div')]));
 const context = vm.createContext({
-  assert, nodes, Node, innerWidth: 1200, location: {hash: '#/fighter/a'},
+  assert, nodes, Node, URLSearchParams, innerWidth: 1200, location: {hash: '#/fighter/a'},
   document: {
     getElementById: id => nodes[id],
     createElement: tag => new Node(tag),
@@ -45,7 +45,8 @@ const context = vm.createContext({
 });
 function section(start, end) { return html.slice(html.indexOf(start), html.indexOf(end, html.indexOf(start))); }
 vm.runInContext(section('const $=id=>', '/* ================= metric catalog'), context);
-vm.runInContext(section('function timeline(history)', 'function strikeMap(m)'), context);
+vm.runInContext(section('const RESULT_LABEL=', '/* ================= tooltip'), context);
+vm.runInContext(section('function chartLimit()', 'function strikeMap('), context);
 vm.runInContext(section('function renderTray()', '/* ================= routing'), context);
 vm.runInContext(section('const METRICS=[', '/* ================= avatar'), context);
 vm.runInContext(section('function meters(r,group)', '/* ================= fighter page'), context);
@@ -99,37 +100,34 @@ vm.runInContext(`
 vm.runInContext(`
   {
     const rateKeys=['knockdowns_per_15_minutes','takedowns_per_15_minutes','submission_attempts_per_15_minutes'];
-    const report={name:'Fighter',metrics:Object.fromEntries(METRICS.map(m=>[m.key,3])),
-      percentiles:{eligible:true,scope:'Lightweight',values:Object.fromEntries(METRICS.map(m=>[m.key,{percentile:80,median:.9,pool:30}]))}};
+    const report={name:'Fighter',metrics:Object.fromEntries(METRICS.map(m=>[m.key,3]))};
     const other={...report,name:'Opponent',metrics:{...report.metrics,...Object.fromEntries(rateKeys.map(key=>[key,6]))}};
     const snapshot=JSON.stringify([report,other]);
     function descendants(node){return[node,...node.children.flatMap(descendants)];}
     for(const key of rateKeys){
       const metric=METRICS.find(m=>m.key===key);
-      assert.equal(metric.f(3),'1.00'); // 3 events / 15 minutes = 1 event / 5 minutes.
+      assert.equal(metric.f(3),'3.00');
       assert.equal(metric.f(0),'0.00');
       assert.equal(metric.f(null),'—');
-      assert.equal(metric.unit,'per 5 min');
-      assert.equal(goodPct(report,metric),80,'display conversion must preserve percentile rank');
       const meter=meters(report,metric.group).children.find(n=>n.children[0].textContent===metric.label);
-      assert.equal(meter.children[1].children[0].textContent,'1.00');
-      const tooltip=meter.tipBuilder();
-      assert.equal(tooltip[2].children[1].textContent,'0.30','division medians use the same display units');
+      assert.equal(meter.children[1].textContent,'3.00'+metric.unit);
+      assert.ok(!descendants(meter).some(n=>n.tag==='button'||n.className==='track'));
     }
-    const tile=tiles(report).children.find(n=>n.children[0].textContent==='Knockdowns / 5 min');
-    assert.equal(tile.children[1].textContent,'1.00');
+    const tile=tiles(report).children.find(n=>n.children[0].textContent==='Knockdowns / 15 min');
+    assert.equal(tile.children[1].textContent,'3.00');
     const comparison=duel(report,other);
     for(const key of rateKeys){
       const metric=METRICS.find(m=>m.key===key);
       const row=comparison.children.find(n=>n.className==='drow'&&n.children[1].children[0].textContent===metric.label);
-      assert.equal(row.children[0].children[0].textContent,'1.00');
-      assert.equal(row.children[2].children[0].textContent,'2.00');
-      assert.ok(descendants(row).filter(n=>n.className==='u').every(n=>n.textContent==='per 5 min'));
-      assert.equal(row.tipBuilder()[1].children[1].textContent,'1.00 · 80th pct');
+      assert.equal(row.children[0].children[0].textContent,'3.00');
+      assert.equal(row.children[2].children[0].textContent,'6.00');
+      assert.ok(!descendants(row).some(n=>n.tag==='button'||n.className==='bars'));
     }
-    assert.equal(JSON.stringify([report,other]),snapshot,'UI rendering must not mutate source rates or ranks');
+    assert.equal(JSON.stringify([report,other]),snapshot,'raw rendering must not mutate source data');
   }
 `, context);
+assert.ok(!html.includes('rankingLink')&&!html.includes('renderLeaderboard'));
+assert.ok(!html.includes('research_leaderboards'));
 
 // The topbar and tray wraps are sibling stacking contexts in the same header.
 // A high dropdown z-index alone cannot raise it above the tray's context.
@@ -143,4 +141,4 @@ function zIndex(selector) { return Number(baseRules(selector).match(/(?:^|;)z-in
 assert.ok(zIndex('.topbar') > zIndex('.wrap'), 'search must paint above the later tray wrap');
 assert.ok(zIndex('.search-wrap') > 0, 'dropdown must paint above sibling header controls');
 assert.match(baseRules('#go[hidden]'), /display:none/, 'hidden must win over the button display rule');
-console.log('UI checks passed: tray navigation, per-5-minute cards/comparison/tooltips/medians, preserved ranks, empty corners, search stacking and chart spacing.');
+console.log('UI checks passed: raw values without rankings, comparison, tray navigation, search stacking and chart spacing.');

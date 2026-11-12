@@ -8,7 +8,7 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 import pytest
-from test_research_app import A, build, fixture
+from test_research_app import A, B, build, fixture
 
 from upset import research_app as app
 
@@ -25,11 +25,28 @@ def test_design_selection_and_static_files_leave_the_api_unchanged(tmp_path):
     bases = [f"http://127.0.0.1:{server.server_address[1]}" for server in servers]
     try:
         with urlopen(bases[0]) as response:
-            assert response.read() == files("upset").joinpath("web/research.html").read_bytes()
+            body = response.read().decode()
+            assert '<title>UPSET · UFC Fighter Research</title>' in body
+            assert f'<link rel="canonical" href="{bases[0]}/">' in body
+            assert '<main class="wrap" id="main">' in body
+            assert '/web/research_editorial.js' not in body
         with urlopen(bases[1]) as response:
             body = response.read().decode()
             assert '/web/research_editorial.css' in body
             assert '/web/research_editorial.js' in body
+        filters = "before=2020-06-01&window=3"
+        preview = f"/share/{A}/{B}.png?{filters}"
+        with urlopen(f"{bases[0]}/compare/{A}/{B}?{filters}") as response:
+            body = response.read().decode()
+            assert '<title>Alex Silva vs Sam · UPSET</title>' in body
+            image = (bases[0] + preview).replace('&', '&amp;')
+            assert f'<meta property="og:image" content="{image}">' in body
+        with urlopen(bases[0] + preview) as response:
+            assert response.headers["Content-Type"] == "image/png"
+            image = response.read()
+            assert image.startswith(b"\x89PNG\r\n\x1a\n")
+            assert int.from_bytes(image[16:20], "big") == 1200
+            assert int.from_bytes(image[20:24], "big") == 630
         for name, mime in app.WEB_FILES.items():
             with urlopen(bases[1] + "/web/" + name) as response:
                 assert response.headers["Content-Type"] == mime

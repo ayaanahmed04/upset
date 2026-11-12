@@ -172,12 +172,6 @@ const METRICS = [{
   label: 'Control margin, sec / min',
   f: x => signed(x, 1)
 }, ];
-/* percentile oriented so higher = better for the fighter */
-function goodPct(r, m) {
-  const p = r.percentiles && r.percentiles.eligible && r.percentiles.values[m.key];
-  if (!p) return null;
-  return m.lower ? 100 - p.percentile : p.percentile;
-}
 
 /* ================= avatar & badges ================= */
 function avatar(r, cls) {
@@ -648,62 +642,10 @@ function methods(m) {
     }), name))));
 }
 
-function meters(r, group) {
-  const P = r.percentiles || {};
-  return h('div', {
-    class: 'meters'
-  }, METRICS.filter(m => m.group === group).map(m => {
-    const v = r.metrics[m.key],
-      gp = goodPct(r, m),
-      info = P.eligible && P.values[m.key];
-    const track = h('div', {
-      class: 'track' + (gp == null ? ' none' : '')
-    });
-    if (gp != null) {
-      track.append(h('div', {
-        class: 'fill',
-        style: `width:${Math.max(1.5,gp)}%`
-      }));
-      track.append(h('div', {
-        class: 'med',
-        style: 'left:50%',
-        title: 'Division median'
-      }));
-    }
-    const node = h('div', {
-        class: 'meter',
-        tabindex: 0
-      }, h('span', {
-        class: 'lbl',
-        text: m.label
-      }),
-      h('span', {
-        class: 'val'
-      }, m.f(v), gp != null ? h('small', {
-        class: 'pct' + (gp >= 90 ? ' elite' : ''),
-        text: ordinal(gp) + ' pct'
-      }) : null), track);
-    if (info) bindTip(node, () => [h('strong', {
-      text: m.f(v)
-    }), h('div', {
-      text: m.label
-    }), h('div', {
-      class: 'r'
-    }, h('span', {
-      text: P.scope + ' median'
-    }), h('b', {
-      text: m.f(info.median)
-    })), h('div', {
-      class: 'r'
-    }, h('span', {
-      text: 'Percentile rank'
-    }), h('b', {
-      text: Math.round(gp) + '% · ' + info.pool + ' fighters'
-    }))].concat(m.lower ? [h('div', {
-      text: 'Lower is better here.'
-    })] : []));
-    return node;
-  }));
+function meters(r,group){
+  return h('div',{class:'meters'},METRICS.filter(m=>m.group===group).map(m=>
+    h('div',{class:'meter'},h('span',{class:'lbl',text:m.label}),
+      h('span',{class:'val'},m.f(r.metrics[m.key]),h('small',{text:m.unit})))));
 }
 
 /* ================= fighter page ================= */
@@ -780,34 +722,11 @@ function heroCard(r) {
       }, add)));
 }
 
-function tiles(r) {
-  const m = r.metrics;
-  const T = [
-    ['Sig. strikes landed / min', 'sig_landed_per_minute', fmt(m.sig_landed_per_minute)],
-    ['Striking differential / min', 'sig_differential_per_minute', signed(m
-      .sig_differential_per_minute)],
-    ['Takedown defense', 'takedown_defense', pct(m.takedown_defense)],
-    ['Knockdowns / 5 min', 'knockdowns_per_15_minutes', perFive(m.knockdowns_per_15_minutes)]
-  ];
-  return h('div', {
-    class: 'tiles'
-  }, T.map(([label, key, val]) => {
-    const mm = METRICS.find(x => x.key === key),
-      gp = goodPct(r, mm);
-    return h('div', {
-      class: 'tile'
-    }, h('div', {
-      class: 'lbl',
-      text: label
-    }), h('div', {
-      class: 'num',
-      text: val
-    }), h('div', {
-      class: 'rank'
-    }, gp == null ? 'No division rank in this window' : [gp >= 90 ? h('b', {
-      text: 'Top ' + Math.max(1, Math.round(100 - gp)) + '%'
-    }) : ordinal(gp) + ' percentile', ' · ' + r.percentiles.scope]));
-  }));
+function tiles(r){
+  const m=r.metrics;
+  const T=[['Sig. strikes landed / min',fmt(m.sig_landed_per_minute)],['Striking differential / min',signed(m.sig_differential_per_minute)],['Takedown defense',pct(m.takedown_defense)],['Knockdowns / 15 min',fmt(m.knockdowns_per_15_minutes)]];
+  return h('div',{class:'tiles'},T.map(([label,val])=>
+    h('div',{class:'tile'},h('div',{class:'lbl',text:label}),h('div',{class:'num',text:val}))));
 }
 
 function historyList(r, limit) {
@@ -904,10 +823,6 @@ function windowNote(r) {
 
 function renderFighter(r) {
   const c = $('content');
-  const P = r.percentiles || {};
-  const rankNote = P.eligible ?
-    `Bar = percentile among ${P.pool_fighters} ${P.scope==='All divisions'?'fighters':P.scope.toLowerCase()+'s'} in the same window · tick = median` :
-    (P.reason || 'Not enough fights in this window for a ranking.');
   const showAll = r.history.length <= 12;
   const hist = h('div', null, historyList(r, showAll ? 0 : 12));
   const more = showAll ? null : h('button', {
@@ -940,7 +855,7 @@ function renderFighter(r) {
       }, h('h3', {
         text: 'Striking'
       }), h('small', {
-        text: rankNote
+        text: 'Recorded values · ' + windowLabel()
       })), meters(r, 'Striking')),
       h('section', {
         class: 'card'
@@ -1169,87 +1084,16 @@ function taleOfTape(A, B) {
     }));
 }
 
-function duel(A, B) {
-  const box = h('div', {
-    class: 'duel'
-  });
-  let group = null;
-  for (const m of METRICS) {
-    if (m.group !== group) {
-      group = m.group;
-      box.append(h('div', {
-        class: 'group-label',
-        text: group
-      }));
-    }
-    const a = A.metrics[m.key],
-      b = B.metrics[m.key];
-    const edge = a == null || b == null || a === b ? 0 : ((m.lower ? a < b : a > b) ? 1 : -1);
-    const ga = goodPct(A, m),
-      gb = goodPct(B, m);
-    const row = h('div', {
-        class: 'drow',
-        tabindex: 0
-      },
-      h('div', {
-        class: 'vc l'
-      }, h('span', {
-        class: 'v' + (edge > 0 ? ' edge' : '')
-      }, edge > 0 ? h('span', {
-        class: 'edge-mark',
-        style: 'border-right:7px solid var(--red);margin-right:6px'
-      }) : null, m.f(a)), h('small', {
-        class: 'u',
-        text: m.unit
-      }), ga != null ? h('small', {
-        class: 'p' + (ga >= 90 ? ' elite' : ''),
-        text: ordinal(ga) + ' pct'
-      }) : null),
-      h('div', {
-        class: 'mid'
-      }, h('div', {
-        class: 'name',
-        text: m.label
-      }), h('div', {
-        class: 'bars'
-      }, h('div', {
-        class: 'lb'
-      }, ga != null ? h('i', {
-        style: `width:${Math.max(2,ga)}%`
-      }) : null), h('div', {
-        class: 'rb'
-      }, gb != null ? h('i', {
-        style: `width:${Math.max(2,gb)}%`
-      }) : null))),
-      h('div', {
-        class: 'vc'
-      }, h('span', {
-        class: 'v' + (edge < 0 ? ' edge' : '')
-      }, m.f(b), edge < 0 ? h('span', {
-        class: 'edge-mark',
-        style: 'border-left:7px solid var(--blue);margin-left:6px'
-      }) : null), h('small', {
-        class: 'u',
-        text: m.unit
-      }), gb != null ? h('small', {
-        class: 'p' + (gb >= 90 ? ' elite' : ''),
-        text: ordinal(gb) + ' pct'
-      }) : null));
-    bindTip(row, () => [h('div', {
-      text: m.label + (m.lower ? ' (lower is better)' : '')
-    }), h('div', {
-      class: 'r'
-    }, h('span', {
-      text: A.name
-    }), h('b', {
-      text: m.f(a) + (ga != null ? ' · ' + ordinal(ga) + ' pct' : '')
-    })), h('div', {
-      class: 'r'
-    }, h('span', {
-      text: B.name
-    }), h('b', {
-      text: m.f(b) + (gb != null ? ' · ' + ordinal(gb) + ' pct' : '')
-    }))]);
+function duel(A,B){
+  const box=h('div',{class:'duel'});let group=null;
+  for(const m of METRICS){
+    if(m.group!==group){group=m.group;box.append(h('div',{class:'group-label',text:group}));}
+    const a=A.metrics[m.key],b=B.metrics[m.key];
+    const edge=a==null||b==null||a===b?0:((m.lower?a<b:a>b)?1:-1);
+    const row=h('div',{class:'drow'},
+      h('div',{class:'vc l'},h('span',{class:'v'+(edge>0?' edge':'')},edge>0?h('span',{class:'edge-mark',style:'border-right:7px solid var(--red);margin-right:6px'}):null,m.f(a)),h('small',{class:'u',text:m.unit})),
+      h('div',{class:'mid'},h('div',{class:'name',text:m.label})),
+      h('div',{class:'vc'},h('span',{class:'v'+(edge<0?' edge':'')},m.f(b),edge<0?h('span',{class:'edge-mark',style:'border-left:7px solid var(--blue);margin-left:6px'}):null),h('small',{class:'u',text:m.unit})));
     box.append(row);
   }
   return box;
@@ -1257,7 +1101,6 @@ function duel(A, B) {
 
 function renderCompare(res) {
   const [A, B] = res.fighters, c = $('content');
-  const scopeNote = (r) => r.percentiles && r.percentiles.eligible ? r.percentiles.scope : 'unranked';
   c.replaceChildren(...[
     h('section', {
       class: 'card faceoff'
@@ -1299,9 +1142,7 @@ function renderCompare(res) {
         h('p', {
           class: 'meta-line',
           style: 'margin:6px 0 8px',
-          text: 'Bar length = percentile within each fighter’s own division (' + scopeNote(A) + (
-              scopeNote(A) === scopeNote(B) ? '' : ' / ' + scopeNote(B)) +
-            '); longer is better. Arrow marks the better raw number.'
+          text: 'Recorded values in the selected window. Arrow marks the better raw number.'
         }),
         duel(A, B))),
     h('div', {

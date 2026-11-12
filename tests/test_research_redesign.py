@@ -13,28 +13,17 @@ from test_research_app import A, build, fixture
 from upset import research_app as app
 
 
-def test_percentiles_use_midrank_and_even_pool_median(monkeypatch, tmp_path):
-    key = "sig_landed_per_minute"
-    pools = {"Lightweight": {"fighters": 25, "values": {k: [1, 2, 4, 5] for k in app.PERCENTILE_KEYS}}}
-    monkeypatch.setattr(app, "distributions", lambda *args: pools)
-    report = {"before": "2026-10-05", "window": 0, "summary": {"division": "Lightweight"},
-              "metrics": {k: 2 for k in app.PERCENTILE_KEYS} | {"timed_bouts": 3, "minutes": 15}}
-    result = app.percentiles(tmp_path / "fixture.sqlite", report)
-    assert result["values"][key] == {"percentile": 37.5, "median": 3.0, "pool": 4}
-    pools["Lightweight"]["values"][key] = [2, 2, 2]
-    assert app.percentiles(tmp_path / "fixture.sqlite", report)["values"][key]["percentile"] == 50
-    report["metrics"][key] = None
-    assert app.percentiles(tmp_path / "fixture.sqlite", report)["values"][key] is None
-
-
-def test_rankings_fallback_and_minimum_evidence_are_explicit(monkeypatch, tmp_path):
-    values = {k: [1, 3] for k in app.PERCENTILE_KEYS}
-    monkeypatch.setattr(app, "distributions", lambda *args: {"All divisions": {"fighters": 30, "values": values}})
-    report = {"before": "2026-10-05", "window": 3, "summary": {"division": "Lightweight"},
-              "metrics": {k: 1 for k in app.PERCENTILE_KEYS} | {"timed_bouts": 3, "minutes": 15}}
-    assert app.percentiles(tmp_path / "fixture.sqlite", report)["scope"] == "All divisions"
-    report["metrics"]["minutes"] = 14.9
-    assert app.percentiles(tmp_path / "fixture.sqlite", report)["eligible"] is False
+def test_rankings_removed_without_changing_recorded_stats(tmp_path):
+    paths = fixture(tmp_path)
+    output = tmp_path / "research"
+    build(paths, output)
+    report = app.route(output / "upset.sqlite", "/api/fighter?id=" + A + "&before=2026-09-21&window=0")
+    assert "percentiles" not in report
+    assert report["metrics"]["takedown_defense"] == .8
+    with pytest.raises(KeyError, match="Page not found"):
+        app.route(output / "upset.sqlite", "/api/rankings?metric=takedown_defense")
+    assert "research_leaderboards.js" not in app.WEB_FILES
+    assert "research_leaderboards.css" not in app.WEB_FILES
 
 
 @pytest.mark.parametrize("cutoff,shown", [("2026-09-30", False), ("2026-10-01", True),

@@ -1,0 +1,361 @@
+{
+  "scheduled": {
+    "slug": "ufc-334",
+    "name": "UFC 334",
+    "headline": "Gane vs Hokit",
+    "date": "2026-11-14",
+    "venue": "Madison Square Garden, New York",
+    "starts_at": "2026-11-14T22:00:00+00:00",
+    "source_url": "https://www.ufc.com/event/ufc-334",
+    "schedule_reviewed_on": "2026-11-10",
+    "schedule_update_url": "https://www.ufc.com/news/updates-polymarket-ufc-334-gane-vs-hokit",
+    "bouts": [
+      {
+        "group": "Main card",
+        "fighters": [
+          "Ciryl Gane",
+          "Josh Hokit"
+        ],
+        "division": "Heavyweight",
+        "rounds": 5,
+        "title": true
+      },
+      {
+        "group": "Main card",
+        "fighters": [
+          "Kayla Harrison",
+          "Amanda Nunes"
+        ],
+        "division": "Women's Bantamweight",
+        "rounds": 5,
+        "title": true
+      },
+      {
+        "group": "Main card",
+        "fighters": [
+          "Caio Borralho",
+          "Yousri Belgaroui"
+        ],
+        "division": "Middleweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Main card",
+        "fighters": [
+          "Uroš Medić",
+          "Kevin Holland"
+        ],
+        "division": "Welterweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Main card",
+        "fighters": [
+          "Bilal Hasan",
+          "Luis Gurule"
+        ],
+        "division": "Flyweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Prelims",
+        "fighters": [
+          "Stephen Thompson",
+          "Charles Radtke"
+        ],
+        "division": "Welterweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Prelims",
+        "fighters": [
+          "Drew Dober",
+          "Chris Duncan"
+        ],
+        "division": "Lightweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Prelims",
+        "fighters": [
+          "Jim Miller",
+          "Terrance McKinney"
+        ],
+        "division": "Lightweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Prelims",
+        "fighters": [
+          "Donte Johnson",
+          "Cesar Almeida"
+        ],
+        "division": "Middleweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Early prelims",
+        "fighters": [
+          "Jared Gordon",
+          "Melquizael Costa"
+        ],
+        "division": "Lightweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Early prelims",
+        "fighters": [
+          "Macy Chiasson",
+          "Bia Mesquita"
+        ],
+        "division": "Women's Bantamweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Early prelims",
+        "fighters": [
+          "Alatengheili",
+          "Juan Diaz"
+        ],
+        "division": "Bantamweight",
+        "rounds": 3,
+        "title": false
+      },
+      {
+        "group": "Early prelims",
+        "fighters": [
+          "Evan Elder",
+          "Samuel Sanches"
+        ],
+        "division": "Lightweight",
+        "rounds": 3,
+        "title": false
+      }
+    ]
+  },
+  "archived": {
+    "ufc-fight-night-november-07-2026": {
+      "headline": "Cortes Acosta vs Walker",
+      "venue": "Meta APEX, Las Vegas",
+      "main_event": [
+        "Waldo Cortes Acosta",
+        "Johnny Walker"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-november-07-2026"
+    },
+    "ufc-332": {
+      "headline": "Silva vs Wang",
+      "venue": "Delta Center, Salt Lake City",
+      "main_event": [
+        "Natalia Silva",
+        "Wang Cong"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-332"
+    },
+    "ufc-fight-night-september-26-2026": {
+      "headline": "Rosas Jr. vs Barcelos",
+      "venue": "Meta APEX, Las Vegas",
+      "main_event": [
+        "Raul Rosas Jr.",
+        "Raoni Barcelos"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-september-26-2026"
+    },
+    "ufc-fight-night-september-12-2026": {
+      "headline": "Silva vs Delgado",
+      "venue": "Desert Diamond Arena, Glendale",
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-september-12-2026",
+      "main_event": [
+        "Jean Silva",
+        "Jose Miguel Delgado"
+      ]
+    },
+    "ufc-fight-night-august-22-2026": {
+      "headline": "Hernandez vs Rodrigues",
+      "venue": "Golden 1 Center, Sacramento",
+      "main_event": [
+        "Anthony Hernandez",
+        "Gregory Rodrigues"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-august-22-2026"
+    },
+    "ufc-fight-night-may-16-2026": {
+      "headline": "Allen vs Costa",
+      "venue": "Meta APEX, Las Vegas",
+      "main_event": [
+        "Arnold Allen",
+        "Melquizael Costa"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-may-16-2026"
+    },
+    "ufc-fight-night-march-14-2026": {
+      "headline": "Emmett vs Vallejos",
+      "main_event": [
+        "Josh Emmett",
+        "Kevin Vallejos"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-march-14-2026"
+    },
+    "ufc-fight-night-march-21-2026": {
+      "headline": "Evloev vs Murphy",
+      "main_event": [
+        "Movsar Evloev",
+        "Lerone Murphy"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-march-21-2026"
+    },
+    "ufc-fight-night-march-28-2026": {
+      "headline": "Adesanya vs Pyfer",
+      "main_event": [
+        "Israel Adesanya",
+        "Joe Pyfer"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-march-28-2026"
+    },
+    "ufc-fight-night-april-04-2026": {
+      "headline": "Moicano vs Duncan",
+      "main_event": [
+        "Renato Moicano",
+        "Chris Duncan"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-april-04-2026"
+    },
+    "ufc-fight-night-april-18-2026": {
+      "headline": "Burns vs Malott",
+      "main_event": [
+        "Gilbert Burns",
+        "Mike Malott"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-april-18-2026"
+    },
+    "ufc-fight-night-april-25-2026": {
+      "headline": "Sterling vs Zalal",
+      "main_event": [
+        "Aljamain Sterling",
+        "Youssef Zalal"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-april-25-2026"
+    },
+    "ufc-fight-night-may-02-2026": {
+      "headline": "Della Maddalena vs Prates",
+      "main_event": [
+        "Jack Della Maddalena",
+        "Carlos Prates"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-may-02-2026"
+    },
+    "ufc-fight-night-may-30-2026": {
+      "headline": "Song vs Figueiredo",
+      "main_event": [
+        "Song Yadong",
+        "Deiveson Figueiredo"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-may-30-2026"
+    },
+    "ufc-fight-night-june-06-2026": {
+      "headline": "Muhammad vs Bonfim",
+      "main_event": [
+        "Belal Muhammad",
+        "Gabriel Bonfim"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-june-06-2026"
+    },
+    "ufc-fight-night-june-20-2026": {
+      "headline": "Kape vs Horiguchi",
+      "main_event": [
+        "Manel Kape",
+        "Kyoji Horiguchi"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-june-20-2026"
+    },
+    "ufc-fight-night-june-27-2026": {
+      "headline": "Fiziev vs Torres",
+      "main_event": [
+        "Rafael Fiziev",
+        "Manuel Torres"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-june-27-2026"
+    },
+    "ufc-fight-night-july-18-2026": {
+      "headline": "Du Plessis vs Usman",
+      "main_event": [
+        "Dricus Du Plessis",
+        "Kamaru Usman"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-july-18-2026"
+    },
+    "ufc-fight-night-july-25-2026": {
+      "headline": "Ankalaev vs Guskov",
+      "main_event": [
+        "Magomed Ankalaev",
+        "Bogdan Guskov"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-july-25-2026"
+    },
+    "ufc-fight-night-august-01-2026": {
+      "headline": "Medić vs Rodriguez",
+      "main_event": [
+        "Uros Medic",
+        "Daniel Rodriguez"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-august-01-2026"
+    },
+    "ufc-fight-night-august-08-2026": {
+      "headline": "Gamrot vs Salkilld",
+      "main_event": [
+        "Mateusz Gamrot",
+        "Quillan Salkilld"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-august-08-2026"
+    },
+    "ufc-fight-night-august-29-2026": {
+      "headline": "Nurmagomedov vs Song",
+      "main_event": [
+        "Umar Nurmagomedov",
+        "Song Yadong"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-august-29-2026"
+    },
+    "ufc-fight-night-september-05-2026": {
+      "headline": "Hooker vs Parnasse",
+      "main_event": [
+        "Dan Hooker",
+        "Salahdine Parnasse"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-september-05-2026"
+    },
+    "ufc-fight-night-october-10-2026": {
+      "headline": "Allen vs Duncan",
+      "main_event": [
+        "Brendan Allen",
+        "Christian Leroy Duncan"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-october-10-2026"
+    },
+    "ufc-fight-night-october-17-2026": {
+      "headline": "Buckley vs Malott",
+      "main_event": [
+        "Joaquin Buckley",
+        "Mike Malott"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-october-17-2026"
+    },
+    "ufc-fight-night-october-31-2026": {
+      "headline": "Moicano vs Nolan",
+      "main_event": [
+        "Renato Moicano",
+        "Tom Nolan"
+      ],
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-october-31-2026"
+    }
+  }
+}

@@ -170,6 +170,8 @@ def export_refresh(current, refresh_root, historical_path, output, *,
         (folder / "fighter_registry.json").write_bytes(registry_path.read_bytes())
         if (current / "identity_link_evidence.jsonl").exists():
             (folder / "identity_link_evidence.jsonl").write_bytes((current / "identity_link_evidence.jsonl").read_bytes())
+        if (current / "fighters_identified.jsonl").exists():
+            (folder / "fighters_identified.jsonl").write_bytes((current / "fighters_identified.jsonl").read_bytes())
         review = {**queue, "unresolved_fighter_identities": list(unresolved.values()), "refresh_findings": refresh_findings,
                   "refresh_excluded_listing_events": report["excluded_listing_events"]}
         (folder / "review.json").write_text(json.dumps(review, sort_keys=True, indent=2) + "\n")

@@ -60,6 +60,17 @@ def build_database(historical, current, registry_path, accepted, output, *,
         if uid in fighters or provider_links.get(("ufcstats", profile["source_fighter_id"])) != uid:
             raise ValueError("Historical profile identity differs from registry.")
         fighters[uid] = profile
+    supplementary = current / "fighters_identified.jsonl"
+    if supplementary.exists():
+        if cm.get("output_sha256", {}).get("fighters_identified.jsonl") != _digest(supplementary):
+            raise ValueError("Supplementary fighter profiles are not bound to current export.")
+        for profile in rows(supplementary):
+            uid = profile["upset_fighter_id"]
+            if (uid in fighters or profile["source"] != "cito"
+                    or provider_links.get(("cito", profile["source_fighter_id"])) != uid
+                    or profile["name"] != names.get(uid)):
+                raise ValueError("Supplementary profile identity differs from reviewed registry.")
+            fighters[uid] = profile
     bouts = rows(history_paths["fights_identified.jsonl"])
     history_count = len(bouts)
     if max(r["event_date"] for r in bouts) != LAST_HISTORICAL_DATE:
@@ -92,7 +103,7 @@ def build_database(historical, current, registry_path, accepted, output, *,
             if provider_links.get((provider, bout[f"source_fighter_{i}_id"])) != uid:
                 raise ValueError(f"Research fight provider link differs: {key}; fighter {i}")
             if uid not in fighters:
-                raise ValueError(f"Reviewed fighter lacks a historical profile: {key}; {uid}")
+                raise ValueError(f"Reviewed fighter lacks an accepted profile: {key}; {uid}")
         occupied.setdefault(pair, key)
         bout_map[key] = bout
         expected.update((key, uid) for uid in uids)
