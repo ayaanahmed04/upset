@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-03",
+  "event_slug": "ufc-fight-night-october-31-2026",
+  "event_id": "5a38bc8e-8f94-4623-8f72-87644d0a21f8",
+  "event_date": "2026-10-31",
+  "raw_card_sha256": {
+    "manifest.json": "28746f39192014d975a5096d4211d625543b4c2665d895a35df4c0f46b0547ac",
+    "bouts.json": "7385dcdc9788a81f1d396f1d4bdf5b0df9737bb258c667b4286a231b3a97b5f7",
+    "stats.json": "b7b2869125e67e67b00b490d1206edc7bd736aed16f99c438794ef81cc270f44",
+    "event.json": "3868567b747c30926299448b183ac81a22cb76ee95ea3e3d8b1beea6cfd5e648"
+  },
+  "prior_database_sha256": "5f33dfb636701bf1126e7bd5fee1539173bc2009219db27c4d393055b6bdc9bd",
+  "new_identities": [
+    {
+      "name": "Farman Hasanov",
+      "slug": "farman-hasanov",
+      "cito_fighter_id": "a86594ad-a64f-4cf5-b9f9-1e1c3cedfe36",
+      "upset_fighter_id": "a9f4f155-3bf5-46ce-ba6f-b59fa26e7dc5",
+      "identity_action": "new_identity",
+      "profile_sha256": "5818408a9bfa0c017a981c150d64acbea41e088505e19e5a213d3dd5698b46ca",
+      "history_sha256": "104bdbaf3e1f9bafc37ad37e34d1a484bd7588ab7a062be5e0b865a8bf256c7c",
+      "anchor_bout_id": "fight-night-october-31-2026-farman-hasanov-jean-paul-lebosnoyani",
+      "anchor_opponent_id": "fd9f87b5-7481-4d75-bad6-9a56dd098986",
+      "anchor_opponent_name": "Jean-Paul Lebosnoyani",
+      "public_sources": [
+        "https://www.ufc.com/athlete/farman-hasanov",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "name": "Dakota Hope",
+      "slug": "dakota-hope",
+      "cito_fighter_id": "42bd5792-2e7b-428c-b375-827baa83055f",
+      "upset_fighter_id": "9931000c-7713-42a9-83c3-7e1590d22d30",
+      "identity_action": "new_identity",
+      "profile_sha256": "5efad97f6f75fc380c0f754747bf56721375cef032b60a49da93c525697a25ae",
+      "history_sha256": "0e88c2e7e819d21881e64481fc33da4c3610578a9f17a325bbfce7fe29315d8a",
+      "anchor_bout_id": "13179",
+      "anchor_opponent_id": "a8100d1c-9c27-4745-9d14-3fb8e6f08743",
+      "anchor_opponent_name": "Francis Marshall",
+      "public_sources": [
+        "https://www.ufc.com/athlete/dakota-hope",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "name": "Theodor Berggren",
+      "slug": "theodor-berggren",
+      "cito_fighter_id": "f7d59db2-3ade-4ad8-96ca-02def7be6e7c",
+      "upset_fighter_id": "b2b09fa0-4fff-49bb-b20c-3dafeccf3cdb",
+      "identity_action": "new_identity",
+      "profile_sha256": "1ba7f3f66b4b41f21aa0f9ffd95b7882e230701da9647f05b39f154a4fa64c28",
+      "history_sha256": "e7e933c8e28a8d2c33d68daa023879ba3045a4efa281a59ae3b0547762c22798",
+      "anchor_bout_id": "fight-night-october-31-2026-rodrigo-sezinando-theodor-berggren",
+      "anchor_opponent_id": "2b4eb91b-f075-4e8f-b83c-d51619b479fb",
+      "anchor_opponent_name": "Rodrigo Sezinando",
+      "public_sources": [
+        "https://www.ufc.com/athlete/theodor-berggren",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "name": "Joe Kropschot",
+      "slug": "joe-kropschot",
+      "cito_fighter_id": "42e8a24c-1329-47cd-babf-47039dcb3380",
+      "upset_fighter_id": "dec9c4ef-eba9-414f-9870-55847c973444",
+      "identity_action": "new_identity",
+      "profile_sha256": "009416a4e18346d98201afe64c06615e111a696c0162b33992b16f447bddcff1",
+      "history_sha256": "8884bf561ee0fd2be2e3c75c786a3caefd862a14c915d3f679ab30e59648de8b",
+      "anchor_bout_id": "13096",
+      "anchor_opponent_id": "71b79046-6b7f-4067-bc50-0a43b38155d7",
+      "anchor_opponent_name": "Nick Klein",
+      "public_sources": [
+        "https://www.ufc.com/athlete/joe-kropschot",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "name": "Lucia Szabová",
+      "slug": "lucia-szabova",
+      "cito_fighter_id": "727a7508-4651-4978-a1e0-9aea9acbe455",
+      "upset_fighter_id": "d8c4641a-0b2e-4849-879d-7bf1801a40b7",
+      "identity_action": "new_identity",
+      "profile_sha256": "299a4f3347dc46cd3e9973a8802db060dd1471c41ab72c32610b2872ce5e231b",
+      "history_sha256": "83b89832772bc34af2ce41af15838057a4021a543bddfc6777c65deda332e72e",
+      "anchor_bout_id": "13117",
+      "anchor_opponent_id": "c30d1aa5-5433-49c4-b3d9-b168ca826c00",
+      "anchor_opponent_name": "Tainara Lisboa",
+      "public_sources": [
+        "https://www.ufc.com/athlete/lucia-szabova",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    }
+  ],
+  "bouts": [
+    {
+      "source_bout_id": "13133",
+      "participant_ids": [
+        "cab3a3ef-1010-4f71-816d-3eebb3e7fdcc",
+        "4ffaf983-6bc9-4a34-a01d-76f471c8d18d"
+      ],
+      "winner_name": "Tom Nolan",
+      "normalized_method": "KO/TKO",
+      "source_method": "KO/TKO",
+      "round": 3,
+      "time": "1:28",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "source_bout_id": "13172",
+      "participant_ids": [
+        "d9ae87d9-fb5e-4ef8-8704-ac72f53d770d",
+        "cb71121d-11ef-43c9-8e86-b200fa14589a"
+      ],
+      "winner_name": "Jacobe Smith",
+      "normalized_method": "Decision - Unanimous",
+      "source_method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-cody-durden-ode-osbourne",
+      "participant_ids": [
+        "99a69a40-181c-48ae-b600-a0a627972586",
+        "6fef354e-aae3-47ae-b0fc-ceca959622ca"
+      ],
+      "winner_name": "Cody Durden",
+      "normalized_method": "Decision - Unanimous",
+      "source_method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-luana-santos-yana-santos",
+      "participant_ids": [
+        "2650c713-4a6d-4c44-a802-5b80970cf44a",
+        "3cefdff1-ebd4-4ead-8346-97404d61a554"
+      ],
+      "winner_name": "Luana Santos",
+      "normalized_method": "Decision - Unanimous",
+      "source_method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-farman-hasanov-jean-paul-lebosnoyani",
+      "participant_ids": [
+        "a86594ad-a64f-4cf5-b9f9-1e1c3cedfe36",
+        "fd9f87b5-7481-4d75-bad6-9a56dd098986"
+      ],
+      "winner_name": "Jean-Paul Lebosnoyani",
+      "normalized_method": "KO/TKO",
+      "source_method": "TKO - Doctor's Stoppage",
+      "round": 3,
+      "time": "2:11",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-results"
+      ]
+    },
+    {
+      "source_bout_id": "13179",
+      "participant_ids": [
+        "42bd5792-2e7b-428c-b375-827baa83055f",
+        "a8100d1c-9c27-4745-9d14-3fb8e6f08743"
+      ],
+      "winner_name": "Dakota Hope",
+      "normalized_method": "Decision - Split",
+      "source_method": "Decision - Split",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-rodrigo-sezinando-theodor-berggren",
+      "participant_ids": [
+        "f7d59db2-3ade-4ad8-96ca-02def7be6e7c",
+        "2b4eb91b-f075-4e8f-b83c-d51619b479fb"
+      ],
+      "winner_name": "Rodrigo Sezinando",
+      "normalized_method": "KO/TKO",
+      "source_method": "TKO - Doctor's Stoppage",
+      "round": 2,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-jeongyeong-lee-julian-erosa",
+      "participant_ids": [
+        "7c7196a9-5cd3-4098-8b63-ca32e40a7878",
+        "bd0213f8-43cb-42c7-95f3-5148ac85d652"
+      ],
+      "winner_name": "Julian Erosa",
+      "normalized_method": "KO/TKO",
+      "source_method": "KO/TKO",
+      "round": 1,
+      "time": "1:31",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-mickey-gall-zachary-reese",
+      "participant_ids": [
+        "13010a34-acea-414f-977e-6acd1644f320",
+        "920aa61c-376a-4a87-b535-818da7511c66"
+      ],
+      "winner_name": "Zachary Reese",
+      "normalized_method": "Decision - Unanimous",
+      "source_method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "source_bout_id": "13096",
+      "participant_ids": [
+        "42e8a24c-1329-47cd-babf-47039dcb3380",
+        "71b79046-6b7f-4067-bc50-0a43b38155d7"
+      ],
+      "winner_name": "Joe Kropschot",
+      "normalized_method": "Submission",
+      "source_method": "Submission",
+      "round": 2,
+      "time": "1:25",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ],
+      "source_discrepancy_note": "UFC scorecard/prelim headings say round 3; the prelim narrative describes the finish in round 2. Saved Cito bout, fighter history and two rounds agree on round 2 at 1:25. Retain source round 2 and all measurements; no invented extra round."
+    },
+    {
+      "source_bout_id": "fight-night-october-31-2026-piera-rodriguez-talita-alencar",
+      "participant_ids": [
+        "3381642f-834d-448a-8d5e-cb6c24a47549",
+        "af635ae6-1fa8-4a35-9efd-40b1d1702853"
+      ],
+      "winner_name": "Piera Rodriguez",
+      "normalized_method": "Decision - Unanimous",
+      "source_method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    },
+    {
+      "source_bout_id": "13117",
+      "participant_ids": [
+        "c30d1aa5-5433-49c4-b3d9-b168ca826c00",
+        "727a7508-4651-4978-a1e0-9aea9acbe455"
+      ],
+      "winner_name": "Lucia Szabová",
+      "normalized_method": "KO/TKO",
+      "source_method": "KO/TKO",
+      "round": 3,
+      "time": "3:20",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-moicano-vs-nolan-official-scorecards",
+        "https://www.ufc.com/index.php/news/ufc-fight-night-moicano-vs-nolan-prelim-results"
+      ]
+    }
+  ],
+  "stat_alias": {
+    "bout_id": "fight-night-october-31-2026-mickey-gall-zachary-reese",
+    "fighter_id": "920aa61c-376a-4a87-b535-818da7511c66",
+    "source_name": "Zach Reese",
+    "slug": "zachary-reese",
+    "total_row_ids": [
+      "588bc636-a84a-4170-917c-b7215d3a8bf8"
+    ],
+    "round_row_ids": [
+      "041ac3e3-4110-4719-afcd-454107b7ed88",
+      "1304ad05-107c-446d-96ac-d2cf8cb7178c",
+      "b73200bf-631e-4e22-a90b-efd8cc92a97f"
+    ],
+    "basis": "Exact provider participant ID, source scorecards fighterSlug and opponent/round keys; only absent slug is supplied, numeric measurements unchanged."
+  },
+  "cohort_policy": "Prior 303 accepted current bouts plus the 12 reviewed October 31 bouts only. Prior 89 exclusions remain withheld; no automatic historical backfill when new provider links become known."
+}

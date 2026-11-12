@@ -1,0 +1,5546 @@
+{
+  "as_of": "2026-10-06",
+  "source": "UPSET portrait collection; images only, contract status unverified",
+  "fighters": {
+    "da51c6d3-920b-46ed-8483-9d1742da3437": {
+      "image": "aaron-pico.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "62daaeb6-fc2e-4e95-8183-924887282ad8": {
+      "image": "aiemann-zahabi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8799e985-3f01-4dc0-a475-b63f832a1bd8": {
+      "image": "alberto-montes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "eabfec43-b257-48a1-9e67-61f7378293bc": {
+      "image": "aleksandre-topuria.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bb826765-47c1-4238-9c17-f77e59518192": {
+      "image": "alex-pereira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "88de9117-84ed-4f8f-8adb-711068ad704d": {
+      "image": "alexa-grasso.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8332e73c-3fbc-4bd1-8421-a84b948ea6bd": {
+      "image": "alexander-volkanovski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c9dc2a0-60b1-4339-ad52-2fd47675fbb2": {
+      "image": "alexander-volkov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cf8c533a-f955-48b5-9b98-8e4d5960b16f": {
+      "image": "alexandre-pantoja.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "94eb4921-8cad-4c13-b366-8f26f4674859": {
+      "image": "aljamain-sterling.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c136ba19-7324-498a-8539-a2bcc5d309ce": {
+      "image": "amanda-nunes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f4407379-bc97-4ee4-9626-672db95091be": {
+      "image": "amir-albazi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8edfa674-0fb7-46c2-9bcf-fb507dac9f95": {
+      "image": "anderson-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "222e16b4-f21b-4b7f-99ed-1056a778676b": {
+      "image": "anshul-jubli.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c893c100-d01b-4733-bbc7-8cc37415f176": {
+      "image": "ante-delija.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db7cda1f-2e04-48c0-8b6e-7f1ab5c83836": {
+      "image": "anthony-hernandez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cc45eeec-4b05-45f9-9a3d-b49f00d3b005": {
+      "image": "arman-tsarukyan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c993414c-412b-4ea2-b7b9-e4825148497d": {
+      "image": "arnold-allen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7e7eb5fe-680e-4b8d-8150-2bb9580acd14": {
+      "image": "asu-almabayev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "29f89002-7f71-4f90-936a-f6415cb3be39": {
+      "image": "ateba-gautier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f4f0dce1-8fa4-46bc-b43f-7b82fe22b768": {
+      "image": "azamat-murzakanov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "da1ed0db-8aef-4c40-b1f3-7bb24be802bd": {
+      "image": "belal-muhammad.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aa321ac1-3da4-4f0b-82be-c9f8d85fcaaf": {
+      "image": "benoit-saint-denis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8aae663f-2133-4af9-b92b-4183ca039973": {
+      "image": "bj-penn.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "55629c9f-efde-4419-8a05-01fae5a3890f": {
+      "image": "bo-nickal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2f1e8b72-5466-4eee-acf2-34d5f32a460a": {
+      "image": "bobby-green.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "30b06395-5469-42b4-884a-aad790f0ea27": {
+      "image": "brandon-moreno.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bf5effa9-3d9e-4ce4-a6c4-4519562b5678": {
+      "image": "brandon-royval.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0ea66b4b-52b4-4136-9180-932ef1986503": {
+      "image": "brendan-allen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9f49e384-dfaa-4651-9a71-f3d115b96982": {
+      "image": "brian-ortega.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9677ad2b-3e57-4aba-84d7-bf390f0f0734": {
+      "image": "brock-lesnar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ff6f1613-7e71-41b6-a4b1-cdce5d0daa81": {
+      "image": "bryce-mitchell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a24aacb-46e7-420b-9d76-a51ad8a9c2b5": {
+      "image": "cain-velasquez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b30dead6-00c2-46f2-801e-1eb770599133": {
+      "image": "caio-borralho.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0af87143-9418-4290-a82a-39d09384c33e": {
+      "image": "carlos-prates.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "98a9c7db-e6f9-4f77-b0c4-2916a09f87ff": {
+      "image": "carlos-ulberg.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b23f038d-6c50-48db-8112-0485813ca615": {
+      "image": "charles-oliveira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "31877e6e-9e54-477a-a391-ef1cf8c0bcd4": {
+      "image": "chase-hooper.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7b1e6548-912d-4805-b18e-d7b4d6105a3a": {
+      "image": "chris-weidman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b0953039-eed3-43b0-8725-9327dcce0831": {
+      "image": "christian-leroy-duncan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "931f77b9-e0b0-4bce-8232-2972d5bc7de2": {
+      "image": "chuck-liddell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c99a0733-de10-41a0-9e32-c0df4f214cef": {
+      "image": "ciryl-gane.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5b559973-c88f-4c7e-8ec5-2fe15748702d": {
+      "image": "colby-covington.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d5e0aae7-5f14-4177-bca3-fbf3f9558649": {
+      "image": "conor-mcgregor.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b0c3f0a1-dd5d-4209-a00e-d86d3bfa6c49": {
+      "image": "cory-sandhagen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4d92880-edcf-436d-b289-b54e95fa143e": {
+      "image": "cris-cyborg.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c3903d1a-5653-418e-b78a-09b89768ea10": {
+      "image": "curtis-blaydes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9b27b9c7-1b5f-43df-aac0-99e4ab997cbf": {
+      "image": "damian-pinas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "06aa8e34-1d20-44e5-b37a-a0b99796e420": {
+      "image": "dan-henderson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "051fb686-c3ed-4b06-89eb-5cf09bf89077": {
+      "image": "dan-hooker.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4cf21728-b274-4236-a0db-1c6af5cc4e5d": {
+      "image": "daniel-cormier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d7cbea6e-9af9-42b6-ae14-f008f78cdaa8": {
+      "image": "david-martinez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "478e72ea-39ab-44aa-97cf-087fa62f3389": {
+      "image": "deiveson-figueiredo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c896d1fe-b8cd-43e6-87c7-b8a6000aa59c": {
+      "image": "demetrious-johnson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8b1d5ac4-0caf-4b49-aa51-ebd10b9ec08d": {
+      "image": "derrick-lewis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e0e10e1e-9482-4b06-a7c2-2c6bdb13e05a": {
+      "image": "diego-lopes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a99855f-0d85-48e4-be53-cc7ee06d000d": {
+      "image": "dominick-cruz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "837d3ec5-750e-46f4-a17c-8805358e2f61": {
+      "image": "dominick-reyes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "57303499-e4c0-4d43-8950-7385973a51bd": {
+      "image": "donald-cerrone.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "84963ea3-8353-4860-81ae-66faec78b89e": {
+      "image": "dricus-du-plessis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d130bba0-10fe-4ad8-ae3e-792c860202f7": {
+      "image": "dustin-poirier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "25bc1934-fb31-4526-b38a-56a2dcbf66fb": {
+      "image": "elijah-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d4625f18-1ee0-4c65-9deb-64dd510c9141": {
+      "image": "erin-blanchfield.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4efe6b66-52e6-427f-93bf-f4b26ed74a80": {
+      "image": "esteban-ribovics.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2aa833da-ae96-43ab-813e-a3d1be66e353": {
+      "image": "ethyn-ewing.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8c9f3c51-c7ea-4b76-bae7-917947bf8fa1": {
+      "image": "fabricio-werdum.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a702e9da-2cca-4b7d-b2e2-a7f8a2aebf25": {
+      "image": "forrest-griffin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2d435634-5b50-4b27-8a16-1eb350f31871": {
+      "image": "francis-ngannou.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a941312a-d7c1-497a-80af-6260aee678d3": {
+      "image": "frankie-edgar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c8833bb7-7f48-45e4-99a7-12c3a52b66a2": {
+      "image": "gable-steveson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6d882cab-ea77-47f0-8277-21c5cfc3e232": {
+      "image": "gabriel-bonfim.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b8bcd92c-fe62-4230-8a12-1dcad7efd783": {
+      "image": "georges-st-pierre.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4dca756d-9da4-4f52-a6cc-6b7bde7983b1": {
+      "image": "gilbert-burns.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "23fa0cb8-accb-4a75-8a2d-bda5017b0409": {
+      "image": "gregory-rodrigues.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b8553857-acc8-4739-ae3a-ab01ac9e298b": {
+      "image": "henry-cejudo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "72791e91-0dbc-489e-be16-2f238250a151": {
+      "image": "holly-holm.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e53e654c-4667-480f-8895-3ab5a85c9751": {
+      "image": "ian-machado-garry.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7a1b1eb6-1471-4f85-987c-d77c340947eb": {
+      "image": "ilia-topuria.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "10b5af70-94d4-4f1f-9ea4-a94ae4bb1cc3": {
+      "image": "imanol-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "08076676-4f30-41ae-a440-778d62e0728e": {
+      "image": "islam-dulatov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "557a7a38-f46d-40e9-aa6a-4e8b9c8fcc6c": {
+      "image": "islam-makhachev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6c244fea-8d06-4753-9481-2f5089510fc6": {
+      "image": "israel-adesanya.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4b041254-4db6-44f7-9826-de5b3d0a220a": {
+      "image": "jack-della-maddalena.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "755c9b2d-01fa-44b6-8d0c-4114a037d8e9": {
+      "image": "jacobe-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c00b9743-3856-48b8-88dd-847f16c00925": {
+      "image": "jailton-almeida.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "09dd5371-59d5-4f78-a339-2fdb70d2acfd": {
+      "image": "jamahal-hill.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "de8c1e30-015a-44c9-af7c-3a7d7c8a7b8f": {
+      "image": "jan-blachowicz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4479ddf1-916a-4915-8542-4a532a2d0232": {
+      "image": "jean-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "263fb49f-dab5-4156-a675-c7d126cc8852": {
+      "image": "jessica-andrade.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0ce16e99-1812-426c-8498-7ee9581294c9": {
+      "image": "jiri-prochazka.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1f29a419-b486-472d-abd2-b376f8489e15": {
+      "image": "joanna-jedrzejczyk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "62815e15-1bd4-4cce-ab2a-ddb0dc3ff0ef": {
+      "image": "joaquin-buckley.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a24947f5-3adc-49c3-97e4-bb217546419a": {
+      "image": "joe-pyfer.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "290da000-d1a5-4d2f-9d58-0e84417a7c96": {
+      "image": "jon-jones.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2505979-2647-42ed-9809-1116141694b2": {
+      "image": "jorge-masvidal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a6ea24e8-036c-4ef8-a0dc-0e697bf6528e": {
+      "image": "jose-aldo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e735178d-1866-42ca-ac86-6c9c24a85450": {
+      "image": "jose-ochoa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ff3b6483-0d5d-4159-9756-fcf60266aa9f": {
+      "image": "joseph-morales.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ec2af54f-5fee-42f6-932a-7f8c9295c16b": {
+      "image": "josh-hokit.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "45505fe3-2b68-42cc-8a29-8c71b5280f07": {
+      "image": "joshua-van.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2b9f1c1d-4bc2-4b52-8d61-58f714534a97": {
+      "image": "julianna-pena.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f9d462c1-64c0-4dbf-be86-01f7e94afe09": {
+      "image": "junior-dos-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "678d50b2-742c-44e4-b833-d560794ba84c": {
+      "image": "justin-gaethje.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "39e3b625-345d-4851-ad5c-888d092c13a9": {
+      "image": "kai-kara-france.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cf9a6021-e63b-4b65-ae41-83c3a6e019ad": {
+      "image": "kamaru-usman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "222bd270-33df-4874-a9f8-283cd8503315": {
+      "image": "kayla-harrison.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dba24f50-6490-432e-89a4-23301cfe51b4": {
+      "image": "ken-shamrock.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8337f913-628e-4038-b853-4c8cbfaf2e1b": {
+      "image": "kevin-holland.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "28ef1e88-ecbc-4942-9bf0-2336babe07ac": {
+      "image": "kevin-vallejos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b5cb3947-6104-4025-af4e-289ee832e374": {
+      "image": "khabib-nurmagomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0c720650-60e8-4310-a1a3-da70343bbba3": {
+      "image": "khalil-rountree-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "59b863b8-106c-40e8-93cd-270d7194ecb6": {
+      "image": "khamzat-chimaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "98b93334-a937-4b9e-96a5-18e2a4917467": {
+      "image": "kyoji-horiguchi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5dda6ade-f917-4980-ae4f-da14f10bdb6f": {
+      "image": "leon-edwards.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ab1be07a-24f1-46b7-b6e8-9ef25b38fa5d": {
+      "image": "lerone-murphy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "501d4c99-7b84-4585-8830-3b9134258a36": {
+      "image": "loneer-kavanagh.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7b6f4ba7-2220-4593-ac4f-d936066bef00": {
+      "image": "luke-riley.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5860329e-983e-4ce4-b656-e8046ef1dd71": {
+      "image": "luke-rockhold.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4b771db5-a6f8-43ba-8ad1-1c8f4ebd662e": {
+      "image": "lyoto-machida.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7fa32486-cd0c-4d7e-9d2e-7a83f9449b85": {
+      "image": "mackenzie-dern.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0f2b9dd0-180f-43fc-904c-a192908c99dc": {
+      "image": "magomed-ankalaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3f34ba3d-3adf-468e-bd4c-f03cd70aeba7": {
+      "image": "manel-kape.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3bd9f2cc-79c0-44ab-8499-49006a49ced6": {
+      "image": "manon-fiorot.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "915a1a9b-85ec-4b31-ab3a-96ba15c15d14": {
+      "image": "mario-bautista.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e49d6cde-fed7-4b5c-abe0-42bfa27f802b": {
+      "image": "marlon-vera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a1fc1206-827f-4eef-b8e0-45de11445f33": {
+      "image": "marwan-rahiki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9858a3d1-6733-4e2f-8a61-244c2a834b9b": {
+      "image": "mateusz-gamrot.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cd3e12e7-c251-4ce3-8a2f-ef3b730a3b32": {
+      "image": "matt-hughes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1f7fca19-e9a7-4f4e-acf7-18fd1fda675a": {
+      "image": "mauricio-rua.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "23d6549e-ed0e-439b-8a27-84e0e78dceaa": {
+      "image": "mauricio-ruffy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "24565b85-c2c9-4c4f-b2f3-733d3c81c1ed": {
+      "image": "max-holloway.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "48ad7da9-7ab3-4abf-ac08-7f28aa08c72c": {
+      "image": "merab-dvalishvili.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "85df653e-423e-417f-8a73-80146778fb66": {
+      "image": "michael-bisping.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "416f5676-7665-4f65-9724-9e7f80a8913a": {
+      "image": "michael-chandler.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "899e46a5-26a5-47df-b73d-f02707ecefad": {
+      "image": "michael-morales.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "143feb52-8c84-4028-9b78-5a7e7493d793": {
+      "image": "miesha-tate.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e08c04e1-53f0-4271-963a-9588db47c941": {
+      "image": "mike-malott.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "084b322b-1e75-47a6-a52f-8897faf74a53": {
+      "image": "movsar-evloev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "91d58ecd-8b2c-4c27-961f-be3a1194d215": {
+      "image": "murtazali-magomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "25941822-8969-495e-b8e1-762b9e7f05d7": {
+      "image": "myktybek-orolbai.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2bda05b9-8221-4d9f-8b46-3e807e23f3ac": {
+      "image": "nassourdine-imavov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7f37b13d-1e26-4c53-85c9-2d94c2b86cc3": {
+      "image": "natalia-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "108c4e0e-206b-4060-b123-608b9b678854": {
+      "image": "nate-diaz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "eafca02e-f560-4d63-a43c-2d56d835aa78": {
+      "image": "navajo-stirling.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db89a639-5ab6-48ee-aeae-9b2f6f697149": {
+      "image": "nick-diaz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d9d6810b-f48b-4e88-9c2e-24e36c6d2f7d": {
+      "image": "paddy-pimblett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1cc92ec8-008b-4f98-a87d-02fcac865df7": {
+      "image": "patricio-pitbull.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4fa2bd95-d21d-41b5-81e6-d26eaccb977f": {
+      "image": "paulo-costa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "508190d3-ae64-4f10-ae0d-d314f8c6645b": {
+      "image": "payton-talbott.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ccbddd30-362e-49f0-9aff-82bf7a930ef3": {
+      "image": "petr-yan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d33a2f3b-a1b7-47b9-a8af-36da48bb4d89": {
+      "image": "quillan-salkilld.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7b286cce-6fec-4234-ad4c-47fd523688c9": {
+      "image": "quinton-jackson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "603b0533-b6fa-48ca-98e2-7d3d84316bce": {
+      "image": "ramazan-temirov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "628951e0-9495-4208-9cbe-bdc49c49ce7e": {
+      "image": "randy-couture.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a07a6a5c-a54a-4426-ac2d-80dfe32a0c2b": {
+      "image": "raquel-pennington.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "26b57a40-1013-48d4-8aba-6208850f74e7": {
+      "image": "rashad-evans.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "44e3e153-0949-43e8-9a7f-aa3b75c3ae8b": {
+      "image": "reinier-de-ridder.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "97e0219d-0a8e-44c5-8096-3e8b91f9b23c": {
+      "image": "renato-moicano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0189b8ff-ecc5-4408-9638-06e51d2d8e70": {
+      "image": "rich-franklin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "245c9f50-ca0f-4a70-b0a5-8753d373d1ce": {
+      "image": "rizvan-kuniev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d001bd0c-1885-4281-8188-8fe0e68f74c7": {
+      "image": "robbie-lawler.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e95f9ae8-68a5-4506-a1f2-2faf0840bbe4": {
+      "image": "robert-whittaker.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "046ab71a-5c81-4292-bd3c-cfb260602711": {
+      "image": "roman-kopylov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d18f2f2f-3862-4f46-a830-1a9b5a599b55": {
+      "image": "ronda-rousey.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "048397eb-faf1-4034-a7b2-6b415a9cfbd5": {
+      "image": "rose-namajunas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dabfde26-d5bc-4022-98ab-37b55edb9b24": {
+      "image": "royce-gracie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351": {
+      "image": "salahdine-parnasse.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "03843055-541e-490b-96b4-4b7498474971": {
+      "image": "sean-brady.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "36c6caa3-2d84-4856-95f4-7057b931ce47": {
+      "image": "sean-omalley.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1d535692-5288-4986-b9a7-4004e0fc00fe": {
+      "image": "sean-sharaf.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "78da7aae-3d1c-4b1e-9ce3-e91bccccf7b6": {
+      "image": "sean-strickland.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4acdfb7f-6cb9-4a8b-b4ff-496ca5dec879": {
+      "image": "sergei-pavlovich.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e09f84a5-06e0-489c-ae99-02b74a31a72d": {
+      "image": "serghei-spivac.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9cd14638-4d52-4dd5-adce-9be777499a3b": {
+      "image": "shavkat-rakhmonov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "791ace8a-264c-49ea-a0e3-9657a13f5832": {
+      "image": "song-yadong.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0815a560-a417-4d83-b4f4-6dc20927bbbf": {
+      "image": "stephen-thompson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f176b399-2f4d-4fe1-a3df-8e26a873e82d": {
+      "image": "steve-garcia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cffeecfa-bbb1-4964-92a9-6869f5c9b05b": {
+      "image": "stipe-miocic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f0637c92-8c73-4480-99b3-08c353566f23": {
+      "image": "tatiana-suarez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b43fda44-3d56-40d4-bb1b-1644586119fb": {
+      "image": "tatsuro-taira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "34e513fe-cd26-4843-81cb-c64cf2163446": {
+      "image": "tito-ortiz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cb18a5a2-ffd7-45db-b014-e53945f9d83c": {
+      "image": "tj-dillashaw.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d48be2c2-b225-405f-9fb4-8091f8554733": {
+      "image": "tom-aspinall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "72de8d6d-ee19-4600-bf68-6f4b16db551b": {
+      "image": "tommy-mcmillen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0b314f13-fe4f-4065-a762-20241bd2a215": {
+      "image": "tony-ferguson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9d8e74d5-2998-460a-ad8e-182e637b9dee": {
+      "image": "umar-nurmagomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5bf1b426-aba4-4923-92f9-f94f6b2a0e6f": {
+      "image": "uros-medic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8397caea-9f87-49e5-8053-0e76d20dcd99": {
+      "image": "valentina-shevchenko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bf7391bf-1ac8-4ef8-b58a-fb390d93fac7": {
+      "image": "vitor-belfort.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "005d10b4-186d-4cf0-b2d0-a259234f080e": {
+      "image": "vitor-petrino.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ae100c94-3008-43fc-a9fd-1dd221567115": {
+      "image": "waldo-cortes-acosta.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c91230f4-6cb0-4ecf-aef5-0405225ffb49": {
+      "image": "wanderlei-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dad38ce3-34da-4c5a-9dcb-3e1ad2b54cf6": {
+      "image": "yair-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "966766a8-c687-4f1a-93de-a879ffce6a7b": {
+      "image": "yan-xiaonan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "29b53828-4a2f-473a-8db8-6f949d4819b2": {
+      "image": "yoel-romero.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c27eb77-2904-423d-8593-cfee24b75448": {
+      "image": "youssef-zalal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c645893d-f8b0-488e-baf1-2a31212ce958": {
+      "image": "zhang-weili.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a166418d-ebaa-4e2a-8f31-9ff6b8280d25": {
+      "image": "alexander-gustafsson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f518df46-74c4-4fcc-98cd-0db71c20cae3": {
+      "image": "alexander-hernandez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d793a396-00ae-4b6c-926d-bf6db70e4198": {
+      "image": "alistair-overeem.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6114f581-eb98-4e41-90bc-e2e7ee5bfcf2": {
+      "image": "andrei-arlovski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "edb8038d-ba12-40a8-a6cf-8dc248f4bd88": {
+      "image": "anthony-johnson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "40d746d1-5caa-4a9f-b8cd-0fe9719d73a4": {
+      "image": "anthony-pettis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cc7af7bb-7041-4ba6-bc8d-a91c2ed2b1b3": {
+      "image": "anthony-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "26a47619-cfc8-404d-95d7-aaa68fea53c8": {
+      "image": "antonio-rodrigo-nogueira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aab44fda-2d20-46c6-924d-651bee6df277": {
+      "image": "antonio-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "95a2ff6e-89cf-4edf-929e-1f91f6f20a34": {
+      "image": "bas-rutten.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b6fbb295-2a4f-4cac-b408-d24fbc4981ba": {
+      "image": "ben-askren.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b27943e3-599d-49b1-9f7d-96f940b11d55": {
+      "image": "beneil-dariush.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f3ca179b-ae2f-4e6a-ab28-567972c43026": {
+      "image": "benson-henderson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "37184115-81e7-4558-8966-788a2052279c": {
+      "image": "brendan-schaub.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "89a4820b-e244-4ade-ad5d-0883429a7779": {
+      "image": "carla-esparza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "11fa433a-ca35-469d-a794-1540d0c44e61": {
+      "image": "carlos-condit.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b05fd69a-3b0e-402e-b076-ba7076007973": {
+      "image": "cat-zingano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f8eb2d34-8c7c-430d-8711-1f6b5afaf12d": {
+      "image": "chad-mendes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "710b8bd6-51dc-425e-95b3-9f3d1547b2af": {
+      "image": "chael-sonnen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b441c145-0a02-420e-bba3-c62dcadb79f2": {
+      "image": "chan-sung-jung.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e7a780b6-a01d-4f93-b07b-feebdd2a90fa": {
+      "image": "cheick-kongo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bff86b23-6d45-474e-aa5c-b7bf2b35ca82": {
+      "image": "chris-leben.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1c424876-5c58-4473-bc0f-372f5784d6ac": {
+      "image": "clay-guida.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "42215ec6-119b-4bb9-9bf2-33493c23f4ee": {
+      "image": "cm-punk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "22881830-9ca1-4a2c-aa30-ad7d2e0453a5": {
+      "image": "cody-garbrandt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c00c2a80-1113-4219-ae7a-512bdb2fdde6": {
+      "image": "cub-swanson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5e78342a-b787-44d5-8a5c-5367d5a81f6e": {
+      "image": "dan-hardy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d3532f7e-fa2c-4473-bcec-ee21ac4b843c": {
+      "image": "dan-severn.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "06e48568-fe10-4eb4-9db4-b439ef37468a": {
+      "image": "daniel-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6b654e9d-4fbe-47c0-9fe6-0fd19efa8253": {
+      "image": "darren-till.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2e2c1ada-8814-434d-a1b7-fb803e0d0106": {
+      "image": "demian-maia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f336b1cf-03da-4d18-af0d-199699893821": {
+      "image": "diego-ferreira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1102f052-d5ea-4e5f-90e4-354a942e9d6b": {
+      "image": "diego-sanchez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6be3df04-b61e-450d-a4a1-7db96ac5e7e3": {
+      "image": "don-frye.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5805789a-87e1-4f52-a6e4-4ab89c472cde": {
+      "image": "eddie-alvarez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4a795974-76ed-4420-b87e-485c14c763bd": {
+      "image": "edson-barboza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bbf44f95-9128-45b7-9052-51a85fbb378b": {
+      "image": "frank-mir.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b29b3f30-3baf-4966-859e-00563f9b71de": {
+      "image": "frank-shamrock.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a2c8ca8-fbf7-4561-a968-450b5b3e3f99": {
+      "image": "gabriel-gonzaga.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "12915135-7f85-4eef-974c-4d947684c88a": {
+      "image": "gegard-mousasi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "961646da-78bd-4e65-8fc8-02c4fa41ba5f": {
+      "image": "geoff-neal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "829e809b-b31f-457a-aa74-024d8bd329d3": {
+      "image": "germaine-de-randamie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9e6596eb-ace2-4c12-af5b-364e90c682d6": {
+      "image": "gilbert-melendez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f250ec09-eebf-430f-881b-966a7537e3d2": {
+      "image": "gillian-robertson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c31ec8f8-47d5-45c6-b3cc-9ca69fb07fdc": {
+      "image": "glover-teixeira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1caee671-79ca-42ff-be32-a4cc8394acab": {
+      "image": "gray-maynard.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4e284fa3-de61-44f2-9ca6-b67cb80fb9be": {
+      "image": "greg-hardy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7d6498f4-3873-4412-9383-8c40bc1c9970": {
+      "image": "jacare-souza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "450722bd-4fcf-474a-9b77-50db03fa6b2c": {
+      "image": "jake-shields.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2d871d5d-5cf3-46db-ab1c-0092e5ad0662": {
+      "image": "jared-cannonier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a76e3bc0-27a5-41c2-98ac-34a14505da70": {
+      "image": "jens-pulver.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "150676c7-e62c-4847-9436-c072eda10b4d": {
+      "image": "jeremy-stephens.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00187e84-5d92-4463-b6dd-3f547b931666": {
+      "image": "jim-miller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a5bf599d-f2a0-4498-bc65-7c9bc19be492": {
+      "image": "johny-hendricks.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0650d2d2-60e8-4e16-8579-5d7c7b9ddffb": {
+      "image": "jon-fitch.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d6b687d-b625-4d64-badf-329073730f57": {
+      "image": "joseph-benavidez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dcb01511-f207-4800-ba5c-95e262e06af4": {
+      "image": "josh-barnett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "80a0208a-8d9f-4c20-8eb6-2197bcbd4c2e": {
+      "image": "josh-koscheck.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f04eaccd-4633-46c9-a720-4f54c1a2c9cd": {
+      "image": "kazushi-sakuraba.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db8265c2-acf6-407e-ab2e-d1f396d5d66f": {
+      "image": "kelvin-gastelum.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f218fcb7-59f3-48b1-a37e-58e7259c7586": {
+      "image": "kenny-florian.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "35b305be-03b3-478a-8490-cba6e267520d": {
+      "image": "kevin-randleman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "60bbc887-e599-4dd4-887e-87156bdcbc45": {
+      "image": "kimbo-slice.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9cb20c42-6119-4203-86c7-bc3adc20955f": {
+      "image": "liz-carmouche.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b8b36813-da58-4f51-91c3-edae98d3eacb": {
+      "image": "mark-coleman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c7a4fa1f-9b80-42d3-8b43-aa9277471b40": {
+      "image": "mark-hunt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "546a1084-81fe-4739-8376-6485c2c0c9ee": {
+      "image": "marvin-vettori.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cb33c9b6-74db-42aa-8f39-e867fcca2080": {
+      "image": "matt-serra.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c60460c9-df4b-4d88-8662-4db21f5248b2": {
+      "image": "michael-page.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7af17b6d-c667-4ebf-9d38-446fd49780b0": {
+      "image": "michelle-waterson-gomez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a7634c0-ac5d-4d4d-a697-47d2f0d10ad6": {
+      "image": "mike-perry.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "96ac83c9-bd33-4fce-aab3-24768baf8195": {
+      "image": "mirko-cro-cop.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1f2751c-0ad8-4edd-9d3f-756fd34ec4d7": {
+      "image": "nate-marquardt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "57225136-b095-4b67-8dc8-ad4de1c49530": {
+      "image": "ovince-saint-preux.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cb142f53-141b-4542-a64c-702bd702dfa0": {
+      "image": "paige-vanzant.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "59a5442b-d37e-4fdf-810e-bd2b925f6d9e": {
+      "image": "pat-miletich.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "54358294-78c0-41b9-b72d-5648742fea06": {
+      "image": "phil-davis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "04645415-1ca8-4082-9b53-761e3816376f": {
+      "image": "rafael-dos-anjos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9f7d4dac-563d-4440-8339-0fee493a12a0": {
+      "image": "rafael-fiziev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00b03057-36ca-4c2b-bb52-771b48cf7b86": {
+      "image": "raul-rosas-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "278c728d-371e-436d-8757-42074fc7d355": {
+      "image": "renan-barao.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "87aa7a95-0ad0-4719-9b51-cf8f9fd022dc": {
+      "image": "rory-macdonald.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a93ba1c7-24c9-4a95-932a-782b875778c1": {
+      "image": "roy-nelson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ad4fef95-6959-4bfb-ae35-851d9e42a570": {
+      "image": "ryan-bader.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f7c6504e-3ee9-48e2-9f5d-ee97e1c70c66": {
+      "image": "sage-northcutt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f1ef61b1-baaf-4117-8e50-70f886794d4e": {
+      "image": "sara-mcmann.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1ca30671-3ba5-4761-90b7-3aaa2134fb34": {
+      "image": "sean-sherk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d215bcf4-7806-433d-afcc-75beb78c7903": {
+      "image": "shane-carwin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4bd721bc-ce08-489c-b26a-423fc66f83ed": {
+      "image": "shara-magomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "673793f6-b048-4b6b-b946-8f5d7cd86d8c": {
+      "image": "stephan-bonnar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "51600e91-7dc0-4e03-90b2-d8bae486ac85": {
+      "image": "tai-tuivasa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7cbae9b9-c94d-4d9d-bfd0-48dfc0f54512": {
+      "image": "takanori-gomi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "39ae998e-45f9-4533-9d3d-e18c033b6207": {
+      "image": "tank-abbott.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2b73b6e5-3b75-4485-bcb6-aa1b570961b4": {
+      "image": "thiago-alves.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "921fe857-037e-45c3-bb68-4745e3407696": {
+      "image": "thiago-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e5c44a2f-6b7f-49bb-bede-e178cc2f741e": {
+      "image": "tim-sylvia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "310e19b1-a203-42fa-9183-c88c6eb25365": {
+      "image": "travis-browne.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bcb82721-3491-4d92-8604-33b61480afa6": {
+      "image": "tyron-woodley.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4439eaeb-66bb-418a-91ca-e6d35002bd69": {
+      "image": "urijah-faber.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8a218fc2-524a-481d-bc98-3374924aabd4": {
+      "image": "virna-jandiroba.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "63e02a92-804b-40a5-92d2-821efd650e87": {
+      "image": "wang-cong.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00f36838-50ea-4acd-8f1e-dbd44d1ad388": {
+      "image": "abus-magomedov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "6988f632-7454-42ac-a3a4-7c11915dfba8": {
+      "image": "adrian-yanez.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "835e9b11-9828-44f0-ab61-0cf336c79e84": {
+      "image": "aleksandar-rakic.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "7926e415-10ac-4ac4-b846-84514a2d92e0": {
+      "image": "alex-perez.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "3af4458b-1b17-4e1d-b180-82c7a31c6732": {
+      "image": "alibi-idiris.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "7854c0ef-b3e2-4dbd-9595-5057b836457c": {
+      "image": "alonzo-menifield.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "04bc56f1-3d1b-4f7e-b76b-601282c26790": {
+      "image": "bogdan-guskov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "feb0888f-e0d1-4386-ab22-7fab33acce16": {
+      "image": "brad-tavares.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "2de0d563-1c4d-4769-b223-ae272358cdb5": {
+      "image": "brunno-ferreira.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "b146e0fa-4f3d-4ad7-88c8-cdb77986b2f4": {
+      "image": "calvin-kattar.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "f6417eab-58e9-4fe0-ad1e-7749c683f8ef": {
+      "image": "cesar-almeida.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "4b6f0dbc-4752-47e7-874e-7fd7cc039289": {
+      "image": "charles-johnson.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "e71b4043-0992-47db-a0bc-d474ada685b1": {
+      "image": "chris-curtis.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "caa2f19c-5cf3-45c5-8d6a-61bbb24a320e": {
+      "image": "cody-durden.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "96793f86-8fb1-448c-8ff1-48e41acdba06": {
+      "image": "dan-ige.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "5e38da54-bab8-47e8-a2c2-a76c70498683": {
+      "image": "davey-grant.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "b6f82574-45e9-4518-9ffb-58bbedee1565": {
+      "image": "david-onama.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "55a634d4-971e-42a5-b5a8-1442095ea4f6": {
+      "image": "dustin-jacoby.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "a3678f81-bbbe-46e6-8858-435c5eb1ffb7": {
+      "image": "edmen-shahbazyan.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "e6b38085-9690-4d1a-aca2-60bb7d0744b4": {
+      "image": "gerald-meerschaert.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "8ea8e931-6e95-427a-8395-21918a3179f4": {
+      "image": "giga-chikadze.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "85f52013-ef8e-495b-8b99-e2d32c4b56f3": {
+      "image": "hyunsung-park.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "900d4c7d-7e35-494f-877b-a59472c6a45b": {
+      "image": "ikram-aliskerov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "029560ea-cbae-4843-a3a7-54810ad4d5f6": {
+      "image": "ion-cutelaba.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "4b402e4e-5246-4f09-8934-c04b5bc565cb": {
+      "image": "jack-hermansson.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "974e5ad9-8087-4343-84c4-c8c35d4757e4": {
+      "image": "jhonata-diniz.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "1cafccbf-cf05-4ff2-9b46-cd8d51c41808": {
+      "image": "jimmy-crute.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "ee6d3315-2568-47cc-9880-c59c0364cb22": {
+      "image": "johnny-walker.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "84a3eabf-922e-45ce-82ad-d4374d96570f": {
+      "image": "jonathan-martinez.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "7a0d9ff0-7a45-43b6-9f73-5bc7fb61be38": {
+      "image": "jose-delgado.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "04968a38-f0e8-4b1c-a060-c87a55e7498d": {
+      "image": "josh-emmett.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "ac5f34ca-81fd-4e4c-a46c-5935b0cc31d8": {
+      "image": "kai-asakura.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "ddffb5ec-df02-4de9-af1d-bf9101faa7f9": {
+      "image": "kennedy-nzechukwu.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "816e703a-0290-4446-98ea-8ae3e1cad540": {
+      "image": "kyler-phillips.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "6f584eb3-12e1-477d-b664-574fe02f31cc": {
+      "image": "mansur-abdul-malik.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "d6f19853-b8ab-4720-8d93-4f9b648f6e46": {
+      "image": "marcin-tybura.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "56121c8c-96bf-4820-9eba-e94ee16d66b7": {
+      "image": "marcus-buchecha.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "5657620e-4622-43c3-8051-971ebbc33c74": {
+      "image": "mark-kerr.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "61293cb0-f6d5-423d-ae10-68f135cf6e26": {
+      "image": "melquizael-costa.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "0e4aa1cc-8f06-4804-9855-6003f3529ebc": {
+      "image": "mick-parkin.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "13c5557a-e7bd-4814-9f08-aaf15f2c13e1": {
+      "image": "modestas-bukauskas.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "67ee9b6c-ea20-4524-9b8e-cff2337c50e3": {
+      "image": "montel-jackson.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "4bc67fc9-969f-4508-b364-ac5596539da2": {
+      "image": "nathaniel-wood.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "227b50aa-ed9f-4a8b-83ae-f68750a17488": {
+      "image": "neil-magny.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "967216b7-a5f6-4ce5-b668-ccc60c421e60": {
+      "image": "nikita-krylov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "d51e2bd7-8fdc-48e0-b1fc-6038a84d052a": {
+      "image": "oumar-sy.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "6e841ced-029e-46ba-9441-0cdb14df9247": {
+      "image": "ricky-simon.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "12771843-4bc2-422c-95fe-6aa8835ddbcb": {
+      "image": "rinya-nakamura.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "8b225a4a-0698-4648-b149-32b4b631f1c9": {
+      "image": "rob-font.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "d3c319d0-ea83-4362-8404-7a7be3ca1615": {
+      "image": "robelis-despaigne.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "178db664-a79a-45ca-a01c-4e9fd97ab1cf": {
+      "image": "rodolfo-vieira.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "a9371263-c367-42f0-9cb0-d6b588b30191": {
+      "image": "roman-dolidze.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "27dc3b42-a924-4951-ba60-2bcb8c82b34a": {
+      "image": "ryan-spann.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "01596570-24ad-40ed-bb43-31c2a8ab2bca": {
+      "image": "said-nurmagomedov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "b220c68b-d2cc-46cf-8d9c-93b7baa6bf34": {
+      "image": "shamil-gaziev.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "59a9e346-3451-4d1d-ab3c-2fdb7a32a083": {
+      "image": "sodiq-yusuff.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "43d7afc8-627c-4a80-9f53-7ef515e89b00": {
+      "image": "steve-erceg.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "0e20dbee-bce9-4427-842e-ab6599acbd1e": {
+      "image": "tagir-ulanbekov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "4820d6a3-e90b-4d27-95fa-efeb39213b24": {
+      "image": "tallison-teixeira.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "9cb7f35c-4d04-4cf6-b980-78b0818ca94c": {
+      "image": "tanner-boser.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "03d42b74-1455-4573-909a-34ed9ee5394d": {
+      "image": "tim-elliott.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "0ccb63d0-b79c-4187-9b38-426e868c914d": {
+      "image": "tom-nolan.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "01f5c7c9-f8a7-4823-a123-09c032d1c11d": {
+      "image": "valter-walker.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "56fe4492-d01c-4ad9-8901-8428ba210c64": {
+      "image": "vinicius-oliveira.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "9dad8aa9-80a7-47e6-920f-9906936f502e": {
+      "image": "yaroslav-amosov.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "43e476db-a547-4c55-af2a-d27e08206e87": {
+      "image": "zhang-mingyang.png",
+      "image_kind": "illustration",
+      "image_credit": "Illustration: UPSET"
+    },
+    "e2c7d82b-99c6-4d4b-a7f9-2dedb23c227b": {
+      "image": "abubakar-vagaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "970d0e49-2715-4bb4-9d98-037ce36469e7": {
+      "image": "ailin-perez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4374d864-e9a3-4c19-a6d2-c066c98d57ca": {
+      "image": "alatengheili.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "78442db7-fc93-4b8f-91e9-2e3fd8ec58c1": {
+      "image": "alden-coria.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8a136475-488f-4d72-8976-a0509778e44c": {
+      "image": "alessandro-costa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c42baba3-1c0d-40e4-97e9-fbf6f035d5f0": {
+      "image": "alexia-thainara.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f7303901-5afc-4dda-874b-acfc8c724216": {
+      "image": "alice-ardelean.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bda0049e-5253-4dba-9352-7842ae31d73c": {
+      "image": "alice-pereira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6770fca3-e210-4ddc-adfb-092c2581b46b": {
+      "image": "amanda-lemos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0af8a32c-eb78-4a40-817a-0ff2537f7d84": {
+      "image": "amanda-ribas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2da7b736-e34a-4f4b-9a6d-69ac2c216f5e": {
+      "image": "andre-fili.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aaa5dfe7-6050-4f8a-aa1c-01656be3f863": {
+      "image": "andre-lima.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f5e27ce3-e072-4f6b-b243-9c5439ef2977": {
+      "image": "andre-petroski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "af9bc13c-32b1-4645-8341-2056b33dc686": {
+      "image": "andrey-pulyaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8f45d7be-1802-49bf-a0ab-4ef8c4c07cae": {
+      "image": "angela-hill.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6f093226-c006-40a0-a694-0d34ea396941": {
+      "image": "austin-bashi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "81caf900-0c2e-4730-ac3b-481ad68dc750": {
+      "image": "axel-sola.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "37e4da74-8fbf-48cf-b560-faf840acfecf": {
+      "image": "azamat-bekoev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6b85c1c9-9b3e-4075-9eff-33b10949a6e7": {
+      "image": "baisangur-susurkaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f27a2b2c-098c-495f-ac74-f27fd3d1d7d3": {
+      "image": "benardo-sopaj.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f37d6b2f-aa3c-4a40-b143-1d92d4d03db3": {
+      "image": "bia-mesquita.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4c3c1cbc-c326-4c35-b0db-046bea01a9f0": {
+      "image": "billy-elekana.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2c31af55-b42c-490e-845d-f54f4e1736c9": {
+      "image": "billy-quarantillo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6a3f3fea-555c-4977-9bc7-afc925f94edf": {
+      "image": "bogdan-grad.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5b50bf43-439b-4942-93d4-9e4e2979224b": {
+      "image": "bolaji-oki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "89c3a734-f5a5-4025-8256-8c48304d7769": {
+      "image": "brady-hiestand.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9500691b-2204-44ec-a421-4425a5eea913": {
+      "image": "brando-pericic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1ce25368-28fa-4f4e-8fc6-5562e22ddd8a": {
+      "image": "brendson-ribeiro.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4e43ad6a-3c4a-429d-8f60-999cbc093973": {
+      "image": "bruno-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b24891bd-9459-4f9e-b7ec-2e424877a78e": {
+      "image": "cam-rowston.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "856c4596-0feb-4baa-933c-7c678af94543": {
+      "image": "cameron-saaiman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c644e1f0-6eb5-4b89-b2cd-f62e35cb11d8": {
+      "image": "carli-judice.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6c23ca62-53e9-4c6b-b323-b977b5c44fd6": {
+      "image": "carlos-leal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fc9cb919-3da9-4736-b4d9-6259bf7affa3": {
+      "image": "casey-oneill.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8e4aa0b5-0636-45b6-b36e-56c06fd320dd": {
+      "image": "chad-anheliger.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d64858f6-f003-4a17-9617-fa09b80b25ef": {
+      "image": "charles-jourdain.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4241e92-47de-4c99-af15-7b860426e389": {
+      "image": "charles-radtke.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "510d7ea2-700f-40f5-b5a2-581e2c93287d": {
+      "image": "charlie-campbell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d2a07a71-0183-4a8d-96de-1b84451d523c": {
+      "image": "chelsea-chandler.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9646db16-63cd-4a45-a2d6-e0cf0b1153b0": {
+      "image": "chepe-mariscal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0365fd6e-9327-46db-80f5-70b20b914486": {
+      "image": "chidi-njokuani.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "98f9ba12-11cb-4fdb-a9af-cf5d7e3a9cba": {
+      "image": "chris-padilla.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9f02f70b-fec5-4b05-8d37-ffdcde1a4e78": {
+      "image": "christian-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5f56343e-e082-4bd2-84c3-d9b06693e278": {
+      "image": "claudio-puelles.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "71da55b7-d702-4c75-9bf8-3bc75ad34471": {
+      "image": "clayton-carpenter.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c2f59945-0c3f-40fe-a471-d0444484675b": {
+      "image": "cody-brundage.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1721f5d-6274-453d-903d-0cde19765df7": {
+      "image": "colby-thicknesse.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "38502a13-16ab-4b73-980e-7518c8ba0f5b": {
+      "image": "cristian-quinonez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "28d48f84-2d69-4a37-8776-35efbf7c17b8": {
+      "image": "damir-hadzovic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0f3dd4a8-6feb-4abf-9b06-e96027cb6747": {
+      "image": "damon-blackshear.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fff80392-4068-4dc4-a6a4-53313ffb1b92": {
+      "image": "daniel-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c9ef7f7-b359-44b0-a59b-406fd55e9c5b": {
+      "image": "danny-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "09f7ac4e-3826-4c80-8010-307a5938e74d": {
+      "image": "darrius-flowers.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "17a6602a-ae79-422f-bb66-e42fc32e9d33": {
+      "image": "denise-gomes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d272ed78-5d48-4ccd-b8a0-ffb4048f6844": {
+      "image": "dione-barbosa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "229cecb7-e9ec-4878-85f1-2773a21c6503": {
+      "image": "diyar-nurgozhay.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ea185964-ebee-4165-bc4b-64e969dcd9bf": {
+      "image": "djorden-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "685159b0-cc61-41cd-a3e8-81de00dad787": {
+      "image": "donte-johnson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "86b862cb-82e1-490a-b3ff-8a416cf637b2": {
+      "image": "dooho-choi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "228aa8ea-63e9-4f8b-9ba7-16988b76cd02": {
+      "image": "drakkar-klose.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "320e47df-3313-4f6d-b3cd-993334ff7ce7": {
+      "image": "dusko-todorovic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f8100b05-5eed-43bb-b750-34c1c5ddc49d": {
+      "image": "dustin-stoltzfus.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "452d5dde-e40c-442a-9f45-addb158900f8": {
+      "image": "edgar-chairez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "25f2681b-7b96-40c2-b8e2-e4d15a8f4859": {
+      "image": "eduarda-moura.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c9956af8-c41d-4cf1-9eaa-3f9c44e6c3d8": {
+      "image": "elise-reed.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a4472f90-eec5-44f5-a8c7-a3bc8cc6cff9": {
+      "image": "eric-mcconico.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6231d7e8-b78c-4b2a-81b4-c75ce09a16c3": {
+      "image": "eric-nolan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7d948732-bf4e-4922-82ef-3d815dad4da0": {
+      "image": "ernesta-kareckaite.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f1c78dc6-e3ee-4533-99ff-049afadf4a92": {
+      "image": "evan-elder.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2227044f-34c9-432e-b5c5-7f6210820a54": {
+      "image": "fatima-kline.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c0dc2053-4ff1-4dd1-a99f-2e419196845f": {
+      "image": "felipe-franco.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2762cdfe-5d39-4903-8f2d-347359f55283": {
+      "image": "felipe-lima.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fb8e9c1c-7366-472a-a647-f1734e1b8d59": {
+      "image": "francis-marshall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cfe81262-5d86-4567-bfc2-641494521aad": {
+      "image": "francisco-prado.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d8741c38-a11e-4095-bbb0-e77de89dc63e": {
+      "image": "gabe-green.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "383a0f39-f565-45cd-9334-b113b6837964": {
+      "image": "gabriel-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c6125f9-ef17-4db4-bc2e-d3d0c2335a02": {
+      "image": "gabriella-fernandes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "966e7589-130b-4982-9651-d5c4da8e0995": {
+      "image": "gaston-bolanos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c933df32-c65c-4df3-9977-dae2e0fced71": {
+      "image": "gauge-young.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6cacb181-9adf-4dd9-8a4b-550cfa748aa9": {
+      "image": "gilbert-urbina.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e4bcf3f5-8369-4ace-8874-7b42cbba551b": {
+      "image": "guilherme-pat.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1438733-5d01-42c5-a787-7a781bd393ff": {
+      "image": "hyder-amil.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c5253cff-a046-4b8c-9ac5-a6fd28e9c16b": {
+      "image": "iasmin-lucindo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "99d15588-88f7-45c8-8163-ffa9de3d2b4d": {
+      "image": "ibo-aslan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "64259b15-794e-4d0b-83b2-8ca4d00f5a62": {
+      "image": "ismail-naurdiev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d21dd5f5-563a-4a48-914d-b5e1034ba98a": {
+      "image": "iwo-baraniewski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1d78c18d-e0a3-4242-aee8-adc74d50e809": {
+      "image": "jack-jenkins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5ac1920e-6111-41fa-93e7-43d8378a4be4": {
+      "image": "jackson-mcvey.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ce7b2eab-7054-4bf4-924a-76d4f0194dbe": {
+      "image": "jacob-malkoun.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "22b79de7-84b8-439b-9c5c-2d0653537a30": {
+      "image": "jacqueline-cavalcanti.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8d3a092d-7fbc-4159-9334-d0634c6b5a2b": {
+      "image": "jafel-filho.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e71ad9ea-d42d-4040-93f3-d9059879e9f5": {
+      "image": "jai-herbert.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8d09f359-b5e4-4781-b1e4-51b80ab1a58e": {
+      "image": "jake-matthews.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "043c0e21-9767-420a-a02f-efa28845e495": {
+      "image": "jamall-emmers.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9a0ecfc3-4f82-495a-b2fe-bdff2afb18a8": {
+      "image": "jamey-lyn-horth.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b43de769-2e13-4ba4-be8e-6ae240de0195": {
+      "image": "jaqueline-amorim.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "21dffad5-bfe2-4416-8e4c-c9083e730979": {
+      "image": "jasmine-jasudavicius.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "76f9a769-5558-499a-a774-65d23321b378": {
+      "image": "jean-matsumoto.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "79fa1093-f814-4928-8f19-e422790a159f": {
+      "image": "jeremiah-wells.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f8ad81af-2830-42f9-8abf-78466f598092": {
+      "image": "jj-aldrich.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2fc963e5-b80c-43fe-a8e9-ac83e0baf03a": {
+      "image": "joanderson-brito.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b7978f46-9b21-4f58-89d5-052edd965c75": {
+      "image": "joaquim-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c7ad004a-87f5-4038-9827-0489ae8d76e6": {
+      "image": "john-castaneda.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8320d98a-3593-4f79-b03c-517632166807": {
+      "image": "john-yannis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3feb1144-d363-4bd1-bb68-72931f20e8f7": {
+      "image": "jonathan-micallef.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "97877bae-7b30-4c4f-9923-41c47975b94b": {
+      "image": "joosang-yoo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "113638af-35e8-4766-bec0-f7d43e238040": {
+      "image": "jordan-leavitt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a3df95e-c105-4630-8c1d-4255ab775b33": {
+      "image": "joselyne-edwards.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "10e29539-9a1c-402d-a05d-01947e5128e1": {
+      "image": "josiane-nunes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "62f2d310-5d77-40a6-b27e-2dcd7b129276": {
+      "image": "julia-polastri.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "85057896-83eb-4862-84a6-2ee4d3b354a6": {
+      "image": "julian-erosa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "405b7b47-28b1-45cc-a4ec-a3df6d2b1e01": {
+      "image": "juliana-miller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "254962e9-9d93-4e08-a485-1afef4881387": {
+      "image": "julius-walker.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a1637466-d212-4742-bea7-d0df2a455cd4": {
+      "image": "junior-tafa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c6f214e6-cb09-4ba5-bfa7-0a2634e98016": {
+      "image": "junyong-park.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "40e9c369-ec69-4bfa-bf3e-0e4f66e8c0ab": {
+      "image": "kaan-ofli.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "056a0ffb-f0ea-46c4-9ee4-6122059b43e4": {
+      "image": "kai-kamaka-iii.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2bb16d53-710b-40a2-bfc7-c5e242c4b928": {
+      "image": "karine-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "57b5b6ac-826b-49f3-9970-38d38f1f5c9e": {
+      "image": "karol-rosa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2e7d6af4-b566-482c-b9ca-5bc37cac1382": {
+      "image": "karolina-kowalkiewicz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d2b0047f-1e76-4187-a06c-ccac17a690cf": {
+      "image": "kaue-fernandes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e5579cad-f679-40e0-a5dc-8b6ff7e7b29b": {
+      "image": "ketlen-souza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c7047b83-1474-41cf-9dab-3dc1b511ae44": {
+      "image": "kevin-borjas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0840f208-4cd4-498c-9c7d-4293452ab6b3": {
+      "image": "klaudia-sygula.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5026e7f2-ca3c-471d-8c39-b4903834fb55": {
+      "image": "kody-steele.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f1c75905-b98c-4220-b676-99b4852fc7cb": {
+      "image": "kyle-daukaus.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d186796-5d73-47ad-81e4-048e10722e61": {
+      "image": "kyle-prepolec.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ab1cc9cb-12c0-4512-90dc-1f956862e366": {
+      "image": "loma-lookboonmee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "668f612e-f29b-4f76-a78a-fc6a4b064407": {
+      "image": "losene-keita.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ab9ceb78-09c1-45dd-af4b-0ed4dd05b049": {
+      "image": "louie-sutherland.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b6595e4f-d0ce-4e3c-8449-dde99c35c758": {
+      "image": "luana-pinheiro.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a1f589e2-998c-404b-9f31-e7e69ce02d27": {
+      "image": "luana-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "805d2cd2-8e05-411a-967f-64f46c486dc1": {
+      "image": "luis-gurule.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3564b7bc-68ef-409f-9d40-a9a9250f3212": {
+      "image": "macy-chiasson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cca2a9a0-ef7b-4719-9648-905b34c7c88b": {
+      "image": "maheshate.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db78cf59-113d-4a96-8b17-c42f6c9a0a63": {
+      "image": "malcolm-wellmaker.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2ab55955-49f3-417d-aae6-294ebf7c3cdc": {
+      "image": "marc-andre-barriault.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d6af94e3-c4e3-494f-8ee6-8b16d66dad56": {
+      "image": "marco-tulio.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aeae8f83-e44d-4799-9acb-460c6be33c45": {
+      "image": "marcus-mcghee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4bd5f43-a038-47df-96d6-3c563c231a84": {
+      "image": "mario-pinto.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "34daacd4-dede-466d-a4c1-2a197549354d": {
+      "image": "marquel-mederos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4364be30-df90-4ac9-9bb8-dab7430f5310": {
+      "image": "matheus-camilo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "893bc83e-2183-436b-9ed6-2401bd0fc895": {
+      "image": "matt-frevola.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "553d3f7b-3146-462a-9a4b-36caac399437": {
+      "image": "maycee-barber.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "665c5f81-9c1b-4b59-985a-9e18ea02e7ce": {
+      "image": "melissa-croden.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fe86a66f-7289-480f-8e6c-6dd3199fa078": {
+      "image": "melissa-gatto.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "26f252dd-30a9-4675-9a4e-5ec4c8b361fb": {
+      "image": "melissa-mullins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0e2120a9-dd6c-4595-ba4d-0e4e5006d1ca": {
+      "image": "melsik-baghdasaryan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d5d09f7d-da3e-4971-b299-5c19bb60fa23": {
+      "image": "michael-aswell-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1054336-f413-42b4-9502-ef3411b8e273": {
+      "image": "michael-johnson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a5d20526-0a0d-4d9e-8216-cb31ae4dbfc0": {
+      "image": "michal-oleksiejczuk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a39bb32-881b-4e22-896c-fb54d80b8bd3": {
+      "image": "mike-davis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "af3078dd-e013-4f28-ab89-aeb1aef7b8e8": {
+      "image": "miranda-maverick.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "71551491-a63a-42db-b212-abe231fea75a": {
+      "image": "mitch-raposo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "48c30c2f-b1c0-4449-9c84-53803b66780b": {
+      "image": "mizuki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "511cecf9-6d55-4829-9cb7-2d60b7bdc114": {
+      "image": "muin-gafurov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "10194852-d2d7-4596-a8d0-d6dea0eb7da5": {
+      "image": "nasrat-haqparast.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "20eb0d1f-aaa8-4a77-88ec-3a70f7d2274c": {
+      "image": "nazim-sadykhov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "939adefa-05e9-4d45-9d61-bf9f80d58099": {
+      "image": "nicolas-dalby.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00c22cf1-a1b2-4a9e-8f79-5fd6c16e8ef3": {
+      "image": "nicolle-caliari.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a53f13fe-338d-4fbc-8f6c-62516d764817": {
+      "image": "nikolas-motta.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "45ab988d-fb2b-439c-991f-d422d0ea3c6b": {
+      "image": "nikolay-veretennikov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "52a2d8af-5bab-46f7-b4eb-b80128566776": {
+      "image": "nora-cornolle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ad214fdc-ee6c-4948-a39c-dc90731475e5": {
+      "image": "norma-dumont.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "086ad8db-da90-4f17-a15d-e02d24f9b1ff": {
+      "image": "nursulton-ruziboev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "daafa9b4-aff8-4a34-9c22-292212427b8f": {
+      "image": "nurullo-aliev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cac58c55-6332-40de-97f0-d6751e641204": {
+      "image": "nyamjargal-tumendemberel.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9adce8b6-45cb-469a-bd6a-ac2c817e1bb4": {
+      "image": "oban-elliott.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8fecd862-07a2-479b-a429-531df69e2e6d": {
+      "image": "ode-osbourne.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2aa5c470-c2b3-4478-a859-c3014f7f185b": {
+      "image": "ozzy-diaz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "92d0c4fb-61cd-4f5b-9d8d-50309691acae": {
+      "image": "piera-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d23f97e7-63ae-4da0-b6b3-31ce54232f20": {
+      "image": "polyana-viana.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e80adc3c-1dd3-4dc5-b5d5-f645dd778338": {
+      "image": "priscila-cachoeira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6faccf9e-3168-42dd-8b88-aca33a553042": {
+      "image": "punahele-soriano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "80efb4b7-0ff9-4b56-b8b8-2124856db140": {
+      "image": "rafa-garcia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "02dbb1fc-ad0c-46e1-bab7-7002fe69e8a1": {
+      "image": "rafael-estevam.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "953a9470-a775-40b7-93d0-61e689bd7e51": {
+      "image": "raoni-barcelos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ad364a4e-b912-4bb7-b96e-62be33711868": {
+      "image": "rei-tsuruya.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1676733-7c18-4e95-a4b7-17626e076ac0": {
+      "image": "robert-bryczek.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "77b2c730-99c0-4a3e-924b-9ec99a319df0": {
+      "image": "rodolfo-bellato.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b83d27d7-577a-4041-a22c-36675df773cd": {
+      "image": "rodrigo-sezinando.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3d046825-4cde-4aed-8855-6b02f9c9c883": {
+      "image": "rongzhu.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "97780897-f24e-436b-9798-1bbfe254aea0": {
+      "image": "ryan-gandra.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0f37f5d1-9184-40fd-90e6-460af15fa469": {
+      "image": "ryan-loder.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ac4966e5-7b5a-4c80-baef-189b39e52aa8": {
+      "image": "saimon-oliveira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "08d6e476-06b8-4b45-b6fb-1c6656a77005": {
+      "image": "sam-hughes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "13ed8011-8523-42b4-bbb0-f9726fd2b3cd": {
+      "image": "sam-patterson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b33e5b92-f821-4f66-944e-a4b0140446b6": {
+      "image": "santiago-luna.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "302f4a52-116f-42de-9c2b-32ff2ae70be7": {
+      "image": "sean-woodson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bff601f9-813c-4f82-b8d1-a8b75c28b6dd": {
+      "image": "sedriques-dumas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "980b5620-7ee1-46fa-a87f-53906cf3789c": {
+      "image": "seokhyeon-ko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d02b24ed-de3a-4b96-9cd8-3dea65202253": {
+      "image": "serhiy-sidey.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "468f8144-06ce-40c9-8ab5-28232f400ab6": {
+      "image": "shauna-bannon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b80fe8ce-ee61-469e-a032-049756c82cff": {
+      "image": "steven-asplund.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d8cd3d9-3d75-4f54-9b85-46091a5df628": {
+      "image": "suyoung-you.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "520cf844-2eae-41b2-8a89-ede8ab857974": {
+      "image": "tabatha-ricci.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c0c50eb5-3956-4d8f-9ac8-d8f810461c68": {
+      "image": "tainara-lisboa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ecf18778-39c6-4eed-ae9b-d15c1b85a1bc": {
+      "image": "talita-alencar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c76e3d3-ded4-43bb-bd8d-202e5c16cc67": {
+      "image": "thomas-petersen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2474846c-589e-4024-a66a-5c83b81eec0a": {
+      "image": "timmy-cuamba.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "866c4ec0-2b04-4571-96ac-c9c758339e6d": {
+      "image": "tofiq-musayev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f70738e4-bf01-4119-a66b-35839302b755": {
+      "image": "toshiomi-kazama.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7238569e-e8f8-46ec-9b7a-8a00c53eeaeb": {
+      "image": "tracy-cortez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bd674786-9e34-4f81-8939-af5c7a9dffc7": {
+      "image": "tresean-gore.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8ed0e6be-161c-44e5-9a28-922130d54b1b": {
+      "image": "trevor-peek.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "252063e1-983b-4aa4-b2cd-bebe267d5997": {
+      "image": "trey-ogden.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ca912a97-eeb8-4c9f-8a21-c3958f7f9afb": {
+      "image": "vanessa-demopoulos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aa3f65f7-b8bf-4f23-b798-9774eeabc8a1": {
+      "image": "veronica-hardy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "995221cf-ed01-40e2-af27-db2477a9c9ad": {
+      "image": "victor-henry.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4c81340f-9960-42f9-8c6e-631fa2bd6aeb": {
+      "image": "wes-schultz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b4d492b3-1ce0-42c9-ac60-469da596816b": {
+      "image": "william-gomis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0ee0663a-104d-44d6-befc-e375b1178f75": {
+      "image": "xiao-long.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e745b700-b310-4d31-807e-9125f65a3e1a": {
+      "image": "yadier-del-valle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "960cf4b1-0aa6-4f1d-87de-d7d073f8565d": {
+      "image": "yana-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "974edae5-7c8c-4c4e-bee0-b2c007a48922": {
+      "image": "yazmin-jauregui.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a2f4ecf9-93d1-4f07-9776-e50f0e811cea": {
+      "image": "yousri-belgaroui.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c6bee4a8-6a97-4e87-bfe9-c3dd11bc1d6a": {
+      "image": "zach-reese.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00d2ac6c-b972-4fa8-82db-c2804adf453e": {
+      "image": "anthony-wint.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d6ee5ff4-430f-45a0-98af-a91c80b13911": {
+      "image": "abdul-hussein.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3235fcbe-fd7e-440f-b478-c5dbd16d44d2": {
+      "image": "abdul-kareem-al-selwady.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f6de2dd1-8ade-4cfb-b3db-485bb9896f85": {
+      "image": "abdul-razak-alhassan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f32eaa44-96cf-40e2-aeaf-c76ab8159604": {
+      "image": "abubakar-nurmagomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "326a8bf6-8de1-4d9c-aa77-a97d4a7271ad": {
+      "image": "aisling-daly.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f5eac269-7f14-45d0-ad91-d8a6b6287134": {
+      "image": "al-iaquinta.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "53656d0f-af1f-4d60-ac29-c97db85696e3": {
+      "image": "alan-belcher.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "29a69bf8-f60d-40c3-bd56-928d1b2874b5": {
+      "image": "alan-jouban.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7eb2862b-c28d-4faf-be9f-2adb9522f2c1": {
+      "image": "albert-tumenov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ccc707ab-4913-48d5-b3e9-d57bdd106fc1": {
+      "image": "aleksei-oleinik.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1bfb42a1-638d-4ad6-8ae0-ff4a4a5deee4": {
+      "image": "alessio-sakara.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d2bf0f95-1861-4de7-beab-fb301ed5a0ca": {
+      "image": "alex-caceres.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "de9911d0-37b0-4797-b29b-37e5e24d511e": {
+      "image": "alex-morono.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f14e0ed5-5e48-43d3-bc5b-b33adfc6e1f3": {
+      "image": "alex-oliveira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "905cb0e7-dce1-4434-90a6-2e475e396f93": {
+      "image": "alexander-poppeck.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4430189a-51da-49ca-8607-53c2c4911465": {
+      "image": "alexandr-romanov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "001ca59f-bf97-4605-b6d4-b58aa0e034d2": {
+      "image": "alexis-davis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b35b5401-e045-437a-8bc0-f69a66055c97": {
+      "image": "ali-bagautinov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1dae71cf-2c99-4e89-9ed9-a1d608a83ae7": {
+      "image": "allen-frye-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b46a49b4-24f7-45b9-88bd-138eb9b813ab": {
+      "image": "alvin-hines.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0b646d29-3e69-40f3-8abe-e7049f355594": {
+      "image": "amir-sadollah.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "999ba0f8-56a7-49e9-9043-ea03ca517637": {
+      "image": "andre-muniz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f416cdeb-19f8-4084-b9be-c0c44c00af54": {
+      "image": "andrea-lee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3ff231d5-8e72-4bee-b58e-25f7b95225b9": {
+      "image": "andrew-sanchez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db7b0b29-8cd5-49d5-bc3a-b0a61de0f981": {
+      "image": "angel-pacheco.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6583f6ac-ee0d-4f3f-a37f-8bc3e7cae25b": {
+      "image": "anna-melisano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ebedefe1-e4eb-4136-b78e-bdb30868cea1": {
+      "image": "anthony-hamilton.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "be0e2e0a-910e-464a-9840-f24ddabb0220": {
+      "image": "anthony-njokuani.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "45c3c995-823d-452b-8007-4010f5186e76": {
+      "image": "anthony-perosh.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "34a089b2-a377-46a0-a720-050cdb8ab9dd": {
+      "image": "anthony-romero.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3116089b-2911-4010-b34e-b2cfab82f914": {
+      "image": "antoni-hardonk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "261bd688-026f-491e-b151-a9662de8f6d9": {
+      "image": "antonina-shevchenko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cc1fb146-716b-4219-ac72-6ff0ea13ed6a": {
+      "image": "antonio-carlos-junior.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "496bcd62-513b-415a-acbf-ea857d577d51": {
+      "image": "armen-petrosyan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "775d8af1-124e-418a-ba8a-64935d5fee07": {
+      "image": "art-jimmerson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5f382b96-cf44-4ae0-ab2d-3bb80a98c7a7": {
+      "image": "artem-lobov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cd21f7a7-d5ba-4642-bd90-f37210cf09b7": {
+      "image": "artur-minev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f47609e3-912d-4909-adc1-420d1b37b976": {
+      "image": "asaf-chopurov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "464da70b-869d-4d2d-b7d5-5fa8bdaf1d63": {
+      "image": "ashlee-evans-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2d8e0da4-e643-4919-afd8-58e3120c0564": {
+      "image": "ashley-yoder.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7f02ae79-0a4f-4b4a-8ab8-f4443fa61125": {
+      "image": "askar-askarov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "35294231-16de-4675-9eaf-ace0a2579bc8": {
+      "image": "aspen-ladd.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6268054e-45d2-4c5c-a593-065f8b49701e": {
+      "image": "augusto-sakai.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ac8244fb-8838-431e-ad7a-acf7803cbb57": {
+      "image": "austen-lane.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f92fa1eb-874f-4237-a352-f03cce65eb0b": {
+      "image": "austin-vanderford.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ca30ee1e-6158-4e01-a4bc-5e6a99bb7c9b": {
+      "image": "bec-rawlings.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cd988d56-3e71-4c17-b423-f35953c0f385": {
+      "image": "bekzat-almakhan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "216f60f0-edc2-400e-a090-f09f93a78b60": {
+      "image": "ben-nguyen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4da1f0fd-1672-40f8-b942-c045d1e0fe02": {
+      "image": "ben-rothwell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "048ca96b-872b-4e69-b5c7-9b13f2acf01a": {
+      "image": "ben-saunders.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cabe3d7e-ae61-4ac7-b38c-94fa8a487c0e": {
+      "image": "bethe-correia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b032af17-aa8a-43a8-8217-d9476037474e": {
+      "image": "bilal-hasan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e94f8b39-89e8-4e64-8d73-f21d7704b4ec": {
+      "image": "blagoy-ivanov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fe177f5c-88a9-40b8-b0f4-67112751d77a": {
+      "image": "borislav-nikolic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d88fe205-72cd-44ea-b40e-bbccfa37a460": {
+      "image": "brad-katona.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "82801a80-39db-4fbe-b6dd-ad059f95435f": {
+      "image": "brad-pickett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "38980212-3ccd-4ffe-92e3-91223abeee16": {
+      "image": "brad-riddell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "72489e8d-3b9c-4fee-b760-282d63b9f972": {
+      "image": "brandon-thatch.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6a8e9a43-ff92-451b-80c5-de659a7971cd": {
+      "image": "brandon-vera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8e0c4360-bd0e-4d60-a396-8a8f47c4acfb": {
+      "image": "brian-bowles.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "af83c4b6-8d6f-4283-ad3a-c1525cdf791f": {
+      "image": "brian-kelleher.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9a0a5c87-3d87-4685-a37c-dde041907315": {
+      "image": "brian-stann.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4365ecf4-1bc0-4d10-9595-17dfb9e0ff05": {
+      "image": "bruce-whitehead.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "050d08df-4ba6-454b-828a-80dfa73cc553": {
+      "image": "bruna-brasil.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4354f269-761e-4561-99d1-8948e1f7c2a8": {
+      "image": "bryan-barberena.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9898fb33-d9d3-4ee1-ac28-0b84a9e9f1c2": {
+      "image": "bryan-battle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "077ea32e-93fe-43b4-afef-01a321cfd292": {
+      "image": "bryan-caraway.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ae8f10d8-fa4f-442b-b6b7-5a5311988709": {
+      "image": "cam-nelson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3f77f429-5a5a-4952-9376-18371f014cac": {
+      "image": "carlos-felipe.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1880a33d-6568-4fa1-bf15-209bd4b83974": {
+      "image": "carlos-newton.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9354d80c-440b-4492-9090-89ee062525c3": {
+      "image": "carlos-vera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "acf54b95-d355-46e6-959f-442e7a383f40": {
+      "image": "carlston-harris.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c1878e39-ef31-498f-ae91-b603f4db16ae": {
+      "image": "carol-foro.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "43191ead-47e3-4b2e-9f8a-0c9967f7ee0b": {
+      "image": "cathal-pendred.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7cf72084-359d-403f-98ea-be47ddfc257b": {
+      "image": "cb-dollaway.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "75b90397-949a-496b-8c50-6c2c0bd06cb1": {
+      "image": "cezar-ferreira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2e23ed4-be4d-4990-8378-143f5b374d28": {
+      "image": "cezary-oleksiejczuk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1bd9cba-c6da-44f0-8e6c-54c7fe943b92": {
+      "image": "chase-sherman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a7cb190-2892-4075-a847-09fd146ede62": {
+      "image": "chris-barnett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3682ff7d-074d-4427-b9e0-ecb365c5f904": {
+      "image": "chris-camozzi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e91c5c38-cef7-474c-af7c-f28aa5ab0950": {
+      "image": "chris-cariaso.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "36764965-786d-4bce-8dc5-28b418eb2b47": {
+      "image": "chris-daukaus.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "45be406a-baa2-4151-adf7-558b6fad9f29": {
+      "image": "chris-gutierrez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "eb5ca289-2e90-49a0-bfc2-eba9191be0b7": {
+      "image": "chris-holdsworth.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aa6d5c3d-9fac-42fb-adc1-608e73dcb4c0": {
+      "image": "chris-lytle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e3b5cb57-46f7-4e31-b6b6-a069e91e9dda": {
+      "image": "chris-tuchscherer.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d7071350-703c-41ba-9007-2f597aa69dcb": {
+      "image": "christian-edwards.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2cc2b41e-ec9a-4345-b2a6-0deb9c4fc6e0": {
+      "image": "claudia-gadelha.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a0b3dd15-e431-4e58-950f-2619f9f2b244": {
+      "image": "cody-chovancek.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6d99abbd-c61d-4b8d-8e27-e96e5155fd08": {
+      "image": "cody-gibson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4086ed4-788f-4d19-9544-352f5fe59be2": {
+      "image": "cody-haddon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7934b8e6-84dd-4307-b9da-b3a95a8975e8": {
+      "image": "cody-stamann.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4bc3776d-f573-49fe-90cd-ccaec5ad7bce": {
+      "image": "cole-miller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a259015d-1eb4-44ce-9705-a185c13560c1": {
+      "image": "colton-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9622555a-8699-4b06-84c5-347b1224ef5c": {
+      "image": "corey-anderson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aa178280-0f8a-423d-8998-004a73bb1e47": {
+      "image": "cortney-casey.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d072c8c0-be41-4a64-aee6-79d116d11a8a": {
+      "image": "costas-philippou.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "09ffaa3e-b014-4587-99e0-033354bf3d56": {
+      "image": "court-mcgee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a697f4f0-c620-4589-8f02-b9d7aa2dbab5": {
+      "image": "cung-le.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2197ce58-aac1-4022-bc96-0e817bb59e5b": {
+      "image": "cynthia-calvillo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9931000c-7713-42a9-83c3-7e1590d22d30": {
+      "image": "dakota-hope.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "62fd6f68-d260-44ee-b7ea-37155440379b": {
+      "image": "dalcha-lungiambula.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b550443d-cc61-435e-bfb2-67ff7278e7ca": {
+      "image": "damian-rzepecki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "23110ac5-48bb-489e-af52-6bba452b85f1": {
+      "image": "damien-anderson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "175e4364-214d-4dbf-ab4b-208e457dd1a9": {
+      "image": "dan-miller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1b85f593-eab0-422b-a59e-9cd6296db5ed": {
+      "image": "daniel-frunza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "91227db5-8eeb-4a7d-b5ba-930805766331": {
+      "image": "daniel-marcos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f272ec5e-da00-4000-b390-9dc0f134dda8": {
+      "image": "daniel-omielanczuk.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8b77ce92-2b0d-45e2-8988-58850b27c360": {
+      "image": "daniel-pineda.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a11326e1-684d-4a38-9b90-971a99baf52a": {
+      "image": "danny-roberts.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a93f2e2-5bb7-4811-a4ed-c2d335a1ce00": {
+      "image": "darren-elkins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9176df9f-b7c2-43b6-8110-47ae00d81028": {
+      "image": "darren-stewart.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cf560c8e-a930-4be9-afd0-28966c218e27": {
+      "image": "dave-herman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "60b20324-3541-4367-a8c3-e0c2b4786013": {
+      "image": "davi-ramos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8139210c-fdcb-4b98-883c-06e5d9157339": {
+      "image": "delphine-benouaich.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8ae7e948-33ca-4428-a06f-02563c9d7315": {
+      "image": "dennis-bermudez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "209876ea-c581-4bd0-9141-aedcdafe8e29": {
+      "image": "dennis-hallman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f2edf321-b658-473a-b65b-01a2e09e06c0": {
+      "image": "dennis-siver.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e7e1c7be-bc60-479d-a049-a4cd28ec2f9c": {
+      "image": "denzel-freeman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7380767b-cb25-4b41-8fde-2eff6ceb6bdc": {
+      "image": "derek-brunson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ba9483ce-e735-42b8-82f2-469398c43300": {
+      "image": "devin-clark.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9055b587-47d4-48c9-b3d7-61f9ac3bcb8c": {
+      "image": "dhiego-lima.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7c85b3a7-9e78-4fa2-a2df-7d82296ce30c": {
+      "image": "diego-brandao.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1ebd221d-f698-4fe8-9842-6809781f42b5": {
+      "image": "diego-nunes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "63b37800-d7fa-4ebb-b828-cc80007b816b": {
+      "image": "ding-meng.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "887fb757-33d8-4564-bc6e-24e48816661c": {
+      "image": "dom-mar-fan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7fcc96fa-86c8-445d-ac53-517adc0c77a7": {
+      "image": "dong-hyun-kim.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "597dfb03-d655-4692-bc10-e7b3f2c8c95b": {
+      "image": "dontale-mayes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "10c8efa0-f797-49b9-8db0-6d86198ad833": {
+      "image": "douglas-silva-de-andrade.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a5863aef-e790-41f9-9d02-245ea936cf7a": {
+      "image": "drew-mcfedries.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cf1655c2-9f4c-4dad-abd7-16f729806bb7": {
+      "image": "duane-ludwig.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "13e5e219-16a9-4090-874e-82de90387a22": {
+      "image": "dustin-hazelett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1b847000-fa70-48ae-8499-ff2143ecd6f0": {
+      "image": "dustin-ortiz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "21a0e83b-c5e9-434b-a09c-a8b90bacc6c6": {
+      "image": "ed-herman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "04d8b6f3-7df3-43c8-a84d-72fb4a664aad": {
+      "image": "eddie-gordon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0c833b0d-af72-48bb-972c-c5396b5c77df": {
+      "image": "eddie-wineland.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "810eb29d-6c9d-4bdd-8865-cd80814f2404": {
+      "image": "efrain-escudero.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9f915864-4d71-4d08-8581-89ec64a7a502": {
+      "image": "elias-theodorou.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "13648922-39e6-475e-80ab-86ae2d28aa39": {
+      "image": "elisha-ellison.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "308dd0ca-1c31-43e3-9728-4a1027ae66d7": {
+      "image": "elizeu-zaleski-dos-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "36f194da-972e-46a5-b7fc-3baee514f655": {
+      "image": "erick-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "482c161e-def1-4031-ab6a-caace5efe275": {
+      "image": "erik-perez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fdbab7f0-b9db-4148-9069-20bd706d5a51": {
+      "image": "eryk-anders.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7e89368f-1b17-438c-8893-04351474b5c6": {
+      "image": "evan-dunham.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bc60e4ea-b66a-4e87-b4de-d45ded79fb64": {
+      "image": "evan-tanner.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1919fa8f-af49-485e-a9e3-ed417e1c79f7": {
+      "image": "fabia-sintes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "366590ab-0672-4f5e-8611-f3a542ddc1f7": {
+      "image": "fabio-maldonado.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "44ba7164-96c8-414c-8090-8029dd25e6e8": {
+      "image": "farid-basharat.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a9f4f155-3bf5-46ce-ba6f-b59fa26e7dc5": {
+      "image": "farman-hasanov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1ee21529-8e5d-4dcc-b3d1-3271bb87251f": {
+      "image": "felice-herrig.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7819d7a0-840e-4261-afbf-78991ca3e4ee": {
+      "image": "felicia-spencer.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f2e38ade-d20a-459e-bc3b-35bc958069f5": {
+      "image": "felipe-arantes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c23d53a3-954e-4ef4-a480-4b2f31bac7ce": {
+      "image": "francesco-nuzzi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1e84bf32-e169-4b56-aac0-fb28fab35650": {
+      "image": "francis-carmont.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9b581486-7126-47dc-b6ad-225c2f18b730": {
+      "image": "francisco-trinaldo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "108ce8f4-027a-4b16-b722-b223910e21a6": {
+      "image": "gadzhimurad-antigulov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "54b13827-a830-48f6-9295-26b72bfcd436": {
+      "image": "gerard-gordeau.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a206882-1eb3-4bc2-8d21-5fbc63207ea1": {
+      "image": "gian-villante.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "75c38791-4e82-4af3-a5c6-db006ae25e5f": {
+      "image": "gianni-vazquez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "806df07c-ea1b-4725-9708-649bb460dba2": {
+      "image": "gleison-tibau.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1992b69f-28ad-451d-abcf-06a99153158b": {
+      "image": "gokhan-saricam.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "30578e80-2b2b-4cbe-9d1a-101a223ec64d": {
+      "image": "goran-reljic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2b2c2ff-d814-4e83-9255-486975c1057e": {
+      "image": "gregor-gillespie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ce5f62de-44c1-429b-a19c-ed9e912c4f25": {
+      "image": "guram-kutateladze.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7f59d4ee-d8ec-4449-87be-2c5bfc58a1b2": {
+      "image": "hakeem-dawodu.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "20d07fe2-4596-46cc-8fca-a9a35ffa1e09": {
+      "image": "harry-hardwick.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "71706511-31f0-4b24-9593-98cafabc48de": {
+      "image": "hatsu-hioki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d9ce146e-6d4e-4031-81ec-91b3e61d1e86": {
+      "image": "heath-herring.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e08d8d22-1f7a-40e6-ae69-e4b539a11688": {
+      "image": "hecher-sosa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "39087e3c-234a-4ac7-9029-810bc34e74e5": {
+      "image": "hector-lombard.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "80f593e3-7391-4326-87c1-b67434e22d20": {
+      "image": "houston-alexander.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "43c68595-02a0-4805-824c-9c2c1f2bc0e2": {
+      "image": "ian-heinisch.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4c30607e-75aa-4c80-9b2d-816c1a4bdaa7": {
+      "image": "ian-mccall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b97833d6-c35f-444c-ab14-c5bed6af603f": {
+      "image": "igor-pokrajac.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c51ee25f-d412-42d7-8e00-25eca7b320ba": {
+      "image": "ihor-potieria.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d59133d0-eaa9-46de-bf9a-7c47f29cd2ff": {
+      "image": "ilimbek-akylbek.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "05a56e0c-d8a7-46f7-9de1-ec1bb1b01ad6": {
+      "image": "ilir-latifi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1dc8228d-1452-4775-9d2d-9fb9d08f88c3": {
+      "image": "irene-aldana.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d98beb87-3c4b-406b-8799-dafb1805b3e6": {
+      "image": "isaac-thomson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "927b6ff0-81ca-42a4-9291-c07786f7a69d": {
+      "image": "iuri-alcantara.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b3a15623-1c75-4c89-b8ec-b9590e94cd24": {
+      "image": "jairzinho-rozenstruik.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b5e0e903-fa72-42f8-a6d2-5801751462f6": {
+      "image": "jake-collier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a2610508-11fe-4d4f-9ead-6f5349929cf0": {
+      "image": "jake-ellenberger.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3d03bd2b-8651-4ab9-8f23-9f392281ad25": {
+      "image": "jake-hadley.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d432101-8c8d-4d32-a0eb-6a7a43d2a7a1": {
+      "image": "jakub-wiklacz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3ad11bb1-158a-41bd-a673-e1b86392c9ad": {
+      "image": "jamal-pogues.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "999faaf9-034a-4810-98c8-fe0a4f2d1464": {
+      "image": "james-irvin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b926071b-5592-4c0d-a77d-bcd7b02d45a2": {
+      "image": "james-krause.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4e71cd0-194d-4768-b349-569cd125e32f": {
+      "image": "james-te-huna.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e9614022-b74e-461a-9f4a-d3ef33eb4170": {
+      "image": "james-toney.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "135c6d74-d71a-41cf-a55e-64628133e3fa": {
+      "image": "james-vick.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "694c33bc-a455-44f2-9d43-7a9469fd5e28": {
+      "image": "jamie-pickett.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4191e560-f260-4143-a41b-467e3694f86b": {
+      "image": "jamie-siraj.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "489ec9f0-9b01-4518-907e-39666adaa9ba": {
+      "image": "jamie-varner.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8e876c13-aef8-4e97-bd86-a9aec1b0e535": {
+      "image": "jared-rosholt.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2d3bd8f5-7481-4e6a-a471-5f423e3b3e12": {
+      "image": "jared-vanderaa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e90d188d-63e8-4ad8-bc51-1ee000eb6e47": {
+      "image": "jason-macdonald.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6e7f5fb3-3346-4d2f-bb70-a70f1785583a": {
+      "image": "javad-mahjoub.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "436988ec-e5e3-4766-8aff-b60241182ff3": {
+      "image": "javid-basharat.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0ed35de7-f6ef-4609-9f33-4586dc02ca5a": {
+      "image": "javier-reyes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fbfbf382-1fcf-4088-b037-b2c7f3c4e6ee": {
+      "image": "jean-paul-lebosnoyani.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dde4346d-c8f7-4c0a-b304-e515e164c8bc": {
+      "image": "jefferson-nascimento.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "940490d7-7595-4141-be2e-8e035a835e0c": {
+      "image": "jeisla-chaves.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e1e5455b-3d4b-4736-9849-9ce57a41bb47": {
+      "image": "jennifer-maia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "943840bc-33f3-4c32-b693-e7815f64c974": {
+      "image": "jeong-yeong-lee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4a128f43-6ef5-4d99-ae38-238e378337d9": {
+      "image": "jeremy-horn.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "29b2270d-28cf-4d7f-b34f-2ce3ed424ce9": {
+      "image": "jessamyn-duke.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3e6de0d9-9d2b-4e6f-afb0-7bc9d8a83cc8": {
+      "image": "jesse-taylor.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "15e838b3-f129-419e-ba7d-b7c58e46d0ba": {
+      "image": "jessica-eye.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8c506bd6-2b60-421b-bb84-9afc6950dff8": {
+      "image": "jessica-penne.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6b08f073-e1b5-41ef-9900-f8167bf7f93a": {
+      "image": "jessica-rose-clark.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3bb4d2bc-06bd-4fb5-811d-1450b32dff11": {
+      "image": "jessie-rosas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0915a095-6a83-4719-a355-eb294bc54a25": {
+      "image": "ji-yeon-kim.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b2714e75-cec6-4090-81d6-4fcf24418379": {
+      "image": "jimi-manuwa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "502a9bdf-1ba1-4d00-9c2d-e825d96d3c25": {
+      "image": "jimmie-rivera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "15d71726-d2de-47fd-a08a-e1d85de56fda": {
+      "image": "joanne-wood.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c4b7af05-f832-4146-9bba-8adca42d5f6d": {
+      "image": "joe-doerksen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "116f4875-4caa-4a15-88a0-6d01367047d9": {
+      "image": "joe-duffy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cceb7192-fe9b-4a9a-bf9c-173cc3db2a27": {
+      "image": "joe-lauzon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f573625a-7a8a-4f4b-af46-73258da1dbc6": {
+      "image": "joe-riggs.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ecb1f7df-6bae-41c8-9b89-19abba32cb16": {
+      "image": "joe-soto.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c705f322-0cd4-4db8-a5fb-50a9f00e7932": {
+      "image": "joe-stevenson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5529e7cb-966f-4dcf-8ee1-06481a6c7d49": {
+      "image": "joel-faglier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "14742f38-fe0b-4f20-b1ae-9ba1c4d7e3c9": {
+      "image": "joey-beltran.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "653c3036-0d89-478a-8caf-e9bc09495803": {
+      "image": "john-dodson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7a48c6bf-7c29-49d6-9a40-ebc64b2a97da": {
+      "image": "john-garza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f6e35c2d-c80d-4ff4-8f72-11fe90b1bf2f": {
+      "image": "john-hathaway.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "de0f9867-fb22-4a94-9ba5-25dc9e45ad65": {
+      "image": "john-lineker.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5466c84d-8622-4a93-95bf-62597dc64ffb": {
+      "image": "john-moraga.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ec71230b-93e6-45a2-87e2-6c98b5efae36": {
+      "image": "jon-madsen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dd1d676f-b648-43af-b965-f1ca0147ea0b": {
+      "image": "jordan-mein.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e4410d23-5311-46e1-a683-e6d6ff70f7bf": {
+      "image": "jordan-wright.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bdd8474a-a5e5-4c2c-b985-75270f19f4a3": {
+      "image": "jorge-rivera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5ba94cb0-7d50-480f-ac35-32b951b3e25c": {
+      "image": "jose-delano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "00b98d83-54bd-478d-8225-1ec382de6705": {
+      "image": "jose-montanha.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c9487215-6157-4d6d-8e6d-715f9b13da0d": {
+      "image": "jose-souza.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "12eadb75-b757-42db-8eac-51ecb47b5b8b": {
+      "image": "josh-fremd.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e88ee28f-6538-4f39-bb5f-31cfa7f3ad13": {
+      "image": "josh-neer.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "138ae5ec-1ef6-4c54-a4a7-d38f5297ef74": {
+      "image": "josh-parisian.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "984b54e7-a7c5-4432-8e19-07bfef9a8583": {
+      "image": "josh-thomson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bd494bbe-c128-4a91-8dde-5c0a5f6b43f9": {
+      "image": "josiah-harrell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "26cb77a5-0ab6-4480-865d-2f935d5b7c7e": {
+      "image": "josias-musasa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "347382f3-c222-4495-aaaf-1ad1a9bfc279": {
+      "image": "jovan-leka.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "906aa9b8-e132-494b-a6b6-6cdd7966dc80": {
+      "image": "juan-diaz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c23d7973-cec1-4197-9f5f-89e273053af7": {
+      "image": "juan-espino.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5e5c3061-d798-46ea-9c2b-a61b6aa60566": {
+      "image": "julian-marquez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ae33c3dd-37d1-4a9a-8f66-e897daf4ccb5": {
+      "image": "juliana-lima.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1d0f1d2f-b727-4781-8880-3038d7d7a160": {
+      "image": "julien-leblanc.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7f1a6e73-1727-4d3d-8ed4-eb86107275e6": {
+      "image": "julija-stoliarenko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cc5bfb7c-6b5f-45db-b7ac-ff9787b6c7bf": {
+      "image": "jussier-formiga.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "264d48c2-660d-4f1a-8b00-6ff62106738f": {
+      "image": "justin-ledet.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db90a8a1-2ac4-4317-876a-961d8bcc4e26": {
+      "image": "justin-scoggins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5e2956bd-6454-47b6-aa45-79e78d5ce268": {
+      "image": "justin-tafa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2928c8c6-92c9-40fb-9363-7c8157423630": {
+      "image": "justin-willis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cf22ff5c-911a-4623-b0f6-db9d824212c2": {
+      "image": "kanako-murata.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1e786baa-6912-4760-babb-a38a26ca1c69": {
+      "image": "karo-parisyan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cc1b611f-0cc2-4852-b557-50ee20401a2a": {
+      "image": "katlyn-cerminara.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7618f339-822f-4435-a6f1-127c5b670010": {
+      "image": "kazuki-tokudome.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "def26caa-7e4c-46f6-996c-ab249edb532b": {
+      "image": "keiichiro-nakamura.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d577c49a-f691-45ce-bef5-76bc79d1ac6d": {
+      "image": "keith-jardine.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1b0d2bb0-3519-42a6-aae4-f42c42f18d45": {
+      "image": "kendall-grove.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c3e2486b-5204-4da1-afab-1c915a6aed5d": {
+      "image": "ketlen-vieira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "972e34bf-b5c9-48be-ab39-2c1f6ef9c595": {
+      "image": "kevin-christian.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "36cdcec9-60f1-4bdb-803f-a81682ca5a92": {
+      "image": "kevin-lee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4d57939a-d592-450f-90cf-8d2b9513dbf5": {
+      "image": "kj-noons.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "54644756-5fc5-4c64-b22d-686610f40296": {
+      "image": "kron-gracie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5564b5b3-f3a7-4280-af56-1b8df9cf0886": {
+      "image": "krzysztof-jotko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e4b9ff7a-0990-4bae-895f-6dad9283913f": {
+      "image": "krzysztof-soszynski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ffcdc2b5-6c23-405f-99e4-3e110c16a679": {
+      "image": "kurt-pellegrino.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "df75cf25-bec7-40eb-a8ac-61bd3175efce": {
+      "image": "kurtis-campbell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "38ea6567-bc20-4ae6-b7db-d03c5f2eeda0": {
+      "image": "kyle-kingsbury.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "450602a5-df6d-40b0-8fba-221410eea10e": {
+      "image": "kyle-nelson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a15135ba-bf7a-435d-8692-4abfd69e128b": {
+      "image": "lance-gibson-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8697cfae-b2f3-4af9-932f-d52e6e44d45c": {
+      "image": "lando-vannata.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "67b26db4-a553-4471-aff3-374f17c2035d": {
+      "image": "lauren-murphy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0c7419f2-aed3-4652-b608-d1d43840b6ba": {
+      "image": "lavar-johnson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "87f79320-d1b2-4685-ba4c-ab7971fc9dc8": {
+      "image": "lawrence-lui.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1eb16e91-dd7b-4345-88e4-c0573c93b579": {
+      "image": "leon-shahbazyan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4ce3fd85-980f-4edf-b1eb-c36649635c7e": {
+      "image": "leonard-garcia.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3f1a8e2b-daef-4531-a621-b912e9b2ec5a": {
+      "image": "leonardo-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3896d5a4-c278-4443-8676-b970603005e5": {
+      "image": "lerryan-douglas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e5e792d9-5338-48db-b659-a5dbf320a0ba": {
+      "image": "leslie-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ae81bf09-ff4f-4bd3-9453-0cdbf95d0ff5": {
+      "image": "levan-chokheli.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e89887ce-c0aa-49c2-9c66-9b20825329c4": {
+      "image": "levi-rodrigues-jr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "728e9a0d-d074-4bf3-8ee0-97ed601b5071": {
+      "image": "li-jingliang.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6a4ef128-75bd-4188-a2d8-e2cd255327a4": {
+      "image": "lina-lansberg.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c930cd86-3125-4b4f-8197-7a52e371f8b2": {
+      "image": "liu-ce.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "aa7c041b-9614-4cd0-bc69-9f1cd6b67fb6": {
+      "image": "lorenz-larkin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "77dc9d00-349f-4d56-9ad2-718fd651756f": {
+      "image": "louis-jourdain.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "65a60970-4d11-45dc-a25e-0cb07c0c065b": {
+      "image": "louis-smolka.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "42a08cff-677e-4a1f-a07e-6b125e3bebb4": {
+      "image": "lucas-armand.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0805afef-c26f-4521-8fe4-f010bad837aa": {
+      "image": "lucas-brennan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2a04d57-e951-4163-8ced-dc57a8b81047": {
+      "image": "lucas-fernando.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "73928688-1389-4350-8f53-32cb35011971": {
+      "image": "lucas-rocha.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8323b8ce-1769-47b2-a878-15de40cfe7b1": {
+      "image": "lucie-pudilova.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3ede3b3f-4ed3-469a-a754-18f6947afb6e": {
+      "image": "luis-felipe-dias.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b37bb82c-eb0f-4e8d-b00f-e5f6640f1b91": {
+      "image": "luis-hernandez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f6bc5429-a5e4-47f4-8adb-0f359429702b": {
+      "image": "luiz-cane.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fafc418c-ace9-4360-a460-c36a54864605": {
+      "image": "lukasz-brzeski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "11c4d2be-cf3b-4f5d-a9eb-761a3207ac43": {
+      "image": "luke-fernandez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fccaea84-004b-4eb6-b749-3db9993f4a5e": {
+      "image": "lyman-good.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d4d318a9-3976-4374-81fd-09c2536b0868": {
+      "image": "mac-danzig.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1af97083-89b8-48ff-9c33-7302cc2fd7c8": {
+      "image": "mackenzie-stiller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b66e94fe-8f68-4a38-8bcb-9dd38d931120": {
+      "image": "magomed-mustafaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1ad2b6ff-70ac-4638-b925-adc050c9e8ca": {
+      "image": "magomed-tuchalov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e7fb56b6-7eb5-4e36-b2a9-e66d5d388fde": {
+      "image": "magomed-zaynukov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f2754245-5d28-4a5a-a4e0-af8ed3da5317": {
+      "image": "mahammadali-osmanli.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "781af881-abe7-485a-b12a-735fc416313f": {
+      "image": "mairbek-taisumov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0329098b-895f-419f-a426-d43d7f5b19c7": {
+      "image": "makhmud-muradov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3fe76513-3a91-4611-b26d-c5427bfa3a2a": {
+      "image": "makwan-amirkhani.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6d0f2889-3127-44a5-8192-95daf2e5893c": {
+      "image": "malcolm-gordon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4aeaf20d-9801-446f-ba0d-a1625a79f053": {
+      "image": "mandel-nallo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a4db5b4-e355-4470-a8a0-7c65d6cce647": {
+      "image": "manolo-zecchini.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d714fa75-e560-451d-9c52-8a40505b8f81": {
+      "image": "mantas-kondratavicius.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "652bc7f5-c2ba-4d7e-a538-ea6521d59fe9": {
+      "image": "marc-diakiese.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e965c7cd-d2c7-4111-8fab-2f539614d740": {
+      "image": "marcin-prachnio.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ca16b864-ddb9-4dbe-acbb-f214f581854b": {
+      "image": "marco-ruas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "63178b72-4288-45b2-aec3-27d456f3ad5d": {
+      "image": "marcos-rogerio-de-lima.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2be4e072-1bb7-4a0c-b0f0-14658b2a55ff": {
+      "image": "marcus-davis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "82741f9c-de64-4f9a-b43c-938bd2eff04a": {
+      "image": "marina-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b1518a49-9c72-42c0-a18d-1e09283e00d3": {
+      "image": "marion-reneau.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bc50d4c4-86a3-4e0d-94f7-7cec4b500f8a": {
+      "image": "mariya-agapova.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "77f79888-369e-46ed-a034-8327cb44bd84": {
+      "image": "mark-choinski.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bc40871c-f8b0-4ec5-a8a3-5a9964f5ed96": {
+      "image": "mark-godbeer.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9e75ed0c-a219-4e22-88dd-f0904766af16": {
+      "image": "mark-hominick.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b4413b8d-6dee-4eaa-add5-04c052473457": {
+      "image": "mark-madsen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4b8e5ada-0ea6-4fea-b45b-d70ea08fa088": {
+      "image": "mark-munoz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9cfe9dcf-2348-4e03-94aa-decf36572f0d": {
+      "image": "mark-vologdin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6fd19ad1-d918-4c2f-9ab1-ec1f3ac4e76c": {
+      "image": "marlon-moraes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d19242cf-f57d-4165-a095-342dfb104093": {
+      "image": "martin-buday.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2ea9113d-8b30-405e-be6c-e00068eb0076": {
+      "image": "martin-kampmann.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "46098972-df68-4ff9-9e9b-7e82cfb0dc2f": {
+      "image": "maryna-moroz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6be28b1b-3d41-4774-b361-13384663ab0d": {
+      "image": "matheus-nicolau.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b3393c9d-2427-436d-8485-254d3c2e7e40": {
+      "image": "matt-brown.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3543a1c5-90f7-42f2-96ee-8a48578c9bb0": {
+      "image": "matt-hamill.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d3e9db17-cc53-4635-8243-f82c233499c0": {
+      "image": "matt-lindland.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "76567d57-2f98-4848-b7a4-5e08b298fe1c": {
+      "image": "matt-mitrione.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "199718f0-001f-4d5c-9651-cef36ed6169d": {
+      "image": "matt-schnell.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a1397419-7338-4446-b6ee-500d4712523e": {
+      "image": "maurice-greene.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8239626e-0ed7-4639-9829-6d5e5c24ddfd": {
+      "image": "maurice-smith.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "cd285f3d-8df9-402a-9534-bef207569aa5": {
+      "image": "max-gimenis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "19d48e6b-3705-4779-a4e8-057fc7612c28": {
+      "image": "max-griffin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1915478f-fd85-4bd7-bda9-5c3b34c6dffa": {
+      "image": "mayra-bueno-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "709d7939-001d-4826-909d-647e31674fa7": {
+      "image": "megan-anderson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2a5213a-9fa5-4bc6-aca7-c107aa02fcae": {
+      "image": "melissa-amaya.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a0a84f0b-7e4d-46b6-b53c-afba05703fcc": {
+      "image": "melvin-guillard.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "89827af3-29da-4b49-9004-7ecc5b9e42c9": {
+      "image": "michael-aljarouj.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7d86e32f-eff5-4249-bcee-3073289220ae": {
+      "image": "michael-chiesa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0e5f91eb-555b-4967-a0aa-2e32078c324e": {
+      "image": "michael-mcdonald.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0b02b76f-8445-470c-b7b0-69a6eaa5e953": {
+      "image": "michael-oliveira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "11bf823d-d3d1-4d3e-9abb-bd487493f76f": {
+      "image": "michel-pereira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2a6e63b1-d09b-44c7-9782-972c8e1b44c9": {
+      "image": "michelle-montague.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "35b7e176-95ca-4f18-971f-b30cf057f26f": {
+      "image": "michihiro-omigawa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3cb5aa88-91e3-465d-8afb-fc107cadba8d": {
+      "image": "mickey-gall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5f0cde54-4900-439c-b545-d68424c449ff": {
+      "image": "mike-brown.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b1e55dd5-6832-40c1-90fe-336e834bd16a": {
+      "image": "mike-kyle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c19b16d1-3107-4f41-b8e1-ea0ffbf4d3a2": {
+      "image": "mike-pierce.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "df252bf9-6d57-41d5-95b1-73db6ec4b4c1": {
+      "image": "mike-pyle.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dca8d34e-a67e-46a7-a8dd-b60d404209b8": {
+      "image": "mike-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "350b7eea-fc18-432d-89b2-102d274514f9": {
+      "image": "mike-russow.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "99bd1bf8-b7a2-4bc0-81fc-d3c1f59f2e79": {
+      "image": "mike-swick.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4325f48a-2667-4694-a4f1-cc14b83e1091": {
+      "image": "miles-johns.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b23a221e-1bd0-4b13-9682-db746ec0007e": {
+      "image": "milos-janicic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4fe41f60-608a-4ded-b702-6da2c69b3783": {
+      "image": "mirsad-bektic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9185c774-6def-4fc9-904b-3ede5fd84928": {
+      "image": "misha-cirkunov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1707ad43-f458-4b72-8d0c-e4d507c362e2": {
+      "image": "mitch-ramirez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b5a789ad-1617-47da-b4cf-5be3d34e6f61": {
+      "image": "mohammed-usman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bbc21e87-6e5b-484b-b6ee-1a59d3f00204": {
+      "image": "molly-mccann.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f6aa44d4-0a78-49d8-aa13-8ccbbc00b56e": {
+      "image": "montana-de-la-rosa.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "40529599-1815-408a-8e13-1d572d856e91": {
+      "image": "morgan-charriere.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b889d6cc-9e75-4799-b42e-87a01c9f67f1": {
+      "image": "muhammad-mokaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4582ca03-5b0c-449d-9fad-8f7ca248fd3e": {
+      "image": "murilo-bustamante.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "344cacbf-a33f-485f-9a0d-433ce52a28f7": {
+      "image": "namsrai-batbayar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d50a2cde-eeee-4b27-ac8f-118bf05406a9": {
+      "image": "naoki-inoue.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fe6b0713-f91b-4c89-ae2f-bbfae19cee0b": {
+      "image": "nate-landwehr.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "369d4f6d-8211-442b-8063-4884e3604485": {
+      "image": "nate-quarry.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3a2e21e4-7aec-411a-8b1c-68455b5b1e3e": {
+      "image": "neil-seery.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2c47958a-549c-4e2a-95cc-5a85a251c8be": {
+      "image": "nicco-montano.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c873c697-620b-407c-92f1-cd2eb251274e": {
+      "image": "nick-galanti.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3064380f-8755-4673-a226-f42bceea741f": {
+      "image": "nick-klein.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "59b88014-8082-4e30-bb7c-04d0f6b92194": {
+      "image": "nicolae-negumereanu.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a77b335-34d4-490b-9bda-673f15b059b8": {
+      "image": "nik-lentz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bc9c71bc-eec3-446e-bdba-3f117f89cf81": {
+      "image": "niko-price.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9a5875ac-dec5-4a7b-bbf5-2b0b525c412a": {
+      "image": "nilson-rojas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0f342172-0296-46aa-9bb7-85b1a80f013d": {
+      "image": "nina-milosevic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3a95fadb-fa3c-4e74-9fe7-21c079b3e48e": {
+      "image": "nina-nunes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "65b366d5-4cb8-4ce7-91b1-84cc14410e35": {
+      "image": "noah-gugnon.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "4bae7ff3-27ca-4e9f-b30f-631c9e075033": {
+      "image": "norifumi-yamamoto.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b974f276-676b-40ed-bacc-1d3d636067ce": {
+      "image": "oleg-taktarov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5da1fe28-55fc-4235-9318-9845715d3dd4": {
+      "image": "olivier-aubin-mercier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8921a07e-aed7-4854-ae5b-1d2bf6882af3": {
+      "image": "ollie-schmid.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "21f6ca57-cbee-4535-a230-c52504f67508": {
+      "image": "omari-akhmedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8c5cd14f-4622-428c-a9ee-ede9dc3bea1b": {
+      "image": "otari-tanzilovi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "77428cee-b38d-40af-9061-cf2505c2dc68": {
+      "image": "paddy-holohan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d01568be-8fe0-403f-a7c3-af49706efe12": {
+      "image": "pannie-kianzad.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2e72e075-0cc7-4b29-a82f-872b6159e973": {
+      "image": "parker-porter.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6ba27205-31be-4fc8-9161-4963e300d7f8": {
+      "image": "pat-barry.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "932a694b-1f61-4ffd-bfc7-22146bf90b69": {
+      "image": "pat-healy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "efdf687b-db78-43ed-9658-80fccc0d75b9": {
+      "image": "pat-sabatini.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b283a96c-130f-4020-9203-1ec82f31ddc1": {
+      "image": "patrick-cote.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a63e846a-a9a4-4287-a1f0-c67ecda104f2": {
+      "image": "patrick-cummins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dbdcdcc1-8063-4f87-8d98-350c30e208cf": {
+      "image": "paul-craig.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0e0d3bb8-19b1-46c7-9089-e1868287ab72": {
+      "image": "paul-felder.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "54cf1a5b-beeb-425f-985f-47954193e4f5": {
+      "image": "paulo-thiago.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0920a854-92e6-4ccb-a92e-fe90639649e9": {
+      "image": "pavel-andrusca.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "83a0151c-d435-4599-a1ac-7d9df67dafc4": {
+      "image": "pedro-munhoz.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "df25f370-62a3-4784-bb23-8a57ba0b02f0": {
+      "image": "phil-baroni.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6d4b0e18-aab1-4b66-aebf-e5b37698d554": {
+      "image": "phil-hawes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8fa20acb-ef0d-4ab4-a8e1-5c4d14782203": {
+      "image": "phil-rowe.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0dfa9c19-3689-4150-92ee-91903ee0d83c": {
+      "image": "philipe-lins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "29552451-9a6f-42a7-ba8c-380292ae77ec": {
+      "image": "poliana-botelho.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d5e9390d-a62c-4596-a05b-b03c350d643a": {
+      "image": "puja-tomar.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5a0e46e8-bf80-47ec-b614-30d92ad618d9": {
+      "image": "rachael-ostovich.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "16cf2543-69cb-4512-9f85-627cc45ad6c6": {
+      "image": "rafael-cavalcante.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a0112278-cfb3-4333-af7a-71fff2a525da": {
+      "image": "rafael-natal.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "51aefa3d-73a2-4d14-889d-5499c679f252": {
+      "image": "rafael-tobias.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7e3d89cf-1e3f-4f88-984b-9a86320c2c0b": {
+      "image": "ramazan-emeev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "de9ab5fa-de97-4fe3-a2fe-7a4805bd586b": {
+      "image": "ramon-taveras.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dc8618fe-fbec-45dc-bee1-a87e7c0ff1cd": {
+      "image": "randa-markos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d3c8bfe8-a58e-4044-b638-ba655a71deb2": {
+      "image": "rani-yahya.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "11a96e99-85f7-48a3-bddf-3b700897bf52": {
+      "image": "raphael-assuncao.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d332904-ede5-44d2-9cef-a853bba09ce9": {
+      "image": "rashid-magomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e4db5666-8b47-45f3-b770-22df03693967": {
+      "image": "ray-borg.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "10727312-a562-4566-b71e-4b2fa621b145": {
+      "image": "rayanne-dos-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "06398e65-5e45-4f91-a07a-f2a504e19641": {
+      "image": "renato-sobral.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "43d92cd6-b6af-4bad-a41b-4df033ac9417": {
+      "image": "renzo-gracie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ad8994bd-a5ab-41d4-9a2d-44d64c43bec9": {
+      "image": "ricardo-almeida.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8018492b-02f2-45e9-8455-5807f23541bf": {
+      "image": "ricardo-lamas.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "747d4c1e-906c-4d3f-9aeb-f32d2317654d": {
+      "image": "ricco-rodriguez.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8582a16a-ce42-4c00-9db1-9f6a298a80fe": {
+      "image": "rick-story.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fbd86aff-f23c-46a7-bc45-fafc72ce4bdd": {
+      "image": "rinat-fakhretdinov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "daf614bc-6a47-4502-b2b6-6700c1c63261": {
+      "image": "rj-harris.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d622025c-548f-4413-beca-afba000c84bc": {
+      "image": "robert-ruchala.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a91a541f-8539-4785-aaa7-aed9f525047d": {
+      "image": "roberto-romero.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "74b2861a-aaa1-4f9b-8a57-297069964318": {
+      "image": "roberto-soldic.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "3c8b369b-d2f3-4dee-add4-273497395369": {
+      "image": "rodrigo-nascimento.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f8df8ecb-9dd2-48db-86fd-3fb166780fc2": {
+      "image": "rodrigo-vera.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c85a6d39-4480-4d84-b8f2-385f53f25c77": {
+      "image": "roger-gracie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "74932da2-5af8-4f62-9804-ab0669016313": {
+      "image": "rogerio-nogueira.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "898d4fdd-b458-4a4d-b886-ffd4a18a9085": {
+      "image": "ross-pearson.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c192d94f-8561-4e84-8f5a-d3a94323796a": {
+      "image": "rousimar-palhares.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "851716a8-ee2f-4255-a159-a48352a5e02f": {
+      "image": "roxanne-modafferi.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "775b7ecc-91e9-4b23-a422-0919cb45a37d": {
+      "image": "ruslan-magomedov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6b8f751e-d742-4324-9d69-52d3b8d38a04": {
+      "image": "rustam-khabilov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6041dcc2-435c-43e7-9bdc-b5da5310a114": {
+      "image": "ryan-benoit.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c86f7d25-0803-46e0-8b1a-037c21850351": {
+      "image": "ryan-couture.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "abdc6bcd-617f-4ea6-b4cd-c6615f5d5ed3": {
+      "image": "ryan-hall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e12f8a2c-2239-4b54-9fcf-e8209a32c3b8": {
+      "image": "ryan-jimmo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "75cfb6a0-7a4e-4d34-8285-3d56cf354c14": {
+      "image": "ryan-kuse.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a63a8136-2efa-42bc-9eb4-fd70b877434e": {
+      "image": "ryan-laflare.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f0bb3420-d94a-40f9-9054-9dfd5f5fc664": {
+      "image": "sam-alvey.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "71058c5f-6d08-442b-be58-625f8191702d": {
+      "image": "sam-stout.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5be34fdf-fb7d-4ff7-a6eb-002c7adac6d3": {
+      "image": "sarah-kaufman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "dc8170c0-be6b-49d6-a3d3-b48bedaf9068": {
+      "image": "saygid-izagakhmaev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "82b132eb-0c4f-4d8c-9cea-cd0e9918b19a": {
+      "image": "scott-jorgensen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c3901255-f390-4b5a-af01-8e5070298bc1": {
+      "image": "sean-king-iii.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "93e57cdd-fe48-48fa-9615-8d914543f7d1": {
+      "image": "sergio-moraes.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c437caa1-d82f-467d-8010-4eeff8919f43": {
+      "image": "sergio-pettis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "2408b0d1-3d4f-46c6-a1a5-bd05e0d77a4d": {
+      "image": "shamil-abdurakhimov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "df3df030-9c4b-49bd-a6dc-c3c0efd45ff9": {
+      "image": "shane-burgos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8a406dfd-4170-4235-91a2-2fb3802a8d8f": {
+      "image": "shane-collins.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b43dbfd4-a03f-4b1b-809f-e851d3d9ddcf": {
+      "image": "shane-roller.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b12b6f27-e9df-4b06-b541-10d5b7f90789": {
+      "image": "shawn-jordan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "c7e8c751-61ba-47ce-bed8-469aff5e5ea6": {
+      "image": "shayna-baszler.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f36ff03d-deb7-4cbb-8008-7405318970fd": {
+      "image": "shi-ming.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "af1cfb7b-caae-4d75-97ab-d7fad96f3b50": {
+      "image": "sijara-eubanks.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5d617d58-e3d1-4a06-ab68-83eb7a75525a": {
+      "image": "siyar-bahadurzada.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5145f718-931c-4e44-bba0-397ab6ab46bb": {
+      "image": "soa-palelei.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "961a0afb-9ff8-4315-b814-21f9c547f53b": {
+      "image": "sofia-montenegro.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "542ea1bd-3df5-43ce-9692-39b56c0d7c20": {
+      "image": "song-kenan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8b2efe7e-843d-434e-932e-0722e3187cb7": {
+      "image": "spencer-fisher.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "661df011-06e7-4993-ac9a-2bd828464c3e": {
+      "image": "stan-dorsainvil.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "42f27389-c6f0-4eac-ae46-3222c91fe60c": {
+      "image": "stefan-struve.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "35decd65-2983-4842-b0aa-821a905b3dc7": {
+      "image": "steven-koslow.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1b34d58b-7bc1-46ac-b0b3-90c2713b2ffa": {
+      "image": "steven-nguyen.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9dd695ed-edf1-44cc-b73c-65d48f83bdc8": {
+      "image": "tae-hyun-bang.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "eca5811b-6e84-4358-8d3c-b8a8764ebcd3": {
+      "image": "tahir-abdullayev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9f33d327-04cc-462a-b00e-31c29337dd1f": {
+      "image": "taila-santos.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d4306b37-5012-41b3-8b5b-5ad26f51f171": {
+      "image": "taiyilake-nueraji.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "88da7275-123a-490a-ac53-370f8444aa77": {
+      "image": "takeya-mizugaki.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "19c40443-6b8d-4ea8-98e4-deae4054baa2": {
+      "image": "tarec-saffiedine.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "db93ceb2-8396-4dc9-9e4e-5dd9863f8fe4": {
+      "image": "tecia-pennington.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8c98f194-53a2-4f78-9067-5fee6b1d17d5": {
+      "image": "tereza-bleda.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b8b59713-aade-46ec-a0bf-f26a3cfc1bc9": {
+      "image": "terrance-chatman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "536196a8-488b-4c93-b84b-5ec819ac2993": {
+      "image": "thales-leites.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "b2b09fa0-4fff-49bb-b20c-3dafeccf3cdb": {
+      "image": "theodor-berggren.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "d75217c0-f0db-458b-903f-91a34b371de3": {
+      "image": "thiago-moises.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "830dd45a-7c52-4637-a34b-5a241922b127": {
+      "image": "thiago-silva.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "61b1f527-becf-48f7-90b0-16598aa75e4c": {
+      "image": "thomas-almeida.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7671ffaa-b827-4657-b0da-d54f1233e4d4": {
+      "image": "tiequan-zhang.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "626ae7b9-e8f4-44e4-bae2-8ff50cb1782f": {
+      "image": "tim-boetsch.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "57d2e970-5863-4ce0-bb58-606bb8025895": {
+      "image": "tim-kennedy.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ab41fab5-819a-40a5-bb64-c648ccfcf756": {
+      "image": "tim-means.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0385ee55-b8fe-4754-a361-ffb9bc531597": {
+      "image": "tina-black.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "0dd349b5-77b4-4060-a94f-70882c81f15b": {
+      "image": "todd-duffee.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "96c850b4-17de-4b29-b2d7-588d80fac40e": {
+      "image": "tom-lawlor.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "37fd7b70-fa6b-446e-a399-f152e6142c3e": {
+      "image": "tonya-evinger.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9e1a8403-c8c9-4a4a-bb93-abcd5092d2ea": {
+      "image": "torrez-finney.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e2db1b0f-991f-4920-a4c3-0dc22f01b83e": {
+      "image": "treston-vines.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "8eeed76b-17bd-4557-be72-8fd2c56950d0": {
+      "image": "trevin-giles.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ce3afe5f-7996-4b90-bbfc-32f32e67cec7": {
+      "image": "tyrell-fortune.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7d0cc143-a1e8-495f-8188-598b2db30300": {
+      "image": "tyson-griffin.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "18b56979-b1e9-46f9-ac10-5d78bf64b5d7": {
+      "image": "tyson-nam.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ac6d66c8-ee41-4b8e-b246-9f1d4dbaa1f5": {
+      "image": "tyson-pedro.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "bf7f9019-fea3-4a6b-b3be-98c6ba918978": {
+      "image": "uran-satybaldiev.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "6b498a93-7c34-4b44-9914-d4fdc480debd": {
+      "image": "uriah-hall.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "446b5f20-9687-4a85-9bdb-acf22b9704ff": {
+      "image": "valerie-letourneau.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "fed36f51-b8a1-409f-8729-8aa1152f1c43": {
+      "image": "vitor-miranda.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e708b2f6-b148-4f2e-a195-6df69d94fdce": {
+      "image": "viviane-araujo.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "06c4afc6-ca56-4171-8f3f-b4fe8b13914a": {
+      "image": "vladimir-matyushenko.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9dd3493f-9d6a-4235-b6c5-fbf0dafe3e60": {
+      "image": "volkan-oezdemir.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "f89d5ba9-7c9f-4362-af96-913bd0874372": {
+      "image": "walt-harris.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "74ab02dd-3bda-4347-aec3-ac0424a43daf": {
+      "image": "warlley-alves.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7c6dc25b-7fd0-4978-9d72-b3d8e46e2542": {
+      "image": "wellington-turman.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "57161aa6-62d8-40df-8dc1-9dcd60edde95": {
+      "image": "wilson-reis.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "ca08cc80-6e04-41e5-aebc-52878c1b2856": {
+      "image": "wu-yanan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "e8c27cb0-cd74-4c49-946b-328cfd51333f": {
+      "image": "xiong-jingnan.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "a14a9425-8eed-4aef-8196-560e4b25fd9d": {
+      "image": "yoshihiro-akiyama.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "7524cbeb-6bf0-4112-8b35-aaddde09beab": {
+      "image": "yuneisy-duben.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "1a231940-6d41-4641-b9f7-31143d35eb8c": {
+      "image": "yushin-okami.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "77c6630f-1282-44f3-a267-c133dbbdb8b0": {
+      "image": "yves-edwards.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "5aaab383-6610-4113-8ede-b70cdb6322ec": {
+      "image": "zabit-magomedsharipov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "873031ad-1bfe-40c6-9730-be0c37ea0942": {
+      "image": "zak-cummings.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "be142f18-5958-48d9-903e-984331e45f86": {
+      "image": "zane-frazier.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "efd933ed-33d8-4b02-b320-c26ccf58cfd9": {
+      "image": "zhu-kangjie.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    },
+    "9b0a0a39-fa4d-4f15-afea-5cff13573d36": {
+      "image": "zubaira-tukhugov.png",
+      "image_credit": "Illustration: UPSET",
+      "image_kind": "illustration"
+    }
+  }
+}

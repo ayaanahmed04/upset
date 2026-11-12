@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-06",
+  "identity_basis": "Saved provider histories, known linked opponents and search-indexed official UFC results; direct UFC fetch blocked. No name-only merge.",
+  "identities": [
+    {
+      "identity": {
+        "upset_fighter_id": "c8833bb7-7f48-45e4-99a7-12c3a52b66a2",
+        "display_name": "Gable Steveson"
+      },
+      "provider_link": {
+        "provider": "cito",
+        "provider_fighter_id": "0627d23e-7e8b-4eac-af5d-9b459b712e66",
+        "upset_fighter_id": "c8833bb7-7f48-45e4-99a7-12c3a52b66a2",
+        "evidence": "{\"basis\": \"reviewed public profile ID and dated matchup with existing linked opponent\", \"bout_id\": \"118c25bda9392140\", \"cito_fighter_id\": \"0627d23e-7e8b-4eac-af5d-9b459b712e66\", \"event_date\": \"2026-07-11\", \"expected_history\": [{\"bout_id\": \"118c25bda9392140\", \"date\": \"2026-07-11\", \"method\": \"KO/TKO\", \"opponent\": \"Elisha Ellison\", \"outcome\": \"win\", \"round\": 1, \"time\": \"2:31\"}, {\"bout_id\": \"cryptocom-ufc-331-jsonapi-11\", \"date\": \"2026-09-19\", \"method\": \"KO/TKO\", \"opponent\": \"Sean Sharaf\", \"outcome\": \"loss\", \"round\": 1, \"time\": \"0:12\"}], \"history_sha256\": \"c444837a4b4e103ec0bbe8bc0c02133185b7de2aec4f42786477d08b16a54f05\", \"name\": \"Gable Steveson\", \"new_upset_fighter_id\": \"c8833bb7-7f48-45e4-99a7-12c3a52b66a2\", \"observed_at_utc\": \"2026-10-01T03:57:04.927348Z\", \"opponent_cito_id\": \"d26bbb5b-b9ea-414e-9efd-29c90828e652\", \"opponent_name\": \"Elisha Ellison\", \"opponent_ufcstats_id\": \"87e4a3a5080ee7ce\", \"opponent_upset_fighter_id\": \"13648922-39e6-475e-80ab-86ae2d28aa39\", \"public_bout_url\": \"https://www.ufc.com/video/158290\", \"public_clock_note\": \"UFC debut video lists 2:31; prelim/scorecard text lists 2:32. Saved source clock 2:31 is preserved. Identity evidence does not resolve every source clock conflict.\", \"public_evidence_is_result_verification\": false, \"public_evidence_reviewed_date\": \"2026-10-06\", \"public_identity_sources\": [\"https://www.ufc.com/video/158290\", \"https://jp.ufc.com/news/cryptocom-ufc-331-van-vs-pantoja-2-official-scorecards\"], \"public_profile_url\": \"https://www.ufc.com/athlete/gable-steveson\", \"public_source_state\": \"search-indexed UFC athlete fight histories; direct fetch unavailable\", \"source_url\": \"https://api.citoapi.com/api/v1/ufc/events/ufc-329/bouts\", \"upset_fighter_id\": \"c8833bb7-7f48-45e4-99a7-12c3a52b66a2\"}"
+      },
+      "profile": {
+        "champion_status": null,
+        "date_of_birth": null,
+        "division": null,
+        "height_inches": null,
+        "name": "Gable Steveson",
+        "reach_inches": null,
+        "source": "cito",
+        "source_fighter_id": "0627d23e-7e8b-4eac-af5d-9b459b712e66",
+        "source_fighter_slug": null,
+        "source_url": "https://www.ufc.com/athlete/gable-steveson",
+        "stance": null,
+        "status": null,
+        "upset_fighter_id": "c8833bb7-7f48-45e4-99a7-12c3a52b66a2",
+        "weight_lbs": null
+      }
+    },
+    {
+      "identity": {
+        "upset_fighter_id": "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351",
+        "display_name": "Salahdine Parnasse"
+      },
+      "provider_link": {
+        "provider": "cito",
+        "provider_fighter_id": "1e39b040-9955-400e-a1c8-8ccb6bf29fcd",
+        "upset_fighter_id": "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351",
+        "evidence": "{\"basis\": \"reviewed public profile ID and dated matchup with existing linked opponent\", \"bout_id\": \"bba8c0ab999b9e6f\", \"cito_fighter_id\": \"1e39b040-9955-400e-a1c8-8ccb6bf29fcd\", \"event_date\": \"2026-09-05\", \"expected_history\": [{\"bout_id\": \"bba8c0ab999b9e6f\", \"date\": \"2026-09-05\", \"method\": \"KO/TKO\", \"opponent\": \"Dan Hooker\", \"outcome\": \"win\", \"round\": 1, \"time\": \"2:35\"}], \"history_sha256\": \"cd99feb4b9d24afc7129f4e356ed382869f31ac4a4c5c563917392f1033b6ac9\", \"name\": \"Salahdine Parnasse\", \"new_upset_fighter_id\": \"f9ea8a84-55f1-4c5f-be9e-407e9aa4c351\", \"observed_at_utc\": \"2026-10-01T04:02:20.829782Z\", \"opponent_cito_id\": \"8a873ec7-e6bc-4a08-8977-124e8c6291c2\", \"opponent_name\": \"Dan Hooker\", \"opponent_ufcstats_id\": \"193b9d1858bc4df3\", \"opponent_upset_fighter_id\": \"051fb686-c3ed-4b06-89eb-5cf09bf89077\", \"public_bout_url\": \"https://jp.ufc.com/news/ufc-paris-official-scorecards-hooker-vs-parnasse\", \"public_clock_note\": \"UFC scorecard and saved source list 2:35; UFC main-card recap lists 2:25. Saved source clock is preserved.\", \"public_evidence_is_result_verification\": false, \"public_evidence_reviewed_date\": \"2026-10-06\", \"public_identity_sources\": [\"https://www.ufc.com/athlete/salahdine-parnasse\", \"https://jp.ufc.com/news/ufc-paris-official-scorecards-hooker-vs-parnasse\"], \"public_profile_url\": \"https://www.ufc.com/athlete/salahdine-parnasse\", \"public_source_state\": \"search-indexed UFC athlete fight histories; direct fetch unavailable\", \"source_url\": \"https://api.citoapi.com/api/v1/ufc/events/ufc-fight-night-september-05-2026/bouts\", \"upset_fighter_id\": \"f9ea8a84-55f1-4c5f-be9e-407e9aa4c351\"}"
+      },
+      "profile": {
+        "champion_status": null,
+        "date_of_birth": null,
+        "division": null,
+        "height_inches": null,
+        "name": "Salahdine Parnasse",
+        "reach_inches": null,
+        "source": "cito",
+        "source_fighter_id": "1e39b040-9955-400e-a1c8-8ccb6bf29fcd",
+        "source_fighter_slug": null,
+        "source_url": "https://www.ufc.com/athlete/salahdine-parnasse",
+        "stance": null,
+        "status": null,
+        "upset_fighter_id": "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351",
+        "weight_lbs": null
+      }
+    }
+  ]
+}

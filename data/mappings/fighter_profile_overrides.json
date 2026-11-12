@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-10-06",
+  "access_note": "Official athlete and weigh-in text verified through search index; direct UFC fetch returns 403. Saved provider profiles cross-check measurements. Secondary DOB/stance sources are explicitly identified.",
+  "fighters": {
+    "c8833bb7-7f48-45e4-99a7-12c3a52b66a2": {
+      "display_name": "Gable Steveson",
+      "provider": "cito",
+      "provider_fighter_id": "0627d23e-7e8b-4eac-af5d-9b459b712e66",
+      "fields": {
+        "height_inches": 71,
+        "reach_inches": 74,
+        "weight_lbs": 240,
+        "date_of_birth": "2000-05-31",
+        "stance": "Orthodox"
+      },
+      "evidence": {
+        "height_inches": {
+          "sources": [
+            "https://www.ufc.com/athlete/gable-steveson"
+          ],
+          "source_kind": "official athlete profile; saved provider profile cross-check",
+          "conflict_note": "UFC and 2024 Bills media guide list 71 in; wrestling/secondary profiles list 73 in. Prefer UFC MMA listing; not independently physically measured."
+        },
+        "reach_inches": {
+          "sources": [
+            "https://www.ufc.com/athlete/gable-steveson"
+          ],
+          "source_kind": "official athlete profile; saved provider profile cross-check"
+        },
+        "weight_lbs": {
+          "sources": [
+            "https://www.ufc.com/news/official-weigh-results-cryptocom-ufc-331-van-vs-pantoja-2"
+          ],
+          "source_kind": "official dated weigh-in, used as stored profile observation",
+          "event_date": "2026-09-19",
+          "weigh_in_date": "2026-09-18",
+          "conflict_note": "Official UFC athlete profile incorrectly displays 73.00 for weight; unit not established. Reject that observation. Wikipedia 265 lb is not chosen; UFC July weigh-in was 241 lb and September was 240 lb."
+        },
+        "date_of_birth": {
+          "sources": [
+            "https://www.themat.com/profiles/gable-steveson",
+            "https://www.sherdog.com/fighter/Gable-Steveson-483540"
+          ],
+          "source_kind": "primary USA Wrestling biography, secondary MMA cross-check"
+        },
+        "stance": {
+          "sources": [
+            "https://en.wikipedia.org/wiki/Gable_Steveson",
+            "https://www.cbssports.com/ufc/fighter/50045944/gable-steveson/"
+          ],
+          "source_kind": "secondary MMA profile sources; provider stance unavailable"
+        }
+      },
+      "saved_provider_profile_sha256": "a73e1d2ebfe556d0f4d5ea337e1e0f05c4982ba0b09db796c402e38536e664c3"
+    },
+    "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351": {
+      "display_name": "Salahdine Parnasse",
+      "provider": "cito",
+      "provider_fighter_id": "1e39b040-9955-400e-a1c8-8ccb6bf29fcd",
+      "fields": {
+        "height_inches": 70,
+        "reach_inches": 71.5,
+        "weight_lbs": 155,
+        "date_of_birth": "1997-12-04",
+        "stance": "Southpaw"
+      },
+      "evidence": {
+        "height_inches": {
+          "sources": [
+            "https://www.ufc.com/athlete/salahdine-parnasse"
+          ],
+          "source_kind": "official athlete profile; saved provider profile cross-check",
+          "conflict_note": "Use UFC 70-inch observation; some centimetre listings convert to different fractional inches."
+        },
+        "reach_inches": {
+          "sources": [
+            "https://www.ufc.com/athlete/salahdine-parnasse"
+          ],
+          "source_kind": "official athlete profile; saved provider profile cross-check",
+          "conflict_note": "UFC 71.5 in differs from secondary 73.2 in; prefer UFC listing and retain disagreement."
+        },
+        "weight_lbs": {
+          "sources": [
+            "https://www.ufc.com/athlete/salahdine-parnasse"
+          ],
+          "source_kind": "official athlete profile; saved provider profile cross-check"
+        },
+        "date_of_birth": {
+          "sources": [
+            "https://www.tapology.com/fightcenter/fighters/118604-salahdine-parnasse",
+            "https://en.wikipedia.org/wiki/Salahdine_Parnasse"
+          ],
+          "source_kind": "two secondary fighter biographies; full DOB absent from provider"
+        },
+        "stance": {
+          "sources": [
+            "https://en.wikipedia.org/wiki/Salahdine_Parnasse",
+            "https://www.mmafighting.com/ufc/508675/ufc-paris-live-blog-dan-hooker-vs-salahdine-parnasse"
+          ],
+          "source_kind": "secondary biography plus observed fight stance in contemporary reporting"
+        }
+      },
+      "saved_provider_profile_sha256": "54af417c05eb0a7c055a88351382dcb2244b00ccb1a77b791e695c3e5a92726e"
+    }
+  }
+}

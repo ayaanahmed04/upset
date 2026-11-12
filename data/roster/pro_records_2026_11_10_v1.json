@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-10",
+  "database_sha256": "51600df02182a1bac4c009d2d99208a6a9027477203ee85b3667668191e6a5e7",
+  "records": {
+    "c99a0733-de10-41a0-9e32-c0df4f214cef": {
+      "name": "Ciryl Gane",
+      "wins": 14,
+      "losses": 2,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com.br/news/ufc-334-card-completo-horario-onde-assistir-ao-vivo",
+        "https://www.ufc.com/athlete/ciryl-gane?page=3",
+        "https://www.ufc.com/news/official-judges-scorecards-ufc-321-aspinall-vs-gane"
+      ]
+    },
+    "ec2af54f-5fee-42f6-932a-7f8c9295c16b": {
+      "name": "Josh Hokit",
+      "wins": 10,
+      "losses": 0,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/news/fight-fight-preview-polymarket-ufc-334-gane-vs-hokit",
+        "https://www.ufc.com/athlete/josh-hokit?page=1"
+      ],
+      "review_note": "The dated UFC 334 preview confirms 10–0 after the win over Derrick Lewis."
+    },
+    "222bd270-33df-4874-a9f8-283cd8503315": {
+      "name": "Kayla Harrison",
+      "wins": 19,
+      "losses": 1,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/kayla-harrison"
+      ]
+    },
+    "c136ba19-7324-498a-8539-a2bcc5d309ce": {
+      "name": "Amanda Nunes",
+      "wins": 23,
+      "losses": 5,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334",
+        "https://www.ufc.com/athlete/amanda-nunes?language_content_entity=es"
+      ]
+    },
+    "b30dead6-00c2-46f2-801e-1eb770599133": {
+      "name": "Caio Borralho",
+      "wins": 18,
+      "losses": 2,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334",
+        "https://www.ufc.com/athlete/caio-borralho?page=1"
+      ]
+    },
+    "a2f4ecf9-93d1-4f07-9776-e50f0e811cea": {
+      "name": "Yousri Belgaroui",
+      "wins": 11,
+      "losses": 3,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/yousri-belgaroui"
+      ]
+    },
+    "5bf1b426-aba4-4923-92f9-f94f6b2a0e6f": {
+      "name": "Uros Medic",
+      "wins": 14,
+      "losses": 3,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/uros-medic?page=3"
+      ]
+    },
+    "8337f913-628e-4038-b853-4c8cbfaf2e1b": {
+      "name": "Kevin Holland",
+      "wins": 29,
+      "losses": 15,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com/athlete/kevin-holland",
+        "https://www.ufc.com/news/kevin-holland-kyle-daukaus-rematch-set-november-13"
+      ]
+    },
+    "b032af17-aa8a-43a8-8217-d9476037474e": {
+      "name": "Bilal Hasan",
+      "wins": 10,
+      "losses": 0,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/bilal-hasan"
+      ]
+    },
+    "805d2cd2-8e05-411a-967f-64f46c486dc1": {
+      "name": "Luis Gurule",
+      "wins": 11,
+      "losses": 4,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/news/ufc-fight-night-song-vs-figueiredo-official-judges-scorecards-macau",
+        "https://www.sherdog.com/news/articles/4/Preview-UFC-Macau-prelims-201345",
+        "https://www.ufc.com/athlete/luis-gurule"
+      ],
+      "review_note": "The UFC profile header repeats the 11–3 record reported before UFC Macau. The official May 30 scorecard records the subsequent loss to Rei Tsuruya, bringing the record to 11–4."
+    },
+    "0815a560-a417-4d83-b4f4-6dc20927bbbf": {
+      "name": "Stephen Thompson",
+      "wins": 17,
+      "losses": 9,
+      "draws": 1,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/stephen-thompson?language_content_entity=en&page=1"
+      ]
+    },
+    "c4241e92-47de-4c99-af15-7b860426e389": {
+      "name": "Charles Radtke",
+      "wins": 12,
+      "losses": 5,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/charles-radtke?page=1"
+      ]
+    },
+    "7923c85f-e155-4a75-8252-a17ba7478a10": {
+      "name": "Drew Dober",
+      "wins": 29,
+      "losses": 15,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com/athlete/drew-dober?page=2",
+        "https://www.ufc.com/news/silva-dober-result-overturned-no-contest"
+      ]
+    },
+    "9dc383ea-3472-49d0-ae18-c8bca9458b69": {
+      "name": "Chris Duncan",
+      "wins": 15,
+      "losses": 3,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/chris-duncan?page=2"
+      ]
+    },
+    "00187e84-5d92-4463-b6dd-3f547b931666": {
+      "name": "Jim Miller",
+      "wins": 39,
+      "losses": 19,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com/athlete/jim-miller?language_content_entity=en-zxx",
+        "https://www.ufc.com/news/official-statement-ufc-159"
+      ]
+    },
+    "d4f18bcd-d1e3-4b53-8627-856a53ecc75e": {
+      "name": "Terrance McKinney",
+      "wins": 18,
+      "losses": 9,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/terrance-mckinney"
+      ]
+    },
+    "685159b0-cc61-41cd-a3e8-81de00dad787": {
+      "name": "Donte Johnson",
+      "wins": 9,
+      "losses": 0,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/donte-johnson"
+      ]
+    },
+    "f6417eab-58e9-4fe0-ad1e-7749c683f8ef": {
+      "name": "Cesar Almeida",
+      "wins": 7,
+      "losses": 3,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334",
+        "https://www.ufc.com/athlete/cesar-almeida"
+      ]
+    },
+    "c3e2e8f2-7a6b-4034-9579-e8fc2234bed9": {
+      "name": "Jared Gordon",
+      "wins": 21,
+      "losses": 9,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com/athlete/jared-gordon?page=1",
+        "https://www.ufc.com/news/official-judges-scorecards-ufc-fight-night-pavlovich-vs-blaydes"
+      ]
+    },
+    "61293cb0-f6d5-423d-ae10-68f135cf6e26": {
+      "name": "Melquizael Costa",
+      "wins": 26,
+      "losses": 8,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334"
+      ],
+      "review_note": "The dated UFC 334 Brazil preview reports 26–8 after the May loss to Arnold Allen."
+    },
+    "3564b7bc-68ef-409f-9d40-a9a9250f3212": {
+      "name": "Macy Chiasson",
+      "wins": 11,
+      "losses": 6,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/macy-chiasson"
+      ]
+    },
+    "f37d6b2f-aa3c-4a40-b143-1d92d4d03db3": {
+      "name": "Bia Mesquita",
+      "wins": 8,
+      "losses": 0,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334",
+        "https://www.ufc.com/athlete/bia-mesquita"
+      ]
+    },
+    "4374d864-e9a3-4c19-a6d2-c066c98d57ca": {
+      "name": "Alatengheili",
+      "wins": 18,
+      "losses": 10,
+      "draws": 2,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/heili-alateng?page=1"
+      ]
+    },
+    "906aa9b8-e132-494b-a6b6-6cdd7966dc80": {
+      "name": "Juan Diaz",
+      "wins": 16,
+      "losses": 1,
+      "draws": 1,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/juan-diaz"
+      ]
+    },
+    "f1c78dc6-e3ee-4533-99ff-049afadf4a92": {
+      "name": "Evan Elder",
+      "wins": 10,
+      "losses": 2,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/evan-elder?page=1"
+      ]
+    },
+    "b976a85f-7a47-4184-82cf-979f98c560ea": {
+      "name": "Samuel Sanches",
+      "wins": 11,
+      "losses": 1,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com.br/news/conheca-lutadores-brasileiros-ufc-334",
+        "https://www.ufc.com/athlete/samuel-sanches"
+      ],
+      "review_note": "The dated UFC 334 Brazil preview gives the full 11–1 professional MMA record before his UFC debut."
+    },
+    "00d2ac6c-b972-4fa8-82db-c2804adf453e": {
+      "name": "Anthony Wint",
+      "wins": 9,
+      "losses": 0,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/anthony-wint"
+      ]
+    },
+    "ee6d3315-2568-47cc-9880-c59c0364cb22": {
+      "name": "Johnny Walker",
+      "wins": 24,
+      "losses": 10,
+      "draws": 0,
+      "no_contests": 1,
+      "source_urls": [
+        "https://www.ufc.com/athlete/johnny-walker?language_content_entity=en&page=1",
+        "https://www.ufc.com/event/ufc-294"
+      ]
+    },
+    "ae100c94-3008-43fc-a9fd-1dd221567115": {
+      "name": "Waldo Cortes Acosta",
+      "wins": 17,
+      "losses": 5,
+      "draws": 0,
+      "no_contests": null,
+      "source_urls": [
+        "https://www.ufc.com/athlete/waldo-cortes-acosta?language_content_entity=en"
+      ]
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "reviewed_at": "2026-11-10",
+  "cards": [
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-may-16-2026",
+      "date": "2026-05-16",
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-may-16-2026",
+      "bouts": [
+        {
+          "source_bout_id": "ecb7ff543dd41bf8",
+          "winner": "Juan Diaz",
+          "opponent": "Malcolm Wellmaker",
+          "method": "Submission",
+          "round": 2,
+          "time": "4:08"
+        },
+        {
+          "source_bout_id": "57bd683efc797fc1",
+          "winner": "Modestas Bukauskas",
+          "opponent": "Christian Edwards",
+          "method": "Decision - Split",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "c9e0aa88afb81dab",
+          "winner": "Tommy Gantt",
+          "opponent": "Artur Minev",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "2:51"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-22-2026",
+      "date": "2026-08-22",
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-august-22-2026",
+      "bouts": [
+        {
+          "source_bout_id": "a6873fd459587d17",
+          "winner": "Anthony Wint",
+          "opponent": "Terrance Chatman",
+          "method": "Submission",
+          "round": 1,
+          "time": "4:29"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-29-2026",
+      "date": "2026-08-29",
+      "source_url": "https://www.ufc.com/index.php/news/ufc-shanghai-results-nurmagomedov-vs-song",
+      "bouts": [
+        {
+          "source_bout_id": "1fe768d599c159dc",
+          "winner": "Bilal Hasan",
+          "opponent": "Nilson Rojas",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "2:28"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-september-12-2026",
+      "date": "2026-09-12",
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-september-12-2026",
+      "bouts": [
+        {
+          "source_bout_id": "13118",
+          "winner": "Tommy Gantt",
+          "opponent": "Drakkar Klose",
+          "method": "Submission",
+          "round": 3,
+          "time": "2:46"
+        },
+        {
+          "source_bout_id": "13119",
+          "winner": "Sean King III",
+          "opponent": "Jessie Rosas",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "0:36"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-september-26-2026",
+      "date": "2026-09-26",
+      "source_url": "https://www.ufc.com/event/ufc-fight-night-september-26-2026",
+      "bouts": [
+        {
+          "source_bout_id": "13152",
+          "winner": "Luis Hernandez",
+          "opponent": "Sedriques Dumas",
+          "method": "Submission",
+          "round": 1,
+          "time": "0:57"
+        },
+        {
+          "source_bout_id": "uuid-22ae1a0a-af77-484d-a36f-f4086ada0a52",
+          "winner": "Ilimbek Akylbek",
+          "opponent": "Mahammadali Osmanli",
+          "method": "Disqualification",
+          "round": 1,
+          "time": "2:19"
+        },
+        {
+          "source_bout_id": "uuid-8d4cbc36-5d5c-4a72-b36e-c9f8a54f6206",
+          "winner": "Tina Black",
+          "opponent": "Melissa Amaya",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "3:19"
+        },
+        {
+          "source_bout_id": "uuid-0a7645ea-4dd4-4e2d-80bc-56fe9088aa22",
+          "winner": "Christian Edwards",
+          "opponent": "Rodolfo Bellato",
+          "method": "KO/TKO",
+          "round": 3,
+          "time": "1:47"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_refresh_2026_10_05_v1/cards/ufc-332",
+      "date": "2026-10-03",
+      "source_url": "https://www.ufc.com/event/ufc-332",
+      "bouts": [
+        {
+          "source_bout_id": "13121",
+          "winner": "Roberto Soldić",
+          "opponent": "Khaos Williams",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "13122",
+          "winner": "Marcus McGhee",
+          "opponent": "Anthony Romero",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "4:58"
+        },
+        {
+          "source_bout_id": "13134",
+          "winner": "Anthony Wint",
+          "opponent": "Lucas Armand",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "0:23"
+        },
+        {
+          "source_bout_id": "13165",
+          "winner": "Jacobe Smith",
+          "opponent": "Bruce Whitehead",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:32"
+        }
+      ]
+    }
+  ],
+  "identities": [
+    {
+      "name": "Christian Edwards",
+      "cito_fighter_id": "6f7b4c6b-24a6-4b0e-ab1c-dfb13850a3b1",
+      "slug": "christian-edwards",
+      "upset_fighter_id": "d7071350-703c-41ba-9007-2f597aa69dcb",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Artur Minev",
+      "cito_fighter_id": "4b2fe6bd-383f-4a94-a668-d9b6deb60dba",
+      "slug": "artur-minev",
+      "upset_fighter_id": "cd21f7a7-d5ba-4642-bd90-f37210cf09b7",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Terrance Chatman",
+      "cito_fighter_id": "dfe8129e-6384-4989-bb93-a697a6b6731c",
+      "slug": "terrance-chatman",
+      "upset_fighter_id": "b8b59713-aade-46ec-a0bf-f26a3cfc1bc9",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Anthony Wint",
+      "cito_fighter_id": "6db3085b-bdea-419c-a97a-fafbf05021ab",
+      "slug": "anthony-wint",
+      "upset_fighter_id": "00d2ac6c-b972-4fa8-82db-c2804adf453e",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists.",
+      "source_url": "https://www.ufc.com/athlete/anthony-wint",
+      "height_inches": 71.0,
+      "weight_lbs": 240.0,
+      "reach_inches": 78.0
+    },
+    {
+      "name": "Nilson Rojas",
+      "cito_fighter_id": "a1645991-992b-4293-844d-ed2d02107f93",
+      "slug": "nilson-rojas",
+      "upset_fighter_id": "9a5875ac-dec5-4a7b-bbf5-2b0b525c412a",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Bilal Hasan",
+      "cito_fighter_id": "4f96342e-86ff-408f-aec6-edee68f294b7",
+      "slug": "bilal-hasan",
+      "upset_fighter_id": "b032af17-aa8a-43a8-8217-d9476037474e",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Jessie Rosas",
+      "cito_fighter_id": "3f959158-1a0e-4a61-8fa2-378296ebb4d1",
+      "slug": "jessie-rosas",
+      "upset_fighter_id": "3bb4d2bc-06bd-4fb5-811d-1450b32dff11",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Sean King III",
+      "cito_fighter_id": "ed7b33e9-9fea-4bef-95c8-f01a3c616a1b",
+      "slug": "sean-king-iii",
+      "upset_fighter_id": "c3901255-f390-4b5a-af01-8e5070298bc1",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Luis Hernandez",
+      "cito_fighter_id": "173f063b-1959-48fc-abbc-47d589376219",
+      "slug": "luis-hernandez",
+      "upset_fighter_id": "b37bb82c-eb0f-4e8d-b00f-e5f6640f1b91",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Ilimbek Akylbek",
+      "cito_fighter_id": "66233f88-8e9d-4659-90a2-84050faa7759",
+      "slug": "ilimbek-akylbek",
+      "upset_fighter_id": "d59133d0-eaa9-46de-bf9a-7c47f29cd2ff",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Mahammadali Osmanli",
+      "cito_fighter_id": "839becd4-ae31-489a-8861-750ef72ed7a3",
+      "slug": "mahammadali-osmanli",
+      "upset_fighter_id": "f2754245-5d28-4a5a-a4e0-af8ed3da5317",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Tina Black",
+      "cito_fighter_id": "c95e368b-b71f-4e97-a268-377b41c75e58",
+      "slug": "valesca-machado",
+      "upset_fighter_id": "0385ee55-b8fe-4754-a361-ffb9bc531597",
+      "action": "new",
+      "basis": "The official profile under the Valesca Machado slug identifies Tina Black and the same dated TUF final.",
+      "source_url": "https://www.ufc.com/athlete/valesca-machado"
+    },
+    {
+      "name": "Melissa Amaya",
+      "cito_fighter_id": "b5ef9823-6b6a-4a68-b448-e99a282e2886",
+      "slug": "melissa-amaya",
+      "upset_fighter_id": "e2a5213a-9fa5-4bc6-aca7-c107aa02fcae",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists."
+    },
+    {
+      "name": "Roberto Soldić",
+      "cito_fighter_id": "5b5f12d1-5123-4bf7-9430-3fe1a9b98915",
+      "slug": "roberto-soldic",
+      "upset_fighter_id": "74b2861a-aaa1-4f9b-8a57-297069964318",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists.",
+      "source_url": "https://www.ufc.com/athlete/roberto-soldic",
+      "height_inches": 70.5,
+      "weight_lbs": 170.0,
+      "reach_inches": 73.0
+    },
+    {
+      "name": "Anthony Romero",
+      "cito_fighter_id": "bf8f27a1-42f8-4105-8b7b-6af7abab328f",
+      "slug": "anthony-romero",
+      "upset_fighter_id": "34a089b2-a377-46a0-a720-050cdb8ab9dd",
+      "action": "new",
+      "basis": "The UFC 332 fighter is the 65-inch Los Angeles featherweight The Bully. The 71-inch Welland lightweight has a separate UFC athlete page.",
+      "existing_candidate": "eb584565-579c-44ee-9114-ea7b76167d44",
+      "source_url": "https://www.ufc.com/athlete/anthony-romero-0",
+      "distinct_from_url": "https://www.ufc.com/athlete/anthony-romero",
+      "height_inches": 65.0,
+      "weight_lbs": 145.0
+    },
+    {
+      "name": "Lucas Armand",
+      "cito_fighter_id": "ac0fc0c6-3aee-4eec-8883-8153c5d40a70",
+      "slug": "lucas-armand",
+      "upset_fighter_id": "42a08cff-677e-4a1f-a07e-6b125e3bebb4",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists.",
+      "source_url": "https://www.ufc.com/athlete/lucas-armand",
+      "height_inches": 74.5,
+      "weight_lbs": 240.0,
+      "reach_inches": 78.5
+    },
+    {
+      "name": "Bruce Whitehead",
+      "cito_fighter_id": "28d78b65-5e9e-49a1-a2d1-9e623253fcac",
+      "slug": "bruce-whitehead",
+      "upset_fighter_id": "4365ecf4-1bc0-4d10-9595-17dfb9e0ff05",
+      "action": "new",
+      "basis": "Dated official UFC result agrees with the saved provider participant and no permanent identity candidate exists.",
+      "source_url": "https://www.ufc.com/athlete/bruce-whitehead"
+    },
+    {
+      "name": "Juan Diaz",
+      "cito_fighter_id": "737a843e-8754-4fa6-a70a-bb70d7e5d161",
+      "slug": "juan-diaz",
+      "upset_fighter_id": "906aa9b8-e132-494b-a6b6-6cdd7966dc80",
+      "action": "link",
+      "basis": "The Peru bantamweight profile and dated Wellmaker result agree with the 135 lb UFCStats profile and provider nickname.",
+      "existing_candidate": "906aa9b8-e132-494b-a6b6-6cdd7966dc80",
+      "source_url": "https://www.ufc.com/athlete/juan-diaz"
+    },
+    {
+      "name": "Tommy Gantt",
+      "cito_fighter_id": "253b8e25-04a1-41df-a232-8a51a2b0f908",
+      "slug": "tommy-gantt",
+      "upset_fighter_id": "492b432b-b038-45ed-bcef-951116603062",
+      "action": "link",
+      "basis": "Official profile gives the Minev and Klose results, matching the provider identity and the existing 71-inch, 155 lb profile.",
+      "existing_candidate": "492b432b-b038-45ed-bcef-951116603062",
+      "source_url": "https://www.ufc.com/athlete/thomas-gantt"
+    }
+  ]
+}

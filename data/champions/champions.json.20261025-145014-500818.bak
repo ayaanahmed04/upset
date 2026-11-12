@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-07",
+  "verified_at": "2026-10-07",
+  "note": "Verified present-day snapshot, not a complete historical title ledger. Earlier cutoffs intentionally show no championship claim. No BMF or discontinued women\u2019s featherweight title.",
+  "champions": [
+    {
+      "division": "Flyweight",
+      "kind": "undisputed",
+      "fighter_id": "45505fe3-2b68-42cc-8a29-8c71b5280f07",
+      "fighter_name": "Joshua Van",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Bantamweight",
+      "kind": "undisputed",
+      "fighter_id": "ccbddd30-362e-49f0-9aff-82bf7a930ef3",
+      "fighter_name": "Petr Yan",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Featherweight",
+      "kind": "undisputed",
+      "fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+      "fighter_name": "Alexander Volkanovski",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Lightweight",
+      "kind": "undisputed",
+      "fighter_id": "678d50b2-742c-44e4-b833-d560794ba84c",
+      "fighter_name": "Justin Gaethje",
+      "sources": [
+        "https://www.ufc.com/news/ufc-freedom-250-results-highlights-interviews",
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Welterweight",
+      "kind": "undisputed",
+      "fighter_id": "557a7a38-f46d-40e9-aa6a-4e8b9c8fcc6c",
+      "fighter_name": "Islam Makhachev",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Middleweight",
+      "kind": "undisputed",
+      "fighter_id": "78da7aae-3d1c-4b1e-9ce3-e91bccccf7b6",
+      "fighter_name": "Sean Strickland",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Light Heavyweight",
+      "kind": "undisputed",
+      "fighter_id": "98a9c7db-e6f9-4f77-b0c4-2916a09f87ff",
+      "fighter_name": "Carlos Ulberg",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Heavyweight",
+      "kind": "undisputed",
+      "fighter_id": "c99a0733-de10-41a0-9e32-c0df4f214cef",
+      "fighter_name": "Ciryl Gane",
+      "sources": [
+        "https://www.ufc.com/news/ciryl-gane-undisputed-and-ready-defend-polymarket-ufc-334",
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Women's Strawweight",
+      "kind": "undisputed",
+      "fighter_id": "7fa32486-cd0c-4d7e-9d2e-7a83f9449b85",
+      "fighter_name": "Mackenzie Dern",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Women's Flyweight",
+      "kind": "undisputed",
+      "fighter_id": "7f37b13d-1e26-4c53-85c9-2d94c2b86cc3",
+      "fighter_name": "Natalia Silva",
+      "sources": [
+        "https://www.ufc.com/news/ufc-332-silva-vs-wang-results",
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    },
+    {
+      "division": "Women's Bantamweight",
+      "kind": "undisputed",
+      "fighter_id": "222bd270-33df-4874-a9f8-283cd8503315",
+      "fighter_name": "Kayla Harrison",
+      "sources": [
+        "https://www.ufc.com/rankings",
+        "https://www.mmamania.com/ufc-mma-rankings/477069/payton-talbott-takes-figgys-spot-in-ufc-332-rankings-update-anthony-wint-johnny-walker-crash-top-15"
+      ]
+    }
+  ],
+  "events": [
+    {
+      "event_id": "fight:cito:13063",
+      "action": "retain",
+      "division": "Featherweight",
+      "kind": "undisputed",
+      "fight_id": "cito:13063",
+      "fight_date": "2026-10-24",
+      "effective_date": "2026-10-25",
+      "fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+      "opponent_id": "084b322b-1e75-47a6-a52f-8897faf74a53",
+      "winner_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+      "previous_fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "title_confirmed": true,
+      "winner_eligible": true,
+      "sources": [
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-results",
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+      ],
+      "note": "Official UFC results confirm the incumbent retained the undisputed division title. No historical defense count is inferred."
+    }
+  ]
+}

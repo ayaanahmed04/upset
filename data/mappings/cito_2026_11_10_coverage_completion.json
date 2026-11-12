@@ -1,0 +1,1197 @@
+{
+  "reviewed_at": "2026-11-10",
+  "cards": [
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-march-14-2026",
+      "date": "2026-03-14",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-emmett-vs-vallejos-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "c769dd861357af9f",
+          "winner": "Manoel Sousa",
+          "opponent": "Bolaji Oki",
+          "method": "KO/TKO",
+          "round": 3,
+          "time": "4:12"
+        },
+        {
+          "source_bout_id": "32d371462c539bee",
+          "winner": "Hecher Sosa",
+          "opponent": "Luan Lacerda",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-march-21-2026",
+      "date": "2026-03-21",
+      "source_url": "https://www.ufc.com/news/ufc-london-official-scorecards-evloev-vs-murphy-fight-night",
+      "bouts": [
+        {
+          "source_bout_id": "4e58bcc0d27042fd",
+          "winner": "Danny Silva",
+          "opponent": "Kurtis Campbell",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "0:31"
+        },
+        {
+          "source_bout_id": "90187edeeda7e6d6",
+          "winner": "Mario Pinto",
+          "opponent": "Felipe Franco",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "216bc9b661485017",
+          "winner": "Shanelle Dyer",
+          "opponent": "Ravena Oliveira",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "1:17"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-march-28-2026",
+      "date": "2026-03-28",
+      "source_url": "https://www.ufc.com/news/ufc-seattle-official-scorecards-adesanya-vs-pyfer-judges-fight-night",
+      "bouts": [
+        {
+          "source_bout_id": "f9f5071b993a5f4b",
+          "winner": "Lerryan Douglas",
+          "opponent": "Julian Erosa",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "3:33"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-march-28-2026",
+      "date": "2026-03-28",
+      "source_url": "https://www.ufc.com/news/ufc-seattle-results-adesanya-vs-pyfer-prelims-highlights-winners-interviews",
+      "bouts": [
+        {
+          "source_bout_id": "08d4e3864c44f8a5",
+          "winner": "Tyrell Fortune",
+          "opponent": "Marcin Tybura",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-april-04-2026",
+      "date": "2026-04-04",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-moicano-vs-duncan-official-scorecards-judges",
+      "bouts": [
+        {
+          "source_bout_id": "a5a749aa0061fdb4",
+          "winner": "Kai Kamaka III",
+          "opponent": "Dakota Hope",
+          "method": "Decision - Split",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-april-18-2026",
+      "date": "2026-04-18",
+      "source_url": "https://www.ufc.com/news/ufc-winnipeg-official-scorecards-judges-burns-vs-malott",
+      "bouts": [
+        {
+          "source_bout_id": "e644218737c1a778",
+          "winner": "Jai Herbert",
+          "opponent": "Mandel Nallo",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "2:05"
+        },
+        {
+          "source_bout_id": "9fab4b0ad082f670",
+          "winner": "Robert Valentin",
+          "opponent": "Julien Leblanc",
+          "method": "Submission",
+          "round": 1,
+          "time": "2:22"
+        },
+        {
+          "source_bout_id": "85c7a0f44aa3e10a",
+          "winner": "Gokhan Saricam",
+          "opponent": "Tanner Boser",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "4:43"
+        },
+        {
+          "source_bout_id": "32087c183dffcae0",
+          "winner": "John Yannis",
+          "opponent": "Jamie Siraj",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "2:43"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-april-25-2026",
+      "date": "2026-04-25",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-sterling-vs-zalal-official-scorecards-judges",
+      "bouts": [
+        {
+          "source_bout_id": "f5aff2f858311fbc",
+          "winner": "Davey Grant",
+          "opponent": "Adrián Luna Martinetti",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "c7fb90f1355291e4",
+          "winner": "Francis Marshall",
+          "opponent": "Lucas Brennan",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "2e7f8d0ad385876d",
+          "winner": "Victor Valenzuela",
+          "opponent": "Max Griffin",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-may-02-2026",
+      "date": "2026-05-02",
+      "source_url": "https://www.ufc.com/news/ufc-perth-official-scorecards-della-maddalena-vs-prates-judges",
+      "bouts": [
+        {
+          "source_bout_id": "827c64369b374989",
+          "winner": "Wes Schultz",
+          "opponent": "Ben Johnston",
+          "method": "Submission",
+          "round": 3,
+          "time": "1:50"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-may-30-2026",
+      "date": "2026-05-30",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-song-vs-figueiredo-official-judges-scorecards-macau",
+      "bouts": [
+        {
+          "source_bout_id": "f6d09973de0f83e7",
+          "winner": "Luis Felipe Dias",
+          "opponent": "YiSak Lee",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "3:40"
+        },
+        {
+          "source_bout_id": "34d5ec676fb5bce3",
+          "winner": "Rodrigo Vera",
+          "opponent": "Zhu Kangjie",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:50"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-may-30-2026",
+      "date": "2026-05-30",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-song-vs-figueiredo-results-highlights-prelims-winners-interviews-macau",
+      "bouts": [
+        {
+          "source_bout_id": "3f719885c9916e06",
+          "winner": "Angela Hill",
+          "opponent": "Xiong Jingnan",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-june-06-2026",
+      "date": "2026-06-06",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-muhammad-vs-bonfim-official-scorecards-judges",
+      "bouts": [
+        {
+          "source_bout_id": "a6b211d8dab5edec",
+          "winner": "Jeisla Chaves",
+          "opponent": "Yuneisy Duben",
+          "method": "Decision - Split",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-june-20-2026",
+      "date": "2026-06-20",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-kape-vs-horiguchi-official-judges-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "6658fe4531c86674",
+          "winner": "Levan Chokheli",
+          "opponent": "Leon Shahbazyan",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "0:23"
+        },
+        {
+          "source_bout_id": "9efa4de316b8bf43",
+          "winner": "Shane Collins",
+          "opponent": "Otari Tanzilovi",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-june-27-2026",
+      "date": "2026-06-27",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-fiziev-vs-torres-results-highlights-interviews-prelims-baku",
+      "bouts": [
+        {
+          "source_bout_id": "6a35ff33b8597904",
+          "winner": "Farman Hasanov",
+          "opponent": "Eric Nolan",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-june-27-2026",
+      "date": "2026-06-27",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-fiziev-vs-torres-official-scorecards-judges",
+      "bouts": [
+        {
+          "source_bout_id": "0e60ab32f3d03929",
+          "winner": "Daniil Donchenko",
+          "opponent": "Theodor Berggren",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "1:35"
+        },
+        {
+          "source_bout_id": "f1cb2e7ef096ec7c",
+          "winner": "Tahir Abdullayev",
+          "opponent": "Jefferson Nascimento",
+          "method": "KO/TKO",
+          "round": 3,
+          "time": "4:28"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-329",
+      "date": "2026-07-11",
+      "source_url": "https://www.ufc.com/news/ufc-329-mcgregor-vs-holloway-2-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "9e00ee7644774e18",
+          "winner": "Farid Basharat",
+          "opponent": "John Garza",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-july-18-2026",
+      "date": "2026-07-18",
+      "source_url": "https://www.ufc.com/news/ufc-oklahoma-city-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "9e525f939fba3e73",
+          "winner": "Ezra Elliott",
+          "opponent": "Damien Anderson",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "46d800ce45fdd3e6",
+          "winner": "Felipe Franco",
+          "opponent": "Levi Rodrigues Jr.",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "1:40"
+        },
+        {
+          "source_bout_id": "e05155c1b5c2dc74",
+          "winner": "RJ Harris",
+          "opponent": "Alvin Hines",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:40"
+        },
+        {
+          "source_bout_id": "307ea95ad7ebe466",
+          "winner": "Dione Barbosa",
+          "opponent": "Anna Melisano",
+          "method": "Submission",
+          "round": 1,
+          "time": "4:04"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-july-25-2026",
+      "date": "2026-07-25",
+      "source_url": "https://www.ufc.com/news/ufc-abu-dhabi-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "4ace64aa144389c5",
+          "winner": "Magomed Zaynukov",
+          "opponent": "Damian Rzepecki",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "5ffb251c6ea48b65",
+          "winner": "Rizvan Kuniev",
+          "opponent": "Tyrell Fortune",
+          "method": "KO/TKO",
+          "round": 3,
+          "time": "1:12"
+        },
+        {
+          "source_bout_id": "61280e5644189c61",
+          "winner": "Abubakar Vagaev",
+          "opponent": "Saygid Izagakhmaev",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "05bc7a042156b6f6",
+          "winner": "Muhammad Saidov",
+          "opponent": "Dustin Jacoby",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "4:49"
+        },
+        {
+          "source_bout_id": "3ac870d6e7d323b7",
+          "winner": "Magomed Tuchalov",
+          "opponent": "Brendson Ribeiro",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "532340708f0500bd",
+          "winner": "Abdul Hussein",
+          "opponent": "Cody Gibson",
+          "method": "Submission",
+          "round": 3,
+          "time": "3:07"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-01-2026",
+      "date": "2026-08-01",
+      "source_url": "https://www.ufc.com/news/ufc-belgrade-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "7ecb154439aca0f9",
+          "winner": "Gilbert Urbina",
+          "opponent": "Vlasto Cepo",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:01"
+        },
+        {
+          "source_bout_id": "f1bce0c9a3fa4bcb",
+          "winner": "Michael Oliveira",
+          "opponent": "Oban Elliott",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:49"
+        },
+        {
+          "source_bout_id": "4350abb4f1933f88",
+          "winner": "Borislav Nikolic",
+          "opponent": "Mark Vologdin",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "94cef172179c9778",
+          "winner": "Jovan Leka",
+          "opponent": "Alexander Poppeck",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "2:22"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-01-2026",
+      "date": "2026-08-01",
+      "source_url": "https://www.ufc.com/news/ufc-belgrade-results",
+      "bouts": [
+        {
+          "source_bout_id": "fec91da886d80200",
+          "winner": "Noah Gugnon",
+          "opponent": "Milos Janicic",
+          "method": "Submission",
+          "round": 1,
+          "time": "1:21"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-08-2026",
+      "date": "2026-08-08",
+      "source_url": "https://www.ufc.com/news/ufc-fight-night-gamrot-vs-salkilld-official-scorecards-judges",
+      "bouts": [
+        {
+          "source_bout_id": "64829a32c78ab656",
+          "winner": "José Montanha",
+          "opponent": "Louie Sutherland",
+          "method": "Submission",
+          "round": 1,
+          "time": "1:50"
+        },
+        {
+          "source_bout_id": "81ae2a465e0dfa4f",
+          "winner": "Manoel Sousa",
+          "opponent": "Richie Miranda",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "ded584e13276cbcb",
+          "winner": "Carol Foro",
+          "opponent": "Gigi Canuto",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-330",
+      "date": "2026-08-15",
+      "source_url": "https://www.ufc.com/news/ufc-330-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "13052",
+          "winner": "Charles Johnson",
+          "opponent": "Eduardo Chapolin",
+          "method": "Submission",
+          "round": 3,
+          "time": "1:36"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-22-2026",
+      "date": "2026-08-22",
+      "source_url": "https://www.ufc.com/news/ufc-sacramento-hernandez-vs-rodrigues-official-scorecards",
+      "bouts": [
+        {
+          "source_bout_id": "a4b3becc0cc394d7",
+          "winner": "Carli Judice",
+          "opponent": "Jeisla Chaves",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:39"
+        },
+        {
+          "source_bout_id": "2bbacf9ed3c64184",
+          "winner": "Jamall Emmers",
+          "opponent": "Lerryan Douglas",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "3:38"
+        },
+        {
+          "source_bout_id": "7e86f774f19e5e59",
+          "winner": "Marcio Barbosa",
+          "opponent": "Ryan Kuse",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "2:47"
+        },
+        {
+          "source_bout_id": "116dc88b63113f61",
+          "winner": "Stan Dorsainvil",
+          "opponent": "Gauge Young",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "97fb716bc7b8751a",
+          "winner": "Shanelle Dyer",
+          "opponent": "Elise Reed",
+          "method": "KO/TKO",
+          "round": 3,
+          "time": "1:42"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-august-29-2026",
+      "date": "2026-08-29",
+      "source_url": "https://www.ufc.com/news/ufc-shanghai-official-scorecards-nurmagomedov-vs-song",
+      "bouts": [
+        {
+          "source_bout_id": "f894989058f2bb05",
+          "winner": "Liu Ce",
+          "opponent": "Levi Rodrigues Jr.",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "4:26"
+        },
+        {
+          "source_bout_id": "80f7f5405d5ffca0",
+          "winner": "Andre Lima",
+          "opponent": "Namsrai Batbayar",
+          "method": "Submission",
+          "round": 3,
+          "time": "3:03"
+        },
+        {
+          "source_bout_id": "636867bbc9f96739",
+          "winner": "Francesco Nuzzi",
+          "opponent": "Xiao Long",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "1:00"
+        },
+        {
+          "source_bout_id": "ab5922e10699e869",
+          "winner": "Hector Santiago",
+          "opponent": "Lawrence Lui",
+          "method": "KO/TKO",
+          "round": 2,
+          "time": "0:53"
+        },
+        {
+          "source_bout_id": "6206c62fc8f0b71b",
+          "winner": "Julia Polastri",
+          "opponent": "Xiong Jingnan",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "3:06"
+        }
+      ]
+    },
+    {
+      "card": "data/raw/cito_archive/cards/ufc-fight-night-september-05-2026",
+      "date": "2026-09-05",
+      "source_url": "https://www.ufc.com/news/ufc-paris-official-scorecards-hooker-vs-parnasse",
+      "bouts": [
+        {
+          "source_bout_id": "cbf9063d23513661",
+          "winner": "Kurtis Campbell",
+          "opponent": "Trevor Peek",
+          "method": "Submission",
+          "round": 3,
+          "time": "3:07"
+        },
+        {
+          "source_bout_id": "ac3af13ffe39b1d8",
+          "winner": "Pavel Andrusca",
+          "opponent": "Nathaniel Wood",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "1f973e21581b082a",
+          "winner": "Fabia Sintes",
+          "opponent": "Michael Aljarouj",
+          "method": "Decision - Unanimous",
+          "round": 3,
+          "time": "5:00"
+        },
+        {
+          "source_bout_id": "e5fd7ef7ccf955b8",
+          "winner": "Matthieu Duclos",
+          "opponent": "Luis Felipe Dias",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "4:35"
+        },
+        {
+          "source_bout_id": "9226a13d001b49ec",
+          "winner": "Delphine Benouaich",
+          "opponent": "Sofia Montenegro",
+          "method": "Submission",
+          "round": 2,
+          "time": "4:22"
+        }
+      ]
+    }
+  ],
+  "identities": [
+    {
+      "cito_fighter_id": "84855d61-2947-4eb3-b7ab-f99d4e35b9c1",
+      "name": "Manoel Sousa",
+      "slug": "manoel-sousa",
+      "action": "link",
+      "upset_fighter_id": "b3134945-2201-4c54-a38d-61390a9d2c19",
+      "existing_candidates": [
+        "b3134945-2201-4c54-a38d-61390a9d2c19"
+      ],
+      "source_url": "https://www.ufc.com/athlete/manoel-sousa",
+      "identity_basis": "The UFC lightweight profile matches the saved 69-inch height and 155 lb profile and lists the Oki and Miranda bouts."
+    },
+    {
+      "cito_fighter_id": "8694885c-d781-47cf-a440-c863e667fe0b",
+      "name": "Hecher Sosa",
+      "slug": "hecher-sosa",
+      "action": "link",
+      "upset_fighter_id": "e08d8d22-1f7a-40e6-ae69-e4b539a11688",
+      "existing_candidates": [
+        "e08d8d22-1f7a-40e6-ae69-e4b539a11688"
+      ],
+      "source_url": "https://www.ufc.com/athlete/hecher-sosa",
+      "identity_basis": "The UFC bantamweight profile matches the saved 69-inch height and 70-inch reach and identifies the March 14 debut."
+    },
+    {
+      "cito_fighter_id": "aea556b7-526a-4482-848b-ceb5c7862887",
+      "name": "Kurtis Campbell",
+      "slug": "kurtis-campbell",
+      "action": "link",
+      "upset_fighter_id": "df75cf25-bec7-40eb-a8ac-61bd3175efce",
+      "existing_candidates": [
+        "df75cf25-bec7-40eb-a8ac-61bd3175efce"
+      ],
+      "source_url": "https://www.ufc.com/athlete/kurtis-campbell",
+      "identity_basis": "The UFC featherweight profile matches the saved 69-inch height and 72-inch reach and identifies the March 21 debut."
+    },
+    {
+      "cito_fighter_id": "deb028ea-26c9-4efd-becb-9c6ce46db032",
+      "name": "Shanelle Dyer",
+      "slug": "shanelle-dyer",
+      "action": "link",
+      "upset_fighter_id": "eede92aa-7175-4ee7-a109-2f7fa12968c2",
+      "existing_candidates": [
+        "eede92aa-7175-4ee7-a109-2f7fa12968c2"
+      ],
+      "source_url": "https://www.ufc.com/athlete/shanelle-dyer",
+      "identity_basis": "The UFC strawweight profile matches the saved 66-inch height and 65-inch reach and identifies the March 21 debut."
+    },
+    {
+      "cito_fighter_id": "11352ef5-87fa-4702-8ba5-4149b012a93a",
+      "name": "Lerryan Douglas",
+      "slug": "lerryan-douglas",
+      "action": "link",
+      "upset_fighter_id": "3896d5a4-c278-4443-8676-b970603005e5",
+      "existing_candidates": [
+        "3896d5a4-c278-4443-8676-b970603005e5"
+      ],
+      "source_url": "https://www.ufc.com/athlete/lerryan-douglas",
+      "identity_basis": "The UFC featherweight profile matches the saved 69-inch height and 72-inch reach and identifies the March 28 debut."
+    },
+    {
+      "cito_fighter_id": "30e1274a-96de-48a8-a2e3-36676ad66914",
+      "name": "Tyrell Fortune",
+      "slug": "tyrell-fortune",
+      "action": "link",
+      "upset_fighter_id": "ce3afe5f-7996-4b90-bbfc-32f32e67cec7",
+      "existing_candidates": [
+        "ce3afe5f-7996-4b90-bbfc-32f32e67cec7"
+      ],
+      "source_url": "https://www.ufc.com/athlete/tyrell-fortune",
+      "identity_basis": "The UFC heavyweight profile matches the saved birth year and division and identifies the March 28 debut against Tybura."
+    },
+    {
+      "cito_fighter_id": "96542480-ad6d-4d92-9251-690dbfc1e981",
+      "name": "Gokhan Saricam",
+      "slug": "gokhan-saricam",
+      "action": "link",
+      "upset_fighter_id": "1992b69f-28ad-451d-abcf-06a99153158b",
+      "existing_candidates": [
+        "1992b69f-28ad-451d-abcf-06a99153158b"
+      ],
+      "source_url": "https://www.ufc.com/athlete/gokhan-saricam",
+      "identity_basis": "The UFC heavyweight profile matches the saved birth year and division and identifies the April 18 debut against Boser."
+    },
+    {
+      "cito_fighter_id": "d0730008-fbd3-41c5-a7e1-ebe864b86fab",
+      "name": "Jamie Siraj",
+      "slug": "jamie-siraj",
+      "action": "new",
+      "upset_fighter_id": "4191e560-f260-4143-a41b-467e3694f86b",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "ed322de6-4767-482b-a5a7-ee3a497b7fc3",
+      "name": "Adrián Luna Martinetti",
+      "slug": "adrian-luna-martinetti",
+      "action": "new",
+      "upset_fighter_id": "bf952d2c-56a4-4d1f-a717-dcc836254faa",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "7b17f897-0f40-49ce-be7d-83f84679a6d2",
+      "name": "Lucas Brennan",
+      "slug": "lucas-brennan",
+      "action": "new",
+      "upset_fighter_id": "0805afef-c26f-4521-8fe4-f010bad837aa",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "accf0e18-9e9b-4e82-b74a-26afc7aafa5b",
+      "name": "Victor Valenzuela",
+      "slug": "victor-valenzuela",
+      "action": "link",
+      "upset_fighter_id": "0ff49a63-6851-4b5e-ad53-75a8fc76bbd9",
+      "existing_candidates": [
+        "0ff49a63-6851-4b5e-ad53-75a8fc76bbd9",
+        "183746ff-19c3-48f4-b0e0-3c029b46a094"
+      ],
+      "source_url": "https://www.ufc.com/athlete/victor-valenzuela-0",
+      "identity_basis": "The UFC profile for Max Griffin’s opponent identifies the 32-year-old Chilean welterweight at 69 inches with a 71.5-inch reach. The selected archived profile is 69 inches, 71-inch reach and 170 lb with February 1994 DOB. The other saved profile is the 70-inch lightweight and remains separate.",
+      "distinct_from_url": "https://www.sherdog.com/fighter/Victor-Valenzuela-9059",
+      "expected_profile": {
+        "height_inches": 69.0,
+        "reach_inches": 71.0,
+        "weight_lbs": 170.0,
+        "date_of_birth": "1994-02-09"
+      }
+    },
+    {
+      "cito_fighter_id": "25f1703c-57f3-4cd7-8fa0-ccb5efe1b3f9",
+      "name": "Ben Johnston",
+      "slug": "ben-johnston",
+      "action": "new",
+      "upset_fighter_id": "3ee69140-100d-4301-a63e-30b9d0ccc455",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "2dcfdfe4-7e8f-4eaa-8aec-77f944ff425f",
+      "name": "Luis Felipe Dias",
+      "slug": "luis-felipe-dias",
+      "action": "link",
+      "upset_fighter_id": "3ede3b3f-4ed3-469a-a754-18f6947afb6e",
+      "existing_candidates": [
+        "3ede3b3f-4ed3-469a-a754-18f6947afb6e"
+      ],
+      "source_url": "https://www.ufc.com/athlete/luis-felipe-dias",
+      "identity_basis": "The UFC middleweight profile matches the saved 185 lb division and lists the dated bouts against YiSak Lee and Matthieu Duclos."
+    },
+    {
+      "cito_fighter_id": "bea19677-e04a-4d3e-826c-4523b4efa11a",
+      "name": "YiSak Lee",
+      "slug": "yisak-lee",
+      "action": "new",
+      "upset_fighter_id": "2d7f37dc-9ea3-4ec1-9e21-c099faefbb88",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "880fbd08-57ba-48a4-bd20-944ca61f115b",
+      "name": "Xiong Jingnan",
+      "slug": "xiong-jingnan",
+      "action": "new",
+      "upset_fighter_id": "e8c27cb0-cd74-4c49-946b-328cfd51333f",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "fc1be00a-2d9c-4a48-8989-c8e1ade83354",
+      "name": "Rodrigo Vera",
+      "slug": "rodrigo-vera",
+      "action": "new",
+      "upset_fighter_id": "f8df8ecb-9dd2-48db-86fd-3fb166780fc2",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "eb929f3e-7d21-4ad8-9632-4daf06c7ff69",
+      "name": "Zhu Kangjie",
+      "slug": "zhu-kangjie",
+      "action": "link",
+      "upset_fighter_id": "efd933ed-33d8-4b02-b320-c26ccf58cfd9",
+      "existing_candidates": [
+        "efd933ed-33d8-4b02-b320-c26ccf58cfd9"
+      ],
+      "source_url": "https://www.ufc.com/athlete/zhu-kangjie",
+      "identity_basis": "The UFC featherweight profile matches the saved 68-inch height and 70-inch reach and lists the bout with Rodrigo Vera."
+    },
+    {
+      "cito_fighter_id": "282fdaa7-3d77-4c42-8be0-6346284e0693",
+      "name": "Jeisla Chaves",
+      "slug": "jeisla-chaves",
+      "action": "link",
+      "upset_fighter_id": "940490d7-7595-4141-be2e-8e035a835e0c",
+      "existing_candidates": [
+        "940490d7-7595-4141-be2e-8e035a835e0c"
+      ],
+      "source_url": "https://www.ufc.com/athlete/jeisla-chaves",
+      "identity_basis": "The UFC flyweight profile matches the saved 66-inch height and 68-inch reach and identifies the June 6 debut."
+    },
+    {
+      "cito_fighter_id": "c70d0512-0b2a-42dd-a445-f885f702f95e",
+      "name": "Levan Chokheli",
+      "slug": "levan-chokheli",
+      "action": "new",
+      "upset_fighter_id": "ae81bf09-ff4f-4bd3-9453-0cdbf95d0ff5",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "d8a54a46-808f-4952-adc9-27a08d648275",
+      "name": "Shane Collins",
+      "slug": "shane-collins",
+      "action": "new",
+      "upset_fighter_id": "8a406dfd-4170-4235-91a2-2fb3802a8d8f",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "21ab97f3-f5d5-44ca-9bea-2fb497b89299",
+      "name": "Jefferson Nascimento",
+      "slug": "jefferson-nascimento",
+      "action": "new",
+      "upset_fighter_id": "dde4346d-c8f7-4c0a-b304-e515e164c8bc",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "2a2b3e84-f286-47f1-a2e3-54eb6564c6f1",
+      "name": "Tahir Abdullayev",
+      "slug": "tahir-abdullayev",
+      "action": "new",
+      "upset_fighter_id": "eca5811b-6e84-4358-8d3c-b8a8764ebcd3",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "6c413aeb-df13-422f-a02e-84a621123743",
+      "name": "John Garza",
+      "slug": "john-garza",
+      "action": "new",
+      "upset_fighter_id": "7a48c6bf-7c29-49d6-9a40-ebc64b2a97da",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "56d0bcd9-1cca-4b12-b598-25c5cdb28483",
+      "name": "Damien Anderson",
+      "slug": "damien-anderson",
+      "action": "new",
+      "upset_fighter_id": "23110ac5-48bb-489e-af52-6bba452b85f1",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "f8f2b9bd-faff-477c-9668-c7e7cee8b349",
+      "name": "Ezra Elliott",
+      "slug": "ezra-elliott",
+      "action": "new",
+      "upset_fighter_id": "9f8e3de1-43f7-4a62-88c3-0f3cf4bd0f9d",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "9d3b313e-b172-48fb-897c-5e78c000cff7",
+      "name": "Levi Rodrigues Jr.",
+      "slug": "levi-rodrigues-jr",
+      "action": "link",
+      "upset_fighter_id": "e89887ce-c0aa-49c2-9c66-9b20825329c4",
+      "existing_candidates": [
+        "e89887ce-c0aa-49c2-9c66-9b20825329c4"
+      ],
+      "source_url": "https://www.ufc.com/athlete/levi-rodrigues-jr",
+      "identity_basis": "The UFC light heavyweight profile matches the saved 72-inch height and 205 lb weight, and identifies the July 18 debut."
+    },
+    {
+      "cito_fighter_id": "a4914c62-0675-404b-839e-bc1196704e77",
+      "name": "Anna Melisano",
+      "slug": "anna-melisano",
+      "action": "new",
+      "upset_fighter_id": "6583f6ac-ee0d-4f3f-a37f-8bc3e7cae25b",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "9fea30c0-2405-4e41-a889-6c44500c0d57",
+      "name": "Damian Rzepecki",
+      "slug": "damian-rzepecki",
+      "action": "new",
+      "upset_fighter_id": "b550443d-cc61-435e-bfb2-67ff7278e7ca",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "723f1bc0-f8d0-4bb8-bf5a-1b851d7e4359",
+      "name": "Magomed Zaynukov",
+      "slug": "magomed-zaynukov",
+      "action": "link",
+      "upset_fighter_id": "e7fb56b6-7eb5-4e36-b2a9-e66d5d388fde",
+      "existing_candidates": [
+        "e7fb56b6-7eb5-4e36-b2a9-e66d5d388fde"
+      ],
+      "source_url": "https://www.ufc.com/athlete/magomed-zaynukov",
+      "identity_basis": "The UFC lightweight profile matches the saved 70-inch height and birth year and identifies the July 25 debut."
+    },
+    {
+      "cito_fighter_id": "681f2cc2-d5c3-4ecc-93bf-e3b752579e6f",
+      "name": "Muhammad Saidov",
+      "slug": "muhammad-saidov",
+      "action": "new",
+      "upset_fighter_id": "f5a6d922-36f8-47d1-a2bd-7a71746597ea",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "91e75369-452d-44ea-a500-1cffede8bfbd",
+      "name": "Magomed Tuchalov",
+      "slug": "magomed-tuchalov",
+      "action": "new",
+      "upset_fighter_id": "1ad2b6ff-70ac-4638-b925-adc050c9e8ca",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "165bc5b5-f379-4ba3-844e-1d6b682150f5",
+      "name": "Abdul Hussein",
+      "slug": "abdul-hussein",
+      "action": "new",
+      "upset_fighter_id": "d6ee5ff4-430f-45a0-98af-a91c80b13911",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "e0d2681f-c102-47da-8326-c7a29aa90c9f",
+      "name": "Vlasto Cepo",
+      "slug": "vlasto-cepo",
+      "action": "new",
+      "upset_fighter_id": "a671c3e4-5461-4898-a814-1138a3eb20fd",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "5ee2b45c-bffc-4f7e-8c2e-81802619889a",
+      "name": "Milos Janicic",
+      "slug": "milos-janicic",
+      "action": "new",
+      "upset_fighter_id": "b23a221e-1bd0-4b13-9682-db746ec0007e",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "070b3700-20d2-407c-8e9f-a65da9b427f9",
+      "name": "Michael Oliveira",
+      "slug": "michael-oliveira",
+      "action": "link",
+      "upset_fighter_id": "0b02b76f-8445-470c-b7b0-69a6eaa5e953",
+      "existing_candidates": [
+        "0b02b76f-8445-470c-b7b0-69a6eaa5e953"
+      ],
+      "source_url": "https://www.ufc.com/athlete/michael-oliveira",
+      "identity_basis": "The UFC welterweight profile matches the saved 73-inch height and 170 lb weight and identifies the August 1 debut."
+    },
+    {
+      "cito_fighter_id": "cfc8b4a9-fa0a-4946-87bd-fd62cfdd499e",
+      "name": "Borislav Nikolic",
+      "slug": "borislav-nikolic",
+      "action": "new",
+      "upset_fighter_id": "fe177f5c-88a9-40b8-b0f4-67112751d77a",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "cb03b75d-de04-42a5-8d0e-8d05ab05435a",
+      "name": "Alexander Poppeck",
+      "slug": "alexander-poppeck",
+      "action": "link",
+      "upset_fighter_id": "905cb0e7-dce1-4434-90a6-2e475e396f93",
+      "existing_candidates": [
+        "905cb0e7-dce1-4434-90a6-2e475e396f93"
+      ],
+      "source_url": "https://www.ufc.com/athlete/alexander-poppeck?language_content_entity=en",
+      "identity_basis": "The UFC profile matches the saved birth year and near-identical height and weight, and identifies the August 1 debut against Jovan Leka."
+    },
+    {
+      "cito_fighter_id": "620c035c-0c42-438d-95b6-ef63916505a9",
+      "name": "Jovan Leka",
+      "slug": "jovan-leka",
+      "action": "link",
+      "upset_fighter_id": "347382f3-c222-4495-aaaf-1ad1a9bfc279",
+      "existing_candidates": [
+        "347382f3-c222-4495-aaaf-1ad1a9bfc279"
+      ],
+      "source_url": "https://www.ufc.com/athlete/jovan-leka",
+      "identity_basis": "The UFC heavyweight profile matches the saved 76-inch height and 75-inch reach and identifies the August 1 debut."
+    },
+    {
+      "cito_fighter_id": "dfbaf1ab-5494-4146-9c9b-ae93bb4e7b5b",
+      "name": "José Montanha",
+      "slug": "jose-montanha-da-silva",
+      "action": "link",
+      "upset_fighter_id": "00b98d83-54bd-478d-8225-1ec382de6705",
+      "existing_candidates": [
+        "00b98d83-54bd-478d-8225-1ec382de6705"
+      ],
+      "source_url": "https://www.ufc.com/athlete/jose-montanha-da-silva",
+      "identity_basis": "The dated Gamrot–Salkilld scorecards and UFC heavyweight profile identify the Brazilian with this name and the August 8 bout. The saved display spelling omits the accent."
+    },
+    {
+      "cito_fighter_id": "0f3c5110-6b32-496f-b21d-cbdada110cd8",
+      "name": "Richie Miranda",
+      "slug": "richie-miranda",
+      "action": "new",
+      "upset_fighter_id": "14244d87-154b-43ec-b11e-46b0c23ccae5",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "70ba9ef9-06d6-4af5-95d6-1e8e42552813",
+      "name": "Carol Foro",
+      "slug": "carol-foro",
+      "action": "link",
+      "upset_fighter_id": "c1878e39-ef31-498f-ae91-b603f4db16ae",
+      "existing_candidates": [
+        "c1878e39-ef31-498f-ae91-b603f4db16ae"
+      ],
+      "source_url": "https://www.ufc.com/athlete/carol-foro",
+      "identity_basis": "The UFC strawweight profile matches the saved 62-inch height and 115 lb weight and identifies the August 8 debut."
+    },
+    {
+      "cito_fighter_id": "eaa2997a-1f99-4930-9c14-c70641a943e4",
+      "name": "Gigi Canuto",
+      "slug": "gigi-canuto",
+      "action": "new",
+      "upset_fighter_id": "e57f80fa-d464-435f-b6b2-6c0c83e4afa7",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "3bfd8b22-ddf7-4309-9214-8bcf98bfd47d",
+      "name": "Eduardo Chapolin",
+      "slug": "eduardo-chapolin",
+      "action": "link",
+      "upset_fighter_id": "bc3b2089-149f-43fd-ad8a-eb603d300f8f",
+      "existing_candidates": [
+        "bc3b2089-149f-43fd-ad8a-eb603d300f8f"
+      ],
+      "source_url": "https://www.ufc.com/athlete/eduardo-chapolin",
+      "identity_basis": "The UFC flyweight profile matches the saved 67-inch reach and 125 lb weight and identifies the August 15 debut."
+    },
+    {
+      "cito_fighter_id": "43c8d124-49d2-4c01-bdff-4ddf5e3f56b7",
+      "name": "Ryan Kuse",
+      "slug": "ryan-kuse",
+      "action": "new",
+      "upset_fighter_id": "75cfb6a0-7a4e-4d34-8285-3d56cf354c14",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "ef1eff31-9be0-4fd3-904b-f18985789bb4",
+      "name": "Stan Dorsainvil",
+      "slug": "stan-dorsainvil",
+      "action": "new",
+      "upset_fighter_id": "661df011-06e7-4993-ac9a-2bd828464c3e",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "391e572c-5dca-4d4a-b932-4af484ec94a9",
+      "name": "Liu Ce",
+      "slug": "liu-ce",
+      "action": "new",
+      "upset_fighter_id": "c930cd86-3125-4b4f-8197-7a52e371f8b2",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "7d36bd5b-129f-4e70-bf6a-db58e2b3ef75",
+      "name": "Namsrai Batbayar",
+      "slug": "namsrai-batbayar",
+      "action": "link",
+      "upset_fighter_id": "344cacbf-a33f-485f-9a0d-433ce52a28f7",
+      "existing_candidates": [
+        "344cacbf-a33f-485f-9a0d-433ce52a28f7"
+      ],
+      "source_url": "https://www.ufc.com/athlete/namsrai-batbayar",
+      "identity_basis": "The UFC flyweight profile matches the saved 64-inch height and 68-inch reach and lists the August 29 result."
+    },
+    {
+      "cito_fighter_id": "1f7d2354-3c61-467d-a55c-3834ec746c17",
+      "name": "Francesco Nuzzi",
+      "slug": "francesco-nuzzi",
+      "action": "new",
+      "upset_fighter_id": "c23d53a3-954e-4ef4-a480-4b2f31bac7ce",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "f42219f6-abb7-4a9c-bfb5-5e7588c3ea36",
+      "name": "Hector Santiago",
+      "slug": "hector-de-sousa-santiago",
+      "action": "new",
+      "upset_fighter_id": "a949c893-34f3-469d-9208-3369e32fcb39",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "223c69bc-4ecc-426f-9192-ac70fb0dbbf2",
+      "name": "Pavel Andrusca",
+      "slug": "pavel-andrusca",
+      "action": "new",
+      "upset_fighter_id": "0920a854-92e6-4ccb-a92e-fe90639649e9",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "2993f349-d22c-4c17-bd2c-03a496cf1a3b",
+      "name": "Fabia Sintes",
+      "slug": "fabia-sintes",
+      "action": "new",
+      "upset_fighter_id": "1919fa8f-af49-485e-a9e3-ed417e1c79f7",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "5ed87b26-8ad3-4b33-bff4-656ab8a9bba3",
+      "name": "Michael Aljarouj",
+      "slug": "michael-aljarouj",
+      "action": "new",
+      "upset_fighter_id": "89827af3-29da-4b49-9004-7ecc5b9e42c9",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    },
+    {
+      "cito_fighter_id": "f8dc0b3e-6d62-41f9-bbd7-dcb9938b7019",
+      "name": "Matthieu Duclos",
+      "slug": "matthieu-letho-duclos",
+      "action": "link",
+      "upset_fighter_id": "c0fb04c6-8e3a-4798-b77a-f1118c005fe9",
+      "existing_candidates": [
+        "c0fb04c6-8e3a-4798-b77a-f1118c005fe9"
+      ],
+      "source_url": "https://www.ufc.com/athlete/matthieu-letho-duclos",
+      "identity_basis": "The UFC middleweight profile matches the saved 185 lb division and birth year and identifies the September 5 debut."
+    },
+    {
+      "cito_fighter_id": "963238d2-ea08-4cca-9950-36b9d49dd433",
+      "name": "Sofia Montenegro",
+      "slug": "sofia-montenegro",
+      "action": "link",
+      "upset_fighter_id": "961a0afb-9ff8-4315-b814-21f9c547f53b",
+      "existing_candidates": [
+        "961a0afb-9ff8-4315-b814-21f9c547f53b"
+      ],
+      "source_url": "https://www.ufc.com/athlete/sofia-montenegro",
+      "identity_basis": "The UFC profile matches the saved 66-inch height, approximate reach and birth year and identifies the September 5 debut against Benouaich."
+    },
+    {
+      "cito_fighter_id": "272460f3-0455-4fd8-80bc-a8310215593d",
+      "name": "Delphine Benouaich",
+      "slug": "delphine-benouaich",
+      "action": "new",
+      "upset_fighter_id": "8139210c-fdcb-4b98-883c-06e5d9157339",
+      "identity_basis": "The dated UFC result identifies this participant and the serving registry has no matching normalized name."
+    }
+  ],
+  "pending_results": {
+    "878a7e6fec3e4573": {
+      "reason": "UFC lists 3:30 in round one. The captured fight and round statistics end at 3:20.",
+      "source_url": "https://www.ufc.com/news/ufc-belgrade-official-scorecards"
+    }
+  }
+}
