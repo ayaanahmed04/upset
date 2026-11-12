@@ -1,0 +1,494 @@
+{
+ "version": "upset_published_picks_v1",
+ "frozen_at": "2026-11-11T19:21:20Z",
+ "event": {
+  "slug": "ufc-334",
+  "name": "UFC 334",
+  "headline": "Gane vs Hokit",
+  "date": "2026-11-14",
+  "venue": "Madison Square Garden, New York",
+  "starts_at": "2026-11-14T22:00:00+00:00",
+  "source_url": "https://www.ufc.com/event/ufc-334",
+  "schedule_reviewed_on": "2026-11-10"
+ },
+ "model": {
+  "name": "UPSET forecast",
+  "label": "UPSET forecast · walk-forward tested, not betting advice",
+  "record_before_publishing": {
+   "since_2019": {
+    "bouts": 3177,
+    "log_loss": 0.65964,
+    "brier": 0.23376,
+    "accuracy": 0.5999
+   },
+   "since_2025": {
+    "bouts": 804,
+    "log_loss": 0.64596,
+    "brier": 0.22701,
+    "accuracy": 0.6393
+   }
+  },
+  "data_through": "2026-11-07",
+  "snapshot": "overall_rating_v5_1_2026_11_10_reviewed_v3",
+  "revision": "5.1",
+  "snapshot_manifest_sha256": "e5ef19edba85daa178c71be9223c3b05237fa9db7e0a6d8aadcbe76233072b0b"
+ },
+ "rules": "A pick is the fighter UPSET gave the higher chance. It is graded right when that fighter wins. Draws, no contests and bouts that were cancelled or changed are not graded. Log loss scores the probability itself: lower is better, and always picking 50% scores 0.693.",
+ "picks": [
+  {
+   "order": 0,
+   "group": "Main card",
+   "division": "Heavyweight",
+   "title": true,
+   "rounds": 5,
+   "fighters": [
+    {
+     "id": "c99a0733-de10-41a0-9e32-c0df4f214cef",
+     "name": "Ciryl Gane"
+    },
+    {
+     "id": "ec2af54f-5fee-42f6-932a-7f8c9295c16b",
+     "name": "Josh Hokit"
+    }
+   ],
+   "probabilities": [
+    0.57,
+    0.43
+   ],
+   "pick": "c99a0733-de10-41a0-9e32-c0df4f214cef",
+   "pick_name": "Ciryl Gane",
+   "rating_gap": 5,
+   "provisional": true,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.634,
+     0.366
+    ],
+    "decimal_odds": [
+     1.53,
+     2.65
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 1,
+   "group": "Main card",
+   "division": "Women's Bantamweight",
+   "title": true,
+   "rounds": 5,
+   "fighters": [
+    {
+     "id": "222bd270-33df-4874-a9f8-283cd8503315",
+     "name": "Kayla Harrison"
+    },
+    {
+     "id": "c136ba19-7324-498a-8539-a2bcc5d309ce",
+     "name": "Amanda Nunes"
+    }
+   ],
+   "probabilities": [
+    0.2844,
+    0.7156
+   ],
+   "pick": "c136ba19-7324-498a-8539-a2bcc5d309ce",
+   "pick_name": "Amanda Nunes",
+   "rating_gap": -7,
+   "provisional": true,
+   "inactive": true,
+   "market": {
+    "probabilities": [
+     0.6289,
+     0.3711
+    ],
+    "decimal_odds": [
+     1.54,
+     2.61
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 2,
+   "group": "Main card",
+   "division": "Middleweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "b30dead6-00c2-46f2-801e-1eb770599133",
+     "name": "Caio Borralho"
+    },
+    {
+     "id": "a2f4ecf9-93d1-4f07-9776-e50f0e811cea",
+     "name": "Yousri Belgaroui"
+    }
+   ],
+   "probabilities": [
+    0.3759,
+    0.6241
+   ],
+   "pick": "a2f4ecf9-93d1-4f07-9776-e50f0e811cea",
+   "pick_name": "Yousri Belgaroui",
+   "rating_gap": 2,
+   "provisional": true,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.5819,
+     0.4181
+    ],
+    "decimal_odds": [
+     1.66,
+     2.31
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 3,
+   "group": "Main card",
+   "division": "Welterweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "5bf1b426-aba4-4923-92f9-f94f6b2a0e6f",
+     "name": "Uroš Medić"
+    },
+    {
+     "id": "8337f913-628e-4038-b853-4c8cbfaf2e1b",
+     "name": "Kevin Holland"
+    }
+   ],
+   "probabilities": [
+    0.6323,
+    0.3677
+   ],
+   "pick": "5bf1b426-aba4-4923-92f9-f94f6b2a0e6f",
+   "pick_name": "Uroš Medić",
+   "rating_gap": 3,
+   "provisional": false,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.5736,
+     0.4264
+    ],
+    "decimal_odds": [
+     1.68,
+     2.26
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 4,
+   "group": "Main card",
+   "division": "Flyweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "b032af17-aa8a-43a8-8217-d9476037474e",
+     "name": "Bilal Hasan"
+    },
+    {
+     "id": "805d2cd2-8e05-411a-967f-64f46c486dc1",
+     "name": "Luis Gurule"
+    }
+   ],
+   "probabilities": [
+    0.7469,
+    0.2531
+   ],
+   "pick": "b032af17-aa8a-43a8-8217-d9476037474e",
+   "pick_name": "Bilal Hasan",
+   "rating_gap": 6,
+   "provisional": true,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.8691,
+     0.1309
+    ],
+    "decimal_odds": [
+     1.11,
+     7.37
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 5,
+   "group": "Prelims",
+   "division": "Welterweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "0815a560-a417-4d83-b4f4-6dc20927bbbf",
+     "name": "Stephen Thompson"
+    },
+    {
+     "id": "c4241e92-47de-4c99-af15-7b860426e389",
+     "name": "Charles Radtke"
+    }
+   ],
+   "probabilities": [
+    0.4429,
+    0.5571
+   ],
+   "pick": "c4241e92-47de-4c99-af15-7b860426e389",
+   "pick_name": "Charles Radtke",
+   "rating_gap": 0,
+   "provisional": false,
+   "inactive": false
+  },
+  {
+   "order": 6,
+   "group": "Prelims",
+   "division": "Lightweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "7923c85f-e155-4a75-8252-a17ba7478a10",
+     "name": "Drew Dober"
+    },
+    {
+     "id": "9dc383ea-3472-49d0-ae18-c8bca9458b69",
+     "name": "Chris Duncan"
+    }
+   ],
+   "probabilities": [
+    0.4552,
+    0.5448
+   ],
+   "pick": "9dc383ea-3472-49d0-ae18-c8bca9458b69",
+   "pick_name": "Chris Duncan",
+   "rating_gap": -1,
+   "provisional": false,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.4125,
+     0.5875
+    ],
+    "decimal_odds": [
+     2.35,
+     1.65
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 7,
+   "group": "Prelims",
+   "division": "Lightweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "00187e84-5d92-4463-b6dd-3f547b931666",
+     "name": "Jim Miller"
+    },
+    {
+     "id": "d4f18bcd-d1e3-4b53-8627-856a53ecc75e",
+     "name": "Terrance McKinney"
+    }
+   ],
+   "probabilities": [
+    0.4553,
+    0.5447
+   ],
+   "pick": "d4f18bcd-d1e3-4b53-8627-856a53ecc75e",
+   "pick_name": "Terrance McKinney",
+   "rating_gap": 1,
+   "provisional": false,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.3711,
+     0.6289
+    ],
+    "decimal_odds": [
+     2.61,
+     1.54
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 8,
+   "group": "Prelims",
+   "division": "Middleweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "685159b0-cc61-41cd-a3e8-81de00dad787",
+     "name": "Donte Johnson"
+    },
+    {
+     "id": "f6417eab-58e9-4fe0-ad1e-7749c683f8ef",
+     "name": "Cesar Almeida"
+    }
+   ],
+   "probabilities": [
+    0.6494,
+    0.3506
+   ],
+   "pick": "685159b0-cc61-41cd-a3e8-81de00dad787",
+   "pick_name": "Donte Johnson",
+   "rating_gap": 3,
+   "provisional": true,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.6015,
+     0.3985
+    ],
+    "decimal_odds": [
+     1.61,
+     2.43
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 9,
+   "group": "Early prelims",
+   "division": "Lightweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "c3e2e8f2-7a6b-4034-9579-e8fc2234bed9",
+     "name": "Jared Gordon"
+    },
+    {
+     "id": "61293cb0-f6d5-423d-ae10-68f135cf6e26",
+     "name": "Melquizael Costa"
+    }
+   ],
+   "probabilities": [
+    0.4495,
+    0.5505
+   ],
+   "pick": "61293cb0-f6d5-423d-ae10-68f135cf6e26",
+   "pick_name": "Melquizael Costa",
+   "rating_gap": -4,
+   "provisional": false,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.2466,
+     0.7534
+    ],
+    "decimal_odds": [
+     3.91,
+     1.28
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  },
+  {
+   "order": 10,
+   "group": "Early prelims",
+   "division": "Women's Bantamweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "3564b7bc-68ef-409f-9d40-a9a9250f3212",
+     "name": "Macy Chiasson"
+    },
+    {
+     "id": "f37d6b2f-aa3c-4a40-b143-1d92d4d03db3",
+     "name": "Bia Mesquita"
+    }
+   ],
+   "probabilities": [
+    0.3022,
+    0.6978
+   ],
+   "pick": "f37d6b2f-aa3c-4a40-b143-1d92d4d03db3",
+   "pick_name": "Bia Mesquita",
+   "rating_gap": -4,
+   "provisional": true,
+   "inactive": false
+  },
+  {
+   "order": 11,
+   "group": "Early prelims",
+   "division": "Bantamweight",
+   "title": false,
+   "rounds": 3,
+   "fighters": [
+    {
+     "id": "4374d864-e9a3-4c19-a6d2-c066c98d57ca",
+     "name": "Alatengheili"
+    },
+    {
+     "id": "906aa9b8-e132-494b-a6b6-6cdd7966dc80",
+     "name": "Juan Diaz"
+    }
+   ],
+   "probabilities": [
+    0.3227,
+    0.6773
+   ],
+   "pick": "906aa9b8-e132-494b-a6b6-6cdd7966dc80",
+   "pick_name": "Juan Diaz",
+   "rating_gap": 0,
+   "provisional": true,
+   "inactive": false,
+   "market": {
+    "probabilities": [
+     0.2782,
+     0.7218
+    ],
+    "decimal_odds": [
+     3.45,
+     1.33
+    ],
+    "book": "BetOnline.ag",
+    "observed_at": "2026-11-10T14:43:14Z"
+   }
+  }
+ ],
+ "not_picked": [
+  {
+   "order": 12,
+   "fighters": [
+    {
+     "id": "f1c78dc6-e3ee-4533-99ff-049afadf4a92",
+     "name": "Evan Elder"
+    },
+    {
+     "id": "b976a85f-7a47-4184-82cf-979f98c560ea",
+     "name": "Samuel Sanches"
+    }
+   ],
+   "reason": "Not enough UFC fights to forecast"
+  }
+ ],
+ "market_source": {
+  "name": "UFC Betting Odds Daily (Kaggle, CC0 public domain)",
+  "url": "https://www.kaggle.com/datasets/jerzyszocik/ufc-betting-odds-daily-dataset",
+  "file_sha256": "21a53600ba194a890b16e86a6de86098fdaa746e675ab71ea5c7424020b60d48",
+  "captured_through": "2026-11-10T14:43:14Z",
+  "method": "Latest BetOnline.ag or Pinnacle moneyline seen before the freeze; bookmaker margin removed proportionally. Shown for comparison, not advice."
+ }
+}
