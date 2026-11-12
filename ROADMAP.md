@@ -1,5 +1,15 @@
 # UPSET Roadmap
 
+Latest implementation checkpoint: [November 4, 2026 experimental preview](docs/SCOPE_STATUS_2026_11_04_PREVIEW.md).
+It supersedes the older progress descriptions below.
+
+Follow-up: [what the accuracy-gap improvement means](docs/STRIKING_POINT_ERRORS_2026_11_04.md)
+distinguishes aggregate bias from the newly audited individual-fight errors.
+
+Latest implementation: [Experimental overall rating v1, November 5](docs/OVERALL_RATING_2026_11_05.md).
+Calculated four-part scores now feed the compact octagonal badges locally.
+They remain experimental; fresh future and individual-skill validation are unfinished.
+
 UPSET is an advanced UFC analytics and machine learning platform focused on
 fighter analysis, advanced performance metrics, matchup intelligence, and
 interpretable fight predictions.
