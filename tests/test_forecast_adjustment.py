@@ -58,3 +58,18 @@ def test_mismatched_inputs_are_refused(tmp_path):
     (copy / "manifest.json").write_text(json.dumps(manifest))
     with pytest.raises(ValueError):
         ForecastAdjustment(copy, DATABASE, SNAPSHOT)
+
+
+def test_weight_class_check():
+    from datetime import date
+    from upset.ratings.forecast_adjust import completed_years, weight_class_check
+    live = {"status": "available", "probabilities": [.6, .4], "version": "v"}
+    names = ["A", "B"]
+    assert weight_class_check(live, names, ["Lightweight", "Lightweight"]) is live
+    assert "division_note" in weight_class_check(live, names, ["Lightweight", "Welterweight"])
+    for pair in (["Lightweight", "Bantamweight"], ["Heavyweight", "Lightweight"], ["Bantamweight", "Women's Bantamweight"]):
+        out = weight_class_check(live, names, pair)
+        assert out["status"] == "unavailable" and "probabilities" not in out, pair
+    assert weight_class_check(live, names, ["Lightweight", None]) is live          # unknown division: leave it
+    assert completed_years(date(1988, 11, 14), date(2026, 11, 12)) == 37
+    assert completed_years(date(1988, 11, 14), date(2026, 11, 14)) == 38

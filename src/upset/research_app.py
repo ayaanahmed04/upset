@@ -26,7 +26,7 @@ from upset.data.viewer_upsets_v5 import build_upset_index_v5
 from upset.data.viewer_upsets_market import add_market_upsets
 from upset.data.upcoming_market import attach, disagreement_record, scheduled_market
 from upset.predictions.published_picks import load_record, picks_file
-from upset.ratings.forecast_adjust import ForecastAdjustment
+from upset.ratings.forecast_adjust import ForecastAdjustment, weight_class_check
 from upset.data.skills_view import SkillProfiles
 
 
@@ -511,6 +511,30 @@ def enrich(database, report):
     return report
 
 
+def attach_locked_picks(event):
+    """Show the frozen pick next to today's forecast, so a card never shows one without the other."""
+    try:
+        record = load_record(PUBLISHED_PICKS)
+    except (OSError, ValueError):
+        return event
+    item = next((e for e in record["events"] if not e.get("error") and e["slug"] == event.get("slug")), None)
+    if item is None:
+        return event
+    picks = {frozenset(f["id"] for f in pick["fighters"]): pick for pick in item["picks"]}
+    bouts = []
+    for bout in event["bouts"]:
+        ids = [fighter.get("id") for fighter in bout["fighters"]]
+        pick = picks.get(frozenset(ids))
+        if pick:
+            order = [f["id"] for f in pick["fighters"]]
+            p = pick["probabilities"] if order == ids else pick["probabilities"][::-1]
+            bout = {**bout, "locked_pick": {"probabilities": p, "frozen_at": item["frozen_at"],
+                                            "revision": (item.get("model") or {}).get("forecast_revision")
+                                            or (item.get("model") or {}).get("revision")}}
+        bouts.append(bout)
+    return {**event, "bouts": bouts, "locked_picks": {"frozen_at": item["frozen_at"], "sha256": item["sha256"]}}
+
+
 def rating_forecast(database, a_id, b_id, before, division=None):
     """Matchup forecast from a snapshot that offers one (UPSET Rating v5); otherwise None."""
     if RATING_SNAPSHOT is None or not hasattr(RATING_SNAPSHOT, "matchup") or not a_id or not b_id:
@@ -714,6 +738,7 @@ def route(database, target):
                 event = {**event, "bouts": [{**bout, "forecast": rating_forecast(
                     database, *[fighter.get("id") for fighter in bout["fighters"]], event["date"], bout.get("division"))}
                     for bout in event["bouts"]]}
+                event = attach_locked_picks(event)
             return event
         if parts.path == "/api/fight":
             key = params.get("id", [""])[0]
@@ -739,7 +764,8 @@ def route(database, target):
             result = {"fighters": reports, "common_opponents": common_opponents(reports)}
             forecast = rating_forecast(database, a, b, before)
             if forecast is not None:
-                result["forecast"] = forecast
+                result["forecast"] = weight_class_check(forecast, [r["name"] for r in reports],
+                                                        [r["summary"].get("division") for r in reports])
             return result
     raise KeyError("Page not found.")
 

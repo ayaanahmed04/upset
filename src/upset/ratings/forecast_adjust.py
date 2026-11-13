@@ -19,6 +19,35 @@ from datetime import date
 from pathlib import Path
 
 VERSION = "forecast_adjustment_v1"
+WEIGHT_ORDER = ("Strawweight", "Flyweight", "Bantamweight", "Featherweight", "Lightweight", "Welterweight",
+                "Middleweight", "Light Heavyweight", "Heavyweight")
+
+
+def completed_years(born, day):
+    return day.year - born.year - ((day.month, day.day) < (born.month, born.day))
+
+
+def weight_class_check(forecast, names, divisions):
+    """The forecast was only tested on real fights, which happen within one weight class, and has no size
+    term. Two or more classes apart, or men against women, it gives no win chance; one class apart it notes it."""
+    if not forecast or forecast.get("status") != "available" or not all(divisions):
+        return forecast
+    women = [d.startswith("Women's ") for d in divisions]
+    base = [d.removeprefix("Women's ") for d in divisions]
+    if any(b not in WEIGHT_ORDER for b in base):
+        return forecast
+    gap = abs(WEIGHT_ORDER.index(base[0]) - WEIGHT_ORDER.index(base[1]))
+    if women[0] != women[1] or gap >= 2:
+        apart = "men's and women's divisions" if women[0] != women[1] else f"{gap} weight classes apart"
+        return {"version": forecast.get("version"), "status": "unavailable", "reason": "weight_classes",
+                "divisions": list(divisions),
+                "message": f"No win chance for this matchup: {names[0]} last fought at {divisions[0]} and {names[1]} at "
+                           f"{divisions[1]}, {apart}. UPSET's forecast is tested only on real fights within a weight "
+                           "class and doesn't account for size."}
+    if gap == 1:
+        return {**forecast, "division_note": f"{names[0]} last fought at {divisions[0]} and {names[1]} at {divisions[1]}. "
+                                             "The forecast doesn't account for size."}
+    return forecast
 
 
 def _logit(p):
@@ -77,6 +106,10 @@ class ForecastAdjustment:
         born = self.births.get(uid)
         return (date.fromisoformat(day) - born).days / 365.25 if born else None
 
+    def age_years(self, uid, day):
+        born = self.births.get(uid)
+        return completed_years(born, date.fromisoformat(day)) if born else None
+
     def start(self, uid, day):
         edge = self.edges.get(uid)
         if not edge or edge["date"] >= day:
@@ -101,7 +134,7 @@ class ForecastAdjustment:
         age_part = (self.w["age_heavy"] if heavy else self.w["age_light"]) * (term(ages[0]) - term(ages[1]))
         start_part = self.w["start"] * (self.start(a, day) - self.start(b, day))
         p_base, p_age, p_full = _sigmoid(base), _sigmoid(base + age_part), _sigmoid(base + age_part + start_part)
-        return p_full, {"v5_1": round(p, 4), "ages": [None if x is None else round(x, 1) for x in ages],
+        return p_full, {"v5_1": round(p, 4), "ages": [self.age_years(a, day), self.age_years(b, day)],
                         "heavy_division": heavy, "age_effect": round(p_age - p_base, 4),
                         "start_effect": round(p_full - p_age, 4)}
 

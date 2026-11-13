@@ -1673,6 +1673,7 @@ api('/api/meta').then(m=>{
   .home-hero .counter strong{font-size:30px}
   .hero-search>small{display:none}
 }
+.hp-locked{display:block;margin-top:5px;font:600 10.5px/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:#6fd3a8;text-align:center;cursor:help}
 </style>
 <script id="refresh-home-js">
 function hpGrade(score){return gradeChip(score);}
@@ -1698,7 +1699,11 @@ function hpForecast(bout,mini){
   if(!f||f.status!=='available'||typeof v5ForecastBar!=='function')return null;
   const bar=v5ForecastBar(f,true);
   const flag=typeof v5MarketFlag==='function'?v5MarketFlag(f,bout.fighters):null;
-  const body=flag?h('div',null,bar,flag):bar;
+  const lp=bout.locked_pick,li=lp?(lp.probabilities[0]>=lp.probabilities[1]?0:1):0;
+  const locked=lp?h('small',{class:'hp-locked',title:'Pick locked '+niceDate(lp.frozen_at.slice(0,10))+' before the card'+(lp.revision?' with forecast '+lp.revision:'')+
+    '. The bar shows today’s forecast'+(f.revision?' ('+f.revision+')':'')+'. The locked pick is the one that gets graded.',
+    text:'🔒 Locked pick: '+String(bout.fighters[li]?.name||'').split(' ').slice(-1)[0]+' '+Math.round(100*lp.probabilities[li])+'%'}):null;
+  const body=flag||locked?h('div',null,bar,locked,flag):bar;
   return mini?body:h('div',{class:'hp-fc',title:'UPSET forecast from fights before this card. Not betting advice.'},h('span',{text:'UPSET forecast'}),body);
 }
 function hpCorner(r,side){
@@ -2970,6 +2975,7 @@ function v5ForecastPanel(res){
     f.provisional?h('p',{class:'v5-fc-note',text:'At least one fighter has fewer than four UFC fights, so this is less certain than it looks.'}):null,
     f.stale?h('p',{class:'v5-fc-note',text:'At least one fighter has not fought in over two years.'+(f.factors?' Age is in the forecast; layoffs and weight changes are not.':' Layoffs, age and weight changes are not in the model.')}):null,
     v5FactorsNote(f,A,B),
+    f.division_note?h('p',{class:'v5-fc-note',text:f.division_note}):null,
     f.market_disagreement&&f.market?h('p',{class:'v5-fc-note',text:'Bettors favor '+(f.market.probabilities[0]>.5?A:B).name.split(' ').slice(-1)[0]+' ('+
       Math.round(100*Math.max(...f.market.probabilities))+'%). Since 2019, when UPSET and the market disagreed this much, the market was right '+
       Math.round(100*f.market_disagreement.market_right_rate)+'% of the time ('+f.market_disagreement.market_right+' of '+f.market_disagreement.cases+' fights).'}):null,
@@ -3738,7 +3744,9 @@ async function renderCorrections(){
       if(!item||state.view!=='event'||document.querySelector('.pk-banner'))return;
       const s=item.summary;
       const text=s.graded?['UPSET went ',h('b',{text:s.correct+'–'+(s.graded-s.correct)}),' on this card with picks locked '+lockTime(item.frozen_at)+'.']
-        :[h('b',{text:'🔒 UPSET picks locked'}),' '+lockTime(item.frozen_at)+' · fingerprint '+shortPrint(item.sha256)];
+        :[h('b',{text:'🔒 UPSET picks locked'}),' '+lockTime(item.frozen_at)+(item.model?.revision?' (forecast '+(item.model.forecast_revision||item.model.revision)+')':'')+
+          ' · fingerprint '+shortPrint(item.sha256)+'. Each fight shows the locked pick in green under today’s forecast bar'+
+          ((event.bouts||[]).find(b=>b.forecast?.revision)?' ('+event.bouts.find(b=>b.forecast?.revision).forecast.revision+', which adds age)':'')+'. Only locked picks are graded.'];
       const banner=h('div',{class:'pk-banner'},h('span',null,...text),h('a',{href:viewerUrl('/record'),text:'See the track record →'}));
       const head=$('content').querySelector('.event-header');
       if(head)head.after(banner);else $('content').prepend(banner);
@@ -3878,19 +3886,23 @@ async function renderCorrections(){
           h('p',{class:'sk-line',text:'No big gaps: these two are closely matched across the board.'}),
         h('p',{class:'sk-fine',text:'Shows how the fight may look, not who wins. Skills are scored 60–99 and adjusted for opponents.'})));
   }
+  // Skill profiles are built from all recorded fights, so they only describe the present.
+  const pastCutoff=()=>!!state.before&&typeof localToday==='function'&&state.before<localToday();
   const place=node=>{const c=$('content'),old=c.querySelector('.sk-card');if(old)old.remove();
     const anchor=c.querySelector('.v5-forecast')||c.firstElementChild;anchor?anchor.after(node):c.append(node);};
   const previousFighter=renderFighter;
   renderFighter=function(r){
     previousFighter(r);
-    load(r.id).then(d=>{if(d&&d.status==='available'&&state.view==='fighter'&&readRoute().parts[1]===r.id)place(profileCard(d));});
+    if(pastCutoff())return;
+    load(r.id).then(d=>{if(d&&d.status==='available'&&state.view==='fighter'&&readRoute().parts[1]===r.id&&!pastCutoff())place(profileCard(d));});
   };
   const previousCompare=renderCompare;
   renderCompare=function(res){
     previousCompare(res);
     const [A,B]=res.fighters;
+    if(pastCutoff())return;
     Promise.all([load(A.id),load(B.id)]).then(([a,b])=>{
-      if(a&&b&&a.status==='available'&&b.status==='available'&&state.view==='compare')place(clashCard(A,B,a,b));});
+      if(a&&b&&a.status==='available'&&b.status==='available'&&state.view==='compare'&&!pastCutoff())place(clashCard(A,B,a,b));});
   };
 })();
 </script>
