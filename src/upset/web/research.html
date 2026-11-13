@@ -3924,8 +3924,8 @@ async function renderCorrections(){
 .rd-tag.good{color:#e7c955}.rd-tag.bad{color:#65a6ef}
 .rd-bars{display:flex;align-items:flex-end;gap:6px;height:46px}
 .rd-bars span{flex:1;max-width:26px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;font:600 9px/1 var(--body);color:var(--muted);letter-spacing:.05em}
-.rd-bars i{display:block;width:100%;background:var(--red);min-height:2px}
-.rd-bars span.thin i{opacity:.45}
+.rd-bars i{display:block;width:100%;background:var(--text-2);opacity:.75;min-height:2px}
+.rd-bars span.thin i{opacity:.35}
 .rd-side .sk-eyebrow{display:block;margin-bottom:10px}
 .rd-strip{display:grid;gap:7px}
 .rd-fight{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:7px 9px;border:1px solid var(--line-soft);background:rgba(0,0,0,.2);color:var(--text);text-decoration:none}
@@ -3938,13 +3938,14 @@ a.rd-fight:hover{border-color:var(--accent)}
 .rd-name small{font-size:11px;color:var(--muted)}
 .rd-boxes{display:flex;gap:4px}
 .rd-boxes i{width:24px;height:24px;display:grid;place-items:center;font:700 10px/1 var(--body);font-style:normal;border:1px solid var(--line);color:var(--muted)}
-.rd-boxes i.W{background:var(--red);border-color:var(--red);color:#fff}
-.rd-boxes i.E{background:linear-gradient(135deg,var(--red) 50%,transparent 50%);border-color:var(--red);color:#fff}
+.rd-boxes i.W{background:var(--win);border-color:var(--win);color:#fff}
+.rd-boxes i.L{background:var(--loss);border-color:var(--loss);color:#fff}
+.rd-boxes i.E{background:linear-gradient(135deg,var(--win) 50%,var(--loss) 50%);border-color:var(--line);color:#fff}
 .rd-boxes i.F{background:#e7c955;border-color:#e7c955;color:#111;font-size:8.5px}
 .rd-boxes i.X{border-color:#65a6ef;color:#65a6ef;font-size:8.5px}
 .rd-key{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:11px;color:var(--muted)}
 .rd-key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
-.rd-key i.W{background:var(--red);border-color:var(--red)}.rd-key i.F{background:#e7c955;border-color:#e7c955}.rd-key i.X{border-color:#65a6ef}
+.rd-key i.W{background:var(--win);border-color:var(--win)}.rd-key i.L{background:var(--loss);border-color:var(--loss)}.rd-key i.F{background:#e7c955;border-color:#e7c955}.rd-key i.X{border-color:#65a6ef}
 @media(max-width:860px){.rd-card{grid-template-columns:1fr;padding:16px}}
 </style>
 <script id="refresh-round-profile-js">
@@ -4024,7 +4025,7 @@ a.rd-fight:hover{border-color:var(--accent)}
       h('div',{class:'rd-side'},
         h('span',{class:'sk-eyebrow',text:'Last '+(d.recent.length===1?'fight':d.recent.length+' fights')+' · round by round'}),
         h('div',{class:'rd-strip'},d.recent.map(fightRow)),
-        h('div',{class:'rd-key'},h('span',null,h('i',{class:'W'}),'Won the round'),h('span',null,h('i'),'Lost it'),
+        h('div',{class:'rd-key'},h('span',null,h('i',{class:'W'}),'Won the round'),h('span',null,h('i',{class:'L'}),'Lost the round'),
           h('span',null,h('i',{class:'F'}),'Finished it'),h('span',null,h('i',{class:'X'}),'Was finished'))));
   }
   // Built from every recorded round, so it only describes the present.
