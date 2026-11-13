@@ -28,6 +28,7 @@ from upset.data.upcoming_market import attach, disagreement_record, scheduled_ma
 from upset.predictions.published_picks import load_record, picks_file
 from upset.ratings.forecast_adjust import ForecastAdjustment, weight_class_check
 from upset.data.skills_view import SkillProfiles
+from upset.data.round_profiles import VERSION as ROUND_PROFILES_VERSION, profile as round_profile
 
 
 def connect(database):
@@ -332,6 +333,7 @@ FIGHTER_ALIASES = {}
 PROVIDER_AUDIT = None
 MARKET_ODDS = None
 SKILL_PROFILES = None
+ROUND_PROFILES = None
 FIGHTERS_WITH_FIGHTS = None
 UPCOMING_MARKET = {}
 DISAGREEMENT = {}
@@ -700,6 +702,10 @@ def route(database, target):
             if SKILL_PROFILES is None:
                 raise KeyError("Skill profiles are not loaded.")
             return SKILL_PROFILES.profile(params.get("id", [""])[0])
+        if parts.path == "/api/rounds":
+            if ROUND_PROFILES is None:
+                raise KeyError("Round profiles are not loaded.")
+            return round_profile(ROUND_PROFILES, params.get("id", [""])[0])
         if parts.path == "/api/record":
             return load_record(PUBLISHED_PICKS)
         if parts.path == "/api/time-machine":
@@ -954,7 +960,7 @@ def handler(database, design="broadcast"):
 
 
 def main():
-    global COVERAGE, EVENTS, FIGHT_ROUNDS, HISTORICAL_RESULTS, SKILL_PROFILES, MARKET_ODDS, PROVIDER_AUDIT, PUBLISHED_PICKS, RATING_SNAPSHOT, STRIKING_PREVIEW, UPSET_INDEX
+    global COVERAGE, EVENTS, FIGHT_ROUNDS, HISTORICAL_RESULTS, ROUND_PROFILES, SKILL_PROFILES, MARKET_ODDS, PROVIDER_AUDIT, PUBLISHED_PICKS, RATING_SNAPSHOT, STRIKING_PREVIEW, UPSET_INDEX
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--database", type=Path, default=Path("data/processed/research_v1/upset.sqlite"))
     parser.add_argument("--port", type=int, default=8765)
@@ -976,6 +982,7 @@ def main():
     parser.add_argument("--provider-audit", type=Path, help="Cross-provider result audit for this database.")
     parser.add_argument("--forecast-adjustment", type=Path,
                         help="Forecast revision 5.2 (age and debut-odds starting point) built for this snapshot.")
+    parser.add_argument("--round-profiles", type=Path, help="Round profiles folder (rounds.json + manifest.json) for fighter pages.")
     parser.add_argument("--skill-profiles", type=Path, help="Multi-skill model output (skills JSON) for fighter skill profiles.")
     parser.add_argument("--market-archive", type=Path,
                         help="Daily odds archive (zip): flags big UPSET-vs-market disagreements on the next card.")
@@ -1019,6 +1026,8 @@ def main():
                     if label and "catch" not in label.lower() and "open" not in label.lower():
                         last_division[bout.get("upset_fighter_1_id")] = last_division[bout.get("upset_fighter_2_id")] = label
             SKILL_PROFILES = SkillProfiles(args.skill_profiles, women, last_division)
+        if args.round_profiles is not None:
+            ROUND_PROFILES = load_verified_json(args.round_profiles, "rounds.json", manifest["database_sha256"], ROUND_PROFILES_VERSION)[0]
         if args.market_odds is not None:
             MARKET_ODDS = load_verified_json(args.market_odds, "odds.json", manifest["database_sha256"], "market_odds_v1")[0]
         if args.event_names is not None:

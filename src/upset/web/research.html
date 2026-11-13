@@ -752,7 +752,7 @@ function timeline(history,range=timelineRange(history)){
     bindTip(g,()=>[h('strong',{text:signed(v)+' / min'}),h('div',{text:'vs '+r.opponent}),
       h('div',{class:'r'},h('span',{text:niceDate(r.date)}),h('b',{text:resultLabel(r)})),
       h('div',{class:'r'},h('span',{text:'Method'}),h('b',{text:displayMethod(r)})),
-      h('div',{class:'r'},h('span',{text:'Sig. landed / absorbed'}),h('b',{text:r.own.sig_strikes_landed+' / '+r.opponent_stats.sig_strikes_landed})),
+      h('div',{class:'r'},h('span',{text:'Sig. strikes landed–absorbed'}),h('b',{text:r.own.sig_strikes_landed+'–'+r.opponent_stats.sig_strikes_landed})),
       ...(short?[h('div',{text:'Under one minute · rate omitted from plot'})]:[])]);
     svg.append(g);
   });
@@ -879,7 +879,7 @@ function ratingHistoryChip(f,r){
 }
 function historyList(r,limit){
   const list=h('div',{class:'history'});
-  list.append(h('div',{class:'hrow head'},h('span',{text:'Date'}),h('span',{text:''}),h('span',{text:'Opponent'}),h('span',{class:'meth-col',text:'Method'}),h('span',{class:'ss-col',text:'Sig. landed / absorbed'})));
+  list.append(h('div',{class:'hrow head'},h('span',{text:'Date'}),h('span',{text:''}),h('span',{text:'Opponent'}),h('span',{class:'meth-col',text:'Method'}),h('span',{class:'ss-col',text:'Sig. strikes landed–absorbed'})));
   const history=reviewedHistory(r),rows=limit?history.slice(0,limit):history;
   for(const f of rows){
     const own=f.own?.sig_strikes_landed,opp=f.opponent_stats?.sig_strikes_landed,tot=own+opp||1;
@@ -891,7 +891,7 @@ function historyList(r,limit){
       h('span',null,h('button',{class:'opp',onclick:()=>go('#/fighter/'+f.opponent_id),text:f.opponent}),f.title_bout?h('span',{class:'title-tag',text:'TITLE'}):null,h('span',{class:'sub',text:(f.weight_class||'').replace(/ Bout$/,'')}),h('span',{class:'sub inline-method',text:[method,when].filter(Boolean).join(' · ')}),ratingHistoryChip(f,r),
         h('a',{class:'history-fight-link',href:fightUrl(f.fight_id),text:f.results_only?'Official result':'Fight stats'})),
       h('span',{class:'meth meth-col'},h('b',{text:method}),h('span',{class:'sub',text:when})),
-      f.results_only?h('span',{class:'ss ss-col',text:'Stats unavailable'}):h('span',{class:'ss ss-col'},own+' / '+opp,h('span',{class:'sbar'},h('i',{style:`width:${own/tot*100}%;background:var(--win)`}),h('i',{style:`width:${opp/tot*100}%;background:var(--surface-3)`})))));
+      f.results_only?h('span',{class:'ss ss-col',text:'Stats unavailable'}):h('span',{class:'ss ss-col',title:own+' significant strikes landed, '+opp+' absorbed'},own+'–'+opp,h('span',{class:'sbar'},h('i',{style:`width:${own/tot*100}%;background:var(--win)`}),h('i',{style:`width:${opp/tot*100}%;background:var(--surface-3)`})))));
     if(f.reviewed_result)list.append(h('div',{class:'amend',text:'Result amended: '+(f.reviewed_result.reason||f.method)+'. Originally recorded as '+(f.frozen_result.source_winner_label||'unknown')+'; date the amendment took effect is unknown.'}));
   }
   return list;
@@ -3907,4 +3907,137 @@ async function renderCorrections(){
 })();
 </script>
 <!-- UPSET REFRESH END: skill-profile -->
+<!-- UPSET REFRESH START: round-profile (Round-by-round panel on fighter pages: rounds won, pace by round, output when wrestled, last fights round by round). Delete through the matching END line to remove it. -->
+<style id="refresh-round-profile">
+.rd-card{margin:18px 0;padding:20px 22px;background:radial-gradient(80% 110% at 85% 35%,rgba(231,201,85,.06),transparent 60%),var(--surface);border:1px solid var(--line-soft);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(290px,400px);gap:18px 34px;align-items:start}
+.rd-line{margin:0 0 16px;color:var(--text-2);font-size:14.5px;line-height:1.5;max-width:540px}
+.rd-line b{color:var(--text)}
+.rd-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.rd-tile{padding:12px 14px;border:1px solid var(--line);background:rgba(0,0,0,.25);display:grid;gap:7px;align-content:start}
+.rd-tile .cap{font:600 10.5px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+.rd-tile .big{font:400 27px/1 var(--brand);color:var(--text);white-space:nowrap}
+.rd-tile .big em{font-style:normal;font-size:16px;color:var(--muted);margin:0 5px;vertical-align:3px}
+.rd-tile.good .big{color:#e7c955}.rd-tile.bad .big{color:#65a6ef}
+.rd-tile .sub{font-size:11.5px;color:var(--muted);line-height:1.4}
+.rd-tag{justify-self:start;padding:3px 7px;font:700 10px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor}
+.rd-tag.good{color:#e7c955}.rd-tag.bad{color:#65a6ef}
+.rd-bars{display:flex;align-items:flex-end;gap:6px;height:46px}
+.rd-bars span{flex:1;max-width:26px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%;font:600 9px/1 var(--body);color:var(--muted);letter-spacing:.05em}
+.rd-bars i{display:block;width:100%;background:var(--red);min-height:2px}
+.rd-bars span.thin i{opacity:.45}
+.rd-side .sk-eyebrow{display:block;margin-bottom:10px}
+.rd-strip{display:grid;gap:7px}
+.rd-fight{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:7px 9px;border:1px solid var(--line-soft);background:rgba(0,0,0,.2);color:var(--text);text-decoration:none}
+a.rd-fight:hover{border-color:var(--accent)}
+.rd-who{display:flex;align-items:center;gap:9px;min-width:0}
+.rd-res{flex:none;width:24px;padding:4px 0;text-align:center;font:700 11px/1 var(--display);border:1px solid var(--line);color:var(--text-2)}
+.rd-res.W{background:#e7c955;border-color:#e7c955;color:#111}
+.rd-name{display:grid;gap:3px;min-width:0}
+.rd-name b{font:700 13.5px/1.1 var(--display);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rd-name small{font-size:11px;color:var(--muted)}
+.rd-boxes{display:flex;gap:4px}
+.rd-boxes i{width:24px;height:24px;display:grid;place-items:center;font:700 10px/1 var(--body);font-style:normal;border:1px solid var(--line);color:var(--muted)}
+.rd-boxes i.W{background:var(--red);border-color:var(--red);color:#fff}
+.rd-boxes i.E{background:linear-gradient(135deg,var(--red) 50%,transparent 50%);border-color:var(--red);color:#fff}
+.rd-boxes i.F{background:#e7c955;border-color:#e7c955;color:#111;font-size:8.5px}
+.rd-boxes i.X{border-color:#65a6ef;color:#65a6ef;font-size:8.5px}
+.rd-key{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:11px;color:var(--muted)}
+.rd-key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.rd-key i.W{background:var(--red);border-color:var(--red)}.rd-key i.F{background:#e7c955;border-color:#e7c955}.rd-key i.X{border-color:#65a6ef}
+@media(max-width:860px){.rd-card{grid-template-columns:1fr;padding:16px}}
+</style>
+<script id="refresh-round-profile-js">
+(()=>{
+  const cache=new Map();
+  const load=id=>{if(!cache.has(id))cache.set(id,fetch('/api/rounds?id='+encodeURIComponent(id)).then(r=>r.ok?r.json():null).catch(()=>null));return cache.get(id);};
+  const num=v=>Number.isInteger(v)?String(v):v.toFixed(1);
+  const one=v=>Number(v).toFixed(1);
+  const signed=v=>(v>=0?'+':'\u2212')+Math.abs(v)+'%';
+  const mmss=t=>Math.floor(t/60)+':'+String(t%60).padStart(2,'0');
+  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const month=d=>MONTHS[+d.slice(5,7)-1]+' '+d.slice(0,4);
+  // Only call out what is genuinely unusual: top or bottom 10% of active UFC fighters.
+  const tag=(p,goodHigh=true)=>p==null?null:p>=90?{cls:goodHigh?'good':'bad',text:'Top '+Math.max(1,100-p)+'%'}:p<=10?{cls:goodHigh?'bad':'good',text:'Bottom '+Math.max(1,p)+'%'}:null;
+  function headline(d){
+    const p=d.percentiles||{},L=d.league;
+    if(d.rounds<10)return ['Still early','Only '+d.rounds+' UFC round'+(d.rounds===1?'':'s')+' so far: too few for averages.'];
+    const picks=[];
+    if(p.won>=90)picks.push([p.won,'Round collector',['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges.']]);
+    if(p.late>=90)picks.push([p.late,'Gets stronger late',['Throws ',h('b',{text:d.late_change+'% more'}),' after round 1. The UFC average is '+L.late_change+'% more.']]);
+    if(p.late<=10)picks.push([100-p.late,'Fast starter',['Output ',h('b',{text:(d.late_change<0?'drops '+(-d.late_change)+'%':'rises only '+d.late_change+'%')}),' after round 1. The UFC average rises '+L.late_change+'%.']]);
+    if(p.keep<=10)picks.push([100-p.keep,'Needs it standing',['Throws ',h('b',{text:(-d.wrestled.change)+'% less'}),' in rounds where the opponent wrestles. The UFC average is '+(-L.keep_change)+'% less.']]);
+    if(p.keep>=90)picks.push([p.keep,'Strikes through the grappling',['Keeps ',h('b',{text:(100+d.wrestled.change)+'%'}),' of their striking output in rounds where the opponent wrestles. The UFC average keeps '+(100+L.keep_change)+'%.']]);
+    if(picks.length)return picks.sort((a,b)=>b[0]-a[0])[0].slice(1);
+    const won=d.won_pct!=null?['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges.']:[];
+    if(d.late_change==null)return ['Round by round',won];
+    const shift=d.late_change-L.late_change;
+    return [shift>=15?'Builds as it goes':shift<=-15?'Starts fast':'Steady pace',won];
+  }
+  function tile(cls,cap,big,sub,t,extra){
+    return h('div',{class:'rd-tile'+(t?' '+t.cls:'')},h('div',{class:'cap',text:cap}),h('div',{class:'big'},...big),extra||null,
+      h('div',{class:'sub',text:sub}),t?h('span',{class:'rd-tag '+t.cls,text:t.text}):null);
+  }
+  function tiles(d){
+    const p=d.percentiles||{},L=d.league,out=[];
+    if(d.scored)out.push(tile('won','Rounds won',[d.won_pct+'%'],num(d.won)+' of '+d.scored+' scored rounds',tag(p.won)));
+    if(d.r1!=null){
+      const rows=d.pace.filter(r=>r.minutes>=3),top=Math.max(12,...rows.map(r=>r.thrown));   // shared scale, so low-output fighters show short bars
+      const bars=h('div',{class:'rd-bars','aria-hidden':'true'},rows.map(r=>h('span',{class:r.minutes<10?'thin':null,title:'Round '+r.round+': '+r.thrown+' thrown, '+r.landed+' landed per minute ('+Math.round(r.minutes)+' min)'},
+        h('i',{style:'height:'+Math.max(4,Math.round(32*r.thrown/top))+'px'}),'R'+r.round)));
+      out.push(tile('pace','Strikes thrown / min',[one(d.r1),h('em',{text:'→'}),one(d.later)],'Round 1 → later rounds · UFC average '+signed(L.late_change),tag(p.late),bars));
+    }
+    if(d.wrestled){const t=tile('wrestled','When wrestled',[one(d.wrestled.clean),h('em',{text:'→'}),one(d.wrestled.thrown)],
+      'Strikes thrown / min, free rounds → wrestled rounds · UFC average '+signed(L.keep_change),tag(p.keep));
+      t.title='Wrestled rounds: the opponent landed a takedown or held at least a minute of control.';out.push(t);}
+    return out.length?h('div',{class:'rd-tiles'},out):null;
+  }
+  const VERDICT={W:'won on the round score',L:'lost on the round score',E:'even on the round score'};
+  function box(r,n,f){
+    const [sl,sa,tl,ta,cl,ca,kl,ka]=r.d,parts=['strikes '+sl+'–'+sa];
+    if(tl||ta)parts.push('takedowns '+tl+'–'+ta);
+    if(cl||ca)parts.push('control '+mmss(cl)+'–'+mmss(ca));
+    if(kl||ka)parts.push('knockdowns '+kl+'–'+ka);
+    const code=r.code==='-'?'N':r.code,fin=f.finish||'FIN';
+    const what=r.code==='F'?'finished it ('+fin+')':r.code==='X'?'was finished ('+fin+')':r.code==='-'?'fight stopped':VERDICT[r.code];
+    return h('i',{class:code,title:'Round '+n+': '+what+' · '+parts.join(' · '),text:r.code==='F'||r.code==='X'?fin:String(n)});
+  }
+  function fightRow(f){
+    const boxes=f.rounds.map((r,i)=>box(r,i+1,f)),last=f.rounds[f.rounds.length-1];
+    // Stopped between rounds (corner or doctor): the last round was complete, so mark the stoppage after it.
+    if(f.finish&&(f.result==='W'||f.result==='L')&&last&&'WLE'.includes(last.code))
+      boxes.push(h('i',{class:f.result==='W'?'F':'X',title:'Stopped after round '+f.rounds.length+' ('+f.finish+')',text:f.finish}));
+    return h('a',{class:'rd-fight',href:fightUrl(f.fight_id),title:'Open the fight'},
+      h('div',{class:'rd-who'},h('span',{class:'rd-res '+f.result,text:f.result}),
+        h('span',{class:'rd-name'},h('b',{text:f.opponent}),h('small',{text:month(f.date)}))),
+      h('div',{class:'rd-boxes'},boxes));
+  }
+  function card(d){
+    const [title,line]=headline(d),L=d.league;
+    return h('section',{class:'rd-card','aria-label':'Round by round'},
+      h('div',null,
+        h('div',{class:'sk-eyebrow',text:'Round by round · '+d.rounds+' UFC rounds'}),
+        h('h2',{class:'sk-type distressed',text:title}),
+        h('p',{class:'rd-line'},...[line].flat()),
+        d.rounds>=10?tiles(d):null,
+        h('p',{class:'sk-fine',text:'Rounds are scored like a judge would: strikes landed, knockdowns, takedowns and control. That score picks the official winner in '+L.judging_agrees+'% of decisions. Rounds that end in a finish are not scored.'+(d.rounds>=10?' Tags mark the top or bottom 10% of '+L.compared_with+' active UFC fighters.':'')})),
+      h('div',{class:'rd-side'},
+        h('span',{class:'sk-eyebrow',text:'Last '+(d.recent.length===1?'fight':d.recent.length+' fights')+' · round by round'}),
+        h('div',{class:'rd-strip'},d.recent.map(fightRow)),
+        h('div',{class:'rd-key'},h('span',null,h('i',{class:'W'}),'Won the round'),h('span',null,h('i'),'Lost it'),
+          h('span',null,h('i',{class:'F'}),'Finished it'),h('span',null,h('i',{class:'X'}),'Was finished'))));
+  }
+  // Built from every recorded round, so it only describes the present.
+  const pastCutoff=()=>!!state.before&&typeof localToday==='function'&&state.before<localToday();
+  const place=node=>{const c=$('content'),old=c.querySelector('.rd-card');if(old)old.remove();
+    const anchor=c.querySelector('.sk-card')||c.querySelector('.v5-forecast')||c.firstElementChild;anchor?anchor.after(node):c.append(node);};
+  const previousFighter=renderFighter;
+  renderFighter=function(r){
+    previousFighter(r);
+    if(pastCutoff())return;
+    load(r.id).then(d=>{if(d&&d.status==='available'&&state.view==='fighter'&&readRoute().parts[1]===r.id&&!pastCutoff())place(card(d));});
+  };
+})();
+</script>
+<!-- UPSET REFRESH END: round-profile -->
 </body></html>

@@ -28,14 +28,14 @@ function commonMeetingStats(report,opponentId,meeting){
 function commonFightTable(stats,report,opponentName){
   const {own,other,minutes}=stats;
   const count=value=>commonCount(value)==null?'—':int(value);
-  const attempts=(side,landed,attempted)=>count(side[landed])+' / '+count(side[attempted]);
+  const attempts=(side,landed,attempted)=>count(side[landed])+' of '+count(side[attempted]);
   const rate=(side,key,scale=1)=>minutes!=null&&commonCount(side[key])!=null?fmt(side[key]*scale/minutes):'—';
   const rows=[
-    ['Significant strikes (landed / attempted)',attempts(own,'sig_strikes_landed','sig_strikes_attempted'),attempts(other,'sig_strikes_landed','sig_strikes_attempted')],
+    ['Significant strikes (landed of attempted)',attempts(own,'sig_strikes_landed','sig_strikes_attempted'),attempts(other,'sig_strikes_landed','sig_strikes_attempted')],
     ['Striking accuracy',pct1(commonAccuracy(own.sig_strikes_landed,own.sig_strikes_attempted)),pct1(commonAccuracy(other.sig_strikes_landed,other.sig_strikes_attempted))],
     ['Significant strikes landed / min',rate(own,'sig_strikes_landed'),rate(other,'sig_strikes_landed')],
     ['Knockdowns',count(own.knockdowns),count(other.knockdowns)],
-    ['Takedowns (landed / attempted)',attempts(own,'takedowns_landed','takedowns_attempted'),attempts(other,'takedowns_landed','takedowns_attempted')],
+    ['Takedowns (landed of attempted)',attempts(own,'takedowns_landed','takedowns_attempted'),attempts(other,'takedowns_landed','takedowns_attempted')],
     ['Takedown accuracy',pct1(commonAccuracy(own.takedowns_landed,own.takedowns_attempted)),pct1(commonAccuracy(other.takedowns_landed,other.takedowns_attempted))],
     ['Takedowns / 15 min',rate(own,'takedowns_landed',15),rate(other,'takedowns_landed',15)],
     ['Submission attempts',count(own.submission_attempts),count(other.submission_attempts)],
@@ -72,13 +72,16 @@ function commonFightCard(res,item,side,index){
       return;
     }
     const {own,other}=stats,count=value=>commonCount(value)==null?'—':int(value);
-    const made=side=>count(side.takedowns_landed)+' / '+count(side.takedowns_attempted);
+    // Standard MMA notation: each fighter's own numbers as landed of attempted, the opponent's underneath.
+    const made=(side,landed,attempted)=>count(side[landed])+' of '+count(side[attempted]);
+    const accuracy=side=>{const a=commonAccuracy(side.sig_strikes_landed,side.sig_strikes_attempted);return a==null?null:Math.round(a*100)+'% accuracy';};
     body.append(h('p',{class:'co-context',text:[stats.fight.weight_class,stats.seconds!=null?'Recorded length '+commonClock(stats.seconds):
       stats.clockConflict?'Recorded clocks disagree; rates unavailable.':'Clock unavailable; totals shown.'].filter(Boolean).join(' · ')}),
       h('div',{class:'co-overview'},
-        h('div',null,h('small',{text:'Significant strikes'}),h('b',{text:count(stats.landed)+' / '+count(stats.absorbed)}),h('small',{text:'landed / absorbed'})),
-        h('div',null,h('small',{text:'Knockdowns'}),h('b',{text:count(own.knockdowns)+' / '+count(other.knockdowns)}),h('small',{text:'scored / received'})),
-        h('div',null,h('small',{text:'Takedowns'}),h('b',{text:made(own)}),h('small',{text:'made / attempted · opponent '+made(other)})),
+        h('div',null,h('small',{text:'Significant strikes'}),h('b',{text:made(own,'sig_strikes_landed','sig_strikes_attempted')}),
+          h('small',{text:[accuracy(own),'opponent '+made(other,'sig_strikes_landed','sig_strikes_attempted')].filter(Boolean).join(' · ')})),
+        h('div',null,h('small',{text:'Knockdowns'}),h('b',{text:count(own.knockdowns)}),h('small',{text:'opponent '+count(other.knockdowns)})),
+        h('div',null,h('small',{text:'Takedowns'}),h('b',{text:made(own,'takedowns_landed','takedowns_attempted')}),h('small',{text:'opponent '+made(other,'takedowns_landed','takedowns_attempted')})),
         h('div',null,h('small',{text:'Control time'}),h('b',{text:commonClock(stats.own_control)}),h('small',{text:'opponent '+commonClock(stats.other_control)}))),
       h('div',{class:'co-rates'},
         h('div',null,h('small',{text:'Landed / min'}),h('b',{text:fmt(stats.landed_rate)})),

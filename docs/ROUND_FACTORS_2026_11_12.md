@@ -52,5 +52,22 @@ The rows are clean and descriptive round profiles are real and interesting, for 
 - Islam Makhachev wins 92% of his completed rounds on the judges-style score (38 rounds).
 - Max Holloway goes from 12.2 strikes a minute in round 1 to 15.3 afterwards.
 
-Candidate site feature (not built): a "Round by round" panel on fighter pages with rounds won,
-pace by round and output when wrestled.
+## Round by round panel (built 2026-11-13)
+
+Fighter pages now show a "Round by round" card under the skill profile:
+
+- a headline type, given only when the fighter is in the top or bottom 10% of the 512 UFC
+  fighters active since 2023 with 15+ rounds: Round collector, Gets stronger late, Fast starter,
+  Needs it standing, Strikes through the grappling. Otherwise it says Builds as it goes, Starts
+  fast or Steady pace. Under 10 rounds it says "Still early" and shows no averages;
+- three tiles: rounds won, strikes thrown per minute by round (round 1 against later rounds,
+  with a small bar per round), and strikes thrown per minute in free rounds against wrestled
+  rounds. Each tile is tagged only when the fighter is in the top or bottom 10%;
+- the last six fights, round by round: won, lost or even on the round score, with the finish
+  marked. Hovering over a round shows its strikes, takedowns, control and knockdowns.
+
+Built by `src/upset/data/round_profiles.py` into `data/published/rounds/rounds_2026_11_13_v1/`
+(rounds.json + manifest.json, checked against the database on load). Served at `/api/rounds?id=`
+when the app is started with `--round-profiles`. Front end: block `12-round-profile.html`.
+Like the skill profile, it is hidden for past dates, because it is built from every recorded round.
+Tests: `tests/test_round_profiles.py`.

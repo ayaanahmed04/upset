@@ -34,7 +34,8 @@ case "$task_release" in
         --provider-audit "data/processed/provider_audit_2026_11_10_v3"
         --market-odds "data/processed/market_odds_2026_11_10_v3"
         --market-archive "data/raw/ufc_market_odds_2026_11_10_v1/kaggle-odds.zip"
-        --skill-profiles "data/published/skills/skills_2026_11_12.json")
+        --skill-profiles "data/published/skills/skills_2026_11_12.json"
+        --round-profiles "data/published/rounds/rounds_2026_11_13_v1")
     fi
     if [[ "$task_release" == "nov10-coverage" || "$task_release" == "nov10-records" ]]; then
       task_professional=(--professional-records "data/roster/pro_records_2026_11_10_$task_history_version.json")
