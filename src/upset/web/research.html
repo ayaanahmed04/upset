@@ -4047,18 +4047,4 @@ a.rd-fight:hover{border-color:var(--accent)}
 })();
 </script>
 <!-- UPSET REFRESH END: round-profile -->
-<!-- UPSET REFRESH START: hero-poster (Fighter page header: the portrait runs the full height of the card like a fight poster, with the rating badge on its inner corner. Desktop and tablet only; phones keep the stacked layout). Delete through the matching END line to remove it. -->
-<style id="refresh-hero-poster">
-@media(min-width:900px){
-  .card.hero:has(>.rating-portrait-wrap){grid-template-columns:clamp(230px,24vw,340px) minmax(0,1fr);align-items:stretch;padding:0 26px 0 0;column-gap:48px}
-  .card.hero>.rating-portrait-wrap{position:relative;display:block;width:auto;align-self:stretch;min-height:330px;background:#000}
-  .card.hero>.rating-portrait-wrap .portrait{position:absolute;inset:0;width:100%;height:100%;box-shadow:none;overflow:hidden}
-  .card.hero>.rating-portrait-wrap .portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;image-rendering:pixelated}
-  /* soft edge where the portrait meets the card */
-  .card.hero>.rating-portrait-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 75%,rgba(27,30,37,.6));pointer-events:none}
-  .card.hero>.rating-portrait-wrap .rating-ring{position:absolute;right:-42px;bottom:22px;z-index:2}
-  .card.hero>.rating-portrait-wrap+div{padding:28px 0 26px}
-}
-</style>
-<!-- UPSET REFRESH END: hero-poster -->
 </body></html>

@@ -15,7 +15,3 @@ Nothing on the site or in the forecast changed. To undo, remove those files.
 New folder `data/published/picks/ufc-334-r2/` (the 5.1 lock in `ufc-334/` is untouched). Code copies before
 the change: `backups/claude-polish-2026-11-11/before-relock-2026-11-14/`. To go back to the 5.1 lock, move
 `ufc-334-r2` out of `data/published/picks/`; nothing else needs to change.
-
-## 2026-11-14 full-height portrait on fighter pages
-CSS-only block `hero-poster` (desktop and tablet, 900px and wider). Remove it with
-`python3 backups/claude-refresh-2026-11-10/blocks/splice.py --remove hero-poster`.
