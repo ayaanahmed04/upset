@@ -3525,6 +3525,8 @@ async function renderCorrections(){
   .tr-why{grid-template-columns:1fr}
 }
 /* ---------- event banner + home link ---------- */
+.tr-replaced{margin:0 0 12px;padding:9px 12px;border-left:2px solid var(--line);color:var(--muted);font-size:12.5px;line-height:1.5}
+.tr-replaced a{color:var(--text-2)}
 .pk-banner{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:0 0 18px;padding:12px 16px;border:1px solid rgba(111,211,168,.35);
   background:linear-gradient(90deg,rgba(47,143,105,.16),transparent 70%);font-size:13px;color:var(--text-2)}
 .pk-banner b{color:var(--text)}
@@ -3699,6 +3701,10 @@ async function renderCorrections(){
           h('div',{class:'tr-links'},
             h('a',{href:'/published/picks.json?slug='+encodeURIComponent(item.slug),download:item.slug+'-picks.json',text:'Download picks.json'}),
             h('a',{href:eventUrl(e.slug),text:'Event page →'})))),
+      // A card can be re-locked before it starts; the earlier lock stays on file and is shown here, never counted.
+      (item.replaces||[]).map(old=>h('p',{class:'tr-replaced'},'Re-locked with forecast '+(item.model?.forecast_revision||'—')+'. It replaces the lock from '+lockTime(old.frozen_at)+
+        (old.forecast_revision?' (forecast '+old.forecast_revision+')':'')+', fingerprint '+shortPrint(old.sha256||'')+', which is kept on file and not graded. ',
+        old.sha256?h('a',{href:'/published/picks.json?slug='+encodeURIComponent(old.slug),download:old.slug+'-picks.json',text:'Download the replaced picks'}):null)),
       h('div',{class:'tr-rows'},
         h('div',{class:'tr-row head'},h('span',{text:'UPSET pick'}),h('span',{text:'Chance'}),h('span',{text:'Market'}),h('span',{text:'Result'})),
         ...item.picks.map(pickRow)),

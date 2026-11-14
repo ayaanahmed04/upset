@@ -519,7 +519,7 @@ def attach_locked_picks(event):
         record = load_record(PUBLISHED_PICKS)
     except (OSError, ValueError):
         return event
-    item = next((e for e in record["events"] if not e.get("error") and e["slug"] == event.get("slug")), None)
+    item = next((e for e in record["events"] if not e.get("error") and event.get("slug") in (e["slug"], (e.get("event") or {}).get("slug"))), None)
     if item is None:
         return event
     picks = {frozenset(f["id"] for f in pick["fighters"]): pick for pick in item["picks"]}

@@ -1,0 +1,15 @@
+{
+ "version": "upset_published_picks_v1",
+ "slug": "ufc-334-r2",
+ "event_slug": "ufc-334",
+ "frozen_at": "2026-11-14T06:25:01Z",
+ "picks_sha256": "8b092776b9e8b7c9541daf9528f03617f15f0081a94f03853b0a4be4b096f6ad",
+ "picks_bytes": 10731,
+ "tool": "src/upset/predictions/published_picks.py",
+ "supersedes": {
+  "folder": "ufc-334",
+  "frozen_at": "2026-11-11T19:21:20Z",
+  "picks_sha256": "95d627d1e584ddb392d51a4bdc2dc429f288736a281953f6a7f64091e285509a",
+  "forecast_revision": null
+ }
+}

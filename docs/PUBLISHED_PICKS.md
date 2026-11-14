@@ -57,3 +57,26 @@ Bouts are matched by both fighters' IDs, so late replacements and cancellations 
 
 UFC 334 (Nov 14, 2026) was frozen on 2026-11-11 at 19:21:20 UTC with 12 picks.
 Fingerprint: `95d627d1e584ddb392d51a4bdc2dc429f288736a281953f6a7f64091e285509a`.
+
+## Re-locking a card before it starts
+
+A card can be locked again before its first fight, for example after a forecast revision. The earlier
+lock is never edited or deleted: the new lock goes in its own folder and names the old one.
+
+```
+python -m upset.predictions.published_picks freeze --api http://127.0.0.1:8768 --slug ufc-334 \
+  --folder ufc-334-r2 --supersedes ufc-334 \
+  --market data/raw/ufc_market_odds_2026_11_10_v1/kaggle-odds.zip \
+  --rating-snapshot data/processed/overall_rating_v5_1_2026_11_10_reviewed_v3 \
+  --forecast-adjustment data/processed/forecast_adjustment_2026_11_12_v1
+```
+
+The new picks.json records the replaced lock's fingerprint inside itself, so the link is covered by the
+new fingerprint. The track record counts the card once (the new lock), and shows the replaced lock with
+its time, fingerprint and a download link. A graded lock cannot be replaced, and a card that has started
+cannot be locked at all. Grade the new folder: `grade --slug ufc-334-r2 --database ...`.
+
+UFC 334 was re-locked on 2026-11-14 at 06:25 UTC with forecast 5.2 (fingerprint
+`8b092776b9e8b7c9541daf9528f03617f15f0081a94f03853b0a4be4b096f6ad`). It replaces the 2026-11-11 lock
+made with forecast 5.1 (`95d627d1e584ddb392d51a4bdc2dc429f288736a281953f6a7f64091e285509a`), kept in
+`data/published/picks/ufc-334/`.

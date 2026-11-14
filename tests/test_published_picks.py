@@ -104,3 +104,20 @@ def test_grade_against_a_finished_card(tmp_path):
     assert (folder / "picks.json").read_bytes() == body
     with pytest.raises(SystemExit):
         P.grade(folder, DATABASE)
+
+
+def test_relock_keeps_the_old_lock_and_counts_once(tmp_path, monkeypatch):
+    monkeypatch.setattr(P, "fetch_json", fake_api(card()))
+    old, _, old_manifest = P.freeze("http://x", "ufc-999", tmp_path, now=NOW)
+    old_bytes = (old / "picks.json").read_bytes()
+    with pytest.raises(SystemExit):
+        P.freeze("http://x", "ufc-999", tmp_path, now=NOW, folder_name="ufc-999-r2")   # needs supersedes
+    with pytest.raises(SystemExit):
+        P.freeze("http://x", "ufc-998", tmp_path, now=NOW, folder_name="ufc-998-r2", supersedes="ufc-999")
+    new, payload, manifest = P.freeze("http://x", "ufc-999", tmp_path, now=NOW, folder_name="ufc-999-r2", supersedes="ufc-999")
+    assert (old / "picks.json").read_bytes() == old_bytes
+    assert payload["supersedes"]["picks_sha256"] == old_manifest["picks_sha256"] and manifest["event_slug"] == "ufc-999"
+    record = P.load_record(tmp_path)
+    assert [e["slug"] for e in record["events"]] == ["ufc-999-r2"]
+    assert record["events"][0]["replaces"][0]["sha256"] == old_manifest["picks_sha256"]
+    assert record["summary"]["picks"] == 1

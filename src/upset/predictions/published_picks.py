@@ -146,10 +146,24 @@ def market_reference(path, card_date, bouts, frozen_at):
 
 # ---------------------------------------------------------------- freeze
 
-def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=None):
-    if not SLUG.fullmatch(slug):
+def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=None,
+           forecast_adjustment=None, folder_name=None, supersedes=None):
+    """Freeze a scheduled card. To re-lock a card before it starts, write a new folder (folder_name) that
+    names the earlier lock in `supersedes`; the earlier lock is kept untouched and listed as replaced."""
+    if not SLUG.fullmatch(slug) or (folder_name is not None and not SLUG.fullmatch(folder_name)):
         raise SystemExit("Use the event slug from the site, for example ufc-334.")
-    folder = Path(root) / slug
+    folder = Path(root) / (folder_name or slug)
+    replaced = None
+    if supersedes is not None:
+        old_manifest, old = load_frozen(Path(root) / supersedes)
+        if old["event"]["slug"] != slug:
+            raise SystemExit(f"{supersedes} is a lock for {old['event']['slug']}, not {slug}.")
+        if (Path(root) / supersedes / "graded.json").exists():
+            raise SystemExit(f"{supersedes} is already graded; a graded lock cannot be replaced.")
+        replaced = {"folder": supersedes, "frozen_at": old["frozen_at"], "picks_sha256": old_manifest["picks_sha256"],
+                    "forecast_revision": (old.get("model") or {}).get("forecast_revision")}
+    elif folder_name is not None and folder_name != slug:
+        raise SystemExit("A folder name other than the event slug is only for a re-lock (pass supersedes).")
     if folder.exists():
         raise SystemExit(f"{folder} already exists. Published picks are never overwritten.")
     now = now or utc_now()
@@ -194,17 +208,26 @@ def freeze(api, slug, root=DEFAULT_ROOT, market=None, rating_snapshot=None, now=
         snapshot_manifest = json.loads(manifest_path.read_text())
         model.update({"snapshot": Path(rating_snapshot).name, "revision": snapshot_manifest.get("revision"),
                       "snapshot_manifest_sha256": digest(manifest_path.read_bytes())})
+    if forecast_adjustment:
+        manifest_path = Path(forecast_adjustment) / "manifest.json"
+        model["forecast_adjustment"] = {"folder": Path(forecast_adjustment).name,
+                                       "revision": json.loads(manifest_path.read_text()).get("revision"),
+                                       "manifest_sha256": digest(manifest_path.read_bytes())}
 
     payload = {"version": VERSION, "frozen_at": iso(now),
                "event": {key: event.get(key) for key in ("slug", "name", "headline", "date", "venue", "starts_at",
                                                         "source_url", "schedule_reviewed_on")},
                "model": model, "rules": RULES, "picks": picks, "not_picked": skipped,
                "market_source": market_source}
+    if replaced:
+        payload["supersedes"] = replaced
     body = dump(payload)
     folder.mkdir(parents=True)
     (folder / "picks.json").write_bytes(body)
-    manifest = {"version": VERSION, "slug": slug, "frozen_at": iso(now), "picks_sha256": digest(body),
+    manifest = {"version": VERSION, "slug": folder.name, "event_slug": slug, "frozen_at": iso(now), "picks_sha256": digest(body),
                 "picks_bytes": len(body), "tool": "src/upset/predictions/published_picks.py"}
+    if replaced:
+        manifest["supersedes"] = replaced
     (folder / "manifest.json").write_bytes(dump(manifest))
     return folder, payload, manifest
 
@@ -307,14 +330,28 @@ def load_record(root=DEFAULT_ROOT):
                 graded = None
         results = {r["order"]: r for r in graded["results"]} if graded else {}
         rows = [{**pick, "result": results.get(pick["order"], {"status": "pending"})} for pick in picks["picks"]]
-        pairs.extend((pick, row["result"]) for pick, row in zip(picks["picks"], rows))
         events.append({"slug": folder.name, "event": picks["event"], "frozen_at": picks["frozen_at"],
                        "sha256": manifest["picks_sha256"], "model": picks["model"], "rules": picks["rules"],
                        "market_source": picks.get("market_source"), "picks": rows,
                        "not_picked": picks["not_picked"], "graded_at": graded and graded["graded_at"],
-                       "summary": summarize([(p, r["result"]) for p, r in zip(picks["picks"], rows)])})
-    events.sort(key=lambda e: (e.get("event") or {}).get("date", ""), reverse=True)
-    return {"events": events, "summary": summarize(pairs)}
+                       "summary": summarize([(p, r["result"]) for p, r in zip(picks["picks"], rows)]),
+                       "supersedes": picks.get("supersedes"), "_picks": picks["picks"]})
+    # A re-locked card counts once: the replaced lock stays on file and is listed under the lock that replaced it.
+    replaced = {e["supersedes"]["folder"]: e for e in events if e.get("supersedes")}
+    kept = []
+    for e in events:
+        if e["slug"] in replaced:
+            replaced[e["slug"]].setdefault("replaces", []).append(
+                {"slug": e["slug"], "frozen_at": e.get("frozen_at"), "sha256": e.get("sha256"),
+                 "forecast_revision": (e.get("model") or {}).get("forecast_revision") or (e.get("model") or {}).get("revision"),
+                 "error": e.get("error")})
+        else:
+            kept.append(e)
+    pairs = [(pick, row["result"]) for e in kept if not e.get("error") for pick, row in zip(e["_picks"], e["picks"])]
+    for e in kept:
+        e.pop("_picks", None)
+    kept.sort(key=lambda e: (e.get("event") or {}).get("date", ""), reverse=True)
+    return {"events": kept, "summary": summarize(pairs)}
 
 
 def picks_file(root, slug):
@@ -335,6 +372,9 @@ def main():
     f.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     f.add_argument("--market", type=Path, help="CC0 daily odds archive (zip) for a market reference.")
     f.add_argument("--rating-snapshot", type=Path)
+    f.add_argument("--forecast-adjustment", type=Path, help="Forecast adjustment folder the server used (recorded in the lock).")
+    f.add_argument("--folder", help="Re-lock only: new folder name, e.g. ufc-334-r2.")
+    f.add_argument("--supersedes", help="Re-lock only: the earlier lock's folder. It is kept and listed as replaced.")
     g = sub.add_parser("grade", help="Grade a frozen card against a newer database.")
     g.add_argument("--slug", required=True)
     g.add_argument("--root", type=Path, default=DEFAULT_ROOT)
@@ -342,7 +382,9 @@ def main():
     g.add_argument("--regrade", action="store_true")
     args = parser.parse_args()
     if args.command == "freeze":
-        folder, payload, manifest = freeze(args.api, args.slug, args.root, args.market, args.rating_snapshot)
+        folder, payload, manifest = freeze(args.api, args.slug, args.root, args.market, args.rating_snapshot,
+                                           forecast_adjustment=args.forecast_adjustment, folder_name=args.folder,
+                                           supersedes=args.supersedes)
         print(f"Froze {len(payload['picks'])} picks for {payload['event']['name']} at {manifest['frozen_at']}")
         print(f"Fingerprint (SHA-256 of {folder}/picks.json): {manifest['picks_sha256']}")
         for pick in payload["picks"]:
