@@ -15,3 +15,8 @@ Nothing on the site or in the forecast changed. To undo, remove those files.
 New folder `data/published/picks/ufc-334-r2/` (the 5.1 lock in `ufc-334/` is untouched). Code copies before
 the change: `backups/claude-polish-2026-11-11/before-relock-2026-11-14/`. To go back to the 5.1 lock, move
 `ufc-334-r2` out of `data/published/picks/`; nothing else needs to change.
+
+## 2026-11-14 learned round scoring, blended skills, colours, stars under the badge
+Copies from before: `backups/claude-polish-2026-11-11/before-accuracy-2026-11-14/` and `before-hero-stars-2026-11-14/`.
+To return to the hand-picked round score, point `--round-profiles` in `Start UPSET.command` back at
+`data/published/rounds/rounds_2026_11_13_v1` and restore `round_profiles.py` (VERSION v1) from the copy.

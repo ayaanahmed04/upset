@@ -71,3 +71,39 @@ Built by `src/upset/data/round_profiles.py` into `data/published/rounds/rounds_2
 when the app is started with `--round-profiles`. Front end: block `12-round-profile.html`.
 Like the skill profile, it is hidden for past dates, because it is built from every recorded round.
 Tests: `tests/test_round_profiles.py`.
+
+## Learned round scoring (2026-11-14)
+
+Script: `src/upset/ratings/round_scoring.py` · Model: `data/processed/round_scoring_2026_11_14_v1/model.json` ·
+Tests: `tests/test_round_scoring.py`
+
+Round winners are not in our data: Cito has the stats per round and, for 294 recent decisions, each
+judge's total (857 cards). The first panel used a hand-picked score. This replaces it with a logistic
+score fitted to 4,024 decisions, treating the round winners as hidden (EM): the label is the judge's
+round count where we have it, and the official winner otherwise. 10-8 cards and deductions are left out.
+
+Out of sample (5 folds, split by fight):
+
+| | Hand-picked | Learned | Two real judges |
+|---|---|---|---|
+| Picks the official decision winner (4,024 decisions) | 83.3% | 84.9% | |
+| Same on the 294 recent decisions with judge totals | 81.0% | 86.1% | |
+| Same round count as a judge (857 cards) | 58.9% | 63.4% | 66.5% |
+| Within one round of the judge | 92.5% | 93.6% | |
+
+On cards a judge scored entirely for one fighter, every round's winner is known: the model's clear
+calls (65%+ either way) were right 93% of the time, its close calls 60%. The site therefore shows
+rounds under 65% as "close" instead of forcing a winner, and "rounds won" is the expected number.
+
+Round profiles were rebuilt with it: `data/published/rounds/rounds_2026_11_14_v2/`.
+
+Next step for accuracy: official round-by-round scorecards (for example the UFCalendar scorecards API),
+which would replace the estimate for every decision and give far better training labels.
+
+## Skill profile changes (2026-11-14)
+
+`src/upset/data/skills_view.py`: three skills now blend related measurements from the multi-skill model
+instead of one narrow stat. Knockout power = knockdowns + KO/TKO wins; submission threat = attempts +
+submission wins; durability = not being stopped + not being dropped. "Fights most like" now compares
+what fighters do (offense weighted most, clinch and ground striking included) together with their
+skill scores, and prefers the same weight class.

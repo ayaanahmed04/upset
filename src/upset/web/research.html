@@ -2621,8 +2621,10 @@ function matchupShare(A,B){
 .v5-stars.lg{font-size:18px;letter-spacing:2px}
 .rating-badge-compact.is-v5 .rating-scale{margin-top:2px;letter-spacing:0;font-size:inherit}
 .rating-badge-compact.is-v5 .rating-scale .v5-stars{font-size:8px;letter-spacing:0}
-/* Fighter page header: just the number. The stars and tier are in the breakdown that opens on click. */
-.hero .rating-badge-compact.is-v5 .rating-scale:has(.v5-stars){display:none}
+/* Fighter page header: the number alone inside the badge, with the stars as a clean row underneath it. */
+.hero .rating-badge-compact.is-v5{overflow:visible;margin-bottom:20px}
+.hero .rating-badge-compact.is-v5 .rating-scale:has(.v5-stars){position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:7px;line-height:1}
+.hero .rating-badge-compact.is-v5 .rating-scale .v5-stars{font-size:13px;letter-spacing:2px;color:#4a4244}
 .corner .rating-badge-compact.is-v5 .rating-scale{display:none}
 .v5-dialog{width:min(860px,calc(100vw - 32px))}
 .v5-dialog section{margin-top:22px}
@@ -3940,7 +3942,8 @@ async function renderCorrections(){
 a.rd-fight:hover{border-color:var(--accent)}
 .rd-who{display:flex;align-items:center;gap:9px;min-width:0}
 .rd-res{flex:none;width:24px;padding:4px 0;text-align:center;font:700 11px/1 var(--display);border:1px solid var(--line);color:var(--text-2)}
-.rd-res.W{background:#e7c955;border-color:#e7c955;color:#111}
+.rd-res.W{background:var(--win);border-color:var(--win);color:#fff}
+.rd-res.L{background:var(--loss);border-color:var(--loss);color:#fff}
 .rd-name{display:grid;gap:3px;min-width:0}
 .rd-name b{font:700 13.5px/1.1 var(--display);text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rd-name small{font-size:11px;color:var(--muted)}
@@ -3949,11 +3952,14 @@ a.rd-fight:hover{border-color:var(--accent)}
 .rd-boxes i.W{background:var(--win);border-color:var(--win);color:#fff}
 .rd-boxes i.L{background:var(--loss);border-color:var(--loss);color:#fff}
 .rd-boxes i.E{background:linear-gradient(135deg,var(--win) 50%,var(--loss) 50%);border-color:var(--line);color:#fff}
-.rd-boxes i.F{background:#e7c955;border-color:#e7c955;color:#111;font-size:8.5px}
-.rd-boxes i.X{border-color:#65a6ef;color:#65a6ef;font-size:8.5px}
+.rd-boxes i.C{border-color:var(--text-2);color:var(--text);border-style:dashed}
+.rd-boxes i.C.up{box-shadow:inset 0 -4px 0 var(--win)}.rd-boxes i.C.down{box-shadow:inset 0 -4px 0 var(--loss)}
+.rd-boxes i.F,.rd-boxes i.X{width:auto;min-width:34px;padding:0 5px;font-size:9.5px;letter-spacing:.04em;color:#fff}
+.rd-boxes i.F{background:var(--win);border-color:var(--win)}
+.rd-boxes i.X{background:var(--loss);border-color:var(--loss)}
 .rd-key{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:11px;color:var(--muted)}
 .rd-key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
-.rd-key i.W{background:var(--win);border-color:var(--win)}.rd-key i.L{background:var(--loss);border-color:var(--loss)}.rd-key i.F{background:#e7c955;border-color:#e7c955}.rd-key i.X{border-color:#65a6ef}
+.rd-key i.W{background:var(--win);border-color:var(--win)}.rd-key i.L{background:var(--loss);border-color:var(--loss)}.rd-key i.C{border-style:dashed;border-color:var(--text-2)}
 @media(max-width:860px){.rd-card{grid-template-columns:1fr;padding:16px}}
 </style>
 <script id="refresh-round-profile-js">
@@ -3972,13 +3978,13 @@ a.rd-fight:hover{border-color:var(--accent)}
     const p=d.percentiles||{},L=d.league;
     if(d.rounds<10)return ['Still early','Only '+d.rounds+' UFC round'+(d.rounds===1?'':'s')+' so far: too few for averages.'];
     const picks=[];
-    if(p.won>=90)picks.push([p.won,'Round collector',['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges.']]);
+    if(p.won>=90)picks.push([p.won,'Round collector',['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges, on our estimate.']]);
     if(p.late>=90)picks.push([p.late,'Gets stronger late',['Throws ',h('b',{text:d.late_change+'% more'}),' after round 1. The UFC average is '+L.late_change+'% more.']]);
     if(p.late<=10)picks.push([100-p.late,'Fast starter',['Output ',h('b',{text:(d.late_change<0?'drops '+(-d.late_change)+'%':'rises only '+d.late_change+'%')}),' after round 1. The UFC average rises '+L.late_change+'%.']]);
     if(p.keep<=10)picks.push([100-p.keep,'Needs it standing',['Throws ',h('b',{text:(-d.wrestled.change)+'% less'}),' in rounds where the opponent wrestles. The UFC average is '+(-L.keep_change)+'% less.']]);
     if(p.keep>=90)picks.push([p.keep,'Strikes through the grappling',['Keeps ',h('b',{text:(100+d.wrestled.change)+'%'}),' of their striking output in rounds where the opponent wrestles. The UFC average keeps '+(100+L.keep_change)+'%.']]);
     if(picks.length)return picks.sort((a,b)=>b[0]-a[0])[0].slice(1);
-    const won=d.won_pct!=null?['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges.']:[];
+    const won=d.won_pct!=null?['Wins ',h('b',{text:d.won_pct+'%'}),' of the rounds that reach the judges, on our estimate.']:[];
     if(d.late_change==null)return ['Round by round',won];
     const shift=d.late_change-L.late_change;
     return [shift>=15?'Builds as it goes':shift<=-15?'Starts fast':'Steady pace',won];
@@ -3989,7 +3995,7 @@ a.rd-fight:hover{border-color:var(--accent)}
   }
   function tiles(d){
     const p=d.percentiles||{},L=d.league,out=[];
-    if(d.scored)out.push(tile('won','Rounds won',[d.won_pct+'%'],num(d.won)+' of '+d.scored+' scored rounds',tag(p.won)));
+    if(d.scored)out.push(tile('won','Rounds won (estimated)',[d.won_pct+'%'],'about '+Math.round(d.won)+' of '+d.scored+' rounds that went the distance',tag(p.won)));
     if(d.r1!=null){
       const rows=d.pace.filter(r=>r.minutes>=3),top=Math.max(12,...rows.map(r=>r.thrown));   // shared scale, so low-output fighters show short bars
       const bars=h('div',{class:'rd-bars','aria-hidden':'true'},rows.map(r=>h('span',{class:r.minutes<10?'thin':null,title:'Round '+r.round+': '+r.thrown+' thrown, '+r.landed+' landed per minute ('+Math.round(r.minutes)+' min)'},
@@ -4001,20 +4007,22 @@ a.rd-fight:hover{border-color:var(--accent)}
       t.title='Wrestled rounds: the opponent landed a takedown or held at least a minute of control.';out.push(t);}
     return out.length?h('div',{class:'rd-tiles'},out):null;
   }
-  const VERDICT={W:'won on the round score',L:'lost on the round score',E:'even on the round score'};
+  const VERDICT={W:'likely won',L:'likely lost',E:'even on the stats',C:'close round'};
   function box(r,n,f){
     const [sl,sa,tl,ta,cl,ca,kl,ka]=r.d,parts=['strikes '+sl+'–'+sa];
     if(tl||ta)parts.push('takedowns '+tl+'–'+ta);
     if(cl||ca)parts.push('control '+mmss(cl)+'–'+mmss(ca));
     if(kl||ka)parts.push('knockdowns '+kl+'–'+ka);
     const code=r.code==='-'?'N':r.code,fin=f.finish||'FIN';
-    const what=r.code==='F'?'finished it ('+fin+')':r.code==='X'?'was finished ('+fin+')':r.code==='-'?'fight stopped':VERDICT[r.code];
-    return h('i',{class:code,title:'Round '+n+': '+what+' · '+parts.join(' · '),text:r.code==='F'||r.code==='X'?fin:String(n)});
+    const what=r.code==='F'?'finished it ('+fin+')':r.code==='X'?'was finished ('+fin+')':r.code==='-'?'fight stopped':
+      VERDICT[r.code]+(r.p!=null?' ('+r.p+'% chance a judge gives it to them)':'');
+    const lean=r.code==='C'?(r.p>50?' up':r.p<50?' down':''):'';
+    return h('i',{class:code+lean,title:'Round '+n+': '+what+' · '+parts.join(' · '),text:r.code==='F'||r.code==='X'?fin:String(n)});
   }
   function fightRow(f){
     const boxes=f.rounds.map((r,i)=>box(r,i+1,f)),last=f.rounds[f.rounds.length-1];
     // Stopped between rounds (corner or doctor): the last round was complete, so mark the stoppage after it.
-    if(f.finish&&(f.result==='W'||f.result==='L')&&last&&'WLE'.includes(last.code))
+    if(f.finish&&(f.result==='W'||f.result==='L')&&last&&'WLEC'.includes(last.code))
       boxes.push(h('i',{class:f.result==='W'?'F':'X',title:'Stopped after round '+f.rounds.length+' ('+f.finish+')',text:f.finish}));
     return h('a',{class:'rd-fight',href:fightUrl(f.fight_id),title:'Open the fight'},
       h('div',{class:'rd-who'},h('span',{class:'rd-res '+f.result,text:f.result}),
@@ -4029,12 +4037,13 @@ a.rd-fight:hover{border-color:var(--accent)}
         h('h2',{class:'sk-type distressed',text:title}),
         h('p',{class:'rd-line'},...[line].flat()),
         d.rounds>=10?tiles(d):null,
-        h('p',{class:'sk-fine',text:'Rounds are scored like a judge would: strikes landed, knockdowns, takedowns and control. That score picks the official winner in '+L.judging_agrees+'% of decisions. Rounds that end in a finish are not scored.'+(d.rounds>=10?' Tags mark the top or bottom 10% of '+L.compared_with+' active UFC fighters.':'')})),
+        h('p',{class:'sk-fine',text:(d.scoring?'Round winners are estimates: judges do not publish round scores in our data, so a model learned from '+d.scoring.decisions.toLocaleString()+' decisions and '+d.scoring.judge_cards+' judges’ scorecards reads each round’s stats. It picks the official winner in '+d.scoring.picks_official_winner+'% of decisions and matches a judge’s round count '+d.scoring.same_count_as_judge+'% of the time (two real judges match each other '+d.scoring.judges_agree+'%). Rounds it cannot call are shown as close.'
+          :'Rounds are scored from the stats: strikes landed, knockdowns, takedowns and control. That score picks the official winner in '+L.judging_agrees+'% of decisions.')+' Rounds that end in a finish are not scored.'+(d.rounds>=10?' Tags mark the top or bottom 10% of '+L.compared_with+' active UFC fighters.':'')})),
       h('div',{class:'rd-side'},
         h('span',{class:'sk-eyebrow',text:'Last '+(d.recent.length===1?'fight':d.recent.length+' fights')+' · round by round'}),
         h('div',{class:'rd-strip'},d.recent.map(fightRow)),
         h('div',{class:'rd-key'},h('span',null,h('i',{class:'W'}),'Won the round'),h('span',null,h('i',{class:'L'}),'Lost the round'),
-          h('span',null,h('i',{class:'F'}),'Finished it'),h('span',null,h('i',{class:'X'}),'Was finished'))));
+          d.scoring?h('span',null,h('i',{class:'C'}),'Close round'):null,h('span',{text:'KO / SUB: green if they got the finish, red if they were finished'}))));
   }
   // Built from every recorded round, so it only describes the present.
   const pastCutoff=()=>!!state.before&&typeof localToday==='function'&&state.before<localToday();

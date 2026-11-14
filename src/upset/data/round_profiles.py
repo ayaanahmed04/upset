@@ -19,8 +19,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from upset.ratings import round_research as RR
+from upset.ratings import round_scoring
 
-VERSION = "round_profiles_v1"
+VERSION = "round_profiles_v2"
+CLEAR = 0.65                # a round is called for a fighter at 65%+; in between it is shown as close
 RECENT = 6
 COMPARE_MIN_ROUNDS = 15
 COMPARE_ACTIVE_FROM = "2023-01-01"
@@ -65,7 +67,7 @@ def outcome(result, side):
     return "D" if method.startswith("decision") else "NC"   # no contest, overturned, could not continue
 
 
-def strip(fid, fight, lines, side, result, names):
+def strip(fid, fight, lines, side, result, names, weights=None):
     """One past fight, round by round, from this fighter's side."""
     won = outcome(result, side)
     rounds = []
@@ -75,12 +77,16 @@ def strip(fid, fight, lines, side, result, names):
         detail = [g(own, "sig_strikes_landed"), g(opp, "sig_strikes_landed"), g(own, "takedowns_landed"),
                   g(opp, "takedowns_landed"), g(own, "control_seconds"), g(opp, "control_seconds"),
                   g(own, "knockdowns"), g(opp, "knockdowns")]
-        if line["full"]:
+        chance = None
+        if line["full"] and weights is not None:
+            chance = round_scoring.probability(own, opp, weights)
+            code = "W" if chance >= CLEAR else "L" if chance <= 1 - CLEAR else "C"
+        elif line["full"]:
             score = RR.judge(own, opp)
             code = "W" if score > 0 else "L" if score < 0 else "E"
         else:
             code = "F" if won == "W" else "X" if won == "L" else "-"
-        rounds.append({"code": code, "d": detail})
+        rounds.append({"code": code, "d": detail, **({"p": round(100 * chance)} if chance is not None else {})})
     opponent = fight["ids"][1 - side]
     return {"fight_id": fid, "date": fight["day"], "opponent_id": opponent,
             "opponent": names.get(opponent) or fight["names"][1 - side], "result": won,
@@ -95,7 +101,7 @@ def percentile(values, value):
     return round(100 * (below + equal / 2) / len(values))
 
 
-def build(database, bridge, current):
+def build(database, bridge, current, scoring=None):
     fights, stats = RR.load_fights(database)
     rounds, dropped, conflicts = RR.load_rounds(bridge, current, fights)
     good, audit = RR.audit(rounds, stats, fights, conflicts)
@@ -107,7 +113,9 @@ def build(database, bridge, current):
                if r["winner"] is not None and r["method"].lower().startswith("decision")}
     judging = RR.decision_check(fights, lines, winners)
 
+    weights, model = round_scoring.load(scoring) if scoring else (None, None)
     history = defaultdict(Counter)
+    learned = defaultdict(float)          # expected rounds won on the learned score
     by_round = defaultdict(lambda: defaultdict(lambda: [0.0, 0, 0]))
     recent, last = defaultdict(list), {}
     for fid in sorted(lines, key=lambda f: (fights[f]["day"], f)):
@@ -119,8 +127,14 @@ def build(database, bridge, current):
                 cell[0] += line["minutes"]
                 cell[1] += line["rows"][side].get("sig_strikes_attempted") or 0
                 cell[2] += line["rows"][side].get("sig_strikes_landed") or 0
-            recent[uid].append(strip(fid, fight, lines[fid], side, results[fid], names))
+            item = strip(fid, fight, lines[fid], side, results[fid], names, weights)
+            learned[uid] += sum(r["p"] for r in item["rounds"] if "p" in r) / 100
+            recent[uid].append(item)
             last[uid] = fight["day"]
+
+    if weights is not None:
+        for uid, h in history.items():
+            h["won"] = learned[uid]
 
     def measures(h):
         pace = lambda part: h[part + "_att"] / h[part + "_min"]
@@ -142,7 +156,7 @@ def build(database, bridge, current):
         pace_rows = [{"round": n, "minutes": round(c[0], 1), "thrown": round(c[1] / c[0], 1), "landed": round(c[2] / c[0], 1)}
                      for n, c in sorted(by_round[uid].items()) if c[0] >= 1]
         fighters[uid] = {
-            "rounds": h["all_rounds"], "scored": h["rounds"], "won": h["won"],
+            "rounds": h["all_rounds"], "scored": h["rounds"], "won": round(h["won"], 1),
             "won_pct": round(100 * m["won"]) if m["won"] is not None else None,
             "pace": pace_rows,
             "r1": round(h["r1_att"] / h["r1_min"], 1) if m["late"] is not None else None,
@@ -162,6 +176,13 @@ def build(database, bridge, current):
                           "keep_change": round(100 * (league["wr_pace"] / league["clean_pace"] - 1)),
                           "compared_with": len(group), "judging_agrees": round(100 * judging["round_score_agrees"]),
                           "decisions_checked": judging["decisions"]},
+               "scoring": None if model is None else {
+                   "picks_official_winner": round(100 * model["out_of_sample"]["learned_score"]["all"]["picks_official_winner"]),
+                   "decisions": model["trained_on"]["decisions"],
+                   "same_count_as_judge": round(100 * model["out_of_sample"]["learned_score"]["all"]["same_round_count_as_judge"]),
+                   "judges_agree": round(100 * model["two_real_judges_same_count"]),
+                   "clear_calls_right": round(100 * model["known_rounds_check"]["clear_calls_right"]),
+                   "judge_cards": model["trained_on"]["judge_cards"]},
                "audit": dict(audit), "rows_left_out": dict(dropped), "bouts_used": len(lines)}
     return fighters, summary
 
@@ -171,11 +192,12 @@ def main():
     parser.add_argument("--database", type=Path, required=True)
     parser.add_argument("--bridge", type=Path, required=True)
     parser.add_argument("--current", type=Path, required=True)
+    parser.add_argument("--scoring", type=Path, help="Learned round scoring folder (upset.ratings.round_scoring).")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.output.exists():
         raise SystemExit(f"{args.output} exists; write a new version instead.")
-    fighters, summary = build(args.database, args.bridge, args.current)
+    fighters, summary = build(args.database, args.bridge, args.current, args.scoring)
     args.output.mkdir(parents=True)
     out = args.output / "rounds.json"
     out.write_text(json.dumps({"version": VERSION, **summary, "fighters": fighters}, separators=(",", ":"), sort_keys=True) + "\n")
@@ -194,7 +216,7 @@ def profile(data, uid):
     item = data["fighters"].get(uid)
     if not item or not item["recent"]:
         return {"status": "unavailable"}
-    return {"status": "available", **item, "league": data["league"]}
+    return {"status": "available", **item, "league": data["league"], "scoring": data.get("scoring")}
 
 
 if __name__ == "__main__":
