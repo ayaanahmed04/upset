@@ -1,0 +1,385 @@
+# Cito archive acquisition
+
+The one-card August 29 pilot proved that the event, bout and event-stat APIs
+can return a complete recent card. Cito support told Ayaan on September 28
+that Pro grants access to the full UFC archive, including the March–August
+2026 gap, and that one month of locally retained responses may be used for
+personal noncommercial research after cancellation. These are provider
+statements, not independent proof that every historical round row exists.
+
+`collect_cito_archive` first caches the provider's paginated **unfiltered**
+event listing, including events marked without stats. Each raw page has a
+source URL, UTC observation time and verified SHA-256 in the completed
+inventory manifest. Then it calls the already tested three-endpoint card
+collector for events marked `hasStats=true`. The ignored raw directory is
+resumable; successful cards are never refetched, and statless or failed cards
+stay visible in `collection_progress.json`. A failed card is retried only with
+`--retry-failed`. Neither stage asserts independent UFC calendar coverage.
+Repeated slugs with distinct event IDs or dates remain in the inventory and
+are listed in `slug_collisions`. If more than one such listing claims stats,
+the batch records `ambiguous_slug` and requests neither by that ambiguous
+slug. A statless stray listing does not block a single stat-bearing card.
+
+From the project root, with `.venv` active and the key in ignored `.env`:
+
+```bash
+# One page first; inspect the summary and a raw page before a large run.
+python -m upset.data.collect_cito_archive inventory --max-pages 1
+
+# Resume saved pages; a completed inventory prints its event count and hash.
+python -m upset.data.collect_cito_archive inventory --max-pages 100
+
+# Pilot a single recent and a single older card from the completed inventory.
+python -m upset.data.collect_cito_archive cards \
+  --from-date 2026-03-08 --through-date 2026-09-28 --max-cards 1
+python -m upset.data.collect_cito_archive cards \
+  --from-date 2026-03-08 --through-date 2026-03-31 --max-cards 1
+
+# Once the two pilots are reviewed, resume through the rest of this window.
+python -m upset.data.collect_cito_archive cards \
+  --from-date 2026-03-08 --through-date 2026-09-28 --max-cards 1000
+
+# The older available archive uses the same inventory and card cache.
+python -m upset.data.collect_cito_archive cards \
+  --from-date 1994-03-11 --through-date 2026-03-07 --max-cards 2000
+```
+
+`--max-pages` and `--max-cards` are **caps per run**, not promises of a
+complete download. Re-run with a higher cap after partial inventory, or the
+same card command to resume. The cache prevents repeated successful calls.
+The inventory includes all event listing rows, including scheduled events and
+other competitions; the chosen date window and `hasStats` determine which
+cards are attempted. Inspect the provider inventory against an independent
+UFC calendar before claiming complete UFC coverage. One event page is at most
+50 rows; every eligible card requires at most three new requests, spaced by
+seven seconds, plus a seven-second inter-card pause. Provider request quota
+and actual page counts must be checked from the completed inventory.
+
+Known provider anomalies reported to Ayaan: a stray no-stat `ufc-315` event
+dated May 10, 2026, a duplicate July 18 Ezra Elliott bout, and a duplicated
+Rafa Garcia stat row on April 25. The raw collector **does not discard** any
+of them. Review their raw evidence and record explicit exclusions only in a
+later normalization and coverage audit. UFC 326's March 7 US date corresponds
+to March 8 UTC and may already be in the accepted historical snapshot; avoid
+double counting by event and bout identity, not a naive UTC date boundary.
+Contender Series and Road to UFC records are outside the UFC-only baseline;
+inventory classification must be reviewed before inclusion.
+
+The existing `export_cito_card` validates only the observed post-March 2026
+shape and rejects older dates. Raw archive acquisition does **not** make old
+rounds model features, link fighter identities, overwrite the accepted Kaggle
+snapshot or establish that 1994–2026 round data is complete. Subsequent work
+must audit per-event inventory and stat availability, inspect source changes
+by era, normalize compatible records, and independently verify UFC coverage.
+
+## Read-only structural audit
+
+After collection and any targeted retries, run:
+
+```bash
+python -m upset.data.audit_cito_archive
+```
+
+The command makes no API calls and never edits raw files. It checks cached
+manifest and page hashes, compares the event detail to the inventory, and
+counts completed stat-bearing bouts with exactly two fighter totals and one
+round row per fighter per reported round. It prints aggregate statuses and
+the two provider-confirmed March 14 and June 6 spot checks. The detailed
+findings and all provider-statless event labels go to the ignored processed
+file `data/processed/cito_archive_audit_v1.json`. Competition labels are
+heuristics based on event slugs; manually review ambiguous entries. The
+statless May 2026 `ufc-315` remains in that list. A Road to UFC event that
+failed collection is also left in the report rather than silently omitted.
+
+Passing structural checks does not establish independent UFC calendar
+coverage or accuracy against another source. The audit now separately counts
+bouts whose round sums reconcile to supplied totals for all nine strike and
+takedown pairs, knockdowns, submissions, reversals and control time. Invalid
+numerical fields and unequal sums remain explicit findings. The provider's
+explicit `controlTime="--"` marker stays unavailable, separate from errors.
+This is internal consistency, not a comparison with official recorded stats.
+
+The report also includes the raw bout, total-stat and round-stat rows behind
+each bout finding, together with the captured card manifest hash. A name
+disagreement is reported separately from an incorrect total-row count; it
+does not establish that statistics are missing. Unique matching slugs,
+normalized spellings, embedded profile names and explicitly reviewed aliases
+scoped to provider fighter IDs can resolve spelling differences. Conflicting
+or ambiguous matches remain findings. Resolved differences are listed in the
+report; raw rows are never renamed. All event inventory entries and provider titles are
+included to review duplicate listings and the heuristic competition labels.
+
+## September 30 evidence review and targeted endpoint probes
+
+The saved v2 report contained 77 name disagreements and two bouts without
+supplied totals. Reviewing those 77 bouts with unique participant matching
+found complete rounds, and every supplied numerical field reconciled. In
+particular, March 14's Jose Miguel Delgado/Jose Delgado bout has both totals
+and six round rows; it is not a missing-bout example. The two September 12
+bouts (Djorden Santos/Yousri Belgaroui and Rongzhu/Rafa Garcia) have round rows
+but no supplied totals in either the event stats or embedded bout evidence.
+Keep them flagged; do not represent round-derived totals as provider totals.
+
+Nickname reviews use the captured fighter profiles and official UFC pages:
+<https://www.ufc.com/athlete/ronaldo-souza>,
+<https://www.ufc.com/athlete/alberto-pereira> and
+<https://www.ufc.com/athlete/max-grishin>. Delgado's short and full names
+appear under the same fighter ID in the captured source profiles and rows.
+TUF **Finale** cards and the named Ortiz/Shamrock finale are UFC candidates;
+this does not admit TUF exhibition episodes to the baseline.
+
+The 35 statless UFC listings in the v2 inventory are named 2024–2025 cards.
+No captured event exists within one day of those listings in that inventory.
+They cannot be dismissed as duplicate aliases. The collector skipped them
+because of provider `hasStats=false` metadata. Probe the actual stats endpoint:
+
+```bash
+python -m upset.data.audit_cito_archive \
+  --output data/processed/cito_archive_audit_v3.json
+python -m upset.data.probe_cito_statless \
+  --through-date 2026-09-28 --max-events 50
+```
+
+The probe issues one request per targeted past UFC listing, seven seconds
+apart, and prints progress immediately. It preserves successful and error
+JSON responses, observation times and hashes under ignored
+`data/raw/cito_archive/statless_probes_v1/`, with a summary `report.json`.
+It checks returned event identity before labeling stats returned. This label
+means totals and rounds are present, not that every bout is complete.
+Future cards, other competitions and already captured cards are not queried;
+inventory and collection progress are unchanged. Repeating resumes cached
+probes without refetching, including saved errors. A deliberate fresh probe
+can use a different `--output` directory. The 35-card batch is at most 35
+requests; network time varies, with about four minutes of pacing alone.
+Actual endpoint evidence will decide whether to recover cards locally or
+request missing archive data from Cito during the paid access window.
+
+## Recovering the 35 cards from saved endpoint evidence
+
+All 35 probes returned totals and rounds despite the event's false availability
+flag. The responses contain 424 listed bouts, including 414 marked completed
+whose totals and rounds reconcile. Ten others have stats but are still marked
+`confirmed`; their outcomes are null, and four also lack result details. Their
+statistics are retained, but they need result/status review before model use.
+The archive audit now lists all excluded bouts and flags excluded bouts that
+nevertheless contain stats. It does not infer winners from strike counts.
+
+The v3 report's 181 unreadable numerical flags all have `controlTime="--"`
+in 1994–1999 cards. Reviewing their remaining supplied fields found exact
+round-to-total agreement. The audit now reports these as unavailable fields,
+not corrupt counts or zero control. `numerically_reconciled_bouts` requires
+every field; `observed_stats_reconciled_bouts` allows the explicitly unavailable
+control field while still checking every other supplied stat.
+
+Finish the full card cache and rerun the audit:
+
+```bash
+python -m upset.data.recover_cito_statless --max-cards 50
+python -m upset.data.audit_cito_archive \
+  --output data/processed/cito_archive_audit_v4.json
+```
+
+Recovery verifies the probe hashes and inventory identity before requesting
+anything. It rewraps the saved stats response into the existing card-cache
+format, retaining its actual `/stats` source URL and original observation
+timestamp. It fetches only the event detail and bout listing still needed:
+at most 70 requests for 35 cards, spaced seven seconds apart. No stats are
+refetched and the original 755 cards are untouched. Both the original false
+inventory flag and probe hash remain in recovery provenance. Inventory and
+probe files stay immutable; collection progress is updated per completed
+card and a local `statless_recovery_report.json` records the run. Repeat the
+recovery command to resume partial requests; captured cards are skipped.
+The complete summary should show 790 captured cards if every recovery succeeds.
+The v4 audit may reveal cross-endpoint metadata differences; raw acquisition
+never certifies independent calendar coverage, canonical linking or training
+readiness. Historical dates and results still need comparison with the accepted
+Kaggle snapshot before joining the Cito round archive to model histories.
+
+## September 30: recovered archive and offline historical bridge
+
+Ayaan's Mac recovered all 35 cards with 70 requests and zero failures. Its
+v4 report has 790 captured UFC candidates, 8,909 listed bouts, 8,867 completed
+stat-bearing bouts, and 8,865 with complete rows and matching observed round
+sums. Of these, 8,684 also have observed control time; the other 181 preserve
+unavailable control. There are no uncaptured past UFC candidates in this
+provider inventory through the September 28 cutoff. That is inventory
+coverage, not an independent UFC-calendar completeness certificate.
+
+The remaining 12 findings are ten historical bouts with contradictory
+result/status metadata and two September 12 bouts without supplied totals.
+The report separately retains 32 completed bouts with no supplied stats.
+Future inventory entries and unavailable/failed non-UFC competitions stay
+visible; they are not silently counted as captured UFC cards.
+
+The next command performs a local comparison against the accepted 8,551-bout
+Kaggle export and its existing permanent identities:
+
+```bash
+python -m upset.data.reconcile_cito_archive
+```
+
+No key or API calls are needed. Defaults are the raw archive, the existing
+`data/processed/kaggle_ufc_1994_2026/identified/` fight and stat exports, and
+`data/mappings/fighter_registry.json`. The accepted historical fight hash is
+checked before work begins. The new immutable output folder is
+`data/processed/cito_archive_bridge_v1/`; an existing output is refused.
+
+Bout proposals use normalized source spellings, profile names, reviewed
+nickname aliases and assigned total-row names. A proposal needs both
+fighters, an event date within one day, and exact agreement with at least
+24 observed fighter-stat comparisons across the pair. Unavailable control
+is not zero or agreement evidence. An existing reviewed Cito registry link
+cannot be contradicted. Multiple equally supported historical bouts remain
+ambiguous. Extra Cito matches to one historical bout are exposed as duplicates
+and counted once for historical coverage.
+
+The folder contains:
+- `bout_matches.jsonl`: every provider bout, match evidence, date offset and
+  any accepted historical result proposed for reconciliation.
+- `bout_review.jsonl`: unmatched/ambiguous cases, conflicting totals or metadata,
+  and round rows that cannot be safely parsed.
+- `fighter_link_proposals.jsonl`: grouped provider IDs with supporting accepted
+  historical bouts, existing reviewed links and any identity conflicts.
+- `round_stats_staged.jsonl`: parsed provider rounds, original provider dates,
+  actual observation timestamps, nullable control time, source IDs and proposed
+  identities. These are staging rows, not accepted training histories.
+- `historical_without_verified_totals.jsonl`: accepted bouts lacking a fully
+  supported pair of Cito totals; this is not automatically a missing-card list.
+- `duplicate_historical_matches.jsonl` and `manifest.json`: duplicate evidence,
+  aggregate status counts, source hashes and verified output hashes.
+
+The bridge proposes result repair from the matched accepted historical record;
+it never guesses a winner from strike counts. It keeps provider dates visible,
+including UFC 326's possible one-day overlap, and changes no raw data, permanent
+registry links, historical exports or model recipes. Review the grouped results
+before accepting links and integrating the staged rounds into analytics.
+
+## September 30: bridge review and later result amendments
+
+The Mac's first bridge matched 8,531 of 8,551 accepted historical bouts,
+staged 41,802 fighter-round rows and proposed 2,642 unique fighter links with
+no conflicting link proposals or duplicate historical matches. All uploaded
+bridge output hashes were verified against its manifest.
+
+The 20 historical bouts without verified totals separate into:
+- Seven name differences: three Magomed Bibulatov / Bibulatov Magomed bouts,
+  and four Kai Kamaka III / Kai Kamaka bouts. The shared bout IDs, dates and
+  opponents support two provider-ID-scoped aliases. Both totals must still
+  pass the existing 24-field minimum before a proposal is verified. The
+  revised matcher has not yet been run against the full archive on the Mac.
+- Eleven bouts on September 6 and November 22, 2025, with no totals or rounds
+  in the saved card responses. These need a bounded per-bout endpoint probe;
+  a missing availability flag is not proof the endpoint has no data.
+- Two August 22, 2025 bouts: Tumendemberel–Saeteurn and Shi Ming–Bruna Brasil.
+  UFC's official Road to UFC semifinal results list both. The failed
+  `ufc-road-to-ufc-4-6` listing is relevant to the accepted historical cohort,
+  despite its non-UFC-candidate classification in the acquisition summary.
+  Its stats endpoint and the two accepted bout IDs need targeted checks.
+
+The ten historical bouts with missing Cito results have verified paired
+totals and explicit accepted historical outcomes. A separate discrepancy is
+Idiris–Osbourne, February 21, 2026, accepted bout `7ffdaa44fc8d111b`: the frozen
+snapshot records Idiris's original decision win, but the current Cito record
+is overturned with both fighters marked `no_contest`. Ayaan supplied the
+amendment and reason; UFCStats lists it as overturned, and the Texas
+commission's current event sheet records `NO DECISION` for this bout.
+
+The bridge now attaches `reviewed_current_result` with no winner and preserves
+`accepted_historical_result` separately. The revision names the Texas
+Department of Licensing and Regulation and the positive hydrochlorothiazide
+test. March 31 is the UFC sanction-announcement date; the exact commission
+amendment date is **not verified**. `revision_effective_date` stays null and
+`revision_verified_on` is September 30. Do not backdate current knowledge to
+March 31 or silently change the frozen experiments or their fitted model.
+
+Primary references:
+- https://www.tdlr.texas.gov/sports/results/2026-02-21-20260094-ufc-houston.pdf
+- https://ufcstats.com/fighter-details/30cad5a751adcb48
+- https://www.ufc.com/news/statement-alibi-idiris
+- https://www.ufc.com/news/road-to-ufc-live-results-season-4-semifinals-shi-vs-brasil-recaps-official-scorecards-interviews-shanghai
+
+The next ingestion batch should use these fixes and export the verified
+historical rounds with their permanent IDs. Remaining source gaps can be
+probed independently; they do not require downloading the 790-card archive
+again or holding every verified round in a manual-review queue. Current
+post-snapshot fighters and the two September 12 missing totals still require
+their own reconciliation before current features and prospective forecasts.
+
+## Historical rounds accepted as a separate export
+
+`python -m upset.data.export_cito_archive_rounds` builds the revised offline
+bridge in `data/processed/cito_archive_bridge_v2` and exports a verified subset
+to `data/processed/cito_historical_rounds_v1`. Repeated CLI runs verify and
+reuse an intact existing export; changed inputs require a new output folder.
+This command makes no API calls.
+
+Acceptance requires one supported historical bout per provider bout, unique
+paired fighter IDs, registry-consistent UFCStats IDs, no conflicting fighter
+proposals, and every round from 1 through the accepted result round for both
+fighters. It independently sums the rounds back to the accepted historical
+fighter totals, requiring at least 12 observed matching fields per fighter.
+Unknown control stays null. Missing or contradictory evidence prevents the
+export from being published. Source IDs, provider dates, historical event
+dates, observation times and card hashes remain on every round row.
+
+The September 30 uploaded **v1 bridge**, before the seven alias fixes, passed
+the selection and identity checks for **40,232 rounds across 8,531 bouts** and
+**2,642 Cito fighter IDs**. The other 1,570 staged rows are retained in the
+bridge. Full round-sum rechecking against the private accepted historical
+files runs on the Mac; those historical files are unavailable in this chat.
+The revised alias counts likewise require that Mac run and are not assumed.
+
+The exporter saves:
+- `round_stats_identified.jsonl`: the complete, verified historical subset.
+- `fighter_registry.json`: a separate registry extending the original IDs
+  with evidence-backed Cito links. The tracked registry remains unchanged.
+- `fighter_link_evidence.jsonl`: all supporting bout references for each link.
+- `bout_results.jsonl`: the frozen results and reviewed current results in
+  separate fields, with unresolved classifications withheld from current labels.
+- `gap_probe_plan.json`: bounded endpoint requests for absent rows.
+- `review.json`: unresolved historical bouts, reviewed results, alias matches,
+  current bout records and current provider fighters without historical evidence.
+- `manifest.json`: input/output hashes, acceptance counts and limits.
+
+The current result review also confirms Brundage–Abdul-Malik as a majority
+draw and Bellato–Craig as a No Contest, using UFC's official records. These
+classifications are scoped to exact historical bout and fighter IDs. Bellato's
+clock is 4:59 in both cached sources and 4:58 in UFC's report: the current
+result time stays null, both reports are retained, and the outcome stays NC.
+The original frozen time remains unchanged. No result-amendment date is
+invented from the date these sources were reviewed.
+
+### Targeted remaining-gap probe
+
+```bash
+caffeinate -di python -m upset.data.probe_cito_archive_gaps --max-requests 50
+```
+
+The generated plan targets the 11 missing September/November 2025 bouts,
+the two August 22 Road to UFC bouts, the failed Road card's bout/stats
+endpoints and the two September 12 current bouts without totals. On the
+uploaded v1 evidence this is **30 primary requests**, with up to **18
+conditional fallbacks** from a numeric provider bout ID to its known accepted
+historical bout ID. Existing stat-bearing alias cases do not trigger a pull.
+Actual revised plan counts are printed on the Mac.
+
+Each request is logged, paced seven seconds after the preceding new response,
+limited to a 30-second timeout, and cached with its actual URL, UTC observation
+time and plan hash. Successful primary responses skip fallback requests.
+Errors and empty responses are retained as evidence. Access/rate-limit errors
+stop the run. Repeating the command reuses cached requests and resumes targets
+not yet visited; it does not silently retry a saved failed response. A later
+fresh provider-check snapshot needs a different `--output` path.
+
+Output is `data/raw/cito_archive/gap_probes_v1/`, including raw response
+wrappers and `report.json`. A returned row is **source evidence awaiting
+reconciliation**, not accepted coverage. The probe changes no original card,
+collection progress, historical export, tracked registry or model artifact.
+
+There are 339 post-snapshot bout records in the uploaded bridge and 102
+current provider fighter IDs without historical-bout evidence. Some may have
+profile-only counterparts in the existing registry; this is not a claim that
+102 new permanent identities are needed. Resolving current identities and
+canonical totals, checking an independent event/bout calendar, and running
+the frozen as-of forecast pipeline remain the next stage. Historical round
+availability by itself does not establish prospective accuracy.

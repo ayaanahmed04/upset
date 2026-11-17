@@ -6,6 +6,15 @@
 
 **Current focus:** Freeze/replay the research reference and build reviewed current-data ingestion plus dated prospective forecasts
 
+**September 25 research follow-up:** A pinned recent-feature ablation now
+separates strikes, takedowns, knockdowns, submission attempts and control
+margin plus known-control exposure on the existing development folds. A
+three-list current-feed audit compares an independently reviewed event
+calendar, provider completed-bout inventory and immutable staged fights/stats.
+See `RECENT_GROUPS_AND_COVERAGE.md`. The Mac source files and current provider
+feed are not present in this checkout: **neither a new model score nor real
+March-to-present coverage has yet been verified.**
+
 ## Project Goal
 
 Build a professional UFC analytics and machine learning platform that serves as both a real public product and a flagship portfolio project.
@@ -583,12 +592,32 @@ artifact for the symmetric recent + Elo research model. It pins the seven
 historical source hashes and accepted reference, fits through March 7, 2026,
 and checks every fitted training prediction against the saved parameters. The
 prospective archive replays every forecast made with this named model during
-both record and verify. No new UFC result is claimed. Current fight/stat
+both record and verify. The Mac passed Ruff and all 351 tests, then froze
+8,400 decisive historical bouts; model SHA-256
+`55bf4a6f363c9c45bd3db008b74faab5927318b6614836e440024f52d9c8894c`.
+This is a replay milestone, not a new UFC accuracy result. Current fight/stat
 intake now rejects unreviewed links, incomplete stats and dated duplicate
 matchups against the historical snapshot, saving immutable identified batches
-with hashes. Provider acquisition/normalization, complete date coverage and a
-separate strictly as-of feature audit are still needed to produce real future
+with hashes. Provider acquisition/normalization and complete coverage of
+fights after the historical cutoff are still needed to produce real future
 inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
+
+The follow-up `feature/asof-prefight-features` branch reconstructs all 36
+inputs from completed, linked fights before the requested event date,
+including staged post-March results. It cross-checks the entire original
+historical cohort against pinned saved matchup/defense/Elo/recent columns
+before generating any future row. On the first Mac attempt Ruff and 354 tests
+passed, but the full audit stopped on a same-date historical fighter pair.
+Distinct bout IDs from the accepted historical provider are now retained to
+match the original builders. The completed Mac audit matched all 8,551 bouts,
+17,102 fighter rows and 36 columns against the accepted historical inputs,
+with maximum absolute error 0.0. The one flagged pair is Sakuraba versus
+Silveira at UFC Japan on 1997-12-21, when they fought twice (a no contest and
+a submission win, per UFC's historical account). A regression test compares
+the 36 columns for same-day repeated pairs against the older builders.
+Prospective use also requires a demonstrated complete current-data feed,
+reviewed new fighter links and independently timestamped schedule/forecasts.
+See `docs/ASOF_PREFIGHT_FEATURES.md` for the exact commands and limitations.
 
 1. Keep the symmetric recent + Elo logistic as the working research
    reference. Archive both paired-context and opponent-adjusted experiments
@@ -613,8 +642,9 @@ inputs. See `docs/FROZEN_PROSPECTIVE_MODEL.md`.
 
 ## Blockers
 
-The historical snapshot ends on 2026-03-07. Complete reviewed current data,
-a serialized/replay-verified model and actual pre-event evidence are absent.
+The historical snapshot ends on 2026-03-07. A replay-verified model and
+historically audited as-of inputs now exist, but complete reviewed current
+data and externally dated pre-event forecasts are absent.
 Historical Cito round access and timestamped odds coverage have not been
 established on the user's account. Fresh live-performance claims require
 pre-event forecasts and subsequent independently scored outcomes;
@@ -622,3 +652,38 @@ the opponent-adjusted performance study needed no paid data.
 The Odds API's historical MMA access is paid; current odds have a free tier.
 A timestamped market comparison remains separate work. Cito is not needed
 for the completed paired-context study or the adjusted-performance experiment.
+
+## September 30, 2026 — archive acquisition and integration
+
+Ayaan purchased Cito Pro for one paid period. The immutable provider inventory
+contains 812 entries. All 790 past UFC-candidate cards through the September
+28 cutoff were captured, including 35 cards whose false availability flags
+were disproved by the stats endpoint and recovered. This is coverage of the
+provider inventory, not independent whole-calendar certification.
+
+The Mac's v4 audit found 8,909 listed bouts, 8,865 structurally complete bouts
+whose observed stats reconcile, and 181 bouts with unavailable historical
+control time preserved as unknown. The first historical bridge matched
+8,531 of 8,551 accepted bouts, staged 41,802 round rows, and proposed 2,642
+unique Cito fighter links without conflicts or duplicate historical matches.
+
+The new offline acceptance command selects complete historical rounds,
+rechecks sums against the accepted paired totals and exports permanent IDs,
+link evidence and a separate extended registry. On the uploaded v1 bridge,
+the selection/identity checks passed for 40,232 rounds across 8,531 bouts.
+Full private-data sum checks and the seven scoped name-alias fixes must run
+on the Mac. No original snapshot, experiment or model artifact is overwritten.
+
+Current result review separately records Idiris–Osbourne as an overturned NC,
+Brundage–Abdul-Malik as a majority draw and Bellato–Craig as an NC. Bellato's
+one-second source clock disagreement remains explicit. The original result
+snapshots and unknown revision dates are retained for replay.
+
+The remaining work is bounded: probe 13 historical bouts lacking cached stats
+and two current bouts lacking totals; reconcile the 339 post-snapshot bout
+records and current fighter identities; independently audit event/bout coverage;
+then issue and externally timestamp a frozen pre-event forecast. The probe
+plan uses 30 primary calls and at most 18 conditional fallbacks on the uploaded
+evidence. Repeating it reuses cached responses. Returned source rows still
+need reconciliation. See `docs/CITO_ARCHIVE_COLLECTION.md` for the exact files,
+commands, measured counts and limitations. No model-performance gain is claimed.

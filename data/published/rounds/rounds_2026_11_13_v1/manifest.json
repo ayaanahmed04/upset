@@ -1,0 +1,15 @@
+{
+ "version": "round_profiles_v1",
+ "database_sha256": "622e9bff6dcf9794797f943131a0dc45b5f5acc6c9c15bf1773129e0abb5d58f",
+ "inputs_sha256": {
+  "data/processed/cito_archive_bridge_v2/round_stats_staged.jsonl": "00275eebec1cd5fd843c37960d906e4ec8ff2f068973b3467eb6a182e02ea6a4",
+  "data/processed/cito_archive_bridge_v2/bout_matches.jsonl": "f8a75c320c6c36702beaa44a14b36bd90cda507a12d1918960a8d673062b0545",
+  "data/processed/cito_current_2026_11_10_reviewed_v3/rounds_staged.jsonl": "2ec5090f74eb92bb3cce7258b0d605ddc7e22e5a27f8658e1590cf1b68acdf08"
+ },
+ "output_sha256": {
+  "rounds.json": "88fdafb5f5788ebddac1299bc1053a9c238fd37a22706629d131fa45956db724"
+ },
+ "fighters": 2574,
+ "built_at_utc": "2026-11-13T06:04:06Z",
+ "tool": "src/upset/data/round_profiles.py"
+}

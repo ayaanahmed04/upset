@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "linked_count": 1,
+  "pending_count": 0,
+  "linked": [
+    {
+      "image": "anthony-wint.png",
+      "upset_fighter_id": "00d2ac6c-b972-4fa8-82db-c2804adf453e",
+      "sha256": "bc1830cd45839a2d9d761f323a04b46bbd2b7e4fd9fed029a553b42db9e425ac"
+    }
+  ],
+  "pending": []
+}

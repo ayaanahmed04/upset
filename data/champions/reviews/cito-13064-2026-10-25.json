@@ -1,0 +1,22 @@
+{
+  "event_id": "fight:cito:13064",
+  "action": "retain",
+  "division": "Bantamweight",
+  "kind": "undisputed",
+  "fight_id": "cito:13064",
+  "fight_date": "2026-10-24",
+  "effective_date": "2026-10-25",
+  "fighter_id": "ccbddd30-362e-49f0-9aff-82bf7a930ef3",
+  "opponent_id": "48ad7da9-7ab3-4abf-ac08-7f28aa08c72c",
+  "winner_id": "ccbddd30-362e-49f0-9aff-82bf7a930ef3",
+  "previous_fighter_id": "ccbddd30-362e-49f0-9aff-82bf7a930ef3",
+  "reviewed": true,
+  "reviewed_at": "2026-10-25",
+  "title_confirmed": true,
+  "winner_eligible": true,
+  "sources": [
+    "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-results",
+    "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+  ],
+  "note": "Official UFC results confirm the incumbent retained the undisputed division title. No historical defense count is inferred."
+}

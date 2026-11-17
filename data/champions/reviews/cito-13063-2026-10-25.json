@@ -1,0 +1,22 @@
+{
+  "event_id": "fight:cito:13063",
+  "action": "retain",
+  "division": "Featherweight",
+  "kind": "undisputed",
+  "fight_id": "cito:13063",
+  "fight_date": "2026-10-24",
+  "effective_date": "2026-10-25",
+  "fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+  "opponent_id": "084b322b-1e75-47a6-a52f-8897faf74a53",
+  "winner_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+  "previous_fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+  "reviewed": true,
+  "reviewed_at": "2026-10-25",
+  "title_confirmed": true,
+  "winner_eligible": true,
+  "sources": [
+    "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-results",
+    "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+  ],
+  "note": "Official UFC results confirm the incumbent retained the undisputed division title. No historical defense count is inferred."
+}

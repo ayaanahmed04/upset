@@ -1,0 +1,695 @@
+{
+  "cohort_policy": "Prior accepted bout IDs plus the 39 October maintenance bouts only; earlier exclusions remain withheld.",
+  "reviewed_at": "2026-10-25",
+  "rules": [
+    {
+      "cito_fighter_id": "26c9c6ad-804c-4c6f-91c2-27d64c227c33",
+      "history_sha256": "a6d2316f3396293d9c12e62f5d6f532f3ff96680945765cabe1e86db1995145c",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13215"
+      ],
+      "name": "Losene Keita",
+      "profile_observations": {
+        "age": 28,
+        "heightInches": "69",
+        "reachInches": "71.5",
+        "stance": null
+      },
+      "profile_sha256": "37079a7324a4b1ce2a6f71e7fa265c971ebc459bc002064c3e99e5cc510292c3",
+      "public_profile_facts": {
+        "age": 28,
+        "height_inches": 69,
+        "reach_inches": 71.5
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards",
+        "https://www.ufc.com/athlete/losene-keita"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "losene-keita",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-03-21",
+          "history_completed": true,
+          "opponent": "Nathaniel Wood",
+          "source_bout_id": "3b9f50f07d9a1601"
+        },
+        {
+          "date": "2026-09-05",
+          "history_completed": true,
+          "opponent": "Muhammad Naimov",
+          "source_bout_id": "b90b099c1f47bb93"
+        }
+      ],
+      "ufcstats_fighter_id": "5b43d68174b6e2ab",
+      "upset_fighter_id": "668f612e-f29b-4f76-a78a-fc6a4b064407"
+    },
+    {
+      "cito_fighter_id": "4b65bfd5-3f74-4733-939d-66ad282db912",
+      "history_sha256": "269e4cc0afa157c43de4e5f9b1b58f4adad2dcaba3ddf895bb8d4e811db1870c",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "fight-night-october-10-2026-brendson-ribeiro-felipe-franco"
+      ],
+      "name": "Felipe Franco",
+      "profile_observations": {
+        "age": 25,
+        "heightInches": "73",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "a59ad4615183a161114dbac5d84cb9addc84333d9b674458d062b9ca35cf78a3",
+      "public_profile_facts": {
+        "age": 25,
+        "height_inches": 73.5,
+        "reach_inches": 77
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-allen-vs-duncan-official-scorecards",
+        "https://www.ufc.com/athlete/felipe-franco"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "felipe-franco",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-03-21",
+          "history_completed": true,
+          "opponent": "Mario Pinto",
+          "source_bout_id": "90187edeeda7e6d6"
+        },
+        {
+          "date": "2026-07-18",
+          "history_completed": true,
+          "opponent": "Levi Rodrigues Jr.",
+          "source_bout_id": "46d800ce45fdd3e6"
+        },
+        {
+          "date": "2026-10-10",
+          "history_completed": false,
+          "opponent": "Brendson Ribeiro",
+          "source_bout_id": "fight-night-october-10-2026-brendson-ribeiro-felipe-franco"
+        }
+      ],
+      "ufcstats_fighter_id": "e564146b9cf6dbef",
+      "upset_fighter_id": "c0dc2053-4ff1-4dd1-a99f-2e419196845f"
+    },
+    {
+      "cito_fighter_id": "bd0cb1a5-7539-46ea-9e49-7964393e31cc",
+      "history_sha256": "363f31ded6434a07f4637c28e4d43033c8fc41d6f306d53acddd6eacc223cd7d",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13016"
+      ],
+      "name": "Mandel Nallo",
+      "profile_observations": {
+        "age": 37,
+        "heightInches": "72",
+        "reachInches": "75",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "02a7a92e1ef4159009fae22d38a7dbac9efe440a4668805f82dc674f8b0d2579",
+      "public_profile_facts": {
+        "age": 37,
+        "height_inches": 72,
+        "reach_inches": 75
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/mandel-nallo"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "mandel-nallo",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-04-18",
+          "history_completed": true,
+          "opponent": "Jai Herbert",
+          "source_bout_id": "e644218737c1a778"
+        },
+        {
+          "date": "2026-10-17",
+          "history_completed": false,
+          "opponent": "Nate Landwehr",
+          "source_bout_id": "13016"
+        }
+      ],
+      "ufcstats_fighter_id": "8f4528c10bd34fab",
+      "upset_fighter_id": "4aeaf20d-9801-446f-ba0d-a1625a79f053"
+    },
+    {
+      "cito_fighter_id": "09e39950-d7e0-4aa8-8546-cd255901e3cc",
+      "history_sha256": "519bf66dc7790b62a5b5bddfd13c2d7e8a373123b5a99994742b66ecf5b96e6b",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13079"
+      ],
+      "name": "Julien Leblanc",
+      "profile_observations": {
+        "age": 34,
+        "heightInches": "74",
+        "reachInches": "74.5",
+        "stance": "Southpaw"
+      },
+      "profile_sha256": "24234d16aa9d4d996093ef999f02bd65ba3df48a63917d7694404cba35524e13",
+      "public_profile_facts": {
+        "age": 34,
+        "height_inches": 74,
+        "reach_inches": 74.5
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/julien-leblanc"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "julien-leblanc",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-04-18",
+          "history_completed": true,
+          "opponent": "Robert Valentin",
+          "source_bout_id": "9fab4b0ad082f670"
+        }
+      ],
+      "ufcstats_fighter_id": "cd0dfd9846bd03b9",
+      "upset_fighter_id": "1d0f1d2f-b727-4781-8880-3038d7d7a160"
+    },
+    {
+      "cito_fighter_id": "0a8d488f-f726-48b2-b816-67bcf6ced891",
+      "history_sha256": "d8966a673da3d4a953de77a443c1f88b21aab8177ef25ad884ca9ecc850a06ea",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "fight-night-october-10-2026-leon-shahbazyan-niko-price"
+      ],
+      "name": "Leon Shahbazyan",
+      "profile_observations": {
+        "age": 30,
+        "heightInches": "76",
+        "reachInches": "77",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "7b85141c7af39f21c9d62dd179a71b9ca68cff5f656355ab45df4288e31bfa8e",
+      "public_profile_facts": {
+        "age": 30,
+        "height_inches": 76,
+        "reach_inches": 77
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-allen-vs-duncan-official-scorecards",
+        "https://www.ufc.com/athlete/leon-shahbazyan"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "leon-shahbazyan",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-06-20",
+          "history_completed": true,
+          "opponent": "Levan Chokheli",
+          "source_bout_id": "6658fe4531c86674"
+        },
+        {
+          "date": "2026-10-10",
+          "history_completed": false,
+          "opponent": "Niko Price",
+          "source_bout_id": "fight-night-october-10-2026-leon-shahbazyan-niko-price"
+        }
+      ],
+      "ufcstats_fighter_id": "9eed2bcc9e0b92af",
+      "upset_fighter_id": "1eb16e91-dd7b-4345-88e4-c0573c93b579"
+    },
+    {
+      "cito_fighter_id": "5af0fd6c-9b74-44e5-b756-902bf4e6f73e",
+      "history_sha256": "5ec0bc307d725fc9e399114471b445b2f0c1cb662eb161ffe79c80974c46d23c",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13164"
+      ],
+      "name": "Otari Tanzilovi",
+      "profile_observations": {
+        "age": 28,
+        "heightInches": "70",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "ec99d877cc6e2e54544cea11231b35916b520aa3b625ca995ec655a5f1406ee0",
+      "public_profile_facts": {
+        "age": 28,
+        "height_inches": 69,
+        "reach_inches": 70
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-allen-vs-duncan-official-scorecards",
+        "https://www.ufc.com/athlete/otari-tanzilovi"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "otari-tanzilovi",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-06-20",
+          "history_completed": true,
+          "opponent": "Shane Collins",
+          "source_bout_id": "9efa4de316b8bf43"
+        },
+        {
+          "date": "2026-10-10",
+          "history_completed": false,
+          "opponent": "Malcolm Wellmaker",
+          "source_bout_id": "13164"
+        }
+      ],
+      "ufcstats_fighter_id": "b9124c308671e303",
+      "upset_fighter_id": "8c5cd14f-4622-428c-a9ee-ede9dc3bea1b"
+    },
+    {
+      "cito_fighter_id": "cdfd8b3a-757c-4bba-9480-a7941263e9cc",
+      "history_sha256": "7a819782aad198e4f3ad68650836da8e0d2d2c01e9307239915b1b4de7f4d9e2",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "fight-night-october-10-2026-allen-frye-jr-rj-harris"
+      ],
+      "name": "RJ Harris",
+      "profile_observations": {
+        "age": 27,
+        "heightInches": "75",
+        "reachInches": "78",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "3d3e43e49e6d0d70ff2b1ace119f42a9eecfa5055109562afd4c8b18f4856cc9",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-fight-night-allen-vs-duncan-official-scorecards"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "rj-harris",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-07-18",
+          "history_completed": true,
+          "opponent": "Alvin Hines",
+          "source_bout_id": "e05155c1b5c2dc74"
+        },
+        {
+          "date": "2026-10-10",
+          "history_completed": false,
+          "opponent": "Allen Frye Jr.",
+          "source_bout_id": "fight-night-october-10-2026-allen-frye-jr-rj-harris"
+        }
+      ],
+      "upset_fighter_id": "daf614bc-6a47-4502-b2b6-6700c1c63261"
+    },
+    {
+      "cito_fighter_id": "02edd902-4bba-455a-9b47-52c6f3b0bdb0",
+      "history_sha256": "c2290331fbe2c5fc713648caedf252aba7e4b1db4f48cd8560e409aa22ea645e",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13220"
+      ],
+      "name": "Abubakar Vagaev",
+      "profile_observations": {
+        "age": 33,
+        "heightInches": "72",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "7cac91bce63836802cece1fb19a962e0cb65d0c40040c98b4759c387fc3a7309",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "abubakar-vagaev",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-07-25",
+          "history_completed": true,
+          "opponent": "Saygid Izagakhmaev",
+          "source_bout_id": "61280e5644189c61"
+        }
+      ],
+      "upset_fighter_id": "e2c7d82b-99c6-4d4b-a7f9-2dedb23c227b"
+    },
+    {
+      "cito_fighter_id": "81fa3b96-36b2-45ae-b145-b27300b510ec",
+      "history_sha256": "b836cef5b2b8fb19d889ff7780c4e1c7116195578bac2c1755f236ab355fe6cc",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13225"
+      ],
+      "name": "Noah Gugnon",
+      "profile_observations": {
+        "age": 25,
+        "heightInches": "70",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "5241a83155df403edd726634bb9d920f428005274283919d79974517666f04be",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "noah-gugnon",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-08-01",
+          "history_completed": true,
+          "opponent": "Milos Janicic",
+          "source_bout_id": "fec91da886d80200"
+        }
+      ],
+      "upset_fighter_id": "65b366d5-4cb8-4ce7-91b1-84cc14410e35"
+    },
+    {
+      "cito_fighter_id": "9dfec8c9-a47a-4ef1-9f8b-ed7c64e18ce0",
+      "history_sha256": "b3997b5cb27eae3b49808da377d677c67d9cceeded5db67a17f7dee6ebf6e555",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13158"
+      ],
+      "name": "Cristian Perez",
+      "profile_observations": {
+        "age": null,
+        "heightInches": "0",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "cd2b4313a5fd45dd2f6ef04ff3f1c147ca8ad17090a8d713f7313e5c229922ba",
+      "public_profile_facts": {
+        "age": 27,
+        "height_inches": 69,
+        "reach_inches": 72
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/cristian-perez-gonzalez"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "cristian-perez",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Kyle Nelson",
+          "source_bout_id": "13158"
+        }
+      ],
+      "ufcstats_fighter_id": "d84033157714ee94",
+      "upset_fighter_id": "c40bd68b-dda8-48ef-b962-a9d0ecec183d"
+    },
+    {
+      "cito_fighter_id": "5fe5f1f8-5433-48b8-85b8-492d3f258a39",
+      "history_sha256": "c0e1179cf56ec8c977ad82af64220f25671347b3003d8a6ec61bb259ee3051c3",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13051"
+      ],
+      "name": "Timmy Cuamba",
+      "profile_observations": {
+        "age": 27,
+        "heightInches": "69",
+        "reachInches": "71",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "a0a6fc443d1eeffb614e7853debadacf48a71529da7c11905ce02efe721e6290",
+      "public_profile_facts": {
+        "age": 27,
+        "height_inches": 69,
+        "reach_inches": 71
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/timothy-cuamba"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "timmy-cuamba",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Louis Jourdain",
+          "source_bout_id": "13051"
+        }
+      ],
+      "ufcstats_fighter_id": "0e46690e55a8df75",
+      "upset_fighter_id": "2474846c-589e-4024-a66a-5c83b81eec0a"
+    },
+    {
+      "cito_fighter_id": "8af99553-30d9-43b7-af58-c7b59506c510",
+      "history_sha256": "b9bbcbf00e9ac56e650cda63b24b7384dd2687cf5c4454a45f1c55ebd348b58c",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "13051"
+      ],
+      "name": "Louis Jourdain",
+      "profile_observations": {
+        "age": 29,
+        "heightInches": "69",
+        "reachInches": "69.5",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "6295b0841fd5d321896ad46074f4e103eacecb1b615a3497976e6743debb718e",
+      "public_profile_facts": {
+        "age": 29,
+        "height_inches": 69,
+        "reach_inches": 69.5
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/louis-jourdain"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "louis-jourdain",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Timmy Cuamba",
+          "source_bout_id": "13051"
+        }
+      ],
+      "ufcstats_fighter_id": "91cd52cb92dfdd52",
+      "upset_fighter_id": "77dc9d00-349f-4d56-9ad2-718fd651756f"
+    },
+    {
+      "cito_fighter_id": "11a8325e-f66b-4194-81a8-631c5138efb0",
+      "history_sha256": "1e3a3b1fdbd95d6a2c06284f5ed11311830f1ab9ba3a32c946333d47a9bef440",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13079"
+      ],
+      "name": "Nick Galanti",
+      "profile_observations": {
+        "age": 28,
+        "heightInches": "73",
+        "reachInches": "75",
+        "stance": null
+      },
+      "profile_sha256": "eef5130a2f830f47e8b3c9c30b71bd9f7c44827b3fd24a4d00187ff92fcbcd1b",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "nick-galanti",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Julien Leblanc",
+          "source_bout_id": "13079"
+        }
+      ],
+      "upset_fighter_id": "c873c697-620b-407c-92f1-cd2eb251274e"
+    },
+    {
+      "cito_fighter_id": "970544d8-ed5d-489d-8600-3521deb30250",
+      "history_sha256": "f16125d4a647058abfb007a183751d86fa1f9cdd04a80640a5426653d808b95e",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13131"
+      ],
+      "name": "Joel Faglier",
+      "profile_observations": {
+        "age": 25,
+        "heightInches": "74",
+        "reachInches": "73.5",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "00968e68da8c9cf00b465f670fe66dd2b3dc3c419ce9fda2daf1c84454636fd2",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "joel-faglier",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Javad Mahjoub",
+          "source_bout_id": "13131"
+        }
+      ],
+      "upset_fighter_id": "5529e7cb-966f-4dcf-8ee1-06481a6c7d49"
+    },
+    {
+      "cito_fighter_id": "61f0b558-8c55-4a37-9715-10f2e6353cf9",
+      "history_sha256": "3c39f928be51b1666024f05b08732086e8bffdc3eeb91de21ca669e46ed4d3e3",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13131"
+      ],
+      "name": "Javad Mahjoub",
+      "profile_observations": {
+        "age": 35,
+        "heightInches": "0",
+        "reachInches": null,
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "6c1ffd34dc3eadfaeda094820ed8d4202872199f78a5d80fa21cf4df5fa947f5",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "javad-mahjoub",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Joel Faglier",
+          "source_bout_id": "13131"
+        }
+      ],
+      "upset_fighter_id": "6e7f5fb3-3346-4d2f-bb70-a70f1785583a"
+    },
+    {
+      "cito_fighter_id": "460a8636-fc2e-40dd-a8ab-29a12e7f4f78",
+      "history_sha256": "cbbf03a13132776d8f0e776367f4ac73f682d65d4ac0478b2911879c0e731212",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13048"
+      ],
+      "name": "Mackenzie Stiller",
+      "profile_observations": {
+        "age": 27,
+        "heightInches": "62.5",
+        "reachInches": "62.5",
+        "stance": "Orthodox"
+      },
+      "profile_sha256": "37571d289e04cba594bec926ebe247c27b363c327c425b113a931d431c37429c",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "mackenzie-stiller",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "Katlyn Cerminara",
+          "source_bout_id": "13048"
+        }
+      ],
+      "upset_fighter_id": "1af97083-89b8-48ff-9c33-7302cc2fd7c8"
+    },
+    {
+      "cito_fighter_id": "d6624809-9f7e-4e9a-8f4f-728909c5aad7",
+      "history_sha256": "c9f467e38f3fb3f7a780c7f79bb95db46028eb7ed0b0078690b86e9b9c94271b",
+      "identity_action": "link_existing",
+      "maintenance_bout_ids": [
+        "fight-night-october-17-2026-cody-chovancek-suyoung-you"
+      ],
+      "name": "Cody Chovancek",
+      "profile_observations": {
+        "age": 28,
+        "heightInches": "68.5",
+        "reachInches": "67.5",
+        "stance": "Switch"
+      },
+      "profile_sha256": "0007c4b6893a3198feab83ae50947b02c1fadfe65ace14c22692287a6211ac4a",
+      "public_profile_facts": {
+        "age": 28,
+        "height_inches": 68.5,
+        "reach_inches": 67.5
+      },
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-edmonton-official-scorecards-buckley-vs-malott",
+        "https://www.ufc.com/athlete/cody-chovancek"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "cody-chovancek",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-17",
+          "history_completed": true,
+          "opponent": "SuYoung You",
+          "source_bout_id": "fight-night-october-17-2026-cody-chovancek-suyoung-you"
+        }
+      ],
+      "ufcstats_fighter_id": "3c4320a1b6106611",
+      "upset_fighter_id": "a0b3dd15-e431-4e58-950f-2619f9f2b244"
+    },
+    {
+      "cito_fighter_id": "1a5b9279-6ed2-425b-9d57-b66cd6040885",
+      "history_sha256": "418440a209ed17d848f4d70202844eb117ccc76b9a4e0a6b9f68ab10ab9cc006",
+      "identity_action": "new_identity",
+      "maintenance_bout_ids": [
+        "13221"
+      ],
+      "name": "Asaf Chopurov",
+      "profile_observations": {
+        "age": 24,
+        "heightInches": "67",
+        "reachInches": "67",
+        "stance": null
+      },
+      "profile_sha256": "22c03057f778dc038fb135017dfa93d5cff7296cedac0f7668358c752aa76b61",
+      "public_sources": [
+        "https://www.ufc.com/news/ufc-333-volkanovski-vs-evloev-official-scorecards"
+      ],
+      "review_note": "Dated matchup and provider profile/history identity reviewed against official event evidence. Athlete-page win/loss badges are unreliable; event scorecards govern results. Profile differences remain source observations; existing profiles are preserved. No normalized-name candidate or matching surname identity exists in the current registry; allocate a separate permanent ID and leave unavailable demographics null.",
+      "reviewed": true,
+      "reviewed_at": "2026-10-25",
+      "slug": "asaf-chopurov",
+      "supporting_history_matchups": [
+        {
+          "date": "2026-10-24",
+          "history_completed": true,
+          "opponent": "Colby Thicknesse",
+          "source_bout_id": "13221"
+        }
+      ],
+      "upset_fighter_id": "f47609e3-912d-4909-adc1-420d1b37b976"
+    }
+  ],
+  "schema_version": 1
+}

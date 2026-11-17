@@ -1,0 +1,13 @@
+{
+  "checked_on": "2026-11-03",
+  "added": 101,
+  "total_images": 298,
+  "http_images_passed": 298,
+  "http_new_fighter_profiles_passed": 101,
+  "prior_roster_entries_preserved": 197,
+  "database_unchanged": true,
+  "registry_unchanged": true,
+  "backup": "data/processed/site_backups/portraits-20261103-222739-272715",
+  "changed_files": 104,
+  "verified": true
+}

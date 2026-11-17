@@ -1,0 +1,8 @@
+{
+ "version": "upset_published_picks_v1",
+ "slug": "ufc-334",
+ "frozen_at": "2026-11-11T19:21:20Z",
+ "picks_sha256": "95d627d1e584ddb392d51a4bdc2dc429f288736a281953f6a7f64091e285509a",
+ "picks_bytes": 10257,
+ "tool": "src/upset/predictions/published_picks.py"
+}

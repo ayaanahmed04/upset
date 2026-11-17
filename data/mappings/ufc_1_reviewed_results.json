@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-10",
+  "events": [
+    {
+      "slug": "ufc-1",
+      "name": "UFC 1",
+      "headline": "The Beginning",
+      "date": "1993-11-12",
+      "venue": "McNichols Sports Arena, Denver",
+      "source_url": "https://www.ufc.com/event/ufc-1",
+      "recap_url": "https://www.ufc.com/news/revisiting-ufc-1-beginning",
+      "bouts": [
+        {
+          "id": "ufc:ufc-1:1",
+          "order": 1,
+          "group": "Alternate bout",
+          "fighters": [
+            {
+              "id": "355e5e93-1f16-4708-aa66-bbbd3fb52acc",
+              "source_fighter_id": "6ceff86fae4f6b3b",
+              "name": "Jason DeLucia"
+            },
+            {
+              "id": "f62a8c8d-5f0c-4e8c-8239-b559fcf1bec5",
+              "source_fighter_id": "02fc8f50f56eb307",
+              "name": "Trent Jenkins"
+            }
+          ],
+          "winner_id": "355e5e93-1f16-4708-aa66-bbbd3fb52acc",
+          "method": "Submission",
+          "round": 1,
+          "time": "0:52"
+        },
+        {
+          "id": "ufc:ufc-1:2",
+          "order": 2,
+          "group": "Quarterfinals",
+          "fighters": [
+            {
+              "id": "54b13827-a830-48f6-9295-26b72bfcd436",
+              "source_fighter_id": "279093302a6f44b3",
+              "name": "Gerard Gordeau"
+            },
+            {
+              "id": "62af8373-8346-4c08-a82b-28a0d8cd861f",
+              "source_fighter_id": "96eff1a628adcc7f",
+              "name": "Teila Tuli"
+            }
+          ],
+          "winner_id": "54b13827-a830-48f6-9295-26b72bfcd436",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "0:26"
+        },
+        {
+          "id": "ufc:ufc-1:3",
+          "order": 3,
+          "group": "Quarterfinals",
+          "fighters": [
+            {
+              "id": "609bb247-495d-44f0-a323-92c7dc6ac4e6",
+              "source_fighter_id": "598a58db87b890ee",
+              "name": "Kevin Rosier"
+            },
+            {
+              "id": "be142f18-5958-48d9-903e-984331e45f86",
+              "source_fighter_id": "d3711d3784b76255",
+              "name": "Zane Frazier"
+            }
+          ],
+          "winner_id": "609bb247-495d-44f0-a323-92c7dc6ac4e6",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "4:20"
+        },
+        {
+          "id": "ufc:ufc-1:4",
+          "order": 4,
+          "group": "Quarterfinals",
+          "fighters": [
+            {
+              "id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+              "source_fighter_id": "429e7d3725852ce9",
+              "name": "Royce Gracie"
+            },
+            {
+              "id": "775d8af1-124e-418a-ba8a-64935d5fee07",
+              "source_fighter_id": "a5c53b3ddb31cc7d",
+              "name": "Art Jimmerson"
+            }
+          ],
+          "winner_id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+          "method": "Submission",
+          "round": 1,
+          "time": "2:18"
+        },
+        {
+          "id": "ufc:ufc-1:5",
+          "order": 5,
+          "group": "Quarterfinals",
+          "fighters": [
+            {
+              "id": "dba24f50-6490-432e-89a4-23301cfe51b4",
+              "source_fighter_id": "63b65af1c5cb02cb",
+              "name": "Ken Shamrock"
+            },
+            {
+              "id": "35d94e78-806d-4359-8d44-3b87a7af3d76",
+              "source_fighter_id": "46c8ec317aff28ac",
+              "name": "Patrick Smith"
+            }
+          ],
+          "winner_id": "dba24f50-6490-432e-89a4-23301cfe51b4",
+          "method": "Submission",
+          "round": 1,
+          "time": "1:49"
+        },
+        {
+          "id": "ufc:ufc-1:6",
+          "order": 6,
+          "group": "Semifinals",
+          "fighters": [
+            {
+              "id": "54b13827-a830-48f6-9295-26b72bfcd436",
+              "source_fighter_id": "279093302a6f44b3",
+              "name": "Gerard Gordeau"
+            },
+            {
+              "id": "609bb247-495d-44f0-a323-92c7dc6ac4e6",
+              "source_fighter_id": "598a58db87b890ee",
+              "name": "Kevin Rosier"
+            }
+          ],
+          "winner_id": "54b13827-a830-48f6-9295-26b72bfcd436",
+          "method": "KO/TKO",
+          "round": 1,
+          "time": "0:59"
+        },
+        {
+          "id": "ufc:ufc-1:7",
+          "order": 7,
+          "group": "Semifinals",
+          "fighters": [
+            {
+              "id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+              "source_fighter_id": "429e7d3725852ce9",
+              "name": "Royce Gracie"
+            },
+            {
+              "id": "dba24f50-6490-432e-89a4-23301cfe51b4",
+              "source_fighter_id": "63b65af1c5cb02cb",
+              "name": "Ken Shamrock"
+            }
+          ],
+          "winner_id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+          "method": "Submission",
+          "round": 1,
+          "time": "0:57"
+        },
+        {
+          "id": "ufc:ufc-1:8",
+          "order": 8,
+          "group": "Final",
+          "fighters": [
+            {
+              "id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+              "source_fighter_id": "429e7d3725852ce9",
+              "name": "Royce Gracie"
+            },
+            {
+              "id": "54b13827-a830-48f6-9295-26b72bfcd436",
+              "source_fighter_id": "279093302a6f44b3",
+              "name": "Gerard Gordeau"
+            }
+          ],
+          "winner_id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+          "method": "Submission",
+          "round": 1,
+          "time": "1:44"
+        }
+      ]
+    }
+  ]
+}

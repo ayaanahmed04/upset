@@ -1,0 +1,2918 @@
+{
+  "schema_version": 1,
+  "linked_count": 581,
+  "pending_count": 1,
+  "linked": [
+    {
+      "image": "aaron-pico.png",
+      "upset_fighter_id": "da51c6d3-920b-46ed-8483-9d1742da3437",
+      "sha256": "61f46befe994f6fb5745053c3c9ef7221b83fa4120424b1a30b2585c30ae1503"
+    },
+    {
+      "image": "abubakar-vagaev.png",
+      "upset_fighter_id": "e2c7d82b-99c6-4d4b-a7f9-2dedb23c227b",
+      "sha256": "d8020094537a204b963e39249d7135f5a85ceb1ed5f3772b4207273434cc978f"
+    },
+    {
+      "image": "abus-magomedov.png",
+      "upset_fighter_id": "00f36838-50ea-4acd-8f1e-dbd44d1ad388",
+      "sha256": "af3e2d0c369a3b74800076c79184b196abbcc1805cc4439b419cad91297a085a"
+    },
+    {
+      "image": "adrian-yanez.png",
+      "upset_fighter_id": "6988f632-7454-42ac-a3a4-7c11915dfba8",
+      "sha256": "16413623a0183a092bb8b8ff084a0a8ed4dfc8c5b85d9f2a65b62b51420f3e02"
+    },
+    {
+      "image": "aiemann-zahabi.png",
+      "upset_fighter_id": "62daaeb6-fc2e-4e95-8183-924887282ad8",
+      "sha256": "90b7eb6c33f7bb4645616caca3bcad9ac66e682548a91a0e3b14e538c959710d"
+    },
+    {
+      "image": "ailin-perez.png",
+      "upset_fighter_id": "970d0e49-2715-4bb4-9d98-037ce36469e7",
+      "sha256": "084a37c720d88f030314fe305d26005b2872baf6b3db0471da7c95015697b2d3"
+    },
+    {
+      "image": "alatengheili.png",
+      "upset_fighter_id": "4374d864-e9a3-4c19-a6d2-c066c98d57ca",
+      "sha256": "4d39cc5850bbe9e14b48826ae522512bc9dba7a27e4e1ec102366593b1bf63ef"
+    },
+    {
+      "image": "alberto-montes.png",
+      "upset_fighter_id": "8799e985-3f01-4dc0-a475-b63f832a1bd8",
+      "sha256": "190a3256525edfcb741c465d067aef9d42a119845f88e3c9a0598ddaf898afc2"
+    },
+    {
+      "image": "alden-coria.png",
+      "upset_fighter_id": "78442db7-fc93-4b8f-91e9-2e3fd8ec58c1",
+      "sha256": "c4af81452af7083f9790e003db63bac29c457ecc416724cc0b3c6d23df7d021f"
+    },
+    {
+      "image": "aleksandar-rakic.png",
+      "upset_fighter_id": "835e9b11-9828-44f0-ab61-0cf336c79e84",
+      "sha256": "e37279323e643e4206d1766dfdadfc4e3839065adb220b73ec50bdb2c7b45b79"
+    },
+    {
+      "image": "aleksandre-topuria.png",
+      "upset_fighter_id": "eabfec43-b257-48a1-9e67-61f7378293bc",
+      "sha256": "f979e086cb7139fdc840f3e49a2e45edb89f0fd206ef9f234086b6748e133461"
+    },
+    {
+      "image": "alessandro-costa.png",
+      "upset_fighter_id": "8a136475-488f-4d72-8976-a0509778e44c",
+      "sha256": "8122bc95bfd1b1b5c8b737bf8885f02fb707e6b2443b027cf16b9707435f44d7"
+    },
+    {
+      "image": "alex-pereira.png",
+      "upset_fighter_id": "bb826765-47c1-4238-9c17-f77e59518192",
+      "sha256": "515e8444be0465fdfb3da232a40c59ab2c8976cb6e22bedffbb8d256956f9568"
+    },
+    {
+      "image": "alex-perez.png",
+      "upset_fighter_id": "7926e415-10ac-4ac4-b846-84514a2d92e0",
+      "sha256": "466078982f732b2fcf02a548c34aaf683a64b0bb8cf94fb0e69eaaa47c07476d"
+    },
+    {
+      "image": "alexa-grasso.png",
+      "upset_fighter_id": "88de9117-84ed-4f8f-8adb-711068ad704d",
+      "sha256": "671ed377ea4d35e6334bfae2ce424ff28d43332f050d9026b994727d962b8197"
+    },
+    {
+      "image": "alexander-gustafsson.png",
+      "upset_fighter_id": "a166418d-ebaa-4e2a-8f31-9ff6b8280d25",
+      "sha256": "d5cba1f3c736da4decaf5e970a291913f9dbe7d5ba808850080cd6ff2f544375"
+    },
+    {
+      "image": "alexander-hernandez.png",
+      "upset_fighter_id": "f518df46-74c4-4fcc-98cd-0db71c20cae3",
+      "sha256": "958078e139a963d467e609d80c6b00520fca0a76d1bf390090b5c50f6d47404e"
+    },
+    {
+      "image": "alexander-volkanovski.png",
+      "upset_fighter_id": "8332e73c-3fbc-4bd1-8421-a84b948ea6bd",
+      "sha256": "30ab8f0f841a8159bcee44e020080cc74d7a40ebd733e3110c03d194a6432d65"
+    },
+    {
+      "image": "alexander-volkov.png",
+      "upset_fighter_id": "3c9dc2a0-60b1-4339-ad52-2fd47675fbb2",
+      "sha256": "b76a02aa101904a1aa3f4563cde7070f43ae37ee281d0d33191a5282a0b1e8bc"
+    },
+    {
+      "image": "alexandre-pantoja.png",
+      "upset_fighter_id": "cf8c533a-f955-48b5-9b98-8e4d5960b16f",
+      "sha256": "aff413120ec97ae14760ce8aba78a8de4093b09bcebc2497c0e51410c84665a6"
+    },
+    {
+      "image": "alexia-thainara.png",
+      "upset_fighter_id": "c42baba3-1c0d-40e4-97e9-fbf6f035d5f0",
+      "sha256": "661704a5ff3946cad0d6b9334ed96deb0e5d77fe1667aac3d0a184d9b2acd48b"
+    },
+    {
+      "image": "alibi-idiris.png",
+      "upset_fighter_id": "3af4458b-1b17-4e1d-b180-82c7a31c6732",
+      "sha256": "d7a338b2f272f08beaa6f2b89e5ee3e9f4d094ddfd3b7deaac68cc8707e3ae80"
+    },
+    {
+      "image": "alice-ardelean.png",
+      "upset_fighter_id": "f7303901-5afc-4dda-874b-acfc8c724216",
+      "sha256": "0e388b529aa8877995e07ed1f98eaa1d318d9b26ab90fafb1aba838604c08e32"
+    },
+    {
+      "image": "alice-pereira.png",
+      "upset_fighter_id": "bda0049e-5253-4dba-9352-7842ae31d73c",
+      "sha256": "8b282900a66726b0ac4e308592b0fd70afa020f0a988211f16e19efb8ecd7c69"
+    },
+    {
+      "image": "alistair-overeem.png",
+      "upset_fighter_id": "d793a396-00ae-4b6c-926d-bf6db70e4198",
+      "sha256": "df9b48ca1122cc37c37c8b450d7912a9662ba12bd5ea0e4a994afd71f5e019ff"
+    },
+    {
+      "image": "aljamain-sterling.png",
+      "upset_fighter_id": "94eb4921-8cad-4c13-b366-8f26f4674859",
+      "sha256": "abdb6f952324f990a1d51ec8cc61533fc8d7ee13f938681a928de46f6501b9e6"
+    },
+    {
+      "image": "alonzo-menifield.png",
+      "upset_fighter_id": "7854c0ef-b3e2-4dbd-9595-5057b836457c",
+      "sha256": "8cdb7cec0f91d3d89ec23c56d573eac1f547ed95e1c0eea183c90d9362ce98d2"
+    },
+    {
+      "image": "amanda-lemos.png",
+      "upset_fighter_id": "6770fca3-e210-4ddc-adfb-092c2581b46b",
+      "sha256": "eb9fca0081ebf9bea88baf0c36366916d1d58af7a3c8660480077cdb02d2927a"
+    },
+    {
+      "image": "amanda-nunes.png",
+      "upset_fighter_id": "c136ba19-7324-498a-8539-a2bcc5d309ce",
+      "sha256": "2c358e3f45cdfcb2572094fae0b8e14d2541102bc021a19f7116ee1f2eee28f7"
+    },
+    {
+      "image": "amanda-ribas.png",
+      "upset_fighter_id": "0af8a32c-eb78-4a40-817a-0ff2537f7d84",
+      "sha256": "087820688a161155ddbca7075f35f18a690565b1a8692aca67da53893e44604b"
+    },
+    {
+      "image": "amir-albazi.png",
+      "upset_fighter_id": "f4407379-bc97-4ee4-9626-672db95091be",
+      "sha256": "10956db2b64e6b16bfbb4d7f0de7201ec90eb25d56c33eee9dfb0ad9fc8b6dd5"
+    },
+    {
+      "image": "anderson-silva.png",
+      "upset_fighter_id": "8edfa674-0fb7-46c2-9bcf-fb507dac9f95",
+      "sha256": "00c48fd9a7f34b93b73c52b6229a4749ecdfe5f476331f1a4e70db98c78e4018"
+    },
+    {
+      "image": "andre-fili.png",
+      "upset_fighter_id": "2da7b736-e34a-4f4b-9a6d-69ac2c216f5e",
+      "sha256": "a723ddc1818f88a25cb1b7879ebb1e4908bda69303adceb5c507f0cd0508716c"
+    },
+    {
+      "image": "andre-lima.png",
+      "upset_fighter_id": "aaa5dfe7-6050-4f8a-aa1c-01656be3f863",
+      "sha256": "13d9aa87659acaefe07cce462eb1793808fdfeca8abbdb30d0acdd165d1e212b"
+    },
+    {
+      "image": "andre-petroski.png",
+      "upset_fighter_id": "f5e27ce3-e072-4f6b-b243-9c5439ef2977",
+      "sha256": "798b7082ba05c57653aa743bced5df01e0c47c9405938fdb869f9c6ebddd7c93"
+    },
+    {
+      "image": "andrei-arlovski.png",
+      "upset_fighter_id": "6114f581-eb98-4e41-90bc-e2e7ee5bfcf2",
+      "sha256": "3d8b2436fc9cf1a0cef5fca37ee20ce62a31268b27751e07643df3979062f6ae"
+    },
+    {
+      "image": "andrey-pulyaev.png",
+      "upset_fighter_id": "af9bc13c-32b1-4645-8341-2056b33dc686",
+      "sha256": "61b88061a9d070b670fa6d1252d23351d80f4b6b96658bdc1a06cde7a7646c56"
+    },
+    {
+      "image": "angela-hill.png",
+      "upset_fighter_id": "8f45d7be-1802-49bf-a0ab-4ef8c4c07cae",
+      "sha256": "a19fc77d2d042e681be4b382bbb30d7dc1b8a0c9aa9e5c2c718c6177d858ff66"
+    },
+    {
+      "image": "anshul-jubli.png",
+      "upset_fighter_id": "222e16b4-f21b-4b7f-99ed-1056a778676b",
+      "sha256": "02c8dcfc11339dfb9a848d770b780ebc1e7c73eaed50e6179f40fade65adae4e"
+    },
+    {
+      "image": "ante-delija.png",
+      "upset_fighter_id": "c893c100-d01b-4733-bbc7-8cc37415f176",
+      "sha256": "bd4bbf17346cd6d9a72159c14176f6d99944796c9053a6f370d11a6a3306e5e4"
+    },
+    {
+      "image": "anthony-hernandez.png",
+      "upset_fighter_id": "db7cda1f-2e04-48c0-8b6e-7f1ab5c83836",
+      "sha256": "08132c9b2516c0bdcc8a4dec9085b7905c36522552c4acbe4ea2ab4dde7a74e0"
+    },
+    {
+      "image": "anthony-johnson.png",
+      "upset_fighter_id": "edb8038d-ba12-40a8-a6cf-8dc248f4bd88",
+      "sha256": "c1acc4a0abd585fb23e99ae493a7505c8efea85d15a93209c91cdbe053235795"
+    },
+    {
+      "image": "anthony-pettis.png",
+      "upset_fighter_id": "40d746d1-5caa-4a9f-b8cd-0fe9719d73a4",
+      "sha256": "785b3ba13da450432d936e0da0f9a6490943d53a72880002bd67aec5b81c1574"
+    },
+    {
+      "image": "anthony-smith.png",
+      "upset_fighter_id": "cc7af7bb-7041-4ba6-bc8d-a91c2ed2b1b3",
+      "sha256": "f76d1d63c040483ac7589fed977838fb75d6952b721d1d6e35e2e3099a85a733"
+    },
+    {
+      "image": "antonio-rodrigo-nogueira.png",
+      "upset_fighter_id": "26a47619-cfc8-404d-95d7-aaa68fea53c8",
+      "sha256": "36458426f8a39959bc5dd5c68e194b9e679d406a238dabadc17026c95d0758e7"
+    },
+    {
+      "image": "antonio-silva.png",
+      "upset_fighter_id": "aab44fda-2d20-46c6-924d-651bee6df277",
+      "sha256": "b7ff0e9236bd07502f14ed5ec487de72c41175b84462a34791df042a22e71f04"
+    },
+    {
+      "image": "arman-tsarukyan.png",
+      "upset_fighter_id": "cc45eeec-4b05-45f9-9a3d-b49f00d3b005",
+      "sha256": "f885675f70a55ef8825288f76747893098ff9d278a03a9da5de25ba4422ad0e9"
+    },
+    {
+      "image": "arnold-allen.png",
+      "upset_fighter_id": "c993414c-412b-4ea2-b7b9-e4825148497d",
+      "sha256": "c8815d4cb8b5fda1114d734e9f0799fc2db5ca7dfefd0970deee89cb9cca7475"
+    },
+    {
+      "image": "asu-almabayev.png",
+      "upset_fighter_id": "7e7eb5fe-680e-4b8d-8150-2bb9580acd14",
+      "sha256": "a8f96656f8ce644827a93523301c5138f12b51b02c685452b9eb886db008f190"
+    },
+    {
+      "image": "ateba-gautier.png",
+      "upset_fighter_id": "29f89002-7f71-4f90-936a-f6415cb3be39",
+      "sha256": "5fc41dbc7da4860f980a8d008e13bfc1171a014f46880336b1391243f66a003b"
+    },
+    {
+      "image": "austin-bashi.png",
+      "upset_fighter_id": "6f093226-c006-40a0-a694-0d34ea396941",
+      "sha256": "cda79664af7c0005c20ec69a721d24b48f23bd4c4ef3e46970d8160284fd0b84"
+    },
+    {
+      "image": "axel-sola.png",
+      "upset_fighter_id": "81caf900-0c2e-4730-ac3b-481ad68dc750",
+      "sha256": "0cf9f9014ddf1707de9e3b15f31d0a73a0b19090cf338203128eef01c533ad73"
+    },
+    {
+      "image": "azamat-bekoev.png",
+      "upset_fighter_id": "37e4da74-8fbf-48cf-b560-faf840acfecf",
+      "sha256": "e433b510a2b3e755ff2c6731deca561a103aabd7c173449b86ad6c74b86d589d"
+    },
+    {
+      "image": "azamat-murzakanov.png",
+      "upset_fighter_id": "f4f0dce1-8fa4-46bc-b43f-7b82fe22b768",
+      "sha256": "fdd8703a2969a0523db7d15c8164e3733172e6a01a40107f920ae52010d9ddcf"
+    },
+    {
+      "image": "baisangur-susurkaev.png",
+      "upset_fighter_id": "6b85c1c9-9b3e-4075-9eff-33b10949a6e7",
+      "sha256": "a3fa08ae62d68652ef04200d7aafe776a29d99cb7d6340812a7a15758784d40d"
+    },
+    {
+      "image": "bas-rutten.png",
+      "upset_fighter_id": "95a2ff6e-89cf-4edf-929e-1f91f6f20a34",
+      "sha256": "513779d251c810b60f7b8045d7250b33ea16d012fd880b0105150394c4ae06b9"
+    },
+    {
+      "image": "belal-muhammad.png",
+      "upset_fighter_id": "da1ed0db-8aef-4c40-b1f3-7bb24be802bd",
+      "sha256": "3e32b59d4ee88c9c9492cd25fc642514dc88a4578ed8c371114bf9b2bca415d2"
+    },
+    {
+      "image": "ben-askren.png",
+      "upset_fighter_id": "b6fbb295-2a4f-4cac-b408-d24fbc4981ba",
+      "sha256": "a7bd731669269440b3796868bdf118289e91cb9aba71338aa35db70691f0377c"
+    },
+    {
+      "image": "benardo-sopaj.png",
+      "upset_fighter_id": "f27a2b2c-098c-495f-ac74-f27fd3d1d7d3",
+      "sha256": "4b455a5b49742b2997a7d2cbf6d7076aa2a9a7a6dfe9dfe19472a2240397c2b4"
+    },
+    {
+      "image": "beneil-dariush.png",
+      "upset_fighter_id": "b27943e3-599d-49b1-9f7d-96f940b11d55",
+      "sha256": "78ba56e8b0d6cdf71516d69dccf8b4a4aee38b495e77ea7dd1052e619bf9fff4"
+    },
+    {
+      "image": "benoit-saint-denis.png",
+      "upset_fighter_id": "aa321ac1-3da4-4f0b-82be-c9f8d85fcaaf",
+      "sha256": "59a31a119b77576578ef0d32f9c1e2fe62acc05a28e7c73b8c20cb91b50b7077"
+    },
+    {
+      "image": "benson-henderson.png",
+      "upset_fighter_id": "f3ca179b-ae2f-4e6a-ab28-567972c43026",
+      "sha256": "2d29a3407340d75a9ae5260b03c52a3a877079e4d022647a9e99b2173bb6f31b"
+    },
+    {
+      "image": "bia-mesquita.png",
+      "upset_fighter_id": "f37d6b2f-aa3c-4a40-b143-1d92d4d03db3",
+      "sha256": "11d5a37ceb15108caa861858c8de2f3851bc0c85e31981c8eb426ef95813df9d"
+    },
+    {
+      "image": "billy-elekana.png",
+      "upset_fighter_id": "4c3c1cbc-c326-4c35-b0db-046bea01a9f0",
+      "sha256": "a6c68e2e182f304dce6efda44d1462207c46d02a6a9a3cfa3e9068402f9160e8"
+    },
+    {
+      "image": "billy-quarantillo.png",
+      "upset_fighter_id": "2c31af55-b42c-490e-845d-f54f4e1736c9",
+      "sha256": "353b92e6ffc6a9dd004290f9ab4fb596dc5ae0b5ef5c1ea0e7924958d0fb100b"
+    },
+    {
+      "image": "bj-penn.png",
+      "upset_fighter_id": "8aae663f-2133-4af9-b92b-4183ca039973",
+      "sha256": "aec89fc12a52e777f2b34502fa43e0cba36c3f8265b38e3195f863b87a421bc3"
+    },
+    {
+      "image": "bo-nickal.png",
+      "upset_fighter_id": "55629c9f-efde-4419-8a05-01fae5a3890f",
+      "sha256": "0276d3007c91df98cd904bfab6bd9be1264cf12b3093682eac466be0b2d2a175"
+    },
+    {
+      "image": "bobby-green.png",
+      "upset_fighter_id": "2f1e8b72-5466-4eee-acf2-34d5f32a460a",
+      "sha256": "88f041966efd8e2c9d75b95e90eb34ba73b975f177281cd098705d2d70ce48ec"
+    },
+    {
+      "image": "bogdan-grad.png",
+      "upset_fighter_id": "6a3f3fea-555c-4977-9bc7-afc925f94edf",
+      "sha256": "40f848be1e32544bfbf6848044c29673c5aa85651a8e757143c01d9f40e77503"
+    },
+    {
+      "image": "bogdan-guskov.png",
+      "upset_fighter_id": "04bc56f1-3d1b-4f7e-b76b-601282c26790",
+      "sha256": "96724af9b6feb2b27635d88a64710268e68bc67314d7f7346cf6f4b51cb5d68e"
+    },
+    {
+      "image": "bolaji-oki.png",
+      "upset_fighter_id": "5b50bf43-439b-4942-93d4-9e4e2979224b",
+      "sha256": "d7809aa8407561de0b6afe60a3100cef719f4c02e7d40357bf402aaf2f2a4c16"
+    },
+    {
+      "image": "brad-tavares.png",
+      "upset_fighter_id": "feb0888f-e0d1-4386-ab22-7fab33acce16",
+      "sha256": "8afeb305697a53599d12f98002e4ee5a8b41ce6c7b5e6e51a9a7b0e493b9b89a"
+    },
+    {
+      "image": "brady-hiestand.png",
+      "upset_fighter_id": "89c3a734-f5a5-4025-8256-8c48304d7769",
+      "sha256": "e5e95d3034663560ce209199ac9fce970ac64e43d7410461fe190b30cd0aae43"
+    },
+    {
+      "image": "brando-pericic.png",
+      "upset_fighter_id": "9500691b-2204-44ec-a421-4425a5eea913",
+      "sha256": "8e88463484e755018041d56dcfe60c2557b0c9b50f78bf23f2780d179278051d"
+    },
+    {
+      "image": "brandon-moreno.png",
+      "upset_fighter_id": "30b06395-5469-42b4-884a-aad790f0ea27",
+      "sha256": "b1dfe2719dce42e7be3f406882ce41d0b6dafbb9c72ea64fb6cecce4c88cbf30"
+    },
+    {
+      "image": "brandon-royval.png",
+      "upset_fighter_id": "bf5effa9-3d9e-4ce4-a6c4-4519562b5678",
+      "sha256": "8de594293cf946ce1adf57192502184d13cbfc2baf7ee2234761d727d07bafb1"
+    },
+    {
+      "image": "brendan-allen.png",
+      "upset_fighter_id": "0ea66b4b-52b4-4136-9180-932ef1986503",
+      "sha256": "04df594894dc94dbdb62720f8343b410d18917fe08e276a7a69cc496bccd7c93"
+    },
+    {
+      "image": "brendan-schaub.png",
+      "upset_fighter_id": "37184115-81e7-4558-8966-788a2052279c",
+      "sha256": "1e2663ca7b2e8322399ef9b12e89c31b9d05e43920e4634e62c88dcb6c08fcf3"
+    },
+    {
+      "image": "brendson-ribeiro.png",
+      "upset_fighter_id": "1ce25368-28fa-4f4e-8fc6-5562e22ddd8a",
+      "sha256": "1e0e7cd11b1bae150f2c301c6895282df12846f1ce168db85bebc172e0836551"
+    },
+    {
+      "image": "brian-ortega.png",
+      "upset_fighter_id": "9f49e384-dfaa-4651-9a71-f3d115b96982",
+      "sha256": "953ff8263f470bd8c9ae8a4b6e99af22ac3c58384838961841b5ca8b9b119163"
+    },
+    {
+      "image": "brock-lesnar.png",
+      "upset_fighter_id": "9677ad2b-3e57-4aba-84d7-bf390f0f0734",
+      "sha256": "692c6ae1b8a6ba0ac8e487969c85056640772fd85b0b99754341b4710c8be459"
+    },
+    {
+      "image": "brunno-ferreira.png",
+      "upset_fighter_id": "2de0d563-1c4d-4769-b223-ae272358cdb5",
+      "sha256": "0578935d0074dad146efa010d103540a4fffcd741597abb972ba56855885db61"
+    },
+    {
+      "image": "bruno-silva.png",
+      "upset_fighter_id": "4e43ad6a-3c4a-429d-8f60-999cbc093973",
+      "sha256": "7c52e6774be89949297ff628437cf4a5129a40fb435a08b580b4befed8211110"
+    },
+    {
+      "image": "bryce-mitchell.png",
+      "upset_fighter_id": "ff6f1613-7e71-41b6-a4b1-cdce5d0daa81",
+      "sha256": "3b5f1ac5398aa3756f4dd70086bf47ff00e070cde466cae3ea5c42b2009ebac8"
+    },
+    {
+      "image": "cain-velasquez.png",
+      "upset_fighter_id": "1a24aacb-46e7-420b-9d76-a51ad8a9c2b5",
+      "sha256": "bdef6e6b4aec2969d9b1bb782af2a5243f42d66893a2240a195fa1eb3ed5019f"
+    },
+    {
+      "image": "caio-borralho.png",
+      "upset_fighter_id": "b30dead6-00c2-46f2-801e-1eb770599133",
+      "sha256": "d31e39223dd63a3cf24e8f9819e02a361cf03de8a76572af434f603de2d91510"
+    },
+    {
+      "image": "calvin-kattar.png",
+      "upset_fighter_id": "b146e0fa-4f3d-4ad7-88c8-cdb77986b2f4",
+      "sha256": "97bc24bcab09830a85c30e5210b573b7060591e36b7042a9e1dfb90af45962bf"
+    },
+    {
+      "image": "cam-rowston.png",
+      "upset_fighter_id": "b24891bd-9459-4f9e-b7ec-2e424877a78e",
+      "sha256": "401ef9886f82814a3a9a149df0817037c3dac615101fedaf0ec4926f9afbdadb"
+    },
+    {
+      "image": "cameron-saaiman.png",
+      "upset_fighter_id": "856c4596-0feb-4baa-933c-7c678af94543",
+      "sha256": "8edb7c3c3647dc88dbc30d3f72bcf6b9e62dd2017d0acec5e685b6083338ea55"
+    },
+    {
+      "image": "carla-esparza.png",
+      "upset_fighter_id": "89a4820b-e244-4ade-ad5d-0883429a7779",
+      "sha256": "bd8b8f74769ca7c2fb20ce8b62ed1ce18fc79d71f405f2f457c24c6a4aa7f53d"
+    },
+    {
+      "image": "carli-judice.png",
+      "upset_fighter_id": "c644e1f0-6eb5-4b89-b2cd-f62e35cb11d8",
+      "sha256": "7c0e2062289b8b212e5b67401a4f0b26a44939db0e11d0d3ad5946a0b70edd3e"
+    },
+    {
+      "image": "carlos-condit.png",
+      "upset_fighter_id": "11fa433a-ca35-469d-a794-1540d0c44e61",
+      "sha256": "5f494306ffb819299336626d3d7b74ad35e0320caa407951b3aa0f4da812b44f"
+    },
+    {
+      "image": "carlos-leal.png",
+      "upset_fighter_id": "6c23ca62-53e9-4c6b-b323-b977b5c44fd6",
+      "sha256": "93102fed9facd102551e564bb4bf88dd9879b49c1e71d6c45a67fcaa04a67731"
+    },
+    {
+      "image": "carlos-prates.png",
+      "upset_fighter_id": "0af87143-9418-4290-a82a-39d09384c33e",
+      "sha256": "81c3271a50bc61ac48bb77e52cb0bce2f2c166dee52708d166df78de8a4e61c4"
+    },
+    {
+      "image": "carlos-ulberg.png",
+      "upset_fighter_id": "98a9c7db-e6f9-4f77-b0c4-2916a09f87ff",
+      "sha256": "69db348d59d9426bc22a1834114d97343954c80bf2864879ac203098b1258b63"
+    },
+    {
+      "image": "casey-oneill.png",
+      "upset_fighter_id": "fc9cb919-3da9-4736-b4d9-6259bf7affa3",
+      "sha256": "d78be56feedc7dfa31a468491122bdb86429d89a4fe991cf39fb0a65cbdb9006"
+    },
+    {
+      "image": "cat-zingano.png",
+      "upset_fighter_id": "b05fd69a-3b0e-402e-b076-ba7076007973",
+      "sha256": "5476ff4a1f02ee2e9d543ddb7012d1d781afdc3275f7bdaa004d4c1fdcf291ea"
+    },
+    {
+      "image": "cesar-almeida.png",
+      "upset_fighter_id": "f6417eab-58e9-4fe0-ad1e-7749c683f8ef",
+      "sha256": "0de9bcd281e9f049050001cf6e9a13ea883d4e1baf01ebe46df2769a1cb597ce"
+    },
+    {
+      "image": "chad-anheliger.png",
+      "upset_fighter_id": "8e4aa0b5-0636-45b6-b36e-56c06fd320dd",
+      "sha256": "f3a627205b7e88de0b49b094d3c1407c12938c202d1b122e9b431a7b9f9df236"
+    },
+    {
+      "image": "chad-mendes.png",
+      "upset_fighter_id": "f8eb2d34-8c7c-430d-8711-1f6b5afaf12d",
+      "sha256": "3d5f0f8e4ad06e15cee32e2cd585496d7cb26d40bb0b4687c50dbed380061cec"
+    },
+    {
+      "image": "chael-sonnen.png",
+      "upset_fighter_id": "710b8bd6-51dc-425e-95b3-9f3d1547b2af",
+      "sha256": "53adb2541d8385156452568a25eec569ac52822c6a4faefdbb9e7bd9ff67f8ca"
+    },
+    {
+      "image": "chan-sung-jung.png",
+      "upset_fighter_id": "b441c145-0a02-420e-bba3-c62dcadb79f2",
+      "sha256": "0774ad9d683004d6022e259ffd8911c37d8e5b8866c8369869e353e2bb9daf87"
+    },
+    {
+      "image": "charles-johnson.png",
+      "upset_fighter_id": "4b6f0dbc-4752-47e7-874e-7fd7cc039289",
+      "sha256": "8c5721ea45458aef9e5a28eff58d5d00d63d9bfb3beb0cdd9cccff7d04bd145d"
+    },
+    {
+      "image": "charles-jourdain.png",
+      "upset_fighter_id": "d64858f6-f003-4a17-9617-fa09b80b25ef",
+      "sha256": "1c82daed0e47a9a1528a640c4f8a7955ac7345380772c5f6e1c8d03d7696c064"
+    },
+    {
+      "image": "charles-oliveira.png",
+      "upset_fighter_id": "b23f038d-6c50-48db-8112-0485813ca615",
+      "sha256": "d52af45b2ef6d63c240ae902232cd7ec948ca5c2d80bc02ab9b39ab24967c929"
+    },
+    {
+      "image": "charles-radtke.png",
+      "upset_fighter_id": "c4241e92-47de-4c99-af15-7b860426e389",
+      "sha256": "28a06a66bccf0facc8d58413b7dd233a92f97ae5c567e4d9c74c03208e01f20d"
+    },
+    {
+      "image": "charlie-campbell.png",
+      "upset_fighter_id": "510d7ea2-700f-40f5-b5a2-581e2c93287d",
+      "sha256": "48d2d8a55c2e071e0822f2b076d2f6f292a19981c962c0fe02280e52dd24c920"
+    },
+    {
+      "image": "chase-hooper.png",
+      "upset_fighter_id": "31877e6e-9e54-477a-a391-ef1cf8c0bcd4",
+      "sha256": "e563a703475ac389198f29ba3dd8fea4541473433cff374d44176ea19ce1235b"
+    },
+    {
+      "image": "cheick-kongo.png",
+      "upset_fighter_id": "e7a780b6-a01d-4f93-b07b-feebdd2a90fa",
+      "sha256": "fce4743c29c41b70f576b9f963e3a496b16a6b743628d784c78d5bae77eaad0e"
+    },
+    {
+      "image": "chelsea-chandler.png",
+      "upset_fighter_id": "d2a07a71-0183-4a8d-96de-1b84451d523c",
+      "sha256": "e6a16a7a0c6821a0f30a9dc788078d96a464b2d543e8b06f9d3a889481659489"
+    },
+    {
+      "image": "chepe-mariscal.png",
+      "upset_fighter_id": "9646db16-63cd-4a45-a2d6-e0cf0b1153b0",
+      "sha256": "eee0e44df1454d8e9afcbe54b0637cebd0a8abb74b145af76486bac7048241b0"
+    },
+    {
+      "image": "chidi-njokuani.png",
+      "upset_fighter_id": "0365fd6e-9327-46db-80f5-70b20b914486",
+      "sha256": "db5e87dedac0ed23bd9b628b9d80ce6f534728e37b433c8b2fd33ab22096191e"
+    },
+    {
+      "image": "chris-curtis.png",
+      "upset_fighter_id": "e71b4043-0992-47db-a0bc-d474ada685b1",
+      "sha256": "556e17a327004211d79beca166ef5680830246de78a5c6713c7b94155f39ef55"
+    },
+    {
+      "image": "chris-leben.png",
+      "upset_fighter_id": "bff86b23-6d45-474e-aa5c-b7bf2b35ca82",
+      "sha256": "b3a11145e2c84f580c8dfae1de663e25e88db1869d4de723c1e4a1997de496ec"
+    },
+    {
+      "image": "chris-padilla.png",
+      "upset_fighter_id": "98f9ba12-11cb-4fdb-a9af-cf5d7e3a9cba",
+      "sha256": "4bfb685d2a28a9fa2c6120f5d16ad9b143be632f380c9e05dc8f230ffe20217a"
+    },
+    {
+      "image": "chris-weidman.png",
+      "upset_fighter_id": "7b1e6548-912d-4805-b18e-d7b4d6105a3a",
+      "sha256": "966085627b2f04f2191d74c4483396748163e2edb54351ddd27053e25ad582f4"
+    },
+    {
+      "image": "christian-leroy-duncan.png",
+      "upset_fighter_id": "b0953039-eed3-43b0-8725-9327dcce0831",
+      "sha256": "328469052914d057b7646dc8c90f370260e4397cfccd56d2d19f9d863d558f6c"
+    },
+    {
+      "image": "christian-rodriguez.png",
+      "upset_fighter_id": "9f02f70b-fec5-4b05-8d37-ffdcde1a4e78",
+      "sha256": "2cbde0669cd46801af3a0f0413b9f24e050a2225d50ffa546102dbe501f9af25"
+    },
+    {
+      "image": "chuck-liddell.png",
+      "upset_fighter_id": "931f77b9-e0b0-4bce-8232-2972d5bc7de2",
+      "sha256": "1e5eac2a933c26c716e840ea3e48bdcfa620152055657caa30b39ba8e98fa8f5"
+    },
+    {
+      "image": "ciryl-gane.png",
+      "upset_fighter_id": "c99a0733-de10-41a0-9e32-c0df4f214cef",
+      "sha256": "21e618dd32e49794cf9f21e4d1235910fa49de974799141d9fba21530ba1f085"
+    },
+    {
+      "image": "claudio-puelles.png",
+      "upset_fighter_id": "5f56343e-e082-4bd2-84c3-d9b06693e278",
+      "sha256": "93e6f92d2fcfa88f086b857fd65f40b14d3b43184b3ede207c5a19db626c5fbd"
+    },
+    {
+      "image": "clay-guida.png",
+      "upset_fighter_id": "1c424876-5c58-4473-bc0f-372f5784d6ac",
+      "sha256": "3592d0d79ac7ee9f251214addb5e3272ae46669345cf3fcd8314c9bea0c2443b"
+    },
+    {
+      "image": "clayton-carpenter.png",
+      "upset_fighter_id": "71da55b7-d702-4c75-9bf8-3bc75ad34471",
+      "sha256": "9bd3a8de708371cf4da3a41eca61e24346535a6eeb5de7982cbabe50bf243b72"
+    },
+    {
+      "image": "cm-punk.png",
+      "upset_fighter_id": "42215ec6-119b-4bb9-9bf2-33493c23f4ee",
+      "sha256": "15a6afd3dd6af32155da7a123b54016915cb771833105e4db3e8886d6c7e747b"
+    },
+    {
+      "image": "cody-brundage.png",
+      "upset_fighter_id": "c2f59945-0c3f-40fe-a471-d0444484675b",
+      "sha256": "bc605f140e20087f8afb85afc107d408958977de87b05b4bf43528bf454dc9ee"
+    },
+    {
+      "image": "cody-durden.png",
+      "upset_fighter_id": "caa2f19c-5cf3-45c5-8d6a-61bbb24a320e",
+      "sha256": "15f62c6017709dc5f22a32b083ad1cfdec4be3bfceeb3c2568a718c6a511f97b"
+    },
+    {
+      "image": "cody-garbrandt.png",
+      "upset_fighter_id": "22881830-9ca1-4a2c-aa30-ad7d2e0453a5",
+      "sha256": "ec6688a614f0706b40fcc6076d74e765ba3066ea6d01a5164ae277dc258234a7"
+    },
+    {
+      "image": "colby-covington.png",
+      "upset_fighter_id": "5b559973-c88f-4c7e-8ec5-2fe15748702d",
+      "sha256": "7e4d665952ecc9d94ee9af287bc0cd81f7d70beab8a5f7527defd0181b84f39a"
+    },
+    {
+      "image": "colby-thicknesse.png",
+      "upset_fighter_id": "e1721f5d-6274-453d-903d-0cde19765df7",
+      "sha256": "73dacc5b8ea5454eb4c17211a96d6715561d2b34abcecbc778fa7f9f1836be4d"
+    },
+    {
+      "image": "conor-mcgregor.png",
+      "upset_fighter_id": "d5e0aae7-5f14-4177-bca3-fbf3f9558649",
+      "sha256": "d17f269bb686a61dada8f4041ab244b5f114acafe0bb9557a9e9066ecfa09b29"
+    },
+    {
+      "image": "cory-sandhagen.png",
+      "upset_fighter_id": "b0c3f0a1-dd5d-4209-a00e-d86d3bfa6c49",
+      "sha256": "7726106753b0521e00e920fabb8f2ac5aa093052e8eed3490c286065f7a286d9"
+    },
+    {
+      "image": "cris-cyborg.png",
+      "upset_fighter_id": "c4d92880-edcf-436d-b289-b54e95fa143e",
+      "sha256": "92ca17e26e31e8c3a536d56c9c91fd4ec5222b06c551d0b1013e7366974971c7"
+    },
+    {
+      "image": "cristian-quinonez.png",
+      "upset_fighter_id": "38502a13-16ab-4b73-980e-7518c8ba0f5b",
+      "sha256": "0ba479a7bf2868a6f49773c4d4cfe5fc9d8a9f75776e625682473f8b84848211"
+    },
+    {
+      "image": "cub-swanson.png",
+      "upset_fighter_id": "c00c2a80-1113-4219-ae7a-512bdb2fdde6",
+      "sha256": "79b1512a7c12a5f367325ffadca22fa01e901cbfc582d8102aee71cc46c39865"
+    },
+    {
+      "image": "curtis-blaydes.png",
+      "upset_fighter_id": "c3903d1a-5653-418e-b78a-09b89768ea10",
+      "sha256": "106b0a8bd504ff1640864e2570d5275ddf207f80e1f46b75b91f68e7081f0db5"
+    },
+    {
+      "image": "damian-pinas.png",
+      "upset_fighter_id": "9b27b9c7-1b5f-43df-aac0-99e4ab997cbf",
+      "sha256": "2c77f9b179bc8b2d347ea01cdd57abe54e8f60996e551ad00691963727ffcb3b"
+    },
+    {
+      "image": "damir-hadzovic.png",
+      "upset_fighter_id": "28d48f84-2d69-4a37-8776-35efbf7c17b8",
+      "sha256": "e17bd1d43bf4211b758127d6ad04302b4c1cc72404d61c4244ac276491bf7b93"
+    },
+    {
+      "image": "damon-blackshear.png",
+      "upset_fighter_id": "0f3dd4a8-6feb-4abf-9b06-e96027cb6747",
+      "sha256": "75da205b22347fa609709284d66f0d1eb00c3d765588f6e62fe244dda804b89c"
+    },
+    {
+      "image": "dan-hardy.png",
+      "upset_fighter_id": "5e78342a-b787-44d5-8a5c-5367d5a81f6e",
+      "sha256": "4c8a5acff862488069d60eeabce965d14cc8e96f3a2d79bc9722b9e20d1d4e70"
+    },
+    {
+      "image": "dan-henderson.png",
+      "upset_fighter_id": "06aa8e34-1d20-44e5-b37a-a0b99796e420",
+      "sha256": "967ae887bd06bc17deeabe565c23241a6e28b17c62509df4282ba81ff2760b0a"
+    },
+    {
+      "image": "dan-hooker.png",
+      "upset_fighter_id": "051fb686-c3ed-4b06-89eb-5cf09bf89077",
+      "sha256": "c7fc5b035a966667ce0c0bc7397b3a20415930eee49d8d032bf04334502ce7a4"
+    },
+    {
+      "image": "dan-ige.png",
+      "upset_fighter_id": "96793f86-8fb1-448c-8ff1-48e41acdba06",
+      "sha256": "4959d1d9a40d343973f4ff12c4923fcaef3312923a2e02d1fb6d46741bc3ea08"
+    },
+    {
+      "image": "dan-severn.png",
+      "upset_fighter_id": "d3532f7e-fa2c-4473-bcec-ee21ac4b843c",
+      "sha256": "57c36e9edf1ca0bb45cd717eceb3ac491d6e7b5f0922ef9229f3de7bf82266ea"
+    },
+    {
+      "image": "daniel-cormier.png",
+      "upset_fighter_id": "4cf21728-b274-4236-a0db-1c6af5cc4e5d",
+      "sha256": "2f409a4943af15ba0cccddb7bd7e3681d552cba09cb1a4826018a6568b648435"
+    },
+    {
+      "image": "daniel-rodriguez.png",
+      "upset_fighter_id": "06e48568-fe10-4eb4-9db4-b439ef37468a",
+      "sha256": "079a4cdce1f4f96e7c68058ac860712fc9a7decd6fa8fe700bf4bcb10e664788"
+    },
+    {
+      "image": "daniel-santos.png",
+      "upset_fighter_id": "fff80392-4068-4dc4-a6a4-53313ffb1b92",
+      "sha256": "b50b89fa31d60ba3f06561048a53a5dcc96f9201eddca7f5784616258be02798"
+    },
+    {
+      "image": "danny-silva.png",
+      "upset_fighter_id": "3c9ef7f7-b359-44b0-a59b-406fd55e9c5b",
+      "sha256": "107562683e5f07767b5364d5a68b66fe7a882c866cad83894018a8b7f0925f04"
+    },
+    {
+      "image": "darren-till.png",
+      "upset_fighter_id": "6b654e9d-4fbe-47c0-9fe6-0fd19efa8253",
+      "sha256": "74f79f6f46be907ed379b68c4dfaff4bfc117243990dca7c6669e7bbf0800c6a"
+    },
+    {
+      "image": "darrius-flowers.png",
+      "upset_fighter_id": "09f7ac4e-3826-4c80-8010-307a5938e74d",
+      "sha256": "deeb64080eda047f949ab8aacfef7d121cb1ad56239721b9c1eccce22613e0fc"
+    },
+    {
+      "image": "davey-grant.png",
+      "upset_fighter_id": "5e38da54-bab8-47e8-a2c2-a76c70498683",
+      "sha256": "f79aa155200f5bda2e14292461f7d6cba8f45d295dfe5750e85fe80e83ed658d"
+    },
+    {
+      "image": "david-martinez.png",
+      "upset_fighter_id": "d7cbea6e-9af9-42b6-ae14-f008f78cdaa8",
+      "sha256": "ac69b43bd14220feff7f4233f1880cd450f6502c60800b5b727ffc6bca60a632"
+    },
+    {
+      "image": "david-onama.png",
+      "upset_fighter_id": "b6f82574-45e9-4518-9ffb-58bbedee1565",
+      "sha256": "b622798dc39be01af4728850e3b7856d3b9f2a98f5805c18c974e616b87f34c6"
+    },
+    {
+      "image": "deiveson-figueiredo.png",
+      "upset_fighter_id": "478e72ea-39ab-44aa-97cf-087fa62f3389",
+      "sha256": "b31185d1666bb5732c6321719792a64962403ab83d6ad20558daaeaba8f8c00a"
+    },
+    {
+      "image": "demetrious-johnson.png",
+      "upset_fighter_id": "c896d1fe-b8cd-43e6-87c7-b8a6000aa59c",
+      "sha256": "6b88e1132e02b49771b4e2220c97434a245b9209e719459889555f206c1633d5"
+    },
+    {
+      "image": "demian-maia.png",
+      "upset_fighter_id": "2e2c1ada-8814-434d-a1b7-fb803e0d0106",
+      "sha256": "6c6a0f0e70c07fc563ae0d81c9f99cbbec8e8820daa361c48ed1bf6a6e51b3ab"
+    },
+    {
+      "image": "denise-gomes.png",
+      "upset_fighter_id": "17a6602a-ae79-422f-bb66-e42fc32e9d33",
+      "sha256": "aac4c9514798c9530bf8e8f7ea51a13621a4687ab9b6c78b1b44efb7928aad92"
+    },
+    {
+      "image": "derrick-lewis.png",
+      "upset_fighter_id": "8b1d5ac4-0caf-4b49-aa51-ebd10b9ec08d",
+      "sha256": "cca89851744bfe85cc5e2537f62d388234adb577b52612baa4a379c5d77868dd"
+    },
+    {
+      "image": "diego-ferreira.png",
+      "upset_fighter_id": "f336b1cf-03da-4d18-af0d-199699893821",
+      "sha256": "a37290b6d3d475a4ddf1f52a3d6d13da6d22992c3b9dee0989ac9a12ae757652"
+    },
+    {
+      "image": "diego-lopes.png",
+      "upset_fighter_id": "e0e10e1e-9482-4b06-a7c2-2c6bdb13e05a",
+      "sha256": "1ee21c752029ccfef4a40c5fddabe21394f4b3fdae4fdf4c3631a8ee37eb2752"
+    },
+    {
+      "image": "diego-sanchez.png",
+      "upset_fighter_id": "1102f052-d5ea-4e5f-90e4-354a942e9d6b",
+      "sha256": "20ac0286e69597cc5d588ee6aebfd94547ac2d6bedf8ec636dde3cdebfcb9324"
+    },
+    {
+      "image": "dione-barbosa.png",
+      "upset_fighter_id": "d272ed78-5d48-4ccd-b8a0-ffb4048f6844",
+      "sha256": "84ceea74c7f43ef55003efc6a60b05d647d3fdb6be34e61bc08cd11572a652f6"
+    },
+    {
+      "image": "diyar-nurgozhay.png",
+      "upset_fighter_id": "229cecb7-e9ec-4878-85f1-2773a21c6503",
+      "sha256": "e97bd9efdd6fbb1b1dde19bfd40ff9137352e0bc155ec255c68d5f01681c49ab"
+    },
+    {
+      "image": "djorden-santos.png",
+      "upset_fighter_id": "ea185964-ebee-4165-bc4b-64e969dcd9bf",
+      "sha256": "574afae14768f3001d81ba502c3c0d69f8bca3c1c83d2986e8e90152e9b9bc1b"
+    },
+    {
+      "image": "dominick-cruz.png",
+      "upset_fighter_id": "2a99855f-0d85-48e4-be53-cc7ee06d000d",
+      "sha256": "71dc1eaaf9c13caca5c6991448669848f48102944e97a9109f7ad574a7872a23"
+    },
+    {
+      "image": "dominick-reyes.png",
+      "upset_fighter_id": "837d3ec5-750e-46f4-a17c-8805358e2f61",
+      "sha256": "7dcaaeea3ba1b939c27b375fd3aaea1e246a42273f1108793e87efa6f67f9c24"
+    },
+    {
+      "image": "don-frye.png",
+      "upset_fighter_id": "6be3df04-b61e-450d-a4a1-7db96ac5e7e3",
+      "sha256": "100aaa612301af3a463fcd8d7837bd17ab00826a745eb24ce4300fe5f700c001"
+    },
+    {
+      "image": "donald-cerrone.png",
+      "upset_fighter_id": "57303499-e4c0-4d43-8950-7385973a51bd",
+      "sha256": "e75451381bbbee054e86ca22db766b5669ceffefa297eaea886d9959e1547d78"
+    },
+    {
+      "image": "donte-johnson.png",
+      "upset_fighter_id": "685159b0-cc61-41cd-a3e8-81de00dad787",
+      "sha256": "9a255610bb8a42b1197a453aed4553af726dfd6c80477c4fa7de2f4517e5f9ae"
+    },
+    {
+      "image": "dooho-choi.png",
+      "upset_fighter_id": "86b862cb-82e1-490a-b3ff-8a416cf637b2",
+      "sha256": "8b74515d261cabdd5906d0c3b84b56bfcf9ecffe27dc33c44d608ae3dd2ca140"
+    },
+    {
+      "image": "drakkar-klose.png",
+      "upset_fighter_id": "228aa8ea-63e9-4f8b-9ba7-16988b76cd02",
+      "sha256": "597ad628fc408eb2a36188044172538a9445972c69d39146fee4802d9bf786e8"
+    },
+    {
+      "image": "dricus-du-plessis.png",
+      "upset_fighter_id": "84963ea3-8353-4860-81ae-66faec78b89e",
+      "sha256": "90a7f2524c139ac6d45bd5a00e7e5bda2a61f23bf0bd38705feba6b3effba296"
+    },
+    {
+      "image": "dusko-todorovic.png",
+      "upset_fighter_id": "320e47df-3313-4f6d-b3cd-993334ff7ce7",
+      "sha256": "761c64cc31219006b2a4316b1227656f0d7c346a9f3e2d19912f9efa29a9a396"
+    },
+    {
+      "image": "dustin-jacoby.png",
+      "upset_fighter_id": "55a634d4-971e-42a5-b5a8-1442095ea4f6",
+      "sha256": "7aab1863a3a35719b848080219cceba97c2fdc3ac94d7681c2063ccaaf2859e9"
+    },
+    {
+      "image": "dustin-poirier.png",
+      "upset_fighter_id": "d130bba0-10fe-4ad8-ae3e-792c860202f7",
+      "sha256": "32b33892f946804fd7b42d5674ac4f25c3eddcd22857b4b6ff50b69a96a55f2a"
+    },
+    {
+      "image": "dustin-stoltzfus.png",
+      "upset_fighter_id": "f8100b05-5eed-43bb-b750-34c1c5ddc49d",
+      "sha256": "2eefc5ae2eca875d962572b1e17ea792777a51ee19c18b68b8f0a998935a9a22"
+    },
+    {
+      "image": "eddie-alvarez.png",
+      "upset_fighter_id": "5805789a-87e1-4f52-a6e4-4ab89c472cde",
+      "sha256": "d545ec23df238ec8ef1c2bec59e3dfde93d04f0fa0bb9bd30ac359712c088274"
+    },
+    {
+      "image": "edgar-chairez.png",
+      "upset_fighter_id": "452d5dde-e40c-442a-9f45-addb158900f8",
+      "sha256": "f62737a54d0c7703b22bd031afef7dd5641e24bf77a23fc81cb5857ceeda033b"
+    },
+    {
+      "image": "edmen-shahbazyan.png",
+      "upset_fighter_id": "a3678f81-bbbe-46e6-8858-435c5eb1ffb7",
+      "sha256": "752b6cddd601ef8c1e8dccb954155a2cadab53aee8256ff2b616e612e0fb0807"
+    },
+    {
+      "image": "edson-barboza.png",
+      "upset_fighter_id": "4a795974-76ed-4420-b87e-485c14c763bd",
+      "sha256": "69a59757848b515152c15399af6edb72d3b9d0b3672509ab17c868063cd6c274"
+    },
+    {
+      "image": "eduarda-moura.png",
+      "upset_fighter_id": "25f2681b-7b96-40c2-b8e2-e4d15a8f4859",
+      "sha256": "56eaba1335e08df3ec4ff7ddf043668a6e1c3927e071b52c5c4e4b3945344e93"
+    },
+    {
+      "image": "elijah-smith.png",
+      "upset_fighter_id": "25bc1934-fb31-4526-b38a-56a2dcbf66fb",
+      "sha256": "a7cf2ac6d1e5a68539b15807cd21b521d6fc4a8fd4f1f69943251754dcc1d77e"
+    },
+    {
+      "image": "elise-reed.png",
+      "upset_fighter_id": "c9956af8-c41d-4cf1-9eaa-3f9c44e6c3d8",
+      "sha256": "709b8521cda24c14892531f849b51e778154b83a9813bfccd9a163b63fc486d5"
+    },
+    {
+      "image": "eric-mcconico.png",
+      "upset_fighter_id": "a4472f90-eec5-44f5-a8c7-a3bc8cc6cff9",
+      "sha256": "bf88dcf616785fe7ae52f3e30872dee2f4a115faa5bbaa22f427f701c938abb1"
+    },
+    {
+      "image": "eric-nolan.png",
+      "upset_fighter_id": "6231d7e8-b78c-4b2a-81b4-c75ce09a16c3",
+      "sha256": "55e3dd81a4e3054a12d333e2aecb8dee61d4e3bafbcc6e23dc96f36500e85727"
+    },
+    {
+      "image": "erin-blanchfield.png",
+      "upset_fighter_id": "d4625f18-1ee0-4c65-9deb-64dd510c9141",
+      "sha256": "7c5c6e9cfabf9e4e67c71d79fed26fd38655d329b35e45d750a2666fcfd5c654"
+    },
+    {
+      "image": "ernesta-kareckaite.png",
+      "upset_fighter_id": "7d948732-bf4e-4922-82ef-3d815dad4da0",
+      "sha256": "71b991fc9c402faaff168c6593f6d1abf9b92a0510894a3063878fe3de3e2059"
+    },
+    {
+      "image": "esteban-ribovics.png",
+      "upset_fighter_id": "4efe6b66-52e6-427f-93bf-f4b26ed74a80",
+      "sha256": "563d03191edca32495432505a7801e5e60ba04e63922cde13fb0b6d9e1e3f1f6"
+    },
+    {
+      "image": "ethyn-ewing.png",
+      "upset_fighter_id": "2aa833da-ae96-43ab-813e-a3d1be66e353",
+      "sha256": "48f435f7559eb0756f94dd462b19a7fccb99e0026f98f0c9f92d75e131d492a6"
+    },
+    {
+      "image": "evan-elder.png",
+      "upset_fighter_id": "f1c78dc6-e3ee-4533-99ff-049afadf4a92",
+      "sha256": "d86009eb4d5ceb233b2a97fed28117813d09b70fd95d407c0eecca3d7059fa7e"
+    },
+    {
+      "image": "fabricio-werdum.png",
+      "upset_fighter_id": "8c9f3c51-c7ea-4b76-bae7-917947bf8fa1",
+      "sha256": "2cd2099836950da2979d7247d467d9cd481941f866a2ecbc8dbf96f038e8b65f"
+    },
+    {
+      "image": "fatima-kline.png",
+      "upset_fighter_id": "2227044f-34c9-432e-b5c5-7f6210820a54",
+      "sha256": "c398980da6d33902a7dd6cfb95a1a2d7f7eb3f664efc4c988d2362a27b0668e2"
+    },
+    {
+      "image": "felipe-franco.png",
+      "upset_fighter_id": "c0dc2053-4ff1-4dd1-a99f-2e419196845f",
+      "sha256": "73f90f718008e136b289843df7c862c09553ec7301403d3f950af5174eafa519"
+    },
+    {
+      "image": "felipe-lima.png",
+      "upset_fighter_id": "2762cdfe-5d39-4903-8f2d-347359f55283",
+      "sha256": "b0f7953605e31264499f500a7f67ba205679689abdb5b5532a5de24ac751e9cb"
+    },
+    {
+      "image": "forrest-griffin.png",
+      "upset_fighter_id": "a702e9da-2cca-4b7d-b2e2-a7f8a2aebf25",
+      "sha256": "8d5f2e87e8b6da363c5cc565d46d352481932bf176037ec8de6d647d5689df2c"
+    },
+    {
+      "image": "francis-marshall.png",
+      "upset_fighter_id": "fb8e9c1c-7366-472a-a647-f1734e1b8d59",
+      "sha256": "6395733727eef3129a10cd5ce750f3caf522b2558dc51b082182e51a147d93e5"
+    },
+    {
+      "image": "francis-ngannou.png",
+      "upset_fighter_id": "2d435634-5b50-4b27-8a16-1eb350f31871",
+      "sha256": "834f785e4e73b6ac7e8e2a1218943e6a3c920f24b20e6308b284919f10e65403"
+    },
+    {
+      "image": "francisco-prado.png",
+      "upset_fighter_id": "cfe81262-5d86-4567-bfc2-641494521aad",
+      "sha256": "917569e0277b39c4c5c5057cf095f192cfce4a123c1826ceb9bc52cef4f4e8ac"
+    },
+    {
+      "image": "frank-mir.png",
+      "upset_fighter_id": "bbf44f95-9128-45b7-9052-51a85fbb378b",
+      "sha256": "01416b60944cf93e7b53753aa08edebda2310eee74546e634e0cdbbe8dbeda6f"
+    },
+    {
+      "image": "frank-shamrock.png",
+      "upset_fighter_id": "b29b3f30-3baf-4966-859e-00563f9b71de",
+      "sha256": "4673dff29497357aee46bb6b10fb714f4c16329a011e1dd0e30d2ecb4eb785b2"
+    },
+    {
+      "image": "frankie-edgar.png",
+      "upset_fighter_id": "a941312a-d7c1-497a-80af-6260aee678d3",
+      "sha256": "de75478c4076a55ea94174c032ef5f96bb1b58b8051eded7a4e56b97278d42af"
+    },
+    {
+      "image": "gabe-green.png",
+      "upset_fighter_id": "d8741c38-a11e-4095-bbb0-e77de89dc63e",
+      "sha256": "14be2a45073d5dd43d8baf02e8a7fab72e38bf66ab4993028c90956fc3140000"
+    },
+    {
+      "image": "gable-steveson.png",
+      "upset_fighter_id": "c8833bb7-7f48-45e4-99a7-12c3a52b66a2",
+      "sha256": "f495e08d2b4424bbfa1f4210472dd5847627e1cc8d01fcf4edee3aee1f9a98fa"
+    },
+    {
+      "image": "gabriel-bonfim.png",
+      "upset_fighter_id": "6d882cab-ea77-47f0-8277-21c5cfc3e232",
+      "sha256": "d7c19e0a80d1d46d39fb3cb36e94be8e7857dc5f4482b4e35934ea3b83ba84e0"
+    },
+    {
+      "image": "gabriel-gonzaga.png",
+      "upset_fighter_id": "1a2c8ca8-fbf7-4561-a968-450b5b3e3f99",
+      "sha256": "4e323f86d39242f873998f5029bb2824717c4ce39ccefab832356e1bf57bc536"
+    },
+    {
+      "image": "gabriel-santos.png",
+      "upset_fighter_id": "383a0f39-f565-45cd-9334-b113b6837964",
+      "sha256": "a51622863322e79a9d9469f0219de692fa9b2ebded33858b4d376be242eabcfe"
+    },
+    {
+      "image": "gabriella-fernandes.png",
+      "upset_fighter_id": "3c6125f9-ef17-4db4-bc2e-d3d0c2335a02",
+      "sha256": "833012552647eab7e3017fd2fbdfebd8d5a28885443e98f2085bae0e22644788"
+    },
+    {
+      "image": "gaston-bolanos.png",
+      "upset_fighter_id": "966e7589-130b-4982-9651-d5c4da8e0995",
+      "sha256": "312966f51a86f83c0f3856c28fc7d5f18daa75b71b5d2376bac1f96af4bdd168"
+    },
+    {
+      "image": "gauge-young.png",
+      "upset_fighter_id": "c933df32-c65c-4df3-9977-dae2e0fced71",
+      "sha256": "da6b6adfd55b3dc413f7ffee5d6018ce641cd85db01a1e1aa3e9db1eab93e216"
+    },
+    {
+      "image": "gegard-mousasi.png",
+      "upset_fighter_id": "12915135-7f85-4eef-974c-4d947684c88a",
+      "sha256": "30e578ffcbf325669a8a0822bc33d95cbdb685c60392113a536c26972f6f9153"
+    },
+    {
+      "image": "geoff-neal.png",
+      "upset_fighter_id": "961646da-78bd-4e65-8fc8-02c4fa41ba5f",
+      "sha256": "2f473e044c3a7f92b3b42742643979a3bc6dab6052dd86a06a8ec43d8b4b2903"
+    },
+    {
+      "image": "georges-st-pierre.png",
+      "upset_fighter_id": "b8bcd92c-fe62-4230-8a12-1dcad7efd783",
+      "sha256": "b7c871a25be36833aead470b53b43cc7e1141f0a6d3ea1eef0239b32d72957ee"
+    },
+    {
+      "image": "gerald-meerschaert.png",
+      "upset_fighter_id": "e6b38085-9690-4d1a-aca2-60bb7d0744b4",
+      "sha256": "f56b2ff3116037b65144db28234e6161e637f54f31edcc8d1df9d9e4d92d1ed0"
+    },
+    {
+      "image": "germaine-de-randamie.png",
+      "upset_fighter_id": "829e809b-b31f-457a-aa74-024d8bd329d3",
+      "sha256": "e7c0ab5ec2242273a2b9c10884e513e461c47c82c74320ee0079df028bd41c43"
+    },
+    {
+      "image": "giga-chikadze.png",
+      "upset_fighter_id": "8ea8e931-6e95-427a-8395-21918a3179f4",
+      "sha256": "d1d788526b3b64874594f3ec3cce30df7830891be9c576d9149b99013e8da107"
+    },
+    {
+      "image": "gilbert-burns.png",
+      "upset_fighter_id": "4dca756d-9da4-4f52-a6cc-6b7bde7983b1",
+      "sha256": "dcca20fd1e789143f043c912c82a8acae7323df061946dfcece02b18c1b792b9"
+    },
+    {
+      "image": "gilbert-melendez.png",
+      "upset_fighter_id": "9e6596eb-ace2-4c12-af5b-364e90c682d6",
+      "sha256": "fed4667868d83f979f7715cdb9d4e0741bfdcde490537cb857e1cc59186684c2"
+    },
+    {
+      "image": "gilbert-urbina.png",
+      "upset_fighter_id": "6cacb181-9adf-4dd9-8a4b-550cfa748aa9",
+      "sha256": "881e72b92de60d39d0fdd76b02aa81d799cd1d0f753750dd095144e847096ccc"
+    },
+    {
+      "image": "gillian-robertson.png",
+      "upset_fighter_id": "f250ec09-eebf-430f-881b-966a7537e3d2",
+      "sha256": "34a2d3b17b53661df71c168da9eb69933798b2130b5df334678b57518d5c678e"
+    },
+    {
+      "image": "glover-teixeira.png",
+      "upset_fighter_id": "c31ec8f8-47d5-45c6-b3cc-9ca69fb07fdc",
+      "sha256": "952528c7346d429f702b78bf3b80e2f9a36668db7d218e3445645c9ddc8fc0bd"
+    },
+    {
+      "image": "gray-maynard.png",
+      "upset_fighter_id": "1caee671-79ca-42ff-be32-a4cc8394acab",
+      "sha256": "539e0c318333984e6694174fca7f1af7a91cf98ac957c4a0937adf42f6dae5f2"
+    },
+    {
+      "image": "greg-hardy.png",
+      "upset_fighter_id": "4e284fa3-de61-44f2-9ca6-b67cb80fb9be",
+      "sha256": "4b3bdbc8981537448c541df25156b7c7e9339a128bd037553d50b85d4dbd3598"
+    },
+    {
+      "image": "gregory-rodrigues.png",
+      "upset_fighter_id": "23fa0cb8-accb-4a75-8a2d-bda5017b0409",
+      "sha256": "10155f094284389cd0d09dc8c231038245ff3ff28fffca03ced4ba45fdfc49da"
+    },
+    {
+      "image": "guilherme-pat.png",
+      "upset_fighter_id": "e4bcf3f5-8369-4ace-8874-7b42cbba551b",
+      "sha256": "2b797d862b811d6a37d48c04dff61b2430700ad33f81c312c03e3d254964de8e"
+    },
+    {
+      "image": "henry-cejudo.png",
+      "upset_fighter_id": "b8553857-acc8-4739-ae3a-ab01ac9e298b",
+      "sha256": "ac2e1235f7d963ce868f9b5755b9306340ec6c985c51bd87d8ff39eada1d2b7f"
+    },
+    {
+      "image": "holly-holm.png",
+      "upset_fighter_id": "72791e91-0dbc-489e-be16-2f238250a151",
+      "sha256": "16aec472b228ffb7be72f437704364c078e0589f42790919f80f41f42873638a"
+    },
+    {
+      "image": "hyder-amil.png",
+      "upset_fighter_id": "e1438733-5d01-42c5-a787-7a781bd393ff",
+      "sha256": "908091c7e2bcbe92cb4c7e5e922d7dfb109cbed4d8ae5b2153add6ceb5b3da40"
+    },
+    {
+      "image": "hyunsung-park.png",
+      "upset_fighter_id": "85f52013-ef8e-495b-8b99-e2d32c4b56f3",
+      "sha256": "a82a184f5c05918d0c975530dacaa5e4c187483764fcdec7c81e9781e10d4b85"
+    },
+    {
+      "image": "ian-machado-garry.png",
+      "upset_fighter_id": "e53e654c-4667-480f-8895-3ab5a85c9751",
+      "sha256": "a3835c29103b3434507e44cd4836f3457e14385dc60fd6b24f18c1bbfa1073c4"
+    },
+    {
+      "image": "iasmin-lucindo.png",
+      "upset_fighter_id": "c5253cff-a046-4b8c-9ac5-a6fd28e9c16b",
+      "sha256": "00cd6c6291171c07962b0f37265ba106b1a5787f8e38aa18c40cf02d05a50960"
+    },
+    {
+      "image": "ibo-aslan.png",
+      "upset_fighter_id": "99d15588-88f7-45c8-8163-ffa9de3d2b4d",
+      "sha256": "2d8660e0e1d49d9925ab044e11ded12d38f475e490e86f96d5dc879d3d3c66ec"
+    },
+    {
+      "image": "ikram-aliskerov.png",
+      "upset_fighter_id": "900d4c7d-7e35-494f-877b-a59472c6a45b",
+      "sha256": "869865c886cbb6938e04449d3ddf64b898b6617d640b762f4960c5d624a5f3de"
+    },
+    {
+      "image": "ilia-topuria.png",
+      "upset_fighter_id": "7a1b1eb6-1471-4f85-987c-d77c340947eb",
+      "sha256": "588b15f09ff33aad7a3eee6ce19208eae50c312b817f983690958e208f6398e5"
+    },
+    {
+      "image": "imanol-rodriguez.png",
+      "upset_fighter_id": "10b5af70-94d4-4f1f-9ea4-a94ae4bb1cc3",
+      "sha256": "4fc24161a319b902a85657b9e71f84efdcddcdd4ab6d8102ae9845a2c7ff598e"
+    },
+    {
+      "image": "ion-cutelaba.png",
+      "upset_fighter_id": "029560ea-cbae-4843-a3a7-54810ad4d5f6",
+      "sha256": "f912a722db6c15a3bebdb0f983280b641081d824be77b0d07f739a4540a8a2a5"
+    },
+    {
+      "image": "islam-dulatov.png",
+      "upset_fighter_id": "08076676-4f30-41ae-a440-778d62e0728e",
+      "sha256": "266b098e7a7835346a22246705309475a6e7754db2dc2d2d0f628020ee24330c"
+    },
+    {
+      "image": "islam-makhachev.png",
+      "upset_fighter_id": "557a7a38-f46d-40e9-aa6a-4e8b9c8fcc6c",
+      "sha256": "cf7c8fef5f12c61bb0cc04ebd2978ac78cbf2fc198c3dd8cb5147c12bddeb7af"
+    },
+    {
+      "image": "ismail-naurdiev.png",
+      "upset_fighter_id": "64259b15-794e-4d0b-83b2-8ca4d00f5a62",
+      "sha256": "982e6638d818eceaf9b23d500692bd9b532ce829605e3bb06480381615f1b9c8"
+    },
+    {
+      "image": "israel-adesanya.png",
+      "upset_fighter_id": "6c244fea-8d06-4753-9481-2f5089510fc6",
+      "sha256": "e70da17d6339db18748e0f864d5c319aec42538b6b358deef02c5045e551302d"
+    },
+    {
+      "image": "iwo-baraniewski.png",
+      "upset_fighter_id": "d21dd5f5-563a-4a48-914d-b5e1034ba98a",
+      "sha256": "68b902a89129f11a2d6d55e785a5455da7b1e7cea299efbae6fb58947b0e9199"
+    },
+    {
+      "image": "jacare-souza.png",
+      "upset_fighter_id": "7d6498f4-3873-4412-9383-8c40bc1c9970",
+      "sha256": "0f37cd92b3c40fecfc69a009d14364548a7f8c8effb62c8d3b83130e5b66e667"
+    },
+    {
+      "image": "jack-della-maddalena.png",
+      "upset_fighter_id": "4b041254-4db6-44f7-9826-de5b3d0a220a",
+      "sha256": "031d82ca2454ae00765ef6dd81745c611f02c6930a2b8c10348a7eb5a720408e"
+    },
+    {
+      "image": "jack-hermansson.png",
+      "upset_fighter_id": "4b402e4e-5246-4f09-8934-c04b5bc565cb",
+      "sha256": "a3c098bf91a508abf218ba3d92d811bba3687c9afb145c44907e05f9550e8f8f"
+    },
+    {
+      "image": "jack-jenkins.png",
+      "upset_fighter_id": "1d78c18d-e0a3-4242-aee8-adc74d50e809",
+      "sha256": "0135785999ceaffda846db72d14f4d2065f2a50d10ff7b30bedec46862e56999"
+    },
+    {
+      "image": "jackson-mcvey.png",
+      "upset_fighter_id": "5ac1920e-6111-41fa-93e7-43d8378a4be4",
+      "sha256": "01a8bf51aa717d8f434a93941397bd547e6ceba2078fe04575bd8234b4b54c8f"
+    },
+    {
+      "image": "jacob-malkoun.png",
+      "upset_fighter_id": "ce7b2eab-7054-4bf4-924a-76d4f0194dbe",
+      "sha256": "03ed100c0ddf497522fcd2c66901a5e79ad24e89ee25ecb4164639726edb8b1c"
+    },
+    {
+      "image": "jacobe-smith.png",
+      "upset_fighter_id": "755c9b2d-01fa-44b6-8d0c-4114a037d8e9",
+      "sha256": "9277a6965bd3448ad1d46d1759afbd61d99245a190c92c06b4e1aed5fdc95816"
+    },
+    {
+      "image": "jacqueline-cavalcanti.png",
+      "upset_fighter_id": "22b79de7-84b8-439b-9c5c-2d0653537a30",
+      "sha256": "2d0df9dfbd83fff43e9e2461221623d8a91ff92e90a9e4d6e97eabaafc5780c4"
+    },
+    {
+      "image": "jafel-filho.png",
+      "upset_fighter_id": "8d3a092d-7fbc-4159-9334-d0634c6b5a2b",
+      "sha256": "42a6ed4354f111236013a79af900019c2d2683433196448345f452e6d8e4a0b8"
+    },
+    {
+      "image": "jai-herbert.png",
+      "upset_fighter_id": "e71ad9ea-d42d-4040-93f3-d9059879e9f5",
+      "sha256": "dfb6dcb74f05f970d9278df20e6780474781683471c157903eeebe4f03479118"
+    },
+    {
+      "image": "jailton-almeida.png",
+      "upset_fighter_id": "c00b9743-3856-48b8-88dd-847f16c00925",
+      "sha256": "842f102b06c4962f36803694d45ab23d44fd5410e8f01004bdb1922df3f796d7"
+    },
+    {
+      "image": "jake-matthews.png",
+      "upset_fighter_id": "8d09f359-b5e4-4781-b1e4-51b80ab1a58e",
+      "sha256": "f6f73c56d6ede8cd9e76de1671f263d9293a294bac899b48d099d533c3b120f2"
+    },
+    {
+      "image": "jake-shields.png",
+      "upset_fighter_id": "450722bd-4fcf-474a-9b77-50db03fa6b2c",
+      "sha256": "9a465d006e4e5cab84cf12836d5c1094ca7ee1f9016f8ca4c94ea771289cec03"
+    },
+    {
+      "image": "jamahal-hill.png",
+      "upset_fighter_id": "09dd5371-59d5-4f78-a339-2fdb70d2acfd",
+      "sha256": "b8383fc2bcc7c26fa63c5da95c33a1980272e4f96781f74354bae9dd629e29f3"
+    },
+    {
+      "image": "jamall-emmers.png",
+      "upset_fighter_id": "043c0e21-9767-420a-a02f-efa28845e495",
+      "sha256": "d2acb05e9f0fd5746dd8e462415498cfcbbf5dd20e4dc8d956c5625f6e4c055c"
+    },
+    {
+      "image": "jamey-lyn-horth.png",
+      "upset_fighter_id": "9a0ecfc3-4f82-495a-b2fe-bdff2afb18a8",
+      "sha256": "532abcff913881a19e4f8298c154109d595d5b40855b0dcbefa7d93cd8c54f98"
+    },
+    {
+      "image": "jan-blachowicz.png",
+      "upset_fighter_id": "de8c1e30-015a-44c9-af7c-3a7d7c8a7b8f",
+      "sha256": "fd4223fc869462fb6fd6f774769fd88aa8cd3f59177d7788febd3848b6224b02"
+    },
+    {
+      "image": "jaqueline-amorim.png",
+      "upset_fighter_id": "b43de769-2e13-4ba4-be8e-6ae240de0195",
+      "sha256": "ed28ebae5f3352c899035478d69581687139c0ea584692e349a16e70ad1f132a"
+    },
+    {
+      "image": "jared-cannonier.png",
+      "upset_fighter_id": "2d871d5d-5cf3-46db-ab1c-0092e5ad0662",
+      "sha256": "edeebfe4a84cf10655f2b20908ff2b382497d0b20dca03e20761baa76ff5e9e3"
+    },
+    {
+      "image": "jasmine-jasudavicius.png",
+      "upset_fighter_id": "21dffad5-bfe2-4416-8e4c-c9083e730979",
+      "sha256": "a6b1995ba9a713fd1c32ebabcdf953b9cd8f41b0b2944b9de0f0f4cc4dcd2981"
+    },
+    {
+      "image": "jean-matsumoto.png",
+      "upset_fighter_id": "76f9a769-5558-499a-a774-65d23321b378",
+      "sha256": "7d4cee5570d4f998eeca1fcc283ed1b3e1c2c8f32103ef7238e66f8be5524a6f"
+    },
+    {
+      "image": "jean-silva.png",
+      "upset_fighter_id": "4479ddf1-916a-4915-8542-4a532a2d0232",
+      "sha256": "df0086f67a2ec6c3062cb43c15e170cef96b6087a40cafce2b8fbc615e36ed70"
+    },
+    {
+      "image": "jens-pulver.png",
+      "upset_fighter_id": "a76e3bc0-27a5-41c2-98ac-34a14505da70",
+      "sha256": "9c500af2d89583bc43102688c5faa2e21844ceba86f524799846901ee74b1607"
+    },
+    {
+      "image": "jeremiah-wells.png",
+      "upset_fighter_id": "79fa1093-f814-4928-8f19-e422790a159f",
+      "sha256": "8724d4e834cc25c8d5db0f27e237a554c6a5c448be63187a1e6a14119e33bcac"
+    },
+    {
+      "image": "jeremy-stephens.png",
+      "upset_fighter_id": "150676c7-e62c-4847-9436-c072eda10b4d",
+      "sha256": "0730b659dea7770bc7b67a584209a4c35d348db9565b99d21b471752761587e1"
+    },
+    {
+      "image": "jessica-andrade.png",
+      "upset_fighter_id": "263fb49f-dab5-4156-a675-c7d126cc8852",
+      "sha256": "377926bc3600adfad3cde42b43a8d600f9474ec9116397601c2a60532c0be423"
+    },
+    {
+      "image": "jhonata-diniz.png",
+      "upset_fighter_id": "974e5ad9-8087-4343-84c4-c8c35d4757e4",
+      "sha256": "90cc92190aaeb6cdc75765d097bf439b664e3314c8cd58bc7f83fe198d957fd3"
+    },
+    {
+      "image": "jim-miller.png",
+      "upset_fighter_id": "00187e84-5d92-4463-b6dd-3f547b931666",
+      "sha256": "8487a84db90258f3f73e900a85bb25f21c2b809ec31fb33abbc48cc100f48e8a"
+    },
+    {
+      "image": "jimmy-crute.png",
+      "upset_fighter_id": "1cafccbf-cf05-4ff2-9b46-cd8d51c41808",
+      "sha256": "f40faa68d20b4480afd8e726199b84a100f61972e848a6bc20c046e32a064a09"
+    },
+    {
+      "image": "jiri-prochazka.png",
+      "upset_fighter_id": "0ce16e99-1812-426c-8498-7ee9581294c9",
+      "sha256": "4a3c6f18c7009ae3663ecfcdcc29c6054a38855cac6bc7e23edbb4951e4d54fd"
+    },
+    {
+      "image": "jj-aldrich.png",
+      "upset_fighter_id": "f8ad81af-2830-42f9-8abf-78466f598092",
+      "sha256": "c20a1615c4e96d75a665eb5713f88fa66b59523422d58f5cb69600a1c0ac7943"
+    },
+    {
+      "image": "joanderson-brito.png",
+      "upset_fighter_id": "2fc963e5-b80c-43fe-a8e9-ac83e0baf03a",
+      "sha256": "836d8b89e81145ddad14e01181ef1dccf68712f8414f65ed7abf827897da72ca"
+    },
+    {
+      "image": "joanna-jedrzejczyk.png",
+      "upset_fighter_id": "1f29a419-b486-472d-abd2-b376f8489e15",
+      "sha256": "d5b09c544cce3617ab0a2a27f1b546d35b606b9359ff7c4b9795e5df54ad5931"
+    },
+    {
+      "image": "joaquim-silva.png",
+      "upset_fighter_id": "b7978f46-9b21-4f58-89d5-052edd965c75",
+      "sha256": "a121c237ababdebf4ecb0ff74ec897ca5ae0b5cf1f97e364c1e3d25a5806dccf"
+    },
+    {
+      "image": "joaquin-buckley.png",
+      "upset_fighter_id": "62815e15-1bd4-4cce-ab2a-ddb0dc3ff0ef",
+      "sha256": "4f8a7608cc424ed0534dd4d1ddd913d32f79e950fbe60483a06d951bfd2e001b"
+    },
+    {
+      "image": "joe-pyfer.png",
+      "upset_fighter_id": "a24947f5-3adc-49c3-97e4-bb217546419a",
+      "sha256": "1d1fb3fb86e5ed90db7fc0d4fe49297e245df57fae7abddb80d8905cefdb7f8f"
+    },
+    {
+      "image": "john-castaneda.png",
+      "upset_fighter_id": "c7ad004a-87f5-4038-9827-0489ae8d76e6",
+      "sha256": "fcec1f32b0808a17c4f1722ff75fc5b20470bb6da73894bfae03f5f74c1162c0"
+    },
+    {
+      "image": "john-yannis.png",
+      "upset_fighter_id": "8320d98a-3593-4f79-b03c-517632166807",
+      "sha256": "aab408a1bf813dd1d0acbe7d0dc0c91508ec3536021c1f6a5e940b20dec39e80"
+    },
+    {
+      "image": "johnny-walker.png",
+      "upset_fighter_id": "ee6d3315-2568-47cc-9880-c59c0364cb22",
+      "sha256": "f86f2c38d4725f5c8d90b48d5df42dad812dd49bdd74ab715a42a4387d3d3cc4"
+    },
+    {
+      "image": "johny-hendricks.png",
+      "upset_fighter_id": "a5bf599d-f2a0-4498-bc65-7c9bc19be492",
+      "sha256": "92ffdf0ebf9d2bc639344923a81668b3f9c86729b3aff18ddf532b5fad305739"
+    },
+    {
+      "image": "jon-fitch.png",
+      "upset_fighter_id": "0650d2d2-60e8-4e16-8579-5d7c7b9ddffb",
+      "sha256": "39a29b667915e1c413c9800a2f1ad19bbc982419d077d69a16b77056d1d7fa25"
+    },
+    {
+      "image": "jon-jones.png",
+      "upset_fighter_id": "290da000-d1a5-4d2f-9d58-0e84417a7c96",
+      "sha256": "a864c823af1aa4464a6f764a4b2cbe147361daca1312ff6033e2d98da4762a7c"
+    },
+    {
+      "image": "jonathan-martinez.png",
+      "upset_fighter_id": "84a3eabf-922e-45ce-82ad-d4374d96570f",
+      "sha256": "a431ab274faaa62c04409f747ae467974fbccdacab349be238313094b7386f3d"
+    },
+    {
+      "image": "jonathan-micallef.png",
+      "upset_fighter_id": "3feb1144-d363-4bd1-bb68-72931f20e8f7",
+      "sha256": "d477f2910d2ff93bf07f2a4dad9d892781b9c8c056bb8defa8aa06fc14b51098"
+    },
+    {
+      "image": "joosang-yoo.png",
+      "upset_fighter_id": "97877bae-7b30-4c4f-9923-41c47975b94b",
+      "sha256": "4935134e7e39366f4ba946205c804b5d98a6b3c5aa2cb47cd3ec1b6735d5d2a7"
+    },
+    {
+      "image": "jordan-leavitt.png",
+      "upset_fighter_id": "113638af-35e8-4766-bec0-f7d43e238040",
+      "sha256": "470510473fd1f6e0ddf52f7e88e0ad471f5a296ed8ec0d0a607eaf4d9a92b0b2"
+    },
+    {
+      "image": "jorge-masvidal.png",
+      "upset_fighter_id": "e2505979-2647-42ed-9809-1116141694b2",
+      "sha256": "46f728b1f51403ecaca7a2b2daf9b7298dabe99eabbb1a3ee5f559d871e4630f"
+    },
+    {
+      "image": "jose-aldo.png",
+      "upset_fighter_id": "a6ea24e8-036c-4ef8-a0dc-0e697bf6528e",
+      "sha256": "53cbf5ef42abaa9aef22e4ee2d74e7724aeb78d255f364ca33cd01f57c7d2580"
+    },
+    {
+      "image": "jose-delgado.png",
+      "upset_fighter_id": "7a0d9ff0-7a45-43b6-9f73-5bc7fb61be38",
+      "sha256": "d7f7d6660087268f6f88779cd088df58c569dd7f572ad97b5f2a479fac893a2d"
+    },
+    {
+      "image": "jose-ochoa.png",
+      "upset_fighter_id": "e735178d-1866-42ca-ac86-6c9c24a85450",
+      "sha256": "6b541c1d45637bf171dd773472a2c695d8f6b55ab49047258950540b9fe3da00"
+    },
+    {
+      "image": "joselyne-edwards.png",
+      "upset_fighter_id": "2a3df95e-c105-4630-8c1d-4255ab775b33",
+      "sha256": "806313d1af877e41e0bf83899ef10fcd3becfc20088ebb1a6a01ad9ca25c9954"
+    },
+    {
+      "image": "joseph-benavidez.png",
+      "upset_fighter_id": "5d6b687d-b625-4d64-badf-329073730f57",
+      "sha256": "cb1b5675a2e79776daa9b455802ee7989b85cfbde9a32d7c36106ee288c5879e"
+    },
+    {
+      "image": "joseph-morales.png",
+      "upset_fighter_id": "ff3b6483-0d5d-4159-9756-fcf60266aa9f",
+      "sha256": "8c00c9286eeb9ca3c7aff7db617e72baa6244f6d0c0df32508f16e6ed43078ff"
+    },
+    {
+      "image": "josh-barnett.png",
+      "upset_fighter_id": "dcb01511-f207-4800-ba5c-95e262e06af4",
+      "sha256": "79c0f597b1a50124ba717e64391164798747e705add6cdfdca687c0b551123eb"
+    },
+    {
+      "image": "josh-emmett.png",
+      "upset_fighter_id": "04968a38-f0e8-4b1c-a060-c87a55e7498d",
+      "sha256": "201454263dd293419d904909b57f4fbdc0d5224ad618fe6d5f22e2b0e59d2ac9"
+    },
+    {
+      "image": "josh-hokit.png",
+      "upset_fighter_id": "ec2af54f-5fee-42f6-932a-7f8c9295c16b",
+      "sha256": "2fa4c0703ceec7c24c893696c9a2a00316263685e977dfa600968369244ecf69"
+    },
+    {
+      "image": "josh-koscheck.png",
+      "upset_fighter_id": "80a0208a-8d9f-4c20-8eb6-2197bcbd4c2e",
+      "sha256": "1ead75421e8a5c3c1526cb9f696c8ee264d7caea5452b6ad10e7bc158ab2287d"
+    },
+    {
+      "image": "joshua-van.png",
+      "upset_fighter_id": "45505fe3-2b68-42cc-8a29-8c71b5280f07",
+      "sha256": "b1b3c7e3702cb28abaa234c6ba4c50a2aed80e959fad31f228d4f5570b654785"
+    },
+    {
+      "image": "josiane-nunes.png",
+      "upset_fighter_id": "10e29539-9a1c-402d-a05d-01947e5128e1",
+      "sha256": "0e731e07b60c640b10475ed42e59e16f026a469aefbaa3cbf460e541d231f68e"
+    },
+    {
+      "image": "julia-polastri.png",
+      "upset_fighter_id": "62f2d310-5d77-40a6-b27e-2dcd7b129276",
+      "sha256": "5d57f683b1adb87a793925b64fc03b726f85c5ca7fb4da461489bd32aef23363"
+    },
+    {
+      "image": "julian-erosa.png",
+      "upset_fighter_id": "85057896-83eb-4862-84a6-2ee4d3b354a6",
+      "sha256": "7c9e8474d56e5a772d4e18629d857ac1c4255d4481161c98bcae2cd3ea4c27b3"
+    },
+    {
+      "image": "juliana-miller.png",
+      "upset_fighter_id": "405b7b47-28b1-45cc-a4ec-a3df6d2b1e01",
+      "sha256": "70cbf8ac2c3917ce1765b843051d7607c2d8d19ec1bde6e69568b1be1096ea05"
+    },
+    {
+      "image": "julianna-pena.png",
+      "upset_fighter_id": "2b9f1c1d-4bc2-4b52-8d61-58f714534a97",
+      "sha256": "78bcca02ba9e075f36b8f4457beecfdbd158eac4bf888c47615be6d9ff3016a6"
+    },
+    {
+      "image": "julius-walker.png",
+      "upset_fighter_id": "254962e9-9d93-4e08-a485-1afef4881387",
+      "sha256": "84de390c35ecbdb18accbed0ffd71731d77cf84ee38df8fa516a10dfd290e24a"
+    },
+    {
+      "image": "junior-dos-santos.png",
+      "upset_fighter_id": "f9d462c1-64c0-4dbf-be86-01f7e94afe09",
+      "sha256": "95df6cd9854829b7bffb5af7f2452e1a65b2944999b5348449b369d25a97959e"
+    },
+    {
+      "image": "junior-tafa.png",
+      "upset_fighter_id": "a1637466-d212-4742-bea7-d0df2a455cd4",
+      "sha256": "899c294aa2cc8e66b1f08ec66cc765fbdf5471ad53b773f99bb2c46f5876701a"
+    },
+    {
+      "image": "junyong-park.png",
+      "upset_fighter_id": "c6f214e6-cb09-4ba5-bfa7-0a2634e98016",
+      "sha256": "5b7f5856714e7acca95a36060dfaf2f876586e4576381d78a1f021d3ffafb0f5"
+    },
+    {
+      "image": "justin-gaethje.png",
+      "upset_fighter_id": "678d50b2-742c-44e4-b833-d560794ba84c",
+      "sha256": "181ab1ae72181d08a47211016be10facbe85d9d6d4758c5ef1c936c78f8f58ef"
+    },
+    {
+      "image": "kaan-ofli.png",
+      "upset_fighter_id": "40e9c369-ec69-4bfa-bf3e-0e4f66e8c0ab",
+      "sha256": "5ccef9da75f087769de58ea032eb61723ef127d1fb7e5a051490a08ad7dc5ab2"
+    },
+    {
+      "image": "kai-asakura.png",
+      "upset_fighter_id": "ac5f34ca-81fd-4e4c-a46c-5935b0cc31d8",
+      "sha256": "77c6a973b07266eeb9c9085c237b5165c4e54cdf89bef5325a6d525a13251380"
+    },
+    {
+      "image": "kai-kamaka-iii.png",
+      "upset_fighter_id": "056a0ffb-f0ea-46c4-9ee4-6122059b43e4",
+      "sha256": "204e7f0a2f2c5fdd845890ff87b36fa8bfcb5f78a0020baf96bbd5503606c4c8"
+    },
+    {
+      "image": "kai-kara-france.png",
+      "upset_fighter_id": "39e3b625-345d-4851-ad5c-888d092c13a9",
+      "sha256": "0f66ac0b3eb31063fd46df10326292cce44986578eca09a10f5f50ac718da45e"
+    },
+    {
+      "image": "kamaru-usman.png",
+      "upset_fighter_id": "cf9a6021-e63b-4b65-ae41-83c3a6e019ad",
+      "sha256": "3bfa665f36c1edfbda9d33d6d2f9850092bafe58399e035abafad76f8674ed9c"
+    },
+    {
+      "image": "karine-silva.png",
+      "upset_fighter_id": "2bb16d53-710b-40a2-bfc7-c5e242c4b928",
+      "sha256": "6a871c97eee21bfbaf2222ed3a1611002d0bd0de9f4b7c16434ffa17b9bf3632"
+    },
+    {
+      "image": "karol-rosa.png",
+      "upset_fighter_id": "57b5b6ac-826b-49f3-9970-38d38f1f5c9e",
+      "sha256": "3b58b50bd9333ca5b8af5e6f7e90a479e5b16dc0eb8c24962e90edd79965dad8"
+    },
+    {
+      "image": "karolina-kowalkiewicz.png",
+      "upset_fighter_id": "2e7d6af4-b566-482c-b9ca-5bc37cac1382",
+      "sha256": "04b0717022201f8e3f4efb556cca6dea7257006cea5eba312f6a477204984b85"
+    },
+    {
+      "image": "kaue-fernandes.png",
+      "upset_fighter_id": "d2b0047f-1e76-4187-a06c-ccac17a690cf",
+      "sha256": "c5e89ac199aa8872c0eb98720211c2c5945af527621263ac01635716d12f8fd9"
+    },
+    {
+      "image": "kayla-harrison.png",
+      "upset_fighter_id": "222bd270-33df-4874-a9f8-283cd8503315",
+      "sha256": "6c04ad0847402553462292c8710734161e79fb265f6f788fdba0c612b15ab00a"
+    },
+    {
+      "image": "kazushi-sakuraba.png",
+      "upset_fighter_id": "f04eaccd-4633-46c9-a720-4f54c1a2c9cd",
+      "sha256": "811a5b56e87a3b627e1225ef33e664f68eda742d1972e1092c0302ffe815db8b"
+    },
+    {
+      "image": "kelvin-gastelum.png",
+      "upset_fighter_id": "db8265c2-acf6-407e-ab2e-d1f396d5d66f",
+      "sha256": "e3546fd7233cd9503dcce0f8073be3cfe08ab4acfe762045a769faf618e59670"
+    },
+    {
+      "image": "ken-shamrock.png",
+      "upset_fighter_id": "dba24f50-6490-432e-89a4-23301cfe51b4",
+      "sha256": "068c38c1f98cb9d38b6bdc2b8e8ac4b44b0dbc15a23df9795d380c2880b1e671"
+    },
+    {
+      "image": "kennedy-nzechukwu.png",
+      "upset_fighter_id": "ddffb5ec-df02-4de9-af1d-bf9101faa7f9",
+      "sha256": "2c7b9d6307cf70a3e2d0078f64bc267cbac901aa027bc5051832a7235c60da2f"
+    },
+    {
+      "image": "kenny-florian.png",
+      "upset_fighter_id": "f218fcb7-59f3-48b1-a37e-58e7259c7586",
+      "sha256": "9a8528f4778571d26ffbcf8807cdcec6b60f0c83eeca29b170204bee0b33ba78"
+    },
+    {
+      "image": "ketlen-souza.png",
+      "upset_fighter_id": "e5579cad-f679-40e0-a5dc-8b6ff7e7b29b",
+      "sha256": "f4c3797953335dd4591bd2e5159de2ae2f2ad4744fbbd23a0fe0ed32bc810dd5"
+    },
+    {
+      "image": "kevin-borjas.png",
+      "upset_fighter_id": "c7047b83-1474-41cf-9dab-3dc1b511ae44",
+      "sha256": "1020d391a1cadb8220e2d02224624f6e36924808565bf6c668c577df7e6a111e"
+    },
+    {
+      "image": "kevin-holland.png",
+      "upset_fighter_id": "8337f913-628e-4038-b853-4c8cbfaf2e1b",
+      "sha256": "f214a2cc87e8fa0c2f1011ac197320dab81bb278546a1f1a8e8cd391a4a1c7cd"
+    },
+    {
+      "image": "kevin-randleman.png",
+      "upset_fighter_id": "35b305be-03b3-478a-8490-cba6e267520d",
+      "sha256": "bd287aba0fc3e2283f853bec774223e83abffd2c3b64dddd472e2520b664b910"
+    },
+    {
+      "image": "kevin-vallejos.png",
+      "upset_fighter_id": "28ef1e88-ecbc-4942-9bf0-2336babe07ac",
+      "sha256": "6ff5f0baa7a06a2625f8bca47ac53191553c37e814a714c68e7d0c6ebe4899df"
+    },
+    {
+      "image": "khabib-nurmagomedov.png",
+      "upset_fighter_id": "b5cb3947-6104-4025-af4e-289ee832e374",
+      "sha256": "7307bb80a2dd58de6f64b5d4424cc14c8fb38edb595dd0bc0b369a7fc1ea3654"
+    },
+    {
+      "image": "khalil-rountree-jr.png",
+      "upset_fighter_id": "0c720650-60e8-4310-a1a3-da70343bbba3",
+      "sha256": "a534e87b79423115f1d7aabfa3df2831f33b92e66ffbb12fe2725f67ec676a8b"
+    },
+    {
+      "image": "khamzat-chimaev.png",
+      "upset_fighter_id": "59b863b8-106c-40e8-93cd-270d7194ecb6",
+      "sha256": "1aab310ec184b810d5cb4d51f192be3effc360fc72ca11983f2899a10081d410"
+    },
+    {
+      "image": "kimbo-slice.png",
+      "upset_fighter_id": "60bbc887-e599-4dd4-887e-87156bdcbc45",
+      "sha256": "77d2f60d436d237a729b9247ac399cd9fdc2e70315bccad6db63c3818d2e7085"
+    },
+    {
+      "image": "klaudia-sygula.png",
+      "upset_fighter_id": "0840f208-4cd4-498c-9c7d-4293452ab6b3",
+      "sha256": "360ef65731fc77cb2659a12a9c8de6e8ac714865c8a0342707557aa67e9d221a"
+    },
+    {
+      "image": "kody-steele.png",
+      "upset_fighter_id": "5026e7f2-ca3c-471d-8c39-b4903834fb55",
+      "sha256": "4274d1fd1d37eded730c22a4a70c8b2a6de482a705968b1da5dcd4541c0dc432"
+    },
+    {
+      "image": "kyle-daukaus.png",
+      "upset_fighter_id": "f1c75905-b98c-4220-b676-99b4852fc7cb",
+      "sha256": "41cbe20cf2e31a4aca54977aa3468b92a25127f9497cfdc33eb23daf6503066f"
+    },
+    {
+      "image": "kyle-prepolec.png",
+      "upset_fighter_id": "5d186796-5d73-47ad-81e4-048e10722e61",
+      "sha256": "619a88428aaccc4f4024ec0741266b0ddfb4289795260660533523f82358f2b6"
+    },
+    {
+      "image": "kyler-phillips.png",
+      "upset_fighter_id": "816e703a-0290-4446-98ea-8ae3e1cad540",
+      "sha256": "d5ced7a9b1780e165a5b8969c249716ff0bc608e8ddcba1574816cfaf33fbc6f"
+    },
+    {
+      "image": "kyoji-horiguchi.png",
+      "upset_fighter_id": "98b93334-a937-4b9e-96a5-18e2a4917467",
+      "sha256": "f9670c5bd9c267510086cd044a5106471278a53a5527c0139a8685d73865febf"
+    },
+    {
+      "image": "leon-edwards.png",
+      "upset_fighter_id": "5dda6ade-f917-4980-ae4f-da14f10bdb6f",
+      "sha256": "f088e3c6b6d51cf20fcac7af5afab1d8441f4baf984ff8413cf222828c868499"
+    },
+    {
+      "image": "lerone-murphy.png",
+      "upset_fighter_id": "ab1be07a-24f1-46b7-b6e8-9ef25b38fa5d",
+      "sha256": "15e1bffdb81b12a93b3303dc8fc17e8beaffafb6797bee646d653a5b98fc6df4"
+    },
+    {
+      "image": "liz-carmouche.png",
+      "upset_fighter_id": "9cb20c42-6119-4203-86c7-bc3adc20955f",
+      "sha256": "0fd7e6205a885cc121c698cd17fbed2c3c2fab732e3e3f88877281ef93731f59"
+    },
+    {
+      "image": "loma-lookboonmee.png",
+      "upset_fighter_id": "ab1cc9cb-12c0-4512-90dc-1f956862e366",
+      "sha256": "61b106fbae533fa3229d89660a09694ca0f6c87356f10c95197cb965960ef1bf"
+    },
+    {
+      "image": "loneer-kavanagh.png",
+      "upset_fighter_id": "501d4c99-7b84-4585-8830-3b9134258a36",
+      "sha256": "4f3a629dd67137d74fc1e26d94ca735cb7505cfdce62afe3302e919231115ac7"
+    },
+    {
+      "image": "losene-keita.png",
+      "upset_fighter_id": "668f612e-f29b-4f76-a78a-fc6a4b064407",
+      "sha256": "6f695fe53131db99a38292894fa513b602eb5b59138003a4ca280e42a4283bce"
+    },
+    {
+      "image": "louie-sutherland.png",
+      "upset_fighter_id": "ab9ceb78-09c1-45dd-af4b-0ed4dd05b049",
+      "sha256": "3110963daea6e1b5972fb5c43960cc4e4cc23afbee8301d0bbca20c061f272d5"
+    },
+    {
+      "image": "luana-pinheiro.png",
+      "upset_fighter_id": "b6595e4f-d0ce-4e3c-8449-dde99c35c758",
+      "sha256": "3fd234a048024642b669b6fdd63921351e87f864eb10854f4505f5ba2d82947a"
+    },
+    {
+      "image": "luana-santos.png",
+      "upset_fighter_id": "a1f589e2-998c-404b-9f31-e7e69ce02d27",
+      "sha256": "61704518deb52ddbedd6e619cf4663494b43e29972bcb5fd5783aa0b8d1f5546"
+    },
+    {
+      "image": "luis-gurule.png",
+      "upset_fighter_id": "805d2cd2-8e05-411a-967f-64f46c486dc1",
+      "sha256": "f433f70f5b3edda98f4dcde2a925cede4759d19040066734cd0a24e5d39db671"
+    },
+    {
+      "image": "luke-riley.png",
+      "upset_fighter_id": "7b6f4ba7-2220-4593-ac4f-d936066bef00",
+      "sha256": "af0db175371e66b738df409ebd90e41caab8c1605c52666c113ad2a119bd3b31"
+    },
+    {
+      "image": "luke-rockhold.png",
+      "upset_fighter_id": "5860329e-983e-4ce4-b656-e8046ef1dd71",
+      "sha256": "359641a1636f2e9c5715d6a4dd93f101ed7fc1f169e23f625e45af1603bdf3bc"
+    },
+    {
+      "image": "lyoto-machida.png",
+      "upset_fighter_id": "4b771db5-a6f8-43ba-8ad1-1c8f4ebd662e",
+      "sha256": "adabb8d88d0a90b5eea61e3e800dd885423cbf4fed01b8d7e935de57c76cb850"
+    },
+    {
+      "image": "mackenzie-dern.png",
+      "upset_fighter_id": "7fa32486-cd0c-4d7e-9d2e-7a83f9449b85",
+      "sha256": "f3e1b4ff02dbc21d89258235ca4b0eef3064c84048f770c336b8216df6a46f72"
+    },
+    {
+      "image": "macy-chiasson.png",
+      "upset_fighter_id": "3564b7bc-68ef-409f-9d40-a9a9250f3212",
+      "sha256": "08f8aa71ad5af98abfcc7e88df99de7be5d54c4123041e6918bbeca799ed17af"
+    },
+    {
+      "image": "magomed-ankalaev.png",
+      "upset_fighter_id": "0f2b9dd0-180f-43fc-904c-a192908c99dc",
+      "sha256": "c79fcce8c0639bb9855ced7744f8a493b7d04a6cc5cf0e2b0c25464ab98c19c7"
+    },
+    {
+      "image": "maheshate.png",
+      "upset_fighter_id": "cca2a9a0-ef7b-4719-9648-905b34c7c88b",
+      "sha256": "7c030774c940093a5e646fd5b5e278adc4ecc4e5dc214f440c34e6b8ea688c9b"
+    },
+    {
+      "image": "malcolm-wellmaker.png",
+      "upset_fighter_id": "db78cf59-113d-4a96-8b17-c42f6c9a0a63",
+      "sha256": "b85a91e4f7e7fc75771b77695e3d695711aa09aedac6fe8d024764a226ff6c8e"
+    },
+    {
+      "image": "manel-kape.png",
+      "upset_fighter_id": "3f34ba3d-3adf-468e-bd4c-f03cd70aeba7",
+      "sha256": "5f0eb3e033a4f809946bc38abe1cf41d723bf4eb98905aba09a54186e900ff4a"
+    },
+    {
+      "image": "manon-fiorot.png",
+      "upset_fighter_id": "3bd9f2cc-79c0-44ab-8499-49006a49ced6",
+      "sha256": "197d067b0ceff556b277ff0bbe3d4f42b3c2fd1a42f9de94ae53b76dc1bfa117"
+    },
+    {
+      "image": "mansur-abdul-malik.png",
+      "upset_fighter_id": "6f584eb3-12e1-477d-b664-574fe02f31cc",
+      "sha256": "5da1ce0cf73b076c804f117a46d0e7a5c41a0659e75246a848f8ba3aaf0da279"
+    },
+    {
+      "image": "marc-andre-barriault.png",
+      "upset_fighter_id": "2ab55955-49f3-417d-aae6-294ebf7c3cdc",
+      "sha256": "63a487ee4670acb3d0d482cd129ac724c03068840fcd4ea1b98ef794706bc17b"
+    },
+    {
+      "image": "marcin-tybura.png",
+      "upset_fighter_id": "d6f19853-b8ab-4720-8d93-4f9b648f6e46",
+      "sha256": "7fc6c5acbbea744579e583b2c366790c43774012d9bde786ab22d7b9bcc68b07"
+    },
+    {
+      "image": "marco-tulio.png",
+      "upset_fighter_id": "d6af94e3-c4e3-494f-8ee6-8b16d66dad56",
+      "sha256": "e02ec15ec449b0a3a43791d8ccba0c6f05a5d5162727d19527f3a518b2286d8d"
+    },
+    {
+      "image": "marcus-buchecha.png",
+      "upset_fighter_id": "56121c8c-96bf-4820-9eba-e94ee16d66b7",
+      "sha256": "e1041ee62c9848623f7ff63e9a94af10fc93f5d58cbe550186e62586e10ec790"
+    },
+    {
+      "image": "marcus-mcghee.png",
+      "upset_fighter_id": "aeae8f83-e44d-4799-9acb-460c6be33c45",
+      "sha256": "d340ad5309454dae599d7f812c3829ba340aaf6df20b58d9add7ab924deccc3f"
+    },
+    {
+      "image": "mario-bautista.png",
+      "upset_fighter_id": "915a1a9b-85ec-4b31-ab3a-96ba15c15d14",
+      "sha256": "1f3ff631a01a1e7babcf68fdb4e1f69fc7ef7a3c144bfa571b5d87c7a0e0bf44"
+    },
+    {
+      "image": "mario-pinto.png",
+      "upset_fighter_id": "c4bd5f43-a038-47df-96d6-3c563c231a84",
+      "sha256": "1d57b18265ff6ed0d296d6915f13e3abe3918176ab23b71e7acd77df8c2f3f80"
+    },
+    {
+      "image": "mark-coleman.png",
+      "upset_fighter_id": "b8b36813-da58-4f51-91c3-edae98d3eacb",
+      "sha256": "265fd19ae2f03cb7b18c1de8e4f4ce1b28981a8f3f6954cd990aab24c2966249"
+    },
+    {
+      "image": "mark-hunt.png",
+      "upset_fighter_id": "c7a4fa1f-9b80-42d3-8b43-aa9277471b40",
+      "sha256": "12e53ebb5f83de228d0f1ab94c06138462c726b8d10a125e6ae341de1e554c10"
+    },
+    {
+      "image": "mark-kerr.png",
+      "upset_fighter_id": "5657620e-4622-43c3-8051-971ebbc33c74",
+      "sha256": "178ad360e51400a4698d8f7675e6124e1d3f6fc336100c084fcd5f7fd1c4f908"
+    },
+    {
+      "image": "marlon-vera.png",
+      "upset_fighter_id": "e49d6cde-fed7-4b5c-abe0-42bfa27f802b",
+      "sha256": "0e35029cf02770ec736234921faa346389a43d9a4b96234f8f6672b16cdd6c50"
+    },
+    {
+      "image": "marquel-mederos.png",
+      "upset_fighter_id": "34daacd4-dede-466d-a4c1-2a197549354d",
+      "sha256": "093a937e1d52392b5735f28611b7f0246d9d73c97bf44353ab674c60bba04c5c"
+    },
+    {
+      "image": "marvin-vettori.png",
+      "upset_fighter_id": "546a1084-81fe-4739-8376-6485c2c0c9ee",
+      "sha256": "e8bacc979dce1bd3e6f6d365102a0c8cd9b253fd49eafb8425951e5ce0d1903b"
+    },
+    {
+      "image": "marwan-rahiki.png",
+      "upset_fighter_id": "a1fc1206-827f-4eef-b8e0-45de11445f33",
+      "sha256": "e883290d4563b6b8df4f6a5a70356ff7ba36285060c0ba6f47cefc816d60cdc3"
+    },
+    {
+      "image": "mateusz-gamrot.png",
+      "upset_fighter_id": "9858a3d1-6733-4e2f-8a61-244c2a834b9b",
+      "sha256": "a49f02fbe99c9f385b218b9c8e3f9b1e00da08f80e4f6177207db5a3184213c6"
+    },
+    {
+      "image": "matheus-camilo.png",
+      "upset_fighter_id": "4364be30-df90-4ac9-9bb8-dab7430f5310",
+      "sha256": "19ca4a6b03b97fac9344ba6af4053c58ca1e892c51f0b899ae2b83d7b0be0f24"
+    },
+    {
+      "image": "matt-frevola.png",
+      "upset_fighter_id": "893bc83e-2183-436b-9ed6-2401bd0fc895",
+      "sha256": "65d92ab7b53fea3c9c72736d8f91223b0d1b6c16b1c979e2380be03b91b23164"
+    },
+    {
+      "image": "matt-hughes.png",
+      "upset_fighter_id": "cd3e12e7-c251-4ce3-8a2f-ef3b730a3b32",
+      "sha256": "6a630e52a75a1111484ef7683a443a2fc2648282569f3d1a07e655b2e6db992c"
+    },
+    {
+      "image": "matt-serra.png",
+      "upset_fighter_id": "cb33c9b6-74db-42aa-8f39-e867fcca2080",
+      "sha256": "5a731b91491e99eb32f2c841e79d95892b4b268f911f89187ed2e45ab15dba32"
+    },
+    {
+      "image": "mauricio-rua.png",
+      "upset_fighter_id": "1f7fca19-e9a7-4f4e-acf7-18fd1fda675a",
+      "sha256": "101d3a7d4debd74cbc4b8afcf81c17c7ecaffff6ef1d29cf5d53174ac1c556a9"
+    },
+    {
+      "image": "mauricio-ruffy.png",
+      "upset_fighter_id": "23d6549e-ed0e-439b-8a27-84e0e78dceaa",
+      "sha256": "81a1569b6e8c906d6aa28f0edddf73f8f87778b5e4313d20b32eccf25eb3cbbf"
+    },
+    {
+      "image": "max-holloway.png",
+      "upset_fighter_id": "24565b85-c2c9-4c4f-b2f3-733d3c81c1ed",
+      "sha256": "196e7511fdca855ba451277626f03ff1d70f1ec3542060448a9c62534c3f6a8c"
+    },
+    {
+      "image": "maycee-barber.png",
+      "upset_fighter_id": "553d3f7b-3146-462a-9a4b-36caac399437",
+      "sha256": "f2d0dae5c670560a2cdbe2432c79a19e69931f43ac899de1380bd76bebd9ef23"
+    },
+    {
+      "image": "melissa-croden.png",
+      "upset_fighter_id": "665c5f81-9c1b-4b59-985a-9e18ea02e7ce",
+      "sha256": "f373f55edf863bd2b5062931971d1deef48059b5d153e6b22afa398511b9c565"
+    },
+    {
+      "image": "melissa-gatto.png",
+      "upset_fighter_id": "fe86a66f-7289-480f-8e6c-6dd3199fa078",
+      "sha256": "a9158c9f2e745304b48f75f8548cafbf3c89851a7ae2878b9ecfbab26503acae"
+    },
+    {
+      "image": "melissa-mullins.png",
+      "upset_fighter_id": "26f252dd-30a9-4675-9a4e-5ec4c8b361fb",
+      "sha256": "f8493de2c906c54389fb0a877626b63c933ee59ed74f1585309c293cc0d569ed"
+    },
+    {
+      "image": "melquizael-costa.png",
+      "upset_fighter_id": "61293cb0-f6d5-423d-ae10-68f135cf6e26",
+      "sha256": "e13eebd8ae2fcb3081db84823e578404f07529676bccb1bc1727ac5bbc94b5ff"
+    },
+    {
+      "image": "melsik-baghdasaryan.png",
+      "upset_fighter_id": "0e2120a9-dd6c-4595-ba4d-0e4e5006d1ca",
+      "sha256": "bf5efbb515b51f8c429b92bebd4dc6805a6efd6d57c9fb128cc2e3b836ea6c2d"
+    },
+    {
+      "image": "merab-dvalishvili.png",
+      "upset_fighter_id": "48ad7da9-7ab3-4abf-ac08-7f28aa08c72c",
+      "sha256": "ffd391d2eb3f4b42105338032a8a08ce0f00cca207a7acb502f39c9c64224e6f"
+    },
+    {
+      "image": "michael-aswell-jr.png",
+      "upset_fighter_id": "d5d09f7d-da3e-4971-b299-5c19bb60fa23",
+      "sha256": "47a7154e8afbadb430fc28f6749d99985a7770de9c15c65451f67e3abfd77880"
+    },
+    {
+      "image": "michael-bisping.png",
+      "upset_fighter_id": "85df653e-423e-417f-8a73-80146778fb66",
+      "sha256": "523307cba829e177d9cb9af4e6f91709568fab4fd1e1a320c773aecf46c35a12"
+    },
+    {
+      "image": "michael-chandler.png",
+      "upset_fighter_id": "416f5676-7665-4f65-9724-9e7f80a8913a",
+      "sha256": "785f7a8a4d9cc8acdc9869603468b48dc68ed3b403c8f726fd91884e0c3422e6"
+    },
+    {
+      "image": "michael-johnson.png",
+      "upset_fighter_id": "e1054336-f413-42b4-9502-ef3411b8e273",
+      "sha256": "c4e6c284583a442392402b849afca74be069632b4b73749be58ff9d01283fa7f"
+    },
+    {
+      "image": "michael-morales.png",
+      "upset_fighter_id": "899e46a5-26a5-47df-b73d-f02707ecefad",
+      "sha256": "3cb17a27ae2b35d9f5209158262b74fea4852599868446a357a3f0aa27e92155"
+    },
+    {
+      "image": "michael-page.png",
+      "upset_fighter_id": "c60460c9-df4b-4d88-8662-4db21f5248b2",
+      "sha256": "c896a49cf1952f3e3db09111bc39eb0c4d80f3b04ba6556a4805a21721cf8d7c"
+    },
+    {
+      "image": "michal-oleksiejczuk.png",
+      "upset_fighter_id": "a5d20526-0a0d-4d9e-8216-cb31ae4dbfc0",
+      "sha256": "5916bb323e16d1b045b7e4c16251370bf2c98ca80a6459af0106fa003e98d64b"
+    },
+    {
+      "image": "michelle-waterson-gomez.png",
+      "upset_fighter_id": "7af17b6d-c667-4ebf-9d38-446fd49780b0",
+      "sha256": "42fda2a3d5e328767360b5e3a3963d781688783e235da8e94431d5208c6d31c7"
+    },
+    {
+      "image": "mick-parkin.png",
+      "upset_fighter_id": "0e4aa1cc-8f06-4804-9855-6003f3529ebc",
+      "sha256": "8cbfc28b4cd872fa4cd94c74a65eb057245a1f38940a28444dbaad2892275286"
+    },
+    {
+      "image": "miesha-tate.png",
+      "upset_fighter_id": "143feb52-8c84-4028-9b78-5a7e7493d793",
+      "sha256": "a76814852a9de33669426fd3191c165413b8d212ad7f9a6320bc0838bf41727d"
+    },
+    {
+      "image": "mike-davis.png",
+      "upset_fighter_id": "2a39bb32-881b-4e22-896c-fb54d80b8bd3",
+      "sha256": "7170cf5c6540180ba6842b74f36cd5ae051436f6b946b4624746aae7bf51bd40"
+    },
+    {
+      "image": "mike-malott.png",
+      "upset_fighter_id": "e08c04e1-53f0-4271-963a-9588db47c941",
+      "sha256": "cc4afb7dfd27c7bf5871ccfec878aa75edcb2a5b06527506c5eca37c5a31b468"
+    },
+    {
+      "image": "mike-perry.png",
+      "upset_fighter_id": "1a7634c0-ac5d-4d4d-a697-47d2f0d10ad6",
+      "sha256": "3bb675f83fba1d888bfa5ac7d98865ac3c0969e9cf8ab9aef936d1728c7517a5"
+    },
+    {
+      "image": "miranda-maverick.png",
+      "upset_fighter_id": "af3078dd-e013-4f28-ab89-aeb1aef7b8e8",
+      "sha256": "e8af7871769f87957b3ff3faf1894c98a38ed850e070ccf059b5a6335ae2ba89"
+    },
+    {
+      "image": "mirko-cro-cop.png",
+      "upset_fighter_id": "96ac83c9-bd33-4fce-aab3-24768baf8195",
+      "sha256": "a5a2d3c660889b9990660ba408ac4e7769c3a9290bd080cfb6e98d4ee87eaf70"
+    },
+    {
+      "image": "mitch-raposo.png",
+      "upset_fighter_id": "71551491-a63a-42db-b212-abe231fea75a",
+      "sha256": "6681d9d4833f5e274e2cd228ba59c21d422fafc65321ebe82cf96f260b819107"
+    },
+    {
+      "image": "mizuki.png",
+      "upset_fighter_id": "48c30c2f-b1c0-4449-9c84-53803b66780b",
+      "sha256": "951d1a4b58af549cc312738b8196e1642947715378cabb59605f82e0b30a2217"
+    },
+    {
+      "image": "modestas-bukauskas.png",
+      "upset_fighter_id": "13c5557a-e7bd-4814-9f08-aaf15f2c13e1",
+      "sha256": "92755c16d7764d8ea8ede1e412fa7c0c688ec1e176f24023e283cec65dbe56cb"
+    },
+    {
+      "image": "montel-jackson.png",
+      "upset_fighter_id": "67ee9b6c-ea20-4524-9b8e-cff2337c50e3",
+      "sha256": "e298d4894ebe91ff4b185f00cd1b396dc2e1b3707bedcf938b5dc220c2d4d3d2"
+    },
+    {
+      "image": "movsar-evloev.png",
+      "upset_fighter_id": "084b322b-1e75-47a6-a52f-8897faf74a53",
+      "sha256": "bf5ac11ef5bbafdd0735ca838e6bda054b40603e92a4baa756ec51688412a82f"
+    },
+    {
+      "image": "muin-gafurov.png",
+      "upset_fighter_id": "511cecf9-6d55-4829-9cb7-2d60b7bdc114",
+      "sha256": "58d87fc18307ac81bf1c4612bcbe5cae7ceb66781c7732328745d524876fd062"
+    },
+    {
+      "image": "murtazali-magomedov.png",
+      "upset_fighter_id": "91d58ecd-8b2c-4c27-961f-be3a1194d215",
+      "sha256": "9eb8c58b532bbfe6d8867e370faafe5a13c4fc7d5903043fecf1a95e11fdad8d"
+    },
+    {
+      "image": "myktybek-orolbai.png",
+      "upset_fighter_id": "25941822-8969-495e-b8e1-762b9e7f05d7",
+      "sha256": "4cb2bf05adcaee2d8755e32e65b58190362297ec751cc7c80ca958e1ed2e8222"
+    },
+    {
+      "image": "nasrat-haqparast.png",
+      "upset_fighter_id": "10194852-d2d7-4596-a8d0-d6dea0eb7da5",
+      "sha256": "3519e4bb7345d27f1273d3824edf4805ef6b74b6a8da56fd8c4b71346759c0de"
+    },
+    {
+      "image": "nassourdine-imavov.png",
+      "upset_fighter_id": "2bda05b9-8221-4d9f-8b46-3e807e23f3ac",
+      "sha256": "c319322c98ce38cb820b05380aa09744a60985eae08e382b8f8f2af12dd55a3d"
+    },
+    {
+      "image": "natalia-silva.png",
+      "upset_fighter_id": "7f37b13d-1e26-4c53-85c9-2d94c2b86cc3",
+      "sha256": "f936f9277ff41d1638ade2bbff33fe374e56eb6c16e6c0c165786130b89d9a85"
+    },
+    {
+      "image": "nate-diaz.png",
+      "upset_fighter_id": "108c4e0e-206b-4060-b123-608b9b678854",
+      "sha256": "1e5ad3c52ab945ccba807525f6252733bf9235b27578f8252c442a91c39cdd5b"
+    },
+    {
+      "image": "nate-marquardt.png",
+      "upset_fighter_id": "e1f2751c-0ad8-4edd-9d3f-756fd34ec4d7",
+      "sha256": "ee3a114a2a03f8bd1c69ddf4e3c7ef3113e63b12081c63df217e3fc702679532"
+    },
+    {
+      "image": "nathaniel-wood.png",
+      "upset_fighter_id": "4bc67fc9-969f-4508-b364-ac5596539da2",
+      "sha256": "e5ecfb9d2112fe6f5e59714697163ce6b71992ff6cf6b63c359bd875044afaec"
+    },
+    {
+      "image": "navajo-stirling.png",
+      "upset_fighter_id": "eafca02e-f560-4d63-a43c-2d56d835aa78",
+      "sha256": "fdf4f3fd2da21e957f1df8c80ac2f7d89a91a6d8a91f3b4247190c0aaa3909c7"
+    },
+    {
+      "image": "nazim-sadykhov.png",
+      "upset_fighter_id": "20eb0d1f-aaa8-4a77-88ec-3a70f7d2274c",
+      "sha256": "f37f0eb5e8f0e7b8a7469ae3f8dae4b8b0f70f3d021083790be5642a9afdd247"
+    },
+    {
+      "image": "neil-magny.png",
+      "upset_fighter_id": "227b50aa-ed9f-4a8b-83ae-f68750a17488",
+      "sha256": "7fa0cae7ca0d209c30cee102d523f4fd67f917285ebac145158df02b87a77e02"
+    },
+    {
+      "image": "nick-diaz.png",
+      "upset_fighter_id": "db89a639-5ab6-48ee-aeae-9b2f6f697149",
+      "sha256": "23cd2cd507818360834d39a925364e0e2e5182413144f18867da1cb9e44827f4"
+    },
+    {
+      "image": "nicolas-dalby.png",
+      "upset_fighter_id": "939adefa-05e9-4d45-9d61-bf9f80d58099",
+      "sha256": "9f9feefc92a62ae446a2b40ae3911f3608d8d98a5a5954250629f82421eb104b"
+    },
+    {
+      "image": "nicolle-caliari.png",
+      "upset_fighter_id": "00c22cf1-a1b2-4a9e-8f79-5fd6c16e8ef3",
+      "sha256": "2cd863db7d13344dfa0a9f8aede93f8c93569b4665ee3bfced07a1bf7c6d4a35"
+    },
+    {
+      "image": "nikita-krylov.png",
+      "upset_fighter_id": "967216b7-a5f6-4ce5-b668-ccc60c421e60",
+      "sha256": "fc772f225129ec5f63343aaace926ccf1ba7fc5d0f70160afd61d391af0c4c74"
+    },
+    {
+      "image": "nikolas-motta.png",
+      "upset_fighter_id": "a53f13fe-338d-4fbc-8f6c-62516d764817",
+      "sha256": "54b12cb701b627c9682d48598222be38e791b75c3e3a84f57e84f090f34abb7e"
+    },
+    {
+      "image": "nikolay-veretennikov.png",
+      "upset_fighter_id": "45ab988d-fb2b-439c-991f-d422d0ea3c6b",
+      "sha256": "12e97e2baa8698b4889565e39be7c31f685c0c94b23f667489de370b9ec25ad1"
+    },
+    {
+      "image": "nora-cornolle.png",
+      "upset_fighter_id": "52a2d8af-5bab-46f7-b4eb-b80128566776",
+      "sha256": "bff3a582ce0ab4e9252acd0662d61ea0831949b1cbfac538572884ba53f2df11"
+    },
+    {
+      "image": "norma-dumont.png",
+      "upset_fighter_id": "ad214fdc-ee6c-4948-a39c-dc90731475e5",
+      "sha256": "28a97453edd2f391e82ab1f5207f3056824e6af2d1e3bb35750a6ee543d50501"
+    },
+    {
+      "image": "nursulton-ruziboev.png",
+      "upset_fighter_id": "086ad8db-da90-4f17-a15d-e02d24f9b1ff",
+      "sha256": "0c4691247e79585ab7e177647fbd188dd1aa48a9e4ab5c26eb8c44d845c0daa4"
+    },
+    {
+      "image": "nurullo-aliev.png",
+      "upset_fighter_id": "daafa9b4-aff8-4a34-9c22-292212427b8f",
+      "sha256": "a62567edc0d646e89627af39d7978f1278c427ccdaacdf49cc9361cdee3925b6"
+    },
+    {
+      "image": "nyamjargal-tumendemberel.png",
+      "upset_fighter_id": "cac58c55-6332-40de-97f0-d6751e641204",
+      "sha256": "7386643d38059aa01de8b19a78651a218f7d7175faa17cc319f8c1f6d5c51cdc"
+    },
+    {
+      "image": "oban-elliott.png",
+      "upset_fighter_id": "9adce8b6-45cb-469a-bd6a-ac2c817e1bb4",
+      "sha256": "159a474d76e041e80214a65e5f6d02c9da4314a6cd6bac9a0365d3e35a220684"
+    },
+    {
+      "image": "ode-osbourne.png",
+      "upset_fighter_id": "8fecd862-07a2-479b-a429-531df69e2e6d",
+      "sha256": "7b090cbff0ea1db70be4c2eff11f8d3a7d94f9ed54e916d1062b33884338aa51"
+    },
+    {
+      "image": "oumar-sy.png",
+      "upset_fighter_id": "d51e2bd7-8fdc-48e0-b1fc-6038a84d052a",
+      "sha256": "cd01df716b4c128371e9b59e405aed2a8f6d27ffa9283736f5ae81120a5dc6c0"
+    },
+    {
+      "image": "ovince-saint-preux.png",
+      "upset_fighter_id": "57225136-b095-4b67-8dc8-ad4de1c49530",
+      "sha256": "cc558925f249ab237c4850a383d6eb69b80cecbc67d38c3fa2472efee6691a30"
+    },
+    {
+      "image": "ozzy-diaz.png",
+      "upset_fighter_id": "2aa5c470-c2b3-4478-a859-c3014f7f185b",
+      "sha256": "eacef5eb71178cfc9438646476b033e7f41dbf92c8e40bba100b34814aa61653"
+    },
+    {
+      "image": "paddy-pimblett.png",
+      "upset_fighter_id": "d9d6810b-f48b-4e88-9c2e-24e36c6d2f7d",
+      "sha256": "bf75fd028265a8256d6b3ac224bcdeb7ea94c35f39ff60e8b6d568a3b455cee9"
+    },
+    {
+      "image": "paige-vanzant.png",
+      "upset_fighter_id": "cb142f53-141b-4542-a64c-702bd702dfa0",
+      "sha256": "f9e6a5d3f714e02a32b91443b4a73e2e4d7bb9d15694f699e39dee2179e411d1"
+    },
+    {
+      "image": "pat-miletich.png",
+      "upset_fighter_id": "59a5442b-d37e-4fdf-810e-bd2b925f6d9e",
+      "sha256": "95f2bafa753b05e59d783dd0595d0c9a0436255168552af82e00b01120b9d54a"
+    },
+    {
+      "image": "patricio-pitbull.png",
+      "upset_fighter_id": "1cc92ec8-008b-4f98-a87d-02fcac865df7",
+      "sha256": "3f553c9f18760b7415d420e04d7ed98788f8f7ed570d6c5e1775d33d214c9ed3"
+    },
+    {
+      "image": "paulo-costa.png",
+      "upset_fighter_id": "4fa2bd95-d21d-41b5-81e6-d26eaccb977f",
+      "sha256": "1c5c2f9f520874d098d9c858314feabcf8a8ef3e30437326ff8ec87391578f1c"
+    },
+    {
+      "image": "payton-talbott.png",
+      "upset_fighter_id": "508190d3-ae64-4f10-ae0d-d314f8c6645b",
+      "sha256": "c4e4870f95f98aa84931e674fab03a4bda165a82a216cfa6e935e8b33a20032c"
+    },
+    {
+      "image": "petr-yan.png",
+      "upset_fighter_id": "ccbddd30-362e-49f0-9aff-82bf7a930ef3",
+      "sha256": "b150cc193bd5e327dea2e649334f23ff9db33fdba90ff3254ebe2cae2c4fc731"
+    },
+    {
+      "image": "phil-davis.png",
+      "upset_fighter_id": "54358294-78c0-41b9-b72d-5648742fea06",
+      "sha256": "45a167d7b437edc64e0aba763da983f4ad6c022f568748c42b636857697e49c5"
+    },
+    {
+      "image": "piera-rodriguez.png",
+      "upset_fighter_id": "92d0c4fb-61cd-4f5b-9d8d-50309691acae",
+      "sha256": "c117d65e9d20e9d8df15455631875e6580579d75441e359f2a32c4f9343e3e0e"
+    },
+    {
+      "image": "polyana-viana.png",
+      "upset_fighter_id": "d23f97e7-63ae-4da0-b6b3-31ce54232f20",
+      "sha256": "5b6d9f242f05e296354b96778c051f08efe1a43cf820b8fd759f33d72889b224"
+    },
+    {
+      "image": "priscila-cachoeira.png",
+      "upset_fighter_id": "e80adc3c-1dd3-4dc5-b5d5-f645dd778338",
+      "sha256": "dd48b0f9d1e307370a35166496dc6f8f922ca912c353635dc264040dbb096f94"
+    },
+    {
+      "image": "punahele-soriano.png",
+      "upset_fighter_id": "6faccf9e-3168-42dd-8b88-aca33a553042",
+      "sha256": "2243f2dc2f77d5cd9712f8b6b54439b3b2ee4fb0f92fa8f92c50bf3a4e42ad33"
+    },
+    {
+      "image": "quillan-salkilld.png",
+      "upset_fighter_id": "d33a2f3b-a1b7-47b9-a8af-36da48bb4d89",
+      "sha256": "233dee5f11028f7e0814b7609df2dc5055bb6c67f205ed734e8cd121a415104e"
+    },
+    {
+      "image": "quinton-jackson.png",
+      "upset_fighter_id": "7b286cce-6fec-4234-ad4c-47fd523688c9",
+      "sha256": "3234d0ec4bb2ce4da1213abcef87e0c5ea3b6ee840c289bbe64765c89fdaa83b"
+    },
+    {
+      "image": "rafa-garcia.png",
+      "upset_fighter_id": "80efb4b7-0ff9-4b56-b8b8-2124856db140",
+      "sha256": "eb404ffc8aea6e62b6412917abaa1536682fb282e294d921c3a0c69018dec81f"
+    },
+    {
+      "image": "rafael-dos-anjos.png",
+      "upset_fighter_id": "04645415-1ca8-4082-9b53-761e3816376f",
+      "sha256": "a94f95a962468d5632b1dd1ef4d75623b84bd1ffffb85b127c1035e92919cd34"
+    },
+    {
+      "image": "rafael-estevam.png",
+      "upset_fighter_id": "02dbb1fc-ad0c-46e1-bab7-7002fe69e8a1",
+      "sha256": "babcdb83770e0bc44967246ed63e1cc8ad7781d1b6364280709d5bb02b110df3"
+    },
+    {
+      "image": "rafael-fiziev.png",
+      "upset_fighter_id": "9f7d4dac-563d-4440-8339-0fee493a12a0",
+      "sha256": "5417d40cc0e73869df7825fb6b4b443f60b6e55e8437e67ae5e2f4de1468e9c8"
+    },
+    {
+      "image": "ramazan-temirov.png",
+      "upset_fighter_id": "603b0533-b6fa-48ca-98e2-7d3d84316bce",
+      "sha256": "d8ed7286bbec75c1dba97f7708c60d9430767d0e9ca55daba0e5d3935b6a1f55"
+    },
+    {
+      "image": "randy-couture.png",
+      "upset_fighter_id": "628951e0-9495-4208-9cbe-bdc49c49ce7e",
+      "sha256": "bd381726a0e9bfccaef60d1be31362ad0c7e0444509f7e9cd127009046bcc87b"
+    },
+    {
+      "image": "raoni-barcelos.png",
+      "upset_fighter_id": "953a9470-a775-40b7-93d0-61e689bd7e51",
+      "sha256": "d4dd67e5d13d21d75847b3fa5bda270fc70fcaa59638289cd54863612b6bcd7c"
+    },
+    {
+      "image": "raquel-pennington.png",
+      "upset_fighter_id": "a07a6a5c-a54a-4426-ac2d-80dfe32a0c2b",
+      "sha256": "a6e7f5f7235aba1f68ef0f3354febbba539e2364200e0bfa632d9ed0eaf40bfc"
+    },
+    {
+      "image": "rashad-evans.png",
+      "upset_fighter_id": "26b57a40-1013-48d4-8aba-6208850f74e7",
+      "sha256": "3d3cde1f3d4faa1ec3094ff3e1e9415b1a520fe9afa394257877ced09b2991ca"
+    },
+    {
+      "image": "raul-rosas-jr.png",
+      "upset_fighter_id": "00b03057-36ca-4c2b-bb52-771b48cf7b86",
+      "sha256": "2245301ca77e6525ba28a9bf1df1e79ecfde46f2e308ec6531fd736e1f5611e7"
+    },
+    {
+      "image": "rei-tsuruya.png",
+      "upset_fighter_id": "ad364a4e-b912-4bb7-b96e-62be33711868",
+      "sha256": "d3501f80d2d1116e6cc38ad83a5302ebcebe3225e44f482251205a3595607868"
+    },
+    {
+      "image": "reinier-de-ridder.png",
+      "upset_fighter_id": "44e3e153-0949-43e8-9a7f-aa3b75c3ae8b",
+      "sha256": "b6374b80f3e43a7197ae162b013484f195962eef7d4623afa7604c08bd87adf3"
+    },
+    {
+      "image": "renan-barao.png",
+      "upset_fighter_id": "278c728d-371e-436d-8757-42074fc7d355",
+      "sha256": "5498d04e8949b3271c130d939ae258a92fc9648588426a948ef80ed429469efc"
+    },
+    {
+      "image": "renato-moicano.png",
+      "upset_fighter_id": "97e0219d-0a8e-44c5-8096-3e8b91f9b23c",
+      "sha256": "7631b57ae9f89d2a9de0c0b9b8f49dfacfd08b7be9676c771094e5c45e6ab292"
+    },
+    {
+      "image": "rich-franklin.png",
+      "upset_fighter_id": "0189b8ff-ecc5-4408-9638-06e51d2d8e70",
+      "sha256": "4db8b0bffce1773fae41cf776969d29d73fbc1823bb1748d584bf900c8b2cf98"
+    },
+    {
+      "image": "ricky-simon.png",
+      "upset_fighter_id": "6e841ced-029e-46ba-9441-0cdb14df9247",
+      "sha256": "d74079d206c8c5c913b7b5df7b5b0b9b03153bd8cf752a132c486e7f9dca3491"
+    },
+    {
+      "image": "rinya-nakamura.png",
+      "upset_fighter_id": "12771843-4bc2-422c-95fe-6aa8835ddbcb",
+      "sha256": "e82dd60db6e1c661efe86515598c23da850a6c276fc5b14d0922c56357085f00"
+    },
+    {
+      "image": "rizvan-kuniev.png",
+      "upset_fighter_id": "245c9f50-ca0f-4a70-b0a5-8753d373d1ce",
+      "sha256": "73ce0aff645f632532f92dc5fd5d554399ddccb96c0f8448fd5c21ca08bb11b9"
+    },
+    {
+      "image": "rob-font.png",
+      "upset_fighter_id": "8b225a4a-0698-4648-b149-32b4b631f1c9",
+      "sha256": "a5582b91c8f3188831f663cc5643a337c05df93d738c257e03bcf674144e2713"
+    },
+    {
+      "image": "robbie-lawler.png",
+      "upset_fighter_id": "d001bd0c-1885-4281-8188-8fe0e68f74c7",
+      "sha256": "850ffe3878268beb3da17a6f939e21ceda3d66974007a8cbe2125f6244155f30"
+    },
+    {
+      "image": "robelis-despaigne.png",
+      "upset_fighter_id": "d3c319d0-ea83-4362-8404-7a7be3ca1615",
+      "sha256": "0658d15a10d5acf597932e956cf03bf6bccd1ab828180496b1c87a38e56f2d6d"
+    },
+    {
+      "image": "robert-bryczek.png",
+      "upset_fighter_id": "e1676733-7c18-4e95-a4b7-17626e076ac0",
+      "sha256": "6b9baf49cb080ddb3b923f5c0cb409238ad69a5d7d56d5900c254bfdadb58f4e"
+    },
+    {
+      "image": "robert-whittaker.png",
+      "upset_fighter_id": "e95f9ae8-68a5-4506-a1f2-2faf0840bbe4",
+      "sha256": "f7c8236c0f81c162d0a14072e0f1f6c18111606345c0e90c2e8e55d46e9557a9"
+    },
+    {
+      "image": "rodolfo-bellato.png",
+      "upset_fighter_id": "77b2c730-99c0-4a3e-924b-9ec99a319df0",
+      "sha256": "847c6e646d530f86690e03d079e16a2740714c496c260e24e091901312f3a04b"
+    },
+    {
+      "image": "rodolfo-vieira.png",
+      "upset_fighter_id": "178db664-a79a-45ca-a01c-4e9fd97ab1cf",
+      "sha256": "a741101792e544b02b769aed154a2e2c8b4ad9087ad0c0f4d91dcec97c113b08"
+    },
+    {
+      "image": "rodrigo-sezinando.png",
+      "upset_fighter_id": "b83d27d7-577a-4041-a22c-36675df773cd",
+      "sha256": "a126604ccf16bda64c4c89f52285e71d709fdcc2ec675d90b47131166028b4ae"
+    },
+    {
+      "image": "roman-dolidze.png",
+      "upset_fighter_id": "a9371263-c367-42f0-9cb0-d6b588b30191",
+      "sha256": "1fe10e491aa379be3582315009a5ae58f5cf214075011a9a4bd932b790d0e2dd"
+    },
+    {
+      "image": "roman-kopylov.png",
+      "upset_fighter_id": "046ab71a-5c81-4292-bd3c-cfb260602711",
+      "sha256": "a9cd6cfa95391280851b975e61fe9881ec676c51adfbc4b0031daf2fbfcd19be"
+    },
+    {
+      "image": "ronda-rousey.png",
+      "upset_fighter_id": "d18f2f2f-3862-4f46-a830-1a9b5a599b55",
+      "sha256": "bfde0c5e8c072f3b4aee024aa3a8c257d4d43c764b22785ed0f2f7f416e124e4"
+    },
+    {
+      "image": "rongzhu.png",
+      "upset_fighter_id": "3d046825-4cde-4aed-8855-6b02f9c9c883",
+      "sha256": "a0ce4d328570169cbe2dd910c90d158b94b78b109376cdf42ada0d59f5d4b49d"
+    },
+    {
+      "image": "rory-macdonald.png",
+      "upset_fighter_id": "87aa7a95-0ad0-4719-9b51-cf8f9fd022dc",
+      "sha256": "7ceaffdbf35bc658b3b259595b31645edf2cd67a454317dac6d871cc84eb98c3"
+    },
+    {
+      "image": "rose-namajunas.png",
+      "upset_fighter_id": "048397eb-faf1-4034-a7b2-6b415a9cfbd5",
+      "sha256": "11e6a7f3b02492c0c39b2d78056a947d79fe99d26a7b6a18a30fa57f70c32e8c"
+    },
+    {
+      "image": "roy-nelson.png",
+      "upset_fighter_id": "a93ba1c7-24c9-4a95-932a-782b875778c1",
+      "sha256": "92ea3f86a1eab9cb3a7fee05405d8c209d63a81521a489beb4b97d35fb63991e"
+    },
+    {
+      "image": "royce-gracie.png",
+      "upset_fighter_id": "dabfde26-d5bc-4022-98ab-37b55edb9b24",
+      "sha256": "4c6e3c5f943eea50ec34db705d977defd17ae9dc63f43d64fad3e8457beb463d"
+    },
+    {
+      "image": "ryan-bader.png",
+      "upset_fighter_id": "ad4fef95-6959-4bfb-ae35-851d9e42a570",
+      "sha256": "5e55a004b7ca5003c70947cfe323f184284ab1eaa8f95f02b7e5ac24958e1a12"
+    },
+    {
+      "image": "ryan-gandra.png",
+      "upset_fighter_id": "97780897-f24e-436b-9798-1bbfe254aea0",
+      "sha256": "5a9b494a677e9356c3614947a88e49b2a4e9e018fe31c6688f1acfd4a290c1fa"
+    },
+    {
+      "image": "ryan-loder.png",
+      "upset_fighter_id": "0f37f5d1-9184-40fd-90e6-460af15fa469",
+      "sha256": "791fb5d814a33111a27326815d7beccd8400d011924e50fa1e105ea41a98e8ab"
+    },
+    {
+      "image": "ryan-spann.png",
+      "upset_fighter_id": "27dc3b42-a924-4951-ba60-2bcb8c82b34a",
+      "sha256": "b628d3a70414fa0512af276606437e23072353997d774a4a6a41b1182485c67e"
+    },
+    {
+      "image": "sage-northcutt.png",
+      "upset_fighter_id": "f7c6504e-3ee9-48e2-9f5d-ee97e1c70c66",
+      "sha256": "780fe16db8013ddd389d48b8a86c4bf4101faa2e2cf74acbe102549acbc8310a"
+    },
+    {
+      "image": "said-nurmagomedov.png",
+      "upset_fighter_id": "01596570-24ad-40ed-bb43-31c2a8ab2bca",
+      "sha256": "e23afe3f737f413d7e3b12404c319c49b84093848c48251999f433f00f391860"
+    },
+    {
+      "image": "saimon-oliveira.png",
+      "upset_fighter_id": "ac4966e5-7b5a-4c80-baef-189b39e52aa8",
+      "sha256": "e76aca3d9d5783ac40828e771a4a5af7ff9b2a6972ddc2bcffbe8f3447478e23"
+    },
+    {
+      "image": "salahdine-parnasse.png",
+      "upset_fighter_id": "f9ea8a84-55f1-4c5f-be9e-407e9aa4c351",
+      "sha256": "42899458fa5051431e982698534db8e08c7cb2637f26f8b63155dfa5ff251411"
+    },
+    {
+      "image": "sam-hughes.png",
+      "upset_fighter_id": "08d6e476-06b8-4b45-b6fb-1c6656a77005",
+      "sha256": "613132581be6a51406e669798e07c984d5f0df7e80cea7404cb636775265eca3"
+    },
+    {
+      "image": "sam-patterson.png",
+      "upset_fighter_id": "13ed8011-8523-42b4-bbb0-f9726fd2b3cd",
+      "sha256": "2e26e775c5845be4dfd8d3bd409374fdc85bb3288846bcfc9c3b5f984952559f"
+    },
+    {
+      "image": "santiago-luna.png",
+      "upset_fighter_id": "b33e5b92-f821-4f66-944e-a4b0140446b6",
+      "sha256": "9530be6e6e47c263b177c7be5605382bb39840207a27e2172c62705a4953efaa"
+    },
+    {
+      "image": "sara-mcmann.png",
+      "upset_fighter_id": "f1ef61b1-baaf-4117-8e50-70f886794d4e",
+      "sha256": "d84f3069264667dc7c8531c2129ada2ab134a7896cd2f5d0ce01ae0dee3595af"
+    },
+    {
+      "image": "sean-brady.png",
+      "upset_fighter_id": "03843055-541e-490b-96b4-4b7498474971",
+      "sha256": "18d3df4d73c8a2250f1f903fb474b6dc47d1689ba537cd199e2db66e896264d9"
+    },
+    {
+      "image": "sean-omalley.png",
+      "upset_fighter_id": "36c6caa3-2d84-4856-95f4-7057b931ce47",
+      "sha256": "8e6a8367f3b43ec98d7d843805c69ceb56af34d121f726943db3f03c3bfaf686"
+    },
+    {
+      "image": "sean-sharaf.png",
+      "upset_fighter_id": "1d535692-5288-4986-b9a7-4004e0fc00fe",
+      "sha256": "7b3ca591a240a45c461d1d01daa7f9018ee6dd8565a0d04e2f306b4eb60cae3d"
+    },
+    {
+      "image": "sean-sherk.png",
+      "upset_fighter_id": "1ca30671-3ba5-4761-90b7-3aaa2134fb34",
+      "sha256": "604606cc950cc70d5c4c0a07f361c4f87053605b1c419449d9b69fddfa02b122"
+    },
+    {
+      "image": "sean-strickland.png",
+      "upset_fighter_id": "78da7aae-3d1c-4b1e-9ce3-e91bccccf7b6",
+      "sha256": "1a06fc151caf589e1cbc817699ce3e78b11b596ddddb9507d4db475e6db18b65"
+    },
+    {
+      "image": "sean-woodson.png",
+      "upset_fighter_id": "302f4a52-116f-42de-9c2b-32ff2ae70be7",
+      "sha256": "5adcbb3ad1ccc15d9256db7d06433f7ed32e7795e1a3ca5f5c6498ba27eeb827"
+    },
+    {
+      "image": "sedriques-dumas.png",
+      "upset_fighter_id": "bff601f9-813c-4f82-b8d1-a8b75c28b6dd",
+      "sha256": "7bf8e5d8685736cac82c35924476c2dcdfdec7634d1e360971e9d9d2d0f140c5"
+    },
+    {
+      "image": "seokhyeon-ko.png",
+      "upset_fighter_id": "980b5620-7ee1-46fa-a87f-53906cf3789c",
+      "sha256": "02a8d81b5a1ab4dea2bc624328401ecd17a7d25b7b2b63695e23a30f1725d3b9"
+    },
+    {
+      "image": "sergei-pavlovich.png",
+      "upset_fighter_id": "4acdfb7f-6cb9-4a8b-b4ff-496ca5dec879",
+      "sha256": "d295b82ea12de9af3acea249d9c042a3f4abcce43907805287da7916dfc93e7d"
+    },
+    {
+      "image": "serghei-spivac.png",
+      "upset_fighter_id": "e09f84a5-06e0-489c-ae99-02b74a31a72d",
+      "sha256": "20662031016688f8a9b40672332e18bb58aba1f2fbff29cfb42b15605d6da0fe"
+    },
+    {
+      "image": "serhiy-sidey.png",
+      "upset_fighter_id": "d02b24ed-de3a-4b96-9cd8-3dea65202253",
+      "sha256": "60907ee40c7e5236f72d6b4c088457f94de184943b155b7c5f7680661819fe57"
+    },
+    {
+      "image": "shamil-gaziev.png",
+      "upset_fighter_id": "b220c68b-d2cc-46cf-8d9c-93b7baa6bf34",
+      "sha256": "07efe2ed79b47d45ede31c4bb37188de2a1681f4678c549a68d2ec9f5976bb34"
+    },
+    {
+      "image": "shane-carwin.png",
+      "upset_fighter_id": "d215bcf4-7806-433d-afcc-75beb78c7903",
+      "sha256": "963ed12fc8922e0d14e9e9766c34b264442cd67cad16ee32f2154c1318663102"
+    },
+    {
+      "image": "shara-magomedov.png",
+      "upset_fighter_id": "4bd721bc-ce08-489c-b26a-423fc66f83ed",
+      "sha256": "3c843ec95c8044cb1240635aa3074fc71cabe5facca608679d01d823680f252b"
+    },
+    {
+      "image": "shauna-bannon.png",
+      "upset_fighter_id": "468f8144-06ce-40c9-8ab5-28232f400ab6",
+      "sha256": "a7b35d7541bdf762166525497f8b645da94c04fc047f6c6e2779819d05856160"
+    },
+    {
+      "image": "shavkat-rakhmonov.png",
+      "upset_fighter_id": "9cd14638-4d52-4dd5-adce-9be777499a3b",
+      "sha256": "9677293274249467361c274a17e16d7e48231135b62bd25aed2d8c344e6bd849"
+    },
+    {
+      "image": "sodiq-yusuff.png",
+      "upset_fighter_id": "59a9e346-3451-4d1d-ab3c-2fdb7a32a083",
+      "sha256": "58d4eaa3277919cb254219de5745098d13b86fb85db3bf18a2cc7f4162aab4d3"
+    },
+    {
+      "image": "song-yadong.png",
+      "upset_fighter_id": "791ace8a-264c-49ea-a0e3-9657a13f5832",
+      "sha256": "4b758077e1404a5adb8628175b4afb094b998c09bf78453d45ef8a07f6f0e2d6"
+    },
+    {
+      "image": "stephan-bonnar.png",
+      "upset_fighter_id": "673793f6-b048-4b6b-b946-8f5d7cd86d8c",
+      "sha256": "fb8da0e05e4fda6585e3c946fd90601ea61975060d5fbab029e227a7af7c131d"
+    },
+    {
+      "image": "stephen-thompson.png",
+      "upset_fighter_id": "0815a560-a417-4d83-b4f4-6dc20927bbbf",
+      "sha256": "34351d21bdab7ed17b7318562245ffc43d353c746fc38eec967041fc9ddb7e75"
+    },
+    {
+      "image": "steve-erceg.png",
+      "upset_fighter_id": "43d7afc8-627c-4a80-9f53-7ef515e89b00",
+      "sha256": "676a7dc3c1f01cf859478d257ee424d36c97198d78975d81f252f6c1eb444b73"
+    },
+    {
+      "image": "steve-garcia.png",
+      "upset_fighter_id": "f176b399-2f4d-4fe1-a3df-8e26a873e82d",
+      "sha256": "73001d72c794b57132eda5bdc3fd46d6b99f22fdcb116b7613e9c255c96ea1c7"
+    },
+    {
+      "image": "steven-asplund.png",
+      "upset_fighter_id": "b80fe8ce-ee61-469e-a032-049756c82cff",
+      "sha256": "adc3f29616ced3797e36530f798305c56d034696387f51e6306a6783bebf8e74"
+    },
+    {
+      "image": "stipe-miocic.png",
+      "upset_fighter_id": "cffeecfa-bbb1-4964-92a9-6869f5c9b05b",
+      "sha256": "b0ebeb627efbbc466a74f88765801f37a8682cba3065fd640f419726ed0c4b7d"
+    },
+    {
+      "image": "suyoung-you.png",
+      "upset_fighter_id": "5d8cd3d9-3d75-4f54-9b85-46091a5df628",
+      "sha256": "ab27715ee68dd515e546e9b0c50b1c2ca84fcff0adfdd49adf5b6ea664312930"
+    },
+    {
+      "image": "tabatha-ricci.png",
+      "upset_fighter_id": "520cf844-2eae-41b2-8a89-ede8ab857974",
+      "sha256": "e3566b0b96f41b47d331f27be6f459d542462dff5fdaa1115d91d411f81ea5cd"
+    },
+    {
+      "image": "tagir-ulanbekov.png",
+      "upset_fighter_id": "0e20dbee-bce9-4427-842e-ab6599acbd1e",
+      "sha256": "43aea96efd9d1140c79212151fd220fed742ce3a45c586c95be504afccf05f72"
+    },
+    {
+      "image": "tai-tuivasa.png",
+      "upset_fighter_id": "51600e91-7dc0-4e03-90b2-d8bae486ac85",
+      "sha256": "1f5bea57f1b317d044f06c9d4af68604e0a2d162ec5d34af5cf0320d4462e86d"
+    },
+    {
+      "image": "tainara-lisboa.png",
+      "upset_fighter_id": "c0c50eb5-3956-4d8f-9ac8-d8f810461c68",
+      "sha256": "c240af999260129553bb5427453ae7ef9876f5462082b6ae71f871cbcd2cfb9e"
+    },
+    {
+      "image": "takanori-gomi.png",
+      "upset_fighter_id": "7cbae9b9-c94d-4d9d-bfd0-48dfc0f54512",
+      "sha256": "f92a470d25bb6f42cb9462a489c928a5590ae2555b9613d017b9b4db6f93e77a"
+    },
+    {
+      "image": "talita-alencar.png",
+      "upset_fighter_id": "ecf18778-39c6-4eed-ae9b-d15c1b85a1bc",
+      "sha256": "4355e8c3ed4c95fba7113ed8357088125af40bd9fab637558957cf516580e4c5"
+    },
+    {
+      "image": "tallison-teixeira.png",
+      "upset_fighter_id": "4820d6a3-e90b-4d27-95fa-efeb39213b24",
+      "sha256": "77f88694d082159f50010e46c017ff722b77449aa0f2d3fbb88ce300cab9af82"
+    },
+    {
+      "image": "tank-abbott.png",
+      "upset_fighter_id": "39ae998e-45f9-4533-9d3d-e18c033b6207",
+      "sha256": "77a0bfefac8234ed0f03ca63c17cfb56c5c0cf04eb53a9aa9bc7e627da8615af"
+    },
+    {
+      "image": "tanner-boser.png",
+      "upset_fighter_id": "9cb7f35c-4d04-4cf6-b980-78b0818ca94c",
+      "sha256": "bbd13e4fa0c906438dce29232e98ad79cabfd7fe6b4959edfbca8827cbe7b228"
+    },
+    {
+      "image": "tatiana-suarez.png",
+      "upset_fighter_id": "f0637c92-8c73-4480-99b3-08c353566f23",
+      "sha256": "d6ecebff7c5944d4307a7cded898494d71a30bc09570f2bc50c91f2636fecf62"
+    },
+    {
+      "image": "tatsuro-taira.png",
+      "upset_fighter_id": "b43fda44-3d56-40d4-bb1b-1644586119fb",
+      "sha256": "d2d92c92757f6e8422fa70a68964a0fafe3b134c084d9cf63393143d5a60e212"
+    },
+    {
+      "image": "thiago-alves.png",
+      "upset_fighter_id": "2b73b6e5-3b75-4485-bcb6-aa1b570961b4",
+      "sha256": "3fcead854ce6c2511d1d62051b918c33cc32da1d844d1b90c5bd29c123d145b9"
+    },
+    {
+      "image": "thiago-santos.png",
+      "upset_fighter_id": "921fe857-037e-45c3-bb68-4745e3407696",
+      "sha256": "b746bd5930fd6637314d1c84e9ec1dd16d47c2f2a3bab11de322e532c52cc31d"
+    },
+    {
+      "image": "thomas-petersen.png",
+      "upset_fighter_id": "3c76e3d3-ded4-43bb-bd8d-202e5c16cc67",
+      "sha256": "b0feb4a9acb3d6e0bfa092b8450eae3848b0cd0dd1249cce460fa4d28b023d13"
+    },
+    {
+      "image": "tim-elliott.png",
+      "upset_fighter_id": "03d42b74-1455-4573-909a-34ed9ee5394d",
+      "sha256": "509baa36bc5e87c3c34d77ebd05d70e8221e18294bd4093c1f0104b908401ae6"
+    },
+    {
+      "image": "tim-sylvia.png",
+      "upset_fighter_id": "e5c44a2f-6b7f-49bb-bede-e178cc2f741e",
+      "sha256": "df8ef11573ef308b435906785b81b40e5d6c4fa166647e4b787a98c5869d2931"
+    },
+    {
+      "image": "timmy-cuamba.png",
+      "upset_fighter_id": "2474846c-589e-4024-a66a-5c83b81eec0a",
+      "sha256": "0487853fc3345ac0ff1be1adeaebaed131e46fee3edebc455a7e2ddc2b17565f"
+    },
+    {
+      "image": "tito-ortiz.png",
+      "upset_fighter_id": "34e513fe-cd26-4843-81cb-c64cf2163446",
+      "sha256": "860f4f0055bbca8f70283ce3fd42552f31f93f20a20a7850cdba9b47c8379cb1"
+    },
+    {
+      "image": "tj-dillashaw.png",
+      "upset_fighter_id": "cb18a5a2-ffd7-45db-b014-e53945f9d83c",
+      "sha256": "452f7aca00727e9bcc47b3bf0e8a9c0efa3153910ab642c8a2bf37e80b19932a"
+    },
+    {
+      "image": "tofiq-musayev.png",
+      "upset_fighter_id": "866c4ec0-2b04-4571-96ac-c9c758339e6d",
+      "sha256": "cdc26dd66f61646d3e84ff67432a07593964a7a293578f82d88063e9ec926f72"
+    },
+    {
+      "image": "tom-aspinall.png",
+      "upset_fighter_id": "d48be2c2-b225-405f-9fb4-8091f8554733",
+      "sha256": "ea6e535377c28b488a240f233dc3954114134298a90037ca7416ba39d20a6ec3"
+    },
+    {
+      "image": "tom-nolan.png",
+      "upset_fighter_id": "0ccb63d0-b79c-4187-9b38-426e868c914d",
+      "sha256": "16e84f028b3dc64eb0dcf40e133077b2e73c207447c92db51a8e8235e7cdb9d2"
+    },
+    {
+      "image": "tommy-mcmillen.png",
+      "upset_fighter_id": "72de8d6d-ee19-4600-bf68-6f4b16db551b",
+      "sha256": "a7d7195280290a2061009a9f5cdaf87010bd31eff6a1792c609f0df39a05e600"
+    },
+    {
+      "image": "tony-ferguson.png",
+      "upset_fighter_id": "0b314f13-fe4f-4065-a762-20241bd2a215",
+      "sha256": "fbf1aeccd26fb29567ed1ac56bbd8f0ba9ca02658bf209fe02d9d2e44f941733"
+    },
+    {
+      "image": "toshiomi-kazama.png",
+      "upset_fighter_id": "f70738e4-bf01-4119-a66b-35839302b755",
+      "sha256": "7610a51307792f1bbd62193099ca254455c2e5cabd63130653cf60f7c000c9e2"
+    },
+    {
+      "image": "tracy-cortez.png",
+      "upset_fighter_id": "7238569e-e8f8-46ec-9b7a-8a00c53eeaeb",
+      "sha256": "7242fd394468eb02eaddce9c517bee73e56613aa97aa89ddf8f6a236badb541f"
+    },
+    {
+      "image": "travis-browne.png",
+      "upset_fighter_id": "310e19b1-a203-42fa-9183-c88c6eb25365",
+      "sha256": "8c32ab5a93f3c6979da0252ef686a7669ae9f99e024cb34f5e57f57e44979bf0"
+    },
+    {
+      "image": "tresean-gore.png",
+      "upset_fighter_id": "bd674786-9e34-4f81-8939-af5c7a9dffc7",
+      "sha256": "fdb8e2210e6659ea6de6c426feb155e010a98614dccb9d5a29bd4ebbf6ee2422"
+    },
+    {
+      "image": "trevor-peek.png",
+      "upset_fighter_id": "8ed0e6be-161c-44e5-9a28-922130d54b1b",
+      "sha256": "56a1b9828b5837b9a08b613cc6dbba21519209511767858cfd5e74a7b6452613"
+    },
+    {
+      "image": "trey-ogden.png",
+      "upset_fighter_id": "252063e1-983b-4aa4-b2cd-bebe267d5997",
+      "sha256": "0bb192b85b62b4bd66a971ce053b2a2b9420006c4a7e9e097934bde3b13915fa"
+    },
+    {
+      "image": "tyron-woodley.png",
+      "upset_fighter_id": "bcb82721-3491-4d92-8604-33b61480afa6",
+      "sha256": "bce9a2682f27dcb182ba6f224d9571bb80dd4ae8b0270f389e4e94019d0bff20"
+    },
+    {
+      "image": "umar-nurmagomedov.png",
+      "upset_fighter_id": "9d8e74d5-2998-460a-ad8e-182e637b9dee",
+      "sha256": "86261e0b58390b6bcd3da6f55939106f3d83ee815df842d6683e0812dc70d01e"
+    },
+    {
+      "image": "urijah-faber.png",
+      "upset_fighter_id": "4439eaeb-66bb-418a-91ca-e6d35002bd69",
+      "sha256": "645056d9ac2860cc587c2f911d7469b3d895b535eb46478c97c609c684df8266"
+    },
+    {
+      "image": "uros-medic.png",
+      "upset_fighter_id": "5bf1b426-aba4-4923-92f9-f94f6b2a0e6f",
+      "sha256": "5d38788638d747d135608c82c2d0ab112053a12075e6b3c8132d9456d7567c69"
+    },
+    {
+      "image": "valentina-shevchenko.png",
+      "upset_fighter_id": "8397caea-9f87-49e5-8053-0e76d20dcd99",
+      "sha256": "8c33fe1426b5bf6d02e9f6c0c4100cb12829bb960d31a8dcf4886c57a2e5b172"
+    },
+    {
+      "image": "valter-walker.png",
+      "upset_fighter_id": "01f5c7c9-f8a7-4823-a123-09c032d1c11d",
+      "sha256": "1b35b755f2a0c3f31ed9287a0dea1ef9a3a18b5bf0c50f35d1a4a966c9e00471"
+    },
+    {
+      "image": "vanessa-demopoulos.png",
+      "upset_fighter_id": "ca912a97-eeb8-4c9f-8a21-c3958f7f9afb",
+      "sha256": "447b93c225869440e3d15ef4dcf21c56b0094bb604835e909a4cc320ac5557a9"
+    },
+    {
+      "image": "veronica-hardy.png",
+      "upset_fighter_id": "aa3f65f7-b8bf-4f23-b798-9774eeabc8a1",
+      "sha256": "8e68881c5c3beb0b0d50fb1b72f2ba39b3976c84fb143cd8ca7827bd593e92d0"
+    },
+    {
+      "image": "victor-henry.png",
+      "upset_fighter_id": "995221cf-ed01-40e2-af27-db2477a9c9ad",
+      "sha256": "2e97f249475207e2b2977c7834453dbb5c9c2a5be6786f30791e41f029ae3cdf"
+    },
+    {
+      "image": "vinicius-oliveira.png",
+      "upset_fighter_id": "56fe4492-d01c-4ad9-8901-8428ba210c64",
+      "sha256": "55765fc5f18cc864cfd17fa4f5dbff71ea06fb80b337fb90430abbc1807916f2"
+    },
+    {
+      "image": "virna-jandiroba.png",
+      "upset_fighter_id": "8a218fc2-524a-481d-bc98-3374924aabd4",
+      "sha256": "7c027aec6f031f4fb4f45b939e881a8d6e82e3f41956e23f775dd1b197a339c3"
+    },
+    {
+      "image": "vitor-belfort.png",
+      "upset_fighter_id": "bf7391bf-1ac8-4ef8-b58a-fb390d93fac7",
+      "sha256": "3c9cf66d35c7203d8662432f0113cbbcb5e687b7e45cca8d01a8e145a0f61728"
+    },
+    {
+      "image": "vitor-petrino.png",
+      "upset_fighter_id": "005d10b4-186d-4cf0-b2d0-a259234f080e",
+      "sha256": "b6f51472ecf2b67e9725d74d7189250921db1665dde49e50284cc8d64b4ac21b"
+    },
+    {
+      "image": "waldo-cortes-acosta.png",
+      "upset_fighter_id": "ae100c94-3008-43fc-a9fd-1dd221567115",
+      "sha256": "e6c52a57913a6c9b513ee3d182615e4d19b4c8d3bcaf18f53c52b1ef6a701e08"
+    },
+    {
+      "image": "wanderlei-silva.png",
+      "upset_fighter_id": "c91230f4-6cb0-4ecf-aef5-0405225ffb49",
+      "sha256": "f053743e3fd2471d434bb0b30beb0bac891554bb2842bf0738f2c29a03663586"
+    },
+    {
+      "image": "wang-cong.png",
+      "upset_fighter_id": "63e02a92-804b-40a5-92d2-821efd650e87",
+      "sha256": "d21d6eb4af188ea5cedcaa0787ac5e0cfa20db4505576e18610e08140eea376d"
+    },
+    {
+      "image": "wes-schultz.png",
+      "upset_fighter_id": "4c81340f-9960-42f9-8c6e-631fa2bd6aeb",
+      "sha256": "bc5db20a85279c7ce1f1f82b18a73c28c41913acb8f59c453d8c09ead408ad9a"
+    },
+    {
+      "image": "william-gomis.png",
+      "upset_fighter_id": "b4d492b3-1ce0-42c9-ac60-469da596816b",
+      "sha256": "8edfb83e59ef8a7a3ee2fd2b321de43f0123e622ad57b12a311dc21de9d66b72"
+    },
+    {
+      "image": "xiao-long.png",
+      "upset_fighter_id": "0ee0663a-104d-44d6-befc-e375b1178f75",
+      "sha256": "1e3b1daaac823d4dd3f08c7329c56d34ce4534dafa9eae22cdf19c34c0cdf00e"
+    },
+    {
+      "image": "yadier-del-valle.png",
+      "upset_fighter_id": "e745b700-b310-4d31-807e-9125f65a3e1a",
+      "sha256": "752d72a66b4bafbbfb38aff0be438e0902d015081c34f55adcb0c4554008d16d"
+    },
+    {
+      "image": "yair-rodriguez.png",
+      "upset_fighter_id": "dad38ce3-34da-4c5a-9dcb-3e1ad2b54cf6",
+      "sha256": "8f9d38e9acfd1667956a957c02854baff6151288fa684dc17202c1ccb18ed50f"
+    },
+    {
+      "image": "yan-xiaonan.png",
+      "upset_fighter_id": "966766a8-c687-4f1a-93de-a879ffce6a7b",
+      "sha256": "34da50c654197c452e945cd00de25fafaff850ffa911c3a9c5f5f7e0bfefd5ae"
+    },
+    {
+      "image": "yana-santos.png",
+      "upset_fighter_id": "960cf4b1-0aa6-4f1d-87de-d7d073f8565d",
+      "sha256": "a1bad701ea024f5a35b0344d7e14ac18ec956dc1ac3dff02fb234e40ff7f324e"
+    },
+    {
+      "image": "yaroslav-amosov.png",
+      "upset_fighter_id": "9dad8aa9-80a7-47e6-920f-9906936f502e",
+      "sha256": "d80d9cf047378acd1dc0f0fbae4915c5a252fefc46573e62967463a2c1eedfef"
+    },
+    {
+      "image": "yazmin-jauregui.png",
+      "upset_fighter_id": "974edae5-7c8c-4c4e-bee0-b2c007a48922",
+      "sha256": "cbb3618ce71d7bcf8c4cdfa2edfad02a563f06f6761416698213cace01b24dae"
+    },
+    {
+      "image": "yoel-romero.png",
+      "upset_fighter_id": "29b53828-4a2f-473a-8db8-6f949d4819b2",
+      "sha256": "787fb9b03e780379ee2a703d26d6dc44fae74584eb03646d44c53cbedd361fe6"
+    },
+    {
+      "image": "yousri-belgaroui.png",
+      "upset_fighter_id": "a2f4ecf9-93d1-4f07-9776-e50f0e811cea",
+      "sha256": "61992e9eaad5f31e34115dce3ff741e9f6749ad3cd809de7835f99253fb3d8a4"
+    },
+    {
+      "image": "youssef-zalal.png",
+      "upset_fighter_id": "3c27eb77-2904-423d-8593-cfee24b75448",
+      "sha256": "54f1c54a9faa43f58a3f8ea61769c401f43673f5ec769571a07c8c0334ee7410"
+    },
+    {
+      "image": "zach-reese.png",
+      "upset_fighter_id": "c6bee4a8-6a97-4e87-bfe9-c3dd11bc1d6a",
+      "sha256": "bbaa1f70dbec52dccf57a246c80a21ffec4be19adae38fe3a3238f75b6968252"
+    },
+    {
+      "image": "zhang-mingyang.png",
+      "upset_fighter_id": "43e476db-a547-4c55-af2a-d27e08206e87",
+      "sha256": "fbb48fba59c35f881a1d6f57325e7f634125de7ca1ac97e3e6363da4f52eb77b"
+    },
+    {
+      "image": "zhang-weili.png",
+      "upset_fighter_id": "c645893d-f8b0-488e-baf1-2a31212ce958",
+      "sha256": "f460d1376da9af96206c0634207ee392294914b709d6c98f0bb17933d42ae162"
+    }
+  ],
+  "pending": [
+    {
+      "image": "anthony-wint.png",
+      "reason": "UFC athlete identity confirmed, but the reviewed serving database has no linked profile. Portrait kept for the coverage entry."
+    }
+  ]
+}
